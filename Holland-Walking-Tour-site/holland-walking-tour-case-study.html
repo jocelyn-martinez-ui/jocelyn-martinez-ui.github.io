@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A UX case study by Jocelyn Martinez: redesigning a walking-tour experience for visitors and the local teams who maintain Holland, Michigan's historical content.">
+    <meta name="description" content="A product strategy and UX/UI case study by Jocelyn Martinez: reframing Holland, Michigan's walking tour as an accessible visitor experience and maintainable content service.">
     <meta name="theme-color" content="#f7f3ec">
 
-    <meta property="og:title" content="Holland Walking Tour — UX Case Study by Jocelyn Martinez">
-    <meta property="og:description" content="An accessible mobile tour and content-management concept designed for visitors, archivists, and tourism stakeholders in Holland, Michigan.">
+    <meta property="og:title" content="Holland Walking Tour — Product Strategy &amp; UX/UI Case Study">
+    <meta property="og:description" content="A two-sided service concept connecting an accessible mobile walking tour with the content operations required to keep local history trustworthy and reusable.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="holland-walks/00-system-showcase.png">
 
-    <title>Holland Walking Tour — UX Case Study | Jocelyn Martinez</title>
+    <title>Holland Walking Tour — UX/UI Case Study | Jocelyn Martinez</title>
+
+    <script>document.documentElement.classList.add("js");</script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,6 +52,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 96px;
         }
 
         body {
@@ -127,6 +130,16 @@
             transition: background 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
         }
 
+        .reading-progress {
+            position: fixed;
+            inset: 0 auto auto 0;
+            z-index: 1100;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--teal), var(--coral));
+            transform-origin: left;
+        }
+
         .site-nav.is-scrolled {
             background: rgba(247, 243, 236, 0.88);
             border-color: var(--line);
@@ -175,12 +188,28 @@
         }
 
         .nav-link {
+            position: relative;
             color: var(--ink-soft);
         }
 
         .nav-link:hover {
             color: var(--teal-dark);
             background: rgba(255, 255, 255, 0.52);
+        }
+
+        .nav-link.is-active {
+            color: var(--teal-dark);
+            background: rgba(255, 255, 255, 0.62);
+        }
+
+        .nav-link.is-active::after {
+            content: "";
+            position: absolute;
+            right: 1rem;
+            bottom: 0.35rem;
+            left: 1rem;
+            height: 1px;
+            background: currentColor;
         }
 
         .button-link {
@@ -388,69 +417,6 @@
             background: var(--coral);
         }
 
-        .phone-stack {
-            position: relative;
-            width: min(100%, 520px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .phone-frame {
-            position: relative;
-            width: min(68%, 315px);
-            padding: 12px;
-            border-radius: 42px;
-            background: #102d31;
-            box-shadow: var(--shadow-lg);
-            transform: rotate(3deg);
-            z-index: 2;
-        }
-
-        .phone-frame img {
-            width: 100%;
-            border-radius: 31px;
-            background: white;
-        }
-
-        .phone-frame-secondary {
-            position: absolute;
-            left: 0;
-            width: min(56%, 265px);
-            transform: translate(-3%, 9%) rotate(-8deg);
-            opacity: 0.94;
-            z-index: 1;
-        }
-
-        .hero-note {
-            position: absolute;
-            right: -2%;
-            bottom: 8%;
-            width: min(245px, 52%);
-            padding: 1.15rem 1.2rem;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            border-radius: 18px;
-            background: rgba(255, 253, 249, 0.82);
-            box-shadow: var(--shadow-sm);
-            backdrop-filter: blur(16px);
-            z-index: 3;
-        }
-
-        .hero-note strong {
-            display: block;
-            margin-bottom: 0.2rem;
-            color: var(--teal-dark);
-            font-size: 0.76rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .hero-note span {
-            color: var(--ink-soft);
-            font-size: 0.88rem;
-            line-height: 1.45;
-        }
-
         .project-facts {
             margin-top: 2.5rem;
             padding-top: 1.5rem;
@@ -471,6 +437,8 @@
         }
 
         .fact-value {
+            display: block;
+            margin: 0;
             color: var(--ink);
             font-size: 0.93rem;
             font-weight: 600;
@@ -558,7 +526,6 @@
         }
 
         .overview-item h3,
-        .insight-card h3,
         .decision-card h3,
         .admin-card h3 {
             margin: 0 0 0.65rem;
@@ -584,6 +551,8 @@
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 1rem;
             margin-top: 2rem;
+            padding: 0;
+            list-style: none;
         }
 
         .context-card {
@@ -670,54 +639,13 @@
             color: var(--ink-soft);
         }
 
-        .insight-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .insight-card {
-            min-height: 250px;
-            padding: 1.75rem;
-            border-radius: var(--radius-md);
-        }
-
-        .insight-card:nth-child(1) {
-            background: #f4e8cf;
-        }
-
-        .insight-card:nth-child(2) {
-            background: #dfeeed;
-        }
-
-        .insight-card:nth-child(3) {
-            background: #e6e8f1;
-        }
-
-        .insight-card h3 {
-            color: var(--ink-soft);
-        }
-
-        .insight-card blockquote {
-            margin: 2rem 0 1rem;
-            font-family: var(--serif);
-            font-size: 1.65rem;
-            line-height: 1.18;
-            letter-spacing: -0.02em;
-        }
-
-        .insight-card p {
-            margin: 0;
-            color: var(--ink-soft);
-            font-size: 0.88rem;
-        }
-
         .flow {
             display: grid;
             grid-template-columns: repeat(6, minmax(0, 1fr));
             gap: 0.75rem;
             margin-top: 3rem;
+            padding: 0;
+            list-style: none;
         }
 
         .flow-step {
@@ -817,9 +745,11 @@
             grid-template-columns: 1.3fr 1fr 1fr 1fr;
             min-height: 175px;
             margin-top: 1rem;
+            padding: 0;
             overflow: hidden;
             border: 1px solid var(--line);
             border-radius: var(--radius-md);
+            list-style: none;
         }
 
         .palette-swatch {
@@ -1109,6 +1039,383 @@
             font-size: 0.88rem;
         }
 
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1px;
+            overflow: hidden;
+            margin-top: 2rem;
+            padding: 1px;
+            border-radius: var(--radius-md);
+            background: var(--line);
+            list-style: none;
+        }
+
+        .case-metric {
+            min-height: 150px;
+            padding: 1.45rem;
+            background: var(--surface);
+        }
+
+        .case-metric strong {
+            display: block;
+            margin-bottom: 0.7rem;
+            color: var(--teal-dark);
+            font-family: var(--serif);
+            font-size: clamp(2.6rem, 5vw, 4rem);
+            font-weight: 400;
+            letter-spacing: -0.045em;
+            line-height: 0.85;
+        }
+
+        .case-metric span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.78rem;
+            line-height: 1.55;
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .strategy-heading {
+            margin-top: 4rem;
+        }
+
+        .strategy-card {
+            min-height: 230px;
+            padding: 1.7rem;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.55);
+        }
+
+        .strategy-card span,
+        .state-label {
+            display: block;
+            margin-bottom: 2.4rem;
+            color: var(--coral);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .strategy-card h3,
+        .state-card h3,
+        .measurement-card h3,
+        .roadmap-step h3 {
+            margin: 0 0 0.65rem;
+            font-family: var(--serif);
+            font-size: 1.65rem;
+            font-weight: 500;
+            line-height: 1.08;
+        }
+
+        .strategy-card p,
+        .state-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .evidence-table-wrap {
+            margin-top: 2rem;
+            overflow-x: auto;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            background: var(--surface);
+        }
+
+        .evidence-table {
+            width: 100%;
+            min-width: 820px;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .evidence-table caption {
+            padding: 1.2rem 1.4rem;
+            border-bottom: 1px solid var(--line);
+            color: var(--teal-dark);
+            font-family: var(--serif);
+            font-size: 1.35rem;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .evidence-table th,
+        .evidence-table td {
+            padding: 1.15rem 1.3rem;
+            border-right: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            vertical-align: top;
+        }
+
+        .evidence-table th:last-child,
+        .evidence-table td:last-child {
+            border-right: 0;
+        }
+
+        .evidence-table tbody tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .evidence-table th {
+            background: var(--teal-pale);
+            color: var(--teal-dark);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .evidence-table td {
+            color: var(--ink-soft);
+            font-size: 0.84rem;
+            line-height: 1.6;
+        }
+
+        .evidence-table td:first-child {
+            color: var(--ink);
+            font-family: var(--serif);
+            font-size: 1.08rem;
+        }
+
+        .evidence-limit {
+            margin: 1rem 0 0;
+            color: var(--muted);
+            font-size: 0.82rem;
+            font-style: italic;
+        }
+
+        .state-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .state-card {
+            min-height: 230px;
+            padding: 1.55rem;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            background: var(--surface);
+        }
+
+        .state-card .state-label {
+            margin-bottom: 2rem;
+            color: var(--teal);
+        }
+
+        .quality-contract {
+            margin-top: 1.2rem;
+            padding: clamp(1.8rem, 4vw, 3rem);
+            border-radius: var(--radius-lg);
+            background: var(--ink);
+            color: white;
+        }
+
+        .quality-contract > span {
+            display: block;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.58);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+        }
+
+        .quality-contract > h3 {
+            max-width: 760px;
+            margin: 0;
+            font-family: var(--serif);
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 2.2rem;
+        }
+
+        .quality-item {
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .quality-item strong {
+            display: block;
+            margin-bottom: 0.45rem;
+            font-size: 0.78rem;
+        }
+
+        .quality-item p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.66);
+            font-size: 0.78rem;
+            line-height: 1.6;
+        }
+
+        .governance-flow {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1px;
+            overflow: hidden;
+            margin-top: 2rem;
+            padding: 1px;
+            border-radius: var(--radius-md);
+            background: var(--line);
+            list-style: none;
+        }
+
+        .governance-step {
+            position: relative;
+            min-height: 190px;
+            padding: 1.45rem;
+            background: var(--surface);
+        }
+
+        .governance-step span {
+            display: block;
+            margin-bottom: 2.2rem;
+            color: var(--coral);
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .governance-step h3 {
+            margin: 0 0 0.55rem;
+            font-family: var(--serif);
+            font-size: 1.45rem;
+            font-weight: 500;
+        }
+
+        .governance-step p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        .validation-section {
+            border-top-color: rgba(255, 255, 255, 0.12);
+            background: var(--ink);
+            color: white;
+        }
+
+        .validation-section .section-index span {
+            color: #9cc9c6;
+        }
+
+        .validation-section .section-index p,
+        .validation-section .section-lede {
+            color: rgba(255, 255, 255, 0.67);
+        }
+
+        .measurement-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .measurement-card {
+            min-height: 265px;
+            padding: 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.055);
+        }
+
+        .measurement-card > span {
+            display: block;
+            margin-bottom: 2rem;
+            color: #e8a79d;
+            font-size: 0.67rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .measurement-card h3 {
+            color: white;
+        }
+
+        .measurement-card p {
+            margin: 0 0 1rem;
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.86rem;
+        }
+
+        .measurement-card ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .measurement-card li {
+            padding: 0.45rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.78rem;
+        }
+
+        .validation-roadmap {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1px;
+            overflow: hidden;
+            margin-top: 1rem;
+            padding: 1px;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .roadmap-step {
+            min-height: 220px;
+            padding: 1.55rem;
+            background: #204544;
+        }
+
+        .roadmap-step span {
+            display: block;
+            margin-bottom: 2rem;
+            color: #a9d5d2;
+            font-size: 0.67rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .roadmap-step h3 {
+            color: white;
+        }
+
+        .roadmap-step p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.66);
+            font-size: 0.82rem;
+        }
+
+        .validation-note {
+            margin-top: 1rem;
+            padding: 1.15rem 1.3rem;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: var(--radius-sm);
+            color: rgba(255, 255, 255, 0.67);
+            font-size: 0.84rem;
+        }
+
         .outcome-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1262,12 +1569,17 @@
         }
 
         .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 700ms ease, transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+            opacity: 1;
+            transform: none;
         }
 
-        .reveal.is-visible {
+        .js .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 460ms ease, transform 460ms cubic-bezier(0.2, 0.7, 0.2, 1);
+        }
+
+        .js .reveal.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -1295,6 +1607,13 @@
             }
 
             .context-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .case-metrics,
+            .state-grid,
+            .quality-grid,
+            .governance-flow {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
@@ -1349,6 +1668,12 @@
                 grid-template-columns: 1fr;
             }
 
+            .strategy-grid,
+            .measurement-grid,
+            .validation-roadmap {
+                grid-template-columns: 1fr;
+            }
+
             .overview-item,
             .overview-item:nth-child(odd),
             .overview-item:nth-last-child(-n + 2) {
@@ -1358,10 +1683,6 @@
 
             .overview-item:last-child {
                 border-bottom: 0;
-            }
-
-            .insight-grid {
-                grid-template-columns: 1fr;
             }
 
             .admin-gallery {
@@ -1430,22 +1751,12 @@
                 margin: -1rem auto 0;
             }
 
-            .phone-frame {
-                width: min(68%, 255px);
-            }
-
-            .phone-frame-secondary {
-                width: min(57%, 220px);
-            }
-
-            .hero-note {
-                right: 0;
-                width: min(220px, 58%);
-                padding: 0.9rem;
-            }
-
             .context-grid,
-            .flow {
+            .flow,
+            .case-metrics,
+            .state-grid,
+            .quality-grid,
+            .governance-flow {
                 grid-template-columns: 1fr;
             }
 
@@ -1492,7 +1803,7 @@
                 transition-duration: 0.01ms !important;
             }
 
-            .reveal {
+            .js .reveal {
                 opacity: 1;
                 transform: none;
             }
@@ -1501,14 +1812,17 @@
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to case study</a>
+    <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
 
     <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
         <div class="nav-inner">
-            <a class="wordmark" href="index.html" aria-label="Jocelyn Martinez home">Jocelyn Martinez</a>
+            <a class="wordmark" href="../index.html" aria-label="Jocelyn Martinez home">Jocelyn Martinez</a>
             <div class="nav-actions">
-                <a class="nav-link" href="#solution">Solution</a>
-                <a class="nav-link" href="#reflection">Reflection</a>
-                <a class="button-link" href="index.html#portfolio">Back to work ↗</a>
+                <a class="nav-link" href="#overview">Strategy</a>
+                <a class="nav-link" href="#solution">Interface</a>
+                <a class="nav-link" href="#admin-system">System</a>
+                <a class="nav-link" href="#validation">Validation</a>
+                <a class="button-link" href="../index.html#work">Back to work ↗</a>
             </div>
         </div>
     </nav>
@@ -1517,10 +1831,10 @@
         <header class="hero page-shell">
             <div class="hero-grid">
                 <div class="hero-copy reveal">
-                    <p class="eyebrow">UX case study · Tourism & civic technology</p>
+                    <p class="eyebrow">Product strategy · Service design · Responsive UX/UI</p>
                     <h1>Holland <em>Walking Tour</em></h1>
                     <p class="hero-summary">
-                        I helped shape an accessible mobile walking-tour experience for Holland, Michigan—and explored the content system local teams would need to keep its historical stories accurate, flexible, and easy to maintain.
+                        I helped reframe a static walking tour as a connected service: a glanceable mobile experience for visitors and a maintainable publishing model for the local teams responsible for accurate history.
                     </p>
 
                     <div class="hero-actions">
@@ -1528,34 +1842,34 @@
                         <a class="secondary-cta" href="#solution">View final interfaces</a>
                     </div>
 
-                    <div class="project-facts" aria-label="Project details">
+                    <dl class="project-facts">
                         <div>
-                            <span class="fact-label">Role</span>
-                            <span class="fact-value">UX Intern & Programmer</span>
+                            <dt class="fact-label">Role at the time</dt>
+                            <dd class="fact-value">UX Intern &amp; Programmer</dd>
                         </div>
                         <div>
-                            <span class="fact-label">Project type</span>
-                            <span class="fact-value">Collaborative internship project</span>
+                            <dt class="fact-label">Product scope</dt>
+                            <dd class="fact-value">Visitor experience + content operations</dd>
                         </div>
                         <div>
-                            <span class="fact-label">Focus</span>
-                            <span class="fact-value">Research, UX/UI, system thinking</span>
+                            <dt class="fact-label">My contribution</dt>
+                            <dd class="fact-value">Research synthesis, IA, interaction &amp; UI</dd>
                         </div>
                         <div>
-                            <span class="fact-label">Year</span>
-                            <span class="fact-value">2024</span>
+                            <dt class="fact-label">Status</dt>
+                            <dd class="fact-value">Research-backed concept · 2024</dd>
                         </div>
-                    </div>
+                    </dl>
                 </div>
 
-                <div class="hero-visual reveal" aria-label="Holland Walks redesigned mobile experience">
+                <div class="hero-visual reveal">
                     <div class="hero-orbit" aria-hidden="true"></div>
                     <button class="hero-system-button lightbox-trigger" type="button" data-full="holland-walks/00-system-showcase.png" aria-label="Enlarge the Holland Walks redesigned experience">
                         <img src="holland-walks/00-system-showcase.png" alt="Four Holland Walks mobile screens showing discovery, custom tour building, walking navigation, and a landmark story">
                     </button>
                     <div class="hero-system-caption">
-                        <strong>Redesigned journey</strong>
-                        Discover, personalize, walk, listen, and continue exploring—with outdoor accessibility built into every stage.
+                        <strong>Connected product direction</strong>
+                        Twelve key interface moments across visitor planning, in-motion support, publishing, and content governance.
                     </div>
                 </div>
             </div>
@@ -1563,58 +1877,100 @@
 
         <section class="section" id="overview">
             <div class="page-shell section-grid">
-                <aside class="section-index reveal">
-                    <span>01 · Overview</span>
-                    <p>The product challenge, my contribution, and the project’s practical scope.</p>
-                </aside>
+                <div class="section-index reveal">
+                    <span>01 · Executive brief</span>
+                    <p>The strategic problem, product direction, ownership, and evidence boundary.</p>
+                </div>
 
                 <div class="section-content reveal">
-                    <h2>Turning a paper tour into a more flexible city experience.</h2>
+                    <h2>The real problem was not digitizing a map. It was creating a service people could trust.</h2>
                     <p class="section-lede">
-                        Holland’s walking-tour experience relied on static materials that could be difficult to read, update, and follow while moving through the city. The design opportunity was to make local history easier to discover without losing the character and context that made the tour meaningful.
+                        Holland’s walking-tour experience relied on static materials that were difficult to read outdoors, update consistently, and follow while moving. The opportunity connected two forms of trust: visitor confidence in the route and organizational confidence in the historical content behind it.
                     </p>
 
                     <div class="overview-card">
                         <div class="overview-grid">
                             <article class="overview-item">
-                                <h3>Challenge</h3>
-                                <p>Create a tour experience that supports independent exploration while remaining clear for visitors who may be unfamiliar with the city or less comfortable with mobile technology.</p>
+                                <h3>Strategic problem</h3>
+                                <p>Independent exploration breaks down when visitors cannot judge a route’s demands, recover from change, or trust that a stop’s information is current.</p>
                             </article>
                             <article class="overview-item">
-                                <h3>My contribution</h3>
-                                <p>I contributed to research synthesis, user flows, interface design, accessibility decisions, and the technical thinking behind a maintainable content structure.</p>
+                                <h3>Product direction</h3>
+                                <p>Connect route discovery and in-motion guidance with a reusable publishing system instead of treating the visitor app as an isolated set of screens.</p>
                             </article>
                             <article class="overview-item">
-                                <h3>Primary users</h3>
-                                <p>Visitors taking a self-guided tour, including older adults; local archivists and tourism stakeholders responsible for maintaining accurate information.</p>
+                                <h3>My scope</h3>
+                                <p>Research synthesis, information architecture, end-to-end flows, high-fidelity mobile UI, accessibility requirements, and an administrative-system concept.</p>
                             </article>
                             <article class="overview-item">
-                                <h3>Deliverables</h3>
-                                <p>Mobile user flows, high-fidelity tour screens, an administrative interface concept, and a scalable content model for stops that can appear across multiple tours.</p>
+                                <h3>Evidence boundary</h3>
+                                <p>The work is a researched product direction and high-fidelity concept—not a production launch. Adoption, revenue, and city-foot-traffic outcomes were not measured.</p>
                             </article>
                         </div>
                     </div>
 
-                    <div class="context-grid" aria-label="Project stakeholder context">
-                        <article class="context-card">
+                    <ul class="case-metrics">
+                        <li class="case-metric">
+                            <strong>28</strong>
+                            <span>Participants and collaborators represented in the research synthesis.</span>
+                        </li>
+                        <li class="case-metric">
+                            <strong>2</strong>
+                            <span>Connected service sides: the public tour and the team maintaining it.</span>
+                        </li>
+                        <li class="case-metric">
+                            <strong>12</strong>
+                            <span>Key interface moments documented across mobile and administrative flows.</span>
+                        </li>
+                        <li class="case-metric">
+                            <strong>1</strong>
+                            <span>Reusable stop model proposed as the content system’s foundation.</span>
+                        </li>
+                    </ul>
+
+                    <ul class="context-grid">
+                        <li class="context-card">
                             <span>01</span>
                             <h3>Visitors</h3>
                             <p>Needed simple directions, readable information, and enough flexibility to explore at their own pace.</p>
-                        </article>
-                        <article class="context-card">
+                        </li>
+                        <li class="context-card">
                             <span>02</span>
                             <h3>Tourism team</h3>
                             <p>Wanted a year-round experience that could extend beyond a single event or printed route.</p>
-                        </article>
-                        <article class="context-card">
+                        </li>
+                        <li class="context-card">
                             <span>03</span>
                             <h3>Archivists</h3>
                             <p>Needed a practical way to preserve, update, and reuse historical content accurately.</p>
-                        </article>
-                        <article class="context-card">
+                        </li>
+                        <li class="context-card">
                             <span>04</span>
-                            <h3>Technical team</h3>
-                            <p>Required interface decisions that could translate into realistic data and development structures.</p>
+                            <h3>Delivery team</h3>
+                            <p>Needed clear states, reusable entities, and interface decisions grounded in realistic implementation structures.</p>
+                        </li>
+                    </ul>
+
+                    <div class="journey-heading strategy-heading">
+                        <h3>Three principles aligned the work</h3>
+                        <p>They became shared criteria for prioritizing the experience—not slogans added after the interface was complete.</p>
+                    </div>
+
+                    <div class="strategy-grid">
+                        <article class="strategy-card">
+                            <span>01 · Before movement</span>
+                            <h3>Make commitment legible.</h3>
+                            <p>Expose time, distance, difficulty, accessibility, stops, and offline readiness before asking someone to begin.</p>
+                        </article>
+                        <article class="strategy-card">
+                            <span>02 · During movement</span>
+                            <h3>Minimize demanded attention.</h3>
+                            <p>Prioritize one next action, visible progress, and recovery over dense maps or prolonged screen engagement.</p>
+                        </article>
+                        <article class="strategy-card">
+                            <span>03 · Behind the interface</span>
+                            <h3>Treat content integrity as UX.</h3>
+                            <p>Design the records, roles, and publishing states required to keep public history accurate and reusable.</p>
                         </article>
                     </div>
                 </div>
@@ -1623,15 +1979,15 @@
 
         <section class="section" id="research">
             <div class="page-shell section-grid">
-                <aside class="section-index reveal">
+                <div class="section-index reveal">
                     <span>02 · Research</span>
                     <p>Finding the recurring barriers behind outdoor navigation and historical discovery.</p>
-                </aside>
+                </div>
 
                 <div class="section-content reveal">
-                    <h2>Research showed that clarity mattered as much as content.</h2>
+                    <h2>Research translated into product requirements and risk priorities.</h2>
                     <p class="section-lede">
-                        Feedback from visitors, older adults, and project collaborators pointed to three recurring needs: readable information in outdoor conditions, confidence about where a route would lead, and freedom to discover the city without feeling locked into a rigid itinerary.
+                        Feedback from visitors, older adults, and project collaborators pointed to three recurring needs: outdoor legibility, confidence about the commitment ahead, and freedom to explore without feeling trapped in a rigid itinerary.
                     </p>
 
                     <div class="research-summary">
@@ -1640,40 +1996,57 @@
                             <span>Participants and collaborators represented in the research synthesis, including older local residents, younger visitors, and city stakeholders.</span>
                         </div>
                         <div class="research-method">
-                            <h3>From observations to design priorities</h3>
+                            <h3>Traceability from signal to decision</h3>
                             <p>
-                                I organized recurring comments and frustrations into an affinity map, then translated those patterns into interface requirements: larger readable type, visible route details, clear progress, simple tour choices, and flexible stop selection.
+                                I organized recurring comments and frustrations into an affinity map, identified the experience risk behind each pattern, and translated it into a requirement the prototype could make visible and testable.
                             </p>
                         </div>
                     </div>
 
-                    <div class="insight-grid">
-                        <article class="insight-card">
-                            <h3>Outdoor legibility</h3>
-                            <blockquote>“Paper maps are difficult to read in bright sunlight.”</blockquote>
-                            <p>Design response: strong contrast, a minimum 16px body size, concise copy, and large interaction targets.</p>
-                        </article>
-                        <article class="insight-card">
-                            <h3>Route confidence</h3>
-                            <blockquote>“I want to know how long the tour takes and where I’m going.”</blockquote>
-                            <p>Design response: surface duration, distance, route difficulty, progress, and upcoming stops before the user begins.</p>
-                        </article>
-                        <article class="insight-card">
-                            <h3>Independent discovery</h3>
-                            <blockquote>“I want to explore—not feel like I’m following instructions.”</blockquote>
-                            <p>Design response: support both curated routes and a custom route built from stops the visitor chooses.</p>
-                        </article>
+                    <div class="evidence-table-wrap">
+                        <table class="evidence-table">
+                            <caption>How evidence moved into the product</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Research signal</th>
+                                    <th scope="col">Experience risk</th>
+                                    <th scope="col">Product requirement</th>
+                                    <th scope="col">Interface response</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>“Paper maps are difficult to read in bright sunlight.”</td>
+                                    <td>Visitors lose orientation or stop engaging when information cannot be scanned outdoors.</td>
+                                    <td>Preserve legibility under glare, motion, and one-handed use.</td>
+                                    <td>High contrast, 16px minimum body type, short content layers, and generous targets.</td>
+                                </tr>
+                                <tr>
+                                    <td>“I want to know how long the tour takes and where I’m going.”</td>
+                                    <td>An unclear commitment creates anxiety before the tour and uncertainty during it.</td>
+                                    <td>Expose route demands before start and maintain progress visibility throughout.</td>
+                                    <td>Duration, distance, difficulty, ordered stops, route preview, and next-stop status.</td>
+                                </tr>
+                                <tr>
+                                    <td>“I want to explore—not feel like I’m following instructions.”</td>
+                                    <td>A rigid itinerary reduces autonomy and makes the experience feel procedural.</td>
+                                    <td>Support both trusted curation and visitor-controlled discovery.</td>
+                                    <td>Curated routes plus a custom builder with explicit selection and a live estimate.</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                    <p class="evidence-limit">Evidence note: the synthesis is directional. It established prototype priorities; it does not establish population-level preference or post-launch impact.</p>
                 </div>
             </div>
         </section>
 
         <section class="section" id="structure">
             <div class="page-shell section-grid">
-                <aside class="section-index reveal">
+                <div class="section-index reveal">
                     <span>03 · Experience structure</span>
                     <p>A straightforward route from choosing a tour to understanding each stop.</p>
-                </aside>
+                </div>
 
                 <div class="section-content reveal">
                     <h2>Reducing decisions while users are already in motion.</h2>
@@ -1681,41 +2054,69 @@
                         The primary flow keeps the most important choices early, before a visitor begins walking. Once the tour starts, each screen focuses on the next action: follow the route, recognize the stop, and view its story.
                     </p>
 
-                    <div class="flow" aria-label="Primary user flow">
-                        <article class="flow-step">
+                    <ol class="flow">
+                        <li class="flow-step">
                             <span>Step 01</span>
                             <h3>Open the app</h3>
                             <p>Orient the visitor and introduce available tour options.</p>
-                        </article>
-                        <article class="flow-step">
+                        </li>
+                        <li class="flow-step">
                             <span>Step 02</span>
                             <h3>Choose a route</h3>
                             <p>Select a curated tour or begin building a custom one.</p>
-                        </article>
-                        <article class="flow-step">
+                        </li>
+                        <li class="flow-step">
                             <span>Step 03</span>
                             <h3>Review details</h3>
                             <p>See stops, duration, distance, and expected difficulty.</p>
-                        </article>
-                        <article class="flow-step">
+                        </li>
+                        <li class="flow-step">
                             <span>Step 04</span>
                             <h3>Begin walking</h3>
                             <p>Follow clear directions and visible route progress.</p>
-                        </article>
-                        <article class="flow-step">
+                        </li>
+                        <li class="flow-step">
                             <span>Step 05</span>
                             <h3>Discover a stop</h3>
                             <p>Open concise historical context, imagery, and details.</p>
-                        </article>
-                        <article class="flow-step">
+                        </li>
+                        <li class="flow-step">
                             <span>Step 06</span>
                             <h3>Continue or finish</h3>
                             <p>Move to the next stop or complete the tour confidently.</p>
-                        </article>
-                    </div>
+                        </li>
+                    </ol>
 
                     <div class="branch-note">
                         <strong>Custom route branch:</strong> visitors can browse available landmarks, select preferred stops, and review an updated route estimate before beginning.
+                    </div>
+
+                    <div class="journey-heading strategy-heading">
+                        <h3>The trust test is what happens off the happy path</h3>
+                        <p>These resilience states would need product, content, and engineering agreement before implementation—and field testing before release.</p>
+                    </div>
+
+                    <div class="state-grid">
+                        <article class="state-card">
+                            <span class="state-label">Location unavailable</span>
+                            <h3>Keep orientation possible.</h3>
+                            <p>Preserve the itinerary and landmark cues, explain the limitation, and offer manual stop progression instead of presenting a dead map.</p>
+                        </article>
+                        <article class="state-card">
+                            <span class="state-label">Network interrupted</span>
+                            <h3>Make offline truth explicit.</h3>
+                            <p>Distinguish downloaded route content from unavailable media and keep the visitor’s progress intact.</p>
+                        </article>
+                        <article class="state-card">
+                            <span class="state-label">Route deviation</span>
+                            <h3>Recover without blame.</h3>
+                            <p>Explain the new path, show its effect on time and distance, and allow return, reroute, or skip without losing context.</p>
+                        </article>
+                        <article class="state-card">
+                            <span class="state-label">Needs change mid-tour</span>
+                            <h3>Adapt the commitment.</h3>
+                            <p>Support pausing, step-free alternatives, rest amenities, a shorter route, or a deliberate end state.</p>
+                        </article>
                     </div>
                 </div>
             </div>
@@ -1723,40 +2124,63 @@
 
         <section class="section" id="decisions">
             <div class="page-shell section-grid">
-                <aside class="section-index reveal">
+                <div class="section-index reveal">
                     <span>04 · Design decisions</span>
-                    <p>Visual choices tied directly to outdoor use, accessibility, and local identity.</p>
-                </aside>
+                    <p>Tradeoffs, visual-system logic, and the quality criteria required for delivery.</p>
+                </div>
 
                 <div class="section-content reveal">
-                    <h2>A calm system designed to stay readable outdoors.</h2>
+                    <h2>The visual system was treated as a quality contract—not surface styling.</h2>
                     <p class="section-lede">
-                        The visual language references Holland’s waterfront identity without relying on decorative themes. Color, typography, spacing, and interaction size were selected to support quick scanning and comfortable use while walking.
+                        The visual language references Holland’s waterfront identity while prioritizing outdoor use. Each decision balances product character with legibility, attention, accessibility, and the implementation rules needed to keep the experience consistent.
                     </p>
 
                     <div class="decision-grid">
                         <article class="decision-card">
-                            <h3>Typography</h3>
-                            <strong>Readable before decorative</strong>
-                            <p>Body copy begins at 16px, headings are clearly differentiated, and content is broken into short sections so users can scan without stopping for long.</p>
+                            <h3>Information hierarchy</h3>
+                            <strong>Commitment before immersion</strong>
+                            <p><b>Tradeoff:</b> more pre-tour metadata adds density, but structured scanning prevents surprise around time, distance, difficulty, and access.</p>
                         </article>
                         <article class="decision-card">
-                            <h3>Interaction</h3>
-                            <strong>Forgiving touch targets</strong>
-                            <p>Primary actions use generous spacing and targets of approximately 44 × 44px or larger to reduce errors while users are holding and moving with a phone.</p>
+                            <h3>In-motion interaction</h3>
+                            <strong>Glanceability over map richness</strong>
+                            <p><b>Tradeoff:</b> a restrained map shows less at once, but one dominant instruction, progress, and landmark context reduce attention demanded by the phone.</p>
                         </article>
                         <article class="decision-card">
-                            <h3>Navigation</h3>
-                            <strong>Confidence at every step</strong>
-                            <p>Route duration, distance, progress, and next-stop information remain visible where they can reduce uncertainty and prevent accidental exits.</p>
+                            <h3>Historical content</h3>
+                            <strong>Layer depth without hiding access</strong>
+                            <p><b>Tradeoff:</b> concise stories omit detail, so summaries are paired with imagery, audio, transcripts, and optional depth instead of one long reading path.</p>
                         </article>
                     </div>
 
-                    <div class="palette" aria-label="Holland Walking Tour color palette">
-                        <div class="palette-swatch"><span>Heritage teal</span><span>#075F5D</span></div>
-                        <div class="palette-swatch"><span>Lake mist</span><span>#DCEFF0</span></div>
-                        <div class="palette-swatch"><span>Warm cream</span><span>#FBF7EF</span></div>
-                        <div class="palette-swatch"><span>Deep ink</span><span>#173A3A</span></div>
+                    <ul class="palette">
+                        <li class="palette-swatch"><span>Heritage teal</span><span>#075F5D</span></li>
+                        <li class="palette-swatch"><span>Lake mist</span><span>#DCEFF0</span></li>
+                        <li class="palette-swatch"><span>Warm cream</span><span>#FBF7EF</span></li>
+                        <li class="palette-swatch"><span>Deep ink</span><span>#173A3A</span></li>
+                    </ul>
+
+                    <div class="quality-contract">
+                        <span>Proposed delivery criteria</span>
+                        <h3>Design quality must be testable by the team building and maintaining it.</h3>
+                        <div class="quality-grid">
+                            <div class="quality-item">
+                                <strong>Accessibility baseline</strong>
+                                <p>Readable type, 44px targets, visible focus, sufficient contrast, transcripts, and reduced-motion support.</p>
+                            </div>
+                            <div class="quality-item">
+                                <strong>Responsive behavior</strong>
+                                <p>Core tasks remain usable across narrow mobile and wide administrative layouts; no essential action depends on hover.</p>
+                            </div>
+                            <div class="quality-item">
+                                <strong>Content standards</strong>
+                                <p>Plain-language summaries, source metadata, descriptive alternatives, and consistent fields for every stop.</p>
+                            </div>
+                            <div class="quality-item">
+                                <strong>State coverage</strong>
+                                <p>Loading, empty, offline, permission, error, and recovery behavior are reviewed alongside the ideal journey.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1764,10 +2188,10 @@
 
         <section class="section" id="solution">
             <div class="page-shell section-grid">
-                <aside class="section-index reveal">
+                <div class="section-index reveal">
                     <span>05 · Mobile solution</span>
                     <p>Key screens from browsing and customizing a tour through navigating its stops.</p>
-                </aside>
+                </div>
 
                 <div class="section-content reveal">
                     <h2>The interface keeps the city—not the app—at the center.</h2>
@@ -1898,20 +2322,20 @@
 
         <section class="section" id="admin-system">
             <div class="page-shell section-grid">
-                <aside class="section-index reveal">
+                <div class="section-index reveal">
                     <span>06 · Content system</span>
-                    <p>Designing beyond the visitor-facing app to support the people responsible for its content.</p>
-                </aside>
+                    <p>Connecting responsive web UI, content governance, and the people responsible for public history.</p>
+                </div>
 
                 <div class="section-content reveal">
-                    <h2>A tour is only useful if its stories can stay accurate.</h2>
+                    <h2>The administrative system makes content maintenance part of product quality.</h2>
                     <p class="section-lede">
-                        I also explored an administrative system for creating tours, managing historical stops, and preserving media. This shifted the project from a set of screens toward a broader service: one experience for visitors and another for the people maintaining it.
+                        I explored a web-based administrative model for creating tours, managing historical stops, and preserving media. This shifted the work from a mobile interface toward a broader service with connected visitor, editorial, archival, and publishing needs.
                     </p>
 
                     <div class="admin-intro">
                         <article class="admin-feature">
-                            <span class="kicker">Administrative concept</span>
+                            <span class="kicker">Proposed service model</span>
                             <h3>One shared library, many possible tours.</h3>
                             <p>
                                 Rather than duplicating a landmark every time it appears in a route, the proposed structure treats each stop as a reusable record. Tour managers can then sequence those records into different seasonal, historical, or thematic experiences.
@@ -1936,6 +2360,34 @@
                             </article>
                         </div>
                     </div>
+
+                    <div class="journey-heading strategy-heading">
+                        <h3>A governance loop—not only a dashboard</h3>
+                        <p>This operating model is a design hypothesis for stakeholder validation. It makes ownership and publishing safety explicit before implementation.</p>
+                    </div>
+
+                    <ol class="governance-flow">
+                        <li class="governance-step">
+                            <span>01 · Compose</span>
+                            <h3>Assemble a route</h3>
+                            <p>A tour manager creates a draft by selecting and sequencing reusable stop records.</p>
+                        </li>
+                        <li class="governance-step">
+                            <span>02 · Review</span>
+                            <h3>Verify the source</h3>
+                            <p>An archivist reviews copy, media, attribution, location, and accessibility information.</p>
+                        </li>
+                        <li class="governance-step">
+                            <span>03 · Publish</span>
+                            <h3>Approve a version</h3>
+                            <p>An authorized owner confirms readiness and controls when the route becomes public.</p>
+                        </li>
+                        <li class="governance-step">
+                            <span>04 · Learn</span>
+                            <h3>Improve the source</h3>
+                            <p>The team reviews support and engagement signals, then updates the shared record—not duplicate copies.</p>
+                        </li>
+                    </ol>
 
                     <div class="admin-gallery">
                         <article class="admin-screen">
@@ -1986,39 +2438,120 @@
             </div>
         </section>
 
-        <section class="section" id="reflection">
+        <section class="section validation-section" id="validation">
             <div class="page-shell section-grid">
-                <aside class="section-index reveal">
-                    <span>07 · Reflection</span>
-                    <p>What the project demonstrated and what I would validate next.</p>
-                </aside>
+                <div class="section-index reveal">
+                    <span>07 · Measurement &amp; validation</span>
+                    <p>Defining the evidence required to move from a strong concept toward a responsible release.</p>
+                </div>
 
                 <div class="section-content reveal">
-                    <h2>Designing the visible interface and the system behind it.</h2>
+                    <h2>Define success before claiming impact.</h2>
                     <p class="section-lede">
-                        This project helped me connect my computer science background with UX practice. I learned to treat accessibility, content structure, and implementation constraints as part of the design problem—not details to resolve after the interface was complete.
+                        A polished prototype is not proof that the service works. I would evaluate visitor confidence, in-motion resilience, content integrity, and operational sustainability with measures tied to the riskiest assumptions in the model.
+                    </p>
+
+                    <div class="measurement-grid">
+                        <article class="measurement-card">
+                            <span>Visitor decision quality</span>
+                            <h3>Can people choose an appropriate route?</h3>
+                            <p>Test whether route information supports an informed commitment before movement begins.</p>
+                            <ul>
+                                <li>Route-selection task completion without assistance</li>
+                                <li>Confidence rating before starting the tour</li>
+                                <li>Where and why visitors abandon before start</li>
+                            </ul>
+                        </article>
+                        <article class="measurement-card">
+                            <span>In-motion resilience</span>
+                            <h3>Can people recover when conditions change?</h3>
+                            <p>Evaluate the moments most likely to break trust outdoors rather than testing only the ideal route.</p>
+                            <ul>
+                                <li>Time and success rate for route recovery</li>
+                                <li>Comprehension during GPS or network interruption</li>
+                                <li>Successful pause, skip, shorten, and end actions</li>
+                            </ul>
+                        </article>
+                        <article class="measurement-card">
+                            <span>Content integrity</span>
+                            <h3>Can the public information stay trustworthy?</h3>
+                            <p>Measure the quality and safety of the publishing workflow behind the visitor experience.</p>
+                            <ul>
+                                <li>Time from requested correction to approved update</li>
+                                <li>Duplicate or stale stop records identified</li>
+                                <li>Issues caught during review before publication</li>
+                            </ul>
+                        </article>
+                        <article class="measurement-card">
+                            <span>Operational sustainability</span>
+                            <h3>Can the service grow without multiplying work?</h3>
+                            <p>Assess whether the reusable content model reduces effort while preserving accountability.</p>
+                            <ul>
+                                <li>Time to assemble a route from existing stops</li>
+                                <li>Stop reuse across seasonal or thematic tours</li>
+                                <li>Maintainer confidence and support burden</li>
+                            </ul>
+                        </article>
+                    </div>
+
+                    <div class="validation-roadmap">
+                        <article class="roadmap-step">
+                            <span>Phase 01 · Risk-first field test</span>
+                            <h3>Walk the route</h3>
+                            <p>Moderated sessions in the real environment would examine glare, landmark recognition, one-handed use, route deviation, fatigue, and comprehension.</p>
+                        </article>
+                        <article class="roadmap-step">
+                            <span>Phase 02 · Quality review</span>
+                            <h3>Stress the interface</h3>
+                            <p>Review screen-reader and keyboard access, contrast, reduced motion, permissions, low connectivity, content variants, and recovery states.</p>
+                        </article>
+                        <article class="roadmap-step">
+                            <span>Phase 03 · Limited pilot</span>
+                            <h3>Learn before scaling</h3>
+                            <p>Pilot one route, instrument a privacy-conscious funnel, collect maintainer feedback, and revise the service model before expanding.</p>
+                        </article>
+                    </div>
+
+                    <div class="validation-note">
+                        These measures are a validation plan, not reported results. No adoption, completion-rate, accessibility-compliance, or operational-efficiency claim is made in this case study.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="reflection">
+            <div class="page-shell section-grid">
+                <div class="section-index reveal">
+                    <span>08 · Reflection</span>
+                    <p>The strategic shift, decision discipline, and delivery thinking demonstrated by the work.</p>
+                </div>
+
+                <div class="section-content reveal">
+                    <h2>The product became stronger when I designed the operating model—not only the screens.</h2>
+                    <p class="section-lede">
+                        The most important shift was treating the walking tour as a connected service. Visitor confidence, accessible interaction, trustworthy content, publishing responsibility, and implementation constraints all shape the same experience.
                     </p>
 
                     <div class="outcome-grid">
                         <article class="outcome-card">
-                            <span>What I demonstrated</span>
-                            <h3>Research translated into interface decisions</h3>
-                            <p>Participant concerns became concrete requirements for type size, route visibility, touch-target sizing, and flexible tour choices.</p>
+                            <span>Product framing</span>
+                            <h3>One service, two connected experiences</h3>
+                            <p>The visitor journey and the publishing workflow share content, quality standards, and responsibility instead of operating as separate products.</p>
                         </article>
                         <article class="outcome-card">
-                            <span>What I learned</span>
-                            <h3>Front-stage and back-stage UX are connected</h3>
-                            <p>A polished visitor experience depends on whether local teams can maintain trustworthy content without unnecessary duplication or risk.</p>
+                            <span>Decision quality</span>
+                            <h3>Evidence, risk, requirement, response</h3>
+                            <p>The reasoning chain makes design decisions reviewable and gives future testing a specific hypothesis to challenge.</p>
                         </article>
                         <article class="outcome-card">
-                            <span>What I would test next</span>
-                            <h3>Outdoor usability in the real environment</h3>
-                            <p>I would run a moderated walking test to evaluate screen glare, GPS uncertainty, route recovery, stop recognition, and one-handed use.</p>
+                            <span>Delivery readiness</span>
+                            <h3>States, entities, governance, and QA criteria</h3>
+                            <p>The content model, resilience states, publishing loop, and quality contract create a stronger bridge from concept to implementation.</p>
                         </article>
                     </div>
 
                     <div class="honesty-note">
-                        <strong>Project scope:</strong> This case study presents the researched product direction, high-fidelity mobile interfaces, and an administrative-system concept. Future validation would be needed before claiming adoption, commercial impact, or improvements to city foot traffic.
+                        <strong>Project status:</strong> This case study presents a researched product direction, high-fidelity mobile interfaces, and a proposed administrative and governance model. The operating workflow, field behavior, accessibility, and measurement framework require validation before any adoption, compliance, commercial-impact, or city-foot-traffic claim.
                     </div>
                 </div>
             </div>
@@ -2026,7 +2559,7 @@
 
         <section class="next-project">
             <div class="page-shell">
-                <a href="index.html#portfolio" aria-label="Return to selected work">
+                <a href="../index.html#work" aria-label="Return to selected work">
                     <div>
                         <span>Continue exploring</span>
                         <h2>Selected work</h2>
@@ -2042,38 +2575,93 @@
     <footer class="site-footer">
         <div class="page-shell footer-inner">
             <span>© <span id="year"></span> Jocelyn Martinez</span>
-            <span>UX/UI design · Research · Front-end thinking</span>
+            <span>Product strategy · UX research · Interaction systems · Web &amp; UI design</span>
         </div>
     </footer>
 
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged project image">
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged project image" aria-hidden="true" inert>
         <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close image">×</button>
-        <img id="lightboxImage" src="" alt="">
+        <img id="lightboxImage" src="holland-walks/00-system-showcase.png" alt="">
     </div>
 
     <script>
         const siteNav = document.getElementById('siteNav');
+        const readingProgress = document.getElementById('readingProgress');
         const year = document.getElementById('year');
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightboxImage');
         const lightboxClose = document.getElementById('lightboxClose');
+        const sectionNavLinks = document.querySelectorAll('.nav-link[href^="#"]');
+        const navSections = [...sectionNavLinks]
+            .map(link => document.querySelector(link.getAttribute('href')))
+            .filter(Boolean);
+        const reflectionSection = document.getElementById('reflection');
         let lastFocusedElement = null;
+        let scrollTicking = false;
 
         year.textContent = new Date().getFullYear();
 
-        const updateNav = () => {
+        const updatePageChrome = () => {
             siteNav.classList.toggle('is-scrolled', window.scrollY > 18);
+
+            const maximumScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = maximumScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maximumScroll)) : 0;
+            readingProgress.style.width = `${progress * 100}%`;
+
+            const readingLine = window.scrollY + window.innerHeight * 0.32;
+            let currentSection = '';
+
+            navSections.forEach(section => {
+                if (section.offsetTop <= readingLine) currentSection = section.id;
+            });
+
+            if (reflectionSection && readingLine >= reflectionSection.offsetTop) currentSection = '';
+
+            sectionNavLinks.forEach(link => {
+                const isCurrent = currentSection && link.getAttribute('href') === `#${currentSection}`;
+                link.classList.toggle('is-active', Boolean(isCurrent));
+                if (isCurrent) {
+                    link.setAttribute('aria-current', 'location');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            });
         };
 
-        updateNav();
-        window.addEventListener('scroll', updateNav, { passive: true });
+        const requestPageChromeUpdate = () => {
+            if (scrollTicking) return;
+            scrollTicking = true;
+            window.requestAnimationFrame(() => {
+                updatePageChrome();
+                scrollTicking = false;
+            });
+        };
+
+        updatePageChrome();
+        window.addEventListener('scroll', requestPageChromeUpdate, { passive: true });
+        window.addEventListener('resize', requestPageChromeUpdate);
 
         const revealItems = document.querySelectorAll('.reveal');
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+        function revealCurrentHash() {
+            const target = document.getElementById(window.location.hash.slice(1));
+            if (!target) return;
+
+            if (target.matches('.reveal')) target.classList.add('is-visible');
+            target.querySelectorAll('.reveal').forEach(item => item.classList.add('is-visible'));
+        }
+
+        window.addEventListener('hashchange', () => {
+            revealCurrentHash();
+            requestPageChromeUpdate();
+        });
+
         if (prefersReducedMotion || !('IntersectionObserver' in window)) {
             revealItems.forEach(item => item.classList.add('is-visible'));
         } else {
+            revealCurrentHash();
+
             const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -2081,9 +2669,15 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.12 });
+            }, { threshold: 0.06, rootMargin: '0px 0px -8% 0px' });
 
-            revealItems.forEach(item => revealObserver.observe(item));
+            revealItems.forEach(item => {
+                if (item.classList.contains('is-visible') || item.getBoundingClientRect().top < window.innerHeight * 1.05) {
+                    item.classList.add('is-visible');
+                } else {
+                    revealObserver.observe(item);
+                }
+            });
         }
 
         function openLightbox(trigger) {
@@ -2093,16 +2687,19 @@
 
             lightboxImage.src = source;
             lightboxImage.alt = previewImage ? previewImage.alt : 'Enlarged project interface';
+            lightbox.removeAttribute('inert');
             lightbox.classList.add('is-open');
+            lightbox.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
             lightboxClose.focus();
         }
 
         function closeLightbox() {
             lightbox.classList.remove('is-open');
-            lightboxImage.src = '';
             document.body.style.overflow = '';
             if (lastFocusedElement) lastFocusedElement.focus();
+            lightbox.setAttribute('aria-hidden', 'true');
+            lightbox.setAttribute('inert', '');
         }
 
         document.querySelectorAll('.lightbox-trigger').forEach(trigger => {
@@ -2116,8 +2713,11 @@
         });
 
         document.addEventListener('keydown', event => {
-            if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
-                closeLightbox();
+            if (!lightbox.classList.contains('is-open')) return;
+            if (event.key === 'Escape') closeLightbox();
+            if (event.key === 'Tab') {
+                event.preventDefault();
+                lightboxClose.focus();
             }
         });
     </script>

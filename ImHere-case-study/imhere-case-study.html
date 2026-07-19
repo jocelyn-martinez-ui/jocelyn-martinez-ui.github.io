@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ImHere is a university capstone case study by Jocelyn Martinez exploring a privacy-conscious attendance experience for students and faculty.">
-    <meta property="og:title" content="ImHere Case Study | Jocelyn Martinez">
-    <meta property="og:description" content="A role-based attendance concept designed around clarity, privacy, and student support.">
+    <meta name="description" content="A product systems and UX/UI case study by Jocelyn Martinez exploring role-based attendance, privacy boundaries, exception handling, responsive web design, and human review.">
+    <meta property="og:title" content="ImHere — Product Systems &amp; UX/UI Case Study">
+    <meta property="og:description" content="A multi-role attendance concept connecting a focused student experience, a responsive faculty workspace, explicit system states, and responsible data boundaries.">
     <meta property="og:type" content="website">
-    <title>ImHere Case Study | Jocelyn Martinez</title>
+    <title>ImHere — Product Systems &amp; UX/UI Case Study</title>
+
+    <script>document.documentElement.classList.add("js");</script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,10 +21,10 @@
             --surface: #ffffff;
             --ink: #17202a;
             --muted: #5d6670;
-            --soft-muted: #7d8791;
+            --soft-muted: #68727c;
             --navy: #002855;
             --navy-2: #0b3a68;
-            --orange: #d45a18;
+            --orange: #b84a10;
             --orange-soft: #fff0e7;
             --blue-soft: #edf4fa;
             --green: #246b4b;
@@ -40,6 +42,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 140px;
         }
 
         body {
@@ -109,6 +112,17 @@
             backdrop-filter: blur(18px);
         }
 
+        .reading-progress {
+            position: fixed;
+            inset: 0 auto auto 0;
+            z-index: 1300;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--navy), var(--orange));
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
         .nav-inner {
             width: var(--page);
             min-height: 76px;
@@ -157,7 +171,7 @@
         .hero {
             padding: 12.5rem 0 6.5rem;
             background:
-                radial-gradient(circle at 82% 16%, rgba(212, 90, 24, 0.12), transparent 27rem),
+                radial-gradient(circle at 82% 16%, rgba(184, 74, 16, 0.12), transparent 27rem),
                 linear-gradient(180deg, #fff 0%, var(--paper) 100%);
         }
 
@@ -232,6 +246,7 @@
             gap: 1px;
             overflow: hidden;
             max-width: 980px;
+            margin: 0;
             border: 1px solid var(--border);
             border-radius: 18px;
             background: var(--border);
@@ -254,6 +269,8 @@
         }
 
         .meta-value {
+            display: block;
+            margin: 0;
             color: var(--ink);
             font-size: 0.94rem;
             font-weight: 600;
@@ -271,7 +288,7 @@
             inset: 8% -3% -8%;
             z-index: 0;
             border-radius: 36px;
-            background: linear-gradient(135deg, rgba(0, 40, 85, 0.12), rgba(212, 90, 24, 0.12));
+            background: linear-gradient(135deg, rgba(0, 40, 85, 0.12), rgba(184, 74, 16, 0.12));
             filter: blur(30px);
         }
 
@@ -349,6 +366,11 @@
 
         .case-nav a:hover {
             color: var(--navy);
+        }
+
+        .case-nav a.is-active {
+            color: var(--navy);
+            box-shadow: inset 0 -2px 0 var(--orange);
         }
 
         section {
@@ -810,7 +832,7 @@
             border: 1px solid var(--border);
             border-radius: 24px;
             background:
-                radial-gradient(circle at 50% 10%, rgba(212, 90, 24, 0.08), transparent 44%),
+                radial-gradient(circle at 50% 10%, rgba(184, 74, 16, 0.08), transparent 44%),
                 var(--paper);
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
@@ -870,6 +892,8 @@
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 1rem;
             margin-top: 4rem;
+            padding: 0;
+            list-style: none;
         }
 
         .swatch {
@@ -886,15 +910,37 @@
             text-transform: uppercase;
         }
 
+        .swatch:nth-child(1) {
+            color: #fff;
+            background: #002855;
+        }
+
+        .swatch:nth-child(2) {
+            color: #fff;
+            background: #b84a10;
+        }
+
+        .swatch:nth-child(3) {
+            color: #17202a;
+            background: #fbfaf7;
+        }
+
+        .swatch:nth-child(4) {
+            color: #fff;
+            background: #17202a;
+        }
+
         .accessibility-list {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1px;
             overflow: hidden;
             margin-top: 4rem;
+            padding: 0;
             border: 1px solid var(--border);
             border-radius: 22px;
             background: var(--border);
+            list-style: none;
         }
 
         .accessibility-item {
@@ -913,6 +959,325 @@
             margin: 0;
             color: var(--muted);
             font-size: 0.88rem;
+        }
+
+        .system-heading {
+            margin-top: 4rem;
+        }
+
+        .rights-table-wrap {
+            margin-top: 3rem;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: var(--surface);
+        }
+
+        .rights-table {
+            width: 100%;
+            min-width: 820px;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .rights-table caption {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--navy);
+            font-family: var(--serif);
+            font-size: 1.45rem;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .rights-table th,
+        .rights-table td {
+            padding: 1.15rem 1.3rem;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .rights-table th:last-child,
+        .rights-table td:last-child {
+            border-right: 0;
+        }
+
+        .rights-table tbody tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .rights-table th {
+            background: var(--blue-soft);
+            color: var(--navy);
+            font-size: 0.64rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .rights-table td {
+            color: var(--muted);
+            font-size: 0.83rem;
+            line-height: 1.6;
+        }
+
+        .rights-table td:first-child {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .state-model {
+            overflow: hidden;
+            margin-top: 3rem;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: var(--surface);
+        }
+
+        .state-lane {
+            display: grid;
+            grid-template-columns: 190px 1fr;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 1.6rem;
+        }
+
+        .state-lane + .state-lane {
+            border-top: 1px solid var(--border);
+        }
+
+        .state-lane h3 {
+            margin: 0;
+            color: var(--navy);
+            font-family: var(--sans);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .state-chain {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .state-chain li {
+            position: relative;
+            padding: 0.7rem 0.85rem;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--paper);
+            color: var(--ink);
+            font-size: 0.74rem;
+            font-weight: 600;
+        }
+
+        .state-chain li:last-child {
+            border-color: #b7d7c6;
+            background: var(--green-soft);
+            color: var(--green);
+        }
+
+        .data-contract-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1px;
+            margin-top: 2rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        .data-contract-item {
+            padding: 1.25rem;
+            background: rgba(255, 255, 255, 0.055);
+        }
+
+        .data-contract-item strong {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: #ffb18a;
+            font-size: 0.74rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .data-contract-item p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+        }
+
+        .coverage-strip {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1px;
+            margin: 0 0 4rem;
+            padding: 1px;
+            overflow: hidden;
+            border-radius: 18px;
+            background: var(--border);
+            list-style: none;
+        }
+
+        .coverage-item {
+            min-height: 135px;
+            padding: 1.4rem;
+            background: var(--paper);
+        }
+
+        .coverage-item strong {
+            display: block;
+            margin-bottom: 0.55rem;
+            color: var(--navy);
+            font-family: var(--serif);
+            font-size: 2.7rem;
+            font-weight: 500;
+            line-height: 0.9;
+        }
+
+        .coverage-item span {
+            color: var(--muted);
+            font-size: 0.78rem;
+            line-height: 1.5;
+        }
+
+        .governance-section {
+            background: var(--navy);
+            color: #fff;
+        }
+
+        .governance-section .section-kicker,
+        .governance-section .intro {
+            color: rgba(255, 255, 255, 0.67);
+        }
+
+        .governance-section .eyebrow {
+            color: #ffb18a;
+        }
+
+        .governance-section .section-kicker span {
+            background: #ffb18a;
+        }
+
+        .governance-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .governance-card {
+            min-height: 250px;
+            padding: 1.55rem;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.055);
+        }
+
+        .governance-card span,
+        .measurement-card > span,
+        .validation-step > span {
+            display: block;
+            margin-bottom: 2rem;
+            color: #ffb18a;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .governance-card h3,
+        .measurement-card h3,
+        .validation-step h3 {
+            margin-bottom: 0.65rem;
+            color: #fff;
+            font-family: var(--serif);
+            font-size: 1.55rem;
+            font-weight: 500;
+            line-height: 1.08;
+        }
+
+        .governance-card p,
+        .measurement-card p,
+        .validation-step p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.66);
+            font-size: 0.82rem;
+            line-height: 1.65;
+        }
+
+        .measurement-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .validation-heading {
+            margin: 4rem 0 1.2rem;
+            color: #fff;
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .measurement-card {
+            min-height: 280px;
+            padding: 1.7rem;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 18px;
+            background: #0c3967;
+        }
+
+        .measurement-card ul {
+            margin: 1rem 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .measurement-card li {
+            padding: 0.45rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 0.77rem;
+        }
+
+        .validation-roadmap {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1px;
+            margin-top: 1rem;
+            padding: 1px;
+            overflow: hidden;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        .validation-step {
+            min-height: 225px;
+            padding: 1.5rem;
+            background: #173f6b;
+        }
+
+        .validation-step > span {
+            color: #a9c6e1;
+        }
+
+        .validation-note {
+            margin-top: 1rem;
+            padding: 1.2rem 1.35rem;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 14px;
+            color: rgba(255, 255, 255, 0.67);
+            font-size: 0.84rem;
         }
 
         .reflection-grid {
@@ -1020,13 +1385,22 @@
             font-size: 1.5rem;
         }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
+        .lightbox-close:focus-visible {
+            outline-color: #ffb18a;
         }
 
-        .reveal.is-visible {
+        .reveal {
+            opacity: 1;
+            transform: none;
+        }
+
+        .js .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.46s ease, transform 0.46s ease;
+        }
+
+        .js .reveal.is-visible {
             opacity: 1;
             transform: none;
         }
@@ -1057,6 +1431,14 @@
             .screen-grid.faculty,
             .system-strip {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .governance-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .state-lane {
+                grid-template-columns: 1fr;
             }
 
             .next-inner {
@@ -1094,7 +1476,12 @@
             .decision-grid,
             .reflection-grid,
             .accessibility-list,
-            .system-strip {
+            .system-strip,
+            .data-contract-grid,
+            .coverage-strip,
+            .governance-grid,
+            .measurement-grid,
+            .validation-roadmap {
                 grid-template-columns: 1fr;
             }
 
@@ -1166,7 +1553,7 @@
                 transition-duration: 0.01ms !important;
             }
 
-            .reveal {
+            .js .reveal {
                 opacity: 1;
                 transform: none;
             }
@@ -1176,51 +1563,53 @@
 
 <body>
     <a class="skip-link" href="#main">Skip to case study</a>
+    <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
 
     <nav class="site-nav" aria-label="Portfolio navigation">
         <div class="nav-inner">
-            <a class="logo" href="index.html">Jocelyn Martinez</a>
+            <a class="logo" href="../index.html">Jocelyn Martinez</a>
             <div class="nav-actions">
-                <a href="#screens">Screens</a>
-                <a href="#reflection">Reflection</a>
-                <a class="back-link" href="index.html#portfolio"><span aria-hidden="true">←</span> Back to work</a>
+                <a href="#overview">Strategy</a>
+                <a href="#screens">Interfaces</a>
+                <a href="#validation">Validation</a>
+                <a class="back-link" href="../index.html#work"><span aria-hidden="true">←</span> Back to work</a>
             </div>
         </div>
     </nav>
 
     <header class="hero">
         <div class="hero-inner reveal">
-            <p class="eyebrow">University capstone · Product design</p>
+            <p class="eyebrow">Product systems · Privacy-aware UX · Responsive web &amp; mobile</p>
             <h1>ImHere <em>Attendance</em></h1>
             <p class="hero-lede">
-                A role-based attendance concept designed to make classroom check-in fast for students, manageable for faculty, and transparent about when location data is being used.
+                ImHere reframes attendance as one shared record with two interfaces, institutional rules, and a high-stakes exception path. I designed the student and faculty experiences around explicit session state, minimum necessary data, and human correction.
             </p>
 
-            <div class="hero-meta" aria-label="Project summary">
+            <dl class="hero-meta">
                 <div class="meta-item">
-                    <span class="meta-label">My focus</span>
-                    <span class="meta-value">UX strategy, interaction design, UI design</span>
+                    <dt class="meta-label">My scope</dt>
+                    <dd class="meta-value">UX strategy, interaction &amp; responsive UI</dd>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-label">Context</span>
-                    <span class="meta-value">Cross-functional university capstone</span>
+                    <dt class="meta-label">System scope</dt>
+                    <dd class="meta-value">Student mobile + faculty web workspace</dd>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-label">Users</span>
-                    <span class="meta-value">College students and faculty</span>
+                    <dt class="meta-label">Critical risks</dt>
+                    <dd class="meta-value">Privacy, false negatives &amp; due process</dd>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-label">Deliverables</span>
-                    <span class="meta-value">Mobile flows, faculty dashboard, system concept</span>
+                    <dt class="meta-label">Status</dt>
+                    <dd class="meta-value">University capstone concept · not deployed</dd>
                 </div>
-            </div>
+            </dl>
 
             <div class="hero-showcase">
                 <button class="visual-button" type="button" data-lightbox-src="imhere/imhere-system-overview.png" data-lightbox-alt="ImHere product ecosystem showing student mobile screens and the faculty dashboard" aria-label="Enlarge the ImHere product ecosystem overview">
                     <img src="imhere/imhere-system-overview.png" alt="ImHere product ecosystem with student mobile screens, a faculty dashboard, attendance viewer, and trend analysis" decoding="async">
                 </button>
                 <div class="visual-caption">
-                    <span>A connected attendance experience across student and faculty roles.</span>
+                    <span>Fourteen core screens across student tasks, faculty operations, review, and correction.</span>
                     <strong>Select to enlarge</strong>
                 </div>
             </div>
@@ -1230,11 +1619,12 @@
     <nav class="case-nav" aria-label="Case study sections">
         <div class="case-nav-inner">
             <a href="#overview">Overview</a>
-            <a href="#challenge">Challenge</a>
-            <a href="#flow">System flow</a>
-            <a href="#decisions">Design decisions</a>
-            <a href="#screens">Screens</a>
-            <a href="#trust">Trust & accessibility</a>
+            <a href="#challenge">Roles &amp; rights</a>
+            <a href="#flow">State model</a>
+            <a href="#decisions">Decisions</a>
+            <a href="#screens">Interfaces</a>
+            <a href="#trust">Design QA</a>
+            <a href="#validation">Governance</a>
             <a href="#reflection">Reflection</a>
         </div>
     </nav>
@@ -1242,32 +1632,32 @@
     <main id="main">
         <section id="overview">
             <div class="section-inner section-grid">
-                <aside class="section-kicker">01 / Overview<span></span></aside>
+                <div class="section-kicker">01 / Executive brief<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">The opportunity</p>
-                    <h2>Move attendance out of the way of teaching.</h2>
+                    <p class="eyebrow">The product problem</p>
+                    <h2>Attendance is not a check-in button. It is a policy and exception system.</h2>
                     <p class="intro">
-                        Attendance is a small classroom task with an unexpectedly complex service behind it. Faculty need a dependable record and a quick way to correct exceptions. Students need to know whether they checked in successfully, how absences affect them, and why the system is requesting location access.
+                        A student experiences attendance as a quick moment; a faculty member experiences it as a record that must be opened, reviewed, corrected, and defended. Campus technology and policy sit behind both. The interface must make that system understandable without pretending the power, privacy, and accuracy risks are simple.
                     </p>
                     <p class="intro">
-                        ImHere explores one connected experience: a lightweight student check-in paired with a more detailed faculty workspace. My design focus was translating technical constraints into understandable moments—especially around location permissions, session status, and error recovery.
+                        The core product decision was to separate the temporary verification input from the official attendance record, keep faculty judgment in the correction loop, and give students visibility into status, history, and review paths.
                     </p>
 
                     <div class="summary-grid">
                         <article class="summary-card">
                             <span class="card-number">01</span>
-                            <h3>Student experience</h3>
-                            <p>A focused mobile flow for checking in, confirming attendance, reviewing history, and submitting an absence explanation.</p>
+                            <h3>Front-stage confidence</h3>
+                            <p>A focused mobile flow for checking in, confirming the result, reviewing history, and requesting review when the record is wrong.</p>
                         </article>
                         <article class="summary-card">
                             <span class="card-number">02</span>
-                            <h3>Faculty experience</h3>
-                            <p>A dashboard for opening sessions, reviewing attendance, correcting records, and identifying patterns that may warrant a human follow-up.</p>
+                            <h3>Faculty operations</h3>
+                            <p>A responsive web workspace for opening sessions, resolving exceptions, correcting records, and identifying where a human follow-up may help.</p>
                         </article>
                         <article class="summary-card">
                             <span class="card-number">03</span>
-                            <h3>System model</h3>
-                            <p>A proposed time-limited location check designed to verify presence without presenting the product as continuous tracking.</p>
+                            <h3>Institutional governance</h3>
+                            <p>A proposed boundary around verification, retention, access, fallback, and audit—requiring campus policy and technical review.</p>
                         </article>
                     </div>
 
@@ -1283,19 +1673,19 @@
 
         <section id="challenge">
             <div class="section-inner section-grid">
-                <aside class="section-kicker">02 / Challenge<span></span></aside>
+                <div class="section-kicker">02 / Roles &amp; decision rights<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">Two perspectives</p>
-                    <h2>One attendance record. Two very different jobs.</h2>
+                    <p class="eyebrow">Service tensions</p>
+                    <h2>One shared record. Unequal power and very different jobs.</h2>
                     <p class="intro">
-                        The design could not simply shrink a faculty dashboard into a student app. Each group enters the experience with a different goal, level of urgency, and concern.
+                        The design could not simply shrink a faculty dashboard into a student app. Each role has a different goal, urgency, and authority—and a student carries more risk when an automated check is wrong.
                     </p>
 
                     <div class="two-up">
                         <article class="audience-card student">
                             <span class="audience-label">Student</span>
                             <h3>“Did my check-in work?”</h3>
-                            <p>Students need a quick action and an unambiguous answer. They also need control over sensitive information and a clear path when something goes wrong.</p>
+                            <p>Students need a quick action and an unambiguous answer. They also need understandable data boundaries and a credible path to challenge an incorrect result.</p>
                             <ul class="plain-list">
                                 <li>See the active class and check in without searching.</li>
                                 <li>Understand when location access begins and ends.</li>
@@ -1307,7 +1697,7 @@
                         <article class="audience-card">
                             <span class="audience-label">Faculty</span>
                             <h3>“Who needs my attention?”</h3>
-                            <p>Faculty need attendance to be faster than a manual process, while retaining the ability to resolve late arrivals, technical errors, and exceptions.</p>
+                            <p>Faculty need attendance to be faster than a manual process while retaining responsibility for late arrivals, technical errors, exceptions, and the final course record.</p>
                             <ul class="plain-list">
                                 <li>Open or close a session with minimal setup.</li>
                                 <li>Scan the roster and spot exceptions quickly.</li>
@@ -1320,19 +1710,59 @@
                     <div class="principle-grid">
                         <article class="principle-card">
                             <div class="principle-icon" aria-hidden="true">1</div>
-                            <h3>Keep the student task narrow</h3>
-                            <p>The active check-in should be the most obvious element on the screen, supported by class context and a clear success state.</p>
+                            <h3>Low friction vs. informed choice</h3>
+                            <p>Check-in should be fast, but not so compressed that a sensitive location request becomes invisible or coercive.</p>
                         </article>
                         <article class="principle-card">
                             <div class="principle-icon" aria-hidden="true">2</div>
-                            <h3>Explain sensitive requests</h3>
-                            <p>Permission language should describe what is requested, why it is needed, and what the user can do when access is unavailable.</p>
+                            <h3>Automation vs. due process</h3>
+                            <p>Verification can reduce work, but an error must remain reviewable by both the student and an accountable human.</p>
                         </article>
                         <article class="principle-card">
                             <div class="principle-icon" aria-hidden="true">3</div>
-                            <h3>Design for exceptions</h3>
-                            <p>The experience needs recovery paths for inaccurate location, device issues, late arrivals, and faculty corrections—not only the ideal flow.</p>
+                            <h3>Signals vs. labels</h3>
+                            <p>Patterns can help prioritize outreach, but the system should describe records and uncertainty—not define a student.</p>
                         </article>
+                    </div>
+
+                    <div class="rights-table-wrap">
+                        <table class="rights-table">
+                            <caption>Proposed decision rights across the service</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Actor</th>
+                                    <th scope="col">Can see or act on</th>
+                                    <th scope="col">Cannot decide alone</th>
+                                    <th scope="col">Required accountability</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Student</td>
+                                    <td>Own session status, history, policy context, and review requests.</td>
+                                    <td>Final correction of the official course record.</td>
+                                    <td>Clear status, explanation, accessible fallback, and appeal visibility.</td>
+                                </tr>
+                                <tr>
+                                    <td>Faculty</td>
+                                    <td>Course roster, session state, exceptions, requests, and manual corrections.</td>
+                                    <td>Institution-wide retention, privacy, or disciplinary policy.</td>
+                                    <td>Reasoned changes, visible audit history, and action within course scope.</td>
+                                </tr>
+                                <tr>
+                                    <td>Verification service</td>
+                                    <td>Session eligibility and the minimum signal required to return a result.</td>
+                                    <td>Whether a student’s broader behavior or intent is acceptable.</td>
+                                    <td>Explicit uncertainty, no hidden profiling, and a route to human review.</td>
+                                </tr>
+                                <tr>
+                                    <td>Institution</td>
+                                    <td>Policy, approved integrations, access roles, retention, security, and audit.</td>
+                                    <td>Individual academic judgment without defined process and ownership.</td>
+                                    <td>Privacy, accessibility, security, records, and equity review before launch.</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -1340,12 +1770,12 @@
 
         <section id="flow">
             <div class="section-inner section-grid">
-                <aside class="section-kicker">03 / System flow<span></span></aside>
+                <div class="section-kicker">03 / State &amp; data model<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">Proposed interaction model</p>
-                    <h2>A short attendance window with visible boundaries.</h2>
+                    <p class="eyebrow">Proposed interaction architecture</p>
+                    <h2>Trust depends on visible state and explicit authority.</h2>
                     <p class="intro">
-                        The concept uses a professor-initiated session rather than passive, always-on tracking. That boundary is reflected in the interface so the user is not expected to infer what the system is doing.
+                        The concept uses a faculty-initiated session rather than passive, always-on tracking. The interface exposes when the window opens, what the verification is doing, when a record is final, and who can correct it.
                     </p>
 
                     <div class="flow">
@@ -1379,12 +1809,57 @@
                         </div>
                     </div>
 
+                    <div class="gallery-heading system-heading">
+                        <h3>Two synchronized lifecycles</h3>
+                        <p>The faculty session controls availability; the student record can resolve immediately or move into accountable review.</p>
+                    </div>
+
+                    <div class="state-model">
+                        <div class="state-lane">
+                            <h3>Faculty session</h3>
+                            <ol class="state-chain">
+                                <li>Scheduled</li>
+                                <li>Open</li>
+                                <li>Locked</li>
+                                <li>Audited or corrected</li>
+                            </ol>
+                        </div>
+                        <div class="state-lane">
+                            <h3>Student record</h3>
+                            <ol class="state-chain">
+                                <li>Eligible</li>
+                                <li>Verifying</li>
+                                <li>Confirmed or needs review</li>
+                                <li>Resolved</li>
+                            </ol>
+                        </div>
+                    </div>
+
                     <div class="privacy-callout">
-                        <p class="eyebrow">Design boundary</p>
+                        <p class="eyebrow">Proposed data contract</p>
                         <h3>Privacy is not solved by hiding technical complexity.</h3>
                         <p>
                             A trustworthy implementation would need plain-language consent, data-minimization rules, retention limits, a non-location fallback, and institutional review. The interface can communicate those decisions, but it cannot substitute for them.
                         </p>
+
+                        <div class="data-contract-grid">
+                            <div class="data-contract-item">
+                                <strong>Purpose limitation</strong>
+                                <p>Request a session-specific proximity result only while attendance is open—not ongoing location access.</p>
+                            </div>
+                            <div class="data-contract-item">
+                                <strong>Minimum record</strong>
+                                <p>Store the attendance status and an auditable correction history; define every retained field with campus stakeholders.</p>
+                            </div>
+                            <div class="data-contract-item">
+                                <strong>Excluded by default</strong>
+                                <p>Do not retain continuous coordinates, route history, background tracking, or location unrelated to the active session.</p>
+                            </div>
+                            <div class="data-contract-item">
+                                <strong>Fallback and appeal</strong>
+                                <p>Provide a non-location path and human review so device access or technical failure does not become an automatic penalty.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1392,12 +1867,12 @@
 
         <section id="decisions">
             <div class="section-inner section-grid">
-                <aside class="section-kicker">04 / Decisions<span></span></aside>
+                <div class="section-kicker">04 / Decision records<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">Interaction design</p>
-                    <h2>Design choices tied to observable user needs.</h2>
+                    <p class="eyebrow">Interaction strategy</p>
+                    <h2>Every simplification carries a tradeoff.</h2>
                     <p class="intro">
-                        Rather than using psychological terminology to justify every detail, I focused the interface around task priority, system feedback, error prevention, and legibility.
+                        The interface reduces effort where speed matters, but it does not hide consequential decisions. These records make the constraint, risk, and response reviewable by design, policy, and engineering partners.
                     </p>
 
                     <div class="decision-grid">
@@ -1406,8 +1881,8 @@
                             <h3>Make the next action unmistakable.</h3>
                             <p>The active class and check-in state receive the strongest visual emphasis. Secondary information, such as history and absence requests, remains available without competing with the immediate task.</p>
                             <div class="decision-detail">
-                                <strong>Design response</strong>
-                                <p>One dominant action, contextual class information, and a confirmation state that does not rely on color alone.</p>
+                                <strong>Tradeoff &amp; response</strong>
+                                <p>A narrow task can bury secondary needs, so one dominant action is paired with persistent access to history, requests, and an explicit confirmation state.</p>
                             </div>
                         </article>
 
@@ -1416,8 +1891,8 @@
                             <h3>Explain location before asking for it.</h3>
                             <p>A short pre-permission screen gives context before the operating system prompt appears. It states the purpose, intended duration, and alternate path if verification fails.</p>
                             <div class="decision-detail">
-                                <strong>Design response</strong>
-                                <p>Just-in-time explanation, visible session status, and a route to instructor review.</p>
+                                <strong>Tradeoff &amp; response</strong>
+                                <p>An extra step slows check-in slightly, but it supports informed choice through just-in-time explanation, visible session status, and a route to review.</p>
                             </div>
                         </article>
 
@@ -1426,8 +1901,8 @@
                             <h3>Surface exceptions without defining the student.</h3>
                             <p>The dashboard prioritizes attendance events that require review. Labels describe the record—such as absent, late, or unresolved—rather than assigning an automated identity to the student.</p>
                             <div class="decision-detail">
-                                <strong>Design response</strong>
-                                <p>Scannable status chips, filters, inline correction, and human judgment before outreach.</p>
+                                <strong>Tradeoff &amp; response</strong>
+                                <p>Prioritization can create stigma, so the system labels the record, exposes uncertainty, supports inline correction, and keeps outreach a human decision.</p>
                             </div>
                         </article>
 
@@ -1436,8 +1911,8 @@
                             <h3>Assume the ideal flow will fail sometimes.</h3>
                             <p>GPS accuracy, connectivity, permissions, and device access can all create false negatives. The concept therefore includes correction and absence-documentation paths.</p>
                             <div class="decision-detail">
-                                <strong>Design response</strong>
-                                <p>Actionable error messages, manual faculty override, and a visible pending-review state.</p>
+                                <strong>Tradeoff &amp; response</strong>
+                                <p>Fallback creates operational work and potential misuse, but that cost is preferable to automatic penalties from technical failure.</p>
                             </div>
                         </article>
                     </div>
@@ -1447,15 +1922,30 @@
 
         <section id="screens" class="gallery-section">
             <div class="section-inner section-grid">
-                <aside class="section-kicker">05 / Screens<span></span></aside>
+                <div class="section-kicker">05 / Responsive interface system<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">High-fidelity interface</p>
+                    <p class="eyebrow">Interface architecture</p>
                     <h2>One visual system, adapted to two levels of complexity.</h2>
                     <p class="intro">
-                        Student screens use generous spacing and a narrow task focus. Faculty screens support denser information while preserving hierarchy, readable status labels, and direct correction paths. Select any screen to enlarge it.
+                        Student screens use generous spacing and a narrow task focus. The responsive faculty workspace supports denser information, review queues, and inline correction while preserving shared status language and component behavior. Select any screen to enlarge it.
                     </p>
 
-                    <div class="feature-visual-grid" aria-label="ImHere platform overview mockups">
+                    <ul class="coverage-strip">
+                        <li class="coverage-item">
+                            <strong>6</strong>
+                            <span>Student screens covering check-in, status, history, course context, and requests.</span>
+                        </li>
+                        <li class="coverage-item">
+                            <strong>8</strong>
+                            <span>Faculty screens covering sessions, rosters, correction, review, trends, and follow-up.</span>
+                        </li>
+                        <li class="coverage-item">
+                            <strong>2</strong>
+                            <span>Density modes: focused mobile action and information-rich responsive web operations.</span>
+                        </li>
+                    </ul>
+
+                    <div class="feature-visual-grid">
                         <article class="feature-visual-card">
                             <button class="visual-button" type="button" data-lightbox-src="imhere/imhere-cross-device.png" data-lightbox-alt="ImHere cross-device system with a faculty laptop dashboard and three student mobile screens" aria-label="Enlarge the cross-device ImHere system mockup">
                                 <img src="imhere/imhere-cross-device.png" alt="Faculty dashboard on a laptop alongside student dashboard, classes, and alerts screens on phones" loading="lazy" decoding="async">
@@ -1608,54 +2098,159 @@
 
         <section id="trust">
             <div class="section-inner section-grid">
-                <aside class="section-kicker">06 / Trust & accessibility<span></span></aside>
+                <div class="section-kicker">06 / Interface system &amp; design QA<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">Visual system</p>
-                    <h2>Calm enough for students. Structured enough for faculty.</h2>
+                    <p class="eyebrow">Delivery quality</p>
+                    <h2>One product language, two densities, explicit states.</h2>
                     <p class="intro">
-                        The interface uses Hope-inspired navy and orange as anchors, supported by warm neutral surfaces. Color communicates emphasis, but text labels and hierarchy carry the meaning.
+                        Hope-inspired navy and orange create continuity, while shared components and status language connect the student and faculty experiences. Density changes by task; the meaning of actions, records, and states does not.
                     </p>
 
-                    <div class="system-strip" aria-label="Color palette">
-                        <div class="swatch" style="background:#002855;color:#fff;">
+                    <ul class="system-strip">
+                        <li class="swatch">
                             <span>Primary navy</span><span>#002855</span>
-                        </div>
-                        <div class="swatch" style="background:#d45a18;color:#fff;">
-                            <span>Action orange</span><span>#D45A18</span>
-                        </div>
-                        <div class="swatch" style="background:#fbfaf7;color:#17202a;">
+                        </li>
+                        <li class="swatch">
+                            <span>Accessible action orange</span><span>#B84A10</span>
+                        </li>
+                        <li class="swatch">
                             <span>Warm paper</span><span>#FBFAF7</span>
-                        </div>
-                        <div class="swatch" style="background:#17202a;color:#fff;">
+                        </li>
+                        <li class="swatch">
                             <span>Core text</span><span>#17202A</span>
-                        </div>
+                        </li>
+                    </ul>
+
+                    <ul class="accessibility-list">
+                        <li class="accessibility-item">
+                            <strong>Shared state grammar</strong>
+                            <p>Available, verifying, confirmed, late, unresolved, awaiting review, and corrected states use consistent language across roles.</p>
+                        </li>
+                        <li class="accessibility-item">
+                            <strong>Responsive density</strong>
+                            <p>Mobile prioritizes one action; faculty layouts expand into queues, tables, and trends without changing the underlying record model.</p>
+                        </li>
+                        <li class="accessibility-item">
+                            <strong>Color plus language</strong>
+                            <p>Status is communicated through text, hierarchy, and structure rather than green, yellow, or red alone.</p>
+                        </li>
+                        <li class="accessibility-item">
+                            <strong>Input and navigation</strong>
+                            <p>Primary actions and roster controls need visible focus, keyboard operation, generous targets, and clear saved or error feedback.</p>
+                        </li>
+                        <li class="accessibility-item">
+                            <strong>Consequential copy</strong>
+                            <p>Permission, error, review, denial, and correction language must explain purpose, state, ownership, and next action.</p>
+                        </li>
+                        <li class="accessibility-item">
+                            <strong>Formal QA still required</strong>
+                            <p>Contrast, screen-reader output, responsive behavior, motion, data tables, permissions, and real-device use require documented testing.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="validation" class="governance-section">
+            <div class="section-inner section-grid">
+                <div class="section-kicker">07 / Governance &amp; validation<span></span></div>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Responsible rollout</p>
+                    <h2>A credible launch needs policy, technical, and experience validation in parallel.</h2>
+                    <p class="intro">
+                        Design cannot approve this service alone. Location verification, student records, accessibility, identity, integrations, appeals, and faculty workflow require named decision owners and evidence before a campus pilot.
+                    </p>
+
+                    <div class="governance-grid">
+                        <article class="governance-card">
+                            <span>Product &amp; design</span>
+                            <h3>Own the experience contract</h3>
+                            <p>Define states, language, fallback, review paths, responsive behavior, instrumentation, and the evidence required to change direction.</p>
+                        </article>
+                        <article class="governance-card">
+                            <span>Campus IT &amp; security</span>
+                            <h3>Own technical trust</h3>
+                            <p>Review authentication, enrollment and records integrations, data minimization, reliability, device support, logging, and incident response.</p>
+                        </article>
+                        <article class="governance-card">
+                            <span>Privacy, access &amp; records</span>
+                            <h3>Own institutional safeguards</h3>
+                            <p>Define consent, retention, access, accessibility, equity, appeals, legal obligations, and what the service must never infer.</p>
+                        </article>
+                        <article class="governance-card">
+                            <span>Students &amp; faculty</span>
+                            <h3>Validate lived use</h3>
+                            <p>Evaluate comprehension, classroom fit, technical failure, pressure, workload, correction, and whether the fallback is genuinely equivalent.</p>
+                        </article>
                     </div>
 
-                    <div class="accessibility-list">
-                        <div class="accessibility-item">
-                            <strong>Visible system status</strong>
-                            <p>Students can see whether check-in is available, successful, unavailable, or awaiting review.</p>
-                        </div>
-                        <div class="accessibility-item">
-                            <strong>Color plus language</strong>
-                            <p>Status is communicated through text and structure, not green, yellow, or red alone.</p>
-                        </div>
-                        <div class="accessibility-item">
-                            <strong>Readable interaction targets</strong>
-                            <p>Primary actions and roster controls are designed with generous touch and click areas.</p>
-                        </div>
-                        <div class="accessibility-item">
-                            <strong>Permission clarity</strong>
-                            <p>Location access is introduced with purpose, timing, and a recovery path before the device prompt.</p>
-                        </div>
-                        <div class="accessibility-item">
-                            <strong>Reduced interruption</strong>
-                            <p>The student flow minimizes steps during class and reserves detail for the dashboard.</p>
-                        </div>
-                        <div class="accessibility-item">
-                            <strong>Validation still required</strong>
-                            <p>Contrast, keyboard behavior, screen-reader output, motion, and real-device use should be formally tested.</p>
-                        </div>
+                    <h3 class="validation-heading">Measures tied to the riskiest assumptions</h3>
+
+                    <div class="measurement-grid">
+                        <article class="measurement-card">
+                            <span>Student success</span>
+                            <h3>Fast, clear, recoverable</h3>
+                            <p>Evaluate whether the flow reduces effort without sacrificing understanding or control.</p>
+                            <ul>
+                                <li>Check-in completion and time on task</li>
+                                <li>Result and permission comprehension</li>
+                                <li>Recovery success without faculty help</li>
+                            </ul>
+                        </article>
+                        <article class="measurement-card">
+                            <span>Faculty operations</span>
+                            <h3>Efficient, accountable review</h3>
+                            <p>Measure whether the workspace saves effort while preserving correction and judgment.</p>
+                            <ul>
+                                <li>Session setup and close time</li>
+                                <li>Time to identify and correct an exception</li>
+                                <li>Request-queue age and resolution rate</li>
+                            </ul>
+                        </article>
+                        <article class="measurement-card">
+                            <span>Accuracy &amp; equity</span>
+                            <h3>No penalty from technical failure</h3>
+                            <p>Compare outcomes across verification and fallback paths, devices, access needs, and conditions.</p>
+                            <ul>
+                                <li>False-negative and false-positive rates</li>
+                                <li>Fallback completion and parity</li>
+                                <li>Statuses overturned after human review</li>
+                            </ul>
+                        </article>
+                        <article class="measurement-card">
+                            <span>Trust &amp; reliability</span>
+                            <h3>Understandable and supportable</h3>
+                            <p>Track the signals that reveal unclear policy, fragile technology, or hidden operational cost.</p>
+                            <ul>
+                                <li>Permission understanding and refusal reasons</li>
+                                <li>Verification errors and support contacts</li>
+                                <li>Audit, access, and data-handling exceptions</li>
+                            </ul>
+                        </article>
+                    </div>
+
+                    <h3 class="validation-heading">A staged path from concept to pilot</h3>
+
+                    <div class="validation-roadmap">
+                        <article class="validation-step">
+                            <span>Phase 01 · Align</span>
+                            <h3>Define policy and ownership</h3>
+                            <p>Co-design the service boundary with students and faculty while campus partners resolve decision rights, retention, fallback, and integration constraints.</p>
+                        </article>
+                        <article class="validation-step">
+                            <span>Phase 02 · Stress test</span>
+                            <h3>Test the risky states</h3>
+                            <p>Run prototype and device tests across permissions, GPS variance, low connectivity, keyboard and screen-reader use, correction, and appeal.</p>
+                        </article>
+                        <article class="validation-step">
+                            <span>Phase 03 · Limited pilot</span>
+                            <h3>Learn before scaling</h3>
+                            <p>Pilot with a constrained course group, monitor privacy-conscious measures, review harm and support signals, and require a go/no-go decision before expansion.</p>
+                        </article>
+                    </div>
+
+                    <div class="validation-note">
+                        This is a proposed governance, measurement, and validation framework—not evidence of launch performance. No accuracy, efficiency, compliance, adoption, or student-outcome claim is made here.
                     </div>
                 </div>
             </div>
@@ -1663,29 +2258,29 @@
 
         <section id="reflection">
             <div class="section-inner section-grid">
-                <aside class="section-kicker">07 / Reflection<span></span></aside>
+                <div class="section-kicker">08 / Reflection<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">What the project demonstrates</p>
-                    <h2>Designing the interface meant designing the boundaries.</h2>
+                    <p class="eyebrow">Strategic takeaway</p>
+                    <h2>The product is only credible when policy, interface, and system state agree.</h2>
                     <p class="intro">
-                        ImHere pushed me to think beyond individual screens. The most important decisions were about roles, permissions, system state, data sensitivity, and exception handling. My computer science background helped me ask how the interaction could map to a buildable system; the UX work kept the technical model accountable to the people using it.
+                        The strongest outcome of the design work is a more coherent operating model: explicit roles, synchronized states, minimum-data boundaries, human correction, responsive interfaces, and a measurable path to validation. My technical background helps connect those decisions to implementation; UX keeps the model accountable to the people affected by it.
                     </p>
 
                     <div class="reflection-grid">
                         <article class="reflection-card">
                             <span class="card-number">01</span>
-                            <h3>What worked</h3>
-                            <p>A clear separation between the lightweight student task and the information-dense faculty workflow.</p>
+                            <h3>One record, two roles, one governance layer</h3>
+                            <p>The student and faculty experiences differ in density and authority while remaining connected by the same status model and accountability rules.</p>
                         </article>
                         <article class="reflection-card">
                             <span class="card-number">02</span>
-                            <h3>Biggest risk</h3>
-                            <p>Location verification can create privacy concerns and false negatives. Trust requires policy, technical safeguards, and fallback—not only reassuring copy.</p>
+                            <h3>Fallback is part of the core service</h3>
+                            <p>Privacy, false negatives, device access, and appeals cannot be treated as edge cases when an attendance error can affect a student.</p>
                         </article>
                         <article class="reflection-card">
                             <span class="card-number">03</span>
-                            <h3>What I would test next</h3>
-                            <p>Permission comprehension, check-in completion, GPS edge cases, no-location alternatives, faculty correction speed, and accessibility with assistive technology.</p>
+                            <h3>States and criteria bridge design to build</h3>
+                            <p>The lifecycle, decision rights, data contract, responsive UI rules, and validation measures create concrete questions for cross-functional delivery.</p>
                         </article>
                     </div>
                 </div>
@@ -1699,18 +2294,26 @@
                 <p>Continue exploring</p>
                 <h2>Return to selected work.</h2>
             </div>
-            <a class="next-link" href="index.html#portfolio">View portfolio <span aria-hidden="true">↗</span></a>
+            <a class="next-link" href="../index.html#work">View portfolio <span aria-hidden="true">↗</span></a>
         </div>
     </footer>
 
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged interface screen" aria-hidden="true">
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged interface screen" aria-hidden="true" inert>
         <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close enlarged image">×</button>
-        <img id="lightboxImage" src="" alt="">
+        <img id="lightboxImage" src="imhere/imhere-system-overview.png" alt="">
     </div>
 
     <script>
         const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         const revealItems = document.querySelectorAll(".reveal");
+
+        function revealHashTarget() {
+            if (!window.location.hash) return;
+            const target = document.getElementById(window.location.hash.slice(1));
+            if (!target) return;
+            const revealTarget = target.matches(".reveal") ? target : target.querySelector(".reveal");
+            if (revealTarget) revealTarget.classList.add("is-visible");
+        }
 
         if (reducedMotion || !("IntersectionObserver" in window)) {
             revealItems.forEach(item => item.classList.add("is-visible"));
@@ -1722,10 +2325,64 @@
                         currentObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.12 });
+            }, { threshold: 0.06, rootMargin: "0px 0px -8% 0px" });
 
-            revealItems.forEach(item => observer.observe(item));
+            revealItems.forEach(item => {
+                if (item.getBoundingClientRect().top < window.innerHeight * 0.94) {
+                    item.classList.add("is-visible");
+                } else {
+                    observer.observe(item);
+                }
+            });
         }
+
+        revealHashTarget();
+
+        const readingProgress = document.getElementById("readingProgress");
+        const caseNavLinks = [...document.querySelectorAll('.case-nav a[href^="#"]')];
+        const navSections = caseNavLinks
+            .map(link => document.getElementById(link.getAttribute("href").slice(1)))
+            .filter(Boolean);
+        let pageChromeTicking = false;
+
+        function updatePageChrome() {
+            const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+            readingProgress.style.transform = `scaleX(${Math.min(Math.max(progress, 0), 1)})`;
+
+            const readingLine = window.scrollY + window.innerHeight * 0.34;
+            let activeSection = navSections[0];
+
+            navSections.forEach(section => {
+                if (section.offsetTop <= readingLine) activeSection = section;
+            });
+
+            caseNavLinks.forEach(link => {
+                const isActive = activeSection && link.getAttribute("href") === `#${activeSection.id}`;
+                link.classList.toggle("is-active", Boolean(isActive));
+                if (isActive) {
+                    link.setAttribute("aria-current", "location");
+                } else {
+                    link.removeAttribute("aria-current");
+                }
+            });
+
+            pageChromeTicking = false;
+        }
+
+        function requestPageChromeUpdate() {
+            if (pageChromeTicking) return;
+            pageChromeTicking = true;
+            window.requestAnimationFrame(updatePageChrome);
+        }
+
+        updatePageChrome();
+        window.addEventListener("scroll", requestPageChromeUpdate, { passive: true });
+        window.addEventListener("resize", requestPageChromeUpdate);
+        window.addEventListener("hashchange", () => {
+            revealHashTarget();
+            requestPageChromeUpdate();
+        });
 
         const lightbox = document.getElementById("lightbox");
         const lightboxImage = document.getElementById("lightboxImage");
@@ -1737,6 +2394,7 @@
             previouslyFocused = button;
             lightboxImage.src = button.dataset.lightboxSrc;
             lightboxImage.alt = button.dataset.lightboxAlt || "Enlarged interface screen";
+            lightbox.removeAttribute("inert");
             lightbox.setAttribute("aria-hidden", "false");
             document.body.style.overflow = "hidden";
             lightboxClose.focus();
@@ -1744,10 +2402,10 @@
 
         function closeLightbox() {
             lightbox.setAttribute("aria-hidden", "true");
-            lightboxImage.src = "";
+            lightbox.setAttribute("inert", "");
             lightboxImage.alt = "";
             document.body.style.overflow = "";
-            if (previouslyFocused) previouslyFocused.focus();
+            if (previouslyFocused && document.contains(previouslyFocused)) previouslyFocused.focus();
         }
 
         screenButtons.forEach(button => {
@@ -1761,8 +2419,14 @@
         });
 
         document.addEventListener("keydown", event => {
-            if (event.key === "Escape" && lightbox.getAttribute("aria-hidden") === "false") {
+            const isOpen = lightbox.getAttribute("aria-hidden") === "false";
+            if (!isOpen) return;
+
+            if (event.key === "Escape") {
                 closeLightbox();
+            } else if (event.key === "Tab") {
+                event.preventDefault();
+                lightboxClose.focus();
             }
         });
     </script>
