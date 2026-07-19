@@ -1,0 +1,2602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aurea is a self-directed UX/UI and visual-design concept by Jocelyn Martinez, exploring a calmer way to discover, understand, and collect fragrance.">
+    <meta name="theme-color" content="#f7f2ed">
+    <meta property="og:title" content="Aurea — UX/UI Case Study by Jocelyn Martinez">
+    <meta property="og:description" content="An editorial fragrance discovery and collection concept balancing sensory storytelling with useful product information.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="aurea-assets/velours-no8.webp">
+    <title>Aurea — UX/UI Case Study | Jocelyn Martinez</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #f8f4ef;
+            --paper-deep: #eee5de;
+            --surface: #fffdfb;
+            --ink: #282321;
+            --body: #5c5551;
+            --muted: #837975;
+            --rose: #ae747c;
+            --rose-dark: #7d4c54;
+            --rose-soft: #ead8d8;
+            --taupe: #b69c8b;
+            --sage: #9a9b8c;
+            --line: rgba(40, 35, 33, 0.12);
+            --line-soft: rgba(40, 35, 33, 0.07);
+            --serif: "Cormorant Garamond", Georgia, serif;
+            --sans: "Plus Jakarta Sans", Arial, sans-serif;
+            --content: 1240px;
+            --radius-lg: 32px;
+            --radius-md: 18px;
+            --shadow: 0 24px 70px rgba(68, 48, 43, 0.09);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 999;
+            opacity: .025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+        }
+
+        img { max-width: 100%; display: block; }
+        a { color: inherit; }
+        button, a { -webkit-tap-highlight-color: transparent; }
+        button { font: inherit; }
+        ::selection { background: var(--rose-soft); color: var(--ink); }
+
+        :focus-visible {
+            outline: 3px solid var(--rose);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        .skip-link {
+            position: fixed;
+            left: 1rem;
+            top: 1rem;
+            z-index: 2000;
+            transform: translateY(-160%);
+            background: var(--ink);
+            color: white;
+            padding: .75rem 1rem;
+            text-decoration: none;
+            border-radius: 999px;
+            transition: transform .2s ease;
+        }
+        .skip-link:focus { transform: translateY(0); }
+
+        .page-shell {
+            width: min(calc(100% - 3rem), var(--content));
+            margin-inline: auto;
+        }
+
+        .nav {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 100;
+            background: rgba(248, 244, 239, .86);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid transparent;
+            transition: border-color .25s ease, box-shadow .25s ease;
+        }
+        .nav.scrolled {
+            border-color: var(--line-soft);
+            box-shadow: 0 8px 30px rgba(55, 40, 35, .04);
+        }
+        .nav-inner {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .brand {
+            font-family: var(--serif);
+            font-size: 1.55rem;
+            font-style: italic;
+            text-decoration: none;
+            line-height: 1;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-size: .72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            color: var(--muted);
+            transition: color .2s ease;
+        }
+        .nav-links a:hover { color: var(--ink); }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+        }
+        .back-link span { font-size: 1.05rem; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .8rem;
+            color: var(--rose-dark);
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+        .eyebrow::before {
+            content: "";
+            width: 28px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        h1, h2, h3, h4, p { margin-top: 0; }
+        h1, h2, h3, h4 {
+            font-family: var(--serif);
+            color: var(--ink);
+            font-weight: 500;
+            text-wrap: balance;
+        }
+        h1 {
+            margin: 1.4rem 0 1.8rem;
+            font-size: clamp(4.2rem, 11vw, 9.5rem);
+            line-height: .78;
+            letter-spacing: -.045em;
+        }
+        h1 em {
+            display: block;
+            margin-left: clamp(1.5rem, 10vw, 9rem);
+            color: var(--rose);
+            font-weight: 400;
+        }
+        h2 {
+            margin-bottom: 1.5rem;
+            font-size: clamp(2.7rem, 5.7vw, 5rem);
+            line-height: .98;
+            letter-spacing: -.025em;
+        }
+        h3 {
+            margin-bottom: .8rem;
+            font-size: clamp(1.7rem, 2.4vw, 2.35rem);
+            line-height: 1.05;
+        }
+        p { color: var(--body); }
+
+        .hero {
+            min-height: 100svh;
+            padding-top: 10rem;
+            display: grid;
+            align-items: center;
+            position: relative;
+            overflow: clip;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: min(55vw, 760px);
+            aspect-ratio: 1;
+            right: -12%;
+            top: 4%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, rgba(234, 216, 216, .9), rgba(182, 156, 139, .08) 62%, transparent 70%);
+            z-index: -1;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.08fr) minmax(330px, .92fr);
+            gap: clamp(3rem, 7vw, 7rem);
+            align-items: center;
+            padding-bottom: 6rem;
+        }
+        .hero-lede {
+            max-width: 690px;
+            font-size: clamp(1.06rem, 1.7vw, 1.35rem);
+            line-height: 1.75;
+        }
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2.3rem;
+        }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: .85rem 1.25rem;
+            border: 1px solid var(--ink);
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            transition: transform .2s ease, background .2s ease, color .2s ease;
+        }
+        .button:hover { transform: translateY(-2px); }
+        .button.primary { background: var(--ink); color: white; }
+        .button.secondary { border-color: var(--line); background: rgba(255,255,255,.42); }
+
+        .hero-visual {
+            position: relative;
+            min-height: 660px;
+            display: grid;
+            place-items: center;
+        }
+        .hero-frame {
+            width: min(100%, 430px);
+            padding: clamp(1rem, 2vw, 1.5rem);
+            background: rgba(255, 253, 251, .74);
+            border: 1px solid rgba(255,255,255,.85);
+            border-radius: 220px 220px 28px 28px;
+            box-shadow: var(--shadow);
+            transform: rotate(2.5deg);
+            backdrop-filter: blur(12px);
+        }
+        .hero-frame img {
+            width: 100%;
+            max-height: 610px;
+            object-fit: contain;
+            border-radius: 190px 190px 18px 18px;
+        }
+        .hero-stamp {
+            position: absolute;
+            left: -1.5rem;
+            bottom: 3.5rem;
+            width: 132px;
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--rose-dark);
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            font-style: italic;
+            line-height: 1.05;
+            text-align: center;
+            box-shadow: 0 16px 45px rgba(68,48,43,.08);
+            transform: rotate(-10deg);
+        }
+
+        .project-facts {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-block: 1px solid var(--line);
+        }
+        .fact {
+            padding: 1.55rem 1.3rem;
+            border-right: 1px solid var(--line);
+        }
+        .fact:first-child { padding-left: 0; }
+        .fact:last-child { border-right: 0; }
+        .fact dt {
+            margin-bottom: .45rem;
+            color: var(--muted);
+            font-size: .64rem;
+            font-weight: 700;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+        .fact dd {
+            margin: 0;
+            color: var(--ink);
+            font-size: .93rem;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .section {
+            padding-block: clamp(6.5rem, 12vw, 11rem);
+            border-top: 1px solid var(--line-soft);
+        }
+        .section-heading {
+            display: grid;
+            grid-template-columns: minmax(170px, .72fr) minmax(0, 2.1fr);
+            gap: clamp(2.5rem, 7vw, 7rem);
+            align-items: start;
+        }
+        .section-index {
+            position: sticky;
+            top: 120px;
+            color: var(--muted);
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+        .section-copy > p,
+        .measure { max-width: 780px; }
+        .lead {
+            font-family: var(--serif);
+            color: var(--ink);
+            font-size: clamp(1.5rem, 2.8vw, 2.15rem);
+            line-height: 1.35;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 3.5rem;
+        }
+        .summary-card {
+            min-height: 240px;
+            padding: 2rem;
+            background: rgba(255,253,251,.64);
+            border: 1px solid var(--line-soft);
+            border-radius: var(--radius-md);
+        }
+        .summary-card .number {
+            display: block;
+            margin-bottom: 3rem;
+            color: var(--rose);
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            font-style: italic;
+        }
+        .summary-card h3 { font-size: 1.8rem; }
+        .summary-card p { margin-bottom: 0; font-size: .94rem; }
+
+        .scope-note {
+            margin-top: 2rem;
+            padding: 1.35rem 1.5rem;
+            border-left: 3px solid var(--rose);
+            background: rgba(255,253,251,.66);
+            color: var(--body);
+            font-size: .93rem;
+        }
+        .scope-note strong { color: var(--ink); }
+
+        .journey {
+            margin-top: 4rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: var(--surface);
+        }
+        .journey-step {
+            min-height: 260px;
+            padding: 2rem 1.6rem;
+            border-right: 1px solid var(--line);
+        }
+        .journey-step:last-child { border-right: 0; }
+        .journey-step small {
+            color: var(--rose);
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+        .journey-step h3 { margin-top: 2.4rem; font-size: 1.8rem; }
+        .journey-step p { margin-bottom: 0; font-size: .9rem; }
+
+        .decision-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-top: 3.6rem;
+        }
+        .decision {
+            padding: clamp(2rem, 4vw, 3rem);
+            border: 1px solid var(--line-soft);
+            border-radius: var(--radius-md);
+            background: var(--surface);
+        }
+        .decision-kicker {
+            display: inline-block;
+            margin-bottom: 1.7rem;
+            color: var(--rose-dark);
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+        .decision h3 { font-size: 2rem; }
+        .decision p { margin-bottom: 0; }
+
+        .system-panel {
+            margin-top: 4rem;
+            padding: clamp(2rem, 5vw, 4.5rem);
+            border-radius: var(--radius-lg);
+            background: var(--ink);
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+        .system-panel::after {
+            content: "A";
+            position: absolute;
+            right: 2%;
+            bottom: -24%;
+            color: rgba(255,255,255,.035);
+            font-family: var(--serif);
+            font-size: 30rem;
+            line-height: 1;
+        }
+        .system-panel h3, .system-panel p { color: white; }
+        .system-grid {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: clamp(3rem, 7vw, 7rem);
+            position: relative;
+            z-index: 1;
+        }
+        .palette {
+            display: grid;
+            gap: 1rem;
+        }
+        .swatch {
+            display: grid;
+            grid-template-columns: 76px 1fr;
+            gap: 1rem;
+            align-items: center;
+        }
+        .swatch-color {
+            width: 76px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.18);
+        }
+        .swatch strong { display: block; color: white; font-size: .86rem; }
+        .swatch code { color: rgba(255,255,255,.58); font-size: .75rem; }
+        .type-row {
+            padding-block: 1.35rem;
+            border-bottom: 1px solid rgba(255,255,255,.13);
+        }
+        .type-row:first-child { padding-top: 0; }
+        .type-row:last-child { border-bottom: 0; }
+        .type-label {
+            display: block;
+            margin-bottom: .7rem;
+            color: rgba(255,255,255,.55);
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+        .type-display {
+            font-family: var(--serif);
+            font-size: clamp(2.5rem, 5vw, 4.4rem);
+            line-height: 1;
+        }
+        .type-interface {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: .05em;
+        }
+
+        .gallery-section {
+            background: #eee6df;
+            overflow: clip;
+        }
+        .gallery-intro {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .gallery-intro p { max-width: 570px; margin-bottom: .5rem; }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+        .screen-card {
+            margin: 0;
+            padding: 1rem;
+            background: var(--surface);
+            border: 1px solid rgba(40,35,33,.09);
+            border-radius: 26px;
+            box-shadow: 0 20px 55px rgba(70,50,44,.07);
+        }
+        .screen-button {
+            width: 100%;
+            padding: 0;
+            border: 0;
+            border-radius: 18px;
+            background: #f5efea;
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+        .screen-button img {
+            width: 100%;
+            height: clamp(390px, 56vw, 680px);
+            object-fit: contain;
+            transition: transform .6s cubic-bezier(.16,1,.3,1);
+        }
+        .screen-button:hover img { transform: scale(1.025); }
+        .screen-caption {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.2rem;
+            padding: 1.5rem .5rem .4rem;
+        }
+        .screen-number {
+            color: var(--rose);
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            font-style: italic;
+        }
+        .screen-caption h3 { margin-bottom: .5rem; font-size: 1.7rem; }
+        .screen-caption p { margin-bottom: 0; font-size: .9rem; }
+
+        .validation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-top: 3.5rem;
+        }
+        .validation-card {
+            padding: 2rem;
+            border-top: 1px solid var(--ink);
+            background: rgba(255,255,255,.28);
+        }
+        .validation-card strong {
+            display: block;
+            margin-bottom: .8rem;
+            color: var(--ink);
+            font-family: var(--serif);
+            font-size: 1.6rem;
+            font-weight: 500;
+        }
+        .validation-card p { margin-bottom: 0; font-size: .93rem; }
+
+        .reflection {
+            background: var(--surface);
+        }
+        .reflection-layout {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: clamp(3rem, 8vw, 8rem);
+            align-items: start;
+        }
+        .takeaway-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border-top: 1px solid var(--line);
+        }
+        .takeaway-list li {
+            display: grid;
+            grid-template-columns: 34px 1fr;
+            gap: 1rem;
+            padding-block: 1.25rem;
+            border-bottom: 1px solid var(--line);
+            color: var(--body);
+        }
+        .takeaway-list span { color: var(--rose); font-family: var(--serif); font-style: italic; }
+
+        .next-project {
+            min-height: 70vh;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .next-project::before {
+            content: "";
+            position: absolute;
+            width: 520px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: rgba(234,216,216,.62);
+            filter: blur(2px);
+            z-index: -1;
+        }
+        .next-project p {
+            margin-bottom: .6rem;
+            color: var(--muted);
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+        .next-project a {
+            text-decoration: none;
+            font-family: var(--serif);
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: .9;
+            transition: color .2s ease;
+        }
+        .next-project a:hover { color: var(--rose); }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(1rem, 4vw, 3rem);
+            background: rgba(35,30,28,.92);
+            backdrop-filter: blur(16px);
+        }
+        .lightbox.open { display: flex; }
+        .lightbox-dialog {
+            width: min(100%, 1100px);
+            max-height: 92vh;
+            display: grid;
+            place-items: center;
+            position: relative;
+        }
+        .lightbox img {
+            max-height: 88vh;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 35px 90px rgba(0,0,0,.28);
+        }
+        .lightbox-close {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.25rem;
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: 50%;
+            background: rgba(255,255,255,.08);
+            color: white;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .75s ease, transform .75s cubic-bezier(.16,1,.3,1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1020px) {
+            .hero-grid,
+            .section-heading,
+            .reflection-layout,
+            .system-grid { grid-template-columns: 1fr; }
+            .hero { padding-top: 8.5rem; }
+            .hero-visual { min-height: 560px; }
+            .hero-frame { width: min(78vw, 420px); }
+            .section-index { position: static; }
+            .project-facts { grid-template-columns: repeat(2, 1fr); }
+            .fact:nth-child(2) { border-right: 0; }
+            .fact:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+            .journey { grid-template-columns: repeat(2, 1fr); }
+            .journey-step:nth-child(2) { border-right: 0; }
+            .journey-step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+        }
+
+        @media (max-width: 760px) {
+            .page-shell { width: min(calc(100% - 2rem), var(--content)); }
+            .nav-inner { min-height: 68px; }
+            .nav-links a:not(.back-link) { display: none; }
+            h1 { font-size: clamp(4rem, 24vw, 6.6rem); }
+            h1 em { margin-left: 1.4rem; }
+            .hero-grid { padding-bottom: 4rem; gap: 2rem; }
+            .hero-visual { min-height: 480px; }
+            .hero-stamp { width: 102px; left: 0; bottom: 1.8rem; font-size: 1rem; }
+            .project-facts { grid-template-columns: 1fr; }
+            .fact,
+            .fact:first-child { padding: 1.15rem 0; border-right: 0; border-bottom: 1px solid var(--line); }
+            .fact:last-child { border-bottom: 0; }
+            .summary-grid,
+            .journey,
+            .decision-grid,
+            .gallery-grid,
+            .validation-grid { grid-template-columns: 1fr; }
+            .journey-step,
+            .journey-step:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); }
+            .journey-step:last-child { border-bottom: 0; }
+            .gallery-intro { display: block; }
+            .screen-button img { height: min(125vw, 620px); }
+            .screen-caption { grid-template-columns: 1fr; gap: .35rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .reveal { opacity: 1; transform: none; }
+        }
+        /* Interactive Aurea product prototype */
+        .au-prototype-section {
+            --au-ink: #241d1e;
+            --au-paper: #f5efe9;
+            --au-pearl: #fffaf6;
+            --au-wine: #4b192c;
+            --au-plum: #6d3046;
+            --au-rose: #b9828a;
+            --au-blush: #eadbd7;
+            --au-gold: #c7a66d;
+            --au-sage: #858c7c;
+            --au-line: rgba(36,29,30,.13);
+            position: relative;
+            overflow: hidden;
+            padding-block: clamp(7rem, 11vw, 10rem);
+            color: #f8eee9;
+            background:
+                radial-gradient(circle at 12% 8%, rgba(185,130,138,.24), transparent 28rem),
+                radial-gradient(circle at 94% 82%, rgba(199,166,109,.13), transparent 36rem),
+                linear-gradient(145deg, #321c25, #171112 72%);
+        }
+
+        .au-prototype-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: .08;
+            pointer-events: none;
+            background-image: radial-gradient(rgba(255,255,255,.65) .5px, transparent .5px);
+            background-size: 8px 8px;
+            mask-image: linear-gradient(#000, transparent 94%);
+        }
+
+        .au-prototype-section .section-heading { position: relative; z-index: 1; }
+        .au-prototype-section .section-index { color: rgba(255,255,255,.48); }
+        .au-prototype-section .section-index::after { background: rgba(255,255,255,.2); }
+        .au-prototype-section .eyebrow { color: #ddbcc0; }
+        .au-prototype-section h2 { max-width: 10ch; color: #fff8f3; }
+        .au-prototype-section .measure { max-width: 760px; color: rgba(255,255,255,.66); }
+
+        .au-demo { margin-top: 3rem; }
+
+        .au-demo-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: .7rem;
+            border: 1px solid rgba(255,255,255,.13);
+            border-radius: 18px;
+            background: rgba(255,255,255,.07);
+            box-shadow: 0 20px 55px rgba(0,0,0,.2);
+            backdrop-filter: blur(16px);
+        }
+
+        .au-mode-switch {
+            display: inline-flex;
+            gap: .3rem;
+            padding: .3rem;
+            border-radius: 13px;
+            background: rgba(0,0,0,.28);
+        }
+
+        .au-mode-button {
+            min-height: 42px;
+            padding: .62rem 1rem;
+            border: 0;
+            border-radius: 10px;
+            color: rgba(255,255,255,.61);
+            background: transparent;
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .06em;
+            cursor: pointer;
+            transition: color .2s ease, background .2s ease, transform .2s ease;
+        }
+
+        .au-mode-button:hover { color: #fff; }
+        .au-mode-button:active { transform: scale(.97); }
+        .au-mode-button[aria-pressed="true"] {
+            color: var(--au-ink);
+            background: #e9d2d1;
+            box-shadow: 0 7px 20px rgba(0,0,0,.23);
+        }
+
+        .au-demo-status {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+            padding-inline: .45rem;
+            color: rgba(255,255,255,.6);
+            font-size: .68rem;
+            font-weight: 600;
+        }
+
+        .au-demo-status::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #9bd187;
+            box-shadow: 0 0 0 5px rgba(155,209,135,.1);
+        }
+
+        .au-stage {
+            position: relative;
+            min-height: 800px;
+            display: grid;
+            place-items: center;
+            padding: clamp(1rem, 3.4vw, 3rem);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.13);
+            border-radius: 36px;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(255,255,255,.12), transparent 35rem),
+                linear-gradient(145deg, #47303a, #161112 74%);
+            box-shadow: 0 45px 110px rgba(0,0,0,.38);
+        }
+
+        .au-stage::before {
+            content: "";
+            position: absolute;
+            top: -12%;
+            left: -9%;
+            width: 320px;
+            height: 430px;
+            border: 1px solid rgba(233,210,209,.16);
+            border-radius: 50% 50% 8px 8px;
+            transform: rotate(-12deg);
+            pointer-events: none;
+        }
+
+        #auPrototypeRoot {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .au-product,
+        .au-product * { box-sizing: border-box; }
+
+        .au-product {
+            color: var(--au-ink);
+            font-family: var(--sans);
+            line-height: 1.45;
+        }
+
+        .au-product button,
+        .au-product input,
+        .au-product select,
+        .au-product textarea { font: inherit; }
+
+        .au-product button { color: inherit; }
+
+        .au-product .au-sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .au-browser {
+            position: relative;
+            width: min(100%, 1130px);
+            height: 720px;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.18);
+            border-radius: 20px;
+            background: var(--au-paper);
+            box-shadow: 0 48px 105px rgba(0,0,0,.45), 0 0 0 7px rgba(255,255,255,.04);
+        }
+
+        .au-browser-bar {
+            height: 45px;
+            display: grid;
+            grid-template-columns: 100px 1fr 100px;
+            align-items: center;
+            padding: 0 16px;
+            color: rgba(255,255,255,.61);
+            background: #251f21;
+        }
+
+        .au-window-dots { display: flex; gap: 7px; }
+        .au-window-dots i { width: 10px; height: 10px; border-radius: 50%; background: #b9828a; }
+        .au-window-dots i:nth-child(2) { background: #c7a66d; }
+        .au-window-dots i:nth-child(3) { background: #858c7c; }
+
+        .au-url {
+            justify-self: center;
+            width: min(460px, 72%);
+            padding: .38rem 1rem;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 999px;
+            color: rgba(255,255,255,.5);
+            background: rgba(0,0,0,.2);
+            font-size: .62rem;
+            letter-spacing: .04em;
+            text-align: center;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .au-browser-menu { justify-self: end; letter-spacing: .2em; }
+
+        .au-web-app {
+            height: calc(100% - 45px);
+            overflow: hidden;
+            background: var(--au-paper);
+        }
+
+        .au-app-head {
+            height: 72px;
+            display: grid;
+            grid-template-columns: 170px 1fr 170px;
+            align-items: center;
+            gap: 1rem;
+            padding: 0 1.7rem;
+            border-bottom: 1px solid var(--au-line);
+            background: rgba(255,250,246,.9);
+        }
+
+        .au-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: .65rem;
+            justify-self: start;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            font-family: var(--serif);
+            font-size: 1.65rem;
+            font-weight: 600;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .au-logo-mark {
+            position: relative;
+            width: 23px;
+            height: 31px;
+            border: 1px solid var(--au-wine);
+            border-radius: 50% 50% 8px 8px;
+        }
+
+        .au-logo-mark::after {
+            content: "";
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--au-rose);
+            transform: translateX(-50%);
+        }
+
+        .au-primary-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .15rem;
+        }
+
+        .au-nav-button {
+            min-height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .38rem;
+            padding: .55rem .75rem;
+            border: 0;
+            border-radius: 999px;
+            color: #72686a;
+            background: transparent;
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .03em;
+            cursor: pointer;
+            transition: color .2s ease, background .2s ease;
+        }
+
+        .au-nav-button:hover,
+        .au-nav-button.is-active { color: var(--au-wine); background: var(--au-blush); }
+
+        .au-head-actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: .5rem;
+        }
+
+        .au-icon-button {
+            width: 39px;
+            height: 39px;
+            display: inline-grid;
+            place-items: center;
+            border: 1px solid var(--au-line);
+            border-radius: 50%;
+            background: var(--au-pearl);
+            cursor: pointer;
+            transition: transform .2s ease, background .2s ease, border-color .2s ease;
+        }
+
+        .au-icon-button:hover { transform: translateY(-2px); border-color: rgba(36,29,30,.32); background: #fff; }
+
+        .au-avatar {
+            width: 39px;
+            height: 39px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            color: #fff;
+            background: linear-gradient(145deg, var(--au-rose), var(--au-wine));
+            font-family: var(--serif);
+            font-size: .85rem;
+            font-style: italic;
+        }
+
+        .au-main {
+            height: calc(100% - 72px);
+            padding: 1.7rem 1.9rem;
+            overflow: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(36,29,30,.18) transparent;
+        }
+
+        .au-page {
+            width: min(100%, 1030px);
+            margin: 0 auto;
+            animation: auFade .32s ease both;
+        }
+
+        @keyframes auFade {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: none; }
+        }
+
+        .au-page-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 1.2rem;
+            margin-bottom: 1.35rem;
+        }
+
+        .au-page-kicker {
+            display: block;
+            margin-bottom: .42rem;
+            color: var(--au-plum);
+            font-size: .58rem;
+            font-weight: 800;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        .au-page h3,
+        .au-page h4,
+        .au-page p { margin-top: 0; }
+
+        .au-page h3 {
+            margin-bottom: .22rem;
+            font-family: var(--serif);
+            font-size: clamp(2.05rem, 3.6vw, 3.35rem);
+            font-weight: 500;
+            line-height: .95;
+            letter-spacing: -.03em;
+        }
+
+        .au-page h4 {
+            margin-bottom: .32rem;
+            font-family: var(--serif);
+            font-size: 1.35rem;
+            font-weight: 600;
+            line-height: 1.05;
+        }
+
+        .au-page p { color: #6c6263; font-size: .75rem; }
+        .au-page-head p { margin-bottom: 0; }
+
+        .au-primary-button,
+        .au-secondary-button,
+        .au-text-button {
+            min-height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .42rem;
+            padding: .68rem .95rem;
+            border-radius: 999px;
+            font-size: .64rem;
+            font-weight: 800;
+            letter-spacing: .04em;
+            cursor: pointer;
+            transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+        }
+
+        .au-primary-button {
+            border: 1px solid var(--au-wine);
+            color: #fff !important;
+            background: var(--au-wine);
+            box-shadow: 0 11px 24px rgba(75,25,44,.18);
+        }
+
+        .au-primary-button:hover { transform: translateY(-2px); background: #35111f; box-shadow: 0 14px 30px rgba(75,25,44,.24); }
+
+        .au-secondary-button {
+            border: 1px solid var(--au-line);
+            background: var(--au-pearl);
+        }
+
+        .au-secondary-button:hover { transform: translateY(-2px); background: #fff; }
+
+        .au-text-button {
+            min-height: 34px;
+            padding-inline: .35rem;
+            border: 0;
+            color: var(--au-plum) !important;
+            background: transparent;
+        }
+
+        .au-home-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.65fr) minmax(250px, .68fr);
+            gap: .9rem;
+        }
+
+        .au-feature {
+            position: relative;
+            min-height: 398px;
+            overflow: hidden;
+            border-radius: 120px 20px 20px 20px;
+            background: #4b192c;
+            box-shadow: 0 28px 58px rgba(66,35,42,.18);
+        }
+
+        .au-feature > img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .7s cubic-bezier(.2,.8,.2,1);
+        }
+
+        .au-feature:hover > img { transform: scale(1.035); }
+
+        .au-feature::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(29,14,19,.88), rgba(29,14,19,.56) 46%, rgba(29,14,19,.04) 80%);
+        }
+
+        .au-feature-copy {
+            position: relative;
+            z-index: 1;
+            width: min(55%, 380px);
+            min-height: 398px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 2rem;
+            color: #fff;
+        }
+
+        .au-editorial-label,
+        .au-pill,
+        .au-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: .3rem;
+            padding: .35rem .55rem;
+            border-radius: 999px;
+            font-size: .54rem;
+            font-weight: 800;
+            letter-spacing: .06em;
+            line-height: 1;
+        }
+
+        .au-editorial-label {
+            margin-bottom: 1rem;
+            color: #3b2712;
+            background: #ecd8a9;
+        }
+
+        .au-feature-copy h4 {
+            max-width: 8ch;
+            margin-bottom: .65rem;
+            color: #fff;
+            font-size: clamp(2.45rem, 4.3vw, 4.2rem);
+            font-weight: 500;
+            line-height: .84;
+        }
+
+        .au-feature-copy h4 em { font-weight: 400; }
+        .au-feature-copy p { max-width: 31ch; color: rgba(255,255,255,.72); }
+
+        .au-meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .42rem;
+            margin: .35rem 0 1.15rem;
+        }
+
+        .au-meta-row span {
+            padding: .36rem .55rem;
+            border: 1px solid rgba(255,255,255,.17);
+            border-radius: 999px;
+            color: rgba(255,255,255,.84);
+            background: rgba(255,255,255,.09);
+            font-size: .56rem;
+            font-weight: 700;
+        }
+
+        .au-side-stack { display: grid; gap: .9rem; }
+
+        .au-soft-card {
+            padding: 1rem;
+            border: 1px solid var(--au-line);
+            border-radius: 18px;
+            background: rgba(255,250,246,.76);
+        }
+
+        .au-soft-card h4 { font-size: 1.06rem; }
+
+        .au-weather {
+            color: #fff;
+            background: linear-gradient(145deg, #6d3046, #3b1825);
+        }
+
+        .au-weather .au-page-kicker { color: #e9d2d1; }
+        .au-weather p { color: rgba(255,255,255,.67); }
+
+        .au-weather-orbit {
+            width: 72px;
+            height: 72px;
+            display: grid;
+            place-items: center;
+            float: right;
+            margin: 0 0 .5rem .75rem;
+            border: 1px solid rgba(255,255,255,.22);
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 12px rgba(255,255,255,.05);
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .au-mood-list { display: grid; gap: .48rem; margin-top: .7rem; }
+
+        .au-mood-row {
+            display: grid;
+            grid-template-columns: 34px 1fr auto;
+            align-items: center;
+            gap: .55rem;
+            padding: .52rem;
+            border: 0;
+            border-radius: 12px;
+            background: #fff;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .au-mood-row i {
+            width: 34px;
+            height: 34px;
+            border-radius: 50% 50% 8px 8px;
+            background: var(--mood, var(--au-blush));
+        }
+
+        .au-mood-row strong,
+        .au-mood-row small { display: block; }
+        .au-mood-row strong { font-size: .65rem; }
+        .au-mood-row small { color: #8b8182; font-size: .54rem; }
+        .au-mood-row svg { color: var(--au-plum); }
+
+        .au-search-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: .65rem;
+            margin-bottom: .8rem;
+        }
+
+        .au-search-field { position: relative; }
+        .au-search-field svg { position: absolute; top: 50%; left: .9rem; transform: translateY(-50%); pointer-events: none; }
+        .au-search-field input {
+            width: 100%;
+            min-height: 47px;
+            padding: .72rem 1rem .72rem 2.65rem;
+            border: 1px solid var(--au-line);
+            border-radius: 15px;
+            color: var(--au-ink);
+            background: rgba(255,250,246,.82);
+            outline: 0;
+        }
+        .au-search-field input:focus { border-color: var(--au-rose); box-shadow: 0 0 0 4px rgba(185,130,138,.13); }
+
+        .au-compass {
+            display: grid;
+            grid-template-columns: minmax(240px,.7fr) minmax(0,1.3fr);
+            gap: .85rem;
+            margin-bottom: .9rem;
+        }
+
+        .au-compass-panel {
+            padding: 1rem;
+            border: 1px solid var(--au-line);
+            border-radius: 20px;
+            background: #2c2023;
+            color: #fff;
+        }
+
+        .au-compass-panel .au-page-kicker { color: #e7c4c7; }
+        .au-compass-panel h4 { color: #fff; font-size: 1.45rem; }
+        .au-compass-panel p { color: rgba(255,255,255,.61); }
+
+        .au-compass-answer {
+            margin-top: .85rem;
+            padding: .8rem;
+            border: 1px solid rgba(255,255,255,.14);
+            border-radius: 14px;
+            background: rgba(255,255,255,.06);
+        }
+
+        .au-compass-answer strong { display: block; font-family: var(--serif); font-size: 1.15rem; font-weight: 500; }
+        .au-compass-answer small { color: rgba(255,255,255,.54); font-size: .54rem; }
+
+        .au-choice-panel {
+            padding: 1rem;
+            border: 1px solid var(--au-line);
+            border-radius: 20px;
+            background: rgba(255,250,246,.78);
+        }
+
+        .au-choice-group + .au-choice-group { margin-top: .75rem; padding-top: .75rem; border-top: 1px solid var(--au-line); }
+        .au-choice-group strong { display: block; margin-bottom: .45rem; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase; }
+
+        .au-chip-row { display: flex; gap: .42rem; overflow-x: auto; scrollbar-width: none; }
+        .au-chip-row::-webkit-scrollbar { display: none; }
+        .au-chip {
+            flex: 0 0 auto;
+            min-height: 34px;
+            padding: .5rem .7rem;
+            border: 1px solid var(--au-line);
+            border-radius: 999px;
+            color: #6f6667;
+            background: var(--au-pearl);
+            font-size: .58rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .au-chip.is-active { border-color: var(--au-wine); color: #fff; background: var(--au-wine); }
+
+        .au-fragrance-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0,1fr));
+            gap: .72rem;
+        }
+
+        .au-fragrance-card {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid var(--au-line);
+            border-radius: 92px 16px 16px 16px;
+            background: rgba(255,250,246,.82);
+            transition: transform .22s ease, box-shadow .22s ease;
+        }
+
+        .au-fragrance-card:hover { transform: translateY(-4px); box-shadow: 0 17px 35px rgba(58,38,43,.12); }
+
+        .au-card-image { position: relative; height: 160px; overflow: hidden; background: #ddd0cb; }
+        .au-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+        .au-fragrance-card:hover .au-card-image img { transform: scale(1.04); }
+
+        .au-save-button {
+            position: absolute;
+            top: .65rem;
+            right: .65rem;
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255,250,246,.9);
+            box-shadow: 0 8px 18px rgba(0,0,0,.14);
+            cursor: pointer;
+        }
+        .au-save-button.is-saved { color: #fff; background: var(--au-wine); }
+
+        .au-card-body { padding: .85rem; }
+        .au-card-body h4 { margin-bottom: .28rem; font-size: 1.05rem; }
+        .au-card-body p { min-height: 32px; margin-bottom: .6rem; font-size: .58rem; }
+
+        .au-card-link { width: 100%; padding: 0; border: 0; text-align: left; background: transparent; cursor: pointer; }
+        .au-card-meta { display: flex; justify-content: space-between; gap: .4rem; padding-top: .58rem; border-top: 1px solid var(--au-line); color: #797071; font-size: .52rem; }
+        .au-pill { color: #4f3b24; background: #edddbb; }
+        .au-tag { color: #4a343a; background: var(--au-blush); }
+
+        .au-empty-state { grid-column: 1 / -1; padding: 2.5rem; border: 1px dashed rgba(36,29,30,.24); border-radius: 18px; text-align: center; }
+
+        .au-profile-grid {
+            display: grid;
+            grid-template-columns: minmax(0,1.15fr) minmax(320px,.85fr);
+            gap: .9rem;
+        }
+
+        .au-profile-visual {
+            position: relative;
+            min-height: 490px;
+            overflow: hidden;
+            border-radius: 150px 22px 22px 22px;
+            background: var(--au-wine);
+        }
+
+        .au-profile-visual > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .au-profile-visual::after { content: ""; position: absolute; inset: 42% 0 0; background: linear-gradient(transparent, rgba(20,11,14,.84)); }
+
+        .au-profile-copy { position: absolute; z-index: 1; right: 0; bottom: 0; left: 0; padding: 1.5rem; color: #fff; }
+        .au-profile-copy .au-page-kicker { color: #ead5d5; }
+        .au-profile-copy h3 { max-width: 9ch; color: #fff; font-size: clamp(2.8rem,5vw,4.7rem); }
+        .au-profile-copy p { max-width: 44ch; color: rgba(255,255,255,.69); }
+
+        .au-profile-panel {
+            padding: 1rem;
+            overflow: auto;
+            border: 1px solid var(--au-line);
+            border-radius: 22px;
+            background: rgba(255,250,246,.82);
+        }
+
+        .au-profile-tabs { display: flex; gap: .32rem; padding-bottom: .7rem; border-bottom: 1px solid var(--au-line); }
+        .au-profile-tabs button {
+            padding: .48rem .65rem;
+            border: 0;
+            border-radius: 9px;
+            color: #746b6c;
+            background: transparent;
+            font-size: .57rem;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .au-profile-tabs button.is-active { color: var(--au-wine); background: var(--au-blush); }
+
+        .au-accords { display: flex; flex-wrap: wrap; gap: .4rem; margin: .8rem 0; }
+
+        .au-performance { display: grid; gap: .6rem; margin-top: .8rem; }
+        .au-meter-row { display: grid; grid-template-columns: 78px 1fr 40px; align-items: center; gap: .55rem; font-size: .56rem; }
+        .au-meter { height: 7px; overflow: hidden; border-radius: 999px; background: #e5dcd7; }
+        .au-meter i { display: block; width: var(--value); height: 100%; border-radius: inherit; background: linear-gradient(90deg,var(--au-rose),var(--au-wine)); }
+        .au-meter-row b { color: var(--au-plum); text-align: right; }
+
+        .au-note-pyramid { display: grid; gap: .5rem; margin-top: .8rem; }
+        .au-note-level { display: grid; grid-template-columns: 55px 1fr; gap: .55rem; padding: .58rem; border-radius: 12px; background: #fff; }
+        .au-note-level strong { color: var(--au-plum); font-size: .54rem; letter-spacing: .08em; text-transform: uppercase; }
+        .au-note-level span { font-size: .6rem; }
+
+        .au-skin-timeline { position: relative; display: grid; grid-template-columns: repeat(3,1fr); gap: .55rem; margin-top: 1rem; }
+        .au-skin-timeline::before { content: ""; position: absolute; top: 10px; right: 10%; left: 10%; height: 1px; background: var(--au-line); }
+        .au-skin-step { position: relative; padding-top: 1.35rem; font-size: .56rem; }
+        .au-skin-step::before { content: ""; position: absolute; top: 5px; left: 0; width: 10px; height: 10px; border: 2px solid var(--au-pearl); border-radius: 50%; background: var(--au-rose); box-shadow: 0 0 0 1px var(--au-rose); }
+        .au-skin-step strong { display: block; font-family: var(--serif); font-size: .82rem; }
+        .au-skin-step small { color: #817778; }
+
+        .au-profile-actions { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-top: .9rem; }
+
+        .au-compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 70px 1fr;
+            align-items: stretch;
+            gap: .75rem;
+        }
+
+        .au-compare-card { overflow: hidden; border: 1px solid var(--au-line); border-radius: 110px 18px 18px 18px; background: rgba(255,250,246,.8); }
+        .au-compare-card img { width: 100%; height: 190px; object-fit: cover; }
+        .au-compare-copy { padding: .9rem; }
+        .au-compare-copy h4 { font-size: 1.35rem; }
+        .au-swap-column { display: grid; place-items: center; }
+        .au-swap-column span { width: 52px; height: 52px; display: grid; place-items: center; border: 1px solid var(--au-line); border-radius: 50%; color: var(--au-plum); background: var(--au-pearl); font-family: var(--serif); font-style: italic; }
+
+        .au-compare-metrics { margin-top: .8rem; padding: .9rem; border: 1px solid var(--au-line); border-radius: 18px; background: rgba(255,250,246,.72); }
+        .au-compare-row { display: grid; grid-template-columns: 90px 1fr 1fr; gap: .7rem; align-items: center; padding: .55rem 0; border-top: 1px solid var(--au-line); }
+        .au-compare-row:first-child { border-top: 0; }
+        .au-compare-row strong { font-size: .57rem; text-transform: uppercase; letter-spacing: .07em; }
+        .au-compare-score { height: 8px; overflow: hidden; border-radius: 999px; background: #e5dcd7; }
+        .au-compare-score i { display: block; width: var(--value); height: 100%; background: var(--color,var(--au-wine)); border-radius: inherit; }
+
+        .au-archive-top {
+            display: grid;
+            grid-template-columns: minmax(0,1.25fr) minmax(230px,.75fr);
+            gap: .8rem;
+            margin-bottom: .85rem;
+        }
+
+        .au-rotation-card { position: relative; min-height: 155px; overflow: hidden; border-radius: 70px 17px 17px 17px; background: #40212d; }
+        .au-rotation-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .68; }
+        .au-rotation-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg,rgba(25,11,16,.87),transparent 76%); }
+        .au-rotation-copy { position: relative; z-index: 1; width: 65%; padding: 1rem; color: #fff; }
+        .au-rotation-copy h4 { color: #fff; }
+        .au-rotation-copy p { color: rgba(255,255,255,.68); }
+
+        .au-archive-stats { display: grid; grid-template-columns: repeat(2,1fr); gap: .5rem; }
+        .au-stat { padding: .8rem; border: 1px solid var(--au-line); border-radius: 15px; background: var(--au-pearl); }
+        .au-stat strong { display: block; font-family: var(--serif); font-size: 1.55rem; font-weight: 500; }
+        .au-stat small { color: #827879; font-size: .52rem; text-transform: uppercase; letter-spacing: .08em; }
+
+        .au-journal-grid { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(240px,.7fr); gap: .85rem; }
+        .au-journal-list { overflow: hidden; border: 1px solid var(--au-line); border-radius: 20px; background: rgba(255,250,246,.78); }
+        .au-journal-row { display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: .65rem; padding: .72rem .85rem; border-bottom: 1px solid var(--au-line); }
+        .au-journal-row:last-child { border-bottom: 0; }
+        .au-journal-date { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50% 50% 10px 10px; color: #fff; background: var(--au-wine); font-family: var(--serif); font-size: .75rem; line-height: 1; text-align: center; }
+        .au-journal-row strong,
+        .au-journal-row small { display: block; }
+        .au-journal-row strong { font-family: var(--serif); font-size: .92rem; }
+        .au-journal-row small { color: #83797a; font-size: .53rem; }
+
+        .au-memory-map { position: relative; min-height: 260px; overflow: hidden; color: #fff; background: #2c2023; }
+        .au-memory-map h4 { color: #fff; }
+        .au-memory-map p { color: rgba(255,255,255,.6); }
+        .au-memory-orbits { position: relative; height: 145px; margin-top: .5rem; }
+        .au-memory-orbits i { position: absolute; border-radius: 50%; opacity: .88; box-shadow: 0 8px 18px rgba(0,0,0,.18); }
+        .au-memory-orbits i:nth-child(1) { width: 66px; height: 66px; top: 31px; left: 41%; background: #6d3046; }
+        .au-memory-orbits i:nth-child(2) { width: 44px; height: 44px; top: 3px; left: 17%; background: #c7a66d; }
+        .au-memory-orbits i:nth-child(3) { width: 52px; height: 52px; top: 80px; left: 9%; background: #858c7c; }
+        .au-memory-orbits i:nth-child(4) { width: 36px; height: 36px; top: 11px; right: 14%; background: #b9828a; }
+        .au-memory-orbits i:nth-child(5) { width: 29px; height: 29px; bottom: 10px; right: 18%; background: #735d78; }
+
+        .au-phone {
+            position: relative;
+            width: min(440px,100%);
+            aspect-ratio: 440 / 956;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 9px solid #0b0a0a;
+            border-radius: 64px;
+            background: var(--au-paper);
+            box-shadow: 0 48px 105px rgba(0,0,0,.52), 0 0 0 2px #514a4c, 0 0 0 8px rgba(255,255,255,.06);
+        }
+
+        .au-phone::after { content: ""; position: absolute; z-index: 50; bottom: 8px; left: 50%; width: 128px; height: 5px; border-radius: 999px; background: #0d0c0c; transform: translateX(-50%); }
+        .au-island { position: absolute; z-index: 50; top: 12px; left: 50%; width: 124px; height: 34px; border-radius: 999px; background: #050505; transform: translateX(-50%); }
+        .au-phone-status { position: absolute; z-index: 40; top: 16px; right: 24px; left: 24px; display: flex; justify-content: space-between; font-size: 11px; font-weight: 800; }
+        .au-phone-status span:last-child { letter-spacing: .1em; }
+
+        .au-phone-app { position: absolute; inset: 0; padding-top: 50px; overflow: hidden; background: var(--au-paper); }
+        .au-phone .au-app-head { height: 59px; grid-template-columns: 1fr auto; padding: 0 18px; background: var(--au-paper); }
+        .au-phone .au-logo { font-size: 1.25rem; letter-spacing: .17em; }
+        .au-phone .au-logo-mark { width: 19px; height: 25px; }
+        .au-phone .au-avatar { width: 34px; height: 34px; }
+        .au-phone .au-main { height: calc(100% - 127px); padding: 16px 15px 34px; scrollbar-width: none; }
+        .au-phone .au-main::-webkit-scrollbar { display: none; }
+
+        .au-mobile-nav {
+            position: absolute;
+            z-index: 25;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 78px;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            align-items: start;
+            padding: 9px 9px 20px;
+            border-top: 1px solid var(--au-line);
+            background: rgba(255,250,246,.95);
+            backdrop-filter: blur(16px);
+        }
+
+        .au-mobile-nav button { display: grid; place-items: center; gap: 2px; padding: 4px 0; border: 0; border-radius: 10px; color: #7b7172; background: transparent; font-size: 8.5px; font-weight: 800; cursor: pointer; }
+        .au-mobile-nav button svg { width: 18px; height: 18px; }
+        .au-mobile-nav button.is-active { color: var(--au-wine); background: var(--au-blush); }
+
+        .au-phone .au-page-head { align-items: start; margin-bottom: 14px; }
+        .au-phone .au-page-kicker { margin-bottom: 5px; font-size: 8.5px; }
+        .au-phone .au-page h3 { font-size: 31px; }
+        .au-phone .au-page h4 { font-size: 17px; }
+        .au-phone .au-page p { font-size: 10.5px; }
+        .au-phone .au-primary-button,
+        .au-phone .au-secondary-button { min-height: 38px; padding: 8px 11px; font-size: 9px; }
+
+        .au-phone .au-home-grid,
+        .au-phone .au-compass,
+        .au-phone .au-profile-grid,
+        .au-phone .au-archive-top,
+        .au-phone .au-journal-grid { grid-template-columns: 1fr; }
+
+        .au-phone .au-feature { min-height: 390px; border-radius: 110px 20px 20px 20px; }
+        .au-phone .au-feature::after { background: linear-gradient(0deg,rgba(20,10,14,.91),rgba(20,10,14,.05) 75%); }
+        .au-phone .au-feature-copy { width: 100%; min-height: 390px; justify-content: flex-end; padding: 20px; }
+        .au-phone .au-feature-copy h4 { font-size: 39px; }
+        .au-phone .au-side-stack { grid-template-columns: 1fr; }
+        .au-phone .au-compass { gap: 9px; }
+        .au-phone .au-search-field input { min-height: 43px; font-size: 10px; }
+        .au-phone .au-search-row .au-secondary-button { width: 43px; padding: 0; font-size: 0; border-radius: 14px; }
+        .au-phone .au-fragrance-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+        .au-phone .au-card-image { height: 125px; }
+        .au-phone .au-card-body { padding: 9px; }
+        .au-phone .au-card-body h4 { font-size: 13px; }
+        .au-phone .au-card-body p { display: none; }
+        .au-phone .au-card-meta { font-size: 8px; }
+        .au-phone .au-profile-visual { min-height: 410px; border-radius: 115px 20px 20px 20px; }
+        .au-phone .au-profile-copy h3 { font-size: 40px; }
+        .au-phone .au-profile-panel { padding: 12px; }
+        .au-phone .au-profile-actions { position: sticky; bottom: 0; padding-top: 7px; background: var(--au-paper); }
+        .au-phone .au-compare-grid { grid-template-columns: 1fr 42px 1fr; gap: 6px; }
+        .au-phone .au-compare-card { border-radius: 70px 12px 12px 12px; }
+        .au-phone .au-compare-card img { height: 120px; }
+        .au-phone .au-compare-copy { padding: 8px; }
+        .au-phone .au-compare-copy h4 { font-size: 13px; }
+        .au-phone .au-compare-copy p { display: none; }
+        .au-phone .au-swap-column span { width: 36px; height: 36px; font-size: 11px; }
+        .au-phone .au-compare-row { grid-template-columns: 64px 1fr 1fr; gap: 5px; }
+        .au-phone .au-rotation-copy { width: 78%; }
+        .au-phone .au-journal-row { padding: 9px; }
+
+        .au-overlay {
+            position: absolute;
+            z-index: 80;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            padding: 1rem;
+            background: rgba(20,12,15,.68);
+            backdrop-filter: blur(9px);
+            animation: auFade .2s ease both;
+        }
+
+        .au-modal {
+            width: min(92%,450px);
+            max-height: 86%;
+            padding: 1.15rem;
+            overflow: auto;
+            border: 1px solid rgba(255,255,255,.27);
+            border-radius: 23px;
+            background: var(--au-pearl);
+            box-shadow: 0 30px 90px rgba(0,0,0,.4);
+        }
+
+        .au-modal-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+        .au-modal h4 { margin: 0; font-family: var(--serif); font-size: 1.6rem; }
+        .au-modal label { display: grid; gap: .35rem; margin-bottom: .72rem; color: #6f6566; font-size: .6rem; font-weight: 800; letter-spacing: .04em; }
+        .au-modal input,
+        .au-modal select,
+        .au-modal textarea { width: 100%; min-height: 43px; padding: .65rem .75rem; border: 1px solid var(--au-line); border-radius: 12px; color: var(--au-ink); background: #fff; }
+        .au-modal textarea { min-height: 82px; resize: vertical; }
+
+        .au-toast {
+            position: absolute;
+            z-index: 100;
+            right: 1.15rem;
+            bottom: 1.15rem;
+            max-width: min(320px,calc(100% - 2.3rem));
+            padding: .78rem .95rem;
+            border-radius: 13px;
+            color: #fff;
+            background: #2c2023;
+            box-shadow: 0 18px 42px rgba(0,0,0,.32);
+            font-size: .64rem;
+            font-weight: 700;
+            animation: auFade .25s ease both;
+        }
+
+        .au-demo-note { display: flex; justify-content: space-between; gap: 1rem; margin: 1rem .25rem 0; color: rgba(255,255,255,.45); font-size: .62rem; }
+
+        @media (max-width: 1040px) {
+            .au-browser { height: 760px; }
+            .au-app-head { grid-template-columns: 150px 1fr 130px; padding-inline: 1.1rem; }
+            .au-main { padding: 1.35rem; }
+            .au-nav-button { padding-inline: .55rem; }
+            .au-home-grid { grid-template-columns: 1.45fr .75fr; }
+            .au-feature-copy { width: 62%; }
+            .au-fragrance-grid { grid-template-columns: repeat(2,1fr); }
+        }
+
+        @media (max-width: 850px) {
+            .au-stage { min-height: 730px; padding: 1rem; }
+            .au-browser { height: 705px; }
+            .au-browser-bar { grid-template-columns: 70px 1fr 70px; }
+            .au-nav-button span { display: none; }
+            .au-home-grid,
+            .au-profile-grid { grid-template-columns: 1fr; }
+            .au-side-stack { grid-template-columns: 1fr 1fr; }
+            .au-feature-copy { width: 58%; }
+        }
+
+        @media (max-width: 760px) {
+            .au-demo-toolbar { align-items: stretch; flex-direction: column; }
+            .au-mode-switch { width: 100%; }
+            .au-mode-button { flex: 1; }
+            .au-demo-status { padding: .2rem .5rem; }
+            .au-stage { min-height: 650px; border-radius: 24px; }
+            .au-stage.is-phone { min-height: 0; }
+            .au-demo-note { flex-direction: column; }
+        }
+
+        @media (max-width: 560px) {
+            .au-stage { padding: .5rem; }
+            .au-browser { height: 720px; border-radius: 14px; }
+            .au-browser-bar { display: none; }
+            .au-web-app { height: 100%; }
+            .au-app-head { height: 62px; grid-template-columns: 1fr auto; padding-inline: .8rem; }
+            .au-primary-nav { display: none; }
+            .au-main { height: calc(100% - 62px); padding: 1rem; }
+            .au-head-actions .au-icon-button { display: none; }
+            .au-logo { font-size: 1.2rem; }
+            .au-feature-copy { width: 100%; justify-content: flex-end; }
+            .au-feature::after { background: linear-gradient(0deg,rgba(20,10,14,.91),rgba(20,10,14,.05) 78%); }
+            .au-page-head { align-items: start; flex-direction: column; }
+            .au-side-stack,
+            .au-compass,
+            .au-profile-grid,
+            .au-archive-top,
+            .au-journal-grid { grid-template-columns: 1fr; }
+            .au-fragrance-grid { grid-template-columns: 1fr; }
+            .au-demo-note span:last-child { display: none; }
+        }
+
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to case study</a>
+
+    <nav class="nav" aria-label="Case study navigation">
+        <div class="nav-inner page-shell">
+            <a class="brand" href="index.html">Jocelyn Martinez</a>
+            <div class="nav-links">
+                <a href="#overview">Overview</a>
+                <a href="#prototype">Interactive prototype</a>
+                <a class="back-link" href="index.html#portfolio"><span aria-hidden="true">←</span> Back to work</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main">
+        <header class="hero">
+            <div class="hero-grid page-shell">
+                <div class="hero-copy reveal">
+                    <span class="eyebrow">Self-directed UX/UI concept</span>
+                    <h1>Aurea <em>Olfactory Archive</em></h1>
+                    <p class="hero-lede">A fragrance discovery and collection experience that pairs editorial storytelling with clear product information—helping enthusiasts browse by feeling, compare performance, and build a personal scent archive.</p>
+                    <div class="hero-actions">
+                        <a class="button primary" href="#prototype">Try the prototype</a>
+                        <a class="button secondary" href="#overview">Read the case study</a>
+                    </div>
+                </div>
+
+                <div class="hero-visual reveal" aria-label="Aurea original interface preview">
+                    <div class="hero-frame">
+                        <img src="aurea/original-discovery.webp" alt="Aurea fragrance discovery screen shown inside an editorial arch-shaped frame">
+                    </div>
+                    <div class="hero-stamp" aria-hidden="true">Story,<br>structure<br>&amp; scent</div>
+                </div>
+            </div>
+
+            <dl class="project-facts page-shell reveal" aria-label="Project details">
+                <div class="fact">
+                    <dt>Project type</dt>
+                    <dd>Self-directed product concept</dd>
+                </div>
+                <div class="fact">
+                    <dt>My role</dt>
+                    <dd>UX/UI and visual designer</dd>
+                </div>
+                <div class="fact">
+                    <dt>Focus</dt>
+                    <dd>Discovery, comparison, collection</dd>
+                </div>
+                <div class="fact">
+                    <dt>Deliverables</dt>
+                    <dd>Experience strategy, responsive website and iPhone prototype</dd>
+                </div>
+            </dl>
+        </header>
+
+        <section class="section" id="overview">
+            <div class="section-heading page-shell">
+                <div class="section-index">01 / Overview</div>
+                <div class="section-copy reveal">
+                    <span class="eyebrow">The opportunity</span>
+                    <h2>Make fragrance data feel as considered as the product itself.</h2>
+                    <p class="lead">Fragrance enthusiasts need practical information—notes, longevity, projection, season, and occasion—but dense databases can make discovery feel like research rather than pleasure.</p>
+                    <p class="measure">Aurea explores a quieter alternative. The concept gives imagery and narrative enough room to create desire, while keeping performance details easy to find when the user is ready to compare. The goal was not to remove information, but to sequence it more thoughtfully.</p>
+
+                    <div class="summary-grid">
+                        <article class="summary-card">
+                            <span class="number">01</span>
+                            <h3>Browse by feeling</h3>
+                            <p>Lead with mood, season, and visual character so discovery can begin before a user knows a specific brand or note.</p>
+                        </article>
+                        <article class="summary-card">
+                            <span class="number">02</span>
+                            <h3>Reveal useful depth</h3>
+                            <p>Keep technical details available without asking users to process every metric at the beginning of the journey.</p>
+                        </article>
+                        <article class="summary-card">
+                            <span class="number">03</span>
+                            <h3>Build a personal archive</h3>
+                            <p>Turn saving into collection-building, helping each profile feel expressive rather than purely transactional.</p>
+                        </article>
+                    </div>
+
+                    <div class="scope-note"><strong>Project scope:</strong> Aurea is a self-initiated product concept. The interactive prototype demonstrates the proposed experience and visual direction; it remains a design hypothesis to validate through formal user research.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-heading page-shell">
+                <div class="section-index">02 / Experience</div>
+                <div class="section-copy reveal">
+                    <span class="eyebrow">The core journey</span>
+                    <h2>A four-part path from curiosity to collection.</h2>
+                    <p class="measure">The experience is structured around the questions fragrance shoppers naturally move through: What draws me in? How does it perform? What does it feel like? Do I want to remember or own it?</p>
+
+                    <div class="journey" aria-label="Aurea core user journey">
+                        <article class="journey-step">
+                            <small>Step 01</small>
+                            <h3>Discover</h3>
+                            <p>Explore recommendations through mood, season, and visual storytelling rather than an overwhelming product grid.</p>
+                        </article>
+                        <article class="journey-step">
+                            <small>Step 02</small>
+                            <h3>Evaluate</h3>
+                            <p>Review notes, longevity, projection, and wear context in a compact hierarchy designed for quick comparison.</p>
+                        </article>
+                        <article class="journey-step">
+                            <small>Step 03</small>
+                            <h3>Understand</h3>
+                            <p>Read a concise editorial brief that translates abstract notes into an atmosphere, memory, or point of view.</p>
+                        </article>
+                        <article class="journey-step">
+                            <small>Step 04</small>
+                            <h3>Collect</h3>
+                            <p>Save fragrances into a personal archive that supports identity, memory, and future purchase decisions.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-heading page-shell">
+                <div class="section-index">03 / Decisions</div>
+                <div class="section-copy reveal">
+                    <span class="eyebrow">Design rationale</span>
+                    <h2>Editorial atmosphere, anchored by practical hierarchy.</h2>
+                    <p class="measure">Luxury presentation only works when it still helps people make decisions. I used pacing, typography, and progressive disclosure to create a refined visual experience without hiding the information that matters.</p>
+
+                    <div class="decision-grid">
+                        <article class="decision">
+                            <span class="decision-kicker">Information hierarchy</span>
+                            <h3>Story first, specifications second.</h3>
+                            <p>Imagery, name, and mood establish an immediate impression. Notes and performance details sit one layer deeper, allowing the interface to support both casual browsing and informed comparison.</p>
+                        </article>
+                        <article class="decision">
+                            <span class="decision-kicker">Visual pacing</span>
+                            <h3>Whitespace creates focus—not emptiness.</h3>
+                            <p>Generous margins isolate each bottle and key message. The slower rhythm gives distinctive packaging and typography room to carry the brand experience.</p>
+                        </article>
+                        <article class="decision">
+                            <span class="decision-kicker">Data presentation</span>
+                            <h3>Translate performance into scannable signals.</h3>
+                            <p>Longevity and projection are presented as restrained visual scales rather than dense charts, keeping comparison quick while preserving the editorial tone.</p>
+                        </article>
+                        <article class="decision">
+                            <span class="decision-kicker">Retention</span>
+                            <h3>Make saving feel like curating.</h3>
+                            <p>The collection view treats saved fragrances as a personal archive. This gives users a reason to return beyond completing a single purchase task.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-heading page-shell">
+                <div class="section-index">04 / Visual system</div>
+                <div class="section-copy reveal">
+                    <span class="eyebrow">A quiet luxury language</span>
+                    <h2>Soft materials, strong contrast, and intentional restraint.</h2>
+                    <p class="measure">The refined interface combines warm parchment, oxblood, dusty rose, and champagne accents to evoke perfume materials, archival paper, and intimate evening light. A characterful serif carries fragrance identity while a clean sans serif keeps comparison, filtering, and collection tasks precise.</p>
+
+                    <div class="system-panel">
+                        <div class="system-grid">
+                            <div>
+                                <span class="decision-kicker" style="color:#e6bfc4;">Palette</span>
+                                <div class="palette">
+                                    <div class="swatch">
+                                        <span class="swatch-color" style="background:#f5efe9;"></span>
+                                        <div><strong>Warm Parchment</strong><code>#F5EFE9</code></div>
+                                    </div>
+                                    <div class="swatch">
+                                        <span class="swatch-color" style="background:#4b192c;"></span>
+                                        <div><strong>Oxblood</strong><code>#4B192C</code></div>
+                                    </div>
+                                    <div class="swatch">
+                                        <span class="swatch-color" style="background:#b9828a;"></span>
+                                        <div><strong>Dusty Rose</strong><code>#B9828A</code></div>
+                                    </div>
+                                    <div class="swatch">
+                                        <span class="swatch-color" style="background:#c7a66d;"></span>
+                                        <div><strong>Champagne</strong><code>#C7A66D</code></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="decision-kicker" style="color:#e6bfc4;">Typography</span>
+                                <div class="type-row">
+                                    <span class="type-label">Editorial display / Cormorant Garamond</span>
+                                    <div class="type-display">Rose Prick</div>
+                                </div>
+                                <div class="type-row">
+                                    <span class="type-label">Interface text / Plus Jakarta Sans</span>
+                                    <div class="type-interface">WOODY · FLORAL · 8 HOUR LONGEVITY</div>
+                                </div>
+                                <div class="type-row">
+                                    <span class="type-label">System principle</span>
+                                    <p style="margin:0;color:rgba(255,255,255,.72);">Serif typography signals identity and narrative. Sans serif typography supports scanning, controls, and technical information.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section au-prototype-section" id="prototype">
+            <div class="section-heading page-shell">
+                <div class="section-index">05 / Prototype</div>
+                <div class="section-copy reveal">
+                    <span class="eyebrow">Interactive product experience</span>
+                    <h2>Discover scent through feeling, evidence, and memory.</h2>
+                    <p class="measure">Explore Aurea as a working responsive website and iPhone 16 Pro Max app. The redesigned journey connects a mood-led Scent Compass with transparent performance information, side-by-side comparison, a personal archive, and a wear journal.</p>
+
+                    <div class="au-demo">
+                        <div class="au-demo-toolbar" aria-label="Prototype display controls">
+                            <div class="au-mode-switch" role="group" aria-label="Choose prototype display">
+                                <button class="au-mode-button" type="button" data-au-mode="website" aria-pressed="true">Responsive website</button>
+                                <button class="au-mode-button" type="button" data-au-mode="iphone" aria-pressed="false">iPhone 16 Pro Max</button>
+                            </div>
+                            <span class="au-demo-status">Live prototype · explore freely</span>
+                        </div>
+
+                        <div class="au-stage" id="auStage">
+                            <div id="auPrototypeRoot" aria-live="polite">
+                                <noscript>Please enable JavaScript to explore the interactive Aurea prototype.</noscript>
+                            </div>
+                        </div>
+
+                        <div class="au-demo-note">
+                            <span>Try: build a scent direction, open a profile, compare fragrances, curate your archive, and log a wear.</span>
+                            <span>Concept prototype · fictional fragrance content</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section gallery-section" id="screens">
+            <div class="page-shell">
+                <div class="gallery-intro reveal">
+                    <div>
+                        <span class="eyebrow">Earlier visual exploration</span>
+                        <h2>The original direction established Aurea's editorial voice.</h2>
+                    </div>
+                    <p>These first screens document the starting visual language. The interactive prototype above expands the concept into a clearer, responsive, end-to-end experience. Select any image to enlarge it.</p>
+                </div>
+
+                <div class="gallery-grid">
+                    <figure class="screen-card reveal">
+                        <button class="screen-button" type="button" data-lightbox-src="aurea/original-discovery.webp" data-lightbox-alt="Aurea original personalized fragrance discovery interface" aria-label="Enlarge original discovery screen">
+                            <img src="aurea/original-discovery.webp" alt="Aurea original personalized fragrance discovery interface" loading="lazy" decoding="async">
+                        </button>
+                        <figcaption class="screen-caption">
+                            <span class="screen-number">01</span>
+                            <div><h3>Editorial discovery</h3><p>The first direction used vertical navigation, generous whitespace, and a single hero fragrance to establish a slower discovery rhythm.</p></div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="screen-card reveal">
+                        <button class="screen-button" type="button" data-lightbox-src="aurea/original-profile.webp" data-lightbox-alt="Aurea original scent profile interface" aria-label="Enlarge original scent profile screen">
+                            <img src="aurea/original-profile.webp" alt="Aurea original scent profile interface" loading="lazy" decoding="async">
+                        </button>
+                        <figcaption class="screen-caption">
+                            <span class="screen-number">02</span>
+                            <div><h3>Scent visualization</h3><p>Accords, note stages, and performance markers explored how technical fragrance information could retain an editorial tone.</p></div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="screen-card reveal">
+                        <button class="screen-button" type="button" data-lightbox-src="aurea/original-overview.webp" data-lightbox-alt="Three original Aurea app screens shown together" aria-label="Enlarge original Aurea screen collection">
+                            <img src="aurea/original-overview.webp" alt="Three original Aurea app screens shown together" loading="lazy" decoding="async">
+                        </button>
+                        <figcaption class="screen-caption">
+                            <span class="screen-number">03</span>
+                            <div><h3>Original mobile system</h3><p>The three-screen study connected discovery, accords, and the fragrance brief before the concept expanded into comparison, archive, and journaling flows.</p></div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-heading page-shell">
+                <div class="section-index">07 / Validation plan</div>
+                <div class="section-copy reveal">
+                    <span class="eyebrow">What I would test next</span>
+                    <h2>Move from a compelling concept to an evidence-led product.</h2>
+                    <p class="measure">Because Aurea began as a visual and interaction exploration, the next phase would test whether the hierarchy supports real fragrance-shopping behavior—not only whether the screens look refined.</p>
+
+                    <div class="validation-grid">
+                        <article class="validation-card"><strong>Discovery language</strong><p>Interview fragrance enthusiasts to learn whether they begin with notes, brands, occasions, moods, seasons, or community recommendations.</p></article>
+                        <article class="validation-card"><strong>Comparison tasks</strong><p>Test whether users can quickly compare longevity, projection, price, and dominant accords across multiple fragrances.</p></article>
+                        <article class="validation-card"><strong>Collection model</strong><p>Validate the categories users need—owned, sampled, wish list, decluttered, seasonal rotation, and signature scents.</p></article>
+                        <article class="validation-card"><strong>Accessibility and commerce</strong><p>Audit contrast, text scaling, keyboard flow, and product-state messaging before connecting the concept to purchasing or inventory data.</p></article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section reflection" id="reflection">
+            <div class="reflection-layout page-shell">
+                <div class="reveal">
+                    <span class="eyebrow">Reflection</span>
+                    <h2>What Aurea demonstrates.</h2>
+                    <p class="lead">Aurea gave me space to explore how visual direction and product clarity can reinforce one another.</p>
+                    <p>The project strengthened my ability to create a distinctive interface language, sequence dense information, and design a cohesive experience across discovery, evaluation, storytelling, and retention. It also clarified an important limitation: visual polish should create a strong hypothesis, but user evidence must determine whether the final product works.</p>
+                </div>
+
+                <ul class="takeaway-list reveal" aria-label="Project takeaways">
+                    <li><span>01</span><div><strong>Visual direction</strong><br>Built a recognizable system that feels appropriate for fragrance without copying a conventional beauty-commerce layout.</div></li>
+                    <li><span>02</span><div><strong>Information hierarchy</strong><br>Balanced emotional storytelling with scannable product details and performance information.</div></li>
+                    <li><span>03</span><div><strong>Product thinking</strong><br>Connected discovery, comparison, narrative, and collection into one coherent experience.</div></li>
+                    <li><span>04</span><div><strong>Design maturity</strong><br>Separated what the concept demonstrates from what still needs research, testing, and technical validation.</div></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="next-project">
+            <div class="page-shell reveal">
+                <p>Return to selected work</p>
+                <a href="index.html#portfolio">View all projects →</a>
+            </div>
+        </section>
+    </main>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged interface screen" aria-hidden="true">
+        <button class="lightbox-close" type="button" aria-label="Close enlarged image">×</button>
+        <div class="lightbox-dialog">
+            <img id="lightbox-image" src="" alt="Enlarged Aurea interface screen">
+        </div>
+    </div>
+
+    <script>
+        const nav = document.querySelector('.nav');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const closeButton = document.querySelector('.lightbox-close');
+        let lastTrigger = null;
+
+        function updateNav() {
+            nav.classList.toggle('scrolled', window.scrollY > 20);
+        }
+        updateNav();
+        window.addEventListener('scroll', updateNav, { passive: true });
+
+        const revealItems = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            revealItems.forEach((item) => observer.observe(item));
+        } else {
+            revealItems.forEach((item) => item.classList.add('visible'));
+        }
+
+        function openLightbox(trigger) {
+            lastTrigger = trigger;
+            lightboxImage.src = trigger.dataset.lightboxSrc;
+            lightboxImage.alt = trigger.dataset.lightboxAlt || 'Enlarged interface screen';
+            lightbox.classList.add('open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            closeButton.focus();
+        }
+
+        function closeLightbox() {
+            if (!lightbox.classList.contains('open')) return;
+            lightbox.classList.remove('open');
+            lightbox.setAttribute('aria-hidden', 'true');
+            lightboxImage.src = '';
+            document.body.style.overflow = '';
+            if (lastTrigger) lastTrigger.focus();
+        }
+
+        document.querySelectorAll('[data-lightbox-src]').forEach((button) => {
+            button.addEventListener('click', () => openLightbox(button));
+        });
+        closeButton.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeLightbox();
+        });
+
+        /* Embedded interactive Aurea prototype */
+        (() => {
+            const root = document.getElementById('auPrototypeRoot');
+            const stage = document.getElementById('auStage');
+            const modeButtons = document.querySelectorAll('[data-au-mode]');
+            if (!root || !stage) return;
+
+            const iconPaths = {
+                home: '<path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M9.5 20v-6h5v6"/>',
+                compass: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.1 4.9-4.9 2.1 2.1-4.9 4.9-2.1Z"/>',
+                archive: '<path d="M4 7h16v13H4z"/><path d="M3 4h18v3H3zM9 11h6"/>',
+                journal: '<path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4Z"/><path d="M8 4v16M11 8h5M11 12h5"/>',
+                compare: '<path d="M7 7h13M16 3l4 4-4 4M17 17H4M8 13l-4 4 4 4"/>',
+                heart: '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/>',
+                search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
+                arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+                back: '<path d="M19 12H5M11 18l-6-6 6-6"/>',
+                close: '<path d="m6 6 12 12M18 6 6 18"/>',
+                plus: '<path d="M12 5v14M5 12h14"/>',
+                spark: '<path d="m12 3 1.3 4.1L17 9l-3.7 1.9L12 15l-1.3-4.1L7 9l3.7-1.9L12 3Z"/><path d="m19 15 .7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15Z"/>',
+                clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+                check: '<path d="m5 12 4 4L19 6"/>',
+                sliders: '<path d="M4 6h10M18 6h2M4 12h3M11 12h9M4 18h8M16 18h4"/><circle cx="16" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="14" cy="18" r="2"/>'
+            };
+
+            const auIcon = (name, label = '') => `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"${label ? ` aria-label="${label}" role="img"` : ' aria-hidden="true"'}>${iconPaths[name] || iconPaths.spark}</svg>`;
+            const auEscape = value => String(value).replace(/[&<>'"]/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[character]));
+
+            const fragrances = [
+                {
+                    id: 'velours',
+                    name: 'Velours No. 8',
+                    short: 'Velours',
+                    house: 'Aurea Editions',
+                    family: 'Floral amber',
+                    image: 'aurea-assets/velours-no8.webp',
+                    mood: 'Intimate',
+                    setting: 'After dark',
+                    texture: 'Velvet',
+                    phrase: 'A low-lit iris wrapped in plum skin and ambered woods.',
+                    accords: ['Iris', 'Dark plum', 'Amber', 'Soft woods'],
+                    notes: { Top: 'Plum skin · pink pepper', Heart: 'Iris butter · violet leaf', Base: 'Amber resin · cashmere wood' },
+                    timeline: [['First light', 'Plum and pepper'], ['2–4 hours', 'Powdered iris'], ['Late drydown', 'Warm amber woods']],
+                    metrics: { Longevity: 88, Projection: 70, Sweetness: 62, Freshness: 22 },
+                    hours: '8–10 h',
+                    trail: 'Considered trail',
+                    status: 'owned'
+                },
+                {
+                    id: 'solstice',
+                    name: 'Solstice Neroli',
+                    short: 'Solstice',
+                    house: 'Maison Liora',
+                    family: 'Citrus floral',
+                    image: 'aurea-assets/solstice-neroli.webp',
+                    mood: 'Luminous',
+                    setting: 'Open air',
+                    texture: 'Crisp',
+                    phrase: 'Sun-warmed citrus peel, white blossom, and clean mineral air.',
+                    accords: ['Neroli', 'Bergamot', 'Orange blossom', 'Mineral musk'],
+                    notes: { Top: 'Bergamot · bitter orange', Heart: 'Neroli · orange blossom', Base: 'Mineral musk · pale woods' },
+                    timeline: [['First light', 'Bright bergamot'], ['2–4 hours', 'White blossom'], ['Late drydown', 'Clean mineral musk']],
+                    metrics: { Longevity: 64, Projection: 54, Sweetness: 28, Freshness: 92 },
+                    hours: '5–7 h',
+                    trail: 'Airy trail',
+                    status: 'sampled'
+                },
+                {
+                    id: 'rose',
+                    name: 'Rose Obscura',
+                    short: 'Obscura',
+                    house: 'Studio Obscura',
+                    family: 'Spiced rose',
+                    image: 'aurea-assets/rose-obscura.webp',
+                    mood: 'Dramatic',
+                    setting: 'After dark',
+                    texture: 'Silken',
+                    phrase: 'A vivid garden rose cut with pepper, incense, and polished woods.',
+                    accords: ['Crimson rose', 'Pink pepper', 'Incense', 'Ebony'],
+                    notes: { Top: 'Pink pepper · saffron', Heart: 'Crimson rose · geranium', Base: 'Incense · polished ebony' },
+                    timeline: [['First light', 'Peppered rose'], ['2–4 hours', 'Velvety petals'], ['Late drydown', 'Incense and ebony']],
+                    metrics: { Longevity: 82, Projection: 84, Sweetness: 46, Freshness: 35 },
+                    hours: '7–9 h',
+                    trail: 'Expressive trail',
+                    status: 'wishlist'
+                },
+                {
+                    id: 'iris',
+                    name: 'Iris Veil',
+                    short: 'Iris Veil',
+                    house: 'Atelier Nive',
+                    family: 'Mineral floral',
+                    image: 'aurea-assets/iris-veil.webp',
+                    mood: 'Grounded',
+                    setting: 'Quiet hours',
+                    texture: 'Sheer',
+                    phrase: 'Cool iris, rice paper, and silvered musk in a precise, weightless composition.',
+                    accords: ['Pale iris', 'Rice paper', 'Orris', 'Silver musk'],
+                    notes: { Top: 'Violet leaf · aldehydes', Heart: 'Pale iris · rice paper', Base: 'Orris · silver musk' },
+                    timeline: [['First light', 'Cool aldehydes'], ['2–4 hours', 'Paper-soft iris'], ['Late drydown', 'Silvered skin musk']],
+                    metrics: { Longevity: 69, Projection: 38, Sweetness: 18, Freshness: 71 },
+                    hours: '6–7 h',
+                    trail: 'Close to skin',
+                    status: 'owned'
+                }
+            ];
+
+            const state = {
+                mode: 'website',
+                page: 'home',
+                selected: 'velours',
+                profileTab: 'overview',
+                compass: { mood: 'Intimate', setting: 'After dark', texture: 'Velvet' },
+                archive: new Set(['velours', 'rose', 'iris']),
+                archiveFilter: 'all',
+                compare: ['velours', 'solstice'],
+                journal: [
+                    { date: 'Jul 18', fragrance: 'velours', context: 'Dinner · warm evening', note: 'The iris felt softer after sunset.' },
+                    { date: 'Jul 12', fragrance: 'iris', context: 'Studio day · quiet', note: 'Clean and focused, never distracting.' },
+                    { date: 'Jul 06', fragrance: 'rose', context: 'Gallery opening · dressed up', note: 'Pepper first, then an unexpectedly dry rose.' }
+                ]
+            };
+
+            const byId = id => fragrances.find(fragrance => fragrance.id === id) || fragrances[0];
+            const activePage = () => state.page === 'profile' ? 'discover' : state.page === 'compare' && state.mode === 'iphone' ? 'discover' : state.page;
+
+            function logo() {
+                return `<button class="au-logo" type="button" data-au-page="home" aria-label="Go to Aurea Atelier"><span class="au-logo-mark" aria-hidden="true"></span>Aurea</button>`;
+            }
+
+            function navButton(page, label, iconName) {
+                const active = activePage() === page;
+                return `<button class="au-nav-button${active ? ' is-active' : ''}" type="button" data-au-page="${page}"${active ? ' aria-current="page"' : ''}>${auIcon(iconName)}<span>${label}</span></button>`;
+            }
+
+            function appHeader() {
+                if (state.mode === 'iphone') {
+                    return `<header class="au-app-head">${logo()}<div class="au-head-actions"><button class="au-icon-button" type="button" data-au-page="compare" aria-label="Compare fragrances">${auIcon('compare')}</button><span class="au-avatar" aria-label="Jocelyn's profile">JM</span></div></header>`;
+                }
+                return `<header class="au-app-head">
+                    ${logo()}
+                    <nav class="au-primary-nav" aria-label="Aurea prototype navigation">
+                        ${navButton('home', 'Atelier', 'home')}
+                        ${navButton('discover', 'Scent Compass', 'compass')}
+                        ${navButton('compare', 'Compare', 'compare')}
+                        ${navButton('archive', 'Archive', 'archive')}
+                    </nav>
+                    <div class="au-head-actions"><button class="au-icon-button" type="button" data-au-page="journal" aria-label="Open wear journal">${auIcon('journal')}</button><span class="au-avatar" aria-label="Jocelyn's profile">JM</span></div>
+                </header>`;
+            }
+
+            function mobileNav() {
+                return `<nav class="au-mobile-nav" aria-label="Aurea app navigation">
+                    ${mobileNavButton('home', 'Atelier', 'home')}
+                    ${mobileNavButton('discover', 'Explore', 'compass')}
+                    ${mobileNavButton('archive', 'Archive', 'archive')}
+                    ${mobileNavButton('journal', 'Journal', 'journal')}
+                </nav>`;
+            }
+
+            function mobileNavButton(page, label, iconName) {
+                const active = activePage() === page;
+                return `<button class="${active ? 'is-active' : ''}" type="button" data-au-page="${page}"${active ? ' aria-current="page"' : ''}>${auIcon(iconName)}<span>${label}</span></button>`;
+            }
+
+            function pageHead(kicker, title, copy, action = '') {
+                return `<div class="au-page-head"><div><span class="au-page-kicker">${kicker}</span><h3>${title}</h3>${copy ? `<p>${copy}</p>` : ''}</div>${action ? `<div>${action}</div>` : ''}</div>`;
+            }
+
+            function homePage() {
+                const featured = fragrances[0];
+                return `${pageHead('The Saturday edit · for your evening', 'What do you want the air to remember?', 'A considered starting point—not an endless catalog.', `<button class="au-secondary-button" type="button" data-au-page="discover">Open Scent Compass ${auIcon('arrow')}</button>`)}
+                    <div class="au-home-grid">
+                        <article class="au-feature">
+                            <img src="${featured.image}" alt="Deep plum sculptural perfume bottle on burgundy marble">
+                            <div class="au-feature-copy">
+                                <span class="au-editorial-label">${auIcon('spark')} Editor's evening pick</span>
+                                <h4>Velours <em>No. 8</em></h4>
+                                <p>${featured.phrase}</p>
+                                <div class="au-meta-row"><span>${featured.family}</span><span>${featured.hours}</span><span>${featured.texture}</span></div>
+                                <button class="au-primary-button" type="button" data-au-action="open-profile" data-id="${featured.id}">Enter the scent ${auIcon('arrow')}</button>
+                            </div>
+                        </article>
+                        <div class="au-side-stack">
+                            <article class="au-soft-card au-weather"><span class="au-weather-orbit">7:30</span><span class="au-page-kicker">Tonight's atmosphere</span><h4>Warm air, slower plans.</h4><p>Your evening edit favors a soft trail, warm texture, and enough presence to last through dinner.</p><button class="au-text-button" style="color:#f4dede!important" type="button" data-au-page="compare">Compare the edit →</button></article>
+                            <article class="au-soft-card"><span class="au-page-kicker">Begin with a feeling</span><h4>Choose a direction.</h4><div class="au-mood-list">
+                                <button class="au-mood-row" type="button" data-au-action="quick-mood" data-value="Luminous"><i style="--mood:#e8ca84"></i><span><strong>Luminous</strong><small>Citrus · open air</small></span>${auIcon('arrow')}</button>
+                                <button class="au-mood-row" type="button" data-au-action="quick-mood" data-value="Grounded"><i style="--mood:#a9ad9d"></i><span><strong>Grounded</strong><small>Iris · quiet hours</small></span>${auIcon('arrow')}</button>
+                            </div></article>
+                        </div>
+                    </div>`;
+            }
+
+            function compassScore(fragrance) {
+                return ['mood', 'setting', 'texture'].reduce((score, key) => score + (fragrance[key] === state.compass[key] ? 1 : 0), 0);
+            }
+
+            function fragranceCard(fragrance) {
+                const saved = state.archive.has(fragrance.id);
+                return `<article class="au-fragrance-card" data-au-fragrance-card data-title="${auEscape(`${fragrance.name} ${fragrance.house} ${fragrance.family} ${fragrance.accords.join(' ')}`.toLowerCase())}">
+                    <div class="au-card-image"><img src="${fragrance.image}" alt="${auEscape(fragrance.name)} fragrance still life"><button class="au-save-button${saved ? ' is-saved' : ''}" type="button" data-au-action="toggle-save" data-id="${fragrance.id}" aria-label="${saved ? 'Remove from' : 'Save to'} archive">${auIcon('heart')}</button></div>
+                    <div class="au-card-body"><span class="au-page-kicker">${fragrance.house}</span><button class="au-card-link" type="button" data-au-action="open-profile" data-id="${fragrance.id}"><h4>${fragrance.name}</h4><p>${fragrance.phrase}</p></button><div class="au-card-meta"><span>${fragrance.family}</span><span>${fragrance.hours}</span></div></div>
+                </article>`;
+            }
+
+            function choiceGroup(key, label, choices) {
+                return `<div class="au-choice-group"><strong>${label}</strong><div class="au-chip-row">${choices.map(choice => `<button class="au-chip${state.compass[key] === choice ? ' is-active' : ''}" type="button" data-au-action="compass-choice" data-key="${key}" data-value="${choice}">${choice}</button>`).join('')}</div></div>`;
+            }
+
+            function discoverPage() {
+                const ranked = [...fragrances].sort((a, b) => compassScore(b) - compassScore(a));
+                const match = ranked[0];
+                return `${pageHead('Scent Compass', 'Find the feeling before the name.', 'Shape a direction using language that feels natural, then inspect the evidence.', `<button class="au-secondary-button" type="button" data-au-action="surprise">${auIcon('spark')} Unexpected direction</button>`)}
+                    <div class="au-search-row"><label class="au-search-field">${auIcon('search')}<span class="au-sr-only">Search fragrances</span><input id="auFragranceSearch" type="search" placeholder="Search a note, house, or atmosphere" autocomplete="off"></label><button class="au-secondary-button" type="button" data-au-action="focus-compass">${auIcon('sliders')} Refine</button></div>
+                    <div class="au-compass" id="auCompass">
+                        <article class="au-compass-panel"><span class="au-page-kicker">Your direction</span><h4>${state.compass.mood}, ${state.compass.texture.toLowerCase()}.</h4><p>Best for ${state.compass.setting.toLowerCase()}. Aurea weighs your choices without hiding other possibilities.</p><div class="au-compass-answer"><small>Closest match · ${compassScore(match)}/3 cues</small><strong>${match.name}</strong></div></article>
+                        <div class="au-choice-panel">${choiceGroup('mood', 'I want to feel', ['Intimate','Luminous','Grounded','Dramatic'])}${choiceGroup('setting', 'I am wearing it', ['Everyday','Open air','After dark','Quiet hours'])}${choiceGroup('texture', 'I want it to feel', ['Velvet','Crisp','Silken','Sheer'])}</div>
+                    </div>
+                    <div class="au-fragrance-grid" id="auFragranceGrid">${ranked.map(fragranceCard).join('')}</div>`;
+            }
+
+            function profileContent(fragrance) {
+                if (state.profileTab === 'notes') {
+                    return `<div class="au-note-pyramid">${Object.entries(fragrance.notes).map(([level, notes]) => `<div class="au-note-level"><strong>${level}</strong><span>${notes}</span></div>`).join('')}</div><p style="margin-top:.8rem">Notes describe the structure; the editorial brief describes how the whole composition feels.</p>`;
+                }
+                if (state.profileTab === 'skin') {
+                    return `<span class="au-page-kicker" style="margin-top:.8rem">How it may unfold</span><div class="au-skin-timeline">${fragrance.timeline.map(([time, note]) => `<div class="au-skin-step"><strong>${time}</strong><small>${note}</small></div>`).join('')}</div><p style="margin-top:1rem">Skin, weather, and application change every wear. Save your own observation in the journal.</p><button class="au-text-button" type="button" data-au-action="open-wear" data-id="${fragrance.id}">Log how it wore →</button>`;
+                }
+                return `<div class="au-accords">${fragrance.accords.map(accord => `<span class="au-tag">${accord}</span>`).join('')}</div><div class="au-performance">${Object.entries(fragrance.metrics).map(([name, value]) => `<div class="au-meter-row"><span>${name}</span><span class="au-meter"><i style="--value:${value}%"></i></span><b>${value}</b></div>`).join('')}</div><div class="au-soft-card" style="margin-top:.8rem;padding:.75rem"><span class="au-page-kicker">Wear context</span><p style="margin:0">${fragrance.mood} · ${fragrance.setting} · ${fragrance.texture} · ${fragrance.trail}</p></div>`;
+            }
+
+            function profilePage() {
+                const fragrance = byId(state.selected);
+                const saved = state.archive.has(fragrance.id);
+                return `<div class="au-page-head"><button class="au-text-button" type="button" data-au-page="discover">${auIcon('back')} Back to Scent Compass</button><button class="au-secondary-button" type="button" data-au-action="toggle-save" data-id="${fragrance.id}">${auIcon('heart')} ${saved ? 'In your archive' : 'Save scent'}</button></div>
+                    <div class="au-profile-grid">
+                        <article class="au-profile-visual"><img src="${fragrance.image}" alt="${fragrance.name} editorial fragrance still life"><div class="au-profile-copy"><span class="au-page-kicker">${fragrance.house} · ${fragrance.family}</span><h3>${fragrance.name}</h3><p>${fragrance.phrase}</p><div class="au-meta-row"><span>${fragrance.hours}</span><span>${fragrance.trail}</span><span>${fragrance.texture}</span></div></div></article>
+                        <aside class="au-profile-panel"><div class="au-profile-tabs"><button class="${state.profileTab === 'overview' ? 'is-active' : ''}" type="button" data-au-action="profile-tab" data-tab="overview">Overview</button><button class="${state.profileTab === 'notes' ? 'is-active' : ''}" type="button" data-au-action="profile-tab" data-tab="notes">Note structure</button><button class="${state.profileTab === 'skin' ? 'is-active' : ''}" type="button" data-au-action="profile-tab" data-tab="skin">On skin</button></div>${profileContent(fragrance)}<div class="au-profile-actions"><button class="au-secondary-button" type="button" data-au-action="add-compare" data-id="${fragrance.id}">${auIcon('compare')} Compare</button><button class="au-primary-button" type="button" data-au-action="open-wear" data-id="${fragrance.id}">${auIcon('journal')} Log a wear</button></div></aside>
+                    </div>`;
+            }
+
+            function comparePage() {
+                const left = byId(state.compare[0]);
+                const right = byId(state.compare[1]);
+                const metrics = ['Longevity','Projection','Sweetness','Freshness'];
+                const compareCard = (fragrance, side) => `<article class="au-compare-card"><img src="${fragrance.image}" alt="${fragrance.name} fragrance still life"><div class="au-compare-copy"><span class="au-page-kicker">${fragrance.house}</span><h4>${fragrance.name}</h4><p>${fragrance.phrase}</p><button class="au-text-button" type="button" data-au-action="cycle-compare" data-side="${side}">Change scent →</button></div></article>`;
+                return `${pageHead('Side-by-side evidence', 'Compare without losing the story.', 'Practical differences stay visible while each scent keeps its character.', `<button class="au-secondary-button" type="button" data-au-action="save-both">${auIcon('heart')} Save both</button>`)}
+                    <div class="au-compare-grid">${compareCard(left,0)}<div class="au-swap-column"><span>versus</span></div>${compareCard(right,1)}</div>
+                    <div class="au-compare-metrics">${metrics.map(metric => `<div class="au-compare-row"><strong>${metric}</strong><span class="au-compare-score"><i style="--value:${left.metrics[metric]}%;--color:#6d3046"></i></span><span class="au-compare-score"><i style="--value:${right.metrics[metric]}%;--color:#c7a66d"></i></span></div>`).join('')}<div class="au-compare-row"><strong>Best context</strong><span style="font-size:.6rem">${left.setting} · ${left.texture}</span><span style="font-size:.6rem">${right.setting} · ${right.texture}</span></div></div>`;
+            }
+
+            function archivePage() {
+                const saved = fragrances.filter(fragrance => state.archive.has(fragrance.id));
+                const filtered = saved.filter(fragrance => state.archiveFilter === 'all' || fragrance.status === state.archiveFilter);
+                const filters = [['all','All scents'],['owned','Owned'],['sampled','Sampled'],['wishlist','Wish list']];
+                return `${pageHead(`Personal archive · ${saved.length} scents`, 'A wardrobe built from memory.', 'Keep what you own, what you sampled, and what you still want to understand.', `<button class="au-primary-button" type="button" data-au-page="discover">${auIcon('plus')} Discover more</button>`)}
+                    <div class="au-archive-top"><article class="au-rotation-card"><img src="aurea-assets/iris-veil.webp" alt="Iris Veil fragrance still life"><div class="au-rotation-copy"><span class="au-page-kicker" style="color:#e9d2d1">Current rotation</span><h4>Quiet summer mornings.</h4><p>Iris Veil and Solstice Neroli cover the week's lighter moments.</p></div></article><div class="au-archive-stats"><div class="au-stat"><strong>${saved.length}</strong><small>In archive</small></div><div class="au-stat"><strong>${state.journal.length}</strong><small>Wear notes</small></div><div class="au-stat"><strong>2</strong><small>Owned</small></div><div class="au-stat"><strong>1</strong><small>To revisit</small></div></div></div>
+                    <div class="au-chip-row" style="margin-bottom:.8rem">${filters.map(([value,label]) => `<button class="au-chip${state.archiveFilter === value ? ' is-active' : ''}" type="button" data-au-action="archive-filter" data-filter="${value}">${label}</button>`).join('')}</div>
+                    <div class="au-fragrance-grid">${filtered.length ? filtered.map(fragranceCard).join('') : '<div class="au-empty-state"><h4>No scents here yet.</h4><p>Move a fragrance into this part of your archive when it earns a place.</p></div>'}</div>`;
+            }
+
+            function journalPage() {
+                return `${pageHead('Wear journal', 'Remember more than the name.', 'Capture place, weather, mood, and the way a fragrance changed on your skin.', `<button class="au-primary-button" type="button" data-au-action="open-wear">${auIcon('plus')} Log today's wear</button>`)}
+                    <div class="au-journal-grid"><div class="au-journal-list">${state.journal.map(entry => { const fragrance = byId(entry.fragrance); const dateParts = entry.date.split(' '); return `<article class="au-journal-row"><span class="au-journal-date">${dateParts[0]}<br>${dateParts[1]}</span><span><strong>${fragrance.name}</strong><small>${auEscape(entry.context)} · ${auEscape(entry.note)}</small></span><button class="au-icon-button" type="button" data-au-action="open-profile" data-id="${fragrance.id}" aria-label="Open ${fragrance.name}">${auIcon('arrow')}</button></article>`; }).join('')}</div><aside class="au-soft-card au-memory-map"><span class="au-page-kicker" style="color:#e9d2d1">Your memory map</span><h4>Recent wears lean intimate.</h4><p>Color reflects the moods you logged—not a score or diagnosis.</p><div class="au-memory-orbits" aria-label="Abstract visualization of recent scent moods"><i></i><i></i><i></i><i></i><i></i></div></aside></div>`;
+            }
+
+            function currentPage() {
+                return ({ home: homePage, discover: discoverPage, profile: profilePage, compare: comparePage, archive: archivePage, journal: journalPage }[state.page] || homePage)();
+            }
+
+            function render() {
+                const page = `<main class="au-main"><div class="au-page">${currentPage()}</div></main>`;
+                if (state.mode === 'iphone') {
+                    root.innerHTML = `<div class="au-product au-phone"><div class="au-island" aria-hidden="true"></div><div class="au-phone-status"><span>9:41</span><span>● ● ▰</span></div><div class="au-phone-app">${appHeader()}${page}${mobileNav()}</div></div>`;
+                    stage.classList.add('is-phone');
+                } else {
+                    root.innerHTML = `<div class="au-product au-browser"><div class="au-browser-bar"><span class="au-window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="au-url">aurea.archive / ${state.page}</span><span class="au-browser-menu" aria-hidden="true">•••</span></div><div class="au-web-app">${appHeader()}${page}</div></div>`;
+                    stage.classList.remove('is-phone');
+                }
+                modeButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.auMode === state.mode)));
+            }
+
+            function showToast(message) {
+                root.querySelector('.au-toast')?.remove();
+                const toast = document.createElement('div');
+                toast.className = 'au-toast';
+                toast.setAttribute('role','status');
+                toast.textContent = message;
+                (root.querySelector('.au-product') || root).appendChild(toast);
+                window.setTimeout(() => toast.remove(), 2600);
+            }
+
+            function closeOverlay() {
+                root.querySelector('.au-overlay')?.remove();
+            }
+
+            function openWearModal(fragranceId = state.selected) {
+                const product = root.querySelector('.au-product');
+                const options = fragrances.map(fragrance => `<option value="${fragrance.id}"${fragrance.id === fragranceId ? ' selected' : ''}>${fragrance.name}</option>`).join('');
+                product.insertAdjacentHTML('beforeend', `<div class="au-overlay" data-au-action="close-overlay"><form class="au-modal" id="auWearForm" data-au-modal><div class="au-modal-head"><h4>Log a wear</h4><button class="au-icon-button" type="button" data-au-action="close-overlay" aria-label="Close">${auIcon('close')}</button></div><label>Fragrance<select id="auWearFragrance">${options}</select></label><label>Moment<select id="auWearContext"><option>Everyday · relaxed</option><option>Work · focused</option><option>Evening · dressed up</option><option>Open air · warm weather</option><option>Quiet hours · at home</option></select></label><label>What did you notice?<textarea id="auWearNote" placeholder="How did it open, change, or make the moment feel?"></textarea></label><button class="au-primary-button" type="submit">Save wear note ${auIcon('check')}</button></form></div>`);
+                product.querySelector('#auWearNote')?.focus();
+            }
+
+            function filterCards(query) {
+                const normalized = query.trim().toLowerCase();
+                root.querySelectorAll('[data-au-fragrance-card]').forEach(card => {
+                    card.hidden = Boolean(normalized) && !card.dataset.title.includes(normalized);
+                });
+            }
+
+            modeButtons.forEach(button => button.addEventListener('click', () => {
+                state.mode = button.dataset.auMode;
+                render();
+            }));
+
+            root.addEventListener('input', event => {
+                if (event.target.id === 'auFragranceSearch') filterCards(event.target.value);
+            });
+
+            root.addEventListener('submit', event => {
+                if (event.target.id !== 'auWearForm') return;
+                event.preventDefault();
+                const fragrance = root.querySelector('#auWearFragrance').value;
+                const context = root.querySelector('#auWearContext').value;
+                const note = root.querySelector('#auWearNote').value.trim() || 'A wear worth remembering.';
+                state.journal.unshift({ date: 'Jul 19', fragrance, context, note });
+                closeOverlay();
+                state.page = 'journal';
+                render();
+                showToast('Wear note added to your journal.');
+            });
+
+            root.addEventListener('click', event => {
+                const button = event.target.closest('button');
+                if (!button) {
+                    if (event.target.classList.contains('au-overlay') && event.target.dataset.auAction === 'close-overlay') closeOverlay();
+                    return;
+                }
+
+                if (button.dataset.auPage) {
+                    state.page = button.dataset.auPage;
+                    render();
+                    return;
+                }
+
+                const action = button.dataset.auAction;
+                if (!action) return;
+
+                if (action === 'open-profile') {
+                    state.selected = button.dataset.id;
+                    state.profileTab = 'overview';
+                    state.page = 'profile';
+                    render();
+                }
+
+                if (action === 'toggle-save') {
+                    const id = button.dataset.id;
+                    const saved = state.archive.has(id);
+                    saved ? state.archive.delete(id) : state.archive.add(id);
+                    render();
+                    showToast(saved ? 'Removed from your archive.' : 'Added to your archive.');
+                }
+
+                if (action === 'quick-mood') {
+                    state.compass.mood = button.dataset.value;
+                    state.page = 'discover';
+                    render();
+                }
+
+                if (action === 'compass-choice') {
+                    state.compass[button.dataset.key] = button.dataset.value;
+                    render();
+                }
+
+                if (action === 'focus-compass') {
+                    root.querySelector('#auCompass')?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' });
+                    root.querySelector('#auCompass .au-chip')?.focus();
+                }
+
+                if (action === 'surprise') {
+                    const choices = [
+                        { mood: 'Dramatic', setting: 'After dark', texture: 'Silken' },
+                        { mood: 'Grounded', setting: 'Quiet hours', texture: 'Sheer' },
+                        { mood: 'Luminous', setting: 'Open air', texture: 'Crisp' }
+                    ];
+                    state.compass = choices[Math.floor(Math.random() * choices.length)];
+                    render();
+                    showToast('A new scent direction is ready.');
+                }
+
+                if (action === 'profile-tab') {
+                    state.profileTab = button.dataset.tab;
+                    render();
+                }
+
+                if (action === 'add-compare') {
+                    const id = button.dataset.id;
+                    if (state.compare.includes(id)) {
+                        const replacement = fragrances.find(fragrance => !state.compare.includes(fragrance.id));
+                        state.compare[1] = replacement.id;
+                    } else {
+                        state.compare[1] = id;
+                    }
+                    state.page = 'compare';
+                    render();
+                    showToast('Added to comparison.');
+                }
+
+                if (action === 'cycle-compare') {
+                    const side = Number(button.dataset.side);
+                    const currentIndex = fragrances.findIndex(fragrance => fragrance.id === state.compare[side]);
+                    let next = fragrances[(currentIndex + 1) % fragrances.length];
+                    if (state.compare[1 - side] === next.id) next = fragrances[(currentIndex + 2) % fragrances.length];
+                    state.compare[side] = next.id;
+                    render();
+                }
+
+                if (action === 'save-both') {
+                    state.compare.forEach(id => state.archive.add(id));
+                    render();
+                    showToast('Both fragrances are now in your archive.');
+                }
+
+                if (action === 'archive-filter') {
+                    state.archiveFilter = button.dataset.filter;
+                    render();
+                }
+
+                if (action === 'open-wear') openWearModal(button.dataset.id || state.selected);
+                if (action === 'close-overlay') closeOverlay();
+            });
+
+            document.addEventListener('keydown', event => {
+                if (event.key === 'Escape') closeOverlay();
+            });
+
+            render();
+        })();
+    </script>
+</body>
+</html>

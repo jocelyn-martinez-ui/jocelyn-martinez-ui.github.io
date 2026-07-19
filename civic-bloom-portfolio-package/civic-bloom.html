@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Civic Bloom is a self-directed visual communication system by Jocelyn Martinez, spanning presentation design, social media, print production, wayfinding, review workflow, and quality control.">
+    <meta name="theme-color" content="#f6f0e5">
+    <meta property="og:title" content="Civic Bloom — Visual Communication Case Study | Jocelyn Martinez">
+    <meta property="og:description" content="A public-program identity system spanning presentation, social, print, wayfinding, and production QA.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="civic-bloom/brand-system-flatlay.png">
+    <title>Civic Bloom — Visual Communication Case Study | Jocelyn Martinez</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #f6f0e5;
+            --paper-deep: #e9ded0;
+            --surface: #fffdf6;
+            --ink: #1d1d1f;
+            --charcoal: #252628;
+            --body: #5e5a54;
+            --muted: #8a8177;
+            --coral: #ef6548;
+            --coral-dark: #bd4a35;
+            --coral-soft: #fce7df;
+            --blue: #1553a5;
+            --blue-dark: #0f3970;
+            --blue-soft: #e7eef7;
+            --yellow: #f7c544;
+            --yellow-soft: #fbf0cb;
+            --sage: #6c826d;
+            --sage-soft: #e1e8de;
+            --line: rgba(29,29,31,.13);
+            --line-soft: rgba(29,29,31,.07);
+            --serif: "Instrument Serif", Georgia, serif;
+            --sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --content: 1280px;
+            --radius-xl: 42px;
+            --radius-lg: 28px;
+            --shadow: 0 32px 100px rgba(30, 38, 48, 0.14);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 145px; }
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.72;
+            -webkit-font-smoothing: antialiased;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: .018;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.72'/%3E%3C/svg%3E");
+        }
+        body.lightbox-open { overflow: hidden; }
+        img { display: block; max-width: 100%; }
+        a { color: inherit; }
+        button { font: inherit; }
+        button, a { -webkit-tap-highlight-color: transparent; }
+        ::selection { background: var(--yellow-soft); color: var(--ink); }
+        :focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; border-radius: 5px; }
+        .page-shell { width: min(calc(100% - 3rem), var(--content)); margin-inline: auto; }
+        .skip-link { position: fixed; top: 1rem; left: 1rem; z-index: 5000; padding: .8rem 1rem; border-radius: 999px; background: var(--ink); color: #fff; text-decoration: none; transform: translateY(-170%); transition: transform .2s ease; }
+        .skip-link:focus { transform: translateY(0); }
+
+        .site-nav { position: fixed; inset: 0 0 auto; z-index: 2000; border-bottom: 1px solid transparent; background: rgba(246,240,229,.82); backdrop-filter: blur(20px); transition: border-color .25s ease, box-shadow .25s ease, background .25s ease; }
+        .site-nav.scrolled { border-color: var(--line-soft); background: rgba(246,240,229,.95); box-shadow: 0 10px 35px rgba(32,31,30,.055); }
+        .nav-inner { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+        .brand { display: inline-flex; align-items: baseline; gap: .55rem; text-decoration: none; white-space: nowrap; }
+        .brand-name { font-family: var(--serif); font-size: 1.62rem; font-style: italic; line-height: 1; }
+        .brand-role { color: var(--muted); font-size: .58rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+        .nav-links { display: flex; align-items: center; gap: 1.45rem; }
+        .nav-links a { color: var(--muted); font-size: .66rem; font-weight: 700; letter-spacing: .13em; text-decoration: none; text-transform: uppercase; transition: color .2s ease; }
+        .nav-links a:hover { color: var(--blue); }
+        .back-link { display: inline-flex; align-items: center; gap: .5rem; padding: .72rem .95rem; border: 1px solid var(--line); border-radius: 999px; color: var(--ink) !important; transition: background .2s ease, color .2s ease, border-color .2s ease !important; }
+        .back-link:hover { border-color: var(--ink); background: var(--ink); color: #fff !important; }
+
+        .hero { position: relative; min-height: 100vh; padding: 12.5rem 0 6.5rem; overflow: hidden; background: radial-gradient(circle at 82% 17%, rgba(21,83,165,.18), transparent 30rem), radial-gradient(circle at 5% 82%, rgba(239,101,72,.16), transparent 25rem), linear-gradient(180deg,#fffdf6 0%,var(--paper) 100%); }
+        .hero::after { content:""; position:absolute; right:-8rem; top:12rem; width:38rem; height:38rem; border:1px solid rgba(21,83,165,.11); border-radius:50%; box-shadow: -7rem 4rem 0 -1px rgba(239,101,72,.05), -13rem -4rem 0 -1px rgba(247,197,68,.07); pointer-events:none; }
+        .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0,.92fr) minmax(480px,1.08fr); gap: clamp(4rem,8vw,8rem); align-items: center; }
+        .eyebrow { display:flex; align-items:center; gap:.85rem; margin:0 0 1.6rem; color:var(--coral-dark); font-size:.66rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; }
+        .eyebrow::before { content:""; width:38px; height:1px; background:currentColor; }
+        h1,h2,h3,h4,p { margin-top:0; }
+        h1,h2,h3,h4 { text-wrap: balance; }
+        h1 { margin:0 0 1.8rem; font-family:var(--serif); font-size:clamp(5.4rem,11vw,10.5rem); font-weight:400; letter-spacing:-.075em; line-height:.76; }
+        h1 em { display:block; margin-left:clamp(1rem,6vw,5rem); color:var(--blue); font-weight:400; }
+        .hero-subtitle { max-width:640px; margin-bottom:2rem; color:var(--body); font-size:clamp(1.13rem,2vw,1.38rem); line-height:1.72; }
+        .hero-honesty { max-width:620px; margin-bottom:2.4rem; padding:1rem 0 0 1.2rem; border-left:1px solid var(--coral); color:var(--muted); font-size:.83rem; line-height:1.68; }
+        .hero-actions { display:flex; flex-wrap:wrap; gap:.8rem; }
+        .button { display:inline-flex; align-items:center; justify-content:center; gap:.65rem; min-height:50px; padding:.9rem 1.18rem; border:1px solid var(--line); border-radius:999px; font-size:.68rem; font-weight:700; letter-spacing:.09em; text-decoration:none; text-transform:uppercase; transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease; cursor:pointer; }
+        .button:hover { transform: translateY(-2px); }
+        .button-primary { border-color:var(--ink); background:var(--ink); color:#fff; }
+        .button-primary:hover { border-color:var(--blue); background:var(--blue); }
+        .button-secondary { background:rgba(255,255,255,.64); color:var(--ink); }
+        .button-secondary:hover { border-color:var(--blue); color:var(--blue); }
+        .hero-visual { position:relative; min-height:660px; }
+        .hero-image-main { position:absolute; inset:0 0 5rem 3.5rem; overflow:hidden; border-radius: var(--radius-xl); box-shadow: var(--shadow); }
+        .hero-image-main img { width:100%; height:100%; object-fit:cover; }
+        .hero-deck-card { position:absolute; left:0; bottom:0; width:min(390px,62%); overflow:hidden; border:9px solid var(--surface); border-radius:18px; background:var(--surface); box-shadow:0 25px 70px rgba(30,38,48,.22); transform:rotate(-3deg); }
+        .hero-index { position:absolute; right:-.6rem; bottom:1.2rem; width:116px; height:116px; display:grid; place-items:center; border-radius:50%; background:var(--coral); color:#fff; font-family:var(--serif); font-size:2.9rem; line-height:1; box-shadow:0 20px 45px rgba(239,101,72,.25); }
+        .project-meta { position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; margin-top:6rem; overflow:hidden; border:1px solid var(--line); border-radius:23px; background:var(--line); }
+        .meta-item { min-height:135px; padding:1.55rem; background:rgba(255,253,246,.92); }
+        .meta-label { display:block; margin-bottom:.75rem; color:var(--muted); font-size:.61rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+        .meta-value { color:var(--ink); font-size:.9rem; font-weight:600; line-height:1.55; }
+
+        .case-nav { position: sticky; top:82px; z-index:1500; border-block:1px solid var(--line-soft); background:rgba(246,240,229,.93); backdrop-filter:blur(17px); }
+        .case-nav-inner { display:flex; gap:1.8rem; overflow-x:auto; scrollbar-width:none; }
+        .case-nav-inner::-webkit-scrollbar { display:none; }
+        .case-nav a { flex:0 0 auto; padding:1rem 0; color:var(--muted); font-size:.65rem; font-weight:700; letter-spacing:.1em; text-decoration:none; text-transform:uppercase; }
+        .case-nav a:hover { color:var(--blue); }
+
+        section { scroll-margin-top:150px; padding:9rem 0; border-bottom:1px solid var(--line-soft); }
+        .section-grid { display:grid; grid-template-columns:minmax(150px,.55fr) minmax(0,2.45fr); gap:clamp(3rem,8vw,8rem); }
+        .section-kicker { position:sticky; top:165px; align-self:start; color:var(--muted); font-size:.65rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
+        .section-kicker span { display:block; width:42px; height:1px; margin-top:1rem; background:var(--coral); }
+        .section-content { min-width:0; }
+        h2 { max-width:990px; margin-bottom:1.8rem; font-family:var(--serif); font-size:clamp(3.2rem,6.4vw,5.6rem); font-weight:400; letter-spacing:-.05em; line-height:.94; }
+        h3 { font-family:var(--serif); font-size:clamp(2rem,3.7vw,3rem); font-weight:400; letter-spacing:-.03em; line-height:1.05; }
+        .intro { max-width:850px; margin-bottom:1.7rem; color:var(--body); font-size:1.08rem; line-height:1.86; }
+        .scope-note { display:grid; grid-template-columns:auto 1fr; gap:1rem; max-width:930px; margin-top:3rem; padding:1.45rem 1.55rem; border:1px solid rgba(21,83,165,.22); border-radius:19px; background:rgba(231,238,247,.55); }
+        .scope-icon { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:var(--surface); color:var(--blue); font-weight:700; }
+        .scope-note p { margin:0; color:#3b5876; font-size:.88rem; }
+        .scope-note strong { color:var(--blue-dark); }
+
+        .overview-grid,.principle-grid,.module-grid,.spec-grid,.production-grid,.qa-grid,.reflection-grid { display:grid; gap:1.35rem; }
+        .overview-grid { grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:4rem; }
+        .info-card { min-height:250px; padding:2rem; border:1px solid var(--line); border-radius:23px; background:var(--surface); }
+        .card-number { display:block; margin-bottom:3rem; color:var(--coral); font-family:var(--serif); font-size:1.45rem; }
+        .info-card h3,.principle-card h3,.module-card h3,.spec-card h3,.qa-card h3,.reflection-card h3 { margin-bottom:.8rem; font-family:var(--sans); font-size:1rem; font-weight:700; }
+        .info-card p,.principle-card p,.module-card p,.spec-card p,.production-card p,.reflection-card p { margin:0; color:var(--body); font-size:.88rem; }
+
+        .brief-section { background: var(--surface); }
+        .brief-layout { display:grid; grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr); gap:4rem; align-items:start; margin-top:4rem; }
+        .brief-statement { padding:2.5rem; border-radius:24px; background:var(--blue); color:#fff; }
+        .brief-statement span { display:block; margin-bottom:2rem; color:rgba(255,255,255,.65); font-size:.62rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+        .brief-statement blockquote { margin:0; font-family:var(--serif); font-size:clamp(2.1rem,4vw,3.35rem); line-height:1.02; }
+        .brief-list { display:grid; gap:1.2rem; margin:0; padding:0; list-style:none; }
+        .brief-list li { padding-bottom:1.2rem; border-bottom:1px solid var(--line); }
+        .brief-list strong { display:block; margin-bottom:.35rem; color:var(--ink); font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; }
+        .brief-list span { color:var(--body); font-size:.9rem; }
+        .image-panel { margin-top:4.5rem; }
+        .image-button { width:100%; padding:0; overflow:hidden; border:0; border-radius:30px; background:transparent; cursor:zoom-in; box-shadow:0 20px 65px rgba(30,38,48,.09); }
+        .image-button img { width:100%; transition:transform .55s ease; }
+        .image-button:hover img { transform:scale(1.018); }
+        .caption { display:grid; grid-template-columns:auto 1fr; gap:1rem; margin-top:1rem; color:var(--muted); font-size:.76rem; }
+        .caption-index { color:var(--coral); font-weight:700; }
+
+        .direction-grid,.social-layout,.motion-lab,.file-layout { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr); gap:4rem; align-items:start; margin-top:4rem; }
+        .palette { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:.8rem; }
+        .swatch { min-height:165px; padding:1rem; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--line); border-radius:18px; font-size:.58rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+        .type-system { display:grid; gap:1rem; }
+        .type-card { padding:2rem; border:1px solid var(--line); border-radius:21px; background:var(--surface); }
+        .type-label { display:block; margin-bottom:1.2rem; color:var(--muted); font-size:.61rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+        .type-serif { margin-bottom:1rem; font-family:var(--serif); font-size:clamp(3rem,6vw,5.1rem); line-height:.85; }
+        .type-sans { margin-bottom:1rem; font-size:clamp(2rem,4vw,3rem); font-weight:600; letter-spacing:-.045em; line-height:.95; }
+        .type-card p { margin:0; color:var(--body); font-size:.84rem; }
+        .principle-grid { grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:4rem; }
+        .principle-card { min-height:230px; padding:2rem; border:1px solid var(--line); border-radius:22px; background:var(--surface); }
+        .principle-icon { width:42px; height:42px; margin-bottom:2.3rem; display:grid; place-items:center; border-radius:13px; background:var(--coral-soft); color:var(--coral-dark); font-weight:700; }
+        .principle-card:nth-child(2) .principle-icon { background:var(--blue-soft); color:var(--blue-dark); }
+        .principle-card:nth-child(3) .principle-icon { background:var(--yellow-soft); color:#8c6a11; }
+        .principle-card:nth-child(4) .principle-icon { background:var(--sage-soft); color:#53604f; }
+        .principle-card p { font-size:.87rem; }
+
+        .deck-section { background:#e9ded0; }
+        .deck-feature { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(330px,.8fr); gap:3rem; align-items:center; margin-top:4rem; }
+        .deck-image { overflow:hidden; border:9px solid var(--surface); border-radius:21px; background:var(--surface); box-shadow:0 25px 80px rgba(30,38,48,.13); }
+        .deck-copy p { color:var(--body); }
+        .deck-copy ul { display:grid; gap:.8rem; margin:2rem 0 0; padding:0; list-style:none; }
+        .deck-copy li { display:grid; grid-template-columns:18px 1fr; gap:.65rem; color:var(--body); font-size:.87rem; }
+        .deck-copy li::before { content:"↳"; color:var(--blue); font-weight:700; }
+        .slide-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.5rem; margin-top:4.5rem; }
+        .slide-card .image-button { border:7px solid var(--surface); border-radius:16px; box-shadow:0 17px 50px rgba(30,38,48,.1); }
+        .slide-card h4 { margin:1rem 0 .35rem; font-size:.9rem; }
+        .slide-card p { margin:0; color:var(--muted); font-size:.79rem; }
+        .module-grid { grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:4rem; }
+        .module-card { min-height:240px; padding:2rem; border:1px solid var(--line); border-radius:22px; background:var(--surface); }
+        .module-card span { display:block; margin-bottom:2rem; color:var(--blue); font-size:.62rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+
+        .motion-stage { position:relative; min-height:470px; padding:3rem; overflow:hidden; border-radius:30px; background:var(--charcoal); box-shadow:var(--shadow); }
+        .motion-stage::before { content:""; position:absolute; inset:1.4rem; border:1px solid rgba(255,255,255,.13); border-radius:22px; }
+        .motion-slide { position:relative; z-index:1; height:100%; min-height:410px; display:flex; flex-direction:column; justify-content:space-between; color:#fff; }
+        .motion-kicker { color:#ffd87a; font-size:.62rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+        .motion-title { max-width:660px; margin:2rem 0; font-family:var(--serif); font-size:clamp(3rem,6vw,5rem); line-height:.88; }
+        .motion-points { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.9rem; }
+        .motion-point { padding:1.2rem; border:1px solid rgba(255,255,255,.18); border-radius:13px; background:rgba(255,255,255,.055); }
+        .motion-point strong { display:block; margin-bottom:.35rem; font-size:.78rem; }
+        .motion-point span { color:rgba(255,255,255,.62); font-size:.7rem; }
+        .motion-stage.is-playing .motion-kicker,.motion-stage.is-playing .motion-title,.motion-stage.is-playing .motion-point { animation: revealBuild 3.8s both; }
+        .motion-stage.is-playing .motion-title { animation-delay:.35s; }
+        .motion-stage.is-playing .motion-point:nth-child(1) { animation-delay:1.05s; }
+        .motion-stage.is-playing .motion-point:nth-child(2) { animation-delay:1.35s; }
+        .motion-stage.is-playing .motion-point:nth-child(3) { animation-delay:1.65s; }
+        @keyframes revealBuild { 0%{opacity:0; transform:translateY(20px);} 18%,100%{opacity:1; transform:translateY(0);} }
+        .motion-copy p { color:var(--body); }
+        .motion-rules { display:grid; gap:1rem; margin-top:2rem; }
+        .motion-rule { padding:1.2rem; border-left:2px solid var(--blue); background:rgba(255,253,246,.65); }
+        .motion-rule strong { display:block; margin-bottom:.3rem; font-size:.8rem; }
+        .motion-rule span { color:var(--body); font-size:.82rem; }
+
+        .social-section { background:var(--surface); }
+        .spec-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+        .spec-card { min-height:185px; padding:1.6rem; border:1px solid var(--line); border-radius:19px; background:var(--paper); }
+        .spec-card span { display:block; margin-bottom:1.5rem; color:var(--coral-dark); font-size:.61rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+
+        .spatial-hero { position:relative; margin-top:4rem; overflow:hidden; border-radius:32px; box-shadow:var(--shadow); }
+        .spatial-hero img { width:100%; min-height:580px; object-fit:cover; }
+        .spatial-overlay { position:absolute; inset:auto 1.5rem 1.5rem; max-width:590px; padding:1.8rem; border:1px solid rgba(255,255,255,.24); border-radius:19px; background:rgba(22,29,38,.72); color:#fff; backdrop-filter:blur(14px); }
+        .spatial-overlay span { display:block; margin-bottom:.7rem; color:#ffcf65; font-size:.61rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+        .spatial-overlay h3 { margin-bottom:.65rem; color:#fff; }
+        .spatial-overlay p { margin:0; color:rgba(255,255,255,.72); font-size:.83rem; }
+        .production-grid { grid-template-columns:repeat(4,minmax(0,1fr)); margin-top:4rem; }
+        .production-card { min-height:210px; padding:1.7rem; border:1px solid var(--line); border-radius:20px; background:var(--surface); }
+        .production-card strong { display:block; margin-bottom:1.4rem; color:var(--blue); font-size:.67rem; letter-spacing:.12em; text-transform:uppercase; }
+
+        .workflow-section { background:#eee6dc; }
+        .file-tree,.naming-panel { padding:2.2rem; border-radius:24px; background:var(--charcoal); color:#fff; }
+        .panel-label { display:block; margin-bottom:1.8rem; color:#ffcf65; font-size:.62rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+        .file-tree pre,.naming-panel code { font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+        .file-tree pre { margin:0; overflow-x:auto; color:rgba(255,255,255,.83); font-size:.82rem; line-height:1.85; }
+        .naming-list { display:grid; gap:.8rem; }
+        .naming-panel code { display:block; padding:.9rem 1rem; overflow-x:auto; border:1px solid rgba(255,255,255,.13); border-radius:11px; background:rgba(255,255,255,.055); color:rgba(255,255,255,.83); font-size:.75rem; }
+        .qa-grid { grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:4rem; }
+        .qa-card { min-height:250px; padding:2rem; border:1px solid var(--line); border-radius:22px; background:var(--surface); }
+        .qa-card span { display:block; margin-bottom:2rem; color:var(--coral); font-family:var(--serif); font-size:1.5rem; }
+        .qa-card ul { display:grid; gap:.55rem; margin:0; padding:0; list-style:none; }
+        .qa-card li { display:grid; grid-template-columns:16px 1fr; gap:.55rem; color:var(--body); font-size:.8rem; }
+        .qa-card li::before { content:"✓"; color:var(--blue); font-weight:700; }
+
+        .web-grid { display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:3rem; margin-top:4rem; }
+        .web-card { padding:2rem; border:1px solid var(--line); border-radius:24px; background:var(--surface); }
+        .web-card h3 { margin-bottom:.75rem; font-family:var(--sans); font-size:1rem; font-weight:700; }
+        .web-card p { margin:0; color:var(--body); font-size:.85rem; }
+        .web-preview { padding:2rem; border-radius:26px; background:var(--charcoal); color:#fff; }
+        .web-preview-bar { display:flex; gap:.4rem; margin-bottom:1.4rem; }
+        .dot { width:9px; height:9px; border-radius:50%; background:var(--coral); }
+        .dot:nth-child(2){ background:var(--yellow); }.dot:nth-child(3){ background:var(--sage); }
+        .web-preview h3 { max-width:550px; margin-bottom:1rem; color:#fff; }
+        .web-preview p { color:rgba(255,255,255,.67); font-size:.86rem; }
+        .web-preview-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin-top:2rem; }
+        .web-preview-tile { min-height:90px; padding:1rem; border-radius:14px; background:rgba(255,255,255,.08); }
+        .web-preview-tile span { color:#ffcf65; font-size:.62rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+
+        .reflection-grid { grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:4rem; }
+        .reflection-card { min-height:240px; padding:2rem; border:1px solid var(--line); border-radius:22px; background:var(--surface); }
+        .reflection-card span { display:block; margin-bottom:2.5rem; color:var(--coral); font-family:var(--serif); font-size:1.45rem; }
+        .download-panel { display:grid; grid-template-columns:1fr auto; gap:3rem; align-items:center; margin-top:4rem; padding:2.4rem; border-radius:25px; background:var(--blue); color:#fff; }
+        .download-panel h3 { margin-bottom:.55rem; color:#fff; }
+        .download-panel p { max-width:680px; margin:0; color:rgba(255,255,255,.72); font-size:.86rem; }
+        .download-actions { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:.7rem; }
+        .download-actions .button { border-color:rgba(255,255,255,.36); color:#fff; }
+        .download-actions .button:hover { border-color:#fff; background:#fff; color:var(--blue); }
+
+        .next-case { padding:7rem 0; background:var(--charcoal); color:#fff; }
+        .next-inner { display:flex; align-items:end; justify-content:space-between; gap:3rem; }
+        .next-case p { margin-bottom:.7rem; color:rgba(255,255,255,.6); font-size:.65rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+        .next-case h2 { max-width:780px; margin-bottom:0; color:#fff; }
+        .next-link { flex:0 0 auto; display:inline-flex; align-items:center; gap:.7rem; padding:.95rem 1.2rem; border:1px solid rgba(255,255,255,.3); border-radius:999px; color:#fff; font-size:.68rem; font-weight:700; letter-spacing:.09em; text-decoration:none; text-transform:uppercase; transition:background .2s ease,color .2s ease; }
+        .next-link:hover { background:#fff; color:var(--charcoal); }
+
+        .lightbox { position:fixed; inset:0; z-index:4000; display:none; align-items:center; justify-content:center; padding:5rem 2rem 2rem; background:rgba(18,18,20,.94); backdrop-filter:blur(14px); }
+        .lightbox[aria-hidden="false"] { display:flex; }
+        .lightbox img { max-width:min(1400px,94vw); max-height:86vh; border-radius:15px; box-shadow:0 50px 110px rgba(0,0,0,.48); }
+        .lightbox-close { position:absolute; top:24px; right:28px; width:48px; height:48px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.35); border-radius:50%; background:transparent; color:#fff; cursor:pointer; font-size:1.5rem; }
+        .reveal { opacity:0; transform:translateY(25px); transition:opacity .74s ease, transform .74s ease; }
+        .reveal.is-visible { opacity:1; transform:none; }
+
+        @media (max-width:1080px){
+            :root{--content:860px;}
+            .nav-links a:not(.back-link){display:none;}
+            .hero-grid,.brief-layout,.direction-grid,.deck-feature,.motion-lab,.social-layout,.file-layout,.web-grid{grid-template-columns:1fr;}
+            .hero-visual{max-width:760px;}
+            .project-meta,.overview-grid,.principle-grid,.module-grid,.production-grid,.reflection-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+            .section-grid{grid-template-columns:1fr;gap:2rem;}
+            .section-kicker{position:static;}
+            .qa-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+        }
+        @media (max-width:760px){
+            .page-shell{width:min(calc(100% - 1.75rem),620px);}
+            .brand-role{display:none;}
+            .nav-links{gap:.6rem;}
+            .back-link{padding:.68rem .82rem;}
+            .hero{min-height:auto;padding:10.7rem 0 5.5rem;}
+            h1{font-size:clamp(4.6rem,22vw,7.2rem);} h1 em{margin-left:.7rem;}
+            .hero-actions{align-items:stretch;flex-direction:column;}
+            .button{width:100%;}
+            .hero-visual{min-height:490px;margin-top:1rem;}
+            .hero-image-main{inset:0 0 4rem 1.5rem;}
+            .hero-deck-card{width:68%;}
+            .hero-index{width:88px;height:88px;font-size:2.2rem;}
+            .project-meta,.overview-grid,.principle-grid,.module-grid,.production-grid,.qa-grid,.reflection-grid,.spec-grid{grid-template-columns:1fr;}
+            section{padding:6.5rem 0;}
+            .palette{grid-template-columns:repeat(2,minmax(0,1fr));}
+            .slide-gallery{grid-template-columns:1fr;}
+            .motion-stage{min-height:520px;padding:2rem;}
+            .motion-points{grid-template-columns:1fr;}
+            .spatial-hero img{min-height:620px;}
+            .spatial-overlay{position:absolute;inset:auto .8rem .8rem;}
+            .download-panel,.next-inner{grid-template-columns:1fr;align-items:start;flex-direction:column;}
+            .download-actions{justify-content:flex-start;}
+            .web-preview-grid{grid-template-columns:1fr;}
+        }
+        @media (max-width:480px){.hero-visual{min-height:410px}.hero-deck-card{border-width:6px}.palette{grid-template-columns:1fr}.caption{grid-template-columns:1fr}}
+        @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to case study</a>
+    <nav class="site-nav" id="siteNav" aria-label="Portfolio navigation">
+        <div class="page-shell nav-inner">
+            <a class="brand" href="index.html"><span class="brand-name">Jocelyn Martinez</span><span class="brand-role">UX/UI & Visual Designer</span></a>
+            <div class="nav-links">
+                <a href="#presentation">Deck</a><a href="#social">Social</a><a href="#print">Print</a><a href="#workflow">Workflow</a><a class="back-link" href="index.html#work">← Back to work</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="page-shell">
+            <div class="hero-grid">
+                <div class="reveal">
+                    <p class="eyebrow">Self-directed concept · Brand, presentation, print & wayfinding</p>
+                    <h1>Civic <em>Bloom</em></h1>
+                    <p class="hero-subtitle">A public-program identity system for a fictional design festival, built to demonstrate presentation craft, social production, print-ready thinking, environmental graphics, review workflow, and final QA.</p>
+                    <p class="hero-honesty">This is an independent portfolio exercise, not a commissioned client project or a real event. The purpose is to show how one design system can scale across professional studio deliverables.</p>
+                    <div class="hero-actions"><a class="button button-primary" href="civic-bloom/Civic_Bloom_Presentation_Brand_Print_System.pdf" target="_blank" rel="noopener">View presentation PDF ↗</a><a class="button button-secondary" href="civic-bloom/Civic_Bloom_Presentation_Brand_Print_System.pptx" download>Download editable deck ↓</a></div>
+                </div>
+                <div class="hero-visual reveal" aria-label="Civic Bloom project preview">
+                    <div class="hero-image-main"><img src="civic-bloom/urban-plaza-wayfinding.png" alt="Civic Bloom colorful wayfinding system in an outdoor public plaza"></div>
+                    <div class="hero-deck-card"><img src="civic-bloom/deck-renders/page-01.png" alt="Cover slide for the Civic Bloom visual communication system"></div>
+                    <div class="hero-index" aria-hidden="true">02</div>
+                </div>
+            </div>
+            <div class="project-meta reveal" aria-label="Project information">
+                <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Visual communication, presentation, production, and systems designer</span></div>
+                <div class="meta-item"><span class="meta-label">Context</span><span class="meta-value">Self-directed public event identity concept</span></div>
+                <div class="meta-item"><span class="meta-label">Focus</span><span class="meta-value">Deck systems, social templates, print prep, signage, review workflow</span></div>
+                <div class="meta-item"><span class="meta-label">Deliverables</span><span class="meta-value">12-slide deck, social kit, print pack, wayfinding direction, QA plan</span></div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="case-nav" aria-label="Case study sections"><div class="page-shell case-nav-inner"><a href="#overview">Overview</a><a href="#brief">Brief</a><a href="#system">Brand system</a><a href="#presentation">Presentation</a><a href="#motion">Motion</a><a href="#social">Social</a><a href="#print">Print & wayfinding</a><a href="#workflow">Workflow</a><a href="#web">Web</a><a href="#reflection">Reflection</a></div></nav>
+
+    <main id="main">
+        <section id="overview"><div class="page-shell section-grid"><aside class="section-kicker">01 / Overview<span></span></aside><div class="section-content reveal"><p class="eyebrow">A production-forward design system</p><h2>One identity, many real-world deliverables.</h2><p class="intro">Civic Bloom is designed around the type of work a junior designer often produces in a studio environment: clear decks, fast social variations, print-ready one-pagers, polished visual submissions, signage-style pieces, and organized files that can survive review cycles.</p><p class="intro">The project is intentionally not only a brand exercise. It demonstrates how typography, layout, pacing, hierarchy, file hygiene, and final checks turn an attractive direction into usable studio output.</p><div class="overview-grid"><article class="info-card"><span class="card-number">01</span><h3>Presentation craft</h3><p>A modular deck system with cover, brief, timeline, concept, production, and review slides.</p></article><article class="info-card"><span class="card-number">02</span><h3>Cross-format assets</h3><p>Social cutdowns, print collateral, badges, signage, banners, wayfinding, and event graphics.</p></article><article class="info-card"><span class="card-number">03</span><h3>Production discipline</h3><p>Proofing, naming, export checks, linked assets, versioning, and handoff logic built into the concept.</p></article></div><div class="scope-note"><div class="scope-icon" aria-hidden="true">i</div><p><strong>Scope:</strong> This is a self-directed concept created to demonstrate portfolio skills. The mockups and spatial applications are conceptual; a real project would require client review, fabrication specs, accessibility testing, vendor coordination, and physical proofing.</p></div></div></div></section>
+
+        <section id="brief" class="brief-section"><div class="page-shell section-grid"><aside class="section-kicker">02 / The brief<span></span></aside><div class="section-content reveal"><p class="eyebrow">Fictional public program</p><h2>A weekend design festival across civic spaces.</h2><p class="intro">Civic Bloom imagines a citywide weekend of talks, open studios, guided walks, installations, and youth workshops. The visual system needed to be optimistic, public-facing, accessible at a distance, and efficient to adapt across many formats.</p><div class="brief-layout"><div class="brief-statement"><span>Design challenge</span><blockquote>Make public design feel welcoming, organized, and easy to navigate.</blockquote></div><ul class="brief-list"><li><strong>Audience</strong><span>Visitors, cultural partners, project leadership, production teams, and participating venues.</span></li><li><strong>Communication task</strong><span>Explain the event, promote sessions, guide movement, and support stakeholder review.</span></li><li><strong>System constraint</strong><span>Use a small visual kit that can generate many accurate variations quickly.</span></li><li><strong>Experience goal</strong><span>Balance joy and clarity so people know what is happening, where to go, and what comes next.</span></li></ul></div><div class="image-panel"><button class="image-button" type="button" data-lightbox-src="civic-bloom/brand-system-flatlay.png" data-lightbox-alt="Civic Bloom brand identity flatlay"><img src="civic-bloom/brand-system-flatlay.png" alt="Civic Bloom brand identity flatlay with modular flower marks, posters, badges, arrows, swatches, and stationery" loading="lazy"></button><div class="caption"><span class="caption-index">02.1</span><span>Core identity direction: modular civic shapes, festival color, friendly arrows, and flexible public-program marks.</span></div></div></div></div></section>
+
+        <section id="system"><div class="page-shell section-grid"><aside class="section-kicker">03 / Brand system<span></span></aside><div class="section-content reveal"><p class="eyebrow">Joyful, modular, and legible</p><h2>A graphic language made for repetition and variation.</h2><p class="intro">The system uses circles, arches, leaves, half-moons, arrows, and color blocks as repeatable parts. Those parts can become a poster, a social template, a directional sign, a badge, or a deck layout without needing a full redesign each time.</p><div class="direction-grid"><div><h3 style="margin-bottom:1.3rem;">Color roles</h3><div class="palette" aria-label="Civic Bloom color palette"><div class="swatch" style="background:#ef6548;color:#fff"><span>Signal coral</span><span>#EF6548</span></div><div class="swatch" style="background:#1553a5;color:#fff"><span>Civic blue</span><span>#1553A5</span></div><div class="swatch" style="background:#f7c544;color:#1d1d1f"><span>Program yellow</span><span>#F7C544</span></div><div class="swatch" style="background:#6c826d;color:#fff"><span>Park sage</span><span>#6C826D</span></div><div class="swatch" style="background:#252628;color:#fff"><span>Ground charcoal</span><span>#252628</span></div></div></div><div><h3 style="margin-bottom:1.3rem;">Typography roles</h3><div class="type-system"><article class="type-card"><span class="type-label">Public voice</span><div class="type-serif">Bloom in public.</div><p>Expressive serif headings create a human, inviting tone for campaign and presentation moments.</p></article><article class="type-card"><span class="type-label">Production voice</span><div class="type-sans">Sat 12:00 · Plaza Route A</div><p>Functional sans-serif text carries schedules, labels, signs, captions, tables, specs, and handoffs.</p></article></div></div></div><div class="principle-grid"><article class="principle-card"><div class="principle-icon">1</div><h3>Hierarchy first</h3><p>Titles, dates, routes, and calls-to-action have clear order before decorative elements enter.</p></article><article class="principle-card"><div class="principle-icon">2</div><h3>Repeatable geometry</h3><p>Shape language makes the system recognizable across print, digital, and environmental formats.</p></article><article class="principle-card"><div class="principle-icon">3</div><h3>Flexible crops</h3><p>Images and shapes use protected zones so each format can be resized without losing the message.</p></article></div></div></div></section>
+
+        <section id="presentation" class="deck-section"><div class="page-shell section-grid"><aside class="section-kicker">04 / Presentation design<span></span></aside><div class="section-content reveal"><p class="eyebrow">Deck systems and storytelling</p><h2>A presentation system that works for review, revision, and delivery.</h2><p class="intro">The deck is structured as a reusable client-facing system rather than a one-off sequence. It includes a cover, brief, audience map, brand system, deck modules, social system, print specifications, wayfinding application, collaboration workflow, motion storyboard, QA, and reflection.</p><div class="deck-feature"><div class="deck-image"><img src="civic-bloom/deck-renders/page-05.png" alt="Civic Bloom slide showing reusable presentation modules" loading="lazy"></div><div class="deck-copy"><h3>Slide families</h3><p>The presentation uses consistent slide families so another designer can extend the system without rebuilding the entire deck.</p><ul><li>Large statement slides for emotional entry and section transitions.</li><li>Two-column slides for rationale, comparisons, and stakeholder review.</li><li>Template modules for timelines, checklists, social specs, and production notes.</li><li>Dark contrast slides for environmental and motion concepts.</li></ul></div></div><div class="slide-gallery"><article class="slide-card"><button class="image-button" type="button" data-lightbox-src="civic-bloom/deck-renders/page-01.png" data-lightbox-alt="Civic Bloom deck cover"><img src="civic-bloom/deck-renders/page-01.png" alt="Civic Bloom deck cover slide" loading="lazy"></button><h4>Cover system</h4><p>Clear project framing and immediate visual direction.</p></article><article class="slide-card"><button class="image-button" type="button" data-lightbox-src="civic-bloom/deck-renders/page-04.png" data-lightbox-alt="Civic Bloom brand system slide"><img src="civic-bloom/deck-renders/page-04.png" alt="Civic Bloom brand system slide" loading="lazy"></button><h4>Brand system</h4><p>Palette, type, imagery, and modular geometry documented in one view.</p></article><article class="slide-card"><button class="image-button" type="button" data-lightbox-src="civic-bloom/deck-renders/page-07.png" data-lightbox-alt="Civic Bloom print production slide"><img src="civic-bloom/deck-renders/page-07.png" alt="Civic Bloom print production slide" loading="lazy"></button><h4>Print support</h4><p>Specs and production logic included directly in the deck.</p></article><article class="slide-card"><button class="image-button" type="button" data-lightbox-src="civic-bloom/deck-renders/page-11.png" data-lightbox-alt="Civic Bloom QA slide"><img src="civic-bloom/deck-renders/page-11.png" alt="Civic Bloom QA and handoff slide" loading="lazy"></button><h4>QA and handoff</h4><p>Final review tasks shown as a deliverable, not an invisible step.</p></article></div><div class="module-grid"><article class="module-card"><span>Slide module 01</span><h3>Cover / section opener</h3><p>Large title, one strong visual, clear context label, and direct project framing.</p></article><article class="module-card"><span>Slide module 02</span><h3>Timeline / process</h3><p>Numbered steps and short explanations support live presentation pacing.</p></article><article class="module-card"><span>Slide module 03</span><h3>Checklist / production</h3><p>Structured tables, file logic, specs, and QA notes for reliable delivery.</p></article></div></div></div></section>
+
+        <section id="motion"><div class="page-shell section-grid"><aside class="section-kicker">05 / Motion behavior<span></span></aside><div class="section-content reveal"><p class="eyebrow">PowerPoint animation instinct</p><h2>Motion should clarify the speaking order.</h2><p class="intro">Civic Bloom includes a motion storyboard for native PowerPoint or Keynote builds. The goal is restrained animation: reveal a path, introduce zones, then resolve into a call-to-action.</p><div class="motion-lab"><div class="motion-stage" id="motionStage" aria-label="Browser demonstration of a progressive slide build"><div class="motion-slide"><span class="motion-kicker">Motion build / example</span><div class="motion-title">Show the public path in pieces.</div><div class="motion-points"><div class="motion-point"><strong>01 / Route appears</strong><span>Reveal the path first.</span></div><div class="motion-point"><strong>02 / Zones enter</strong><span>Add program areas in sequence.</span></div><div class="motion-point"><strong>03 / CTA resolves</strong><span>End on the action.</span></div></div></div></div><div class="motion-copy"><h3>Animation direction</h3><p>The deck is designed so animated builds remain editable in PowerPoint, but static PDF exports still read clearly. Motion supports comprehension rather than entertainment.</p><button class="button button-secondary" id="playMotion" type="button">Replay motion build ↻</button><div class="motion-rules"><div class="motion-rule"><strong>One idea per build</strong><span>Each animation introduces a single layer of meaning.</span></div><div class="motion-rule"><strong>Keep timing consistent</strong><span>Fast fades and simple entrance builds protect the tone of the presentation.</span></div><div class="motion-rule"><strong>Preserve static clarity</strong><span>Every slide must work when exported as a PDF or viewed without animation.</span></div></div></div></div></div></div></section>
+
+        <section id="social" class="social-section"><div class="page-shell section-grid"><aside class="section-kicker">06 / Social & digital<span></span></aside><div class="section-content reveal"><p class="eyebrow">Campaign assets and cutdowns</p><h2>Fast social production without breaking the system.</h2><p class="intro">The social kit uses repeatable crop zones, title placement, color families, and content modules so the same event can become a LinkedIn post, Instagram carousel, story, reel cover, and event reminder.</p><div class="social-layout"><div><button class="image-button" type="button" data-lightbox-src="civic-bloom/social-campaign-flatlay.png" data-lightbox-alt="Civic Bloom social campaign mockups"><img src="civic-bloom/social-campaign-flatlay.png" alt="Civic Bloom social campaign mockups with phone screens, square posts, vertical assets, and campaign cards" loading="lazy"></button><div class="caption"><span class="caption-index">06.1</span><span>Social system across feed, story, carousel, event graphics, and campaign cutdowns.</span></div></div><div class="spec-grid"><article class="spec-card"><span>LinkedIn</span><h3>1600 × 900</h3><p>Announcement and recap layouts with clear headline hierarchy and campaign context.</p></article><article class="spec-card"><span>Instagram feed</span><h3>1080 × 1080</h3><p>Square posts using shape blocks, crop-safe imagery, and consistent CTA placement.</p></article><article class="spec-card"><span>Story / reel cover</span><h3>1080 × 1920</h3><p>Vertical layouts with platform-safe zones and immediate event recognition.</p></article><article class="spec-card"><span>Carousel</span><h3>5-8 cards</h3><p>Sequential storytelling for event routes, schedules, artists, or workshop tracks.</p></article></div></div><div class="image-panel"><button class="image-button" type="button" data-lightbox-src="civic-bloom/deck-renders/page-06.png" data-lightbox-alt="Civic Bloom social media slide"><img src="civic-bloom/deck-renders/page-06.png" alt="Civic Bloom presentation slide describing social media production formats" loading="lazy"></button></div></div></div></section>
+
+        <section id="print"><div class="page-shell section-grid"><aside class="section-kicker">07 / Print & wayfinding<span></span></aside><div class="section-content reveal"><p class="eyebrow">From one-pager to public space</p><h2>Designing for print, distance, and movement.</h2><p class="intro">The print pack supports one-pagers, posters, leave-behinds, badges, and signage-style pieces. The environmental direction extends the same system into banners, directional panels, zone markers, and large-format storytelling.</p><div class="spatial-hero"><img src="civic-bloom/urban-plaza-wayfinding.png" alt="Civic Bloom outdoor plaza wayfinding with bright banners, signs, and geometric public installations" loading="lazy"><div class="spatial-overlay"><span>Environmental graphics direction</span><h3>Recognition before decoration.</h3><p>Large-format applications rely on simplified shapes, color-coded zones, and high-contrast directional cues so visitors can understand the system at walking speed.</p></div></div><div class="image-panel"><button class="image-button" type="button" data-lightbox-src="civic-bloom/print-production-flatlay.png" data-lightbox-alt="Civic Bloom print production flatlay"><img src="civic-bloom/print-production-flatlay.png" alt="Civic Bloom print production mockups with registration marks, color swatches, folded brochure, badge, and sign photo" loading="lazy"></button><div class="caption"><span class="caption-index">07.1</span><span>Print and submission support: one-pagers, folded collateral, badge system, production marks, color proofing, and signage applications.</span></div></div><div class="production-grid"><article class="production-card"><strong>Bleed & trim</strong><p>Plan 0.125-inch bleed for standard print pieces and verify vendor-specific requirements.</p></article><article class="production-card"><strong>Resolution</strong><p>Check effective image resolution at final output size before packaging files.</p></article><article class="production-card"><strong>Color workflow</strong><p>Proof color-critical assets, confirm CMYK conversion, and retain editable source files.</p></article><article class="production-card"><strong>Large-format</strong><p>Test viewing distance, contrast, mounting, accessibility, material behavior, and site conditions.</p></article></div></div></div></section>
+
+        <section id="workflow" class="workflow-section"><div class="page-shell section-grid"><aside class="section-kicker">08 / Workflow & QA<span></span></aside><div class="section-content reveal"><p class="eyebrow">Reviews, files, and final checks</p><h2>The last 10% is where trust is built.</h2><p class="intro">This section is designed to show the production habits hiring teams ask for: clean files, organized handoffs, revision discipline, proofing, and final export checks.</p><div class="file-layout"><div class="file-tree"><span class="panel-label">Recommended folder structure</span><pre>Civic_Bloom/
+├── 01_Working/
+│   ├── Deck_PPT/
+│   ├── InDesign_Print/
+│   ├── Illustrator_Signage/
+│   ├── Photoshop_Retouching/
+│   └── Web_CSS/
+├── 02_Linked_Assets/
+│   ├── Images/
+│   ├── Logos/
+│   └── Fonts_Licenses/
+├── 03_Review/
+│   ├── Leadership/
+│   ├── Strategy/
+│   └── Production/
+├── 04_Exports/
+│   ├── Social_Final/
+│   ├── Print_Ready/
+│   └── Client_PDF/
+└── 05_Archive/</pre></div><div class="naming-panel"><span class="panel-label">Example file naming</span><div class="naming-list"><code>CivicBloom_Deck_v04_ClientReview.pptx</code><code>CivicBloom_OnePager_8.5x11_Print_v02.indd</code><code>CivicBloom_Poster_24x36_Print_v03.pdf</code><code>CivicBloom_Social_IG-Story_RouteA_01.png</code><code>CivicBloom_Wayfinding_ZoneB_Directional.ai</code><code>CivicBloom_Web_LandingPage_CSSNotes.md</code></div></div></div><div class="qa-grid"><article class="qa-card"><span>01</span><h3>Proofing</h3><ul><li>Names, dates, times, and venues</li><li>Spelling, punctuation, and grammar</li><li>Captions, credits, and footnotes</li><li>Slide numbers and page order</li></ul></article><article class="qa-card"><span>02</span><h3>Layout QA</h3><ul><li>Alignment and spacing consistency</li><li>Type hierarchy and readability</li><li>Image crop and focal point checks</li><li>Contrast and color-independent meaning</li></ul></article><article class="qa-card"><span>03</span><h3>Export QA</h3><ul><li>Bleeds, trims, and safe areas</li><li>Linked assets and embedded fonts</li><li>Resolution and color settings</li><li>Filename, version, and archive status</li></ul></article></div></div></div></section>
+
+        <section id="web"><div class="page-shell section-grid"><aside class="section-kicker">09 / Web maintenance<span></span></aside><div class="section-content reveal"><p class="eyebrow">Website and CSS awareness</p><h2>A campaign system should also survive the web.</h2><p class="intro">To reflect website maintenance and Webflow/CSS-adjacent expectations, Civic Bloom includes a landing-page component model with reusable sections, responsive content hierarchy, and editable event fields.</p><div class="web-grid"><div class="web-card"><h3>Component model</h3><p>Hero, schedule module, venue cards, speaker tiles, route CTA, social embed, and footer. The same content model can be used in Webflow, a CMS, or a custom HTML/CSS page.</p></div><div class="web-preview"><div class="web-preview-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><h3>Bloom in public. Explore the city through design.</h3><p>A modular landing page could reuse the same type scale, campaign colors, event cards, and CTA language from the deck and social system.</p><div class="web-preview-grid"><div class="web-preview-tile"><span>Talks</span></div><div class="web-preview-tile"><span>Walks</span></div><div class="web-preview-tile"><span>Workshops</span></div></div></div></div></div></div></section>
+
+        <section id="reflection"><div class="page-shell section-grid"><aside class="section-kicker">10 / Reflection<span></span></aside><div class="section-content reveal"><p class="eyebrow">What this project proves</p><h2>Strong graphic design is a system of decisions.</h2><p class="intro">Civic Bloom was designed to show more than taste. It demonstrates how visual hierarchy, deck storytelling, social production, print setup, wayfinding logic, collaboration habits, and QA can work together in a production-forward design role.</p><div class="reflection-grid"><article class="reflection-card"><span>01</span><h3>Strongest contribution</h3><p>A bright, modular identity that scales across deck, social, print, web, and public-space applications.</p></article><article class="reflection-card"><span>02</span><h3>Largest risk</h3><p>A colorful system can become noisy if hierarchy, contrast, and layout rhythm are not protected across formats.</p></article><article class="reflection-card"><span>03</span><h3>Next iteration</h3><p>Build native InDesign, Illustrator, and PowerPoint masters; proof print color; and test signage readability at full scale.</p></article></div><div class="download-panel"><div><h3>Review the complete presentation.</h3><p>The PDF is optimized for quick portfolio review. The editable PPTX is included to demonstrate deck structure and layout construction.</p></div><div class="download-actions"><a class="button" href="civic-bloom/Civic_Bloom_Presentation_Brand_Print_System.pdf" target="_blank" rel="noopener">Open PDF ↗</a><a class="button" href="civic-bloom/Civic_Bloom_Presentation_Brand_Print_System.pptx" download>Download PPTX ↓</a></div></div></div></div></section>
+    </main>
+
+    <footer class="next-case"><div class="page-shell next-inner"><div><p>Continue exploring</p><h2>Return to selected work.</h2></div><a class="next-link" href="index.html#work">View portfolio ↗</a></div></footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged Civic Bloom project image" aria-hidden="true"><button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close enlarged image">×</button><img id="lightboxImage" src="" alt=""></div>
+
+    <script>
+        const siteNav = document.getElementById('siteNav');
+        const revealItems = document.querySelectorAll('.reveal');
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function updateNavigation(){ siteNav.classList.toggle('scrolled', window.scrollY > 12); }
+        updateNavigation(); window.addEventListener('scroll', updateNavigation, { passive:true });
+        if(reducedMotion || !('IntersectionObserver' in window)){ revealItems.forEach(item=>item.classList.add('is-visible')); } else { const observer = new IntersectionObserver((entries, currentObserver)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('is-visible'); currentObserver.unobserve(entry.target); } }); }, { threshold:.1 }); revealItems.forEach(item=>observer.observe(item)); }
+        const motionStage = document.getElementById('motionStage'); const playMotion = document.getElementById('playMotion');
+        function replayMotion(){ motionStage.classList.remove('is-playing'); void motionStage.offsetWidth; motionStage.classList.add('is-playing'); }
+        playMotion.addEventListener('click', replayMotion); if(!reducedMotion) replayMotion();
+        const lightbox = document.getElementById('lightbox'); const lightboxImage = document.getElementById('lightboxImage'); const lightboxClose = document.getElementById('lightboxClose'); const lightboxTriggers = document.querySelectorAll('[data-lightbox-src]'); let previouslyFocused = null;
+        function openLightbox(trigger){ previouslyFocused = trigger; lightboxImage.src = trigger.dataset.lightboxSrc; lightboxImage.alt = trigger.dataset.lightboxAlt || 'Enlarged Civic Bloom project image'; lightbox.setAttribute('aria-hidden','false'); document.body.classList.add('lightbox-open'); lightboxClose.focus(); }
+        function closeLightbox(){ lightbox.setAttribute('aria-hidden','true'); lightboxImage.src=''; lightboxImage.alt=''; document.body.classList.remove('lightbox-open'); if(previouslyFocused) previouslyFocused.focus(); }
+        lightboxTriggers.forEach(trigger=>{ trigger.addEventListener('click',()=>openLightbox(trigger)); }); lightboxClose.addEventListener('click', closeLightbox); lightbox.addEventListener('click', event=>{ if(event.target === lightbox) closeLightbox(); }); document.addEventListener('keydown', event=>{ if(event.key === 'Escape' && lightbox.getAttribute('aria-hidden') === 'false') closeLightbox(); });
+    </script>
+</body>
+</html>

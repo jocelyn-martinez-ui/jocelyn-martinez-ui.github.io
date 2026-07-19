@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura & Form | Botanical Architecture Journal</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-base: #f7f6f2; /* Soft, warm off-white */
+            --charcoal-deep: #1c1c1c;
+            --cream-light: #eceade;
+            --sage-muted: #dadbd0;
+            --text-dark: #2a2a2a;
+            --transition: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; /* Custom cursor used */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Custom Cursor --- */
+        #cursor {
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--charcoal-deep);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s ease-out, opacity 0.3s;
+        }
+
+        #cursor-dot {
+            width: 4px;
+            height: 4px;
+            background-color: var(--charcoal-deep);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            transition: all 0.4s var(--transition);
+        }
+
+        .nav-links a:hover { opacity: 0.6; }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            align-items: center;
+            padding: 0 60px;
+        }
+
+        .hero-title-box {
+            grid-column: 1 / 7;
+        }
+
+        .hero-title-box h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(60px, 9vw, 120px);
+            font-weight: 500;
+            line-height: 0.9;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title-box p {
+            font-size: clamp(14px, 2vw, 18px);
+            max-width: 450px;
+            opacity: 0.7;
+            margin-bottom: 30px;
+        }
+
+        .btn-lure {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-dark);
+            border: 1px solid var(--charcoal-deep);
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            transition: all 0.4s var(--transition);
+        }
+
+        .btn-lure:hover {
+            background-color: var(--charcoal-deep);
+            color: var(--bg-base);
+        }
+
+        .hero-img-box {
+            grid-column: 8 / 13;
+            width: 100%;
+            height: 70vh;
+            background: url('https://images.unsplash.com/photo-1596328362621-e05441d8e132?auto=format&fit=crop&q=80&w=1000') no-repeat center center/cover;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 1.5s var(--transition);
+        }
+
+        .hero-img-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(236,234,222,0) 0%, rgba(236,234,222,0.6) 100%);
+            opacity: 0;
+            transition: all 0.6s var(--transition);
+        }
+
+        .hero-img-box:hover {
+            transform: scale(1.05) rotate(1deg);
+        }
+
+        .hero-img-box:hover::after {
+            opacity: 1;
+        }
+
+        /* --- Middle Intro Section --- */
+        .intro {
+            padding: 150px 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: var(--cream-light);
+        }
+
+        .intro h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 300;
+            max-width: 700px;
+            line-height: 1.1;
+        }
+
+        /* --- Asymmetric Card Grid --- */
+        .reveal-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 30px;
+            padding: 100px 60px;
+        }
+
+        .grid-item {
+            background: var(--white);
+            padding: 40px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.6s var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grid-item:hover {
+            box-shadow: 0 40px 80px rgba(0,0,0,0.05);
+            transform: translateY(-10px);
+        }
+
+        .grid-item span {
+            font-size: 11px;
+            opacity: 0.5;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .grid-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 300;
+            margin: 20px 0;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: all 0.8s var(--transition);
+        }
+
+        .grid-item:hover img {
+            filter: grayscale(0%);
+        }
+
+        /* Card 1 & 3: Wide/Narrow/Narrow */
+        .wide { grid-column: 1 / 7; height: 700px; }
+        .narrow { grid-column: 8 / 13; height: 500px; margin-top: 100px;}
+        .narrow-2 { grid-column: 1 / 6; height: 500px; }
+        .wide-2 { grid-column: 7 / 13; height: 700px; margin-top: -100px; }
+
+        /* Responsive Mobile */
+        @media (max-width: 900px) {
+            .hero { display: flex; flex-direction: column-reverse; padding-top: 120px; text-align: center;}
+            .hero-img-box { height: 400px; grid-column: 1/13;}
+            .hero-title-box h1 { font-size: 50px;}
+            .nav-links { display: none; }
+            .reveal-grid { display: block; }
+            .grid-item { margin-bottom: 30px; height: auto;}
+            .grid-item.wide, .grid-item.narrow, .grid-item.narrow-2, .grid-item.wide-2 { height: auto; margin-top: 0;}
+            nav { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+    <div id="cursor-dot"></div>
+
+    <nav>
+        <div class="logo">Aura & Form</div>
+        <div class="nav-links">
+            <a href="#">Journal</a>
+            <a href="#">Collections</a>
+            <a href="#">Design</a>
+            <a href="#">Contact</a>
+        </div>
+        <div style="font-size: 12px; font-weight: 600;">(0) CART</div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-title-box">
+            <h1>A Ritual of <br> Light and Leaf.</h1>
+            <p>Exploring the quiet dialogue between architectural structure and botanical form.</p>
+            <a href="#" class="btn-lure">Explore the Collection &rarr;</a>
+        </div>
+        <div class="hero-img-box"></div>
+    </section>
+
+    <section class="intro">
+        <h2>A symphony of textures where form and function merge.</h2>
+    </section>
+
+    <section class="reveal-grid">
+        <div class="grid-item wide">
+            <div>
+                <span>JOURNAL . OCT 2024</span>
+                <h3>The Art of<br>Concrete & Fern</h3>
+            </div>
+            <img src="https://images.unsplash.com/photo-1596003906949-67221c37965c?auto=format&fit=crop&q=80&w=1000" alt="Botany">
+        </div>
+
+        <div class="grid-item narrow">
+            <div>
+                <span>PROCESS</span>
+                <h3>Sunlight as<br>Structure</h3>
+            </div>
+            <img src="https://images.unsplash.com/photo-1570194065650-d99fb4b8ccb0?auto=format&fit=crop&q=80&w=1000" alt="Process">
+        </div>
+
+        <div class="grid-item narrow-2">
+            <div>
+                <span>MATERIAL</span>
+                <h3>Oak Wood<br>Refinement</h3>
+            </div>
+            <p style="font-size: 13px; margin: 20px 0; line-height: 1.8; opacity: 0.7;">
+                Sustainably sourced timber that celebrates raw texture and refined структур geometry.
+            </p>
+            <div style="font-size: 40px; font-family: 'Cormorant Garamond';">&rarr;</div>
+        </div>
+
+        <div class="grid-item wide-2">
+            <div>
+                <span>ARCHIVE</span>
+                <h3>Botanical <br> Luminescence</h3>
+            </div>
+            <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=1000" alt="Botany">
+        </div>
+    </section>
+
+    <script>
+        // Custom Cursor Movement
+        const cursor = document.getElementById('cursor');
+        const cursorDot = document.getElementById('cursor-dot');
+
+        window.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            // Smoother delay for the inner dot
+            cursorDot.animate({
+                left: e.clientX + 'px',
+                top: e.clientY + 'px'
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Hover Effect on all interactive elements
+        const interactions = document.querySelectorAll('a, .btn-lure, .grid-item');
+        interactions.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(2.5)';
+                cursor.style.backgroundColor = 'rgba(28, 28, 28, 0.05)';
+            });
+            item.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.backgroundColor = 'transparent';
+            });
+        });
+    </script>
+</body>
+</html>

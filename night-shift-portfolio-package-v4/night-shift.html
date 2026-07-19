@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Night Shift is a self-directed print-production case study by Jocelyn Martinez, featuring a 20-page saddle-stitched culture guide, foldout map, postcard set, production proofs, print specifications, and quality-control workflow." name="description"/>
+<meta content="#f5efe8" name="theme-color"/>
+<meta content="Night Shift — Print Production Case Study | Jocelyn Martinez" property="og:title"/>
+<meta content="A bold after-hours culture guide designed as a complete print-object system." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="night-shift/mockups/hero-collage-v2.jpg" property="og:image"/>
+<title>Night Shift — Print Production Case Study | Jocelyn Martinez</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<style>
+        :root{
+            --paper:#f2efe6;--surface:#fffdf7;--ink:#111111;--body:#575751;--muted:#85857d;
+            --blue:#2448ff;--coral:#ff5c55;--acid:#dfff3f;--pink:#ff9aa6;--line:rgba(17,17,17,.15);
+            --display:"Archivo Black",Impact,sans-serif;--mono:"IBM Plex Mono",monospace;--sans:"Inter",system-ui,sans-serif;
+            --content:1320px;--shadow:0 28px 90px rgba(0,0,0,.16)
+        }
+        *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:148px}body{margin:0;overflow-x:hidden;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased}
+        body:before{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.72'/%3E%3C/svg%3E")}
+        body.lightbox-open{overflow:hidden}img{display:block;max-width:100%}a{color:inherit}button{font:inherit}button,a{-webkit-tap-highlight-color:transparent}::selection{background:var(--acid);color:var(--ink)}:focus-visible{outline:3px solid var(--coral);outline-offset:4px}.shell{width:min(calc(100% - 3rem),var(--content));margin-inline:auto}.skip{position:fixed;top:1rem;left:1rem;z-index:5000;padding:.8rem 1rem;background:var(--acid);color:var(--ink);text-decoration:none;transform:translateY(-170%);font-family:var(--mono);font-size:.75rem;font-weight:700}.skip:focus{transform:none}
+        .nav{position:fixed;inset:0 0 auto;z-index:2000;background:rgba(242,239,230,.88);backdrop-filter:blur(18px);border-bottom:1px solid transparent}.nav.scrolled{border-color:var(--line);box-shadow:0 10px 34px rgba(0,0,0,.06)}.nav-inner{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:2rem}.brand{display:flex;align-items:center;gap:.8rem;text-decoration:none}.brand-mark{width:34px;height:34px;display:grid;place-items:center;background:var(--ink);color:var(--acid);font-family:var(--mono);font-size:.72rem;font-weight:700}.brand-name{font-family:var(--display);font-size:1rem;letter-spacing:-.02em}.brand-role{color:var(--muted);font-family:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.1em}.nav-links{display:flex;align-items:center;gap:1.4rem}.nav-links a{font-family:var(--mono);font-size:.63rem;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:.08em}.back{padding:.7rem .9rem;border:1px solid var(--ink)}.back:hover{background:var(--ink);color:var(--acid)}
+        .hero{position:relative;min-height:100vh;padding:11.5rem 0 5rem;background:var(--ink);color:var(--surface);overflow:hidden}.hero:after{content:"NIGHT";position:absolute;right:-2rem;bottom:-2.6rem;font-family:var(--display);font-size:min(25vw,26rem);line-height:.75;color:rgba(255,255,255,.035);pointer-events:none}.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.82fr) minmax(520px,1.18fr);gap:clamp(3rem,7vw,7rem);align-items:center}.eyebrow{display:flex;align-items:center;gap:.8rem;margin:0 0 1.4rem;color:var(--acid);font-family:var(--mono);font-size:.67rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.eyebrow:before{content:"";width:38px;height:3px;background:currentColor}.hero h1{margin:0 0 1.7rem;font-family:var(--display);font-size:clamp(5.3rem,10vw,10rem);line-height:.78;letter-spacing:-.07em}.hero h1 span{display:block;color:var(--coral)}.hero-lede{max-width:670px;margin-bottom:1.8rem;color:rgba(255,255,255,.75);font-size:clamp(1.08rem,2vw,1.34rem)}.honesty{max-width:650px;margin-bottom:2.2rem;padding:1rem 0 0 1rem;border-left:3px solid var(--acid);color:rgba(255,255,255,.58);font-size:.84rem}.actions{display:flex;flex-wrap:wrap;gap:.75rem}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.85rem 1.05rem;border:2px solid var(--acid);font-family:var(--mono);font-size:.66rem;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:.08em;transition:.2s}.btn.primary{background:var(--acid);color:var(--ink)}.btn:hover{transform:translateY(-2px);background:var(--coral);border-color:var(--coral);color:var(--ink)}.hero-visual img{width:100%;box-shadow:var(--shadow);border:10px solid var(--surface);transform:rotate(1deg)}
+        .meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:4.5rem;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.18)}.meta-item{min-height:132px;padding:1.4rem;background:rgba(17,17,17,.88)}.meta-label{display:block;margin-bottom:.7rem;color:var(--acid);font-family:var(--mono);font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em}.meta-value{font-size:.88rem;font-weight:600;line-height:1.55}
+        .case-nav{position:sticky;top:82px;z-index:1500;border-block:1px solid var(--line);background:rgba(242,239,230,.95);backdrop-filter:blur(16px)}.case-nav .shell{display:flex;gap:1.7rem;overflow-x:auto;scrollbar-width:none}.case-nav a{flex:0 0 auto;padding:1rem 0;font-family:var(--mono);font-size:.62rem;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:.08em}.case-nav a:hover{color:var(--blue)}
+        section{scroll-margin-top:150px;padding:8.5rem 0;border-bottom:1px solid var(--line)}.section-grid{display:grid;grid-template-columns:minmax(150px,.52fr) minmax(0,2.48fr);gap:clamp(3rem,8vw,8rem)}.section-kicker{position:sticky;top:166px;align-self:start;font-family:var(--mono);font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em}.section-kicker span{display:block;width:46px;height:5px;margin-top:1rem;background:var(--coral)}h2{max-width:1000px;margin:0 0 1.5rem;font-family:var(--display);font-size:clamp(3.1rem,6vw,5.5rem);line-height:.94;letter-spacing:-.05em}h3{font-family:var(--display);font-size:clamp(1.8rem,3.3vw,2.8rem);line-height:1}.intro{max-width:850px;color:var(--body);font-size:1.06rem}.scope{display:grid;grid-template-columns:auto 1fr;gap:1rem;max-width:930px;margin-top:2.5rem;padding:1.4rem;background:var(--acid);border:2px solid var(--ink)}.scope b{font-family:var(--mono);font-size:.72rem;text-transform:uppercase}.scope p{margin:0;font-size:.86rem}.scope-icon{width:34px;height:34px;display:grid;place-items:center;background:var(--ink);color:var(--acid);font-family:var(--mono);font-weight:700}
+        .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;margin-top:3.5rem}.card{min-height:250px;padding:1.8rem;border:2px solid var(--ink);background:var(--surface)}.card:nth-child(2){background:var(--blue);color:#fff}.card:nth-child(3){background:var(--coral)}.card-num{display:block;margin-bottom:3rem;font-family:var(--mono);font-size:.8rem;font-weight:700}.card h3{margin:0 0 .7rem;font-family:var(--sans);font-size:1rem;font-weight:700}.card p{margin:0;font-size:.86rem;line-height:1.7;color:inherit}
+        .artifact-section{background:var(--ink);color:var(--surface)}.artifact-section .section-kicker,.artifact-section .intro{color:rgba(255,255,255,.7)}.artifact-section .section-kicker span{background:var(--acid)}.artifact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin-top:3.5rem}.artifact{background:#1c1c1c;border:1px solid rgba(255,255,255,.18)}.artifact img{width:100%;aspect-ratio:16/10;object-fit:cover}.artifact-copy{padding:1.4rem}.artifact-copy span{color:var(--acid);font-family:var(--mono);font-size:.6rem;font-weight:700;text-transform:uppercase}.artifact-copy h3{margin:.5rem 0;font-family:var(--sans);font-size:1rem;font-weight:700}.artifact-copy p{margin:0;color:rgba(255,255,255,.62);font-size:.82rem}.image-button{width:100%;padding:0;border:0;background:transparent;cursor:zoom-in}.image-button img{transition:transform .45s}.image-button:hover img{transform:scale(1.012)}
+        .spread-section{background:#e7e1d7}.spread-wrap{margin-top:3.5rem}.spread-wrap img{width:100%;box-shadow:var(--shadow);border:8px solid var(--surface)}.caption{display:grid;grid-template-columns:auto 1fr;gap:1rem;margin-top:1rem;color:var(--muted);font-family:var(--mono);font-size:.68rem}.caption b{color:var(--blue)}
+        .system-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin-top:3.5rem}.system-card{padding:1.8rem;border:2px solid var(--ink);background:var(--surface)}.system-card:nth-child(2){background:var(--acid)}.system-card:nth-child(3){background:var(--coral)}.system-card:nth-child(4){background:var(--blue);color:#fff}.system-card span{display:block;margin-bottom:1.4rem;font-family:var(--mono);font-size:.62rem;font-weight:700;text-transform:uppercase}.system-card h3{margin:0 0 .7rem}.system-card p{margin:0;font-size:.85rem;color:inherit}
+        .process-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:3.5rem;background:var(--ink);border:2px solid var(--ink)}.process-step{min-height:260px;padding:1.6rem;background:var(--surface)}.process-step span{display:block;margin-bottom:3rem;font-family:var(--mono);font-weight:700;color:var(--coral)}.process-step h3{margin:0 0 .7rem;font-family:var(--sans);font-size:.96rem;font-weight:700}.process-step p{margin:0;color:var(--body);font-size:.82rem}
+        .proof-section{background:var(--acid)}.proof-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:start;margin-top:3.5rem}.proof-grid img{width:100%;border:6px solid var(--ink);box-shadow:var(--shadow)}.proof-list{display:grid;gap:1rem}.proof-item{padding:1.3rem;background:var(--surface);border:2px solid var(--ink)}.proof-item b{display:block;margin-bottom:.35rem;font-family:var(--mono);font-size:.69rem;text-transform:uppercase}.proof-item p{margin:0;font-size:.83rem;color:var(--body)}
+        .spec-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.1rem;margin-top:3.5rem}.spec{min-height:215px;padding:1.6rem;background:var(--surface);border:2px solid var(--ink)}.spec b{display:block;margin-bottom:1.2rem;font-family:var(--mono);font-size:.66rem;color:var(--blue);text-transform:uppercase}.spec p{margin:0;color:var(--body);font-size:.82rem}.qa{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;margin-top:3.5rem}.qa-card{padding:1.8rem;border:2px solid var(--ink);background:var(--surface)}.qa-card span{display:block;margin-bottom:2rem;font-family:var(--mono);font-weight:700;color:var(--coral)}.qa-card h3{margin:0 0 .8rem;font-family:var(--sans);font-size:.96rem}.qa-card ul{display:grid;gap:.55rem;margin:0;padding:0;list-style:none}.qa-card li{font-size:.8rem;color:var(--body)}.qa-card li:before{content:"✓ ";font-weight:700;color:var(--blue)}
+        .reflection{background:var(--blue);color:#fff}.reflection .section-kicker,.reflection .intro{color:rgba(255,255,255,.72)}.reflection .section-kicker span{background:var(--acid)}.reflection-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;margin-top:3.5rem}.reflection-card{min-height:230px;padding:1.7rem;border:2px solid rgba(255,255,255,.65)}.reflection-card span{display:block;margin-bottom:2rem;font-family:var(--mono);color:var(--acid)}.reflection-card h3{margin:0 0 .7rem;font-family:var(--sans);font-size:.96rem}.reflection-card p{margin:0;color:rgba(255,255,255,.72);font-size:.83rem}.downloads{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;margin-top:3.5rem;padding:2rem;background:var(--ink);border:3px solid var(--acid)}.downloads p{margin:0;color:rgba(255,255,255,.68);font-size:.85rem}.downloads h3{margin:0 0 .5rem;color:#fff}.download-actions{display:flex;flex-wrap:wrap;gap:.7rem}.download-actions .btn{color:#fff}
+        .footer{padding:6rem 0;background:var(--ink);color:#fff}.footer-inner{display:flex;align-items:end;justify-content:space-between;gap:3rem}.footer p{margin:0 0 .5rem;color:rgba(255,255,255,.55);font-family:var(--mono);font-size:.64rem;text-transform:uppercase}.footer h2{margin:0;color:#fff}.footer a{padding:.9rem 1.1rem;border:2px solid var(--acid);font-family:var(--mono);font-size:.66rem;font-weight:700;text-decoration:none;text-transform:uppercase}.footer a:hover{background:var(--acid);color:var(--ink)}
+        .lightbox{position:fixed;inset:0;z-index:4000;display:none;align-items:center;justify-content:center;padding:5rem 2rem 2rem;background:rgba(0,0,0,.94);backdrop-filter:blur(12px)}.lightbox[aria-hidden="false"]{display:flex}.lightbox img{max-width:min(1500px,94vw);max-height:86vh}.lightbox-close{position:absolute;top:24px;right:28px;width:48px;height:48px;display:grid;place-items:center;border:2px solid #fff;background:var(--ink);color:#fff;cursor:pointer;font-size:1.4rem}.reveal{opacity:0;transform:translateY(24px);transition:.7s}.reveal.visible{opacity:1;transform:none}
+        @media(max-width:1080px){:root{--content:860px}.nav-links a:not(.back){display:none}.hero-grid,.proof-grid{grid-template-columns:1fr}.meta,.cards,.system-grid,.spec-grid,.reflection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.section-grid{grid-template-columns:1fr}.section-kicker{position:static}.process-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.qa{grid-template-columns:repeat(2,minmax(0,1fr))}}
+        @media(max-width:760px){.shell{width:min(calc(100% - 1.5rem),620px)}.brand-role{display:none}.hero{padding:10.3rem 0 5rem}.hero h1{font-size:clamp(4.4rem,21vw,7rem)}.actions{flex-direction:column}.btn{width:100%}.meta,.cards,.artifact-grid,.system-grid,.spec-grid,.qa,.reflection-grid{grid-template-columns:1fr}section{padding:6rem 0}.process-grid{grid-template-columns:1fr}.downloads{grid-template-columns:1fr}.footer-inner{align-items:start;flex-direction:column}}
+        @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+    </style>
+<style>
+:root{--content:1360px}
+.hero{background:
+ radial-gradient(circle at 8% 24%,rgba(36,72,255,.28),transparent 25rem),
+ radial-gradient(circle at 75% 5%,rgba(255,92,85,.14),transparent 26rem),
+ #101010}
+.hero::before{content:"";position:absolute;left:-6rem;top:11rem;width:26rem;height:26rem;border:4px solid var(--blue);border-radius:50%;opacity:.18}
+.hero-visual{position:relative}
+.hero-visual img{border:10px solid var(--surface);transform:rotate(1deg);box-shadow:0 36px 110px rgba(0,0,0,.42)}
+.hero-stamp{position:absolute;right:-1rem;bottom:-1rem;width:124px;height:124px;display:grid;place-items:center;padding:1rem;border:5px solid var(--ink);border-radius:50%;background:var(--blue);color:#fff;font-family:var(--mono);font-size:.62rem;font-weight:700;line-height:1.35;text-align:center;transform:rotate(8deg)}
+.ticker{overflow:hidden;border-block:2px solid var(--ink);background:var(--acid)}
+.ticker-track{display:flex;width:max-content;gap:2rem;padding:.75rem 0;animation:nightTicker 28s linear infinite;font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.ticker-track span::after{content:"✦";margin-left:2rem}
+@keyframes nightTicker{to{transform:translateX(-50%)}}
+.cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.card:nth-child(1){background:var(--surface)}
+.card:nth-child(2){background:var(--blue);color:#fff}
+.card:nth-child(3){background:var(--coral)}
+.card:nth-child(4){background:var(--acid)}
+.card{transition:transform .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-6px);box-shadow:12px 12px 0 var(--ink)}
+.detail-board,.type-board{margin-top:3.5rem}
+.type-board .image-button,.detail-board .image-button{border:8px solid var(--ink)}
+.companion-section{background:linear-gradient(135deg,#f2efe6 0 58%,#ff9aa6 58% 100%)}
+.companion-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:1.2rem;margin-top:3.5rem}
+.companion-card{border:2px solid var(--ink);background:var(--surface)}
+.companion-card img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.companion-copy{padding:1.5rem}
+.companion-copy span{font-family:var(--mono);font-size:.62rem;font-weight:700;color:var(--coral);text-transform:uppercase}
+.companion-copy h3{margin:.6rem 0}
+.companion-copy p{margin:0;color:var(--body);font-size:.85rem}
+.format-index{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:1rem;border:2px solid var(--ink);background:var(--ink)}
+.format-index div{padding:1.15rem;background:var(--surface)}
+.format-index b{display:block;font-family:var(--mono);font-size:.61rem;color:var(--blue);text-transform:uppercase}
+.format-index span{font-size:.78rem}
+.spread-section{background:#151515;color:#fff}
+.spread-section .intro,.spread-section .section-kicker{color:rgba(255,255,255,.7)}
+.spread-section .section-kicker span{background:var(--acid)}
+.spread-section .image-button{border:8px solid var(--surface)}
+.spread-section .caption{color:rgba(255,255,255,.65)}
+.system-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.system-card:nth-child(1){background:var(--surface)}
+.system-card:nth-child(2){background:var(--pink)}
+.system-card:nth-child(3){background:var(--acid)}
+.system-card:nth-child(4){background:var(--blue);color:#fff}
+.process-grid{border:2px solid var(--ink)}
+.spec:nth-child(1){background:var(--acid)}
+.spec:nth-child(2){background:var(--coral)}
+.spec:nth-child(3){background:var(--blue);color:#fff}
+.spec:nth-child(4){background:var(--pink)}
+.qa-card:nth-child(2){background:var(--acid)}
+.qa-card:nth-child(3){background:var(--coral)}
+.downloads{background:var(--blue)}
+.lightbox-close{background:var(--coral);color:var(--ink);border:2px solid #fff}
+@media(max-width:1080px){
+ .cards{grid-template-columns:repeat(2,1fr)}
+ .companion-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+ .cards,.system-grid,.format-index{grid-template-columns:1fr}
+ .hero-stamp{width:92px;height:92px;font-size:.52rem}
+ .ticker-track{animation:none}
+}
+@media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+</style><style>
+/* ================================================================
+   PORTFOLIO CONSISTENCY PASS
+   The portfolio shell uses Jocelyn's editorial system.
+   Night Shift's fluorescent visual language remains inside the work.
+   ================================================================ */
+
+:root {
+    --portfolio-paper: #f5efe8;
+    --portfolio-paper-2: #ebe2d9;
+    --portfolio-surface: #fffdfa;
+    --portfolio-ink: #171717;
+    --portfolio-body: #5f5752;
+    --portfolio-muted: #8d827b;
+    --portfolio-rose: #b78484;
+    --portfolio-rose-dark: #754c50;
+    --portfolio-line: rgba(23, 23, 23, 0.12);
+    --portfolio-line-soft: rgba(23, 23, 23, 0.07);
+    --portfolio-serif: "Instrument Serif", Georgia, serif;
+    --portfolio-sans: "DM Sans", system-ui, sans-serif;
+
+    /* Project accents */
+    --night-acid: #dfff3f;
+    --night-coral: #ff5c55;
+    --night-blue: #2448ff;
+    --night-pink: #ff9aa6;
+}
+
+html {
+    scroll-padding-top: 144px;
+}
+
+body {
+    background: var(--portfolio-paper);
+    color: var(--portfolio-ink);
+    font-family: var(--portfolio-sans);
+}
+
+/* Portfolio navigation */
+.nav {
+    background: rgba(245, 239, 232, 0.82);
+    border-bottom-color: transparent;
+    backdrop-filter: blur(22px);
+}
+
+.nav.scrolled {
+    background: rgba(245, 239, 232, 0.95);
+    border-bottom-color: var(--portfolio-line-soft);
+    box-shadow: 0 10px 35px rgba(38, 27, 27, 0.055);
+}
+
+.nav-inner {
+    min-height: 86px;
+}
+
+.brand {
+    gap: 0.55rem;
+    align-items: baseline;
+}
+
+.brand-name {
+    font-family: var(--portfolio-serif);
+    font-size: 1.75rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.brand-role {
+    color: var(--portfolio-muted);
+    font-family: var(--portfolio-sans);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.nav-links a {
+    color: var(--portfolio-muted);
+    font-family: var(--portfolio-sans);
+    font-size: 0.66rem;
+    letter-spacing: 0.13em;
+}
+
+.nav-links a:hover {
+    color: var(--portfolio-rose-dark);
+}
+
+.back {
+    border: 1px solid var(--portfolio-line);
+    border-radius: 999px;
+    color: var(--portfolio-ink) !important;
+    padding: 0.72rem 0.95rem;
+}
+
+.back:hover {
+    border-color: var(--portfolio-ink);
+    background: var(--portfolio-ink);
+    color: #fff !important;
+}
+
+/* Hero now belongs to the same portfolio */
+.hero {
+    min-height: 100vh;
+    padding: 12.2rem 0 6rem;
+    color: var(--portfolio-ink);
+    background:
+        radial-gradient(circle at 80% 18%, rgba(36, 72, 255, 0.10), transparent 28rem),
+        radial-gradient(circle at 10% 86%, rgba(183, 132, 132, 0.14), transparent 24rem),
+        linear-gradient(180deg, #fffdfa 0%, var(--portfolio-paper) 100%);
+}
+
+.hero::before {
+    border: 1px solid rgba(117, 76, 80, 0.10);
+    opacity: 1;
+}
+
+.hero::after {
+    content: "NS";
+    right: -2rem;
+    bottom: -4.5rem;
+    color: rgba(117, 76, 80, 0.035);
+    font-family: var(--portfolio-serif);
+    font-size: min(34vw, 32rem);
+    font-style: italic;
+    line-height: 0.75;
+}
+
+.hero-grid {
+    grid-template-columns: minmax(0, 0.82fr) minmax(520px, 1.18fr);
+    gap: clamp(4rem, 8vw, 8rem);
+}
+
+.hero .eyebrow {
+    color: var(--portfolio-rose-dark);
+    font-family: var(--portfolio-sans);
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+}
+
+.hero .eyebrow::before {
+    width: 38px;
+    height: 1px;
+    background: currentColor;
+}
+
+.hero h1 {
+    margin-bottom: 1.8rem;
+    color: var(--portfolio-ink);
+    font-family: var(--portfolio-serif);
+    font-size: clamp(5.8rem, 10.8vw, 10.6rem);
+    font-weight: 400;
+    letter-spacing: -0.075em;
+    line-height: 0.76;
+    text-transform: none;
+}
+
+.hero h1 span {
+    display: block;
+    margin-left: clamp(0.8rem, 6vw, 5rem);
+    color: var(--portfolio-rose);
+    font-style: italic;
+}
+
+.hero-lede {
+    max-width: 690px;
+    color: var(--portfolio-body);
+    font-size: clamp(1.1rem, 2vw, 1.37rem);
+    line-height: 1.75;
+}
+
+.honesty {
+    max-width: 680px;
+    border-left: 1px solid var(--portfolio-rose-dark);
+    color: var(--portfolio-muted);
+    font-size: 0.83rem;
+}
+
+.actions {
+    gap: 0.8rem;
+}
+
+.btn {
+    min-height: 50px;
+    padding: 0.9rem 1.18rem;
+    border: 1px solid var(--portfolio-line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.62);
+    color: var(--portfolio-ink);
+    font-family: var(--portfolio-sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.09em;
+}
+
+.btn.primary {
+    border-color: var(--portfolio-ink);
+    background: var(--portfolio-ink);
+    color: #fff;
+}
+
+.btn:hover,
+.btn.primary:hover {
+    border-color: var(--portfolio-rose-dark);
+    background: var(--portfolio-rose-dark);
+    color: #fff;
+}
+
+.hero-visual img {
+    border: 9px solid var(--portfolio-surface);
+    border-radius: 28px;
+    box-shadow: 0 32px 100px rgba(46, 31, 31, 0.16);
+    transform: rotate(0.7deg);
+}
+
+.hero-stamp {
+    width: 108px;
+    height: 108px;
+    border: 5px solid var(--portfolio-paper);
+    background: var(--night-blue);
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    white-space: pre-line;
+    box-shadow: 0 20px 48px rgba(36, 72, 255, 0.22);
+}
+
+.meta {
+    border: 1px solid var(--portfolio-line);
+    border-radius: 23px;
+    overflow: hidden;
+    background: var(--portfolio-line);
+}
+
+.meta-item {
+    min-height: 135px;
+    background: rgba(255, 253, 250, 0.92);
+    color: var(--portfolio-ink);
+}
+
+.meta-label {
+    color: var(--portfolio-rose-dark);
+    font-family: var(--portfolio-sans);
+    letter-spacing: 0.14em;
+}
+
+/* Project accent strip */
+.ticker {
+    border-block: 1px solid var(--portfolio-line-soft);
+    background: var(--portfolio-surface);
+}
+
+.ticker-track {
+    color: var(--portfolio-muted);
+    font-family: var(--portfolio-sans);
+    font-size: 0.64rem;
+    letter-spacing: 0.11em;
+    animation-duration: 34s;
+}
+
+.ticker-track span::after {
+    color: var(--night-coral);
+}
+
+/* Case navigation matches the other case-study pages */
+.case-nav {
+    top: 86px;
+    border-block: 1px solid var(--portfolio-line-soft);
+    background: rgba(245, 239, 232, 0.94);
+}
+
+.case-nav a {
+    color: var(--portfolio-muted);
+    font-family: var(--portfolio-sans);
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+}
+
+.case-nav a:hover {
+    color: var(--portfolio-rose-dark);
+}
+
+/* Shared case-study typography */
+section {
+    padding: 9rem 0;
+    border-bottom: 1px solid var(--portfolio-line-soft);
+}
+
+.section-grid {
+    grid-template-columns: minmax(150px, 0.55fr) minmax(0, 2.45fr);
+}
+
+.section-kicker {
+    color: var(--portfolio-muted);
+    font-family: var(--portfolio-sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+}
+
+.section-kicker span {
+    width: 42px;
+    height: 1px;
+    background: var(--portfolio-rose);
+}
+
+h2 {
+    max-width: 1020px;
+    color: var(--portfolio-ink);
+    font-family: var(--portfolio-serif);
+    font-size: clamp(3.2rem, 6.4vw, 5.7rem);
+    font-weight: 400;
+    letter-spacing: -0.05em;
+    line-height: 0.94;
+    text-transform: none;
+}
+
+h3 {
+    color: inherit;
+    font-family: var(--portfolio-serif);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+}
+
+.intro {
+    max-width: 860px;
+    color: var(--portfolio-body);
+    font-size: 1.08rem;
+    line-height: 1.86;
+}
+
+.scope {
+    max-width: 950px;
+    padding: 1.45rem 1.55rem;
+    border: 1px solid rgba(117, 76, 80, 0.22);
+    border-radius: 19px;
+    background: rgba(234, 214, 213, 0.44);
+}
+
+.scope-icon {
+    border-radius: 50%;
+    background: var(--portfolio-surface);
+    color: var(--portfolio-rose-dark);
+}
+
+.scope b {
+    color: var(--portfolio-rose-dark);
+    font-family: var(--portfolio-sans);
+}
+
+/* Cards use the portfolio language; color appears intentionally */
+.cards,
+.overview-grid {
+    gap: 1.2rem;
+}
+
+.card,
+.overview-card,
+.system-card,
+.process-step,
+.spec,
+.qa-card,
+.companion-card,
+.proof-item {
+    border: 1px solid var(--portfolio-line);
+    border-radius: 22px;
+    box-shadow: none;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 65px rgba(46, 31, 31, 0.10);
+}
+
+.card:nth-child(1),
+.overview-card:nth-child(1) {
+    background: var(--portfolio-surface);
+}
+
+.card:nth-child(2),
+.overview-card:nth-child(2) {
+    border-color: rgba(36, 72, 255, 0.26);
+    background: #e8ecff;
+    color: var(--portfolio-ink);
+}
+
+.card:nth-child(3),
+.overview-card:nth-child(3) {
+    border-color: rgba(255, 92, 85, 0.28);
+    background: #f9dfdc;
+}
+
+.card:nth-child(4),
+.overview-card:nth-child(4) {
+    border-color: rgba(203, 218, 43, 0.45);
+    background: #f2f4cf;
+}
+
+.card-num,
+.card > span,
+.overview-card > span {
+    color: var(--portfolio-rose-dark);
+    font-family: var(--portfolio-serif);
+}
+
+/* Keep the bold identity in image-led moments */
+.spread-section,
+.board-section {
+    background:
+        radial-gradient(circle at 12% 20%, rgba(255, 92, 85, 0.12), transparent 24rem),
+        #292525;
+}
+
+.spread-section h2,
+.board-section h2 {
+    color: #fff;
+}
+
+.spread-section .intro,
+.spread-section .section-kicker,
+.board-section .intro,
+.board-section .section-kicker {
+    color: rgba(255, 255, 255, 0.64);
+}
+
+.spread-section .section-kicker span,
+.board-section .section-kicker span {
+    background: var(--portfolio-rose);
+}
+
+.image-button {
+    border: 0;
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 0 24px 76px rgba(44, 30, 25, 0.11);
+}
+
+.spread-section .image-button,
+.board-section .image-button {
+    border: 7px solid var(--portfolio-surface);
+}
+
+.caption {
+    color: var(--portfolio-muted);
+    font-family: var(--portfolio-sans);
+    font-size: 0.76rem;
+}
+
+.caption b {
+    color: var(--portfolio-rose-dark);
+}
+
+.spread-section .caption,
+.board-section .caption {
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.spread-section .caption b,
+.board-section .caption b {
+    color: var(--night-acid);
+}
+
+/* Artifact and companion presentation */
+.artifact-card {
+    border: 1px solid var(--portfolio-line);
+    border-radius: 24px;
+    background: var(--portfolio-surface);
+    overflow: hidden;
+}
+
+.artifact-copy {
+    border-top: 1px solid var(--portfolio-line);
+}
+
+.artifact-copy span,
+.companion-copy span {
+    color: var(--portfolio-rose-dark);
+    font-family: var(--portfolio-sans);
+}
+
+.artifact-copy h3,
+.companion-copy h3 {
+    font-family: var(--portfolio-sans);
+    font-size: 0.96rem;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.companion-section {
+    background:
+        radial-gradient(circle at 88% 18%, rgba(255, 154, 166, 0.18), transparent 25rem),
+        var(--portfolio-surface);
+}
+
+.companion-card {
+    background: var(--portfolio-surface);
+    overflow: hidden;
+}
+
+.format-index {
+    gap: 1px;
+    border: 1px solid var(--portfolio-line);
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--portfolio-line);
+}
+
+.format-index div {
+    background: var(--portfolio-surface);
+}
+
+.format-index b {
+    color: var(--portfolio-rose-dark);
+    font-family: var(--portfolio-sans);
+}
+
+/* Visual-system cards retain restrained project accents */
+.system-grid {
+    gap: 1.2rem;
+}
+
+.system-card {
+    min-height: 255px;
+    padding: 2rem;
+    background: var(--portfolio-surface);
+    color: var(--portfolio-ink);
+}
+
+.system-card:nth-child(2) {
+    border-color: rgba(255, 154, 166, 0.33);
+    background: #f7e5e6;
+}
+
+.system-card:nth-child(3) {
+    border-color: rgba(203, 218, 43, 0.45);
+    background: #f2f4cf;
+}
+
+.system-card:nth-child(4) {
+    border-color: rgba(36, 72, 255, 0.26);
+    background: #e8ecff;
+    color: var(--portfolio-ink);
+}
+
+.system-card span {
+    color: var(--portfolio-rose-dark);
+    font-family: var(--portfolio-sans);
+}
+
+.system-card h3 {
+    font-family: var(--portfolio-serif);
+}
+
+/* Production and proofing */
+.process-grid {
+    gap: 1px;
+    border: 1px solid var(--portfolio-line);
+    border-radius: 25px;
+    overflow: hidden;
+    background: var(--portfolio-line);
+}
+
+.process-step {
+    border: 0;
+    border-radius: 0;
+    background: var(--portfolio-surface);
+}
+
+.process-step span {
+    color: var(--portfolio-rose-dark);
+    font-family: var(--portfolio-serif);
+    font-size: 1.45rem;
+}
+
+.process-step h3,
+.qa-card h3 {
+    font-family: var(--portfolio-sans);
+    font-size: 0.96rem;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.spec-grid {
+    gap: 1rem;
+}
+
+.spec {
+    min-height: 205px;
+    background: var(--portfolio-surface);
+    color: var(--portfolio-ink);
+}
+
+.spec:nth-child(1) {
+    background: #f2f4cf;
+}
+
+.spec:nth-child(2) {
+    background: #f9dfdc;
+}
+
+.spec:nth-child(3) {
+    background: #e8ecff;
+    color: var(--portfolio-ink);
+}
+
+.spec:nth-child(4) {
+    background: #f7e5e6;
+}
+
+.spec b {
+    color: var(--portfolio-rose-dark);
+    font-family: var(--portfolio-sans);
+}
+
+.proof-section {
+    background: var(--portfolio-paper-2);
+}
+
+.proof-item {
+    background: var(--portfolio-surface);
+}
+
+.proof-item b {
+    color: var(--portfolio-rose-dark);
+    font-family: var(--portfolio-sans);
+}
+
+.qa {
+    gap: 1.2rem;
+}
+
+.qa-card {
+    background: var(--portfolio-surface);
+}
+
+.qa-card:nth-child(2) {
+    background: #f2f4cf;
+}
+
+.qa-card:nth-child(3) {
+    background: #f9dfdc;
+}
+
+.qa-card span {
+    color: var(--portfolio-rose-dark);
+    font-family: var(--portfolio-serif);
+    font-size: 1.45rem;
+}
+
+/* Reflection matches the portfolio's dark creative section */
+.reflection {
+    background:
+        radial-gradient(circle at 15% 22%, rgba(183, 132, 132, 0.22), transparent 24rem),
+        #292525;
+}
+
+.reflection h2 {
+    color: #fff;
+}
+
+.reflection .eyebrow {
+    color: #dfc4c2;
+}
+
+.reflection .section-kicker,
+.reflection .intro {
+    color: rgba(255, 255, 255, 0.64);
+}
+
+.reflection .section-kicker span {
+    background: var(--portfolio-rose);
+}
+
+.reflection-card {
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 22px;
+}
+
+.reflection-card span {
+    color: #dfc4c2;
+}
+
+.reflection-card h3 {
+    font-family: var(--portfolio-sans);
+}
+
+.downloads {
+    border-radius: 25px;
+    background: var(--portfolio-rose-dark);
+}
+
+.download-actions .btn {
+    border-color: rgba(255, 255, 255, 0.34);
+    background: transparent;
+    color: #fff;
+}
+
+.download-actions .btn:hover {
+    border-color: #fff;
+    background: #fff;
+    color: var(--portfolio-rose-dark);
+}
+
+/* Footer returns fully to the portfolio */
+.footer {
+    padding: 7rem 0;
+    border-top: 0;
+    background: var(--portfolio-surface);
+    color: var(--portfolio-ink);
+}
+
+.footer p {
+    color: var(--portfolio-muted);
+    font-family: var(--portfolio-sans);
+    letter-spacing: 0.13em;
+}
+
+.footer h2 {
+    font-family: var(--portfolio-serif);
+    font-weight: 400;
+}
+
+.footer a {
+    border: 1px solid var(--portfolio-line);
+    border-radius: 999px;
+    color: var(--portfolio-ink);
+    font-family: var(--portfolio-sans);
+}
+
+.footer a:hover {
+    border-color: var(--portfolio-ink);
+    background: var(--portfolio-ink);
+    color: #fff;
+}
+
+.lightbox-close {
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    border-radius: 50%;
+    background: var(--portfolio-rose-dark);
+    color: #fff;
+}
+
+@media (max-width: 1080px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-visual {
+        max-width: 780px;
+    }
+}
+
+@media (max-width: 760px) {
+    .brand-role {
+        display: none;
+    }
+
+    .hero {
+        padding-top: 10.8rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(4.8rem, 22vw, 7.3rem);
+    }
+
+    .hero h1 span {
+        margin-left: 0.7rem;
+    }
+
+    .hero-stamp {
+        width: 88px;
+        height: 88px;
+        font-size: 0.48rem;
+    }
+}
+</style><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"/><style>
+/* ---------- V4 board section + consistency ---------- */
+:root{
+    --portfolio-paper:#f5efe8;
+    --portfolio-surface:#fffdfa;
+    --portfolio-paper-2:#ece3da;
+    --portfolio-ink:#171717;
+    --portfolio-body:#5d5752;
+    --portfolio-muted:#8d827b;
+    --portfolio-rose:#b78484;
+    --portfolio-rose-dark:#754c50;
+    --portfolio-line:rgba(23,23,23,.12);
+    --portfolio-line-soft:rgba(23,23,23,.07);
+    --portfolio-serif:"Instrument Serif", Georgia, serif;
+    --portfolio-sans:"DM Sans", system-ui, sans-serif;
+    --night-acid:#dfff3f;
+    --night-coral:#ff5c55;
+    --night-blue:#2448ff;
+    --night-pink:#ff9aa6;
+}
+html{scroll-padding-top:146px}
+body{background:var(--portfolio-paper)!important;color:var(--portfolio-ink)!important;font-family:var(--portfolio-sans)!important}
+.nav{background:rgba(245,239,232,.88)!important;border-bottom:1px solid transparent!important;backdrop-filter:blur(18px)!important}
+.nav.scrolled{background:rgba(245,239,232,.95)!important;border-bottom-color:var(--portfolio-line-soft)!important;box-shadow:0 10px 34px rgba(0,0,0,.05)!important}
+.brand-name{font-family:var(--portfolio-serif)!important;font-size:1.75rem!important;font-style:italic!important;font-weight:400!important;line-height:1!important}
+.brand-role{color:var(--portfolio-muted)!important;font-family:var(--portfolio-sans)!important;font-size:.58rem!important;font-weight:700!important;letter-spacing:.14em!important;text-transform:uppercase!important}
+.nav-links a,.case-nav a,.btn,.meta-label,.section-kicker,.eyebrow,.caption,.footer p,.format-index b,.companion-copy span,.artifact-copy span,.proof-item b,.spec b,.system-card span{font-family:var(--portfolio-sans)!important}
+.nav-links a,.case-nav a{color:var(--portfolio-muted)!important;font-size:.65rem!important;letter-spacing:.12em!important}
+.nav-links a:hover,.case-nav a:hover{color:var(--portfolio-rose-dark)!important}
+.back,.btn,.footer a{border-radius:999px!important}
+.back{border:1px solid var(--portfolio-line)!important;color:var(--portfolio-ink)!important}
+.back:hover,.footer a:hover{background:var(--portfolio-ink)!important;color:#fff!important;border-color:var(--portfolio-ink)!important}
+.hero{
+    min-height:100vh!important;
+    padding:12.2rem 0 6rem!important;
+    color:var(--portfolio-ink)!important;
+    background:
+        radial-gradient(circle at 80% 18%, rgba(36,72,255,.10), transparent 28rem),
+        radial-gradient(circle at 10% 86%, rgba(183,132,132,.13), transparent 24rem),
+        linear-gradient(180deg,#fffdfa 0%, var(--portfolio-paper) 100%)!important;
+}
+.hero::after{
+    content:"NS"!important;
+    right:-2rem!important;bottom:-4.5rem!important;
+    color:rgba(117,76,80,.035)!important;
+    font-family:var(--portfolio-serif)!important;
+    font-style:italic!important;
+    font-size:min(34vw,32rem)!important;line-height:.75!important
+}
+.hero h1,h2,.footer h2{font-family:var(--portfolio-serif)!important;font-weight:400!important;text-transform:none!important;letter-spacing:-.05em!important}
+.hero h1{font-size:clamp(5.8rem,10.8vw,10.6rem)!important;line-height:.76!important;color:var(--portfolio-ink)!important}
+.hero h1 span{display:block;margin-left:clamp(.8rem,6vw,5rem)!important;color:var(--portfolio-rose)!important;font-style:italic!important}
+.hero .eyebrow{color:var(--portfolio-rose-dark)!important;font-size:.66rem!important;letter-spacing:.2em!important}
+.hero .eyebrow::before{height:1px!important;background:currentColor!important}
+.hero-lede,.intro{color:var(--portfolio-body)!important;line-height:1.84!important}
+.honesty{border-left:1px solid var(--portfolio-rose-dark)!important;color:var(--portfolio-muted)!important}
+.btn{border:1px solid var(--portfolio-line)!important;background:rgba(255,255,255,.62)!important;color:var(--portfolio-ink)!important;font-size:.68rem!important}
+.btn.primary{background:var(--portfolio-ink)!important;color:#fff!important;border-color:var(--portfolio-ink)!important}
+.btn:hover,.btn.primary:hover{background:var(--portfolio-rose-dark)!important;border-color:var(--portfolio-rose-dark)!important;color:#fff!important}
+.hero-visual img{border:9px solid var(--portfolio-surface)!important;border-radius:28px!important;box-shadow:0 32px 100px rgba(46,31,31,.16)!important}
+.hero-stamp{background:var(--night-blue)!important;border:5px solid var(--portfolio-paper)!important;box-shadow:0 20px 48px rgba(36,72,255,.22)!important}
+.meta{border:1px solid var(--portfolio-line)!important;border-radius:23px!important;overflow:hidden!important;background:var(--portfolio-line)!important}
+.meta-item{background:rgba(255,253,250,.92)!important;color:var(--portfolio-ink)!important}
+.meta-label{color:var(--portfolio-rose-dark)!important;letter-spacing:.14em!important}
+.ticker{background:var(--portfolio-surface)!important;border-block:1px solid var(--portfolio-line-soft)!important}
+.ticker-track{color:var(--portfolio-muted)!important;font-size:.64rem!important;letter-spacing:.11em!important}
+.ticker-track span::after{color:var(--night-coral)!important}
+.case-nav{top:86px!important;background:rgba(245,239,232,.94)!important;border-block:1px solid var(--portfolio-line-soft)!important}
+section{border-bottom:1px solid var(--portfolio-line-soft)!important}
+.section-kicker{color:var(--portfolio-muted)!important;font-size:.65rem!important;letter-spacing:.18em!important}
+.section-kicker span{height:1px!important;width:42px!important;background:var(--portfolio-rose)!important}
+.scope,.artifact-card,.companion-card,.system-card,.process-step,.proof-item,.qa-card,.spec,.overview-card{border:1px solid var(--portfolio-line)!important;border-radius:22px!important}
+.scope{background:rgba(234,214,213,.44)!important}
+.overview-board-section .board-feature{margin-top:3.1rem}
+.overview-board-section .image-button{border-radius:28px!important;overflow:hidden!important;border:0!important;box-shadow:0 22px 78px rgba(44,30,25,.12)!important}
+.overview-board-section .caption{margin-top:1rem}
+.board-index{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:1rem;
+    margin-top:2rem;
+}
+.board-index article{
+    padding:1.35rem 1.35rem 1.45rem;
+    background:var(--portfolio-surface);
+    border:1px solid var(--portfolio-line);
+    border-radius:20px;
+}
+.board-index span{
+    display:inline-block;
+    margin-bottom:.7rem;
+    color:var(--portfolio-rose-dark);
+    font-family:var(--portfolio-serif);
+    font-size:1.35rem;
+}
+.board-index h3{
+    margin:.1rem 0 .4rem;
+    font-family:var(--portfolio-sans);
+    font-size:1rem;
+    font-weight:700;
+    letter-spacing:0;
+}
+.board-index p{
+    margin:0;
+    color:var(--portfolio-body);
+    font-size:.9rem;
+    line-height:1.7;
+}
+.board-section,.spread-section{
+    background:
+        radial-gradient(circle at 12% 20%, rgba(255,92,85,.12), transparent 24rem),
+        #292525!important;
+}
+.board-section h2,.spread-section h2,.reflection h2{color:#fff!important}
+.board-section .intro,.board-section .section-kicker,.spread-section .intro,.spread-section .section-kicker,.reflection .intro,.reflection .section-kicker{color:rgba(255,255,255,.64)!important}
+.board-section .section-kicker span,.spread-section .section-kicker span,.reflection .section-kicker span{background:var(--portfolio-rose)!important}
+.spread-section .image-button,.board-section .image-button{border:7px solid var(--portfolio-surface)!important}
+.system-card,.artifact-card,.companion-card,.proof-item,.qa-card,.spec{background:var(--portfolio-surface)!important;color:var(--portfolio-ink)!important}
+.system-card:nth-child(2),.qa-card:nth-child(3),.spec:nth-child(2),.overview-card:nth-child(3){background:#f9dfdc!important}
+.system-card:nth-child(3),.qa-card:nth-child(2),.spec:nth-child(1),.overview-card:nth-child(4){background:#f2f4cf!important}
+.system-card:nth-child(4),.spec:nth-child(3),.overview-card:nth-child(2){background:#e8ecff!important;color:var(--portfolio-ink)!important}
+.format-index{border:1px solid var(--portfolio-line)!important;border-radius:20px!important;overflow:hidden!important;background:var(--portfolio-line)!important}
+.format-index div{background:var(--portfolio-surface)!important}
+.companion-section{background:radial-gradient(circle at 88% 18%, rgba(255,154,166,.18), transparent 25rem), var(--portfolio-surface)!important}
+.proof-section{background:var(--portfolio-paper-2)!important}
+.process-grid{border-radius:25px!important;overflow:hidden!important;background:var(--portfolio-line)!important;border:1px solid var(--portfolio-line)!important}
+.process-step{border:0!important;border-radius:0!important}
+.process-step span,.qa-card span{color:var(--portfolio-rose-dark)!important;font-family:var(--portfolio-serif)!important;font-size:1.45rem!important}
+.process-step h3,.qa-card h3,.artifact-copy h3,.companion-copy h3,.reflection-card h3{font-family:var(--portfolio-sans)!important;font-size:.96rem!important;font-weight:700!important;letter-spacing:0!important}
+.reflection{background:radial-gradient(circle at 15% 22%, rgba(183,132,132,.22), transparent 24rem), #292525!important}
+.reflection-card{border:1px solid rgba(255,255,255,.20)!important;border-radius:22px!important}
+.downloads{background:var(--portfolio-rose-dark)!important;border-radius:25px!important}
+.download-actions .btn{background:transparent!important;color:#fff!important;border-color:rgba(255,255,255,.34)!important}
+.download-actions .btn:hover{background:#fff!important;color:var(--portfolio-rose-dark)!important;border-color:#fff!important}
+.footer{background:var(--portfolio-surface)!important;color:var(--portfolio-ink)!important;padding:7rem 0!important}
+.footer p{color:var(--portfolio-muted)!important}
+.footer h2{color:var(--portfolio-ink)!important}
+@media(max-width:1080px){
+  .board-index{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+  .board-index{grid-template-columns:1fr}
+  .hero h1 span{margin-left:.7rem!important}
+}
+</style></head>
+<body>
+<a class="skip" href="#main">Skip to case study</a>
+<nav class="nav" id="nav"><div class="shell nav-inner"><a class="brand" href="index.html"><span class="brand-name">Jocelyn Martinez</span><span class="brand-role">UX/UI &amp; Visual Designer</span></a><div class="nav-links"><a href="#artifact">Artifact</a><a href="#spreads">Spreads</a><a href="#production">Production</a><a href="#proofs">Proofs</a><a class="back" href="index.html#work">← Back to work</a></div></div></nav>
+<header class="hero"><div class="shell"><div class="hero-grid"><div class="reveal"><p class="eyebrow">Self-directed concept · Print production &amp; visual communication</p><h1>Night <span>Shift</span></h1><p class="hero-lede">A fluorescent after-hours culture guide designed as a complete print-object system: a 20-page saddle-stitched zine, accordion-fold map, postcard set, campaign language, proof workflow, and prepress dossier. The case study now opens with a full project board before moving into the detailed sections.</p><p class="honesty">Night Shift is a production-ready prototype for a fictional guide. The files and rendered mockups demonstrate design and print-planning decisions, but the artifact has not yet been physically printed. Real proof photographs should be added after ordering a short run.</p><div class="actions"><a class="btn primary" href="night-shift/Night_Shift_After_Hours_Guide_Print_Prototype.pdf" rel="noopener" target="_blank">Open 20-page zine ↗</a><a class="btn" href="night-shift/Night_Shift_Production_Dossier.pdf" rel="noopener" target="_blank">View production dossier ↗</a></div></div><div class="hero-visual reveal"><img alt="Night Shift zine, foldout map, postcards, and proof system in a fluorescent black, yellow, blue, and coral composition" src="night-shift/mockups/hero-collage-v2.jpg"/><div class="hero-stamp">PRINT
+STUDY
+V2</div></div></div><div class="meta reveal"><div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Print, editorial, campaign, and production designer</span></div><div class="meta-item"><span class="meta-label">Artifact</span><span class="meta-value">20-page zine with saddle-stitch binding</span></div><div class="meta-item"><span class="meta-label">Companion pieces</span><span class="meta-value">11 × 17 foldout, three postcards, and belly band</span></div><div class="meta-item"><span class="meta-label">Production focus</span><span class="meta-value">Bleed, trim, creep, paper, proofs, imposition, and QA</span></div></div></div></header>
+<div aria-hidden="true" class="ticker">
+<div class="ticker-track"><span>Saddle stitch</span><span>Uncoated stock</span><span>Editorial rhythm</span><span>Foldout map</span><span>Postcard set</span><span>CMYK proofing</span><span>Trim + creep</span><span>Saddle stitch</span><span>Uncoated stock</span><span>Editorial rhythm</span><span>Foldout map</span><span>Postcard set</span><span>CMYK proofing</span><span>Trim + creep</span></div>
+</div>
+<nav class="case-nav"><div class="shell"><a href="#board">Board</a><a href="#overview">Overview</a><a href="#artifact">Artifact</a><a href="#spreads">Spreads</a><a href="#system">System</a><a href="#companions">Companion pieces</a><a href="#production">Production</a><a href="#proofs">Proofs</a><a href="#qa">QA</a><a href="#reflection">Reflection</a></div></nav>
+<main id="main">
+<section id="overview"><div class="shell section-grid"><aside class="section-kicker">01 / Overview<span></span></aside><div class="reveal"><p class="eyebrow">Design the object, not only the page</p><h2>A culture guide with a physical point of view.</h2><p class="intro">Night Shift imagines a guide to independent cultural spaces that become active after ordinary business hours. The design needed to feel immediate enough to pull from a counter, small enough to carry, and useful enough to keep.</p><div class="cards"><article class="card"><span class="card-num">01</span><h3>Editorial object</h3><p>Twenty varied pages combine essays, data, profiles, listings, photo-led pacing, route planning, and production notes.</p></article><article class="card"><span class="card-num">02</span><h3>Companion system</h3><p>A foldout route map, poster back, postcard set, and belly band extend the identity beyond the bound zine.</p></article><article class="card"><span class="card-num">03</span><h3>Production discipline</h3><p>Trim, bleed, creep, paper, binding, proofing, imposition, color, export, and final quality control are documented.</p></article>
+<article class="card">
+<span class="card-num">04</span>
+<h3>Visual language</h3>
+<p>Fluorescent signals, oversized type, halftone image treatment, and strict page furniture create energy without losing structure.</p>
+</article>
+</div><div class="scope"><div class="scope-icon">i</div><p><b>Important distinction:</b> the current images are rendered production mockups, not photographs of a completed print run. The project becomes materially stronger once one short-run proof is printed and photographed under real light.</p></div></div></div></section>
+<section class="overview-board-section" id="board">
+<div class="shell section-grid">
+<aside class="section-kicker">02 / Overview board<span></span></aside>
+<div class="reveal">
+<p class="eyebrow">Everything in one place</p>
+<h2>The full project board — the way this case study should open.</h2>
+<p class="intro">
+        This board presents the entire Night Shift system at a glance: the printed object, selected zine pages, foldout map, postcard set, visual language, production specifications, proof workflow, file preparation, and next physical steps.
+      </p>
+<p class="intro">
+        Unlike the earlier version, this board is <em>truthful</em>: it presents Night Shift as a production-ready prototype, not a completed print run with real-world photography.
+      </p>
+<div class="board-feature">
+<button class="image-button" data-alt="Night Shift full overview board" data-src="night-shift/mockups/night-shift-overview-board-v4.png" type="button">
+<img alt="Night Shift project board showing the printed object, zine spreads, foldout map, postcards, visual system, production specifications, proof process, file preparation, packaging concept, and reflection" src="night-shift/mockups/night-shift-overview-board-v4.png"/>
+</button>
+<div class="caption"><b>02.1</b><span>A single high-level board now anchors the project before the deeper sections below.</span></div>
+</div>
+<div class="board-index">
+<article><span>01</span><h3>The Printed Object</h3><p>Cover, binding, paper, detail, edge, and scale views.</p></article>
+<article><span>02</span><h3>Inside the Zine</h3><p>A curated strip of interior pages showing editorial range.</p></article>
+<article><span>03</span><h3>Foldout Map + Poster</h3><p>The navigation layer and poster-scale companion format.</p></article>
+<article><span>04</span><h3>Postcard Set</h3><p>A three-card extension of the campaign language.</p></article>
+<article><span>05</span><h3>Visual System</h3><p>Palette, typography, grid, icon language, and hierarchy.</p></article>
+<article><span>06–07</span><h3>Production + Proofing</h3><p>Trim, bleed, safe area, process checks, and next print steps.</p></article>
+<article><span>09–12</span><h3>File Prep + Reflection</h3><p>Content breakdown, packaging concept, file checks, and project learning.</p></article>
+</div>
+</div>
+</div>
+</section>
+
+<section class="artifact-section" id="artifact"><div class="shell section-grid"><aside class="section-kicker">02 / The artifact<span></span></aside><div class="reveal"><p class="eyebrow">Form, scale, binding, and touch</p><h2>Every production decision changes the reading experience.</h2><p class="intro">The compact 5.5 × 8.5-inch format is designed for carrying and hand-held reading. Uncoated paper keeps the pages tactile and writable; saddle stitching makes the construction visible; companion pieces create different ways to navigate and share the guide.</p><div class="artifact-grid">
+<article class="artifact"><button class="image-button" data-alt="Night Shift zine cover mockup" data-src="night-shift/mockups/cover-object.jpg"><img alt="Night Shift zine shown as a stacked print object" src="night-shift/mockups/cover-object.jpg"/></button><div class="artifact-copy"><span>Cover and page block</span><h3>Compact, bright, and durable</h3><p>A 100 lb cover protects the 80 lb interior while preserving a flexible, informal object.</p></div></article>
+<article class="artifact"><button class="image-button" data-alt="Night Shift saddle-stitch binding detail" data-src="night-shift/mockups/binding-detail.jpg"><img alt="Close view of the Night Shift saddle-stitch binding" src="night-shift/mockups/binding-detail.jpg"/></button><div class="artifact-copy"><span>Binding</span><h3>Two exposed staples</h3><p>The saddle stitch supports a short run and keeps the production logic visible rather than disguised.</p></div></article>
+<article class="artifact"><button class="image-button" data-alt="Night Shift paper and ink texture detail" data-src="night-shift/mockups/paper-texture.jpg"><img alt="Close view of uncoated paper and bright ink textures" src="night-shift/mockups/paper-texture.jpg"/></button><div class="artifact-copy"><span>Paper and ink</span><h3>Low glare, tactile color</h3><p>Uncoated stock softens the bright palette and accepts notes, route marks, and event annotations.</p></div></article>
+<article class="artifact"><button class="image-button" data-alt="Night Shift trim edge and creep detail" data-src="night-shift/mockups/trim-edge.jpg"><img alt="Stacked page edges showing trim and creep considerations" src="night-shift/mockups/trim-edge.jpg"/></button><div class="artifact-copy"><span>Trim edge</span><h3>Designed around the cut</h3><p>Page-edge graphics stay clear of the trim and account for the slight outward shift of nested pages.</p></div></article>
+<article class="artifact"><button class="image-button" data-alt="Night Shift handheld scale mockup" data-src="night-shift/mockups/handheld-scale.jpg"><img alt="Night Shift zine shown at handheld scale" src="night-shift/mockups/handheld-scale.jpg"/></button><div class="artifact-copy"><span>Scale</span><h3>Made to move through the city</h3><p>The trim size balances portability with enough room for listings, captions, data, and route information.</p></div></article>
+<article class="artifact"><button class="image-button" data-alt="Night Shift folded route map mockup" data-src="night-shift/mockups/foldout-map.jpg"><img alt="Night Shift 11 by 17 inch accordion-folded route map" src="night-shift/mockups/foldout-map.jpg"/></button><div class="artifact-copy"><span>Foldout</span><h3>Map on one side, poster on the other</h3><p>An 11 × 17 companion piece becomes navigation, campaign material, and a collectible takeaway.</p></div></article>
+</div>
+<div class="spread-wrap detail-board">
+<button class="image-button" data-alt="Night Shift production details board" data-src="night-shift/mockups/production-details-v2.jpg">
+<img alt="Night Shift board showing binding, paper and ink, trim, proofing, scale, and the foldout map" src="night-shift/mockups/production-details-v2.jpg"/>
+</button>
+<div class="caption"><b>02.2</b><span>Material and production details gathered into one visual review board.</span></div>
+</div>
+</div></div></section>
+<section class="spread-section" id="spreads"><div class="shell section-grid"><aside class="section-kicker">03 / Selected spreads<span></span></aside><div class="reveal"><p class="eyebrow">Sustained composition</p><h2>A zine with rhythm—not twenty repeated templates.</h2><p class="intro">The publication alternates between dense reading, section openers, data, photo-led pauses, listings, profiles, and route planning. The same typography, grid, signal colors, folios, and page furniture hold the system together.</p><div class="spread-wrap"><button class="image-button" data-alt="Night Shift editorial spread rhythm wall" data-src="night-shift/mockups/spread-rhythm-v2.jpg"><img alt="Ten selected Night Shift pages arranged as an editorial rhythm wall with a fluorescent pacing index" src="night-shift/mockups/spread-rhythm-v2.jpg"/></button><div class="caption"><b>03.1</b><span>Ten selected page families show how the zine moves between opening, reading, mapping, data, voice, listings, routes, and closing.</span></div></div></div></div></section>
+<section id="system"><div class="shell section-grid"><aside class="section-kicker">04 / Visual system<span></span></aside><div class="reveal"><p class="eyebrow">High visibility without visual drift</p><h2>A loud palette controlled by a strict grid.</h2><p class="intro">The aesthetic draws from transit signals, venue posters, fluorescent handbills, and late-night city light. A condensed display face, neutral sans, monospaced production language, consistent outside folios, and repeatable spacing prevent the palette from becoming chaotic.</p>
+<div class="spread-wrap type-board">
+<button class="image-button" data-alt="Night Shift typography and color specimen" data-src="night-shift/mockups/type-color-specimen-v2.png">
+<img alt="Night Shift typography and color specimen showing oversized display type and five assigned signal colors" src="night-shift/mockups/type-color-specimen-v2.png"/>
+</button>
+<div class="caption"><b>04.1</b><span>Type and color are presented as a communication system with assigned roles—not a decorative palette.</span></div>
+</div>
+<div class="system-grid"><article class="system-card"><span>Typography</span><h3>Condensed display + neutral body</h3><p>Oversized headings create direction and pace; Inter supports readable essays and listings; monospaced labels identify routes, data, specifications, and production notes.</p></article><article class="system-card"><span>Grid</span><h3>Six columns per page</h3><p>The system supports narrow text, wide statements, listings, image fields, data, and asymmetrical page structures without losing alignment.</p></article><article class="system-card"><span>Color</span><h3>Signal colors with assigned jobs</h3><p>Cobalt marks route information, coral marks events and warnings, acid yellow marks open-late and action states, and black anchors editorial content.</p></article><article class="system-card"><span>Image treatment</span><h3>Halftone, noise, and hard crops</h3><p>Abstracted night imagery creates a coherent atmosphere and remains reproducible across zine pages, posters, postcards, and social cutdowns.</p></article></div></div></div></section>
+<section class="companion-section" id="companions">
+<div class="shell section-grid">
+<aside class="section-kicker">05 / Companion pieces<span></span></aside>
+<div class="reveal">
+<p class="eyebrow">One system, several objects</p>
+<h2>The guide expands into navigation and campaign media.</h2>
+<p class="intro">The foldout and postcard set solve different communication tasks while preserving the zine’s typography, color roles, route language, and production logic.</p>
+<div class="companion-grid">
+<article class="companion-card">
+<button class="image-button" data-alt="Night Shift foldout route map" data-src="night-shift/mockups/foldout-map.jpg">
+<img alt="Night Shift accordion-fold route map and poster" src="night-shift/mockups/foldout-map.jpg"/>
+</button>
+<div class="companion-copy"><span>Foldout map / poster</span><h3>Navigation in the hand, campaign on the wall.</h3><p>The accordion fold controls route sequence. The reverse becomes a large-format campaign surface when opened.</p></div>
+</article>
+<article class="companion-card">
+<button class="image-button" data-alt="Night Shift postcard set" data-src="night-shift/mockups/postcard-set.jpg">
+<img alt="Night Shift fluorescent postcard set" src="night-shift/mockups/postcard-set.jpg"/>
+</button>
+<div class="companion-copy"><span>Postcard set</span><h3>Messages designed to travel.</h3><p>Three shareable fronts support discovery; the backs carry event, route, and contact information.</p></div>
+</article>
+</div>
+<div class="format-index">
+<div><b>Zine</b><span>5.5 × 8.5 in · 20 pages · saddle stitch</span></div>
+<div><b>Foldout</b><span>11 × 17 in · accordion fold · double sided</span></div>
+<div><b>Postcards</b><span>4 × 6 in · three cards · double sided</span></div>
+</div>
+</div>
+</div>
+</section>
+<section id="production"><div class="shell section-grid"><aside class="section-kicker">06 / Production workflow<span></span></aside><div class="reveal"><p class="eyebrow">From layout to printer</p><h2>Production planning begins before export.</h2><p class="intro">The files were developed as one print ecosystem so page count, fold behavior, trim, bleed, color, paper, and companion formats could be checked together rather than added at the end.</p><div class="process-grid"><article class="process-step"><span>01</span><h3>Content and flatplan</h3><p>Lock the 20-page count, section order, route logic, and companion-piece roles before detailed styling.</p></article><article class="process-step"><span>02</span><h3>Layout and dummy</h3><p>Build page masters, fold a blank signature, and test reading order, scale, margins, and creep-sensitive edges.</p></article><article class="process-step"><span>03</span><h3>Preflight and proof</h3><p>Review resolution, color conversion, fonts, bleed, safe area, page order, fold direction, and final dimensions.</p></article><article class="process-step"><span>04</span><h3>Trim and assembly</h3><p>Inspect the press proof, trim consistency, fold alignment, staple position, page sequence, and final package.</p></article></div><div class="spec-grid"><article class="spec"><b>Trim and bleed</b><p>5.5 × 8.5-inch trim with 0.125-inch bleed. Critical text and folios remain at least 0.25 inch inside the cut.</p></article><article class="spec"><b>Binding and creep</b><p>Twenty pages satisfy saddle-stitch signatures. A folded dummy checks the slight page shift created by nesting.</p></article><article class="spec"><b>Paper</b><p>80 lb uncoated text, 100 lb uncoated cover, 70 lb foldout, and 16 pt postcards provide distinct but related tactile roles.</p></article><article class="spec"><b>Color</b><p>Bright RGB screen values are translated through CMYK soft proofing and a physical press proof rather than assumed to match.</p></article></div></div></div></section>
+<section class="proof-section" id="proofs"><div class="shell section-grid"><aside class="section-kicker">07 / Proofs and tests<span></span></aside><div class="reveal"><p class="eyebrow">Compare, correct, and print again</p><h2>The screen is only the first proof.</h2><div class="proof-grid"><div><button class="image-button" data-alt="Night Shift proof comparison" data-src="night-shift/mockups/proof-comparison.jpg"><img alt="Night Shift screen preview, soft proof, and press-proof comparison" src="night-shift/mockups/proof-comparison.jpg"/></button><div class="caption"><b>06.1</b><span>Rendered proof comparison showing the stages that should be reviewed before a physical print run.</span></div></div><div class="proof-list"><article class="proof-item"><b>Screen preview</b><p>Useful for composition and content review, but not authoritative for paper color, ink density, or fluorescent hues.</p></article><article class="proof-item"><b>Soft proof</b><p>Simulates the selected CMYK profile and helps identify out-of-gamut color, weak contrast, and muddy neutrals.</p></article><article class="proof-item"><b>Folded dummy</b><p>Confirms pagination, scale, gutter behavior, route-map folds, page-edge graphics, and reading comfort.</p></article><article class="proof-item"><b>Press proof</b><p>The physical source of truth for ink, paper, trim, fold, registration, staple position, and tactile quality.</p></article></div></div><div class="spread-wrap"><button class="image-button" data-alt="Night Shift production tests and color swatches" data-src="night-shift/mockups/production-tests.jpg"><img alt="Night Shift production dummies, page tests, and color swatches" src="night-shift/mockups/production-tests.jpg"/></button></div></div></div></section>
+<section id="qa"><div class="shell section-grid"><aside class="section-kicker">08 / Quality control<span></span></aside><div class="reveal"><p class="eyebrow">The last ten percent</p><h2>A beautiful file can still fail at the printer.</h2><p class="intro">Final review covers content, composition, color, technical preparation, and the assembled object. The production dossier includes the detailed trim diagram, binding logic, paper plan, proof workflow, imposition concept, and QA checklist.</p><div class="qa"><article class="qa-card"><span>01</span><h3>Content QA</h3><ul><li>Dates, times, venue names, and routes</li><li>Page order, section labels, and folios</li><li>Captions and illustrative-data labels</li><li>URLs and calls to action</li></ul></article><article class="qa-card"><span>02</span><h3>Design QA</h3><ul><li>Grid and baseline alignment</li><li>Hierarchy and color-independent meaning</li><li>Image treatment and contrast</li><li>Widows, orphans, and awkward line breaks</li></ul></article><article class="qa-card"><span>03</span><h3>Production QA</h3><ul><li>Bleed, trim, safe area, and folds</li><li>Resolution, color mode, and fonts</li><li>Binding, creep, and page sequence</li><li>Export preset, package, and final filename</li></ul></article></div></div></div></section>
+<section class="reflection" id="reflection"><div class="shell section-grid"><aside class="section-kicker">09 / Reflection<span></span></aside><div class="reveal"><p class="eyebrow">What the project demonstrates</p><h2>Print is an experience of edges, pressure, sequence, and touch.</h2><p class="intro">Night Shift pushed the work beyond a flat visual identity. The trim changes composition. The fold changes information order. The paper changes color. The binding changes margins. The proof changes what is considered final.</p><div class="reflection-grid"><article class="reflection-card"><span>01</span><h3>Strongest contribution</h3><p>A complete print ecosystem connecting editorial design, campaign language, route information, companion pieces, and production planning.</p></article><article class="reflection-card"><span>02</span><h3>Largest limitation</h3><p>The current artifact is a production-ready digital prototype. Material credibility still requires a real print run and documentary photography.</p></article><article class="reflection-card"><span>03</span><h3>Next iteration</h3><p>Order one bound proof, correct color and fold behavior, then photograph the actual cover, staples, paper, trim, scale, tests, and final package.</p></article></div><div class="downloads"><div><h3>Review the complete production package.</h3><p>The files include the 20-page zine, 11 × 17 map/poster, three-card set, and six-page production dossier.</p></div><div class="download-actions"><a class="btn" href="night-shift/mockups/night-shift-overview-board-v4.png" rel="noopener" target="_blank">Board ↗</a><a class="btn" href="night-shift/Night_Shift_After_Hours_Guide_Print_Prototype.pdf" rel="noopener" target="_blank">Zine PDF ↗</a><a class="btn" href="night-shift/Night_Shift_Foldout_Map_Poster.pdf" rel="noopener" target="_blank">Foldout ↗</a><a class="btn" href="night-shift/Night_Shift_Postcard_Set.pdf" rel="noopener" target="_blank">Postcards ↗</a><a class="btn" href="night-shift/Night_Shift_Production_Dossier.pdf" rel="noopener" target="_blank">Dossier ↗</a><a class="btn" href="night-shift/Night_Shift_Project_Overview.pdf" rel="noopener" target="_blank">Overview ↗</a></div></div></div></div></section>
+</main>
+<footer class="footer"><div class="shell footer-inner"><div><p>Continue exploring</p><h2>Return to selected work.</h2></div><a href="index.html#work">View portfolio ↗</a></div></footer>
+<div aria-hidden="true" aria-label="Enlarged Night Shift project image" aria-modal="true" class="lightbox" id="lightbox" role="dialog"><button aria-label="Close image" class="lightbox-close" id="close">×</button><img alt="" id="lightboxImage" src=""/></div>
+<script>
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>12),{passive:true});
+const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;const items=document.querySelectorAll('.reveal');if(reduced||!('IntersectionObserver'in window)){items.forEach(i=>i.classList.add('visible'))}else{const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');o.unobserve(e.target)}}),{threshold:.1});items.forEach(i=>o.observe(i))}
+const box=document.getElementById('lightbox'),img=document.getElementById('lightboxImage'),close=document.getElementById('close');let prev=null;document.querySelectorAll('.image-button').forEach(b=>b.addEventListener('click',()=>{prev=b;img.src=b.dataset.src;img.alt=b.dataset.alt||'Enlarged Night Shift project image';box.setAttribute('aria-hidden','false');document.body.classList.add('lightbox-open');close.focus()}));function shut(){box.setAttribute('aria-hidden','true');img.src='';document.body.classList.remove('lightbox-open');if(prev)prev.focus()}close.addEventListener('click',shut);box.addEventListener('click',e=>{if(e.target===box)shut()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&box.getAttribute('aria-hidden')==='false')shut()});
+</script>
+</body></html>

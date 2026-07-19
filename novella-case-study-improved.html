@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Novella is a self-directed UX/UI product concept by Jocelyn Martinez exploring a calmer, mood-aware way to discover, evaluate, and organize books.">
+    <meta name="theme-color" content="#f1ede8">
+    <meta property="og:title" content="Novella — UX/UI Case Study by Jocelyn Martinez">
+    <meta property="og:description" content="An editorial reading concept designed around focused discovery, clear book evaluation, and a personal digital library.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="Novella/mainmenu.png">
+    <title>Novella — UX/UI Case Study | Jocelyn Martinez</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #f1ede8;
+            --paper-deep: #e5ded7;
+            --surface: #fffdfb;
+            --surface-warm: #f8f4f0;
+            --ink: #231f1d;
+            --body: #5a514d;
+            --muted: #817672;
+            --burgundy: #6f3338;
+            --burgundy-dark: #4c272b;
+            --burgundy-soft: #ead8d9;
+            --rose: #b98588;
+            --sage: #7f8877;
+            --line: rgba(35, 31, 29, 0.13);
+            --line-soft: rgba(35, 31, 29, 0.07);
+            --serif: "Cormorant Garamond", Georgia, serif;
+            --sans: "Plus Jakarta Sans", Arial, sans-serif;
+            --content: 1240px;
+            --radius-lg: 32px;
+            --radius-md: 18px;
+            --shadow: 0 26px 80px rgba(61, 42, 41, 0.10);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 140px;
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            pointer-events: none;
+            opacity: .024;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+        }
+
+        img { display: block; max-width: 100%; }
+        a { color: inherit; }
+        button { font: inherit; }
+        button, a { -webkit-tap-highlight-color: transparent; }
+        ::selection { background: var(--burgundy-soft); color: var(--ink); }
+
+        :focus-visible {
+            outline: 3px solid var(--burgundy);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 3000;
+            padding: .8rem 1rem;
+            border-radius: 999px;
+            background: var(--burgundy-dark);
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(-170%);
+            transition: transform .2s ease;
+        }
+
+        .skip-link:focus { transform: translateY(0); }
+
+        .page-shell {
+            width: min(calc(100% - 3rem), var(--content));
+            margin-inline: auto;
+        }
+
+        /* Navigation */
+        .site-nav {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 1000;
+            background: rgba(241, 237, 232, .88);
+            border-bottom: 1px solid transparent;
+            backdrop-filter: blur(18px);
+            transition: border-color .25s ease, box-shadow .25s ease;
+        }
+
+        .site-nav.scrolled {
+            border-color: var(--line-soft);
+            box-shadow: 0 10px 34px rgba(56, 38, 37, .05);
+        }
+
+        .nav-inner {
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .brand {
+            font-family: var(--serif);
+            font-size: 1.55rem;
+            font-style: italic;
+            font-weight: 600;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.7rem;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .15em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color .2s ease;
+        }
+
+        .nav-links a:hover { color: var(--burgundy); }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+            color: var(--burgundy-dark) !important;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 93vh;
+            padding: 12.5rem 0 7rem;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 82% 20%, rgba(111, 51, 56, .15), transparent 28rem),
+                radial-gradient(circle at 8% 84%, rgba(185, 133, 136, .14), transparent 22rem),
+                linear-gradient(180deg, #f7f3ef 0%, var(--paper) 100%);
+        }
+
+        .hero::after {
+            content: "N";
+            position: absolute;
+            right: -2vw;
+            bottom: -15rem;
+            color: rgba(111, 51, 56, .045);
+            font-family: var(--serif);
+            font-size: min(52vw, 48rem);
+            font-style: italic;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: .85rem;
+            margin: 0 0 1.5rem;
+            color: var(--burgundy);
+            font-size: .67rem;
+            font-weight: 700;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 36px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        h1, h2, h3, h4, p { margin-top: 0; }
+        h1, h2, h3, h4 { text-wrap: balance; }
+
+        h1 {
+            max-width: 980px;
+            margin: 0 0 1.8rem;
+            font-family: var(--serif);
+            font-size: clamp(5rem, 12vw, 10rem);
+            font-weight: 500;
+            letter-spacing: -.065em;
+            line-height: .79;
+        }
+
+        h1 em {
+            display: block;
+            margin-left: clamp(1rem, 10vw, 8rem);
+            color: var(--burgundy);
+            font-weight: 400;
+        }
+
+        .hero-lede {
+            max-width: 730px;
+            margin-bottom: 3.5rem;
+            color: var(--body);
+            font-size: clamp(1.15rem, 2vw, 1.42rem);
+            line-height: 1.65;
+        }
+
+        .hero-meta {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            max-width: 1040px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--line);
+            gap: 1px;
+        }
+
+        .meta-item {
+            min-height: 132px;
+            padding: 1.55rem;
+            background: rgba(255, 253, 251, .9);
+        }
+
+        .meta-label {
+            display: block;
+            margin-bottom: .7rem;
+            color: var(--muted);
+            font-size: .63rem;
+            font-weight: 700;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+
+        .meta-value {
+            color: var(--ink);
+            font-size: .93rem;
+            font-weight: 600;
+            line-height: 1.55;
+        }
+
+        /* Sticky page navigation */
+        .case-nav {
+            position: sticky;
+            top: 80px;
+            z-index: 900;
+            border-block: 1px solid var(--line);
+            background: rgba(241, 237, 232, .92);
+            backdrop-filter: blur(16px);
+        }
+
+        .case-nav-inner {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .case-nav-inner::-webkit-scrollbar { display: none; }
+
+        .case-nav a {
+            flex: 0 0 auto;
+            padding: 1rem 0;
+            color: var(--muted);
+            font-size: .69rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .case-nav a:hover { color: var(--burgundy); }
+
+        /* Shared section system */
+        section {
+            scroll-margin-top: 145px;
+            padding: 8.8rem 0;
+            border-bottom: 1px solid var(--line-soft);
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: minmax(150px, .7fr) minmax(0, 2.5fr);
+            gap: clamp(3rem, 8vw, 8rem);
+        }
+
+        .section-kicker {
+            position: sticky;
+            top: 165px;
+            align-self: start;
+            color: var(--muted);
+            font-size: .66rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+        .section-kicker span {
+            display: block;
+            width: 42px;
+            height: 1px;
+            margin-top: 1rem;
+            background: var(--burgundy);
+        }
+
+        .section-content { min-width: 0; }
+
+        h2 {
+            max-width: 940px;
+            margin-bottom: 1.9rem;
+            font-family: var(--serif);
+            font-size: clamp(3rem, 6.4vw, 5.3rem);
+            font-weight: 500;
+            letter-spacing: -.045em;
+            line-height: .96;
+        }
+
+        h3 {
+            font-family: var(--serif);
+            font-size: clamp(1.8rem, 3vw, 2.65rem);
+            font-weight: 500;
+            letter-spacing: -.025em;
+            line-height: 1.1;
+        }
+
+        .intro {
+            max-width: 830px;
+            margin-bottom: 2rem;
+            color: var(--body);
+            font-size: 1.1rem;
+            line-height: 1.85;
+        }
+
+        .project-note {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.1rem;
+            max-width: 900px;
+            margin-top: 3rem;
+            padding: 1.45rem 1.55rem;
+            border: 1px solid rgba(111, 51, 56, .22);
+            border-radius: 18px;
+            background: rgba(234, 216, 217, .52);
+        }
+
+        .note-icon {
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--burgundy);
+            font-weight: 700;
+        }
+
+        .project-note p {
+            margin: 0;
+            color: #60474a;
+            font-size: .9rem;
+            line-height: 1.7;
+        }
+
+        .project-note strong { color: var(--burgundy-dark); }
+
+        /* Summary cards */
+        .summary-grid,
+        .audit-grid,
+        .audience-grid,
+        .decision-grid,
+        .validation-grid,
+        .reflection-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .summary-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .summary-card,
+        .audit-card,
+        .audience-card,
+        .decision-card,
+        .validation-card,
+        .reflection-card {
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--surface);
+        }
+
+        .summary-card {
+            padding: 2rem;
+        }
+
+        .card-number {
+            display: block;
+            margin-bottom: 2rem;
+            color: var(--burgundy);
+            font-size: .67rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+        }
+
+        .summary-card h3,
+        .validation-card h3,
+        .reflection-card h3 {
+            margin-bottom: .8rem;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -.01em;
+        }
+
+        .summary-card p,
+        .audit-card p,
+        .audience-card p,
+        .decision-card p,
+        .validation-card p,
+        .reflection-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: .9rem;
+            line-height: 1.72;
+        }
+
+        /* Comparative review */
+        .audit-section { background: var(--surface-warm); }
+
+        .audit-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .audit-card {
+            padding: 2rem;
+        }
+
+        .audit-card h3 {
+            margin-bottom: .35rem;
+            font-size: 2rem;
+        }
+
+        .audit-type {
+            display: block;
+            margin-bottom: 1.6rem;
+            color: var(--burgundy);
+            font-size: .62rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .audit-line {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: .25rem;
+            padding: 1rem 0;
+            border-top: 1px solid var(--line-soft);
+        }
+
+        .audit-line strong {
+            color: var(--ink);
+            font-size: .77rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        .audit-line span {
+            color: var(--body);
+            font-size: .87rem;
+            line-height: 1.6;
+        }
+
+        .hypothesis-strip {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1px;
+            overflow: hidden;
+            margin-top: 4rem;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: var(--line);
+        }
+
+        .hypothesis {
+            padding: 2rem;
+            background: var(--burgundy-dark);
+            color: #fff;
+        }
+
+        .hypothesis:nth-child(2) { background: #62343a; }
+        .hypothesis:nth-child(3) { background: #765158; }
+
+        .hypothesis span {
+            display: block;
+            margin-bottom: 1.4rem;
+            color: rgba(255,255,255,.62);
+            font-size: .63rem;
+            font-weight: 700;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+        }
+
+        .hypothesis p {
+            margin: 0;
+            color: rgba(255,255,255,.86);
+            font-size: .9rem;
+            line-height: 1.7;
+        }
+
+        /* Behavioral profiles */
+        .audience-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .audience-card {
+            position: relative;
+            overflow: hidden;
+            padding: 2.5rem;
+        }
+
+        .audience-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 5px;
+            background: var(--burgundy);
+        }
+
+        .audience-card:nth-child(2)::before { background: var(--sage); }
+
+        .audience-label {
+            display: inline-flex;
+            margin-bottom: 1.5rem;
+            padding: .45rem .8rem;
+            border-radius: 999px;
+            background: var(--burgundy-soft);
+            color: var(--burgundy-dark);
+            font-size: .63rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .audience-card:nth-child(2) .audience-label {
+            background: #e5e8df;
+            color: #56614e;
+        }
+
+        .audience-card h3 { margin-bottom: 1rem; }
+
+        .plain-list {
+            display: grid;
+            gap: .95rem;
+            margin: 1.8rem 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .plain-list li {
+            display: grid;
+            grid-template-columns: 20px 1fr;
+            gap: .7rem;
+            color: var(--body);
+            font-size: .9rem;
+            line-height: 1.65;
+        }
+
+        .plain-list li::before {
+            content: "↳";
+            color: var(--burgundy);
+            font-weight: 700;
+        }
+
+        /* Journey */
+        .journey {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            margin-top: 4rem;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 26px;
+            background: var(--surface);
+        }
+
+        .journey-step {
+            position: relative;
+            min-height: 300px;
+            padding: 2.2rem;
+            border-right: 1px solid var(--line);
+        }
+
+        .journey-step:last-child { border-right: 0; }
+
+        .journey-step::after {
+            content: "→";
+            position: absolute;
+            top: 2rem;
+            right: -12px;
+            z-index: 2;
+            width: 24px;
+            height: 24px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: var(--paper);
+            color: var(--burgundy);
+            font-size: .75rem;
+        }
+
+        .journey-step:last-child::after { display: none; }
+
+        .journey-index {
+            display: block;
+            margin-bottom: 4rem;
+            color: var(--burgundy);
+            font-family: var(--serif);
+            font-size: 1.5rem;
+        }
+
+        .journey-step h3 {
+            margin-bottom: .8rem;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .journey-step p {
+            margin: 0;
+            color: var(--body);
+            font-size: .88rem;
+        }
+
+        /* Decisions */
+        .decision-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .decision-card {
+            padding: 2.25rem;
+        }
+
+        .decision-tag {
+            display: inline-flex;
+            margin-bottom: 1.5rem;
+            color: var(--burgundy);
+            font-size: .64rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .decision-card h3 { margin-bottom: .8rem; }
+
+        .decision-detail {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .decision-detail strong {
+            display: block;
+            margin-bottom: .4rem;
+            color: var(--burgundy-dark);
+            font-size: .76rem;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+        }
+
+        /* Product gallery */
+        .screens-section { background: #ede6df; }
+
+        .gallery-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 2rem;
+            margin: 3.5rem 0 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .gallery-heading h3 { margin: 0; }
+
+        .gallery-heading p {
+            max-width: 450px;
+            margin: 0;
+            color: var(--body);
+            font-size: .87rem;
+        }
+
+        .carousel {
+            position: relative;
+        }
+
+        .screen-track {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(235px, 285px);
+            gap: 1.5rem;
+            padding: .8rem .25rem 2.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(111,51,56,.3) transparent;
+        }
+
+        .screen-track::-webkit-scrollbar { height: 8px; }
+        .screen-track::-webkit-scrollbar-thumb {
+            border-radius: 999px;
+            background: rgba(111,51,56,.28);
+        }
+
+        .screen-card {
+            min-width: 0;
+            scroll-snap-align: start;
+        }
+
+        .screen-button,
+        .desktop-button {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: zoom-in;
+            text-align: left;
+        }
+
+        .phone-frame {
+            padding: .72rem;
+            border: 1px solid rgba(111, 51, 56, .11);
+            border-radius: 34px;
+            background: var(--surface);
+            box-shadow: 0 16px 45px rgba(73, 48, 47, .06);
+            transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease;
+        }
+
+        .phone-frame img {
+            width: 100%;
+            max-height: 575px;
+            border-radius: 26px;
+            object-fit: cover;
+            object-position: top;
+            background: #fff;
+        }
+
+        .screen-button:hover .phone-frame,
+        .screen-button:focus-visible .phone-frame {
+            transform: translateY(-8px);
+            border-color: rgba(111, 51, 56, .34);
+            box-shadow: var(--shadow);
+        }
+
+        .screen-meta { padding: 1.25rem .35rem 0; }
+
+        .screen-number {
+            display: block;
+            margin-bottom: .45rem;
+            color: var(--burgundy);
+            font-size: .63rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+        }
+
+        .screen-meta h4 {
+            margin-bottom: .45rem;
+            font-family: var(--sans);
+            font-size: .93rem;
+            font-weight: 700;
+        }
+
+        .screen-meta p {
+            margin: 0;
+            color: var(--body);
+            font-size: .8rem;
+            line-height: 1.6;
+        }
+
+        .carousel-controls {
+            display: flex;
+            gap: .75rem;
+            margin-top: 1.4rem;
+        }
+
+        .carousel-button {
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--burgundy-dark);
+            cursor: pointer;
+            transition: background .2s ease, color .2s ease, transform .2s ease;
+        }
+
+        .carousel-button:hover {
+            background: var(--burgundy-dark);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Desktop direction comparison */
+        .desktop-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .desktop-card {
+            padding: 1.3rem;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: var(--surface);
+        }
+
+        .desktop-frame {
+            overflow: hidden;
+            border: 1px solid var(--line-soft);
+            border-radius: 15px;
+            background: #fff;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .desktop-button:hover .desktop-frame,
+        .desktop-button:focus-visible .desktop-frame {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .desktop-frame img {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .desktop-copy { padding: 1.5rem .6rem .6rem; }
+
+        .variant-label {
+            display: inline-flex;
+            margin-bottom: 1rem;
+            padding: .4rem .72rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--muted);
+            font-size: .62rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .desktop-card.recommended .variant-label {
+            border-color: transparent;
+            background: var(--burgundy);
+            color: #fff;
+        }
+
+        .desktop-copy h3 {
+            margin-bottom: .8rem;
+            font-size: 2rem;
+        }
+
+        .desktop-copy p {
+            margin: 0;
+            color: var(--body);
+            font-size: .88rem;
+        }
+
+        .direction-note {
+            margin-top: 2rem;
+            padding: 2rem;
+            border-radius: 22px;
+            background: var(--burgundy-dark);
+            color: #fff;
+        }
+
+        .direction-note h3 {
+            max-width: 780px;
+            margin-bottom: .9rem;
+            color: #fff;
+        }
+
+        .direction-note p {
+            max-width: 800px;
+            margin: 0;
+            color: rgba(255,255,255,.77);
+        }
+
+        /* Visual system */
+        .visual-section { background: var(--surface); }
+
+        .visual-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            margin-top: 4rem;
+        }
+
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .swatch {
+            min-height: 165px;
+            padding: 1.3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        .type-stack {
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .type-card {
+            padding: 2rem;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            background: var(--surface-warm);
+        }
+
+        .type-label {
+            display: block;
+            margin-bottom: 1.2rem;
+            color: var(--muted);
+            font-size: .62rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .type-serif {
+            margin-bottom: 1rem;
+            font-family: var(--serif);
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-style: italic;
+            line-height: .9;
+        }
+
+        .type-sans {
+            margin-bottom: 1rem;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -.04em;
+            line-height: 1;
+        }
+
+        .type-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: .86rem;
+        }
+
+        /* Validation */
+        .validation-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .validation-card {
+            padding: 2.2rem;
+        }
+
+        .validation-icon {
+            width: 42px;
+            height: 42px;
+            margin-bottom: 2rem;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: var(--burgundy-soft);
+            color: var(--burgundy-dark);
+            font-weight: 700;
+        }
+
+        /* Reflection */
+        .reflection-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .reflection-card { padding: 2rem; }
+
+        /* Footer */
+        .next-case {
+            padding: 7rem 0;
+            background: var(--burgundy-dark);
+            color: #fff;
+        }
+
+        .next-inner {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .next-case p {
+            margin-bottom: .75rem;
+            color: rgba(255,255,255,.62);
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .next-case h2 {
+            max-width: 760px;
+            margin-bottom: 0;
+            color: #fff;
+        }
+
+        .next-link {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            gap: .8rem;
+            padding: 1rem 1.35rem;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 999px;
+            color: #fff;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background .2s ease, color .2s ease;
+        }
+
+        .next-link:hover {
+            background: #fff;
+            color: var(--burgundy-dark);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 2rem 2rem;
+            background: rgba(38, 20, 23, .94);
+            backdrop-filter: blur(14px);
+        }
+
+        .lightbox[aria-hidden="false"] { display: flex; }
+
+        .lightbox img {
+            max-width: min(1180px, 92vw);
+            max-height: 84vh;
+            border-radius: 16px;
+            box-shadow: 0 50px 110px rgba(0,0,0,.48);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 28px;
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 50%;
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Motion */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .72s ease, transform .72s ease;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (max-width: 1050px) {
+            :root { --content: 820px; }
+
+            .hero-meta,
+            .summary-grid,
+            .audit-grid,
+            .hypothesis-strip,
+            .journey,
+            .reflection-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-kicker { position: static; }
+
+            .journey-step:nth-child(2) { border-right: 0; }
+            .journey-step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+            .journey-step:nth-child(2)::after { display: none; }
+
+            .visual-layout { gap: 3rem; }
+        }
+
+        @media (max-width: 760px) {
+            .page-shell {
+                width: min(calc(100% - 1.75rem), 620px);
+            }
+
+            .nav-links > a:not(.back-link) { display: none; }
+
+            .hero {
+                min-height: auto;
+                padding: 10.5rem 0 5.5rem;
+            }
+
+            h1 { font-size: clamp(4.5rem, 22vw, 7rem); }
+            h1 em { margin-left: .75rem; }
+
+            section { padding: 6.2rem 0; }
+
+            .hero-meta,
+            .summary-grid,
+            .audit-grid,
+            .hypothesis-strip,
+            .audience-grid,
+            .decision-grid,
+            .desktop-grid,
+            .visual-layout,
+            .validation-grid,
+            .reflection-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .meta-item { min-height: 0; }
+
+            .journey {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-step {
+                min-height: 0;
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .journey-step:last-child { border-bottom: 0; }
+            .journey-step::after { display: none; }
+            .journey-index { margin-bottom: 2.5rem; }
+
+            .gallery-heading {
+                align-items: start;
+                flex-direction: column;
+            }
+
+            .screen-track {
+                grid-auto-columns: minmax(230px, 78vw);
+            }
+
+            .next-inner {
+                align-items: start;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-note { grid-template-columns: 1fr; }
+            .palette-grid { grid-template-columns: 1fr; }
+            .case-nav-inner { gap: 1.4rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to case study</a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Portfolio navigation">
+        <div class="page-shell nav-inner">
+            <a class="brand" href="index.html">Jocelyn Martinez</a>
+            <div class="nav-links">
+                <a href="#screens">Screens</a>
+                <a href="#validation">Validation plan</a>
+                <a class="back-link" href="index.html#portfolio"><span aria-hidden="true">←</span> Back to work</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="page-shell hero-content reveal">
+            <p class="eyebrow">Self-directed concept · UX/UI & visual design</p>
+            <h1>Novella <em>Reader</em></h1>
+            <p class="hero-lede">
+                A quieter reading experience designed to help people move from “I want to read” to a confident book choice—without making discovery feel like shopping.
+            </p>
+
+            <div class="hero-meta" aria-label="Project summary">
+                <div class="meta-item">
+                    <span class="meta-label">My focus</span>
+                    <span class="meta-value">Product strategy, information architecture, interaction design, UI design</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Context</span>
+                    <span class="meta-value">Self-directed mobile and responsive web concept</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Audience</span>
+                    <span class="meta-value">Readers balancing discovery, evaluation, and personal organization</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Deliverables</span>
+                    <span class="meta-value">Mobile flows, interface system, desktop directions, validation plan</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="case-nav" aria-label="Case study sections">
+        <div class="page-shell case-nav-inner">
+            <a href="#overview">Overview</a>
+            <a href="#audit">Comparative review</a>
+            <a href="#audience">Audience</a>
+            <a href="#journey">Journey</a>
+            <a href="#decisions">Decisions</a>
+            <a href="#screens">Screens</a>
+            <a href="#desktop">Desktop</a>
+            <a href="#visual">Visual system</a>
+            <a href="#validation">Validation</a>
+            <a href="#reflection">Reflection</a>
+        </div>
+    </nav>
+
+    <main id="main">
+        <section id="overview">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">01 / Overview<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">The opportunity</p>
+                    <h2>Discovery should feel like choosing a story—not clearing a storefront.</h2>
+                    <p class="intro">
+                        Reading platforms often ask one interface to do several jobs at once: sell books, surface reviews, manage a library, recommend titles, and host the reading experience. When every goal receives equal visual weight, readers must sort through competing carousels, ratings, promotions, and metadata before deciding what genuinely interests them.
+                    </p>
+                    <p class="intro">
+                        Novella explores a more focused system. It uses mood and reading intent as an additional discovery layer, gives editorial content space to breathe, and reveals practical details when they become useful. The goal is not to remove information—it is to establish a clearer sequence for encountering it.
+                    </p>
+
+                    <div class="summary-grid">
+                        <article class="summary-card">
+                            <span class="card-number">01</span>
+                            <h3>Discover by intent</h3>
+                            <p>Readers can begin with the kind of experience they want—comforting, tense, reflective, or unfamiliar—then refine by genre and format.</p>
+                        </article>
+                        <article class="summary-card">
+                            <span class="card-number">02</span>
+                            <h3>Evaluate without overload</h3>
+                            <p>Synopsis, tone, author context, and an optional excerpt arrive before deeper metadata and community signals.</p>
+                        </article>
+                        <article class="summary-card">
+                            <span class="card-number">03</span>
+                            <h3>Build a personal archive</h3>
+                            <p>Saved books, reading history, and collections are presented as a coherent library rather than another recommendation feed.</p>
+                        </article>
+                    </div>
+
+                    <div class="project-note">
+                        <div class="note-icon" aria-hidden="true">i</div>
+                        <p>
+                            <strong>Project scope:</strong> Novella is a self-directed design concept, not a launched product. The comparative review and behavioral profiles informed design hypotheses; they are not substitutes for interviews or usability testing. The validation section outlines what I would test before committing to the product direction.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="audit" class="audit-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">02 / Comparative review<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Informal product audit</p>
+                    <h2>Three useful products reveal three different priorities.</h2>
+                    <p class="intro">
+                        I reviewed common flows in Kindle, Goodreads, and Libby to understand how each product handles discovery, decision-making, and library management. This was a directional interface review—not formal research or a universal assessment of the products.
+                    </p>
+
+                    <div class="audit-grid">
+                        <article class="audit-card">
+                            <h3>Kindle</h3>
+                            <span class="audit-type">Commerce + reading</span>
+                            <div class="audit-line">
+                                <strong>Useful strength</strong>
+                                <span>A connected purchasing and reading ecosystem with familiar library access.</span>
+                            </div>
+                            <div class="audit-line">
+                                <strong>Design tension</strong>
+                                <span>Shopping, subscriptions, recommendations, and the personal library compete for attention on the same surface.</span>
+                            </div>
+                            <div class="audit-line">
+                                <strong>Opportunity explored</strong>
+                                <span>Separate focused discovery from the user’s owned and saved collection.</span>
+                            </div>
+                        </article>
+
+                        <article class="audit-card">
+                            <h3>Goodreads</h3>
+                            <span class="audit-type">Catalog + community</span>
+                            <div class="audit-line">
+                                <strong>Useful strength</strong>
+                                <span>Extensive catalog information, reader reviews, shelves, and social proof.</span>
+                            </div>
+                            <div class="audit-line">
+                                <strong>Design tension</strong>
+                                <span>Dense information can make it difficult to understand the book itself before encountering other people’s opinions.</span>
+                            </div>
+                            <div class="audit-line">
+                                <strong>Opportunity explored</strong>
+                                <span>Introduce the work first, then let the reader choose when to view ratings and reviews.</span>
+                            </div>
+                        </article>
+
+                        <article class="audit-card">
+                            <h3>Libby</h3>
+                            <span class="audit-type">Borrowing + reading</span>
+                            <div class="audit-line">
+                                <strong>Useful strength</strong>
+                                <span>A friendly borrowing experience with clear availability and library-card integration.</span>
+                            </div>
+                            <div class="audit-line">
+                                <strong>Design tension</strong>
+                                <span>Availability and hold status can interrupt discovery after a reader has already formed interest.</span>
+                            </div>
+                            <div class="audit-line">
+                                <strong>Opportunity explored</strong>
+                                <span>Keep availability visible while supporting wishlists, alternatives, and continued exploration.</span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="hypothesis-strip" aria-label="Design hypotheses">
+                        <div class="hypothesis">
+                            <span>Hypothesis 01</span>
+                            <p>A smaller, more intentional recommendation set may help readers compare rather than continuously browse.</p>
+                        </div>
+                        <div class="hypothesis">
+                            <span>Hypothesis 02</span>
+                            <p>Mood can complement genre when its language is concrete, understandable, and easy to override.</p>
+                        </div>
+                        <div class="hypothesis">
+                            <span>Hypothesis 03</span>
+                            <p>Progressively revealing reviews and detailed metadata may protect exploration without withholding useful information.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="audience">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">03 / Audience<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Behavior before personality labels</p>
+                    <h2>Two reading behaviors shaped the experience.</h2>
+                    <p class="intro">
+                        Instead of assigning MBTI or Enneagram types, I framed the audience around observable goals, habits, and friction. One person may move between both behaviors depending on the moment.
+                    </p>
+
+                    <div class="audience-grid">
+                        <article class="audience-card">
+                            <span class="audience-label">Atmospheric browser</span>
+                            <h3>“I know how I want a book to feel.”</h3>
+                            <p>This reader is open to discovery but does not want an endless list. They need enough context to imagine the experience before committing.</p>
+                            <ul class="plain-list">
+                                <li>Starts with mood, setting, pacing, or emotional intensity.</li>
+                                <li>Wants unfamiliar titles—not only repeated bestsellers.</li>
+                                <li>Uses synopsis, samples, and author context to build confidence.</li>
+                                <li>May abandon a search when recommendations feel repetitive or too broad.</li>
+                            </ul>
+                        </article>
+
+                        <article class="audience-card">
+                            <span class="audience-label">Deliberate curator</span>
+                            <h3>“I want my library to remain useful.”</h3>
+                            <p>This reader values control, organization, and reliable reading settings. Discovery matters, but so does returning to previously saved work.</p>
+                            <ul class="plain-list">
+                                <li>Organizes books by status, theme, project, or custom collection.</li>
+                                <li>Needs predictable search, filters, and metadata.</li>
+                                <li>Values typography controls and a focused reading environment.</li>
+                                <li>Wants highlights and saved titles to remain portable and easy to find.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="journey">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">04 / Journey<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Experience structure</p>
+                    <h2>From vague intention to an informed choice.</h2>
+                    <p class="intro">
+                        The proposed journey treats discovery as a sequence. Each stage answers a different question instead of placing the entire catalog, community, and purchase decision on one screen.
+                    </p>
+
+                    <div class="journey">
+                        <article class="journey-step">
+                            <span class="journey-index">01</span>
+                            <h3>Set an intention</h3>
+                            <p>The reader selects a mood, pacing preference, genre, or format—or skips personalization entirely.</p>
+                        </article>
+                        <article class="journey-step">
+                            <span class="journey-index">02</span>
+                            <h3>Browse a shortlist</h3>
+                            <p>A focused set of recommendations provides meaningful contrast rather than an endless feed.</p>
+                        </article>
+                        <article class="journey-step">
+                            <span class="journey-index">03</span>
+                            <h3>Evaluate the work</h3>
+                            <p>Synopsis, tone, author context, details, and an optional blind excerpt support the decision.</p>
+                        </article>
+                        <article class="journey-step">
+                            <span class="journey-index">04</span>
+                            <h3>Save or begin</h3>
+                            <p>The chosen book moves into the personal archive, where reading and organization become the priority.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="decisions">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">05 / Decisions<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Product and interaction design</p>
+                    <h2>Design choices tied to specific tasks.</h2>
+                    <p class="intro">
+                        Novella’s visual atmosphere supports the concept, but the structure is doing the heavier work. These decisions are meant to make the experience more understandable—not merely more decorative.
+                    </p>
+
+                    <div class="decision-grid">
+                        <article class="decision-card">
+                            <span class="decision-tag">Discovery model</span>
+                            <h3>Mood supplements genre; it does not replace it.</h3>
+                            <p>Labels such as “reflective,” “fast-paced,” or “uneasy” offer another entry point while conventional filters remain visible and editable.</p>
+                            <div class="decision-detail">
+                                <strong>Reason</strong>
+                                <p>Emotional language can be useful but subjective. Pairing it with familiar metadata gives readers control.</p>
+                            </div>
+                        </article>
+
+                        <article class="decision-card">
+                            <span class="decision-tag">Information hierarchy</span>
+                            <h3>Reveal detail when it becomes relevant.</h3>
+                            <p>The first view emphasizes the book’s identity, premise, and tone. Reviews, publication data, and deeper metadata remain one step away.</p>
+                            <div class="decision-detail">
+                                <strong>Reason</strong>
+                                <p>This protects the initial encounter without hiding information needed for a considered decision.</p>
+                            </div>
+                        </article>
+
+                        <article class="decision-card">
+                            <span class="decision-tag">Optional experiment</span>
+                            <h3>Let prose speak before the cover does.</h3>
+                            <p>The “blind excerpt” concept lets a reader sample a short passage before seeing the title, cover, ratings, or author identity.</p>
+                            <div class="decision-detail">
+                                <strong>Reason</strong>
+                                <p>It could surface unexpected matches—but should remain optional and be tested for confusion, trust, and accessibility.</p>
+                            </div>
+                        </article>
+
+                        <article class="decision-card">
+                            <span class="decision-tag">Personal archive</span>
+                            <h3>Separate ownership from recommendation.</h3>
+                            <p>The library prioritizes saved, active, and completed books rather than using the user’s collection as another promotional feed.</p>
+                            <div class="decision-detail">
+                                <strong>Reason</strong>
+                                <p>Returning users need reliable access to their own content more than another round of discovery.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="screens" class="screens-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">06 / Mobile screens<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">High-fidelity interface</p>
+                    <h2>An editorial identity across the complete flow.</h2>
+                    <p class="intro">
+                        The screens use a consistent visual system while changing information density by task. Select any screen to enlarge it.
+                    </p>
+
+                    <div class="gallery-heading">
+                        <h3>Mobile experience</h3>
+                        <p>Onboarding, discovery, evaluation, author context, and the reader’s personal library.</p>
+                    </div>
+
+                    <div class="carousel">
+                        <div class="screen-track" id="screenTrack">
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-src="Novella/onboarding.png" data-lightbox-alt="Novella onboarding screen for reading preferences" aria-label="Enlarge onboarding screen">
+                                    <span class="phone-frame"><img src="Novella/onboarding.png" alt="Novella onboarding screen for reading preferences"></span>
+                                </button>
+                                <div class="screen-meta">
+                                    <span class="screen-number">01 / ONBOARDING</span>
+                                    <h4>Preference setup</h4>
+                                    <p>Introduces personalization as optional and adjustable rather than a permanent profile.</p>
+                                </div>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-src="Novella/mainmenu.png" data-lightbox-alt="Novella home screen with featured reading content" aria-label="Enlarge home screen">
+                                    <span class="phone-frame"><img src="Novella/mainmenu.png" alt="Novella home screen with featured reading content"></span>
+                                </button>
+                                <div class="screen-meta">
+                                    <span class="screen-number">02 / HOME</span>
+                                    <h4>Focused home</h4>
+                                    <p>Balances the current reading state with a deliberately limited discovery set.</p>
+                                </div>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-src="Novella/search.png" data-lightbox-alt="Novella search and filtering screen" aria-label="Enlarge search screen">
+                                    <span class="phone-frame"><img src="Novella/search.png" alt="Novella search and filtering screen"></span>
+                                </button>
+                                <div class="screen-meta">
+                                    <span class="screen-number">03 / SEARCH</span>
+                                    <h4>Structured search</h4>
+                                    <p>Combines direct search with familiar filters and optional mood-based refinement.</p>
+                                </div>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-src="Novella/bookmatch.png" data-lightbox-alt="Novella book match recommendation screen" aria-label="Enlarge book match screen">
+                                    <span class="phone-frame"><img src="Novella/bookmatch.png" alt="Novella book match recommendation screen"></span>
+                                </button>
+                                <div class="screen-meta">
+                                    <span class="screen-number">04 / MATCH</span>
+                                    <h4>Curated match</h4>
+                                    <p>Presents a recommendation with enough rationale for the reader to understand the fit.</p>
+                                </div>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-src="Novella/booksummary.png" data-lightbox-alt="Novella editorial book summary screen" aria-label="Enlarge book overview screen">
+                                    <span class="phone-frame"><img src="Novella/booksummary.png" alt="Novella editorial book summary screen"></span>
+                                </button>
+                                <div class="screen-meta">
+                                    <span class="screen-number">05 / OVERVIEW</span>
+                                    <h4>Book introduction</h4>
+                                    <p>Leads with identity, premise, and atmosphere before community opinion.</p>
+                                </div>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-src="Novella/booksummary2.png" data-lightbox-alt="Novella detailed book information screen" aria-label="Enlarge book detail screen">
+                                    <span class="phone-frame"><img src="Novella/booksummary2.png" alt="Novella detailed book information screen"></span>
+                                </button>
+                                <div class="screen-meta">
+                                    <span class="screen-number">06 / DETAILS</span>
+                                    <h4>Decision support</h4>
+                                    <p>Surfaces practical information after the reader has formed initial interest.</p>
+                                </div>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-src="Novella/author.png" data-lightbox-alt="Novella author profile and related works screen" aria-label="Enlarge author screen">
+                                    <span class="phone-frame"><img src="Novella/author.png" alt="Novella author profile and related works screen"></span>
+                                </button>
+                                <div class="screen-meta">
+                                    <span class="screen-number">07 / AUTHOR</span>
+                                    <h4>Author context</h4>
+                                    <p>Connects the selected work to voice, background, and related titles without leaving the flow.</p>
+                                </div>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-src="Novella/library.png" data-lightbox-alt="Novella personal digital library screen" aria-label="Enlarge personal library screen">
+                                    <span class="phone-frame"><img src="Novella/library.png" alt="Novella personal digital library screen"></span>
+                                </button>
+                                <div class="screen-meta">
+                                    <span class="screen-number">08 / LIBRARY</span>
+                                    <h4>Personal archive</h4>
+                                    <p>Gives saved and active books a stable home separate from the discovery experience.</p>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="carousel-controls" aria-label="Mobile screen gallery controls">
+                            <button class="carousel-button" id="screensPrevious" type="button" aria-label="View previous screens">←</button>
+                            <button class="carousel-button" id="screensNext" type="button" aria-label="View next screens">→</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="desktop">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">07 / Desktop direction<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Exploring density</p>
+                    <h2>Two directions tested the balance between browsing and focus.</h2>
+                    <p class="intro">
+                        I explored two responsive-homepage directions. The comparison helped clarify the product’s visual priority, but it does not prove which design would perform better without usability testing.
+                    </p>
+
+                    <div class="desktop-grid">
+                        <article class="desktop-card">
+                            <button class="desktop-button" type="button" data-lightbox-src="Novella/webpage1.png" data-lightbox-alt="Novella desktop concept with an information-dense book grid" aria-label="Enlarge information-dense desktop concept">
+                                <span class="desktop-frame"><img src="Novella/webpage1.png" alt="Information-dense Novella desktop concept"></span>
+                            </button>
+                            <div class="desktop-copy">
+                                <span class="variant-label">Direction A</span>
+                                <h3>Library grid</h3>
+                                <p>Supports high-volume scanning and quick access to many titles, but risks giving every item equal emphasis.</p>
+                            </div>
+                        </article>
+
+                        <article class="desktop-card recommended">
+                            <button class="desktop-button" type="button" data-lightbox-src="Novella/webpage2.png" data-lightbox-alt="Novella desktop concept with a focused editorial spotlight" aria-label="Enlarge editorial desktop concept">
+                                <span class="desktop-frame"><img src="Novella/webpage2.png" alt="Editorial spotlight Novella desktop concept"></span>
+                            </button>
+                            <div class="desktop-copy">
+                                <span class="variant-label">Direction B · Selected hypothesis</span>
+                                <h3>Editorial spotlight</h3>
+                                <p>Creates a clearer entry point and stronger visual identity, while requiring deliberate access to the broader catalog.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="direction-note">
+                        <h3>Why I carried Direction B forward</h3>
+                        <p>
+                            It more directly supports Novella’s differentiation: a focused introduction to a small number of books. In a real product process, I would test both directions on discovery speed, comprehension, perceived control, and the ability to reach the full library—not select the editorial version on aesthetics alone.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="visual" class="visual-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">08 / Visual system<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Editorial but functional</p>
+                    <h2>A literary identity that preserves interface clarity.</h2>
+                    <p class="intro">
+                        Warm neutrals, burgundy accents, generous spacing, and an editorial serif give the product a distinct voice. A neutral sans-serif carries controls and metadata so the atmosphere does not compromise usability.
+                    </p>
+
+                    <div class="visual-layout">
+                        <div>
+                            <div class="gallery-heading">
+                                <h3>Core palette</h3>
+                                <p>Warm surfaces provide continuity while burgundy is reserved for emphasis and action.</p>
+                            </div>
+                            <div class="palette-grid" aria-label="Novella color palette">
+                                <div class="swatch" style="background:#6f3338;color:#fff;">
+                                    <span>Archive burgundy</span><span>#6F3338</span>
+                                </div>
+                                <div class="swatch" style="background:#f1ede8;color:#231f1d;">
+                                    <span>Warm paper</span><span>#F1EDE8</span>
+                                </div>
+                                <div class="swatch" style="background:#231f1d;color:#fff;">
+                                    <span>Core ink</span><span>#231F1D</span>
+                                </div>
+                                <div class="swatch" style="background:#817672;color:#fff;">
+                                    <span>Muted metadata</span><span>#817672</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="gallery-heading">
+                                <h3>Type roles</h3>
+                                <p>Typography distinguishes editorial content from interface instructions and data.</p>
+                            </div>
+                            <div class="type-stack">
+                                <article class="type-card">
+                                    <span class="type-label">Editorial voice</span>
+                                    <div class="type-serif">A room of stories</div>
+                                    <p>Used for titles, featured passages, and moments where the book’s identity should lead.</p>
+                                </article>
+                                <article class="type-card">
+                                    <span class="type-label">Interface voice</span>
+                                    <div class="type-sans">Search · Save · Read</div>
+                                    <p>Used for navigation, metadata, controls, and compact information that must remain immediately legible.</p>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="validation">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">09 / Validation plan<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">What I would test next</p>
+                    <h2>Turn the visual concept into an evidence-based product direction.</h2>
+                    <p class="intro">
+                        The largest open question is whether the proposed atmosphere improves decision-making or simply looks appealing. I would test the core assumptions before expanding the feature set.
+                    </p>
+
+                    <div class="validation-grid">
+                        <article class="validation-card">
+                            <div class="validation-icon" aria-hidden="true">1</div>
+                            <h3>Mood-language comprehension</h3>
+                            <p>Ask readers to interpret and use mood labels, then identify ambiguous terms and where genre or content filters remain necessary.</p>
+                        </article>
+                        <article class="validation-card">
+                            <div class="validation-icon" aria-hidden="true">2</div>
+                            <h3>Discovery task success</h3>
+                            <p>Measure whether participants can find a plausible next book, explain why it fits, and recover when the first recommendation misses.</p>
+                        </article>
+                        <article class="validation-card">
+                            <div class="validation-icon" aria-hidden="true">3</div>
+                            <h3>Desktop direction comparison</h3>
+                            <p>Compare the grid and spotlight designs on discoverability, perceived choice, time to useful information, and access to the full catalog.</p>
+                        </article>
+                        <article class="validation-card">
+                            <div class="validation-icon" aria-hidden="true">4</div>
+                            <h3>Reading and accessibility checks</h3>
+                            <p>Test contrast, dynamic type, keyboard and screen-reader use, reduced motion, reading controls, and long-form comfort on real devices.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reflection">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">10 / Reflection<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">What the project demonstrates</p>
+                    <h2>Atmosphere is strongest when the structure earns it.</h2>
+                    <p class="intro">
+                        Novella began as a visual exploration, but the more useful design problem became sequencing: what should a reader encounter first, what can wait, and how should discovery differ from managing an owned library? The project strengthened my ability to connect art direction with information architecture while remaining honest about what still needs validation.
+                    </p>
+
+                    <div class="reflection-grid">
+                        <article class="reflection-card">
+                            <span class="card-number">01</span>
+                            <h3>Strongest contribution</h3>
+                            <p>A cohesive visual and interaction direction that connects discovery, evaluation, author context, and collection management.</p>
+                        </article>
+                        <article class="reflection-card">
+                            <span class="card-number">02</span>
+                            <h3>Largest product risk</h3>
+                            <p>Mood-based personalization can become vague, reductive, or repetitive unless readers can understand, edit, and escape it.</p>
+                        </article>
+                        <article class="reflection-card">
+                            <span class="card-number">03</span>
+                            <h3>Next design step</h3>
+                            <p>Prototype the core discovery flow, test it with readers, and revise the labels and hierarchy before adding social or recommendation complexity.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="next-case">
+        <div class="page-shell next-inner">
+            <div>
+                <p>Continue exploring</p>
+                <h2>Return to selected work.</h2>
+            </div>
+            <a class="next-link" href="index.html#portfolio">View portfolio <span aria-hidden="true">↗</span></a>
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged Novella interface screen" aria-hidden="true">
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close enlarged image">×</button>
+        <img id="lightboxImage" src="" alt="">
+    </div>
+
+    <script>
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const revealItems = document.querySelectorAll(".reveal");
+        const siteNav = document.getElementById("siteNav");
+
+        function updateNavigation() {
+            siteNav.classList.toggle("scrolled", window.scrollY > 12);
+        }
+
+        updateNavigation();
+        window.addEventListener("scroll", updateNavigation, { passive: true });
+
+        if (reducedMotion || !("IntersectionObserver" in window)) {
+            revealItems.forEach(item => item.classList.add("is-visible"));
+        } else {
+            const observer = new IntersectionObserver((entries, currentObserver) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        currentObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            revealItems.forEach(item => observer.observe(item));
+        }
+
+        const screenTrack = document.getElementById("screenTrack");
+        const screensPrevious = document.getElementById("screensPrevious");
+        const screensNext = document.getElementById("screensNext");
+
+        function scrollScreens(direction) {
+            const firstCard = screenTrack.querySelector(".screen-card");
+            const amount = firstCard ? firstCard.getBoundingClientRect().width + 24 : screenTrack.clientWidth * 0.8;
+            screenTrack.scrollBy({ left: amount * direction, behavior: reducedMotion ? "auto" : "smooth" });
+        }
+
+        screensPrevious.addEventListener("click", () => scrollScreens(-1));
+        screensNext.addEventListener("click", () => scrollScreens(1));
+
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxClose = document.getElementById("lightboxClose");
+        const lightboxTriggers = document.querySelectorAll("[data-lightbox-src]");
+        let previouslyFocused = null;
+
+        function openLightbox(trigger) {
+            previouslyFocused = trigger;
+            lightboxImage.src = trigger.dataset.lightboxSrc;
+            lightboxImage.alt = trigger.dataset.lightboxAlt || "Enlarged Novella interface screen";
+            lightbox.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+            lightboxClose.focus();
+        }
+
+        function closeLightbox() {
+            lightbox.setAttribute("aria-hidden", "true");
+            lightboxImage.src = "";
+            lightboxImage.alt = "";
+            document.body.style.overflow = "";
+            if (previouslyFocused) previouslyFocused.focus();
+        }
+
+        lightboxTriggers.forEach(trigger => {
+            trigger.addEventListener("click", () => openLightbox(trigger));
+        });
+
+        lightboxClose.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", event => {
+            if (event.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && lightbox.getAttribute("aria-hidden") === "false") {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

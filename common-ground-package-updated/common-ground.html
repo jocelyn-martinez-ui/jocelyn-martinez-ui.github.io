@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Common Ground is a self-directed editorial design case study by Jocelyn Martinez, featuring a 28-page cultural access report with long-form layout, data visualization, tables, timeline, photography, and print production systems.">
+    <meta name="theme-color" content="#f4f0e8">
+    <meta property="og:title" content="Common Ground — Editorial Design Case Study | Jocelyn Martinez">
+    <meta property="og:description" content="A 28-page illustrative cultural report demonstrating editorial systems, typography, data visualization, and print production thinking.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="common-ground/project-overview-board.png">
+    <title>Common Ground — Editorial Design Case Study | Jocelyn Martinez</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #f4f0e8;
+            --paper-deep: #e7ded2;
+            --surface: #fffdf9;
+            --ink: #1b1b1a;
+            --charcoal: #242322;
+            --body: #5c5752;
+            --muted: #8b8178;
+            --clay: #b76453;
+            --clay-dark: #814335;
+            --clay-soft: #ead8d2;
+            --olive: #65715f;
+            --olive-soft: #e1e6dd;
+            --blue: #526979;
+            --blue-soft: #dce4e8;
+            --gold: #c4a56d;
+            --line: rgba(27, 27, 26, 0.13);
+            --line-soft: rgba(27, 27, 26, 0.07);
+            --serif: "EB Garamond", Georgia, serif;
+            --sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --content: 1280px;
+            --radius-xl: 40px;
+            --radius-lg: 28px;
+            --radius-md: 18px;
+            --shadow: 0 32px 100px rgba(47, 31, 28, 0.13);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 145px;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.72;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.022;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.72'/%3E%3C/svg%3E");
+        }
+
+        body.lightbox-open { overflow: hidden; }
+        img { display: block; max-width: 100%; }
+        a { color: inherit; }
+        button { font: inherit; }
+        a, button { -webkit-tap-highlight-color: transparent; }
+
+        ::selection { background: var(--clay-soft); color: var(--ink); }
+        :focus-visible { outline: 3px solid var(--clay-dark); outline-offset: 4px; border-radius: 5px; }
+
+        .page-shell {
+            width: min(calc(100% - 3rem), var(--content));
+            margin-inline: auto;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 5000;
+            padding: 0.8rem 1rem;
+            border-radius: 999px;
+            background: var(--ink);
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(-170%);
+            transition: transform 0.2s ease;
+        }
+        .skip-link:focus { transform: translateY(0); }
+
+        /* Navigation */
+        .site-nav {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 2000;
+            border-bottom: 1px solid transparent;
+            background: rgba(244, 240, 232, 0.82);
+            backdrop-filter: blur(20px);
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+        .site-nav.scrolled {
+            border-color: var(--line-soft);
+            background: rgba(244, 240, 232, 0.95);
+            box-shadow: 0 10px 35px rgba(36, 24, 23, 0.055);
+        }
+        .nav-inner {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .brand {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.55rem;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .brand-name {
+            font-family: var(--serif);
+            font-size: 1.62rem;
+            font-style: italic;
+            font-weight: 600;
+            line-height: 1;
+        }
+        .brand-role {
+            color: var(--muted);
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.55rem;
+        }
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover { color: var(--clay-dark); }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.72rem 0.95rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--ink) !important;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
+        }
+        .back-link:hover { border-color: var(--ink); background: var(--ink); color: #fff !important; }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            padding: 12.5rem 0 6.5rem;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 79% 18%, rgba(183, 100, 83, 0.15), transparent 29rem),
+                radial-gradient(circle at 7% 84%, rgba(82, 105, 121, 0.10), transparent 23rem),
+                linear-gradient(180deg, #fffdfa 0%, var(--paper) 100%);
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -8rem;
+            top: 12rem;
+            width: 38rem;
+            height: 38rem;
+            border: 1px solid rgba(183, 100, 83, 0.10);
+            border-radius: 48% 52% 62% 38% / 42% 44% 56% 58%;
+            transform: rotate(18deg);
+            box-shadow:
+                -7rem 4rem 0 -1px rgba(183, 100, 83, 0.03),
+                -13rem -4rem 0 -1px rgba(82, 105, 121, 0.03);
+            pointer-events: none;
+        }
+        .hero-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 0.8fr) minmax(500px, 1.2fr);
+            gap: clamp(4rem, 8vw, 8rem);
+            align-items: center;
+        }
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin: 0 0 1.6rem;
+            color: var(--clay-dark);
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        .eyebrow::before { content: ""; width: 38px; height: 1px; background: currentColor; }
+        h1, h2, h3, h4, p { margin-top: 0; }
+        h1, h2, h3, h4 { text-wrap: balance; }
+        h1 {
+            margin: 0 0 1.8rem;
+            font-family: var(--serif);
+            font-size: clamp(5.4rem, 10.6vw, 10rem);
+            font-weight: 400;
+            letter-spacing: -0.07em;
+            line-height: 0.77;
+        }
+        h1 em {
+            display: block;
+            margin-left: clamp(1rem, 5vw, 4rem);
+            color: var(--clay);
+            font-weight: 400;
+        }
+        .hero-subtitle {
+            max-width: 620px;
+            margin-bottom: 2rem;
+            color: var(--body);
+            font-size: clamp(1.12rem, 2vw, 1.36rem);
+            line-height: 1.74;
+        }
+        .hero-honesty {
+            max-width: 610px;
+            margin-bottom: 2.4rem;
+            padding: 1rem 0 0 1.2rem;
+            border-left: 1px solid var(--clay);
+            color: var(--muted);
+            font-size: 0.83rem;
+            line-height: 1.68;
+        }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            min-height: 50px;
+            padding: 0.9rem 1.18rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+        .button:hover { transform: translateY(-2px); }
+        .button-primary { border-color: var(--ink); background: var(--ink); color: #fff; }
+        .button-primary:hover { border-color: var(--clay-dark); background: var(--clay-dark); }
+        .button-secondary { background: rgba(255, 255, 255, 0.64); color: var(--ink); }
+        .button-secondary:hover { border-color: var(--clay-dark); color: var(--clay-dark); }
+
+        .hero-publication {
+            position: relative;
+            min-height: 680px;
+        }
+        .book-shadow {
+            position: absolute;
+            left: 14%;
+            right: 5%;
+            bottom: 0;
+            height: 75px;
+            border-radius: 50%;
+            background: rgba(45, 31, 28, 0.22);
+            filter: blur(28px);
+            transform: rotate(-4deg);
+        }
+        .book {
+            position: absolute;
+            inset: 0 5% 2rem 12%;
+            overflow: hidden;
+            border-radius: 4px 12px 12px 4px;
+            background: var(--surface);
+            box-shadow: 0 35px 100px rgba(45, 31, 28, 0.24);
+            transform: rotate(4deg);
+        }
+        .book::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            z-index: 2;
+            width: 16px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.22), rgba(255,255,255,0.24), transparent);
+        }
+        .book img { width: 100%; height: 100%; object-fit: cover; }
+        .spread-card {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: min(470px, 69%);
+            overflow: hidden;
+            border: 8px solid var(--surface);
+            border-radius: 17px;
+            background: var(--surface);
+            box-shadow: 0 22px 60px rgba(41, 27, 26, 0.18);
+            transform: rotate(-3deg);
+        }
+        .spread-card img { width: 100%; }
+        .hero-index {
+            position: absolute;
+            right: -0.5rem;
+            bottom: 1.3rem;
+            width: 116px;
+            height: 116px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--clay);
+            color: #fff;
+            font-family: var(--serif);
+            font-size: 2.8rem;
+            box-shadow: 0 20px 45px rgba(183, 100, 83, 0.24);
+        }
+
+        .hero-publication.hero-overview-board {
+            min-height: 680px;
+            display: flex;
+            align-items: center;
+        }
+        .overview-board-button {
+            position: relative;
+            width: 100%;
+            padding: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(27, 27, 26, 0.10);
+            border-radius: 24px;
+            background: var(--surface);
+            cursor: zoom-in;
+            box-shadow: 0 35px 100px rgba(45, 31, 28, 0.20);
+            transform: rotate(1.25deg);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .overview-board-button:hover {
+            transform: rotate(0deg) translateY(-5px);
+            box-shadow: 0 42px 110px rgba(45, 31, 28, 0.25);
+        }
+        .overview-board-button img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+        .overview-board-badge {
+            position: absolute;
+            right: 1.4rem;
+            bottom: 1.4rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.72rem 0.9rem;
+            border: 1px solid rgba(255,255,255,0.34);
+            border-radius: 999px;
+            background: rgba(27, 27, 26, 0.67);
+            color: #fff;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            backdrop-filter: blur(12px);
+        }
+        .overview-board-note {
+            margin: 1rem 0 0;
+            color: var(--muted);
+            font-size: 0.76rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .project-meta {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1px;
+            margin-top: 6rem;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 23px;
+            background: var(--line);
+        }
+        .meta-item { min-height: 135px; padding: 1.55rem; background: rgba(255, 253, 249, 0.92); }
+        .meta-label { display: block; margin-bottom: 0.75rem; color: var(--muted); font-size: 0.61rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+        .meta-value { color: var(--ink); font-size: 0.9rem; font-weight: 600; line-height: 1.55; }
+
+        /* Case nav */
+        .case-nav {
+            position: sticky;
+            top: 82px;
+            z-index: 1500;
+            border-block: 1px solid var(--line-soft);
+            background: rgba(244, 240, 232, 0.93);
+            backdrop-filter: blur(17px);
+        }
+        .case-nav-inner { display: flex; gap: 1.8rem; overflow-x: auto; scrollbar-width: none; }
+        .case-nav-inner::-webkit-scrollbar { display: none; }
+        .case-nav a { flex: 0 0 auto; padding: 1rem 0; color: var(--muted); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase; }
+        .case-nav a:hover { color: var(--clay-dark); }
+
+        /* Sections */
+        section { scroll-margin-top: 150px; padding: 9rem 0; border-bottom: 1px solid var(--line-soft); }
+        .section-grid { display: grid; grid-template-columns: minmax(150px, 0.55fr) minmax(0, 2.45fr); gap: clamp(3rem, 8vw, 8rem); }
+        .section-kicker { position: sticky; top: 165px; align-self: start; color: var(--muted); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+        .section-kicker span { display: block; width: 42px; height: 1px; margin-top: 1rem; background: var(--clay); }
+        .section-content { min-width: 0; }
+        h2 { max-width: 960px; margin-bottom: 1.8rem; font-family: var(--serif); font-size: clamp(3.2rem, 6.4vw, 5.6rem); font-weight: 400; letter-spacing: -0.05em; line-height: 0.94; }
+        h3 { font-family: var(--serif); font-size: clamp(2rem, 3.7vw, 3rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.05; }
+        .intro { max-width: 830px; margin-bottom: 1.7rem; color: var(--body); font-size: 1.08rem; line-height: 1.86; }
+        .scope-note { display: grid; grid-template-columns: auto 1fr; gap: 1rem; max-width: 920px; margin-top: 3rem; padding: 1.45rem 1.55rem; border: 1px solid rgba(183, 100, 83, 0.22); border-radius: 19px; background: rgba(234, 216, 210, 0.46); }
+        .scope-icon { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: var(--surface); color: var(--clay-dark); font-weight: 700; }
+        .scope-note p { margin: 0; color: #6f4c43; font-size: 0.88rem; }
+        .scope-note strong { color: var(--clay-dark); }
+
+        .card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.35rem; margin-top: 4rem; }
+        .info-card { min-height: 250px; padding: 2rem; border: 1px solid var(--line); border-radius: 23px; background: var(--surface); }
+        .card-number { display: block; margin-bottom: 3rem; color: var(--clay-dark); font-family: var(--serif); font-size: 1.45rem; }
+        .info-card h3 { margin-bottom: 0.8rem; font-family: var(--sans); font-size: 1rem; font-weight: 700; }
+        .info-card p { margin: 0; color: var(--body); font-size: 0.88rem; }
+
+        /* Spreads */
+        .spread-section { background: var(--surface); }
+        .spread-view { margin-top: 4rem; }
+        .image-button { width: 100%; padding: 0; overflow: hidden; border: 0; border-radius: 26px; background: transparent; cursor: zoom-in; box-shadow: 0 22px 70px rgba(43, 29, 27, 0.11); }
+        .image-button img { width: 100%; transition: transform 0.55s ease; }
+        .image-button:hover img { transform: scale(1.012); }
+        .caption { display: grid; grid-template-columns: auto 1fr; gap: 1rem; margin-top: 1rem; color: var(--muted); font-size: 0.76rem; }
+        .caption-index { color: var(--clay-dark); font-weight: 700; }
+        .spread-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 4rem; }
+        .spread-card { min-width: 0; }
+        .spread-card .image-button { border-radius: 18px; }
+        .spread-card h4 { margin: 1rem 0 0.35rem; font-size: 0.9rem; }
+        .spread-card p { margin: 0; color: var(--muted); font-size: 0.79rem; }
+
+        /* Grid system */
+        .system-section { background: #eae1d8; }
+        .grid-demo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.4rem;
+            margin-top: 4rem;
+        }
+        .grid-page {
+            position: relative;
+            aspect-ratio: 8.5 / 11;
+            overflow: hidden;
+            border: 1px solid rgba(27,27,26,0.15);
+            background: #fbf9f5;
+            box-shadow: 0 15px 45px rgba(45,31,28,0.08);
+        }
+        .grid-page::before {
+            content: "";
+            position: absolute;
+            inset: 7%;
+            background: repeating-linear-gradient(to right, rgba(201, 46, 128, 0.35) 0, rgba(201, 46, 128, 0.35) 1px, transparent 1px, transparent calc(100% / 12));
+            border-inline: 1px solid rgba(201,46,128,0.35);
+        }
+        .grid-page::after {
+            content: "";
+            position: absolute;
+            inset: 7%;
+            background: repeating-linear-gradient(to bottom, rgba(51, 145, 211, 0.17) 0, rgba(51,145,211,0.17) 1px, transparent 1px, transparent 14px);
+        }
+        .grid-page.odd .running-head { right: 7%; left: auto; text-align: right; }
+        .running-head { position: absolute; top: 4%; left: 7%; z-index: 2; color: var(--muted); font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+        .folio { position: absolute; bottom: 3.5%; z-index: 2; color: var(--muted); font-size: 0.58rem; font-weight: 700; }
+        .grid-page.even .folio { left: 7%; }
+        .grid-page.odd .folio { right: 7%; }
+        .grid-block { position: absolute; z-index: 2; background: rgba(183,100,83,0.72); }
+        .grid-block.title { left: 7%; top: 18%; width: 48%; height: 13%; }
+        .grid-block.body-a { left: 7%; top: 37%; width: 30%; height: 38%; background: rgba(82,105,121,0.52); }
+        .grid-block.body-b { left: 41%; top: 37%; width: 30%; height: 38%; background: rgba(101,113,95,0.50); }
+        .grid-block.image { right: 7%; top: 13%; width: 58%; height: 64%; background: rgba(36,35,34,0.66); }
+        .grid-block.caption-block { left: 7%; bottom: 10%; width: 30%; height: 7%; background: rgba(196,165,109,0.7); }
+        .system-copy { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.2rem; margin-top: 2.5rem; }
+        .system-card { padding: 1.6rem; border: 1px solid var(--line); border-radius: 19px; background: var(--surface); }
+        .system-card strong { display: block; margin-bottom: 0.55rem; font-size: 0.83rem; }
+        .system-card p { margin: 0; color: var(--body); font-size: 0.82rem; }
+
+        /* Type and styles */
+        .type-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(350px, 0.9fr); gap: 4rem; margin-top: 4rem; align-items: start; }
+        .type-stack { display: grid; gap: 1rem; }
+        .type-card { padding: 2rem; border: 1px solid var(--line); border-radius: 21px; background: var(--surface); }
+        .type-label { display: block; margin-bottom: 1.2rem; color: var(--muted); font-size: 0.61rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
+        .type-serif { margin-bottom: 1rem; font-family: var(--serif); font-size: clamp(3.2rem, 6vw, 5.2rem); line-height: 0.88; }
+        .type-serif em { color: var(--clay); }
+        .type-sans { margin-bottom: 1rem; font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -0.045em; line-height: 0.95; }
+        .type-card p { margin: 0; color: var(--body); font-size: 0.84rem; }
+        .styles-panel { padding: 2.2rem; border-radius: 23px; background: var(--charcoal); color: #fff; }
+        .panel-label { display: block; margin-bottom: 1.7rem; color: #dfb9b0; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
+        .style-list { display: grid; gap: 0.8rem; }
+        .style-row { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.13); }
+        .style-row strong { font-size: 0.8rem; }
+        .style-row span { color: rgba(255,255,255,0.58); font-size: 0.7rem; }
+
+        /* Data */
+        .data-section { background: var(--surface); }
+        .data-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr); gap: 4rem; margin-top: 4rem; align-items: center; }
+        .data-rules { display: grid; gap: 1rem; }
+        .data-rule { padding: 1.3rem; border-left: 2px solid var(--clay); background: var(--paper); }
+        .data-rule strong { display: block; margin-bottom: 0.35rem; font-size: 0.8rem; }
+        .data-rule span { color: var(--body); font-size: 0.82rem; }
+
+        /* Production */
+        .production-section { background: #eae1d8; }
+        .spec-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1.2rem; margin-top: 4rem; }
+        .spec-card { min-height: 220px; padding: 1.7rem; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
+        .spec-card span { display: block; margin-bottom: 2rem; color: var(--clay-dark); font-family: var(--serif); font-size: 1.45rem; }
+        .spec-card h3 { margin-bottom: 0.7rem; font-family: var(--sans); font-size: 0.95rem; font-weight: 700; }
+        .spec-card p { margin: 0; color: var(--body); font-size: 0.82rem; }
+        .file-layout { display: grid; grid-template-columns: minmax(0,0.9fr) minmax(0,1.1fr); gap: 2rem; margin-top: 4rem; }
+        .file-tree, .qa-panel { padding: 2.2rem; border-radius: 24px; background: var(--charcoal); color: #fff; }
+        .file-tree pre { margin: 0; overflow-x: auto; color: rgba(255,255,255,0.82); font-family: "SFMono-Regular", Consolas, monospace; font-size: 0.78rem; line-height: 1.85; }
+        .qa-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0.8rem 1.2rem; }
+        .qa-list div { display: grid; grid-template-columns: 18px 1fr; gap: 0.55rem; color: rgba(255,255,255,0.78); font-size: 0.79rem; }
+        .qa-list div::before { content: "✓"; color: #dfb9b0; font-weight: 700; }
+
+        /* Reflection */
+        .reflection-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.35rem; margin-top: 4rem; }
+        .reflection-card { min-height: 240px; padding: 2rem; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); }
+        .reflection-card span { display: block; margin-bottom: 2.5rem; color: var(--clay-dark); font-family: var(--serif); font-size: 1.45rem; }
+        .reflection-card h3 { margin-bottom: 0.7rem; font-family: var(--sans); font-size: 0.97rem; font-weight: 700; }
+        .reflection-card p { margin: 0; color: var(--body); font-size: 0.85rem; }
+        .download-panel { display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; margin-top: 4rem; padding: 2.4rem; border-radius: 25px; background: var(--clay-dark); color: #fff; }
+        .download-panel h3 { margin-bottom: 0.55rem; color: #fff; }
+        .download-panel p { max-width: 680px; margin: 0; color: rgba(255,255,255,0.72); font-size: 0.86rem; }
+        .download-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.7rem; }
+        .download-actions .button { border-color: rgba(255,255,255,0.36); color: #fff; }
+        .download-actions .button:hover { border-color: #fff; background: #fff; color: var(--clay-dark); }
+
+        /* Footer */
+        .next-case { padding: 7rem 0; background: var(--charcoal); color: #fff; }
+        .next-inner { display: flex; align-items: end; justify-content: space-between; gap: 3rem; }
+        .next-case p { margin-bottom: 0.7rem; color: rgba(255,255,255,0.6); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
+        .next-case h2 { max-width: 780px; margin-bottom: 0; color: #fff; }
+        .next-link { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 0.7rem; padding: 0.95rem 1.2rem; border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; color: #fff; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.09em; text-decoration: none; text-transform: uppercase; transition: background 0.2s ease, color 0.2s ease; }
+        .next-link:hover { background: #fff; color: var(--charcoal); }
+
+        /* Lightbox */
+        .lightbox { position: fixed; inset: 0; z-index: 4000; display: none; align-items: center; justify-content: center; padding: 5rem 2rem 2rem; background: rgba(18,13,13,0.94); backdrop-filter: blur(14px); }
+        .lightbox[aria-hidden="false"] { display: flex; }
+        .lightbox img { max-width: min(1500px,94vw); max-height: 86vh; border-radius: 15px; box-shadow: 0 50px 110px rgba(0,0,0,0.48); }
+        .lightbox-close { position: absolute; top: 24px; right: 28px; width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,0.35); border-radius: 50%; background: transparent; color: #fff; cursor: pointer; font-size: 1.5rem; }
+
+        .reveal { opacity: 0; transform: translateY(25px); transition: opacity 0.74s ease, transform 0.74s ease; }
+        .reveal.is-visible { opacity: 1; transform: none; }
+
+        @media (max-width: 1080px) {
+            :root { --content: 860px; }
+            .nav-links a:not(.back-link) { display: none; }
+            .hero-grid, .type-layout, .data-layout, .file-layout { grid-template-columns: 1fr; }
+            .hero-publication { max-width: 760px; }
+            .project-meta, .card-grid, .spec-grid, .reflection-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+            .section-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .section-kicker { position: static; }
+        }
+
+        @media (max-width: 760px) {
+            .page-shell { width: min(calc(100% - 1.75rem), 620px); }
+            .brand-role { display: none; }
+            .nav-links { gap: 0.6rem; }
+            .back-link { padding: 0.68rem 0.82rem; }
+            .hero { min-height: auto; padding: 10.7rem 0 5.5rem; }
+            h1 { font-size: clamp(4.8rem,22vw,7.3rem); }
+            h1 em { margin-left: 0.7rem; }
+            .hero-actions { align-items: stretch; flex-direction: column; }
+            .button { width: 100%; }
+            .hero-publication { min-height: 500px; margin-top: 1rem; }
+            .book { inset: 0 5% 2rem 10%; }
+            .spread-card { width: 72%; }
+            .hero-index { width: 88px; height: 88px; font-size: 2.2rem; }
+            .project-meta, .card-grid, .spec-grid, .reflection-grid, .system-copy { grid-template-columns: 1fr; }
+            section { padding: 6.5rem 0; }
+            .spread-grid, .grid-demo { grid-template-columns: 1fr; }
+            .qa-list { grid-template-columns: 1fr; }
+            .download-panel, .next-inner { grid-template-columns: 1fr; align-items: start; flex-direction: column; }
+            .download-actions { justify-content: flex-start; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-publication { min-height: 410px; }
+            .spread-card { border-width: 5px; }
+            .caption { grid-template-columns: 1fr; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+            .reveal { opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to case study</a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Portfolio navigation">
+        <div class="page-shell nav-inner">
+            <a class="brand" href="index.html">
+                <span class="brand-name">Jocelyn Martinez</span>
+                <span class="brand-role">UX/UI & Visual Designer</span>
+            </a>
+            <div class="nav-links">
+                <a href="#publication">Publication</a>
+                <a href="#system">System</a>
+                <a href="#data">Data</a>
+                <a href="#production">Production</a>
+                <a class="back-link" href="index.html#work">← Back to work</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="page-shell">
+            <div class="hero-grid">
+                <div class="reveal">
+                    <p class="eyebrow">Self-directed concept · Editorial art direction & publication design</p>
+                    <h1>Common <em>Ground</em></h1>
+                    <p class="hero-subtitle">
+                        A 28-page illustrative cultural-access report designed to demonstrate sustained typography, multi-page rhythm, information design, photo-led storytelling, and print-production discipline.
+                    </p>
+                    <p class="hero-honesty">
+                        All statistics, interviews, organizations, profiles, and findings are fictional scenario content created for this editorial-design exercise. The project demonstrates design systems rather than claiming real cultural research.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="common-ground/Common_Ground_Illustrative_Cultural_Access_Report.pdf" target="_blank" rel="noopener">View full report PDF ↗</a>
+                        <a class="button button-secondary" href="#publication">Explore the case study ↓</a>
+                    </div>
+                </div>
+
+                <div class="hero-publication hero-overview-board reveal" aria-label="Common Ground editorial project overview">
+                    <div>
+                        <button class="overview-board-button" type="button"
+                                data-lightbox-src="common-ground/project-overview-board.png"
+                                data-lightbox-alt="Complete Common Ground editorial project overview board">
+                            <img src="common-ground/project-overview-board.png"
+                                 alt="Common Ground editorial project overview board showing the publication, page examples, typography, master pages, print production, file organization, and quality control">
+                            <span class="overview-board-badge">View full project board ↗</span>
+                        </button>
+                        <p class="overview-board-note">
+                            Corrected project overview board — built from the actual report assets and truthful production details.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-meta reveal" aria-label="Project information">
+                <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Editorial designer, art director, and information designer</span></div>
+                <div class="meta-item"><span class="meta-label">Context</span><span class="meta-value">Self-directed cultural-report design concept</span></div>
+                <div class="meta-item"><span class="meta-label">Format</span><span class="meta-value">8.5 × 11 inches, 28 pages, perfect-bound concept</span></div>
+                <div class="meta-item"><span class="meta-label">Deliverables</span><span class="meta-value">Print report, digital PDF, data graphics, table, timeline, and production system</span></div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="case-nav" aria-label="Case study sections">
+        <div class="page-shell case-nav-inner">
+            <a href="#overview">Overview</a><a href="#publication">Publication</a><a href="#system">Grid & masters</a><a href="#typography">Typography</a><a href="#data">Data</a><a href="#photo">Photo essay</a><a href="#production">Production</a><a href="#reflection">Reflection</a>
+        </div>
+    </nav>
+
+    <main id="main">
+        <section id="overview">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">01 / Overview<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">The assignment</p>
+                    <h2>Design a report that can carry statistics without losing warmth.</h2>
+                    <p class="intro">Common Ground explores the relationship between cultural participation, public space, and communication. The design challenge was to combine long-form reading, atmospheric imagery, charts, tables, profiles, a timeline, recommendations, endnotes, and production information inside one coherent publication.</p>
+                    <p class="intro">The report was designed as a complete system rather than a sequence of unrelated spreads. Repeated margins, baseline rhythm, folios, running heads, caption rules, color roles, and image treatments create continuity while allowing individual sections to change pace.</p>
+                    <div class="card-grid">
+                        <article class="info-card"><span class="card-number">01</span><h3>Sustained editorial rhythm</h3><p>Twenty-eight pages with opening statements, long-form stories, profiles, photo essays, data, tables, notes, and closing matter.</p></article>
+                        <article class="info-card"><span class="card-number">02</span><h3>Information hierarchy</h3><p>A restrained system for charts, timeline annotations, tabular numerals, captions, footnotes, and supporting metadata.</p></article>
+                        <article class="info-card"><span class="card-number">03</span><h3>Production thinking</h3><p>Print dimensions, bleed, binding, image resolution, master-page logic, styles, file structure, proofing, and export QA.</p></article>
+                    </div>
+                    <div class="scope-note"><div class="scope-icon" aria-hidden="true">i</div><p><strong>Project scope:</strong> This is a portfolio publication concept. The final PDF is fully designed, but a commercial edition would require sourced research, licensed photography, professional copyediting, accessibility review, printer consultation, color proofing, and a packaged InDesign production file.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="publication" class="spread-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">02 / Publication<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">The complete reading experience</p>
+                    <h2>A report with distinct sections and one continuous voice.</h2>
+                    <p class="intro">The publication begins with a transparent project note and table of contents, moves through scenario findings and long-form stories, slows for photo-led sections, and concludes with recommendations, methodology, endnotes, and a colophon.</p>
+                    <div class="spread-view">
+                        <button class="image-button" type="button" data-lightbox-src="common-ground/opening-glance.jpg" data-lightbox-alt="Common Ground opening statement and at-a-glance spread"><img src="common-ground/opening-glance.jpg" alt="Opening statement and key findings pages from Common Ground" loading="lazy"></button>
+                        <div class="caption"><span class="caption-index">02.1</span><span>Opening statement and at-a-glance pages establish the emotional premise before introducing detailed findings.</span></div>
+                    </div>
+                    <div class="spread-grid">
+                        <article class="spread-card"><button class="image-button" type="button" data-lightbox-src="common-ground/inside-contents.jpg" data-lightbox-alt="Common Ground project note and contents spread"><img src="common-ground/inside-contents.jpg" alt="Project note and table of contents spread" loading="lazy"></button><h4>Front matter</h4><p>Project disclosure, publication specifications, and a structured contents page.</p></article>
+                        <article class="spread-card"><button class="image-button" type="button" data-lightbox-src="common-ground/essay-spread.jpg" data-lightbox-alt="Common Ground long-form essay spread"><img src="common-ground/essay-spread.jpg" alt="Long-form editorial essay and full-page image spread" loading="lazy"></button><h4>Long-form pacing</h4><p>Text-led and image-led pages work as a pair, giving readers a deliberate change in pace.</p></article>
+                        <article class="spread-card"><button class="image-button" type="button" data-lightbox-src="common-ground/timeline-spread.jpg" data-lightbox-alt="Common Ground timeline spread"><img src="common-ground/timeline-spread.jpg" alt="Timeline overview and detail spread" loading="lazy"></button><h4>Timeline system</h4><p>One stable axis is supported by a second page that expands selected milestones.</p></article>
+                        <article class="spread-card"><button class="image-button" type="button" data-lightbox-src="common-ground/profiles-table.jpg" data-lightbox-alt="Common Ground profiles and table spread"><img src="common-ground/profiles-table.jpg" alt="Neighborhood profiles and organization table spread" loading="lazy"></button><h4>Profiles and table</h4><p>Human-scale summaries are followed by a structured comparison page with tabular figures.</p></article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="system" class="system-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">03 / Grid & master pages<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">The structure beneath the spreads</p>
+                    <h2>A flexible 12-column grid anchored to a 14-point baseline.</h2>
+                    <p class="intro">The grid supports quiet single-column reading, dense multi-column analysis, narrow caption zones, full-width imagery, and asymmetric opening pages. It creates consistency without forcing every spread into the same composition.</p>
+                    <div class="grid-demo" aria-label="Diagram of even and odd editorial master pages">
+                        <div class="grid-page even"><div class="running-head">Section title</div><div class="folio">12</div><div class="grid-block title"></div><div class="grid-block body-a"></div><div class="grid-block body-b"></div><div class="grid-block caption-block"></div></div>
+                        <div class="grid-page odd"><div class="running-head">Section title</div><div class="folio">13</div><div class="grid-block image"></div><div class="grid-block caption-block"></div></div>
+                    </div>
+                    <div class="system-copy">
+                        <article class="system-card"><strong>Master A — Text-led</strong><p>Running head, outside folio, title zone, body columns, pull-quote options, and caption alignment.</p></article>
+                        <article class="system-card"><strong>Master B — Image-led</strong><p>Full-bleed or framed imagery, outside folio, anchored caption block, and optional translucent overlay.</p></article>
+                        <article class="system-card"><strong>Master C — Data</strong><p>Stable chart area, explanatory copy, source note, legend zone, and consistent number alignment.</p></article>
+                        <article class="system-card"><strong>Master D — Front and back matter</strong><p>Contents, methodology, endnotes, colophon, and closing pages with reduced navigation elements.</p></article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="typography">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">04 / Typography & styles<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">A readable editorial voice</p>
+                    <h2>Expressive titles, disciplined text, and repeatable styles.</h2>
+                    <p class="intro">EB Garamond carries the publication’s narrative voice while Noto Sans handles body copy, charts, tables, captions, folios, and production information. The contrast creates personality without introducing unnecessary type families.</p>
+                    <div class="type-layout">
+                        <div class="type-stack">
+                            <article class="type-card"><span class="type-label">Editorial display and pull quotes</span><div class="type-serif">Culture is what <em>brings us together.</em></div><p>Used for major titles, section transitions, deck lines, and selected quotes.</p></article>
+                            <article class="type-card"><span class="type-label">Body, caption, data, and production text</span><div class="type-sans">PARTICIPATION BY THE NUMBERS</div><p>Used for reading text, labels, source notes, tables, legends, running heads, folios, and specifications.</p></article>
+                        </div>
+                        <div class="styles-panel">
+                            <span class="panel-label">Paragraph styles</span>
+                            <div class="style-list">
+                                <div class="style-row"><strong>Title / Display</strong><span>42–62 pt</span></div>
+                                <div class="style-row"><strong>Section title</strong><span>34–45 pt</span></div>
+                                <div class="style-row"><strong>Deck</strong><span>12 pt / 17 pt</span></div>
+                                <div class="style-row"><strong>Body</strong><span>9.2 pt / 13.8 pt</span></div>
+                                <div class="style-row"><strong>Pull quote</strong><span>19–21 pt</span></div>
+                                <div class="style-row"><strong>Caption</strong><span>6.8 pt / 9.4 pt</span></div>
+                                <div class="style-row"><strong>Small caps</strong><span>6.3 pt + tracking</span></div>
+                                <div class="style-row"><strong>Folio / running head</strong><span>5.7 pt</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="data" class="data-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">05 / Data & information design<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Statistics that belong to the publication</p>
+                    <h2>Charts, tables, and timelines share the same editorial language.</h2>
+                    <p class="intro">The data system avoids decorative dashboards. Values remain visible, labels stay close to their marks, and each visual includes enough explanatory context to work in print or when separated into a presentation or social asset.</p>
+                    <div class="data-layout">
+                        <div><button class="image-button" type="button" data-lightbox-src="common-ground/data-spread.jpg" data-lightbox-alt="Common Ground participation data spread"><img src="common-ground/data-spread.jpg" alt="Participation donut chart, key figures, and motivator bar chart" loading="lazy"></button></div>
+                        <div class="data-rules">
+                            <div class="data-rule"><strong>Write values explicitly</strong><span>Readers should not need to estimate a percentage from the length or angle of a mark.</span></div>
+                            <div class="data-rule"><strong>Keep scales consistent</strong><span>Comparable charts use stable lengths, spacing, and label placement.</span></div>
+                            <div class="data-rule"><strong>Separate finding from source note</strong><span>The narrative takeaway is prominent; methodology and limitations remain available.</span></div>
+                            <div class="data-rule"><strong>Design for reuse</strong><span>The same visual can move into an executive summary, presentation, or social cutdown.</span></div>
+                        </div>
+                    </div>
+                    <div class="spread-grid">
+                        <article class="spread-card"><button class="image-button" type="button" data-lightbox-src="common-ground/barriers-spread.jpg" data-lightbox-alt="Common Ground barriers and design response spread"><img src="common-ground/barriers-spread.jpg" alt="Barrier bar chart and corresponding design responses" loading="lazy"></button><h4>Barrier → response</h4><p>A chart is paired with a dark response page that converts categories into communication actions.</p></article>
+                        <article class="spread-card"><button class="image-button" type="button" data-lightbox-src="common-ground/recommendations-spread.jpg" data-lightbox-alt="Common Ground recommendations spread"><img src="common-ground/recommendations-spread.jpg" alt="Recommendations and four-step communication framework" loading="lazy"></button><h4>Framework design</h4><p>Recommendations move from a strong verbal list to a compact four-stage model.</p></article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="photo" class="spread-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">06 / Photo essay & long form<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Changes in pace</p>
+                    <h2>Photography gives the reader room to feel the subject.</h2>
+                    <p class="intro">The photo essay uses duotone treatment, deliberate cropping, anchored captions, and occasional translucent text panels. Long-form pages alternate between multi-column reading and full-page visual pauses.</p>
+                    <div class="spread-view"><button class="image-button" type="button" data-lightbox-src="common-ground/photo-essay.jpg" data-lightbox-alt="Common Ground photo essay spread"><img src="common-ground/photo-essay.jpg" alt="Photo essay pages showing public space, exhibition imagery, and printed materials" loading="lazy"></button><div class="caption"><span class="caption-index">06.1</span><span>A full-width opener leads into a collage spread with repeated warm grayscale treatment.</span></div></div>
+                    <div class="spread-grid">
+                        <article class="spread-card"><button class="image-button" type="button" data-lightbox-src="common-ground/voices-spread.jpg" data-lightbox-alt="Common Ground community voices spread"><img src="common-ground/voices-spread.jpg" alt="Quote-led community voices page and profile page" loading="lazy"></button><h4>Community voices</h4><p>Quotes are given generous space, while the profile page combines image, title, summary, and explanatory note.</p></article>
+                        <article class="spread-card"><button class="image-button" type="button" data-lightbox-src="common-ground/proximity-spread.jpg" data-lightbox-alt="Common Ground long-form article spread"><img src="common-ground/proximity-spread.jpg" alt="Long-form article with three text columns, imagery, and a journey diagram" loading="lazy"></button><h4>Long-form article</h4><p>Three columns support sustained reading before the facing page translates the article into a touchpoint sequence.</p></article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="production" class="production-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">07 / Print production & handoff<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">The final 10%</p>
+                    <h2>A serious editorial project includes the file after the beautiful spread.</h2>
+                    <p class="intro">The proposed production system addresses trim size, bleed, paper, binding, image resolution, color mode, font embedding, linked assets, packaging, proofing, naming, and final PDF review.</p>
+                    <div class="spec-grid">
+                        <article class="spec-card"><span>01</span><h3>Format</h3><p>8.5 × 11 inches, 28 pages, portrait orientation, with a perfect-bound publication concept.</p></article>
+                        <article class="spec-card"><span>02</span><h3>Bleed & trim</h3><p>0.125-inch bleed on printed edges, safe margins for folios and captions, and printer-specific review before export.</p></article>
+                        <article class="spec-card"><span>03</span><h3>Image workflow</h3><p>Target 300 PPI at final size, preserve editable originals, verify effective resolution, and package linked assets.</p></article>
+                        <article class="spec-card"><span>04</span><h3>Output</h3><p>CMYK print concept, embedded fonts, PDF/X-ready workflow, plus a smaller screen-optimized PDF.</p></article>
+                    </div>
+                    <div class="file-layout">
+                        <div class="file-tree"><span class="panel-label">Recommended package structure</span><pre>Common_Ground/
+├── 00_Project_Admin/
+├── 01_InDesign/
+│   ├── CommonGround_Report_v04.indd
+│   └── CommonGround_Report_v04.idml
+├── 02_Linked_Assets/
+│   ├── Photography/
+│   ├── Illustrations/
+│   └── Data/
+├── 03_Exports/
+│   ├── Print_PDF/
+│   ├── Screen_PDF/
+│   └── Proofs/
+└── 04_Archive/</pre></div>
+                        <div class="qa-panel"><span class="panel-label">Preflight and quality-control checklist</span><div class="qa-list"><div>Spelling, punctuation, and terminology</div><div>Names, dates, labels, and endnotes</div><div>Running heads and folio order</div><div>Widows, orphans, and bad breaks</div><div>Image resolution and crop review</div><div>Linked and licensed assets</div><div>Bleed, trim, and safe areas</div><div>CMYK and spot-color settings</div><div>Fonts embedded or outlined appropriately</div><div>Final filename and version status</div><div>PDF page order and output intent</div><div>Physical proof before full production</div></div></div>
+                    </div>
+                    <div class="spread-view"><button class="image-button" type="button" data-lightbox-src="common-ground/notes-spread.jpg" data-lightbox-alt="Common Ground methodology and endnotes spread"><img src="common-ground/notes-spread.jpg" alt="Methodology and endnotes pages from Common Ground" loading="lazy"></button><div class="caption"><span class="caption-index">07.1</span><span>Methodology and endnotes use reduced display scale while preserving navigation, hierarchy, and reading comfort.</span></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reflection">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">08 / Reflection<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">What the project demonstrates</p>
+                    <h2>Editorial consistency comes from relationships, not repetition.</h2>
+                    <p class="intro">Common Ground strengthened my ability to balance detail and storytelling across a sustained document. The strongest spreads are visually different, but they still feel related because their margins, type roles, color behavior, captions, running heads, and folios follow one underlying system.</p>
+                    <div class="reflection-grid">
+                        <article class="reflection-card"><span>01</span><h3>Strongest contribution</h3><p>A complete 28-page publication that moves between narrative, data, photography, tables, profiles, and production content without losing cohesion.</p></article>
+                        <article class="reflection-card"><span>02</span><h3>Largest design risk</h3><p>Quiet editorial styling can become too sparse or reduce practical reading cues when hierarchy and contrast are not tested carefully.</p></article>
+                        <article class="reflection-card"><span>03</span><h3>Next iteration</h3><p>Rebuild the report natively in InDesign, run a full preflight, print a bound proof, refine color on paper, and test the screen PDF for accessibility.</p></article>
+                    </div>
+                    <div class="spread-view"><button class="image-button" type="button" data-lightbox-src="common-ground/colophon-closing.jpg" data-lightbox-alt="Common Ground colophon and closing spread"><img src="common-ground/colophon-closing.jpg" alt="Publication colophon and closing statement pages" loading="lazy"></button></div>
+                    <div class="download-panel"><div><h3>Review the complete publication.</h3><p>The downloadable PDF contains all 28 pages. The accompanying CSV makes the fictional scenario data transparent and shows how the visualizations were organized.</p></div><div class="download-actions"><a class="button" href="common-ground/Common_Ground_Illustrative_Cultural_Access_Report.pdf" target="_blank" rel="noopener">Open report PDF ↗</a><a class="button" href="common-ground/Common_Ground_Illustrative_Data.csv" download>Download scenario data ↓</a></div></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="next-case"><div class="page-shell next-inner"><div><p>Continue exploring</p><h2>Return to selected work.</h2></div><a class="next-link" href="index.html#work">View portfolio ↗</a></div></footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged Common Ground spread" aria-hidden="true"><button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close enlarged spread">×</button><img id="lightboxImage" src="" alt=""></div>
+
+    <script>
+        const siteNav = document.getElementById('siteNav');
+        const revealItems = document.querySelectorAll('.reveal');
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function updateNavigation(){ siteNav.classList.toggle('scrolled', window.scrollY > 12); }
+        updateNavigation();
+        window.addEventListener('scroll', updateNavigation, {passive:true});
+        if (reducedMotion || !('IntersectionObserver' in window)) {
+            revealItems.forEach(item => item.classList.add('is-visible'));
+        } else {
+            const observer = new IntersectionObserver((entries,currentObserver)=>{
+                entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('is-visible'); currentObserver.unobserve(entry.target); }});
+            },{threshold:0.1});
+            revealItems.forEach(item=>observer.observe(item));
+        }
+        const lightbox=document.getElementById('lightbox');
+        const lightboxImage=document.getElementById('lightboxImage');
+        const lightboxClose=document.getElementById('lightboxClose');
+        const triggers=document.querySelectorAll('[data-lightbox-src]');
+        let previouslyFocused=null;
+        function openLightbox(trigger){ previouslyFocused=trigger; lightboxImage.src=trigger.dataset.lightboxSrc; lightboxImage.alt=trigger.dataset.lightboxAlt||'Enlarged Common Ground spread'; lightbox.setAttribute('aria-hidden','false'); document.body.classList.add('lightbox-open'); lightboxClose.focus(); }
+        function closeLightbox(){ lightbox.setAttribute('aria-hidden','true'); lightboxImage.src=''; lightboxImage.alt=''; document.body.classList.remove('lightbox-open'); if(previouslyFocused) previouslyFocused.focus(); }
+        triggers.forEach(trigger=>trigger.addEventListener('click',()=>openLightbox(trigger)));
+        lightboxClose.addEventListener('click',closeLightbox);
+        lightbox.addEventListener('click',event=>{if(event.target===lightbox) closeLightbox();});
+        document.addEventListener('keydown',event=>{if(event.key==='Escape'&&lightbox.getAttribute('aria-hidden')==='false') closeLightbox();});
+    </script>
+</body>
+</html>

@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aurea is a self-directed UX/UI and visual-design concept by Jocelyn Martinez, exploring a calmer way to discover, understand, and collect fragrance.">
+    <meta name="theme-color" content="#f7f2ed">
+    <meta property="og:title" content="Aurea — UX/UI Case Study by Jocelyn Martinez">
+    <meta property="og:description" content="An editorial fragrance discovery and collection concept balancing sensory storytelling with useful product information.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="aurea/onboarding.png">
+    <title>Aurea — UX/UI Case Study | Jocelyn Martinez</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #f8f4ef;
+            --paper-deep: #eee5de;
+            --surface: #fffdfb;
+            --ink: #282321;
+            --body: #5c5551;
+            --muted: #837975;
+            --rose: #ae747c;
+            --rose-dark: #7d4c54;
+            --rose-soft: #ead8d8;
+            --taupe: #b69c8b;
+            --sage: #9a9b8c;
+            --line: rgba(40, 35, 33, 0.12);
+            --line-soft: rgba(40, 35, 33, 0.07);
+            --serif: "Cormorant Garamond", Georgia, serif;
+            --sans: "Plus Jakarta Sans", Arial, sans-serif;
+            --content: 1240px;
+            --radius-lg: 32px;
+            --radius-md: 18px;
+            --shadow: 0 24px 70px rgba(68, 48, 43, 0.09);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 999;
+            opacity: .025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+        }
+
+        img { max-width: 100%; display: block; }
+        a { color: inherit; }
+        button, a { -webkit-tap-highlight-color: transparent; }
+        button { font: inherit; }
+        ::selection { background: var(--rose-soft); color: var(--ink); }
+
+        :focus-visible {
+            outline: 3px solid var(--rose);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        .skip-link {
+            position: fixed;
+            left: 1rem;
+            top: 1rem;
+            z-index: 2000;
+            transform: translateY(-160%);
+            background: var(--ink);
+            color: white;
+            padding: .75rem 1rem;
+            text-decoration: none;
+            border-radius: 999px;
+            transition: transform .2s ease;
+        }
+        .skip-link:focus { transform: translateY(0); }
+
+        .page-shell {
+            width: min(calc(100% - 3rem), var(--content));
+            margin-inline: auto;
+        }
+
+        .nav {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 100;
+            background: rgba(248, 244, 239, .86);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid transparent;
+            transition: border-color .25s ease, box-shadow .25s ease;
+        }
+        .nav.scrolled {
+            border-color: var(--line-soft);
+            box-shadow: 0 8px 30px rgba(55, 40, 35, .04);
+        }
+        .nav-inner {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .brand {
+            font-family: var(--serif);
+            font-size: 1.55rem;
+            font-style: italic;
+            text-decoration: none;
+            line-height: 1;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-size: .72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            color: var(--muted);
+            transition: color .2s ease;
+        }
+        .nav-links a:hover { color: var(--ink); }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+        }
+        .back-link span { font-size: 1.05rem; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .8rem;
+            color: var(--rose-dark);
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+        .eyebrow::before {
+            content: "";
+            width: 28px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        h1, h2, h3, h4, p { margin-top: 0; }
+        h1, h2, h3, h4 {
+            font-family: var(--serif);
+            color: var(--ink);
+            font-weight: 500;
+            text-wrap: balance;
+        }
+        h1 {
+            margin: 1.4rem 0 1.8rem;
+            font-size: clamp(4.2rem, 11vw, 9.5rem);
+            line-height: .78;
+            letter-spacing: -.045em;
+        }
+        h1 em {
+            display: block;
+            margin-left: clamp(1.5rem, 10vw, 9rem);
+            color: var(--rose);
+            font-weight: 400;
+        }
+        h2 {
+            margin-bottom: 1.5rem;
+            font-size: clamp(2.7rem, 5.7vw, 5rem);
+            line-height: .98;
+            letter-spacing: -.025em;
+        }
+        h3 {
+            margin-bottom: .8rem;
+            font-size: clamp(1.7rem, 2.4vw, 2.35rem);
+            line-height: 1.05;
+        }
+        p { color: var(--body); }
+
+        .hero {
+            min-height: 100svh;
+            padding-top: 10rem;
+            display: grid;
+            align-items: center;
+            position: relative;
+            overflow: clip;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: min(55vw, 760px);
+            aspect-ratio: 1;
+            right: -12%;
+            top: 4%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, rgba(234, 216, 216, .9), rgba(182, 156, 139, .08) 62%, transparent 70%);
+            z-index: -1;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.08fr) minmax(330px, .92fr);
+            gap: clamp(3rem, 7vw, 7rem);
+            align-items: center;
+            padding-bottom: 6rem;
+        }
+        .hero-lede {
+            max-width: 690px;
+            font-size: clamp(1.06rem, 1.7vw, 1.35rem);
+            line-height: 1.75;
+        }
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2.3rem;
+        }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: .85rem 1.25rem;
+            border: 1px solid var(--ink);
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            transition: transform .2s ease, background .2s ease, color .2s ease;
+        }
+        .button:hover { transform: translateY(-2px); }
+        .button.primary { background: var(--ink); color: white; }
+        .button.secondary { border-color: var(--line); background: rgba(255,255,255,.42); }
+
+        .hero-visual {
+            position: relative;
+            min-height: 660px;
+            display: grid;
+            place-items: center;
+        }
+        .hero-frame {
+            width: min(100%, 430px);
+            padding: clamp(1rem, 2vw, 1.5rem);
+            background: rgba(255, 253, 251, .74);
+            border: 1px solid rgba(255,255,255,.85);
+            border-radius: 220px 220px 28px 28px;
+            box-shadow: var(--shadow);
+            transform: rotate(2.5deg);
+            backdrop-filter: blur(12px);
+        }
+        .hero-frame img {
+            width: 100%;
+            max-height: 610px;
+            object-fit: contain;
+            border-radius: 190px 190px 18px 18px;
+        }
+        .hero-stamp {
+            position: absolute;
+            left: -1.5rem;
+            bottom: 3.5rem;
+            width: 132px;
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--rose-dark);
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            font-style: italic;
+            line-height: 1.05;
+            text-align: center;
+            box-shadow: 0 16px 45px rgba(68,48,43,.08);
+            transform: rotate(-10deg);
+        }
+
+        .project-facts {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-block: 1px solid var(--line);
+        }
+        .fact {
+            padding: 1.55rem 1.3rem;
+            border-right: 1px solid var(--line);
+        }
+        .fact:first-child { padding-left: 0; }
+        .fact:last-child { border-right: 0; }
+        .fact dt {
+            margin-bottom: .45rem;
+            color: var(--muted);
+            font-size: .64rem;
+            font-weight: 700;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+        .fact dd {
+            margin: 0;
+            color: var(--ink);
+            font-size: .93rem;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .section {
+            padding-block: clamp(6.5rem, 12vw, 11rem);
+            border-top: 1px solid var(--line-soft);
+        }
+        .section-heading {
+            display: grid;
+            grid-template-columns: minmax(170px, .72fr) minmax(0, 2.1fr);
+            gap: clamp(2.5rem, 7vw, 7rem);
+            align-items: start;
+        }
+        .section-index {
+            position: sticky;
+            top: 120px;
+            color: var(--muted);
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+        .section-copy > p,
+        .measure { max-width: 780px; }
+        .lead {
+            font-family: var(--serif);
+            color: var(--ink);
+            font-size: clamp(1.5rem, 2.8vw, 2.15rem);
+            line-height: 1.35;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 3.5rem;
+        }
+        .summary-card {
+            min-height: 240px;
+            padding: 2rem;
+            background: rgba(255,253,251,.64);
+            border: 1px solid var(--line-soft);
+            border-radius: var(--radius-md);
+        }
+        .summary-card .number {
+            display: block;
+            margin-bottom: 3rem;
+            color: var(--rose);
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            font-style: italic;
+        }
+        .summary-card h3 { font-size: 1.8rem; }
+        .summary-card p { margin-bottom: 0; font-size: .94rem; }
+
+        .scope-note {
+            margin-top: 2rem;
+            padding: 1.35rem 1.5rem;
+            border-left: 3px solid var(--rose);
+            background: rgba(255,253,251,.66);
+            color: var(--body);
+            font-size: .93rem;
+        }
+        .scope-note strong { color: var(--ink); }
+
+        .journey {
+            margin-top: 4rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: var(--surface);
+        }
+        .journey-step {
+            min-height: 260px;
+            padding: 2rem 1.6rem;
+            border-right: 1px solid var(--line);
+        }
+        .journey-step:last-child { border-right: 0; }
+        .journey-step small {
+            color: var(--rose);
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+        .journey-step h3 { margin-top: 2.4rem; font-size: 1.8rem; }
+        .journey-step p { margin-bottom: 0; font-size: .9rem; }
+
+        .decision-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-top: 3.6rem;
+        }
+        .decision {
+            padding: clamp(2rem, 4vw, 3rem);
+            border: 1px solid var(--line-soft);
+            border-radius: var(--radius-md);
+            background: var(--surface);
+        }
+        .decision-kicker {
+            display: inline-block;
+            margin-bottom: 1.7rem;
+            color: var(--rose-dark);
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+        .decision h3 { font-size: 2rem; }
+        .decision p { margin-bottom: 0; }
+
+        .system-panel {
+            margin-top: 4rem;
+            padding: clamp(2rem, 5vw, 4.5rem);
+            border-radius: var(--radius-lg);
+            background: var(--ink);
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+        .system-panel::after {
+            content: "A";
+            position: absolute;
+            right: 2%;
+            bottom: -24%;
+            color: rgba(255,255,255,.035);
+            font-family: var(--serif);
+            font-size: 30rem;
+            line-height: 1;
+        }
+        .system-panel h3, .system-panel p { color: white; }
+        .system-grid {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: clamp(3rem, 7vw, 7rem);
+            position: relative;
+            z-index: 1;
+        }
+        .palette {
+            display: grid;
+            gap: 1rem;
+        }
+        .swatch {
+            display: grid;
+            grid-template-columns: 76px 1fr;
+            gap: 1rem;
+            align-items: center;
+        }
+        .swatch-color {
+            width: 76px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.18);
+        }
+        .swatch strong { display: block; color: white; font-size: .86rem; }
+        .swatch code { color: rgba(255,255,255,.58); font-size: .75rem; }
+        .type-row {
+            padding-block: 1.35rem;
+            border-bottom: 1px solid rgba(255,255,255,.13);
+        }
+        .type-row:first-child { padding-top: 0; }
+        .type-row:last-child { border-bottom: 0; }
+        .type-label {
+            display: block;
+            margin-bottom: .7rem;
+            color: rgba(255,255,255,.55);
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+        .type-display {
+            font-family: var(--serif);
+            font-size: clamp(2.5rem, 5vw, 4.4rem);
+            line-height: 1;
+        }
+        .type-interface {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: .05em;
+        }
+
+        .gallery-section {
+            background: #eee6df;
+            overflow: clip;
+        }
+        .gallery-intro {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .gallery-intro p { max-width: 570px; margin-bottom: .5rem; }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+        .screen-card {
+            margin: 0;
+            padding: 1rem;
+            background: var(--surface);
+            border: 1px solid rgba(40,35,33,.09);
+            border-radius: 26px;
+            box-shadow: 0 20px 55px rgba(70,50,44,.07);
+        }
+        .screen-button {
+            width: 100%;
+            padding: 0;
+            border: 0;
+            border-radius: 18px;
+            background: #f5efea;
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+        .screen-button img {
+            width: 100%;
+            height: clamp(390px, 56vw, 680px);
+            object-fit: contain;
+            transition: transform .6s cubic-bezier(.16,1,.3,1);
+        }
+        .screen-button:hover img { transform: scale(1.025); }
+        .screen-caption {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.2rem;
+            padding: 1.5rem .5rem .4rem;
+        }
+        .screen-number {
+            color: var(--rose);
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            font-style: italic;
+        }
+        .screen-caption h3 { margin-bottom: .5rem; font-size: 1.7rem; }
+        .screen-caption p { margin-bottom: 0; font-size: .9rem; }
+
+        .validation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-top: 3.5rem;
+        }
+        .validation-card {
+            padding: 2rem;
+            border-top: 1px solid var(--ink);
+            background: rgba(255,255,255,.28);
+        }
+        .validation-card strong {
+            display: block;
+            margin-bottom: .8rem;
+            color: var(--ink);
+            font-family: var(--serif);
+            font-size: 1.6rem;
+            font-weight: 500;
+        }
+        .validation-card p { margin-bottom: 0; font-size: .93rem; }
+
+        .reflection {
+            background: var(--surface);
+        }
+        .reflection-layout {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: clamp(3rem, 8vw, 8rem);
+            align-items: start;
+        }
+        .takeaway-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border-top: 1px solid var(--line);
+        }
+        .takeaway-list li {
+            display: grid;
+            grid-template-columns: 34px 1fr;
+            gap: 1rem;
+            padding-block: 1.25rem;
+            border-bottom: 1px solid var(--line);
+            color: var(--body);
+        }
+        .takeaway-list span { color: var(--rose); font-family: var(--serif); font-style: italic; }
+
+        .next-project {
+            min-height: 70vh;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .next-project::before {
+            content: "";
+            position: absolute;
+            width: 520px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: rgba(234,216,216,.62);
+            filter: blur(2px);
+            z-index: -1;
+        }
+        .next-project p {
+            margin-bottom: .6rem;
+            color: var(--muted);
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+        .next-project a {
+            text-decoration: none;
+            font-family: var(--serif);
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: .9;
+            transition: color .2s ease;
+        }
+        .next-project a:hover { color: var(--rose); }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(1rem, 4vw, 3rem);
+            background: rgba(35,30,28,.92);
+            backdrop-filter: blur(16px);
+        }
+        .lightbox.open { display: flex; }
+        .lightbox-dialog {
+            width: min(100%, 1100px);
+            max-height: 92vh;
+            display: grid;
+            place-items: center;
+            position: relative;
+        }
+        .lightbox img {
+            max-height: 88vh;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 35px 90px rgba(0,0,0,.28);
+        }
+        .lightbox-close {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.25rem;
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: 50%;
+            background: rgba(255,255,255,.08);
+            color: white;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .75s ease, transform .75s cubic-bezier(.16,1,.3,1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1020px) {
+            .hero-grid,
+            .section-heading,
+            .reflection-layout,
+            .system-grid { grid-template-columns: 1fr; }
+            .hero { padding-top: 8.5rem; }
+            .hero-visual { min-height: 560px; }
+            .hero-frame { width: min(78vw, 420px); }
+            .section-index { position: static; }
+            .project-facts { grid-template-columns: repeat(2, 1fr); }
+            .fact:nth-child(2) { border-right: 0; }
+            .fact:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+            .journey { grid-template-columns: repeat(2, 1fr); }
+            .journey-step:nth-child(2) { border-right: 0; }
+            .journey-step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+        }
+
+        @media (max-width: 760px) {
+            .page-shell { width: min(calc(100% - 2rem), var(--content)); }
+            .nav-inner { min-height: 68px; }
+            .nav-links a:not(.back-link) { display: none; }
+            h1 { font-size: clamp(4rem, 24vw, 6.6rem); }
+            h1 em { margin-left: 1.4rem; }
+            .hero-grid { padding-bottom: 4rem; gap: 2rem; }
+            .hero-visual { min-height: 480px; }
+            .hero-stamp { width: 102px; left: 0; bottom: 1.8rem; font-size: 1rem; }
+            .project-facts { grid-template-columns: 1fr; }
+            .fact,
+            .fact:first-child { padding: 1.15rem 0; border-right: 0; border-bottom: 1px solid var(--line); }
+            .fact:last-child { border-bottom: 0; }
+            .summary-grid,
+            .journey,
+            .decision-grid,
+            .gallery-grid,
+            .validation-grid { grid-template-columns: 1fr; }
+            .journey-step,
+            .journey-step:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); }
+            .journey-step:last-child { border-bottom: 0; }
+            .gallery-intro { display: block; }
+            .screen-button img { height: min(125vw, 620px); }
+            .screen-caption { grid-template-columns: 1fr; gap: .35rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .reveal { opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to case study</a>
+
+    <nav class="nav" aria-label="Case study navigation">
+        <div class="nav-inner page-shell">
+            <a class="brand" href="index.html">Jocelyn Martinez</a>
+            <div class="nav-links">
+                <a href="#overview">Overview</a>
+                <a href="#screens">Screens</a>
+                <a class="back-link" href="index.html#portfolio"><span aria-hidden="true">←</span> Back to work</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main">
+        <header class="hero">
+            <div class="hero-grid page-shell">
+                <div class="hero-copy reveal">
+                    <span class="eyebrow">Self-directed UX/UI concept</span>
+                    <h1>Aurea <em>Olfactory Archive</em></h1>
+                    <p class="hero-lede">A fragrance discovery and collection experience that pairs editorial storytelling with clear product information—helping enthusiasts browse by feeling, compare performance, and build a personal scent archive.</p>
+                    <div class="hero-actions">
+                        <a class="button primary" href="#screens">View the interface</a>
+                        <a class="button secondary" href="#overview">Read the case study</a>
+                    </div>
+                </div>
+
+                <div class="hero-visual reveal" aria-label="Aurea interface preview">
+                    <div class="hero-frame">
+                        <img src="aurea/onboarding.png" alt="Aurea fragrance discovery screen shown inside an editorial arch-shaped frame">
+                    </div>
+                    <div class="hero-stamp" aria-hidden="true">Story,<br>structure<br>&amp; scent</div>
+                </div>
+            </div>
+
+            <dl class="project-facts page-shell reveal" aria-label="Project details">
+                <div class="fact">
+                    <dt>Project type</dt>
+                    <dd>Self-directed product concept</dd>
+                </div>
+                <div class="fact">
+                    <dt>My role</dt>
+                    <dd>UX/UI and visual designer</dd>
+                </div>
+                <div class="fact">
+                    <dt>Focus</dt>
+                    <dd>Discovery, comparison, collection</dd>
+                </div>
+                <div class="fact">
+                    <dt>Deliverables</dt>
+                    <dd>Experience structure, UI system, high-fidelity screens</dd>
+                </div>
+            </dl>
+        </header>
+
+        <section class="section" id="overview">
+            <div class="section-heading page-shell">
+                <div class="section-index">01 / Overview</div>
+                <div class="section-copy reveal">
+                    <span class="eyebrow">The opportunity</span>
+                    <h2>Make fragrance data feel as considered as the product itself.</h2>
+                    <p class="lead">Fragrance enthusiasts need practical information—notes, longevity, projection, season, and occasion—but dense databases can make discovery feel like research rather than pleasure.</p>
+                    <p class="measure">Aurea explores a quieter alternative. The concept gives imagery and narrative enough room to create desire, while keeping performance details easy to find when the user is ready to compare. The goal was not to remove information, but to sequence it more thoughtfully.</p>
+
+                    <div class="summary-grid">
+                        <article class="summary-card">
+                            <span class="number">01</span>
+                            <h3>Browse by feeling</h3>
+                            <p>Lead with mood, season, and visual character so discovery can begin before a user knows a specific brand or note.</p>
+                        </article>
+                        <article class="summary-card">
+                            <span class="number">02</span>
+                            <h3>Reveal useful depth</h3>
+                            <p>Keep technical details available without asking users to process every metric at the beginning of the journey.</p>
+                        </article>
+                        <article class="summary-card">
+                            <span class="number">03</span>
+                            <h3>Build a personal archive</h3>
+                            <p>Turn saving into collection-building, helping each profile feel expressive rather than purely transactional.</p>
+                        </article>
+                    </div>
+
+                    <div class="scope-note"><strong>Project scope:</strong> Aurea is a self-initiated interface exploration. The screens demonstrate product strategy and visual direction; they have not yet been validated through formal user research or released as a working product.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-heading page-shell">
+                <div class="section-index">02 / Experience</div>
+                <div class="section-copy reveal">
+                    <span class="eyebrow">The core journey</span>
+                    <h2>A four-part path from curiosity to collection.</h2>
+                    <p class="measure">The experience is structured around the questions fragrance shoppers naturally move through: What draws me in? How does it perform? What does it feel like? Do I want to remember or own it?</p>
+
+                    <div class="journey" aria-label="Aurea core user journey">
+                        <article class="journey-step">
+                            <small>Step 01</small>
+                            <h3>Discover</h3>
+                            <p>Explore recommendations through mood, season, and visual storytelling rather than an overwhelming product grid.</p>
+                        </article>
+                        <article class="journey-step">
+                            <small>Step 02</small>
+                            <h3>Evaluate</h3>
+                            <p>Review notes, longevity, projection, and wear context in a compact hierarchy designed for quick comparison.</p>
+                        </article>
+                        <article class="journey-step">
+                            <small>Step 03</small>
+                            <h3>Understand</h3>
+                            <p>Read a concise editorial brief that translates abstract notes into an atmosphere, memory, or point of view.</p>
+                        </article>
+                        <article class="journey-step">
+                            <small>Step 04</small>
+                            <h3>Collect</h3>
+                            <p>Save fragrances into a personal archive that supports identity, memory, and future purchase decisions.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-heading page-shell">
+                <div class="section-index">03 / Decisions</div>
+                <div class="section-copy reveal">
+                    <span class="eyebrow">Design rationale</span>
+                    <h2>Editorial atmosphere, anchored by practical hierarchy.</h2>
+                    <p class="measure">Luxury presentation only works when it still helps people make decisions. I used pacing, typography, and progressive disclosure to create a refined visual experience without hiding the information that matters.</p>
+
+                    <div class="decision-grid">
+                        <article class="decision">
+                            <span class="decision-kicker">Information hierarchy</span>
+                            <h3>Story first, specifications second.</h3>
+                            <p>Imagery, name, and mood establish an immediate impression. Notes and performance details sit one layer deeper, allowing the interface to support both casual browsing and informed comparison.</p>
+                        </article>
+                        <article class="decision">
+                            <span class="decision-kicker">Visual pacing</span>
+                            <h3>Whitespace creates focus—not emptiness.</h3>
+                            <p>Generous margins isolate each bottle and key message. The slower rhythm gives distinctive packaging and typography room to carry the brand experience.</p>
+                        </article>
+                        <article class="decision">
+                            <span class="decision-kicker">Data presentation</span>
+                            <h3>Translate performance into scannable signals.</h3>
+                            <p>Longevity and projection are presented as restrained visual scales rather than dense charts, keeping comparison quick while preserving the editorial tone.</p>
+                        </article>
+                        <article class="decision">
+                            <span class="decision-kicker">Retention</span>
+                            <h3>Make saving feel like curating.</h3>
+                            <p>The collection view treats saved fragrances as a personal archive. This gives users a reason to return beyond completing a single purchase task.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-heading page-shell">
+                <div class="section-index">04 / Visual system</div>
+                <div class="section-copy reveal">
+                    <span class="eyebrow">A quiet luxury language</span>
+                    <h2>Soft materials, strong contrast, and intentional restraint.</h2>
+                    <p class="measure">The interface uses warm neutrals and dusty rose accents to reference cosmetic packaging, paper archives, and vanity objects. A characterful serif carries fragrance names and editorial copy, while a clean sans serif handles controls and product facts.</p>
+
+                    <div class="system-panel">
+                        <div class="system-grid">
+                            <div>
+                                <span class="decision-kicker" style="color:#e6bfc4;">Palette</span>
+                                <div class="palette">
+                                    <div class="swatch">
+                                        <span class="swatch-color" style="background:#f8f4ef;"></span>
+                                        <div><strong>Warm Paper</strong><code>#F8F4EF</code></div>
+                                    </div>
+                                    <div class="swatch">
+                                        <span class="swatch-color" style="background:#ae747c;"></span>
+                                        <div><strong>Dusty Rose</strong><code>#AE747C</code></div>
+                                    </div>
+                                    <div class="swatch">
+                                        <span class="swatch-color" style="background:#b69c8b;"></span>
+                                        <div><strong>Cashmere Taupe</strong><code>#B69C8B</code></div>
+                                    </div>
+                                    <div class="swatch">
+                                        <span class="swatch-color" style="background:#282321;"></span>
+                                        <div><strong>Soft Ink</strong><code>#282321</code></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="decision-kicker" style="color:#e6bfc4;">Typography</span>
+                                <div class="type-row">
+                                    <span class="type-label">Editorial display / Cormorant Garamond</span>
+                                    <div class="type-display">Rose Prick</div>
+                                </div>
+                                <div class="type-row">
+                                    <span class="type-label">Interface text / Plus Jakarta Sans</span>
+                                    <div class="type-interface">WOODY · FLORAL · 8 HOUR LONGEVITY</div>
+                                </div>
+                                <div class="type-row">
+                                    <span class="type-label">System principle</span>
+                                    <p style="margin:0;color:rgba(255,255,255,.72);">Serif typography signals identity and narrative. Sans serif typography supports scanning, controls, and technical information.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section gallery-section" id="screens">
+            <div class="page-shell">
+                <div class="gallery-intro reveal">
+                    <div>
+                        <span class="eyebrow">High-fidelity interface</span>
+                        <h2>Four moments in the Aurea experience.</h2>
+                    </div>
+                    <p>Select a screen to enlarge it. Each view demonstrates a different part of the product journey—from discovery and evaluation to storytelling and collection.</p>
+                </div>
+
+                <div class="gallery-grid">
+                    <figure class="screen-card reveal">
+                        <button class="screen-button" type="button" data-lightbox-src="aurea/onboarding.png" data-lightbox-alt="Aurea personalized fragrance discovery interface" aria-label="Enlarge personalized discovery screen">
+                            <img src="aurea/onboarding.png" alt="Aurea personalized discovery interface with editorial fragrance recommendations" loading="lazy">
+                        </button>
+                        <figcaption class="screen-caption">
+                            <span class="screen-number">01</span>
+                            <div><h3>Personalized discovery</h3><p>A restrained entry point prioritizes selected recommendations and atmosphere, reducing the pressure to browse an entire catalog at once.</p></div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="screen-card reveal">
+                        <button class="screen-button" type="button" data-lightbox-src="aurea/visualizing.png" data-lightbox-alt="Aurea fragrance performance and scent profile interface" aria-label="Enlarge fragrance profile screen">
+                            <img src="aurea/visualizing.png" alt="Aurea fragrance profile showing performance information and scent characteristics" loading="lazy">
+                        </button>
+                        <figcaption class="screen-caption">
+                            <span class="screen-number">02</span>
+                            <div><h3>Performance at a glance</h3><p>Notes, projection, and longevity are translated into a visual hierarchy that can be scanned before the user dives into details.</p></div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="screen-card reveal">
+                        <button class="screen-button" type="button" data-lightbox-src="aurea/roseprick.png" data-lightbox-alt="Aurea fragrance editorial brief interface" aria-label="Enlarge editorial fragrance brief screen">
+                            <img src="aurea/roseprick.png" alt="Aurea editorial fragrance brief for Rose Prick" loading="lazy">
+                        </button>
+                        <figcaption class="screen-caption">
+                            <span class="screen-number">03</span>
+                            <div><h3>The fragrance brief</h3><p>An editorial composition gives abstract notes a memorable context, helping users understand the character of a fragrance beyond its ingredient list.</p></div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="screen-card reveal">
+                        <button class="screen-button" type="button" data-lightbox-src="aurea/collection.png" data-lightbox-alt="Aurea personal fragrance collection interface" aria-label="Enlarge personal collection screen">
+                            <img src="aurea/collection.png" alt="Aurea personal fragrance archive displaying saved bottles in an editorial collection" loading="lazy">
+                        </button>
+                        <figcaption class="screen-caption">
+                            <span class="screen-number">04</span>
+                            <div><h3>The personal archive</h3><p>Saved fragrances become a curated visual collection, supporting wish lists, memory, and continued discovery without resembling a standard inventory table.</p></div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-heading page-shell">
+                <div class="section-index">06 / Validation plan</div>
+                <div class="section-copy reveal">
+                    <span class="eyebrow">What I would test next</span>
+                    <h2>Move from a compelling concept to an evidence-led product.</h2>
+                    <p class="measure">Because Aurea began as a visual and interaction exploration, the next phase would test whether the hierarchy supports real fragrance-shopping behavior—not only whether the screens look refined.</p>
+
+                    <div class="validation-grid">
+                        <article class="validation-card"><strong>Discovery language</strong><p>Interview fragrance enthusiasts to learn whether they begin with notes, brands, occasions, moods, seasons, or community recommendations.</p></article>
+                        <article class="validation-card"><strong>Comparison tasks</strong><p>Test whether users can quickly compare longevity, projection, price, and dominant accords across multiple fragrances.</p></article>
+                        <article class="validation-card"><strong>Collection model</strong><p>Validate the categories users need—owned, sampled, wish list, decluttered, seasonal rotation, and signature scents.</p></article>
+                        <article class="validation-card"><strong>Accessibility and commerce</strong><p>Audit contrast, text scaling, keyboard flow, and product-state messaging before connecting the concept to purchasing or inventory data.</p></article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section reflection" id="reflection">
+            <div class="reflection-layout page-shell">
+                <div class="reveal">
+                    <span class="eyebrow">Reflection</span>
+                    <h2>What Aurea demonstrates.</h2>
+                    <p class="lead">Aurea gave me space to explore how visual direction and product clarity can reinforce one another.</p>
+                    <p>The project strengthened my ability to create a distinctive interface language, sequence dense information, and design a cohesive experience across discovery, evaluation, storytelling, and retention. It also clarified an important limitation: visual polish should create a strong hypothesis, but user evidence must determine whether the final product works.</p>
+                </div>
+
+                <ul class="takeaway-list reveal" aria-label="Project takeaways">
+                    <li><span>01</span><div><strong>Visual direction</strong><br>Built a recognizable system that feels appropriate for fragrance without copying a conventional beauty-commerce layout.</div></li>
+                    <li><span>02</span><div><strong>Information hierarchy</strong><br>Balanced emotional storytelling with scannable product details and performance information.</div></li>
+                    <li><span>03</span><div><strong>Product thinking</strong><br>Connected discovery, comparison, narrative, and collection into one coherent experience.</div></li>
+                    <li><span>04</span><div><strong>Design maturity</strong><br>Separated what the concept demonstrates from what still needs research, testing, and technical validation.</div></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="next-project">
+            <div class="page-shell reveal">
+                <p>Return to selected work</p>
+                <a href="index.html#portfolio">View all projects →</a>
+            </div>
+        </section>
+    </main>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged interface screen" aria-hidden="true">
+        <button class="lightbox-close" type="button" aria-label="Close enlarged image">×</button>
+        <div class="lightbox-dialog">
+            <img id="lightbox-image" src="" alt="Enlarged Aurea interface screen">
+        </div>
+    </div>
+
+    <script>
+        const nav = document.querySelector('.nav');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const closeButton = document.querySelector('.lightbox-close');
+        let lastTrigger = null;
+
+        function updateNav() {
+            nav.classList.toggle('scrolled', window.scrollY > 20);
+        }
+        updateNav();
+        window.addEventListener('scroll', updateNav, { passive: true });
+
+        const revealItems = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            revealItems.forEach((item) => observer.observe(item));
+        } else {
+            revealItems.forEach((item) => item.classList.add('visible'));
+        }
+
+        function openLightbox(trigger) {
+            lastTrigger = trigger;
+            lightboxImage.src = trigger.dataset.lightboxSrc;
+            lightboxImage.alt = trigger.dataset.lightboxAlt || 'Enlarged interface screen';
+            lightbox.classList.add('open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            closeButton.focus();
+        }
+
+        function closeLightbox() {
+            if (!lightbox.classList.contains('open')) return;
+            lightbox.classList.remove('open');
+            lightbox.setAttribute('aria-hidden', 'true');
+            lightboxImage.src = '';
+            document.body.style.overflow = '';
+            if (lastTrigger) lastTrigger.focus();
+        }
+
+        document.querySelectorAll('[data-lightbox-src]').forEach((button) => {
+            button.addEventListener('click', () => openLightbox(button));
+        });
+        closeButton.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

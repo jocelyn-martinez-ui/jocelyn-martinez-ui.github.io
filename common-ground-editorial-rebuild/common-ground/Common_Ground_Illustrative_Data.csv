@@ -1,0 +1,23 @@
+metric,segment,value,unit,status
+barrier,Schedule or lack of time,44,percent,illustrative
+barrier,Cost uncertainty,38,percent,illustrative
+barrier,Transportation complexity,27,percent,illustrative
+barrier,Could not find clear information,22,percent,illustrative
+barrier,No one to attend with,18,percent,illustrative
+barrier,Accessibility concern,12,percent,illustrative
+attended,North,72,percent,illustrative
+created,North,18,percent,illustrative
+volunteered,North,12,percent,illustrative
+cross_region,North,39,percent,illustrative
+attended,West,61,percent,illustrative
+created,West,24,percent,illustrative
+volunteered,West,19,percent,illustrative
+cross_region,West,28,percent,illustrative
+attended,South,64,percent,illustrative
+created,South,27,percent,illustrative
+volunteered,South,18,percent,illustrative
+cross_region,South,31,percent,illustrative
+attended,Central,78,percent,illustrative
+created,Central,15,percent,illustrative
+volunteered,Central,9,percent,illustrative
+cross_region,Central,46,percent,illustrative

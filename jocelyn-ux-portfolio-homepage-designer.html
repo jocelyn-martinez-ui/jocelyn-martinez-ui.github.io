@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jocelyn Martinez is a UX/UI designer with a computer science background, creating accessible digital products, thoughtful interaction systems, and polished responsive interfaces.">
+    <meta name="theme-color" content="#f7f3ed">
+    <meta property="og:title" content="Jocelyn Martinez — UX/UI & Product Designer">
+    <meta property="og:description" content="Selected UX/UI, product design, visual design, and front-end work by Jocelyn Martinez.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="hwtimg.png">
+    <title>Jocelyn Martinez — UX/UI & Product Designer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #f7f3ed;
+            --paper-deep: #eee7df;
+            --surface: #fffdf9;
+            --surface-dark: #292525;
+            --ink: #252221;
+            --body: #5d5652;
+            --muted: #867c76;
+            --rose: #a77775;
+            --rose-dark: #79514f;
+            --rose-soft: #ead8d5;
+            --sage: #7c8875;
+            --sage-soft: #e4e9df;
+            --blue: #5c7080;
+            --blue-soft: #e0e8ed;
+            --line: rgba(37, 34, 33, 0.13);
+            --line-soft: rgba(37, 34, 33, 0.07);
+            --serif: "Cormorant Garamond", Georgia, serif;
+            --sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --content: 1280px;
+            --radius-lg: 32px;
+            --radius-md: 18px;
+            --shadow: 0 30px 90px rgba(54, 39, 37, 0.11);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            pointer-events: none;
+            opacity: 0.022;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.84' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        ::selection {
+            background: var(--rose-soft);
+            color: var(--ink);
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--rose-dark);
+            outline-offset: 4px;
+            border-radius: 5px;
+        }
+
+        .page-shell {
+            width: min(calc(100% - 3rem), var(--content));
+            margin-inline: auto;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 4000;
+            padding: 0.8rem 1rem;
+            border-radius: 999px;
+            background: var(--surface-dark);
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(-170%);
+            transition: transform 0.2s ease;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        .site-nav {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 2000;
+            border-bottom: 1px solid transparent;
+            background: rgba(247, 243, 237, 0.83);
+            backdrop-filter: blur(18px);
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .site-nav.scrolled,
+        .site-nav.menu-open {
+            border-color: var(--line-soft);
+            background: rgba(247, 243, 237, 0.95);
+            box-shadow: 0 10px 34px rgba(43, 34, 32, 0.05);
+        }
+
+        .nav-inner {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.55rem;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .brand-name {
+            font-family: var(--serif);
+            font-size: 1.55rem;
+            font-style: italic;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .brand-role {
+            color: var(--muted);
+            font-size: 0.59rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.7rem;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.69rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--rose-dark);
+        }
+
+        .nav-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--ink) !important;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
+        }
+
+        .nav-contact:hover {
+            border-color: var(--surface-dark);
+            background: var(--surface-dark);
+            color: #fff !important;
+        }
+
+        .menu-button {
+            display: none;
+            width: 46px;
+            height: 46px;
+            padding: 0;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: transparent;
+            color: var(--ink);
+            cursor: pointer;
+        }
+
+        .menu-button span,
+        .menu-button::before,
+        .menu-button::after {
+            content: "";
+            display: block;
+            width: 18px;
+            height: 1px;
+            margin: 4px auto;
+            background: currentColor;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        .menu-button[aria-expanded="true"] span {
+            opacity: 0;
+        }
+
+        .menu-button[aria-expanded="true"]::before {
+            transform: translateY(5px) rotate(45deg);
+        }
+
+        .menu-button[aria-expanded="true"]::after {
+            transform: translateY(-5px) rotate(-45deg);
+        }
+
+        .mobile-menu {
+            display: none;
+            padding: 0 0 1.3rem;
+        }
+
+        .mobile-menu[hidden] {
+            display: none;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 0.9rem 0;
+            border-top: 1px solid var(--line-soft);
+            color: var(--body);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            padding: 12.5rem 0 6.5rem;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 81% 20%, rgba(167, 119, 117, 0.19), transparent 28rem),
+                radial-gradient(circle at 6% 84%, rgba(124, 136, 117, 0.12), transparent 23rem),
+                linear-gradient(180deg, #fffdfa 0%, var(--paper) 100%);
+        }
+
+        .hero::after {
+            content: "JM";
+            position: absolute;
+            right: -2.5rem;
+            bottom: -5rem;
+            color: rgba(121, 81, 79, 0.035);
+            font-family: var(--serif);
+            font-size: min(40vw, 36rem);
+            font-style: italic;
+            line-height: 0.8;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+            gap: clamp(4rem, 9vw, 9rem);
+            align-items: end;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin: 0 0 1.6rem;
+            color: var(--rose-dark);
+            font-size: 0.67rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 36px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        p {
+            margin-top: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            text-wrap: balance;
+        }
+
+        h1 {
+            max-width: 1000px;
+            margin: 0 0 2rem;
+            font-family: var(--serif);
+            font-size: clamp(4.8rem, 10vw, 9.1rem);
+            font-weight: 500;
+            letter-spacing: -0.065em;
+            line-height: 0.82;
+        }
+
+        h1 em {
+            color: var(--rose);
+            font-weight: 400;
+        }
+
+        .hero-lede {
+            max-width: 790px;
+            margin-bottom: 2.6rem;
+            color: var(--body);
+            font-size: clamp(1.13rem, 2vw, 1.4rem);
+            line-height: 1.72;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            min-height: 50px;
+            padding: 0.9rem 1.25rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-size: 0.71rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            border-color: var(--surface-dark);
+            background: var(--surface-dark);
+            color: #fff;
+        }
+
+        .button-primary:hover {
+            background: var(--rose-dark);
+            border-color: var(--rose-dark);
+        }
+
+        .button-secondary {
+            background: rgba(255, 255, 255, 0.62);
+            color: var(--ink);
+        }
+
+        .button-secondary:hover {
+            border-color: var(--rose-dark);
+            color: var(--rose-dark);
+        }
+
+        .hero-aside {
+            padding: 2rem 0 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .hero-aside-label {
+            display: block;
+            margin-bottom: 1.3rem;
+            color: var(--muted);
+            font-size: 0.63rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .hero-aside p {
+            margin-bottom: 2rem;
+            color: var(--body);
+            font-size: 0.94rem;
+        }
+
+        .hero-index {
+            display: grid;
+            gap: 1px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: var(--line);
+        }
+
+        .index-item {
+            display: grid;
+            grid-template-columns: 46px 1fr;
+            gap: 1rem;
+            padding: 1rem 1.1rem;
+            background: rgba(255, 253, 249, 0.88);
+        }
+
+        .index-item span {
+            color: var(--rose-dark);
+            font-family: var(--serif);
+            font-size: 1.35rem;
+            line-height: 1;
+        }
+
+        .index-item strong {
+            display: block;
+            margin-bottom: 0.15rem;
+            font-size: 0.83rem;
+        }
+
+        .index-item small {
+            color: var(--muted);
+            font-size: 0.72rem;
+        }
+
+        .scroll-cue {
+            position: absolute;
+            left: max(1.5rem, calc((100vw - var(--content)) / 2));
+            bottom: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: var(--muted);
+            font-size: 0.61rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .scroll-cue::before {
+            content: "";
+            width: 42px;
+            height: 1px;
+            background: var(--rose);
+        }
+
+        /* Trust strip */
+        .trust-strip {
+            border-block: 1px solid var(--line-soft);
+            background: var(--surface);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: 1.3fr repeat(3, 1fr);
+            gap: 1px;
+            background: var(--line-soft);
+        }
+
+        .trust-intro,
+        .trust-item {
+            min-height: 150px;
+            padding: 1.8rem;
+            background: var(--surface);
+        }
+
+        .trust-intro {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .trust-intro p {
+            margin: 0;
+            color: var(--body);
+            font-family: var(--serif);
+            font-size: 1.55rem;
+            line-height: 1.25;
+        }
+
+        .trust-item span {
+            display: block;
+            margin-bottom: 1.9rem;
+            color: var(--rose-dark);
+            font-size: 0.63rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .trust-item strong {
+            display: block;
+            margin-bottom: 0.45rem;
+            font-size: 0.9rem;
+        }
+
+        .trust-item p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.78rem;
+            line-height: 1.6;
+        }
+
+        /* Shared section system */
+        .section {
+            padding: 9rem 0;
+            border-bottom: 1px solid var(--line-soft);
+        }
+
+        .section-header {
+            display: grid;
+            grid-template-columns: minmax(145px, 0.55fr) minmax(0, 2.4fr);
+            gap: clamp(3rem, 8vw, 8rem);
+            margin-bottom: 5rem;
+        }
+
+        .section-kicker {
+            color: var(--muted);
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .section-kicker span {
+            display: block;
+            width: 42px;
+            height: 1px;
+            margin-top: 1rem;
+            background: var(--rose);
+        }
+
+        h2 {
+            max-width: 940px;
+            margin-bottom: 1.8rem;
+            font-family: var(--serif);
+            font-size: clamp(3rem, 6vw, 5.2rem);
+            font-weight: 500;
+            letter-spacing: -0.045em;
+            line-height: 0.98;
+        }
+
+        .section-lede {
+            max-width: 790px;
+            margin-bottom: 0;
+            color: var(--body);
+            font-size: 1.08rem;
+            line-height: 1.82;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(330px, 0.75fr);
+            gap: clamp(4rem, 8vw, 8rem);
+            align-items: start;
+        }
+
+        .about-statement {
+            font-family: var(--serif);
+            font-size: clamp(2.25rem, 4.5vw, 4rem);
+            line-height: 1.16;
+            letter-spacing: -0.025em;
+        }
+
+        .about-statement em {
+            color: var(--rose-dark);
+            font-weight: 400;
+        }
+
+        .about-copy p {
+            color: var(--body);
+            font-size: 0.96rem;
+            line-height: 1.85;
+        }
+
+        .about-copy p:last-child {
+            margin-bottom: 0;
+        }
+
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.2rem;
+            margin-top: 4rem;
+        }
+
+        .capability-card {
+            min-height: 250px;
+            padding: 2rem;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--surface);
+        }
+
+        .capability-number {
+            display: block;
+            margin-bottom: 3rem;
+            color: var(--rose-dark);
+            font-family: var(--serif);
+            font-size: 1.4rem;
+        }
+
+        .capability-card h3 {
+            margin-bottom: 0.8rem;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .capability-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: 0.88rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-top: 2.5rem;
+        }
+
+        .skill {
+            padding: 0.58rem 0.8rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--body);
+            font-size: 0.64rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* Projects */
+        .work-section {
+            background: #f1ebe4;
+        }
+
+        .project-list {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .project-card {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(330px, 0.8fr);
+            min-height: 590px;
+            overflow: hidden;
+            border: 1px solid rgba(37, 34, 33, 0.1);
+            border-radius: var(--radius-lg);
+            background: var(--surface);
+            color: inherit;
+            text-decoration: none;
+            box-shadow: 0 12px 35px rgba(50, 39, 37, 0.025);
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(121, 81, 79, 0.3);
+            box-shadow: var(--shadow);
+        }
+
+        .project-visual {
+            position: relative;
+            min-height: 520px;
+            overflow: hidden;
+            background: var(--paper-deep);
+        }
+
+        .project-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project-card:hover .project-visual img {
+            transform: scale(1.035);
+        }
+
+        .project-number {
+            position: absolute;
+            top: 1.4rem;
+            left: 1.4rem;
+            z-index: 2;
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 50%;
+            background: rgba(37, 34, 33, 0.42);
+            color: #fff;
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            backdrop-filter: blur(8px);
+        }
+
+        .project-content {
+            padding: clamp(2.2rem, 4vw, 4rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-type {
+            display: block;
+            margin-bottom: 1.2rem;
+            color: var(--rose-dark);
+            font-size: 0.64rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .project-content h3 {
+            margin-bottom: 1.1rem;
+            font-family: var(--serif);
+            font-size: clamp(2.65rem, 4.5vw, 4.2rem);
+            font-weight: 500;
+            letter-spacing: -0.04em;
+            line-height: 0.98;
+        }
+
+        .project-description {
+            max-width: 490px;
+            margin-bottom: 2rem;
+            color: var(--body);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .project-proof {
+            display: grid;
+            gap: 0.9rem;
+            margin-bottom: 2rem;
+            padding: 0;
+            list-style: none;
+        }
+
+        .project-proof li {
+            display: grid;
+            grid-template-columns: 18px 1fr;
+            gap: 0.7rem;
+            color: var(--body);
+            font-size: 0.83rem;
+            line-height: 1.55;
+        }
+
+        .project-proof li::before {
+            content: "↳";
+            color: var(--rose-dark);
+            font-weight: 700;
+        }
+
+        .project-footer {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tag {
+            color: var(--muted);
+            font-size: 0.61rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .project-tag + .project-tag::before {
+            content: "·";
+            margin-right: 0.5rem;
+            color: var(--rose);
+        }
+
+        .project-link {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            color: var(--ink);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .project-link span {
+            transition: transform 0.2s ease;
+        }
+
+        .project-card:hover .project-link span {
+            transform: translate(3px, -3px);
+        }
+
+        .project-card.reverse {
+            grid-template-columns: minmax(330px, 0.8fr) minmax(0, 1.2fr);
+        }
+
+        .project-card.reverse .project-visual {
+            order: 2;
+        }
+
+        .project-card.reverse .project-content {
+            order: 1;
+        }
+
+        /* Concept trio */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.4rem;
+            margin-top: 2rem;
+        }
+
+        .concept-card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            min-height: 560px;
+            border: 1px solid var(--line);
+            border-radius: 25px;
+            background: var(--surface);
+            color: inherit;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(121, 81, 79, 0.3);
+            box-shadow: var(--shadow);
+        }
+
+        .concept-image {
+            height: 330px;
+            overflow: hidden;
+            background: var(--paper-deep);
+        }
+
+        .concept-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .concept-card:hover .concept-image img {
+            transform: scale(1.035);
+        }
+
+        .concept-content {
+            flex: 1;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .concept-content .project-type {
+            margin-bottom: 0.8rem;
+        }
+
+        .concept-content h3 {
+            margin-bottom: 0.8rem;
+            font-family: var(--serif);
+            font-size: 2.35rem;
+            font-weight: 500;
+            letter-spacing: -0.035em;
+            line-height: 1;
+        }
+
+        .concept-content p {
+            margin-bottom: 1.8rem;
+            color: var(--body);
+            font-size: 0.86rem;
+            line-height: 1.7;
+        }
+
+        .concept-content .project-footer {
+            margin-top: auto;
+        }
+
+        .concept-note {
+            max-width: 760px;
+            margin-top: 2rem;
+            color: var(--muted);
+            font-size: 0.83rem;
+            line-height: 1.7;
+        }
+
+        /* Process / difference */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 25px;
+            background: var(--line);
+        }
+
+        .process-step {
+            min-height: 260px;
+            padding: 2rem;
+            background: var(--surface);
+        }
+
+        .process-number {
+            display: block;
+            margin-bottom: 3.5rem;
+            color: var(--rose-dark);
+            font-family: var(--serif);
+            font-size: 1.45rem;
+        }
+
+        .process-step h3 {
+            margin-bottom: 0.7rem;
+            font-family: var(--sans);
+            font-size: 0.96rem;
+            font-weight: 700;
+        }
+
+        .process-step p {
+            margin: 0;
+            color: var(--body);
+            font-size: 0.84rem;
+        }
+
+        /* Playground */
+        .playground {
+            background:
+                radial-gradient(circle at 15% 25%, rgba(167, 119, 117, 0.2), transparent 25rem),
+                var(--surface-dark);
+            color: #fff;
+        }
+
+        .playground .section-kicker,
+        .playground .section-lede {
+            color: rgba(255, 255, 255, 0.62);
+        }
+
+        .playground .section-kicker span {
+            background: var(--rose-soft);
+        }
+
+        .playground h2 {
+            color: #fff;
+        }
+
+        .playground-card {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 3rem;
+            align-items: center;
+            min-height: 310px;
+            padding: clamp(2.2rem, 5vw, 4.5rem);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-lg);
+            color: #fff;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .playground-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .playground-label {
+            display: block;
+            margin-bottom: 1.2rem;
+            color: #dfc4c2;
+            font-size: 0.64rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .playground-card h3 {
+            margin-bottom: 1rem;
+            color: #fff;
+            font-family: var(--serif);
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-style: italic;
+            font-weight: 400;
+            line-height: 0.95;
+        }
+
+        .playground-card p {
+            max-width: 650px;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.67);
+        }
+
+        .playground-arrow {
+            width: 68px;
+            height: 68px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            font-size: 1.4rem;
+            transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+        }
+
+        .playground-card:hover .playground-arrow {
+            transform: translateX(5px);
+            background: #fff;
+            color: var(--surface-dark);
+        }
+
+        /* Contact */
+        .contact-section {
+            padding: 10rem 0 4rem;
+            background: var(--surface);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+            gap: clamp(4rem, 8vw, 8rem);
+            align-items: end;
+        }
+
+        .contact-label {
+            display: block;
+            margin-bottom: 1.4rem;
+            color: var(--rose-dark);
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .contact-title {
+            max-width: 900px;
+            margin-bottom: 1.7rem;
+            font-family: var(--serif);
+            font-size: clamp(3.8rem, 8.5vw, 7.6rem);
+            font-weight: 500;
+            letter-spacing: -0.06em;
+            line-height: 0.85;
+        }
+
+        .contact-title em {
+            color: var(--rose);
+            font-weight: 400;
+        }
+
+        .contact-copy {
+            max-width: 690px;
+            margin-bottom: 2.2rem;
+            color: var(--body);
+            font-size: 1rem;
+        }
+
+        .contact-card {
+            padding: 2rem;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--paper);
+        }
+
+        .contact-card span {
+            display: block;
+            margin-bottom: 1.2rem;
+            color: var(--muted);
+            font-size: 0.63rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .contact-card a {
+            display: inline-block;
+            margin-bottom: 1.3rem;
+            color: var(--ink);
+            font-family: var(--serif);
+            font-size: 1.45rem;
+            font-style: italic;
+            font-weight: 600;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 5px;
+        }
+
+        .contact-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 8rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.68rem;
+        }
+
+        .footer-bottom a {
+            text-decoration: none;
+        }
+
+        /* Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.72s ease, transform 0.72s ease;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (max-width: 1080px) {
+            :root {
+                --content: 860px;
+            }
+
+            .hero-grid,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-aside {
+                max-width: 680px;
+            }
+
+            .trust-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .section-header {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .capability-grid,
+            .concept-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .project-card,
+            .project-card.reverse {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card.reverse .project-visual,
+            .project-card.reverse .project-content {
+                order: initial;
+            }
+
+            .project-visual {
+                min-height: 480px;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 760px) {
+            .page-shell {
+                width: min(calc(100% - 1.75rem), 620px);
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 11rem 0 6rem;
+            }
+
+            h1 {
+                font-size: clamp(4.3rem, 20vw, 6.7rem);
+            }
+
+            .scroll-cue {
+                display: none;
+            }
+
+            .trust-grid,
+            .capability-grid,
+            .concept-grid,
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 6.5rem 0;
+            }
+
+            .section-header {
+                margin-bottom: 3.5rem;
+            }
+
+            .project-card {
+                min-height: 0;
+            }
+
+            .project-visual {
+                min-height: 0;
+                height: 400px;
+            }
+
+            .project-content {
+                padding: 2rem;
+            }
+
+            .project-footer {
+                align-items: start;
+                flex-direction: column;
+            }
+
+            .concept-card {
+                min-height: 0;
+            }
+
+            .concept-image {
+                height: 360px;
+            }
+
+            .playground-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .playground-arrow {
+                width: 56px;
+                height: 56px;
+            }
+
+            .footer-bottom {
+                align-items: start;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 470px) {
+            .brand-role {
+                display: none;
+            }
+
+            .hero-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .project-visual {
+                height: 330px;
+            }
+
+            .concept-image {
+                height: 310px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to selected work</a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Portfolio navigation">
+        <div class="page-shell nav-inner">
+            <a class="brand" href="#top" aria-label="Jocelyn Martinez, home">
+                <span class="brand-name">Jocelyn Martinez</span>
+                <span class="brand-role">UX/UI Designer</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#work">Work</a>
+                <a href="#process">Approach</a>
+                <a href="#playground">Playground</a>
+                <a class="nav-contact" href="mailto:jocelyn.wisteria@gmail.com">Email me <span aria-hidden="true">↗</span></a>
+            </div>
+
+            <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open navigation menu">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="page-shell mobile-menu" id="mobileMenu" hidden>
+            <a href="#about">About</a>
+            <a href="#work">Selected work</a>
+            <a href="#process">Approach</a>
+            <a href="#playground">Playground</a>
+            <a href="mailto:jocelyn.wisteria@gmail.com">Email Jocelyn</a>
+        </div>
+    </nav>
+
+    <header class="hero" id="top">
+        <div class="page-shell hero-grid">
+            <div class="reveal">
+                <p class="eyebrow">UX/UI designer · Product thinker · Front-end fluent</p>
+                <h1>Designing clear, <em>human</em> digital experiences.</h1>
+                <p class="hero-lede">
+                    I combine human insight, visual craft, and a computer science background to shape accessible products—from research and flows to polished responsive interfaces.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#work">View selected work <span aria-hidden="true">↓</span></a>
+                    <a class="button button-secondary" href="mailto:jocelyn.wisteria@gmail.com">Start a conversation <span aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+
+            <aside class="hero-aside reveal" aria-label="Portfolio overview">
+                <span class="hero-aside-label">What you will find here</span>
+                <p>
+                    Real-world collaboration, systems-focused product thinking, and self-directed concepts that show my range in interaction and visual design.
+                </p>
+
+                <div class="hero-index">
+                    <div class="index-item">
+                        <span>01</span>
+                        <div>
+                            <strong>Product thinking</strong>
+                            <small>Research, flows, states, and scope</small>
+                        </div>
+                    </div>
+                    <div class="index-item">
+                        <span>02</span>
+                        <div>
+                            <strong>Interface craft</strong>
+                            <small>Responsive, accessible, and polished</small>
+                        </div>
+                    </div>
+                    <div class="index-item">
+                        <span>03</span>
+                        <div>
+                            <strong>Technical fluency</strong>
+                            <small>Design decisions grounded in implementation</small>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <div class="scroll-cue" aria-hidden="true">Selected work below</div>
+    </header>
+
+    <main id="main">
+        <section class="trust-strip" aria-label="Portfolio strengths">
+            <div class="page-shell trust-grid">
+                <div class="trust-intro">
+                    <span class="hero-aside-label">Portfolio at a glance</span>
+                    <p>Designing the experience—and understanding the system beneath it.</p>
+                </div>
+                <div class="trust-item">
+                    <span>Real-world work</span>
+                    <strong>Public-facing tourism product</strong>
+                    <p>Stakeholder collaboration, content structure, responsive UI, and administrative workflows.</p>
+                </div>
+                <div class="trust-item">
+                    <span>Systems thinking</span>
+                    <strong>Student and faculty ecosystem</strong>
+                    <p>Role-based interfaces, permission states, privacy boundaries, and exception handling.</p>
+                </div>
+                <div class="trust-item">
+                    <span>Visual range</span>
+                    <strong>Editorial product concepts</strong>
+                    <p>Distinct art direction supported by clear information hierarchy and honest validation plans.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <div class="page-shell">
+                <div class="section-header reveal">
+                    <div class="section-kicker">01 / About<span></span></div>
+                    <div>
+                        <h2>Design shaped by empathy, structure, and technical curiosity.</h2>
+                        <p class="section-lede">
+                            I care about how a product feels, but I also care about whether people understand it, trust it, recover from mistakes, and can realistically use it.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="about-grid reveal">
+                    <div class="about-statement">
+                        My computer science background helps me understand constraints and systems. My design practice keeps those systems accountable to the <em>people inside them.</em>
+                    </div>
+
+                    <div class="about-copy">
+                        <p>
+                            I work across UX strategy, interaction design, visual design, prototyping, and front-end implementation. I am especially drawn to products that need warmth without losing clarity—education, culture, wellness, public services, and thoughtfully designed consumer experiences.
+                        </p>
+                        <p>
+                            I approach each project by clarifying the real task, separating assumptions from evidence, and giving complex information a readable structure.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="capability-grid reveal">
+                    <article class="capability-card">
+                        <span class="capability-number">01</span>
+                        <h3>Frame the product</h3>
+                        <p>Define users, constraints, roles, system boundaries, and the decisions the interface must support.</p>
+                    </article>
+                    <article class="capability-card">
+                        <span class="capability-number">02</span>
+                        <h3>Shape the interaction</h3>
+                        <p>Build flows, hierarchy, feedback, permissions, empty states, and recovery paths—not only ideal screens.</p>
+                    </article>
+                    <article class="capability-card">
+                        <span class="capability-number">03</span>
+                        <h3>Craft the interface</h3>
+                        <p>Create responsive visual systems with intentional typography, accessible interaction, and implementation awareness.</p>
+                    </article>
+                </div>
+
+                <div class="skills-list reveal" aria-label="Skills and tools">
+                    <span class="skill">UX strategy</span>
+                    <span class="skill">User flows</span>
+                    <span class="skill">Information architecture</span>
+                    <span class="skill">Interaction design</span>
+                    <span class="skill">Visual design</span>
+                    <span class="skill">Responsive design</span>
+                    <span class="skill">Accessibility</span>
+                    <span class="skill">Figma</span>
+                    <span class="skill">HTML & CSS</span>
+                    <span class="skill">JavaScript</span>
+                    <span class="skill">React</span>
+                    <span class="skill">Python</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section work-section" id="work">
+            <div class="page-shell">
+                <div class="section-header reveal">
+                    <div class="section-kicker">02 / Selected work<span></span></div>
+                    <div>
+                        <h2>Case studies that show both judgment and craft.</h2>
+                        <p class="section-lede">
+                            The first two projects demonstrate collaboration and system thinking. The concept work that follows shows visual range, product framing, and how I distinguish a design hypothesis from validated evidence.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="project-list">
+                    <a class="project-card reveal" href="hwt.html" aria-label="View Holland Walking Tour case study">
+                        <div class="project-visual">
+                            <span class="project-number">01</span>
+                            <img src="hwtimg.png" alt="Holland Walking Tour mobile and responsive interface preview">
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <span class="project-type">Real-world collaboration · Tourism & public history · 2024</span>
+                                <h3>Holland Walking Tour</h3>
+                                <p class="project-description">
+                                    A responsive heritage-tourism experience that helps visitors explore local stories while giving collaborators a clearer way to manage public content.
+                                </p>
+                                <ul class="project-proof">
+                                    <li>Connected the visitor-facing journey with an administrative content workflow.</li>
+                                    <li>Translated research and stakeholder needs into navigation, maps, stories, and accessible mobile patterns.</li>
+                                    <li>Demonstrates UX strategy, interface design, front-end awareness, and collaborative delivery.</li>
+                                </ul>
+                            </div>
+                            <div class="project-footer">
+                                <div class="project-tags">
+                                    <span class="project-tag">UX research</span>
+                                    <span class="project-tag">Product design</span>
+                                    <span class="project-tag">Responsive UI</span>
+                                    <span class="project-tag">CMS thinking</span>
+                                </div>
+                                <span class="project-link">View case study <span aria-hidden="true">↗</span></span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class="project-card reverse reveal" href="imhere.html" aria-label="View ImHere case study">
+                        <div class="project-visual">
+                            <span class="project-number">02</span>
+                            <img src="ihimg.png" alt="ImHere student attendance app and faculty dashboard preview" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <span class="project-type">University capstone · Education technology · 2023–2024</span>
+                                <h3>ImHere</h3>
+                                <p class="project-description">
+                                    A role-based attendance concept designed around fast student check-in, manageable faculty workflows, visible system status, and careful location-data boundaries.
+                                </p>
+                                <ul class="project-proof">
+                                    <li>Designed two connected experiences for students and faculty with different levels of complexity.</li>
+                                    <li>Explored permissions, privacy, failure states, manual correction, and non-ideal conditions.</li>
+                                    <li>Shows how my technical background supports system-aware interaction design.</li>
+                                </ul>
+                            </div>
+                            <div class="project-footer">
+                                <div class="project-tags">
+                                    <span class="project-tag">Systems thinking</span>
+                                    <span class="project-tag">Interaction design</span>
+                                    <span class="project-tag">Privacy</span>
+                                    <span class="project-tag">UI design</span>
+                                </div>
+                                <span class="project-link">View case study <span aria-hidden="true">↗</span></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="section-header reveal" style="margin-top:8rem;margin-bottom:2.5rem;">
+                    <div class="section-kicker">Concept explorations<span></span></div>
+                    <div>
+                        <h2 style="font-size:clamp(2.6rem,5vw,4.2rem);">Self-directed work with distinct product and visual directions.</h2>
+                    </div>
+                </div>
+
+                <div class="concept-grid">
+                    <a class="concept-card reveal" href="aurea.html" aria-label="View Aurea case study">
+                        <div class="concept-image">
+                            <img src="aurea/aurea.png" alt="Aurea editorial fragrance archive interface preview" loading="lazy">
+                        </div>
+                        <div class="concept-content">
+                            <span class="project-type">Visual & product concept · 2026</span>
+                            <h3>Aurea</h3>
+                            <p>An editorial fragrance archive exploring progressive disclosure, comparison, collection-building, and luxury visual direction.</p>
+                            <div class="project-footer">
+                                <div class="project-tags">
+                                    <span class="project-tag">Art direction</span>
+                                    <span class="project-tag">UI design</span>
+                                </div>
+                                <span class="project-link">Explore <span aria-hidden="true">↗</span></span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class="concept-card reveal" href="novella.html" aria-label="View Novella case study">
+                        <div class="concept-image">
+                            <img src="Novella/novellaprev.png" alt="Novella literary reading and discovery interface preview" loading="lazy">
+                        </div>
+                        <div class="concept-content">
+                            <span class="project-type">Product & visual concept · 2025</span>
+                            <h3>Novella</h3>
+                            <p>A calmer reading concept that helps people move from vague reading intent to a confident book choice.</p>
+                            <div class="project-footer">
+                                <div class="project-tags">
+                                    <span class="project-tag">Discovery</span>
+                                    <span class="project-tag">Editorial UI</span>
+                                </div>
+                                <span class="project-link">Explore <span aria-hidden="true">↗</span></span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class="concept-card reveal" href="nutriva.html" aria-label="View Nutriva case study">
+                        <div class="concept-image">
+                            <img src="nuimgprev.png" alt="Nutriva kitchen inventory and meal planning interface preview" loading="lazy">
+                        </div>
+                        <div class="concept-content">
+                            <span class="project-type">Product concept · 2025</span>
+                            <h3>Nutriva</h3>
+                            <p>An inventory-assisted meal-planning concept built around editable information, practical recipe matching, and uncertainty.</p>
+                            <div class="project-footer">
+                                <div class="project-tags">
+                                    <span class="project-tag">Product framing</span>
+                                    <span class="project-tag">Responsible AI</span>
+                                </div>
+                                <span class="project-link">Explore <span aria-hidden="true">↗</span></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <p class="concept-note reveal">
+                    Concept projects are presented transparently as design hypotheses. Each case study identifies what was designed, what remains unvalidated, and what I would test next.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="process">
+            <div class="page-shell">
+                <div class="section-header reveal">
+                    <div class="section-kicker">03 / Approach<span></span></div>
+                    <div>
+                        <h2>A process that keeps beautiful ideas accountable.</h2>
+                        <p class="section-lede">
+                            I do not treat UX terminology as evidence. I connect each design decision to a user task, system condition, observed pattern, or clearly labeled hypothesis.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="process-grid reveal">
+                    <article class="process-step">
+                        <span class="process-number">01</span>
+                        <h3>Clarify</h3>
+                        <p>Define the user, task, context, constraints, stakeholders, and what success must actually mean.</p>
+                    </article>
+                    <article class="process-step">
+                        <span class="process-number">02</span>
+                        <h3>Structure</h3>
+                        <p>Map information, roles, flows, permissions, feedback, and failure states before polishing screens.</p>
+                    </article>
+                    <article class="process-step">
+                        <span class="process-number">03</span>
+                        <h3>Craft</h3>
+                        <p>Build a visual system that supports hierarchy, accessibility, responsive behavior, and product character.</p>
+                    </article>
+                    <article class="process-step">
+                        <span class="process-number">04</span>
+                        <h3>Validate</h3>
+                        <p>Separate assumptions from findings, test the risky moments, and revise the product—not only the presentation.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section playground" id="playground">
+            <div class="page-shell">
+                <div class="section-header reveal">
+                    <div class="section-kicker">04 / Playground<span></span></div>
+                    <div>
+                        <h2>Experiments beyond the case-study format.</h2>
+                        <p class="section-lede">
+                            A looser collection of visual studies, code experiments, interface sketches, and design exploration.
+                        </p>
+                    </div>
+                </div>
+
+                <a class="playground-card reveal" href="playground.html">
+                    <div>
+                        <span class="playground-label">Open the creative archive</span>
+                        <h3>The Playground</h3>
+                        <p>
+                            Process fragments and small experiments that show how I explore form, interaction, illustration, and front-end ideas before they become polished portfolio work.
+                        </p>
+                    </div>
+                    <span class="playground-arrow" aria-hidden="true">→</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="contact-section" id="contact">
+        <div class="page-shell">
+            <div class="contact-grid reveal">
+                <div>
+                    <span class="contact-label">Open to thoughtful design opportunities</span>
+                    <div class="contact-title">Let’s make something <em>clear and memorable.</em></div>
+                    <p class="contact-copy">
+                        I am interested in junior UX/UI, product design, and visual design opportunities where I can contribute strong interface craft, systems thinking, and technical fluency.
+                    </p>
+                    <a class="button button-primary" href="mailto:jocelyn.wisteria@gmail.com">Email Jocelyn <span aria-hidden="true">↗</span></a>
+                </div>
+
+                <aside class="contact-card">
+                    <span>Direct contact</span>
+                    <a href="mailto:jocelyn.wisteria@gmail.com">jocelyn.wisteria@gmail.com</a>
+                    <p>For roles, collaborations, portfolio questions, or a résumé request.</p>
+                </aside>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 Jocelyn Martinez · Designed and built with HTML, CSS, and JavaScript.</span>
+                <a href="#top">Back to top ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const siteNav = document.getElementById("siteNav");
+        const menuButton = document.getElementById("menuButton");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const revealItems = document.querySelectorAll(".reveal");
+
+        function updateNavigation() {
+            siteNav.classList.toggle("scrolled", window.scrollY > 12);
+        }
+
+        function closeMenu() {
+            menuButton.setAttribute("aria-expanded", "false");
+            menuButton.setAttribute("aria-label", "Open navigation menu");
+            mobileMenu.hidden = true;
+            siteNav.classList.remove("menu-open");
+        }
+
+        function toggleMenu() {
+            const opening = menuButton.getAttribute("aria-expanded") !== "true";
+            menuButton.setAttribute("aria-expanded", String(opening));
+            menuButton.setAttribute("aria-label", opening ? "Close navigation menu" : "Open navigation menu");
+            mobileMenu.hidden = !opening;
+            siteNav.classList.toggle("menu-open", opening);
+        }
+
+        updateNavigation();
+        window.addEventListener("scroll", updateNavigation, { passive: true });
+        menuButton.addEventListener("click", toggleMenu);
+
+        mobileMenu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", closeMenu);
+        });
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 760) closeMenu();
+        });
+
+        if (reducedMotion || !("IntersectionObserver" in window)) {
+            revealItems.forEach(item => item.classList.add("is-visible"));
+        } else {
+            const observer = new IntersectionObserver((entries, currentObserver) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        currentObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealItems.forEach(item => observer.observe(item));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ImHere is a university capstone case study by Jocelyn Martinez exploring a privacy-conscious attendance experience for students and faculty.">
+    <meta property="og:title" content="ImHere Case Study | Jocelyn Martinez">
+    <meta property="og:description" content="A role-based attendance concept designed around clarity, privacy, and student support.">
+    <meta property="og:type" content="website">
+    <title>ImHere Case Study | Jocelyn Martinez</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #fbfaf7;
+            --surface: #ffffff;
+            --ink: #17202a;
+            --muted: #5d6670;
+            --soft-muted: #7d8791;
+            --navy: #002855;
+            --navy-2: #0b3a68;
+            --orange: #d45a18;
+            --orange-soft: #fff0e7;
+            --blue-soft: #edf4fa;
+            --green: #246b4b;
+            --green-soft: #eaf5ef;
+            --border: #e4e5e7;
+            --serif: "Cormorant Garamond", Georgia, serif;
+            --sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --page: min(1180px, calc(100% - 48px));
+            --shadow: 0 24px 70px rgba(0, 40, 85, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            pointer-events: none;
+            opacity: 0.018;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--orange);
+            outline-offset: 4px;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 2000;
+            padding: 0.75rem 1rem;
+            border-radius: 999px;
+            background: var(--navy);
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(-160%);
+            transition: transform 0.2s ease;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        .site-nav {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 40, 85, 0.08);
+            background: rgba(251, 250, 247, 0.9);
+            backdrop-filter: blur(18px);
+        }
+
+        .nav-inner {
+            width: var(--page);
+            min-height: 76px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-family: var(--serif);
+            font-size: 1.45rem;
+            font-style: italic;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-actions a {
+            color: var(--muted);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .nav-actions a:hover {
+            color: var(--navy);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--navy) !important;
+        }
+
+        .hero {
+            padding: 12.5rem 0 6.5rem;
+            background:
+                radial-gradient(circle at 82% 16%, rgba(212, 90, 24, 0.12), transparent 27rem),
+                linear-gradient(180deg, #fff 0%, var(--paper) 100%);
+        }
+
+        .hero-inner,
+        .section-inner,
+        .case-nav-inner,
+        .next-inner {
+            width: var(--page);
+            margin: 0 auto;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin: 0 0 1.5rem;
+            color: var(--orange);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 36px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        p {
+            margin-top: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            text-wrap: balance;
+        }
+
+        h1 {
+            max-width: 980px;
+            margin-bottom: 1.8rem;
+            font-family: var(--serif);
+            font-size: clamp(4.4rem, 10.5vw, 8.2rem);
+            font-weight: 500;
+            letter-spacing: -0.055em;
+            line-height: 0.86;
+        }
+
+        h1 em {
+            color: var(--orange);
+            font-weight: 400;
+        }
+
+        .hero-lede {
+            max-width: 780px;
+            margin-bottom: 3.5rem;
+            color: var(--muted);
+            font-size: clamp(1.15rem, 2vw, 1.4rem);
+            line-height: 1.65;
+        }
+
+        .hero-meta {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1px;
+            overflow: hidden;
+            max-width: 980px;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: var(--border);
+        }
+
+        .meta-item {
+            min-height: 132px;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .meta-label {
+            display: block;
+            margin-bottom: 0.65rem;
+            color: var(--soft-muted);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .meta-value {
+            color: var(--ink);
+            font-size: 0.94rem;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .case-nav {
+            position: sticky;
+            top: 76px;
+            z-index: 900;
+            border-block: 1px solid var(--border);
+            background: rgba(251, 250, 247, 0.92);
+            backdrop-filter: blur(16px);
+        }
+
+        .case-nav-inner {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .case-nav-inner::-webkit-scrollbar {
+            display: none;
+        }
+
+        .case-nav a {
+            flex: 0 0 auto;
+            padding: 1rem 0;
+            color: var(--muted);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .case-nav a:hover {
+            color: var(--navy);
+        }
+
+        section {
+            scroll-margin-top: 140px;
+            padding: 8.5rem 0;
+            border-bottom: 1px solid rgba(0, 40, 85, 0.08);
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: minmax(150px, 0.7fr) minmax(0, 2.5fr);
+            gap: clamp(3rem, 8vw, 8rem);
+        }
+
+        .section-kicker {
+            position: sticky;
+            top: 160px;
+            align-self: start;
+            color: var(--soft-muted);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .section-kicker span {
+            display: block;
+            width: 42px;
+            height: 1px;
+            margin-top: 1rem;
+            background: var(--orange);
+        }
+
+        .section-content {
+            min-width: 0;
+        }
+
+        h2 {
+            max-width: 920px;
+            margin-bottom: 1.8rem;
+            font-family: var(--serif);
+            font-size: clamp(3rem, 6vw, 5.1rem);
+            font-weight: 500;
+            letter-spacing: -0.04em;
+            line-height: 0.98;
+        }
+
+        h3 {
+            font-family: var(--serif);
+            font-size: clamp(1.8rem, 3vw, 2.7rem);
+            font-weight: 500;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+        }
+
+        .intro {
+            max-width: 820px;
+            margin-bottom: 3.5rem;
+            color: var(--muted);
+            font-size: 1.12rem;
+            line-height: 1.85;
+        }
+
+        .project-note {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.15rem;
+            max-width: 880px;
+            margin-top: 3rem;
+            padding: 1.4rem 1.5rem;
+            border: 1px solid #f0cbb7;
+            border-radius: 16px;
+            background: var(--orange-soft);
+        }
+
+        .project-note strong {
+            color: var(--orange);
+        }
+
+        .note-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: #fff;
+            color: var(--orange);
+            font-weight: 700;
+        }
+
+        .project-note p {
+            margin: 0;
+            color: #65483a;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .summary-grid,
+        .two-up,
+        .principle-grid,
+        .decision-grid,
+        .reflection-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .summary-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .summary-card,
+        .audience-card,
+        .principle-card,
+        .decision-card,
+        .reflection-card {
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: var(--surface);
+        }
+
+        .summary-card {
+            padding: 2rem;
+        }
+
+        .card-number {
+            display: block;
+            margin-bottom: 2rem;
+            color: var(--orange);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+        }
+
+        .summary-card h3 {
+            margin-bottom: 0.8rem;
+            font-family: var(--sans);
+            font-size: 1.04rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .summary-card p,
+        .audience-card p,
+        .principle-card p,
+        .decision-card p,
+        .reflection-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.91rem;
+            line-height: 1.7;
+        }
+
+        .two-up {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .audience-card {
+            position: relative;
+            overflow: hidden;
+            padding: 2.4rem;
+        }
+
+        .audience-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 5px;
+            background: var(--navy);
+        }
+
+        .audience-card.student::before {
+            background: var(--orange);
+        }
+
+        .audience-label {
+            display: inline-flex;
+            margin-bottom: 1.4rem;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            background: var(--blue-soft);
+            color: var(--navy);
+            font-size: 0.64rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .student .audience-label {
+            background: var(--orange-soft);
+            color: var(--orange);
+        }
+
+        .audience-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .plain-list {
+            display: grid;
+            gap: 0.95rem;
+            margin: 1.8rem 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .plain-list li {
+            display: grid;
+            grid-template-columns: 20px 1fr;
+            gap: 0.75rem;
+            color: var(--muted);
+            font-size: 0.91rem;
+            line-height: 1.65;
+        }
+
+        .plain-list li::before {
+            content: "↳";
+            color: var(--orange);
+            font-weight: 700;
+        }
+
+        .principle-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 1.5rem;
+        }
+
+        .principle-card {
+            min-height: 230px;
+            padding: 2rem;
+        }
+
+        .principle-icon {
+            width: 42px;
+            height: 42px;
+            margin-bottom: 2.4rem;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            background: var(--blue-soft);
+            color: var(--navy);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .principle-card:nth-child(2) .principle-icon {
+            background: var(--orange-soft);
+            color: var(--orange);
+        }
+
+        .principle-card:nth-child(3) .principle-icon {
+            background: var(--green-soft);
+            color: var(--green);
+        }
+
+        .principle-card h3 {
+            margin-bottom: 0.8rem;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .flow {
+            margin-top: 4rem;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .flow-row {
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            gap: 2rem;
+            padding: 2.1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .flow-row:last-child {
+            border-bottom: 0;
+        }
+
+        .flow-index {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: var(--navy);
+            color: #fff;
+            font-family: var(--serif);
+            font-size: 1.35rem;
+        }
+
+        .flow-row:nth-child(even) .flow-index {
+            background: var(--orange);
+        }
+
+        .flow-copy h3 {
+            margin-bottom: 0.5rem;
+            font-family: var(--sans);
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .flow-copy p {
+            max-width: 760px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .privacy-callout {
+            margin-top: 2rem;
+            padding: 2.4rem;
+            border-radius: 22px;
+            background: var(--navy);
+            color: #fff;
+        }
+
+        .privacy-callout .eyebrow {
+            color: #ffb18a;
+        }
+
+        .privacy-callout h3 {
+            max-width: 800px;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .privacy-callout p {
+            max-width: 800px;
+            margin-bottom: 0;
+            color: rgba(255, 255, 255, 0.77);
+        }
+
+        .decision-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .decision-card {
+            padding: 2.2rem;
+        }
+
+        .decision-card .tag {
+            display: inline-flex;
+            margin-bottom: 1.6rem;
+            color: var(--orange);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .decision-card h3 {
+            margin-bottom: 0.8rem;
+        }
+
+        .decision-detail {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .decision-detail strong {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: var(--navy);
+            font-size: 0.78rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .gallery-section {
+            background: #fff;
+        }
+
+        .gallery-group + .gallery-group {
+            margin-top: 7rem;
+        }
+
+        .gallery-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .gallery-heading h3 {
+            margin: 0;
+        }
+
+        .gallery-heading p {
+            max-width: 430px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .screen-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.4rem;
+        }
+
+        .screen-grid.faculty {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .screen-card {
+            min-width: 0;
+        }
+
+        .screen-button {
+            width: 100%;
+            margin: 0 0 1.25rem;
+            padding: 0;
+            border: 0;
+            border-radius: 18px;
+            background: transparent;
+            cursor: zoom-in;
+        }
+
+        .screen-frame {
+            padding: 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: var(--paper);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .screen-button:hover .screen-frame,
+        .screen-button:focus-visible .screen-frame {
+            border-color: rgba(0, 40, 85, 0.35);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .screen-frame img {
+            width: 100%;
+            border-radius: 12px;
+            background: #fff;
+        }
+
+        .screen-card h4 {
+            margin-bottom: 0.45rem;
+            font-family: var(--sans);
+            font-size: 0.92rem;
+            font-weight: 700;
+        }
+
+        .screen-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .system-strip {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 4rem;
+        }
+
+        .swatch {
+            min-height: 170px;
+            padding: 1.4rem;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .accessibility-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1px;
+            overflow: hidden;
+            margin-top: 4rem;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: var(--border);
+        }
+
+        .accessibility-item {
+            padding: 2rem;
+            background: #fff;
+        }
+
+        .accessibility-item strong {
+            display: block;
+            margin-bottom: 0.55rem;
+            color: var(--navy);
+            font-size: 0.92rem;
+        }
+
+        .accessibility-item p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .reflection-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .reflection-card {
+            padding: 2rem;
+        }
+
+        .reflection-card h3 {
+            margin-bottom: 0.8rem;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .next-case {
+            padding: 7rem 0;
+            background: var(--navy);
+            color: #fff;
+        }
+
+        .next-inner {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .next-case p {
+            margin-bottom: 0.75rem;
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .next-case h2 {
+            max-width: 760px;
+            margin-bottom: 0;
+            color: #fff;
+        }
+
+        .next-link {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 1.35rem;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 999px;
+            color: #fff;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .next-link:hover {
+            background: #fff;
+            color: var(--navy);
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 2rem 2rem;
+            background: rgba(0, 24, 51, 0.94);
+            backdrop-filter: blur(14px);
+        }
+
+        .lightbox[aria-hidden="false"] {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: min(1100px, 92vw);
+            max-height: 84vh;
+            border-radius: 16px;
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.45);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 28px;
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (max-width: 1000px) {
+            :root {
+                --page: min(100% - 36px, 780px);
+            }
+
+            .hero-meta,
+            .summary-grid,
+            .principle-grid,
+            .reflection-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-kicker {
+                position: static;
+            }
+
+            .decision-grid,
+            .screen-grid,
+            .screen-grid.faculty,
+            .system-strip {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .next-inner {
+                align-items: start;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 720px) {
+            :root {
+                --page: min(100% - 28px, 620px);
+            }
+
+            .nav-actions > a:not(.back-link) {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 10rem;
+                padding-bottom: 4.5rem;
+            }
+
+            h1 {
+                font-size: clamp(4rem, 20vw, 6rem);
+            }
+
+            section {
+                padding: 6rem 0;
+            }
+
+            .hero-meta,
+            .summary-grid,
+            .two-up,
+            .principle-grid,
+            .decision-grid,
+            .reflection-grid,
+            .accessibility-list,
+            .system-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .meta-item {
+                min-height: 0;
+            }
+
+            .flow-row {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .gallery-heading {
+                align-items: start;
+                flex-direction: column;
+            }
+
+            .screen-grid,
+            .screen-grid.faculty {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .next-case {
+                padding: 5rem 0;
+            }
+        }
+
+        @media (max-width: 470px) {
+            .screen-grid,
+            .screen-grid.faculty {
+                grid-template-columns: 1fr;
+            }
+
+            .project-note {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to case study</a>
+
+    <nav class="site-nav" aria-label="Portfolio navigation">
+        <div class="nav-inner">
+            <a class="logo" href="index.html">Jocelyn Martinez</a>
+            <div class="nav-actions">
+                <a href="#screens">Screens</a>
+                <a href="#reflection">Reflection</a>
+                <a class="back-link" href="index.html#portfolio"><span aria-hidden="true">←</span> Back to work</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-inner reveal">
+            <p class="eyebrow">University capstone · Product design</p>
+            <h1>ImHere <em>Attendance</em></h1>
+            <p class="hero-lede">
+                A role-based attendance concept designed to make classroom check-in fast for students, manageable for faculty, and transparent about when location data is being used.
+            </p>
+
+            <div class="hero-meta" aria-label="Project summary">
+                <div class="meta-item">
+                    <span class="meta-label">My focus</span>
+                    <span class="meta-value">UX strategy, interaction design, UI design</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Context</span>
+                    <span class="meta-value">Cross-functional university capstone</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Users</span>
+                    <span class="meta-value">College students and faculty</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Deliverables</span>
+                    <span class="meta-value">Mobile flows, faculty dashboard, system concept</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="case-nav" aria-label="Case study sections">
+        <div class="case-nav-inner">
+            <a href="#overview">Overview</a>
+            <a href="#challenge">Challenge</a>
+            <a href="#flow">System flow</a>
+            <a href="#decisions">Design decisions</a>
+            <a href="#screens">Screens</a>
+            <a href="#trust">Trust & accessibility</a>
+            <a href="#reflection">Reflection</a>
+        </div>
+    </nav>
+
+    <main id="main">
+        <section id="overview">
+            <div class="section-inner section-grid">
+                <aside class="section-kicker">01 / Overview<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">The opportunity</p>
+                    <h2>Move attendance out of the way of teaching.</h2>
+                    <p class="intro">
+                        Attendance is a small classroom task with an unexpectedly complex service behind it. Faculty need a dependable record and a quick way to correct exceptions. Students need to know whether they checked in successfully, how absences affect them, and why the system is requesting location access.
+                    </p>
+                    <p class="intro">
+                        ImHere explores one connected experience: a lightweight student check-in paired with a more detailed faculty workspace. My design focus was translating technical constraints into understandable moments—especially around location permissions, session status, and error recovery.
+                    </p>
+
+                    <div class="summary-grid">
+                        <article class="summary-card">
+                            <span class="card-number">01</span>
+                            <h3>Student experience</h3>
+                            <p>A focused mobile flow for checking in, confirming attendance, reviewing history, and submitting an absence explanation.</p>
+                        </article>
+                        <article class="summary-card">
+                            <span class="card-number">02</span>
+                            <h3>Faculty experience</h3>
+                            <p>A dashboard for opening sessions, reviewing attendance, correcting records, and identifying patterns that may warrant a human follow-up.</p>
+                        </article>
+                        <article class="summary-card">
+                            <span class="card-number">03</span>
+                            <h3>System model</h3>
+                            <p>A proposed time-limited location check designed to verify presence without presenting the product as continuous tracking.</p>
+                        </article>
+                    </div>
+
+                    <div class="project-note">
+                        <div class="note-icon" aria-hidden="true">i</div>
+                        <p>
+                            <strong>Project scope:</strong> ImHere is a capstone product concept, not a deployed campus service. The screens and logic show the proposed experience. Privacy, accessibility, location accuracy, integrations, and usability would require validation with students, faculty, campus IT, and institutional stakeholders before implementation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="challenge">
+            <div class="section-inner section-grid">
+                <aside class="section-kicker">02 / Challenge<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Two perspectives</p>
+                    <h2>One attendance record. Two very different jobs.</h2>
+                    <p class="intro">
+                        The design could not simply shrink a faculty dashboard into a student app. Each group enters the experience with a different goal, level of urgency, and concern.
+                    </p>
+
+                    <div class="two-up">
+                        <article class="audience-card student">
+                            <span class="audience-label">Student</span>
+                            <h3>“Did my check-in work?”</h3>
+                            <p>Students need a quick action and an unambiguous answer. They also need control over sensitive information and a clear path when something goes wrong.</p>
+                            <ul class="plain-list">
+                                <li>See the active class and check in without searching.</li>
+                                <li>Understand when location access begins and ends.</li>
+                                <li>Confirm attendance immediately.</li>
+                                <li>Review attendance and explain an absence.</li>
+                            </ul>
+                        </article>
+
+                        <article class="audience-card">
+                            <span class="audience-label">Faculty</span>
+                            <h3>“Who needs my attention?”</h3>
+                            <p>Faculty need attendance to be faster than a manual process, while retaining the ability to resolve late arrivals, technical errors, and exceptions.</p>
+                            <ul class="plain-list">
+                                <li>Open or close a session with minimal setup.</li>
+                                <li>Scan the roster and spot exceptions quickly.</li>
+                                <li>Correct a record without leaving the workflow.</li>
+                                <li>Review patterns before deciding whether to reach out.</li>
+                            </ul>
+                        </article>
+                    </div>
+
+                    <div class="principle-grid">
+                        <article class="principle-card">
+                            <div class="principle-icon" aria-hidden="true">1</div>
+                            <h3>Keep the student task narrow</h3>
+                            <p>The active check-in should be the most obvious element on the screen, supported by class context and a clear success state.</p>
+                        </article>
+                        <article class="principle-card">
+                            <div class="principle-icon" aria-hidden="true">2</div>
+                            <h3>Explain sensitive requests</h3>
+                            <p>Permission language should describe what is requested, why it is needed, and what the user can do when access is unavailable.</p>
+                        </article>
+                        <article class="principle-card">
+                            <div class="principle-icon" aria-hidden="true">3</div>
+                            <h3>Design for exceptions</h3>
+                            <p>The experience needs recovery paths for inaccurate location, device issues, late arrivals, and faculty corrections—not only the ideal flow.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="flow">
+            <div class="section-inner section-grid">
+                <aside class="section-kicker">03 / System flow<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Proposed interaction model</p>
+                    <h2>A short attendance window with visible boundaries.</h2>
+                    <p class="intro">
+                        The concept uses a professor-initiated session rather than passive, always-on tracking. That boundary is reflected in the interface so the user is not expected to infer what the system is doing.
+                    </p>
+
+                    <div class="flow">
+                        <div class="flow-row">
+                            <div class="flow-index">01</div>
+                            <div class="flow-copy">
+                                <h3>Faculty opens attendance</h3>
+                                <p>The professor starts a short session for the selected course. Students enrolled in that course see the check-in become available.</p>
+                            </div>
+                        </div>
+                        <div class="flow-row">
+                            <div class="flow-index">02</div>
+                            <div class="flow-copy">
+                                <h3>Student reviews the request</h3>
+                                <p>Before requesting device permission, the interface explains that location is being used to verify proximity for this class session.</p>
+                            </div>
+                        </div>
+                        <div class="flow-row">
+                            <div class="flow-index">03</div>
+                            <div class="flow-copy">
+                                <h3>Presence is verified</h3>
+                                <p>The system checks whether the device is within the active classroom area. The intended record is an attendance result—not a location history.</p>
+                            </div>
+                        </div>
+                        <div class="flow-row">
+                            <div class="flow-index">04</div>
+                            <div class="flow-copy">
+                                <h3>Both sides receive status</h3>
+                                <p>The student sees a clear confirmation, while the faculty roster updates. Errors remain editable through a manual review path.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="privacy-callout">
+                        <p class="eyebrow">Design boundary</p>
+                        <h3>Privacy is not solved by hiding technical complexity.</h3>
+                        <p>
+                            A trustworthy implementation would need plain-language consent, data-minimization rules, retention limits, a non-location fallback, and institutional review. The interface can communicate those decisions, but it cannot substitute for them.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="decisions">
+            <div class="section-inner section-grid">
+                <aside class="section-kicker">04 / Decisions<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Interaction design</p>
+                    <h2>Design choices tied to observable user needs.</h2>
+                    <p class="intro">
+                        Rather than using psychological terminology to justify every detail, I focused the interface around task priority, system feedback, error prevention, and legibility.
+                    </p>
+
+                    <div class="decision-grid">
+                        <article class="decision-card">
+                            <span class="tag">Student dashboard</span>
+                            <h3>Make the next action unmistakable.</h3>
+                            <p>The active class and check-in state receive the strongest visual emphasis. Secondary information, such as history and absence requests, remains available without competing with the immediate task.</p>
+                            <div class="decision-detail">
+                                <strong>Design response</strong>
+                                <p>One dominant action, contextual class information, and a confirmation state that does not rely on color alone.</p>
+                            </div>
+                        </article>
+
+                        <article class="decision-card">
+                            <span class="tag">Permission moment</span>
+                            <h3>Explain location before asking for it.</h3>
+                            <p>A short pre-permission screen gives context before the operating system prompt appears. It states the purpose, intended duration, and alternate path if verification fails.</p>
+                            <div class="decision-detail">
+                                <strong>Design response</strong>
+                                <p>Just-in-time explanation, visible session status, and a route to instructor review.</p>
+                            </div>
+                        </article>
+
+                        <article class="decision-card">
+                            <span class="tag">Faculty roster</span>
+                            <h3>Surface exceptions without defining the student.</h3>
+                            <p>The dashboard prioritizes attendance events that require review. Labels describe the record—such as absent, late, or unresolved—rather than assigning an automated identity to the student.</p>
+                            <div class="decision-detail">
+                                <strong>Design response</strong>
+                                <p>Scannable status chips, filters, inline correction, and human judgment before outreach.</p>
+                            </div>
+                        </article>
+
+                        <article class="decision-card">
+                            <span class="tag">Error recovery</span>
+                            <h3>Assume the ideal flow will fail sometimes.</h3>
+                            <p>GPS accuracy, connectivity, permissions, and device access can all create false negatives. The concept therefore includes correction and absence-documentation paths.</p>
+                            <div class="decision-detail">
+                                <strong>Design response</strong>
+                                <p>Actionable error messages, manual faculty override, and a visible pending-review state.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="screens" class="gallery-section">
+            <div class="section-inner section-grid">
+                <aside class="section-kicker">05 / Screens<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">High-fidelity interface</p>
+                    <h2>One visual system, adapted to two levels of complexity.</h2>
+                    <p class="intro">
+                        Student screens use generous spacing and a narrow task focus. Faculty screens support denser information while preserving hierarchy, readable status labels, and direct correction paths. Select any screen to enlarge it.
+                    </p>
+
+                    <div class="gallery-group">
+                        <div class="gallery-heading">
+                            <h3>Student journey</h3>
+                            <p>Check in, confirm the result, explain an absence, and understand attendance history.</p>
+                        </div>
+
+                        <div class="screen-grid">
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-src="imhere/Studentdashboard.png" data-lightbox-alt="ImHere student dashboard showing classes and attendance information" aria-label="Enlarge student dashboard">
+                                    <span class="screen-frame"><img src="imhere/Studentdashboard.png" alt="Student dashboard with class and attendance overview"></span>
+                                </button>
+                                <h4>Personal dashboard</h4>
+                                <p>Prioritizes the active class while keeping attendance history easy to reach.</p>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-src="imhere/listclassstudent.png" data-lightbox-alt="ImHere class screen with attendance confirmation" aria-label="Enlarge check-in confirmation">
+                                    <span class="screen-frame"><img src="imhere/listclassstudent.png" alt="Class screen with check-in status"></span>
+                                </button>
+                                <h4>Check-in status</h4>
+                                <p>Provides a clear result so the student does not need to repeat the action.</p>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-src="imhere/absencereason.png" data-lightbox-alt="ImHere absence explanation and documentation screen" aria-label="Enlarge absence request screen">
+                                    <span class="screen-frame"><img src="imhere/absencereason.png" alt="Absence explanation and document upload screen"></span>
+                                </button>
+                                <h4>Absence explanation</h4>
+                                <p>Creates a direct path for context and supporting documentation.</p>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-src="imhere/trendanalysis.png" data-lightbox-alt="ImHere student attendance history and trend screen" aria-label="Enlarge attendance history screen">
+                                    <span class="screen-frame"><img src="imhere/trendanalysis.png" alt="Student attendance history and trend view"></span>
+                                </button>
+                                <h4>Attendance history</h4>
+                                <p>Turns a hidden record into information the student can review and question.</p>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="gallery-group">
+                        <div class="gallery-heading">
+                            <h3>Faculty workspace</h3>
+                            <p>Open sessions, review the roster, correct records, and inspect attendance details.</p>
+                        </div>
+
+                        <div class="screen-grid faculty">
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-src="imhere/professordashboard.png" data-lightbox-alt="ImHere faculty dashboard and class roster" aria-label="Enlarge faculty dashboard">
+                                    <span class="screen-frame"><img src="imhere/professordashboard.png" alt="Faculty dashboard with class roster and attendance statuses"></span>
+                                </button>
+                                <h4>Faculty dashboard</h4>
+                                <p>Supports rapid scanning while keeping session controls and exceptions visible.</p>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-src="imhere/mathematicsprofessorpg.png" data-lightbox-alt="ImHere professor course page with attendance editing" aria-label="Enlarge attendance editing screen">
+                                    <span class="screen-frame"><img src="imhere/mathematicsprofessorpg.png" alt="Professor course page with attendance editing controls"></span>
+                                </button>
+                                <h4>Record correction</h4>
+                                <p>Lets faculty resolve late arrivals or technical errors within the roster workflow.</p>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-src="imhere/attendanceviewerprof.png" data-lightbox-alt="ImHere detailed faculty attendance view" aria-label="Enlarge detailed attendance view">
+                                    <span class="screen-frame"><img src="imhere/attendanceviewerprof.png" alt="Detailed faculty attendance history view"></span>
+                                </button>
+                                <h4>Attendance detail</h4>
+                                <p>Provides context for a human follow-up without automating the decision itself.</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trust">
+            <div class="section-inner section-grid">
+                <aside class="section-kicker">06 / Trust & accessibility<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Visual system</p>
+                    <h2>Calm enough for students. Structured enough for faculty.</h2>
+                    <p class="intro">
+                        The interface uses Hope-inspired navy and orange as anchors, supported by warm neutral surfaces. Color communicates emphasis, but text labels and hierarchy carry the meaning.
+                    </p>
+
+                    <div class="system-strip" aria-label="Color palette">
+                        <div class="swatch" style="background:#002855;color:#fff;">
+                            <span>Primary navy</span><span>#002855</span>
+                        </div>
+                        <div class="swatch" style="background:#d45a18;color:#fff;">
+                            <span>Action orange</span><span>#D45A18</span>
+                        </div>
+                        <div class="swatch" style="background:#fbfaf7;color:#17202a;">
+                            <span>Warm paper</span><span>#FBFAF7</span>
+                        </div>
+                        <div class="swatch" style="background:#17202a;color:#fff;">
+                            <span>Core text</span><span>#17202A</span>
+                        </div>
+                    </div>
+
+                    <div class="accessibility-list">
+                        <div class="accessibility-item">
+                            <strong>Visible system status</strong>
+                            <p>Students can see whether check-in is available, successful, unavailable, or awaiting review.</p>
+                        </div>
+                        <div class="accessibility-item">
+                            <strong>Color plus language</strong>
+                            <p>Status is communicated through text and structure, not green, yellow, or red alone.</p>
+                        </div>
+                        <div class="accessibility-item">
+                            <strong>Readable interaction targets</strong>
+                            <p>Primary actions and roster controls are designed with generous touch and click areas.</p>
+                        </div>
+                        <div class="accessibility-item">
+                            <strong>Permission clarity</strong>
+                            <p>Location access is introduced with purpose, timing, and a recovery path before the device prompt.</p>
+                        </div>
+                        <div class="accessibility-item">
+                            <strong>Reduced interruption</strong>
+                            <p>The student flow minimizes steps during class and reserves detail for the dashboard.</p>
+                        </div>
+                        <div class="accessibility-item">
+                            <strong>Validation still required</strong>
+                            <p>Contrast, keyboard behavior, screen-reader output, motion, and real-device use should be formally tested.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reflection">
+            <div class="section-inner section-grid">
+                <aside class="section-kicker">07 / Reflection<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">What the project demonstrates</p>
+                    <h2>Designing the interface meant designing the boundaries.</h2>
+                    <p class="intro">
+                        ImHere pushed me to think beyond individual screens. The most important decisions were about roles, permissions, system state, data sensitivity, and exception handling. My computer science background helped me ask how the interaction could map to a buildable system; the UX work kept the technical model accountable to the people using it.
+                    </p>
+
+                    <div class="reflection-grid">
+                        <article class="reflection-card">
+                            <span class="card-number">01</span>
+                            <h3>What worked</h3>
+                            <p>A clear separation between the lightweight student task and the information-dense faculty workflow.</p>
+                        </article>
+                        <article class="reflection-card">
+                            <span class="card-number">02</span>
+                            <h3>Biggest risk</h3>
+                            <p>Location verification can create privacy concerns and false negatives. Trust requires policy, technical safeguards, and fallback—not only reassuring copy.</p>
+                        </article>
+                        <article class="reflection-card">
+                            <span class="card-number">03</span>
+                            <h3>What I would test next</h3>
+                            <p>Permission comprehension, check-in completion, GPS edge cases, no-location alternatives, faculty correction speed, and accessibility with assistive technology.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="next-case">
+        <div class="next-inner">
+            <div>
+                <p>Continue exploring</p>
+                <h2>Return to selected work.</h2>
+            </div>
+            <a class="next-link" href="index.html#portfolio">View portfolio <span aria-hidden="true">↗</span></a>
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged interface screen" aria-hidden="true">
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close enlarged image">×</button>
+        <img id="lightboxImage" src="" alt="">
+    </div>
+
+    <script>
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const revealItems = document.querySelectorAll(".reveal");
+
+        if (reducedMotion || !("IntersectionObserver" in window)) {
+            revealItems.forEach(item => item.classList.add("is-visible"));
+        } else {
+            const observer = new IntersectionObserver((entries, currentObserver) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        currentObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            revealItems.forEach(item => observer.observe(item));
+        }
+
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxClose = document.getElementById("lightboxClose");
+        const screenButtons = document.querySelectorAll("[data-lightbox-src]");
+        let previouslyFocused = null;
+
+        function openLightbox(button) {
+            previouslyFocused = button;
+            lightboxImage.src = button.dataset.lightboxSrc;
+            lightboxImage.alt = button.dataset.lightboxAlt || "Enlarged interface screen";
+            lightbox.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+            lightboxClose.focus();
+        }
+
+        function closeLightbox() {
+            lightbox.setAttribute("aria-hidden", "true");
+            lightboxImage.src = "";
+            lightboxImage.alt = "";
+            document.body.style.overflow = "";
+            if (previouslyFocused) previouslyFocused.focus();
+        }
+
+        screenButtons.forEach(button => {
+            button.addEventListener("click", () => openLightbox(button));
+        });
+
+        lightboxClose.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", event => {
+            if (event.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && lightbox.getAttribute("aria-hidden") === "false") {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

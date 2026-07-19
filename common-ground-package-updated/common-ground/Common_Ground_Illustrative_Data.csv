@@ -1,0 +1,15 @@
+category,label,value,unit,note
+participation,Participated in a cultural activity,68,percent,Illustrative scenario data
+participation,Attended an evening event,34,percent,Illustrative scenario data
+participation,Created or practiced art,21,percent,Illustrative scenario data
+participation,Volunteered with an organization,16,percent,Illustrative scenario data
+barrier,Cost,44,percent,Multi-select illustrative data
+barrier,Transportation,29,percent,Multi-select illustrative data
+barrier,Information,18,percent,Multi-select illustrative data
+barrier,Time,15,percent,Multi-select illustrative data
+barrier,Other,9,percent,Multi-select illustrative data
+motivator,Free entry,61,percent,Multi-select illustrative data
+motivator,Close to home,52,percent,Multi-select illustrative data
+motivator,Friend invitation,47,percent,Multi-select illustrative data
+motivator,Family programming,39,percent,Multi-select illustrative data
+motivator,Bilingual information,31,percent,Multi-select illustrative data

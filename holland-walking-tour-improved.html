@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A UX case study by Jocelyn Martinez: redesigning a walking-tour experience for visitors and the local teams who maintain Holland, Michigan's historical content.">
+    <meta name="theme-color" content="#f7f3ec">
+
+    <meta property="og:title" content="Holland Walking Tour — UX Case Study by Jocelyn Martinez">
+    <meta property="og:description" content="An accessible mobile tour and content-management concept designed for visitors, archivists, and tourism stakeholders in Holland, Michigan.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="Holland Walking Tour/MockupIMG1.png">
+
+    <title>Holland Walking Tour — UX Case Study | Jocelyn Martinez</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --canvas: #f7f3ec;
+            --canvas-deep: #eee7dc;
+            --surface: #fffdf9;
+            --surface-strong: #ffffff;
+            --ink: #183035;
+            --ink-soft: #4f6265;
+            --muted: #718083;
+            --line: rgba(24, 48, 53, 0.14);
+            --line-strong: rgba(24, 48, 53, 0.24);
+            --teal: #087d7a;
+            --teal-dark: #075c5a;
+            --teal-soft: #d8ece8;
+            --teal-pale: #edf7f4;
+            --coral: #c87562;
+            --gold: #c89a4a;
+            --shadow-sm: 0 14px 40px rgba(35, 53, 54, 0.08);
+            --shadow-lg: 0 30px 80px rgba(35, 53, 54, 0.13);
+            --radius-sm: 14px;
+            --radius-md: 24px;
+            --radius-lg: 36px;
+            --serif: "Newsreader", Georgia, serif;
+            --sans: "DM Sans", Arial, sans-serif;
+            --content: 1180px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(circle at 92% 6%, rgba(8, 125, 122, 0.12), transparent 24rem),
+                var(--canvas);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.018;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        :focus-visible {
+            outline: 3px solid rgba(8, 125, 122, 0.38);
+            outline-offset: 4px;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 9999;
+            padding: 0.8rem 1rem;
+            background: var(--ink);
+            color: white;
+            border-radius: 999px;
+            text-decoration: none;
+            transform: translateY(-160%);
+            transition: transform 180ms ease;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 900;
+            border-bottom: 1px solid transparent;
+            transition: background 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+        }
+
+        .site-nav.is-scrolled {
+            background: rgba(247, 243, 236, 0.88);
+            border-color: var(--line);
+            box-shadow: 0 8px 30px rgba(35, 53, 54, 0.05);
+            backdrop-filter: blur(18px);
+        }
+
+        .nav-inner {
+            width: min(calc(100% - 2rem), var(--content));
+            min-height: 78px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .wordmark {
+            font-family: var(--serif);
+            font-size: 1.45rem;
+            font-style: italic;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-link,
+        .button-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 42px;
+            padding: 0.65rem 1rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
+        }
+
+        .nav-link {
+            color: var(--ink-soft);
+        }
+
+        .nav-link:hover {
+            color: var(--teal-dark);
+            background: rgba(255, 255, 255, 0.52);
+        }
+
+        .button-link {
+            border: 1px solid var(--line-strong);
+            background: rgba(255, 255, 255, 0.58);
+        }
+
+        .button-link:hover {
+            transform: translateY(-2px);
+            border-color: var(--teal);
+            color: var(--teal-dark);
+            background: white;
+        }
+
+        .page-shell {
+            width: min(calc(100% - 2rem), var(--content));
+            margin: 0 auto;
+        }
+
+        .hero {
+            min-height: 100svh;
+            padding: 9.5rem 0 4.5rem;
+            display: grid;
+            align-items: center;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+            gap: clamp(3rem, 7vw, 7rem);
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            margin: 0 0 1.5rem;
+            color: var(--teal-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 32px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        .hero h1 {
+            max-width: 760px;
+            margin: 0;
+            font-family: var(--serif);
+            font-size: clamp(4rem, 9vw, 8.8rem);
+            font-weight: 400;
+            line-height: 0.83;
+            letter-spacing: -0.06em;
+        }
+
+        .hero h1 em {
+            display: block;
+            color: var(--teal);
+            font-weight: 400;
+        }
+
+        .hero-summary {
+            max-width: 690px;
+            margin: 2rem 0 0;
+            color: var(--ink-soft);
+            font-size: clamp(1.05rem, 1.7vw, 1.28rem);
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            margin-top: 2.25rem;
+        }
+
+        .primary-cta,
+        .secondary-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            padding: 0.85rem 1.25rem;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+        }
+
+        .primary-cta {
+            background: var(--teal-dark);
+            color: white;
+            box-shadow: 0 12px 30px rgba(7, 92, 90, 0.2);
+        }
+
+        .secondary-cta {
+            border: 1px solid var(--line-strong);
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .primary-cta:hover,
+        .secondary-cta:hover {
+            transform: translateY(-2px);
+        }
+
+        .primary-cta:hover {
+            box-shadow: 0 18px 36px rgba(7, 92, 90, 0.28);
+        }
+
+        .hero-visual {
+            position: relative;
+            min-height: 610px;
+            display: grid;
+            place-items: center;
+        }
+
+        .hero-orbit {
+            position: absolute;
+            inset: 3% 0 0;
+            border: 1px solid rgba(8, 125, 122, 0.22);
+            border-radius: 50%;
+            transform: rotate(-8deg);
+        }
+
+        .hero-orbit::before,
+        .hero-orbit::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: var(--teal);
+        }
+
+        .hero-orbit::before {
+            width: 12px;
+            height: 12px;
+            top: 18%;
+            left: 5%;
+        }
+
+        .hero-orbit::after {
+            width: 8px;
+            height: 8px;
+            right: 12%;
+            bottom: 8%;
+            background: var(--coral);
+        }
+
+        .phone-stack {
+            position: relative;
+            width: min(100%, 520px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-frame {
+            position: relative;
+            width: min(68%, 315px);
+            padding: 12px;
+            border-radius: 42px;
+            background: #102d31;
+            box-shadow: var(--shadow-lg);
+            transform: rotate(3deg);
+            z-index: 2;
+        }
+
+        .phone-frame img {
+            width: 100%;
+            border-radius: 31px;
+            background: white;
+        }
+
+        .phone-frame-secondary {
+            position: absolute;
+            left: 0;
+            width: min(56%, 265px);
+            transform: translate(-3%, 9%) rotate(-8deg);
+            opacity: 0.94;
+            z-index: 1;
+        }
+
+        .hero-note {
+            position: absolute;
+            right: -2%;
+            bottom: 8%;
+            width: min(245px, 52%);
+            padding: 1.15rem 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 18px;
+            background: rgba(255, 253, 249, 0.82);
+            box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(16px);
+            z-index: 3;
+        }
+
+        .hero-note strong {
+            display: block;
+            margin-bottom: 0.2rem;
+            color: var(--teal-dark);
+            font-size: 0.76rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .hero-note span {
+            color: var(--ink-soft);
+            font-size: 0.88rem;
+            line-height: 1.45;
+        }
+
+        .project-facts {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line);
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+
+        .fact-label {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--muted);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .fact-value {
+            color: var(--ink);
+            font-size: 0.93rem;
+            font-weight: 600;
+            line-height: 1.45;
+        }
+
+        .section {
+            padding: clamp(5.5rem, 10vw, 9.5rem) 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: minmax(180px, 0.34fr) minmax(0, 1fr);
+            gap: clamp(2.5rem, 7vw, 7rem);
+        }
+
+        .section-index {
+            align-self: start;
+            position: sticky;
+            top: 7rem;
+        }
+
+        .section-index span {
+            display: block;
+            color: var(--teal-dark);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .section-index p {
+            max-width: 190px;
+            margin: 0.8rem 0 0;
+            color: var(--muted);
+            font-size: 0.84rem;
+            line-height: 1.55;
+        }
+
+        .section-content h2 {
+            max-width: 850px;
+            margin: 0 0 1.5rem;
+            font-family: var(--serif);
+            font-size: clamp(2.9rem, 6vw, 5.8rem);
+            font-weight: 400;
+            line-height: 0.98;
+            letter-spacing: -0.045em;
+        }
+
+        .section-lede {
+            max-width: 780px;
+            margin: 0;
+            color: var(--ink-soft);
+            font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+            line-height: 1.78;
+        }
+
+        .overview-card {
+            margin-top: 3rem;
+            padding: clamp(1.5rem, 4vw, 2.8rem);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            background: rgba(255, 253, 249, 0.7);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0;
+        }
+
+        .overview-item {
+            padding: 1.4rem 1.6rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .overview-item:nth-child(odd) {
+            border-right: 1px solid var(--line);
+        }
+
+        .overview-item:nth-last-child(-n + 2) {
+            border-bottom: 0;
+        }
+
+        .overview-item h3,
+        .insight-card h3,
+        .decision-card h3,
+        .admin-card h3 {
+            margin: 0 0 0.65rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .overview-item h3 {
+            color: var(--teal-dark);
+        }
+
+        .overview-item p {
+            margin: 0;
+            color: var(--ink-soft);
+            font-size: 0.97rem;
+            line-height: 1.65;
+        }
+
+        .context-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .context-card {
+            min-height: 180px;
+            padding: 1.5rem;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.45);
+        }
+
+        .context-card span {
+            display: inline-grid;
+            place-items: center;
+            width: 36px;
+            height: 36px;
+            margin-bottom: 1.25rem;
+            border-radius: 50%;
+            background: var(--teal-soft);
+            color: var(--teal-dark);
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .context-card h3 {
+            margin: 0 0 0.5rem;
+            font-family: var(--serif);
+            font-size: 1.45rem;
+            font-weight: 500;
+        }
+
+        .context-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.55;
+        }
+
+        .research-summary {
+            display: grid;
+            grid-template-columns: 0.7fr 1.3fr;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .research-stat {
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            background: var(--teal-dark);
+            color: white;
+        }
+
+        .research-stat strong {
+            display: block;
+            font-family: var(--serif);
+            font-size: clamp(4rem, 9vw, 7rem);
+            font-weight: 400;
+            line-height: 0.85;
+        }
+
+        .research-stat span {
+            display: block;
+            margin-top: 1rem;
+            color: rgba(255, 255, 255, 0.74);
+            font-size: 0.84rem;
+            line-height: 1.55;
+        }
+
+        .research-method {
+            padding: 2rem;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            background: var(--surface);
+        }
+
+        .research-method h3 {
+            margin: 0 0 0.75rem;
+            font-family: var(--serif);
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        .research-method p {
+            margin: 0;
+            color: var(--ink-soft);
+        }
+
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .insight-card {
+            min-height: 250px;
+            padding: 1.75rem;
+            border-radius: var(--radius-md);
+        }
+
+        .insight-card:nth-child(1) {
+            background: #f4e8cf;
+        }
+
+        .insight-card:nth-child(2) {
+            background: #dfeeed;
+        }
+
+        .insight-card:nth-child(3) {
+            background: #e6e8f1;
+        }
+
+        .insight-card h3 {
+            color: var(--ink-soft);
+        }
+
+        .insight-card blockquote {
+            margin: 2rem 0 1rem;
+            font-family: var(--serif);
+            font-size: 1.65rem;
+            line-height: 1.18;
+            letter-spacing: -0.02em;
+        }
+
+        .insight-card p {
+            margin: 0;
+            color: var(--ink-soft);
+            font-size: 0.88rem;
+        }
+
+        .flow {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin-top: 3rem;
+        }
+
+        .flow-step {
+            position: relative;
+            min-height: 165px;
+            padding: 1.25rem;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            background: var(--surface);
+        }
+
+        .flow-step:not(:last-child)::after {
+            content: "→";
+            position: absolute;
+            top: 50%;
+            right: -0.75rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--canvas);
+            color: var(--teal-dark);
+            font-weight: 700;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+
+        .flow-step span {
+            display: block;
+            color: var(--teal);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .flow-step h3 {
+            margin: 1rem 0 0.5rem;
+            font-family: var(--serif);
+            font-size: 1.35rem;
+            font-weight: 500;
+            line-height: 1.08;
+        }
+
+        .flow-step p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.8rem;
+            line-height: 1.45;
+        }
+
+        .branch-note {
+            margin-top: 1rem;
+            padding: 1.2rem 1.35rem;
+            border-left: 3px solid var(--coral);
+            background: rgba(200, 117, 98, 0.08);
+            color: var(--ink-soft);
+            font-size: 0.92rem;
+        }
+
+        .decision-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .decision-card {
+            padding: 1.75rem;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.55);
+        }
+
+        .decision-card h3 {
+            color: var(--teal-dark);
+        }
+
+        .decision-card strong {
+            display: block;
+            margin: 1.3rem 0 0.5rem;
+            font-family: var(--serif);
+            font-size: 1.75rem;
+            font-weight: 500;
+            line-height: 1.12;
+        }
+
+        .decision-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .palette {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr 1fr;
+            min-height: 175px;
+            margin-top: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+        }
+
+        .palette-swatch {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1.3rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .palette-swatch:nth-child(1) { background: #087d7a; color: white; }
+        .palette-swatch:nth-child(2) { background: #d8ece8; color: var(--ink); }
+        .palette-swatch:nth-child(3) { background: #f7f3ec; color: var(--ink); }
+        .palette-swatch:nth-child(4) { background: #183035; color: white; }
+
+        .gallery-shell {
+            margin-top: 3rem;
+        }
+
+        .gallery-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-toolbar p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.86rem;
+        }
+
+        .gallery-controls {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .gallery-button {
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line-strong);
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--ink);
+            cursor: pointer;
+            transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+        }
+
+        .gallery-button:hover {
+            background: var(--teal-dark);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .screen-gallery {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: var(--teal-soft) transparent;
+            padding: 1rem 0 1.5rem;
+        }
+
+        .screen-card {
+            flex: 0 0 clamp(235px, 29vw, 340px);
+            scroll-snap-align: start;
+            border: 0;
+            padding: 0;
+            border-radius: 28px;
+            background: transparent;
+            cursor: zoom-in;
+            transition: transform 220ms ease;
+        }
+
+        .screen-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .screen-card img {
+            width: 100%;
+            max-height: 620px;
+            object-fit: contain;
+            border: 1px solid rgba(24, 48, 53, 0.08);
+            border-radius: 26px;
+            background: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .screen-card span {
+            display: block;
+            padding: 0.9rem 0.25rem 0;
+            color: var(--muted);
+            font-size: 0.78rem;
+            text-align: left;
+        }
+
+        .admin-intro {
+            display: grid;
+            grid-template-columns: 1.08fr 0.92fr;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .admin-feature {
+            padding: clamp(1.8rem, 4vw, 3rem);
+            border-radius: var(--radius-lg);
+            background: var(--ink);
+            color: white;
+        }
+
+        .admin-feature .kicker {
+            display: block;
+            margin-bottom: 4rem;
+            color: rgba(255, 255, 255, 0.62);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .admin-feature h3 {
+            max-width: 560px;
+            margin: 0;
+            font-family: var(--serif);
+            font-size: clamp(2.4rem, 5vw, 4.5rem);
+            font-weight: 400;
+            line-height: 0.98;
+        }
+
+        .admin-feature p {
+            max-width: 620px;
+            margin: 1.5rem 0 0;
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .admin-principles {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .admin-card {
+            padding: 1.7rem;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            background: var(--surface);
+        }
+
+        .admin-card h3 {
+            color: var(--coral);
+        }
+
+        .admin-card strong {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-family: var(--serif);
+            font-size: 1.55rem;
+            font-weight: 500;
+        }
+
+        .admin-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .admin-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .admin-screen {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: var(--surface);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .admin-screen button {
+            width: 100%;
+            padding: 0;
+            border: 0;
+            background: #eef2f2;
+            cursor: zoom-in;
+        }
+
+        .admin-screen img {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+        }
+
+        .admin-screen:hover img {
+            transform: scale(1.025);
+        }
+
+        .admin-screen-copy {
+            padding: 1.3rem 1.4rem 1.5rem;
+        }
+
+        .admin-screen-copy span {
+            color: var(--teal-dark);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .admin-screen-copy h3 {
+            margin: 0.35rem 0 0.45rem;
+            font-family: var(--serif);
+            font-size: 1.6rem;
+            font-weight: 500;
+        }
+
+        .admin-screen-copy p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .outcome-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .outcome-card {
+            padding: 1.8rem;
+            border-top: 3px solid var(--teal);
+            border-radius: 0 0 var(--radius-md) var(--radius-md);
+            background: var(--surface);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .outcome-card:nth-child(2) {
+            border-top-color: var(--coral);
+        }
+
+        .outcome-card:nth-child(3) {
+            border-top-color: var(--gold);
+        }
+
+        .outcome-card span {
+            color: var(--muted);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .outcome-card h3 {
+            margin: 1rem 0 0.65rem;
+            font-family: var(--serif);
+            font-size: 1.65rem;
+            font-weight: 500;
+            line-height: 1.1;
+        }
+
+        .outcome-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .honesty-note {
+            margin-top: 1.2rem;
+            padding: 1.25rem 1.4rem;
+            border: 1px solid rgba(8, 125, 122, 0.25);
+            border-radius: var(--radius-sm);
+            background: var(--teal-pale);
+            color: var(--ink-soft);
+            font-size: 0.9rem;
+        }
+
+        .next-project {
+            padding: 7rem 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .next-project a {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            align-items: end;
+            text-decoration: none;
+        }
+
+        .next-project span {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: var(--muted);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .next-project h2 {
+            margin: 0;
+            font-family: var(--serif);
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 400;
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+            transition: color 180ms ease;
+        }
+
+        .next-project svg {
+            width: clamp(52px, 7vw, 90px);
+            transition: transform 180ms ease;
+        }
+
+        .next-project a:hover h2 {
+            color: var(--teal);
+        }
+
+        .next-project a:hover svg {
+            transform: translateX(10px);
+        }
+
+        .site-footer {
+            padding: 2rem 0 3rem;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: none;
+            place-items: center;
+            padding: 4rem 1.25rem 1.25rem;
+            background: rgba(13, 31, 35, 0.94);
+        }
+
+        .lightbox.is-open {
+            display: grid;
+        }
+
+        .lightbox img {
+            max-width: min(94vw, 1500px);
+            max-height: 86vh;
+            object-fit: contain;
+            border-radius: 18px;
+            box-shadow: 0 28px 90px rgba(0, 0, 0, 0.36);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 700ms ease, transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1080px) {
+            .hero-grid,
+            .admin-intro {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 8rem;
+            }
+
+            .hero-copy {
+                max-width: 800px;
+            }
+
+            .hero-visual {
+                min-height: 530px;
+            }
+
+            .hero-orbit {
+                inset: 2% 10%;
+            }
+
+            .context-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .flow {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .flow-step:nth-child(3)::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 820px) {
+            .nav-inner {
+                min-height: 68px;
+            }
+
+            .nav-link {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-bottom: 5rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(3.9rem, 17vw, 7rem);
+            }
+
+            .project-facts {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .section-index {
+                position: static;
+            }
+
+            .section-index p {
+                max-width: 560px;
+            }
+
+            .research-summary,
+            .overview-grid,
+            .decision-grid,
+            .outcome-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .overview-item,
+            .overview-item:nth-child(odd),
+            .overview-item:nth-last-child(-n + 2) {
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .overview-item:last-child {
+                border-bottom: 0;
+            }
+
+            .insight-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .page-shell,
+            .nav-inner {
+                width: min(calc(100% - 1.25rem), var(--content));
+            }
+
+            .wordmark {
+                font-size: 1.25rem;
+            }
+
+            .button-link {
+                min-height: 39px;
+                padding-inline: 0.85rem;
+                font-size: 0.68rem;
+            }
+
+            .hero-summary {
+                font-size: 1rem;
+            }
+
+            .hero-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .primary-cta,
+            .secondary-cta {
+                width: 100%;
+            }
+
+            .project-facts {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .hero-visual {
+                min-height: 460px;
+            }
+
+            .phone-frame {
+                width: min(68%, 255px);
+            }
+
+            .phone-frame-secondary {
+                width: min(57%, 220px);
+            }
+
+            .hero-note {
+                right: 0;
+                width: min(220px, 58%);
+                padding: 0.9rem;
+            }
+
+            .context-grid,
+            .flow {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-step:not(:last-child)::after {
+                content: "↓";
+                top: auto;
+                right: 50%;
+                bottom: -0.8rem;
+                transform: translateX(50%);
+            }
+
+            .flow-step:nth-child(3)::after {
+                display: grid;
+            }
+
+            .palette {
+                grid-template-columns: 1fr 1fr;
+                min-height: 300px;
+            }
+
+            .gallery-toolbar {
+                align-items: flex-end;
+            }
+
+            .screen-card {
+                flex-basis: 80vw;
+            }
+
+            .next-project a {
+                grid-template-columns: 1fr;
+                align-items: start;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to case study</a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
+        <div class="nav-inner">
+            <a class="wordmark" href="index.html" aria-label="Jocelyn Martinez home">Jocelyn Martinez</a>
+            <div class="nav-actions">
+                <a class="nav-link" href="#solution">Solution</a>
+                <a class="nav-link" href="#reflection">Reflection</a>
+                <a class="button-link" href="index.html#portfolio">Back to work ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <header class="hero page-shell">
+            <div class="hero-grid">
+                <div class="hero-copy reveal">
+                    <p class="eyebrow">UX case study · Tourism & civic technology</p>
+                    <h1>Holland <em>Walking Tour</em></h1>
+                    <p class="hero-summary">
+                        I helped shape an accessible mobile walking-tour experience for Holland, Michigan—and explored the content system local teams would need to keep its historical stories accurate, flexible, and easy to maintain.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="primary-cta" href="#overview">Read the case study</a>
+                        <a class="secondary-cta" href="#solution">View final interfaces</a>
+                    </div>
+
+                    <div class="project-facts" aria-label="Project details">
+                        <div>
+                            <span class="fact-label">Role</span>
+                            <span class="fact-value">UX Intern & Programmer</span>
+                        </div>
+                        <div>
+                            <span class="fact-label">Project type</span>
+                            <span class="fact-value">Collaborative internship project</span>
+                        </div>
+                        <div>
+                            <span class="fact-label">Focus</span>
+                            <span class="fact-value">Research, UX/UI, system thinking</span>
+                        </div>
+                        <div>
+                            <span class="fact-label">Year</span>
+                            <span class="fact-value">2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual reveal" aria-label="Holland Walking Tour mobile interface previews">
+                    <div class="hero-orbit" aria-hidden="true"></div>
+                    <div class="phone-stack">
+                        <div class="phone-frame phone-frame-secondary" aria-hidden="true">
+                            <img src="Holland Walking Tour/MockupIMG2.png" alt="">
+                        </div>
+                        <div class="phone-frame">
+                            <img src="Holland Walking Tour/MockupIMG1.png" alt="Holland Walking Tour mobile home screen">
+                        </div>
+                    </div>
+                    <div class="hero-note">
+                        <strong>Design priority</strong>
+                        <span>Clear navigation for visitors using the app outdoors, across a wide range of ages and technical comfort levels.</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="section" id="overview">
+            <div class="page-shell section-grid">
+                <aside class="section-index reveal">
+                    <span>01 · Overview</span>
+                    <p>The product challenge, my contribution, and the project’s practical scope.</p>
+                </aside>
+
+                <div class="section-content reveal">
+                    <h2>Turning a paper tour into a more flexible city experience.</h2>
+                    <p class="section-lede">
+                        Holland’s walking-tour experience relied on static materials that could be difficult to read, update, and follow while moving through the city. The design opportunity was to make local history easier to discover without losing the character and context that made the tour meaningful.
+                    </p>
+
+                    <div class="overview-card">
+                        <div class="overview-grid">
+                            <article class="overview-item">
+                                <h3>Challenge</h3>
+                                <p>Create a tour experience that supports independent exploration while remaining clear for visitors who may be unfamiliar with the city or less comfortable with mobile technology.</p>
+                            </article>
+                            <article class="overview-item">
+                                <h3>My contribution</h3>
+                                <p>I contributed to research synthesis, user flows, interface design, accessibility decisions, and the technical thinking behind a maintainable content structure.</p>
+                            </article>
+                            <article class="overview-item">
+                                <h3>Primary users</h3>
+                                <p>Visitors taking a self-guided tour, including older adults; local archivists and tourism stakeholders responsible for maintaining accurate information.</p>
+                            </article>
+                            <article class="overview-item">
+                                <h3>Deliverables</h3>
+                                <p>Mobile user flows, high-fidelity tour screens, an administrative interface concept, and a scalable content model for stops that can appear across multiple tours.</p>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="context-grid" aria-label="Project stakeholder context">
+                        <article class="context-card">
+                            <span>01</span>
+                            <h3>Visitors</h3>
+                            <p>Needed simple directions, readable information, and enough flexibility to explore at their own pace.</p>
+                        </article>
+                        <article class="context-card">
+                            <span>02</span>
+                            <h3>Tourism team</h3>
+                            <p>Wanted a year-round experience that could extend beyond a single event or printed route.</p>
+                        </article>
+                        <article class="context-card">
+                            <span>03</span>
+                            <h3>Archivists</h3>
+                            <p>Needed a practical way to preserve, update, and reuse historical content accurately.</p>
+                        </article>
+                        <article class="context-card">
+                            <span>04</span>
+                            <h3>Technical team</h3>
+                            <p>Required interface decisions that could translate into realistic data and development structures.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="research">
+            <div class="page-shell section-grid">
+                <aside class="section-index reveal">
+                    <span>02 · Research</span>
+                    <p>Finding the recurring barriers behind outdoor navigation and historical discovery.</p>
+                </aside>
+
+                <div class="section-content reveal">
+                    <h2>Research showed that clarity mattered as much as content.</h2>
+                    <p class="section-lede">
+                        Feedback from visitors, older adults, and project collaborators pointed to three recurring needs: readable information in outdoor conditions, confidence about where a route would lead, and freedom to discover the city without feeling locked into a rigid itinerary.
+                    </p>
+
+                    <div class="research-summary">
+                        <div class="research-stat">
+                            <strong>28</strong>
+                            <span>Participants and collaborators represented in the research synthesis, including older local residents, younger visitors, and city stakeholders.</span>
+                        </div>
+                        <div class="research-method">
+                            <h3>From observations to design priorities</h3>
+                            <p>
+                                I organized recurring comments and frustrations into an affinity map, then translated those patterns into interface requirements: larger readable type, visible route details, clear progress, simple tour choices, and flexible stop selection.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="insight-grid">
+                        <article class="insight-card">
+                            <h3>Outdoor legibility</h3>
+                            <blockquote>“Paper maps are difficult to read in bright sunlight.”</blockquote>
+                            <p>Design response: strong contrast, a minimum 16px body size, concise copy, and large interaction targets.</p>
+                        </article>
+                        <article class="insight-card">
+                            <h3>Route confidence</h3>
+                            <blockquote>“I want to know how long the tour takes and where I’m going.”</blockquote>
+                            <p>Design response: surface duration, distance, route difficulty, progress, and upcoming stops before the user begins.</p>
+                        </article>
+                        <article class="insight-card">
+                            <h3>Independent discovery</h3>
+                            <blockquote>“I want to explore—not feel like I’m following instructions.”</blockquote>
+                            <p>Design response: support both curated routes and a custom route built from stops the visitor chooses.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="structure">
+            <div class="page-shell section-grid">
+                <aside class="section-index reveal">
+                    <span>03 · Experience structure</span>
+                    <p>A straightforward route from choosing a tour to understanding each stop.</p>
+                </aside>
+
+                <div class="section-content reveal">
+                    <h2>Reducing decisions while users are already in motion.</h2>
+                    <p class="section-lede">
+                        The primary flow keeps the most important choices early, before a visitor begins walking. Once the tour starts, each screen focuses on the next action: follow the route, recognize the stop, and view its story.
+                    </p>
+
+                    <div class="flow" aria-label="Primary user flow">
+                        <article class="flow-step">
+                            <span>Step 01</span>
+                            <h3>Open the app</h3>
+                            <p>Orient the visitor and introduce available tour options.</p>
+                        </article>
+                        <article class="flow-step">
+                            <span>Step 02</span>
+                            <h3>Choose a route</h3>
+                            <p>Select a curated tour or begin building a custom one.</p>
+                        </article>
+                        <article class="flow-step">
+                            <span>Step 03</span>
+                            <h3>Review details</h3>
+                            <p>See stops, duration, distance, and expected difficulty.</p>
+                        </article>
+                        <article class="flow-step">
+                            <span>Step 04</span>
+                            <h3>Begin walking</h3>
+                            <p>Follow clear directions and visible route progress.</p>
+                        </article>
+                        <article class="flow-step">
+                            <span>Step 05</span>
+                            <h3>Discover a stop</h3>
+                            <p>Open concise historical context, imagery, and details.</p>
+                        </article>
+                        <article class="flow-step">
+                            <span>Step 06</span>
+                            <h3>Continue or finish</h3>
+                            <p>Move to the next stop or complete the tour confidently.</p>
+                        </article>
+                    </div>
+
+                    <div class="branch-note">
+                        <strong>Custom route branch:</strong> visitors can browse available landmarks, select preferred stops, and review an updated route estimate before beginning.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="decisions">
+            <div class="page-shell section-grid">
+                <aside class="section-index reveal">
+                    <span>04 · Design decisions</span>
+                    <p>Visual choices tied directly to outdoor use, accessibility, and local identity.</p>
+                </aside>
+
+                <div class="section-content reveal">
+                    <h2>A calm system designed to stay readable outdoors.</h2>
+                    <p class="section-lede">
+                        The visual language references Holland’s waterfront identity without relying on decorative themes. Color, typography, spacing, and interaction size were selected to support quick scanning and comfortable use while walking.
+                    </p>
+
+                    <div class="decision-grid">
+                        <article class="decision-card">
+                            <h3>Typography</h3>
+                            <strong>Readable before decorative</strong>
+                            <p>Body copy begins at 16px, headings are clearly differentiated, and content is broken into short sections so users can scan without stopping for long.</p>
+                        </article>
+                        <article class="decision-card">
+                            <h3>Interaction</h3>
+                            <strong>Forgiving touch targets</strong>
+                            <p>Primary actions use generous spacing and targets of approximately 44 × 44px or larger to reduce errors while users are holding and moving with a phone.</p>
+                        </article>
+                        <article class="decision-card">
+                            <h3>Navigation</h3>
+                            <strong>Confidence at every step</strong>
+                            <p>Route duration, distance, progress, and next-stop information remain visible where they can reduce uncertainty and prevent accidental exits.</p>
+                        </article>
+                    </div>
+
+                    <div class="palette" aria-label="Holland Walking Tour color palette">
+                        <div class="palette-swatch"><span>Heritage teal</span><span>#087D7A</span></div>
+                        <div class="palette-swatch"><span>Canal mist</span><span>#D8ECE8</span></div>
+                        <div class="palette-swatch"><span>Paper cream</span><span>#F7F3EC</span></div>
+                        <div class="palette-swatch"><span>Deep slate</span><span>#183035</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="solution">
+            <div class="page-shell section-grid">
+                <aside class="section-index reveal">
+                    <span>05 · Mobile solution</span>
+                    <p>Key screens from browsing and customizing a tour through navigating its stops.</p>
+                </aside>
+
+                <div class="section-content reveal">
+                    <h2>The interface keeps the city—not the app—at the center.</h2>
+                    <p class="section-lede">
+                        The final mobile direction uses restrained visual hierarchy, image-led landmarks, and clear route information. The goal is to give users enough guidance to feel confident while keeping their attention on the place around them.
+                    </p>
+
+                    <div class="gallery-shell">
+                        <div class="gallery-toolbar">
+                            <p>Select a screen to view it larger.</p>
+                            <div class="gallery-controls" aria-label="Gallery controls">
+                                <button class="gallery-button" id="galleryPrev" type="button" aria-label="Previous screens">←</button>
+                                <button class="gallery-button" id="galleryNext" type="button" aria-label="Next screens">→</button>
+                            </div>
+                        </div>
+
+                        <div class="screen-gallery" id="screenGallery" tabindex="0" aria-label="Holland Walking Tour mobile screen gallery">
+                            <button class="screen-card lightbox-trigger" type="button" data-full="Holland Walking Tour/MockupIMG1.png" aria-label="Open tour discovery screen">
+                                <img src="Holland Walking Tour/MockupIMG1.png" alt="Mobile tour discovery screen">
+                                <span>Tour discovery</span>
+                            </button>
+                            <button class="screen-card lightbox-trigger" type="button" data-full="Holland Walking Tour/MockupIMG2.png" aria-label="Open tour overview screen">
+                                <img src="Holland Walking Tour/MockupIMG2.png" alt="Mobile tour overview with route details">
+                                <span>Tour overview</span>
+                            </button>
+                            <button class="screen-card lightbox-trigger" type="button" data-full="Holland Walking Tour/MockupIMG3.png" aria-label="Open route selection screen">
+                                <img src="Holland Walking Tour/MockupIMG3.png" alt="Mobile route selection screen">
+                                <span>Route selection</span>
+                            </button>
+                            <button class="screen-card lightbox-trigger" type="button" data-full="Holland Walking Tour/MockupIMG4.png" aria-label="Open stop selection screen">
+                                <img src="Holland Walking Tour/MockupIMG4.png" alt="Mobile custom stop selection screen">
+                                <span>Custom stops</span>
+                            </button>
+                            <button class="screen-card lightbox-trigger" type="button" data-full="Holland Walking Tour/MockupIMG5.png" aria-label="Open route preview screen">
+                                <img src="Holland Walking Tour/MockupIMG5.png" alt="Mobile route preview screen">
+                                <span>Route preview</span>
+                            </button>
+                            <button class="screen-card lightbox-trigger" type="button" data-full="Holland Walking Tour/MockupIMG6.png" aria-label="Open navigation screen">
+                                <img src="Holland Walking Tour/MockupIMG6.png" alt="Mobile walking navigation screen">
+                                <span>Walking navigation</span>
+                            </button>
+                            <button class="screen-card lightbox-trigger" type="button" data-full="Holland Walking Tour/MockupIMG7.png" aria-label="Open landmark story screen">
+                                <img src="Holland Walking Tour/MockupIMG7.png" alt="Mobile landmark information screen">
+                                <span>Landmark story</span>
+                            </button>
+                            <button class="screen-card lightbox-trigger" type="button" data-full="Holland Walking Tour/MockupIMG8.png" aria-label="Open tour progress screen">
+                                <img src="Holland Walking Tour/MockupIMG8.png" alt="Mobile tour progress screen">
+                                <span>Tour progress</span>
+                            </button>
+                            <button class="screen-card lightbox-trigger" type="button" data-full="Holland Walking Tour/MockupIMG9.png" aria-label="Open tour completion screen">
+                                <img src="Holland Walking Tour/MockupIMG9.png" alt="Mobile tour completion screen">
+                                <span>Tour completion</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="admin-system">
+            <div class="page-shell section-grid">
+                <aside class="section-index reveal">
+                    <span>06 · Content system</span>
+                    <p>Designing beyond the visitor-facing app to support the people responsible for its content.</p>
+                </aside>
+
+                <div class="section-content reveal">
+                    <h2>A tour is only useful if its stories can stay accurate.</h2>
+                    <p class="section-lede">
+                        I also explored an administrative system for creating tours, managing historical stops, and preserving media. This shifted the project from a set of screens toward a broader service: one experience for visitors and another for the people maintaining it.
+                    </p>
+
+                    <div class="admin-intro">
+                        <article class="admin-feature">
+                            <span class="kicker">Administrative concept</span>
+                            <h3>One shared library, many possible tours.</h3>
+                            <p>
+                                Rather than duplicating a landmark every time it appears in a route, the proposed structure treats each stop as a reusable record. Tour managers can then sequence those records into different seasonal, historical, or thematic experiences.
+                            </p>
+                        </article>
+
+                        <div class="admin-principles">
+                            <article class="admin-card">
+                                <h3>Content integrity</h3>
+                                <strong>Reusable stop records</strong>
+                                <p>Maintain one source for a landmark’s text, media, location, and archival information.</p>
+                            </article>
+                            <article class="admin-card">
+                                <h3>Publishing safety</h3>
+                                <strong>Draft before live</strong>
+                                <p>Give archivists a clear review step before edited content becomes visible to visitors.</p>
+                            </article>
+                            <article class="admin-card">
+                                <h3>Scalability</h3>
+                                <strong>Flexible tour assembly</strong>
+                                <p>Support future tours by reusing and resequencing existing stops rather than rebuilding content.</p>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="admin-gallery">
+                        <article class="admin-screen">
+                            <button class="lightbox-trigger" type="button" data-full="tourmanagement.png" aria-label="Open tour management dashboard image">
+                                <img src="tourmanagement.png" alt="Tour management dashboard interface">
+                            </button>
+                            <div class="admin-screen-copy">
+                                <span>01 · Tour management</span>
+                                <h3>Plan and publish routes</h3>
+                                <p>Review active tours, create drafts, organize stops, and control when a route is visible.</p>
+                            </div>
+                        </article>
+
+                        <article class="admin-screen">
+                            <button class="lightbox-trigger" type="button" data-full="globalstop.png" aria-label="Open global stop library image">
+                                <img src="globalstop.png" alt="Global stop library administrative interface">
+                            </button>
+                            <div class="admin-screen-copy">
+                                <span>02 · Stop library</span>
+                                <h3>Maintain reusable landmarks</h3>
+                                <p>Search and organize the central set of landmarks that can be added to more than one tour.</p>
+                            </div>
+                        </article>
+
+                        <article class="admin-screen">
+                            <button class="lightbox-trigger" type="button" data-full="archivalvault.png" aria-label="Open archival media library image">
+                                <img src="archivalvault.png" alt="Archival media library interface">
+                            </button>
+                            <div class="admin-screen-copy">
+                                <span>03 · Media library</span>
+                                <h3>Preserve visual context</h3>
+                                <p>Store historical images and supporting metadata so the public experience remains traceable and accurate.</p>
+                            </div>
+                        </article>
+
+                        <article class="admin-screen">
+                            <button class="lightbox-trigger" type="button" data-full="tourengagement.png" aria-label="Open tour engagement dashboard image">
+                                <img src="tourengagement.png" alt="Tour engagement dashboard interface">
+                            </button>
+                            <div class="admin-screen-copy">
+                                <span>04 · Engagement view</span>
+                                <h3>Identify experience issues</h3>
+                                <p>A proposed dashboard for spotting where visitors may abandon a tour or encounter confusing stops.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="reflection">
+            <div class="page-shell section-grid">
+                <aside class="section-index reveal">
+                    <span>07 · Reflection</span>
+                    <p>What the project demonstrated and what I would validate next.</p>
+                </aside>
+
+                <div class="section-content reveal">
+                    <h2>Designing the visible interface and the system behind it.</h2>
+                    <p class="section-lede">
+                        This project helped me connect my computer science background with UX practice. I learned to treat accessibility, content structure, and implementation constraints as part of the design problem—not details to resolve after the interface was complete.
+                    </p>
+
+                    <div class="outcome-grid">
+                        <article class="outcome-card">
+                            <span>What I demonstrated</span>
+                            <h3>Research translated into interface decisions</h3>
+                            <p>Participant concerns became concrete requirements for type size, route visibility, touch-target sizing, and flexible tour choices.</p>
+                        </article>
+                        <article class="outcome-card">
+                            <span>What I learned</span>
+                            <h3>Front-stage and back-stage UX are connected</h3>
+                            <p>A polished visitor experience depends on whether local teams can maintain trustworthy content without unnecessary duplication or risk.</p>
+                        </article>
+                        <article class="outcome-card">
+                            <span>What I would test next</span>
+                            <h3>Outdoor usability in the real environment</h3>
+                            <p>I would run a moderated walking test to evaluate screen glare, GPS uncertainty, route recovery, stop recognition, and one-handed use.</p>
+                        </article>
+                    </div>
+
+                    <div class="honesty-note">
+                        <strong>Project scope:</strong> This case study presents the researched product direction, high-fidelity mobile interfaces, and an administrative-system concept. Future validation would be needed before claiming adoption, commercial impact, or improvements to city foot traffic.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="next-project">
+            <div class="page-shell">
+                <a href="index.html#portfolio" aria-label="Return to selected work">
+                    <div>
+                        <span>Continue exploring</span>
+                        <h2>Selected work</h2>
+                    </div>
+                    <svg viewBox="0 0 96 48" fill="none" aria-hidden="true">
+                        <path d="M2 24H90M90 24L68 4M90 24L68 44" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="page-shell footer-inner">
+            <span>© <span id="year"></span> Jocelyn Martinez</span>
+            <span>UX/UI design · Research · Front-end thinking</span>
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged project image">
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close image">×</button>
+        <img id="lightboxImage" src="" alt="">
+    </div>
+
+    <script>
+        const siteNav = document.getElementById('siteNav');
+        const year = document.getElementById('year');
+        const gallery = document.getElementById('screenGallery');
+        const galleryPrev = document.getElementById('galleryPrev');
+        const galleryNext = document.getElementById('galleryNext');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxClose = document.getElementById('lightboxClose');
+        let lastFocusedElement = null;
+
+        year.textContent = new Date().getFullYear();
+
+        const updateNav = () => {
+            siteNav.classList.toggle('is-scrolled', window.scrollY > 18);
+        };
+
+        updateNav();
+        window.addEventListener('scroll', updateNav, { passive: true });
+
+        const revealItems = document.querySelectorAll('.reveal');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+            revealItems.forEach(item => item.classList.add('is-visible'));
+        } else {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            revealItems.forEach(item => revealObserver.observe(item));
+        }
+
+        const galleryScrollAmount = () => Math.min(gallery.clientWidth * 0.82, 780);
+
+        galleryPrev.addEventListener('click', () => {
+            gallery.scrollBy({ left: -galleryScrollAmount(), behavior: 'smooth' });
+        });
+
+        galleryNext.addEventListener('click', () => {
+            gallery.scrollBy({ left: galleryScrollAmount(), behavior: 'smooth' });
+        });
+
+        function openLightbox(trigger) {
+            lastFocusedElement = trigger;
+            const source = trigger.dataset.full;
+            const previewImage = trigger.querySelector('img');
+
+            lightboxImage.src = source;
+            lightboxImage.alt = previewImage ? previewImage.alt : 'Enlarged project interface';
+            lightbox.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+            lightboxClose.focus();
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('is-open');
+            lightboxImage.src = '';
+            document.body.style.overflow = '';
+            if (lastFocusedElement) lastFocusedElement.focus();
+        }
+
+        document.querySelectorAll('.lightbox-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => openLightbox(trigger));
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+
+        lightbox.addEventListener('click', event => {
+            if (event.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

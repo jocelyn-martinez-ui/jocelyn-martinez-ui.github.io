@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nutriva is a self-directed UX/UI product concept by Jocelyn Martinez exploring inventory-assisted meal planning, recipe matching, and food-use visibility.">
+    <meta name="theme-color" content="#f5f8fb">
+    <meta property="og:title" content="Nutriva — UX/UI Case Study by Jocelyn Martinez">
+    <meta property="og:description" content="A food-planning concept designed to turn available ingredients into practical meal options with clear, editable inventory information.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="mainpage.png">
+    <title>Nutriva — UX/UI Case Study | Jocelyn Martinez</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --canvas: #f4f7fa;
+            --canvas-blue: #eaf3fb;
+            --surface: #ffffff;
+            --surface-soft: #f8fafc;
+            --ink: #18212b;
+            --body: #53606d;
+            --muted: #7a8794;
+            --blue: #5a98d2;
+            --blue-dark: #285f91;
+            --blue-soft: #dceefd;
+            --coral: #dd716f;
+            --coral-dark: #a94d4c;
+            --coral-soft: #fae5e4;
+            --green: #55846c;
+            --green-soft: #e5f1e9;
+            --amber: #a97730;
+            --amber-soft: #f8eedb;
+            --line: #dfe6ec;
+            --line-soft: rgba(24, 33, 43, 0.08);
+            --serif: "Fraunces", Georgia, serif;
+            --sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --content: 1220px;
+            --radius-lg: 30px;
+            --radius-md: 18px;
+            --shadow: 0 28px 80px rgba(40, 95, 145, 0.11);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 142px;
+        }
+
+        body {
+            margin: 0;
+            background: var(--canvas);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            pointer-events: none;
+            opacity: 0.018;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        ::selection {
+            background: var(--blue-soft);
+            color: var(--ink);
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--coral);
+            outline-offset: 4px;
+            border-radius: 5px;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 3000;
+            padding: 0.8rem 1rem;
+            border-radius: 999px;
+            background: var(--blue-dark);
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(-170%);
+            transition: transform 0.2s ease;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        .page-shell {
+            width: min(calc(100% - 3rem), var(--content));
+            margin-inline: auto;
+        }
+
+        /* Navigation */
+        .site-nav {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 1000;
+            border-bottom: 1px solid transparent;
+            background: rgba(244, 247, 250, 0.9);
+            backdrop-filter: blur(18px);
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .site-nav.scrolled {
+            border-color: var(--line);
+            box-shadow: 0 10px 35px rgba(24, 33, 43, 0.05);
+        }
+
+        .nav-inner {
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .brand {
+            font-family: var(--serif);
+            font-size: 1.45rem;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.7rem;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue-dark);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            color: var(--blue-dark) !important;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 94vh;
+            padding: 12.5rem 0 7rem;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 84% 18%, rgba(90, 152, 210, 0.25), transparent 29rem),
+                radial-gradient(circle at 10% 88%, rgba(221, 113, 111, 0.16), transparent 24rem),
+                linear-gradient(180deg, #ffffff 0%, var(--canvas) 100%);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -7rem;
+            bottom: -11rem;
+            width: 34rem;
+            height: 34rem;
+            border: 1px solid rgba(90, 152, 210, 0.12);
+            border-radius: 48% 52% 61% 39% / 43% 40% 60% 57%;
+            transform: rotate(22deg);
+            box-shadow:
+                -6rem -3rem 0 -1px rgba(221, 113, 111, 0.045),
+                -12rem 5rem 0 -1px rgba(90, 152, 210, 0.045);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin: 0 0 1.5rem;
+            color: var(--coral-dark);
+            font-size: 0.67rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 36px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        p {
+            margin-top: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            text-wrap: balance;
+        }
+
+        h1 {
+            max-width: 990px;
+            margin: 0 0 1.8rem;
+            font-family: var(--serif);
+            font-size: clamp(5rem, 12vw, 9.5rem);
+            font-weight: 500;
+            letter-spacing: -0.065em;
+            line-height: 0.82;
+        }
+
+        h1 em {
+            display: block;
+            margin-left: clamp(1rem, 9vw, 7rem);
+            color: var(--blue-dark);
+            font-weight: 400;
+        }
+
+        .hero-lede {
+            max-width: 760px;
+            margin-bottom: 3.5rem;
+            color: var(--body);
+            font-size: clamp(1.15rem, 2vw, 1.42rem);
+            line-height: 1.65;
+        }
+
+        .hero-meta {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            max-width: 1060px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--line);
+            gap: 1px;
+        }
+
+        .meta-item {
+            min-height: 132px;
+            padding: 1.55rem;
+            background: rgba(255, 255, 255, 0.94);
+        }
+
+        .meta-label {
+            display: block;
+            margin-bottom: 0.7rem;
+            color: var(--muted);
+            font-size: 0.63rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .meta-value {
+            color: var(--ink);
+            font-size: 0.93rem;
+            font-weight: 600;
+            line-height: 1.55;
+        }
+
+        /* Case navigation */
+        .case-nav {
+            position: sticky;
+            top: 80px;
+            z-index: 900;
+            border-block: 1px solid var(--line);
+            background: rgba(244, 247, 250, 0.93);
+            backdrop-filter: blur(16px);
+        }
+
+        .case-nav-inner {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .case-nav-inner::-webkit-scrollbar {
+            display: none;
+        }
+
+        .case-nav a {
+            flex: 0 0 auto;
+            padding: 1rem 0;
+            color: var(--muted);
+            font-size: 0.69rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .case-nav a:hover {
+            color: var(--blue-dark);
+        }
+
+        /* Shared sections */
+        section {
+            scroll-margin-top: 145px;
+            padding: 8.7rem 0;
+            border-bottom: 1px solid var(--line-soft);
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: minmax(150px, 0.7fr) minmax(0, 2.5fr);
+            gap: clamp(3rem, 8vw, 8rem);
+        }
+
+        .section-kicker {
+            position: sticky;
+            top: 165px;
+            align-self: start;
+            color: var(--muted);
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .section-kicker span {
+            display: block;
+            width: 42px;
+            height: 1px;
+            margin-top: 1rem;
+            background: var(--coral);
+        }
+
+        .section-content {
+            min-width: 0;
+        }
+
+        h2 {
+            max-width: 930px;
+            margin-bottom: 1.9rem;
+            font-family: var(--serif);
+            font-size: clamp(3rem, 6.4vw, 5.25rem);
+            font-weight: 500;
+            letter-spacing: -0.045em;
+            line-height: 0.97;
+        }
+
+        h3 {
+            font-family: var(--serif);
+            font-size: clamp(1.8rem, 3vw, 2.65rem);
+            font-weight: 500;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+        }
+
+        .intro {
+            max-width: 830px;
+            margin-bottom: 2rem;
+            color: var(--body);
+            font-size: 1.1rem;
+            line-height: 1.85;
+        }
+
+        .project-note {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.1rem;
+            max-width: 900px;
+            margin-top: 3rem;
+            padding: 1.45rem 1.55rem;
+            border: 1px solid rgba(90, 152, 210, 0.3);
+            border-radius: 18px;
+            background: rgba(220, 238, 253, 0.58);
+        }
+
+        .note-icon {
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #fff;
+            color: var(--blue-dark);
+            font-weight: 700;
+        }
+
+        .project-note p {
+            margin: 0;
+            color: #3f5f77;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .project-note strong {
+            color: var(--blue-dark);
+        }
+
+        /* Cards */
+        .summary-grid,
+        .review-grid,
+        .audience-grid,
+        .principle-grid,
+        .decision-grid,
+        .validation-grid,
+        .reflection-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .summary-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .summary-card,
+        .review-card,
+        .audience-card,
+        .principle-card,
+        .decision-card,
+        .validation-card,
+        .reflection-card {
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--surface);
+        }
+
+        .summary-card {
+            padding: 2rem;
+        }
+
+        .card-number {
+            display: block;
+            margin-bottom: 2rem;
+            color: var(--coral-dark);
+            font-size: 0.67rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+        }
+
+        .summary-card h3,
+        .principle-card h3,
+        .validation-card h3,
+        .reflection-card h3 {
+            margin-bottom: 0.8rem;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .summary-card p,
+        .review-card p,
+        .audience-card p,
+        .principle-card p,
+        .decision-card p,
+        .validation-card p,
+        .reflection-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: 0.9rem;
+            line-height: 1.72;
+        }
+
+        /* Comparative review */
+        .review-section {
+            background: var(--surface-soft);
+        }
+
+        .review-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .review-card {
+            padding: 2rem;
+        }
+
+        .review-card h3 {
+            margin-bottom: 0.35rem;
+            font-size: 2rem;
+        }
+
+        .review-type {
+            display: block;
+            margin-bottom: 1.6rem;
+            color: var(--blue-dark);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .review-line {
+            display: grid;
+            gap: 0.25rem;
+            padding: 1rem 0;
+            border-top: 1px solid var(--line-soft);
+        }
+
+        .review-line strong {
+            color: var(--ink);
+            font-size: 0.77rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .review-line span {
+            color: var(--body);
+            font-size: 0.87rem;
+            line-height: 1.6;
+        }
+
+        .opportunity-strip {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1px;
+            overflow: hidden;
+            margin-top: 4rem;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: var(--line);
+        }
+
+        .opportunity-item {
+            padding: 2rem;
+            background: var(--blue-dark);
+            color: #fff;
+        }
+
+        .opportunity-item:nth-child(2) {
+            background: #3d78ab;
+        }
+
+        .opportunity-item:nth-child(3) {
+            background: #dd716f;
+        }
+
+        .opportunity-item span {
+            display: block;
+            margin-bottom: 1.4rem;
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.63rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .opportunity-item p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Audience */
+        .audience-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .audience-card {
+            position: relative;
+            overflow: hidden;
+            padding: 2.5rem;
+        }
+
+        .audience-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 5px;
+            background: var(--coral);
+        }
+
+        .audience-card:nth-child(2)::before {
+            background: var(--blue);
+        }
+
+        .audience-label {
+            display: inline-flex;
+            margin-bottom: 1.5rem;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            background: var(--coral-soft);
+            color: var(--coral-dark);
+            font-size: 0.63rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .audience-card:nth-child(2) .audience-label {
+            background: var(--blue-soft);
+            color: var(--blue-dark);
+        }
+
+        .audience-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .plain-list {
+            display: grid;
+            gap: 0.95rem;
+            margin: 1.8rem 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .plain-list li {
+            display: grid;
+            grid-template-columns: 20px 1fr;
+            gap: 0.7rem;
+            color: var(--body);
+            font-size: 0.9rem;
+            line-height: 1.65;
+        }
+
+        .plain-list li::before {
+            content: "↳";
+            color: var(--coral);
+            font-weight: 700;
+        }
+
+        /* Experience flow */
+        .flow {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            margin-top: 4rem;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 26px;
+            background: var(--surface);
+        }
+
+        .flow-step {
+            position: relative;
+            min-height: 300px;
+            padding: 2.2rem;
+            border-right: 1px solid var(--line);
+        }
+
+        .flow-step:last-child {
+            border-right: 0;
+        }
+
+        .flow-step::after {
+            content: "→";
+            position: absolute;
+            top: 2rem;
+            right: -12px;
+            z-index: 2;
+            width: 24px;
+            height: 24px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: var(--canvas);
+            color: var(--blue-dark);
+            font-size: 0.75rem;
+        }
+
+        .flow-step:last-child::after {
+            display: none;
+        }
+
+        .flow-index {
+            display: block;
+            margin-bottom: 4rem;
+            color: var(--blue-dark);
+            font-family: var(--serif);
+            font-size: 1.5rem;
+        }
+
+        .flow-step h3 {
+            margin-bottom: 0.8rem;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .flow-step p {
+            margin: 0;
+            color: var(--body);
+            font-size: 0.88rem;
+        }
+
+        .system-boundary {
+            margin-top: 2rem;
+            padding: 2.2rem;
+            border-radius: 22px;
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .system-boundary .eyebrow {
+            color: #9ecbf2;
+        }
+
+        .system-boundary h3 {
+            max-width: 800px;
+            margin-bottom: 0.9rem;
+            color: #fff;
+        }
+
+        .system-boundary p {
+            max-width: 820px;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.74);
+        }
+
+        /* Principles */
+        .principle-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .principle-card {
+            min-height: 245px;
+            padding: 2rem;
+        }
+
+        .principle-icon {
+            width: 42px;
+            height: 42px;
+            margin-bottom: 2.3rem;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: var(--blue-soft);
+            color: var(--blue-dark);
+            font-weight: 700;
+        }
+
+        .principle-card:nth-child(2) .principle-icon {
+            background: var(--coral-soft);
+            color: var(--coral-dark);
+        }
+
+        .principle-card:nth-child(3) .principle-icon {
+            background: var(--green-soft);
+            color: var(--green);
+        }
+
+        /* Decisions */
+        .decision-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .decision-card {
+            padding: 2.25rem;
+        }
+
+        .decision-tag {
+            display: inline-flex;
+            margin-bottom: 1.5rem;
+            color: var(--coral-dark);
+            font-size: 0.64rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .decision-card h3 {
+            margin-bottom: 0.8rem;
+        }
+
+        .decision-detail {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .decision-detail strong {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: var(--blue-dark);
+            font-size: 0.76rem;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        /* Screens */
+        .screens-section {
+            background: #edf4f9;
+        }
+
+        .screen-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.6rem;
+            margin-top: 4rem;
+        }
+
+        .screen-card {
+            min-width: 0;
+        }
+
+        .screen-button {
+            width: 100%;
+            margin: 0 0 1.25rem;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: zoom-in;
+            text-align: left;
+        }
+
+        .phone-frame {
+            padding: 0.75rem;
+            border: 1px solid rgba(90, 152, 210, 0.18);
+            border-radius: 33px;
+            background: #fff;
+            box-shadow: 0 18px 48px rgba(40, 95, 145, 0.08);
+            transition: transform 0.32s ease, box-shadow 0.32s ease, border-color 0.32s ease;
+        }
+
+        .phone-frame img {
+            width: 100%;
+            border-radius: 25px;
+            background: #fff;
+        }
+
+        .screen-button:hover .phone-frame,
+        .screen-button:focus-visible .phone-frame {
+            transform: translateY(-8px);
+            border-color: rgba(90, 152, 210, 0.5);
+            box-shadow: var(--shadow);
+        }
+
+        .screen-card h4 {
+            margin-bottom: 0.45rem;
+            font-family: var(--sans);
+            font-size: 0.94rem;
+            font-weight: 700;
+        }
+
+        .screen-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: 0.81rem;
+            line-height: 1.6;
+        }
+
+        .screen-number {
+            display: block;
+            margin-bottom: 0.55rem;
+            color: var(--coral-dark);
+            font-size: 0.63rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+
+        /* Visual system */
+        .visual-section {
+            background: var(--surface);
+        }
+
+        .visual-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            margin-top: 4rem;
+        }
+
+        .subheading {
+            margin-bottom: 0.7rem;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .subcopy {
+            margin-bottom: 2rem;
+            color: var(--body);
+            font-size: 0.88rem;
+        }
+
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .swatch {
+            min-height: 165px;
+            padding: 1.3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .type-stack {
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .type-card {
+            padding: 2rem;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            background: var(--surface-soft);
+        }
+
+        .type-label {
+            display: block;
+            margin-bottom: 1.2rem;
+            color: var(--muted);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .type-serif {
+            margin-bottom: 1rem;
+            font-family: var(--serif);
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 0.9;
+        }
+
+        .type-sans {
+            margin-bottom: 1rem;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1;
+        }
+
+        .type-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: 0.86rem;
+        }
+
+        .status-system {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1px;
+            overflow: hidden;
+            margin-top: 4rem;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--line);
+        }
+
+        .status-card {
+            padding: 2rem;
+            background: #fff;
+        }
+
+        .status-chip {
+            display: inline-flex;
+            margin-bottom: 1rem;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.67rem;
+            font-weight: 700;
+        }
+
+        .status-chip.use-soon {
+            background: var(--amber-soft);
+            color: var(--amber);
+        }
+
+        .status-chip.priority {
+            background: var(--coral-soft);
+            color: var(--coral-dark);
+        }
+
+        .status-chip.stable {
+            background: var(--green-soft);
+            color: var(--green);
+        }
+
+        .status-card strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: 0.85rem;
+        }
+
+        /* Validation */
+        .validation-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .validation-card {
+            padding: 2.2rem;
+        }
+
+        .validation-icon {
+            width: 42px;
+            height: 42px;
+            margin-bottom: 2rem;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: var(--blue-soft);
+            color: var(--blue-dark);
+            font-weight: 700;
+        }
+
+        /* Reflection */
+        .reflection-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .reflection-card {
+            padding: 2rem;
+        }
+
+        /* Footer */
+        .next-case {
+            padding: 7rem 0;
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .next-inner {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .next-case p {
+            margin-bottom: 0.75rem;
+            color: rgba(255, 255, 255, 0.62);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .next-case h2 {
+            max-width: 760px;
+            margin-bottom: 0;
+            color: #fff;
+        }
+
+        .next-link {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 1.35rem;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 999px;
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .next-link:hover {
+            background: #fff;
+            color: var(--ink);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 2rem 2rem;
+            background: rgba(12, 27, 40, 0.94);
+            backdrop-filter: blur(14px);
+        }
+
+        .lightbox[aria-hidden="false"] {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: min(1100px, 92vw);
+            max-height: 84vh;
+            border-radius: 16px;
+            box-shadow: 0 50px 110px rgba(0, 0, 0, 0.48);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 28px;
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 50%;
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Motion */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.72s ease, transform 0.72s ease;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (max-width: 1050px) {
+            :root {
+                --content: 820px;
+            }
+
+            .hero-meta,
+            .summary-grid,
+            .review-grid,
+            .opportunity-strip,
+            .flow,
+            .principle-grid,
+            .reflection-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-kicker {
+                position: static;
+            }
+
+            .flow-step:nth-child(2) {
+                border-right: 0;
+            }
+
+            .flow-step:nth-child(-n+2) {
+                border-bottom: 1px solid var(--line);
+            }
+
+            .flow-step:nth-child(2)::after {
+                display: none;
+            }
+
+            .screen-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .visual-layout {
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .page-shell {
+                width: min(calc(100% - 1.75rem), 620px);
+            }
+
+            .nav-links > a:not(.back-link) {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 10.5rem 0 5.5rem;
+            }
+
+            h1 {
+                font-size: clamp(4.5rem, 22vw, 7rem);
+            }
+
+            h1 em {
+                margin-left: 0.75rem;
+            }
+
+            section {
+                padding: 6.2rem 0;
+            }
+
+            .hero-meta,
+            .summary-grid,
+            .review-grid,
+            .opportunity-strip,
+            .audience-grid,
+            .principle-grid,
+            .decision-grid,
+            .visual-layout,
+            .validation-grid,
+            .reflection-grid,
+            .status-system {
+                grid-template-columns: 1fr;
+            }
+
+            .meta-item {
+                min-height: 0;
+            }
+
+            .flow {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-step {
+                min-height: 0;
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .flow-step:last-child {
+                border-bottom: 0;
+            }
+
+            .flow-step::after {
+                display: none;
+            }
+
+            .flow-index {
+                margin-bottom: 2.5rem;
+            }
+
+            .screen-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .next-inner {
+                align-items: start;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-note {
+                grid-template-columns: 1fr;
+            }
+
+            .palette-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-nav-inner {
+                gap: 1.4rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to case study</a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Portfolio navigation">
+        <div class="page-shell nav-inner">
+            <a class="brand" href="index.html">Jocelyn Martinez</a>
+            <div class="nav-links">
+                <a href="#screens">Screens</a>
+                <a href="#validation">Validation plan</a>
+                <a class="back-link" href="index.html#portfolio"><span aria-hidden="true">←</span> Back to work</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="page-shell hero-content reveal">
+            <p class="eyebrow">Self-directed concept · Product & UX/UI design</p>
+            <h1>Nutriva <em>Kitchen</em></h1>
+            <p class="hero-lede">
+                An inventory-assisted meal-planning concept that helps people understand what food they have, find realistic recipes, and use ingredients before they are forgotten.
+            </p>
+
+            <div class="hero-meta" aria-label="Project summary">
+                <div class="meta-item">
+                    <span class="meta-label">My focus</span>
+                    <span class="meta-value">Product strategy, information architecture, interaction design, UI design</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Context</span>
+                    <span class="meta-value">Self-directed mobile product concept</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Audience</span>
+                    <span class="meta-value">People planning meals around limited time, energy, and existing ingredients</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Deliverables</span>
+                    <span class="meta-value">Inventory model, recipe flow, mobile UI, validation plan</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="case-nav" aria-label="Case study sections">
+        <div class="page-shell case-nav-inner">
+            <a href="#overview">Overview</a>
+            <a href="#review">Comparative review</a>
+            <a href="#audience">Audience</a>
+            <a href="#flow">Experience flow</a>
+            <a href="#decisions">Decisions</a>
+            <a href="#screens">Screens</a>
+            <a href="#visual">Visual system</a>
+            <a href="#validation">Validation</a>
+            <a href="#reflection">Reflection</a>
+        </div>
+    </nav>
+
+    <main id="main">
+        <section id="overview">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">01 / Overview<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">The opportunity</p>
+                    <h2>Make dinner planning begin with what is already available.</h2>
+                    <p class="intro">
+                        Deciding what to cook requires several small but connected tasks: remembering what is in the kitchen, checking which items should be used soon, comparing ingredients against recipes, considering time and dietary needs, and deciding whether missing items are worth purchasing.
+                    </p>
+                    <p class="intro">
+                        Nutriva explores one connected experience for those tasks. The product concept combines an editable kitchen inventory with recipe matching, then explains why each suggestion is practical. The goal is not to remove user judgment—it is to reduce the amount of information a person must assemble before making a decision.
+                    </p>
+
+                    <div class="summary-grid">
+                        <article class="summary-card">
+                            <span class="card-number">01</span>
+                            <h3>Understand the kitchen</h3>
+                            <p>A visual inventory shows what is available, what needs confirmation, and which items may be useful to prioritize.</p>
+                        </article>
+                        <article class="summary-card">
+                            <span class="card-number">02</span>
+                            <h3>Match realistic meals</h3>
+                            <p>Recipes are ranked by ingredient coverage, preparation time, dietary settings, and the user’s willingness to substitute or shop.</p>
+                        </article>
+                        <article class="summary-card">
+                            <span class="card-number">03</span>
+                            <h3>Keep people in control</h3>
+                            <p>Recognition results, quantities, freshness estimates, and substitutions remain visible and editable before affecting recommendations.</p>
+                        </article>
+                    </div>
+
+                    <div class="project-note">
+                        <div class="note-icon" aria-hidden="true">i</div>
+                        <p>
+                            <strong>Project scope:</strong> Nutriva is a self-directed design concept, not a launched product. The interface demonstrates the proposed experience. Inventory recognition, food-safety guidance, expiration estimates, dietary information, accessibility, and recommendation quality would require technical, legal, and user validation before implementation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="review" class="review-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">02 / Comparative review<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Informal product audit</p>
+                    <h2>Existing products solve adjacent parts of the meal-planning journey.</h2>
+                    <p class="intro">
+                        I reviewed common workflows in MyFitnessPal, Mealime, and HelloFresh to understand how nutrition tracking, recipe planning, and meal delivery address different user needs. This was a directional product review—not formal market research or an objective ranking.
+                    </p>
+
+                    <div class="review-grid">
+                        <article class="review-card">
+                            <h3>MyFitnessPal</h3>
+                            <span class="review-type">Nutrition tracking</span>
+                            <div class="review-line">
+                                <strong>Useful strength</strong>
+                                <span>Detailed food logging and nutrition information support people with explicit tracking goals.</span>
+                            </div>
+                            <div class="review-line">
+                                <strong>Design tension</strong>
+                                <span>Logging explains what was eaten, but it does not necessarily answer what can be cooked from available ingredients.</span>
+                            </div>
+                            <div class="review-line">
+                                <strong>Opportunity explored</strong>
+                                <span>Keep nutrition secondary to the immediate planning task, then provide detail when requested.</span>
+                            </div>
+                        </article>
+
+                        <article class="review-card">
+                            <h3>Mealime</h3>
+                            <span class="review-type">Recipe planning</span>
+                            <div class="review-line">
+                                <strong>Useful strength</strong>
+                                <span>Guided preferences and practical recipes make weekly planning more approachable.</span>
+                            </div>
+                            <div class="review-line">
+                                <strong>Design tension</strong>
+                                <span>The planning flow can still assume that ingredients will be purchased specifically for selected meals.</span>
+                            </div>
+                            <div class="review-line">
+                                <strong>Opportunity explored</strong>
+                                <span>Begin the recommendation with the user’s existing inventory and tolerance for missing ingredients.</span>
+                            </div>
+                        </article>
+
+                        <article class="review-card">
+                            <h3>HelloFresh</h3>
+                            <span class="review-type">Meal delivery</span>
+                            <div class="review-line">
+                                <strong>Useful strength</strong>
+                                <span>Pre-portioned ingredients reduce planning and preparation uncertainty.</span>
+                            </div>
+                            <div class="review-line">
+                                <strong>Design tension</strong>
+                                <span>The solution introduces a separate supply of food rather than helping manage what is already at home.</span>
+                            </div>
+                            <div class="review-line">
+                                <strong>Opportunity explored</strong>
+                                <span>Support low-effort decisions without requiring a subscription or complete replacement of current habits.</span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="opportunity-strip" aria-label="Nutriva product opportunities">
+                        <div class="opportunity-item">
+                            <span>Opportunity 01</span>
+                            <p>Connect inventory and recipe discovery so the user does not need to mentally compare two separate systems.</p>
+                        </div>
+                        <div class="opportunity-item">
+                            <span>Opportunity 02</span>
+                            <p>Explain recommendation fit through ingredients available, ingredients missing, time, and substitution options.</p>
+                        </div>
+                        <div class="opportunity-item">
+                            <span>Opportunity 03</span>
+                            <p>Make uncertain system information editable rather than presenting recognition or freshness estimates as fact.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="audience">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">03 / Audience<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Behavior-based needs</p>
+                    <h2>The product supports two moments in the same household.</h2>
+                    <p class="intro">
+                        Rather than relying on a fictional demographic persona, I framed the audience around observable situations. The same person may use Nutriva differently during a rushed weeknight and a planned grocery session.
+                    </p>
+
+                    <div class="audience-grid">
+                        <article class="audience-card">
+                            <span class="audience-label">Low-energy decision maker</span>
+                            <h3>“Show me something realistic for tonight.”</h3>
+                            <p>This user needs a useful answer quickly and may not have the energy to maintain a perfect inventory or configure many filters.</p>
+                            <ul class="plain-list">
+                                <li>Wants a small number of viable meals rather than an endless recipe feed.</li>
+                                <li>Needs preparation time, effort, and missing ingredients at a glance.</li>
+                                <li>May prefer substitutions over another shopping trip.</li>
+                                <li>Needs a fast correction path when the inventory is wrong.</li>
+                            </ul>
+                        </article>
+
+                        <article class="audience-card">
+                            <span class="audience-label">Household planner</span>
+                            <h3>“Help me use food intentionally this week.”</h3>
+                            <p>This user is willing to review inventory and plan ahead, but needs the information to stay current and understandable.</p>
+                            <ul class="plain-list">
+                                <li>Wants to see what is available across refrigerator, freezer, and pantry.</li>
+                                <li>Needs flexible categories, quantities, and household-specific dietary settings.</li>
+                                <li>Wants items that may need attention surfaced without alarmist messaging.</li>
+                                <li>Needs a shopping list that distinguishes essentials from optional additions.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="flow">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">04 / Experience flow<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Proposed interaction model</p>
+                    <h2>Capture, confirm, compare, and cook.</h2>
+                    <p class="intro">
+                        The core flow keeps recognition and recommendation separate. The system may assist with identifying food, but the user confirms uncertain information before it meaningfully changes the recipe results.
+                    </p>
+
+                    <div class="flow">
+                        <article class="flow-step">
+                            <span class="flow-index">01</span>
+                            <h3>Capture inventory</h3>
+                            <p>The user can photograph items, scan a receipt or barcode, or add food manually. No single input method is required.</p>
+                        </article>
+                        <article class="flow-step">
+                            <span class="flow-index">02</span>
+                            <h3>Review uncertainty</h3>
+                            <p>Low-confidence items, unclear quantities, and freshness information are marked for confirmation rather than silently accepted.</p>
+                        </article>
+                        <article class="flow-step">
+                            <span class="flow-index">03</span>
+                            <h3>Compare meal options</h3>
+                            <p>Recommendations show ingredient coverage, missing items, estimated effort, substitutions, and why the meal appears.</p>
+                        </article>
+                        <article class="flow-step">
+                            <span class="flow-index">04</span>
+                            <h3>Cook or adjust</h3>
+                            <p>The user selects a recipe, swaps ingredients, saves it for later, or sends genuinely needed items to the shopping list.</p>
+                        </article>
+                    </div>
+
+                    <div class="system-boundary">
+                        <p class="eyebrow">Product boundary</p>
+                        <h3>Recognition should reduce entry effort—not disguise uncertainty.</h3>
+                        <p>
+                            A responsible product would show confidence, request confirmation, and avoid presenting inferred food condition or safety as a guarantee. Manual entry must remain available, and recommendations should never replace food-safety guidance or professional dietary advice.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="decisions">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">05 / Design decisions<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Interaction and information design</p>
+                    <h2>Make the next decision easier without hiding the tradeoffs.</h2>
+
+                    <div class="principle-grid">
+                        <article class="principle-card">
+                            <div class="principle-icon" aria-hidden="true">1</div>
+                            <h3>Recognition before recall</h3>
+                            <p>Ingredient imagery, familiar names, and storage groupings help users verify the inventory without reconstructing it from memory.</p>
+                        </article>
+                        <article class="principle-card">
+                            <div class="principle-icon" aria-hidden="true">2</div>
+                            <h3>Small recommendation sets</h3>
+                            <p>The dashboard leads with a few explained options, while filters and the complete recipe catalog remain available.</p>
+                        </article>
+                        <article class="principle-card">
+                            <div class="principle-icon" aria-hidden="true">3</div>
+                            <h3>Actionable status</h3>
+                            <p>Inventory states pair words, dates, and icons with color so “use soon” is understandable without relying on red or green alone.</p>
+                        </article>
+                    </div>
+
+                    <div class="decision-grid">
+                        <article class="decision-card">
+                            <span class="decision-tag">Inventory</span>
+                            <h3>Prioritize confidence and correction.</h3>
+                            <p>Each recognized item can display its source, quantity, storage location, and confidence. Editing is available directly from the inventory card.</p>
+                            <div class="decision-detail">
+                                <strong>Design response</strong>
+                                <p>Visible “needs review” states, batch confirmation, and manual alternatives to scanning.</p>
+                            </div>
+                        </article>
+
+                        <article class="decision-card">
+                            <span class="decision-tag">Recipe ranking</span>
+                            <h3>Explain why a meal is practical.</h3>
+                            <p>A recommendation should not appear as a mysterious algorithmic answer. It should show which ingredients are available, which are missing, and what can be substituted.</p>
+                            <div class="decision-detail">
+                                <strong>Design response</strong>
+                                <p>Ingredient coverage, effort, time, dietary fit, and missing-item visibility before selection.</p>
+                            </div>
+                        </article>
+
+                        <article class="decision-card">
+                            <span class="decision-tag">Freshness status</span>
+                            <h3>Avoid false precision.</h3>
+                            <p>Food condition depends on purchase date, storage, preparation, and other factors. A concept should not imply that an automated date is certain.</p>
+                            <div class="decision-detail">
+                                <strong>Design response</strong>
+                                <p>Plain-language estimates, user-entered dates, “check item” guidance, and no automatic food-safety guarantees.</p>
+                            </div>
+                        </article>
+
+                        <article class="decision-card">
+                            <span class="decision-tag">Filters</span>
+                            <h3>Lead with tonight’s constraints.</h3>
+                            <p>Time, effort, dietary requirements, and willingness to shop are more immediately useful than exposing every possible filter at once.</p>
+                            <div class="decision-detail">
+                                <strong>Design response</strong>
+                                <p>Persistent household settings with a small set of situational controls for the current meal.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="screens" class="screens-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">06 / Screens<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">High-fidelity interface</p>
+                    <h2>Three surfaces for one connected decision.</h2>
+                    <p class="intro">
+                        The available screens demonstrate the dashboard, recipe discovery, and inventory management. Select any screen to enlarge it.
+                    </p>
+
+                    <div class="screen-grid">
+                        <article class="screen-card">
+                            <button class="screen-button" type="button" data-lightbox-src="mainpage.png" data-lightbox-alt="Nutriva dashboard with meal suggestions and kitchen information" aria-label="Enlarge Nutriva dashboard">
+                                <span class="phone-frame"><img src="mainpage.png" alt="Nutriva dashboard with meal suggestions and kitchen information"></span>
+                            </button>
+                            <span class="screen-number">01 / DASHBOARD</span>
+                            <h4>Tonight’s starting point</h4>
+                            <p>Leads with a small number of meal options and makes the reason for each suggestion visible.</p>
+                        </article>
+
+                        <article class="screen-card">
+                            <button class="screen-button" type="button" data-lightbox-src="recipelist.png" data-lightbox-alt="Nutriva recipe list with practical meal options" aria-label="Enlarge Nutriva recipe list">
+                                <span class="phone-frame"><img src="recipelist.png" alt="Nutriva recipe list with practical meal options"></span>
+                            </button>
+                            <span class="screen-number">02 / RECIPES</span>
+                            <h4>Comparable meal options</h4>
+                            <p>Supports scanning by time, fit, missing ingredients, and effort without requiring a precise search term.</p>
+                        </article>
+
+                        <article class="screen-card">
+                            <button class="screen-button" type="button" data-lightbox-src="inventory.png" data-lightbox-alt="Nutriva kitchen inventory with ingredient status information" aria-label="Enlarge Nutriva inventory">
+                                <span class="phone-frame"><img src="inventory.png" alt="Nutriva kitchen inventory with ingredient status information"></span>
+                            </button>
+                            <span class="screen-number">03 / INVENTORY</span>
+                            <h4>Editable kitchen record</h4>
+                            <p>Organizes available food while keeping quantities, status, and uncertain information easy to review.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="visual" class="visual-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">07 / Visual system<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Clear, fresh, and task-oriented</p>
+                    <h2>A food interface that lets information and imagery lead.</h2>
+                    <p class="intro">
+                        Soft blue establishes structure, coral marks priority actions, and white provides a neutral surface for food imagery and dense inventory information. The palette supports hierarchy; it is not presented as a medical or psychological intervention.
+                    </p>
+
+                    <div class="visual-layout">
+                        <div>
+                            <h3 class="subheading">Core palette</h3>
+                            <p class="subcopy">Color roles remain consistent across navigation, actions, status, and supporting surfaces.</p>
+                            <div class="palette-grid" aria-label="Nutriva color palette">
+                                <div class="swatch" style="background:#5a98d2;color:#fff;">
+                                    <span>Structure blue</span><span>#5A98D2</span>
+                                </div>
+                                <div class="swatch" style="background:#dd716f;color:#fff;">
+                                    <span>Action coral</span><span>#DD716F</span>
+                                </div>
+                                <div class="swatch" style="background:#f4f7fa;color:#18212b;">
+                                    <span>Cool canvas</span><span>#F4F7FA</span>
+                                </div>
+                                <div class="swatch" style="background:#18212b;color:#fff;">
+                                    <span>Core ink</span><span>#18212B</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="subheading">Type roles</h3>
+                            <p class="subcopy">One expressive typeface supports recipe identity; one neutral family carries controls and data.</p>
+                            <div class="type-stack">
+                                <article class="type-card">
+                                    <span class="type-label">Recipe and editorial voice</span>
+                                    <div class="type-serif">Dinner, simplified.</div>
+                                    <p>Used sparingly for major headings and recipe moments where warmth and appetite should lead.</p>
+                                </article>
+                                <article class="type-card">
+                                    <span class="type-label">Interface and data voice</span>
+                                    <div class="type-sans">12 min · 8 ingredients</div>
+                                    <p>Used for navigation, quantities, status, filters, and instructions that need consistent legibility.</p>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="status-system" aria-label="Inventory status examples">
+                        <article class="status-card">
+                            <span class="status-chip stable">Stable</span>
+                            <strong>No immediate action</strong>
+                            <p>Uses language and a calm visual state rather than implying exact freshness.</p>
+                        </article>
+                        <article class="status-card">
+                            <span class="status-chip use-soon">Use soon</span>
+                            <strong>Worth considering</strong>
+                            <p>Surfaces the item in relevant recipes without treating it as an emergency.</p>
+                        </article>
+                        <article class="status-card">
+                            <span class="status-chip priority">Check item</span>
+                            <strong>User review needed</strong>
+                            <p>Signals uncertainty or an entered date that warrants attention—not a safety determination.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="validation">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">08 / Validation plan<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">What I would test next</p>
+                    <h2>Validate whether the system saves effort—or simply moves it elsewhere.</h2>
+                    <p class="intro">
+                        Inventory-based planning only works when maintaining the inventory costs less effort than the value it creates. That tradeoff should be tested before expanding the concept.
+                    </p>
+
+                    <div class="validation-grid">
+                        <article class="validation-card">
+                            <div class="validation-icon" aria-hidden="true">1</div>
+                            <h3>Inventory setup and maintenance</h3>
+                            <p>Compare photo capture, receipt scanning, barcode entry, and manual input. Measure corrections, abandonment, and whether the inventory stays useful over time.</p>
+                        </article>
+
+                        <article class="validation-card">
+                            <div class="validation-icon" aria-hidden="true">2</div>
+                            <h3>Recommendation comprehension</h3>
+                            <p>Ask participants why recipes were suggested, whether missing ingredients are clear, and how they expect substitutions to work.</p>
+                        </article>
+
+                        <article class="validation-card">
+                            <div class="validation-icon" aria-hidden="true">3</div>
+                            <h3>Decision quality under time pressure</h3>
+                            <p>Test whether people can select a realistic meal during a short weeknight task without overlooking dietary, effort, or shopping constraints.</p>
+                        </article>
+
+                        <article class="validation-card">
+                            <div class="validation-icon" aria-hidden="true">4</div>
+                            <h3>Accessibility and safety language</h3>
+                            <p>Test screen-reader output, dynamic type, keyboard behavior, color-independent status, motion, comprehension of estimates, and food-safety boundaries.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reflection">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">09 / Reflection<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">What the project demonstrates</p>
+                    <h2>The most important interface state is uncertainty.</h2>
+                    <p class="intro">
+                        Nutriva pushed me to think beyond an attractive recipe feed. A useful inventory product must account for imperfect recognition, changing quantities, household habits, substitutions, and food information that cannot safely be inferred. The project demonstrates how I connect visual design with system states and product boundaries—even when the concept still requires research.
+                    </p>
+
+                    <div class="reflection-grid">
+                        <article class="reflection-card">
+                            <span class="card-number">01</span>
+                            <h3>Strongest contribution</h3>
+                            <p>A connected model that moves from kitchen inventory to explained recipe options without requiring a precise meal idea first.</p>
+                        </article>
+
+                        <article class="reflection-card">
+                            <span class="card-number">02</span>
+                            <h3>Largest product risk</h3>
+                            <p>Maintaining an accurate inventory may become more work than the problem it solves, especially in shared households.</p>
+                        </article>
+
+                        <article class="reflection-card">
+                            <span class="card-number">03</span>
+                            <h3>Next design step</h3>
+                            <p>Prototype inventory capture and correction first, then test recipe ranking with real household constraints before adding predictive features.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="next-case">
+        <div class="page-shell next-inner">
+            <div>
+                <p>Continue exploring</p>
+                <h2>Return to selected work.</h2>
+            </div>
+            <a class="next-link" href="index.html#portfolio">View portfolio <span aria-hidden="true">↗</span></a>
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged Nutriva interface screen" aria-hidden="true">
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close enlarged image">×</button>
+        <img id="lightboxImage" src="" alt="">
+    </div>
+
+    <script>
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const revealItems = document.querySelectorAll(".reveal");
+        const siteNav = document.getElementById("siteNav");
+
+        function updateNavigation() {
+            siteNav.classList.toggle("scrolled", window.scrollY > 12);
+        }
+
+        updateNavigation();
+        window.addEventListener("scroll", updateNavigation, { passive: true });
+
+        if (reducedMotion || !("IntersectionObserver" in window)) {
+            revealItems.forEach(item => item.classList.add("is-visible"));
+        } else {
+            const observer = new IntersectionObserver((entries, currentObserver) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        currentObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            revealItems.forEach(item => observer.observe(item));
+        }
+
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxClose = document.getElementById("lightboxClose");
+        const lightboxTriggers = document.querySelectorAll("[data-lightbox-src]");
+        let previouslyFocused = null;
+
+        function openLightbox(trigger) {
+            previouslyFocused = trigger;
+            lightboxImage.src = trigger.dataset.lightboxSrc;
+            lightboxImage.alt = trigger.dataset.lightboxAlt || "Enlarged Nutriva interface screen";
+            lightbox.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+            lightboxClose.focus();
+        }
+
+        function closeLightbox() {
+            lightbox.setAttribute("aria-hidden", "true");
+            lightboxImage.src = "";
+            lightboxImage.alt = "";
+            document.body.style.overflow = "";
+            if (previouslyFocused) previouslyFocused.focus();
+        }
+
+        lightboxTriggers.forEach(trigger => {
+            trigger.addEventListener("click", () => openLightbox(trigger));
+        });
+
+        lightboxClose.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", event => {
+            if (event.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && lightbox.getAttribute("aria-hidden") === "false") {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

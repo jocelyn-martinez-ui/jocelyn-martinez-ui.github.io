@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Solace Press is a self-directed independent publishing identity by Jocelyn Martinez, spanning brand strategy, typography, book covers, social campaigns, print collateral, packaging, presentations, and digital direction.">
+    <meta name="theme-color" content="#f4efe7">
+    <meta property="og:title" content="Solace Press — Brand Identity Case Study | Jocelyn Martinez">
+    <meta property="og:description" content="A complete identity and communication system for an independent publisher.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="solace-press/hero-collage.jpg">
+    <title>Solace Press — Brand Identity Case Study | Jocelyn Martinez</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #f4efe7;
+            --paper-deep: #e7ddd1;
+            --surface: #fffdf8;
+            --ink: #171716;
+            --body: #5f5953;
+            --muted: #887e75;
+            --green: #2f4a3a;
+            --green-dark: #1e3328;
+            --green-soft: #dfe6dd;
+            --rose: #c99c9c;
+            --rose-soft: #ebd9d7;
+            --taupe: #aa9a88;
+            --taupe-soft: #e8e0d6;
+            --line: rgba(23, 23, 22, 0.13);
+            --line-soft: rgba(23, 23, 22, 0.07);
+            --serif: "Instrument Serif", Georgia, serif;
+            --sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --content: 1300px;
+            --radius-xl: 40px;
+            --radius-lg: 28px;
+            --radius-md: 18px;
+            --shadow: 0 34px 100px rgba(40, 29, 24, 0.13);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 145px;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.72;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.021;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.72'/%3E%3C/svg%3E");
+        }
+
+        body.lightbox-open {
+            overflow: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        ::selection {
+            background: var(--green-soft);
+            color: var(--ink);
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--green);
+            outline-offset: 4px;
+            border-radius: 5px;
+        }
+
+        .page-shell {
+            width: min(calc(100% - 3rem), var(--content));
+            margin-inline: auto;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 5000;
+            padding: 0.8rem 1rem;
+            border-radius: 999px;
+            background: var(--ink);
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(-170%);
+            transition: transform 0.2s ease;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        .site-nav {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 2000;
+            border-bottom: 1px solid transparent;
+            background: rgba(244, 239, 231, 0.82);
+            backdrop-filter: blur(20px);
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .site-nav.scrolled {
+            border-color: var(--line-soft);
+            background: rgba(244, 239, 231, 0.95);
+            box-shadow: 0 10px 35px rgba(36, 25, 22, 0.05);
+        }
+
+        .nav-inner {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.55rem;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .brand-name {
+            font-family: var(--serif);
+            font-size: 1.65rem;
+            font-style: italic;
+            line-height: 1;
+        }
+
+        .brand-role {
+            color: var(--muted);
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.72rem 0.95rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--ink) !important;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
+        }
+
+        .back-link:hover {
+            border-color: var(--ink);
+            background: var(--ink);
+            color: #fff !important;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            padding: 12.3rem 0 6.5rem;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 76% 18%, rgba(47, 74, 58, 0.14), transparent 28rem),
+                radial-gradient(circle at 8% 86%, rgba(201, 156, 156, 0.14), transparent 24rem),
+                linear-gradient(180deg, #fffdfa 0%, var(--paper) 100%);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -9rem;
+            top: 12rem;
+            width: 39rem;
+            height: 39rem;
+            border: 1px solid rgba(47, 74, 58, 0.10);
+            border-radius: 48% 52% 61% 39% / 42% 44% 56% 58%;
+            transform: rotate(17deg);
+            box-shadow:
+                -7rem 4rem 0 -1px rgba(47, 74, 58, 0.035),
+                -13rem -4rem 0 -1px rgba(201, 156, 156, 0.035);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 0.84fr) minmax(520px, 1.16fr);
+            gap: clamp(4rem, 8vw, 8rem);
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin: 0 0 1.6rem;
+            color: var(--green);
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 38px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        p {
+            margin-top: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            text-wrap: balance;
+        }
+
+        h1 {
+            margin: 0 0 1.8rem;
+            font-family: var(--serif);
+            font-size: clamp(5.7rem, 11vw, 10.8rem);
+            font-weight: 400;
+            letter-spacing: -0.075em;
+            line-height: 0.75;
+        }
+
+        h1 em {
+            display: block;
+            margin-left: clamp(0.8rem, 6vw, 5rem);
+            color: var(--green);
+            font-weight: 400;
+        }
+
+        .hero-subtitle {
+            max-width: 650px;
+            margin-bottom: 2rem;
+            color: var(--body);
+            font-size: clamp(1.13rem, 2vw, 1.39rem);
+            line-height: 1.72;
+        }
+
+        .hero-note {
+            max-width: 630px;
+            margin-bottom: 2.4rem;
+            padding: 1rem 0 0 1.2rem;
+            border-left: 1px solid var(--green);
+            color: var(--muted);
+            font-size: 0.83rem;
+            line-height: 1.68;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            min-height: 50px;
+            padding: 0.9rem 1.18rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            border-color: var(--ink);
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .button-primary:hover {
+            border-color: var(--green);
+            background: var(--green);
+        }
+
+        .button-secondary {
+            background: rgba(255, 255, 255, 0.66);
+            color: var(--ink);
+        }
+
+        .button-secondary:hover {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-visual img {
+            width: 100%;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+            transform: rotate(0.7deg);
+        }
+
+        .hero-seal {
+            position: absolute;
+            right: -1.1rem;
+            bottom: -1.1rem;
+            width: 118px;
+            height: 118px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255,255,255,0.42);
+            border-radius: 50%;
+            background: var(--green);
+            color: #fff;
+            font-family: var(--serif);
+            font-size: 2.6rem;
+            box-shadow: 0 20px 48px rgba(47, 74, 58, 0.25);
+        }
+
+        .project-meta {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1px;
+            margin-top: 6rem;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 23px;
+            background: var(--line);
+        }
+
+        .meta-item {
+            min-height: 135px;
+            padding: 1.55rem;
+            background: rgba(255, 253, 248, 0.93);
+        }
+
+        .meta-label {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: var(--muted);
+            font-size: 0.61rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .meta-value {
+            color: var(--ink);
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.55;
+        }
+
+        /* Sticky case navigation */
+        .case-nav {
+            position: sticky;
+            top: 82px;
+            z-index: 1500;
+            border-block: 1px solid var(--line-soft);
+            background: rgba(244, 239, 231, 0.93);
+            backdrop-filter: blur(17px);
+        }
+
+        .case-nav-inner {
+            display: flex;
+            gap: 1.8rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .case-nav-inner::-webkit-scrollbar {
+            display: none;
+        }
+
+        .case-nav a {
+            flex: 0 0 auto;
+            padding: 1rem 0;
+            color: var(--muted);
+            font-size: 0.64rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .case-nav a:hover {
+            color: var(--green);
+        }
+
+        /* Shared section structure */
+        section {
+            scroll-margin-top: 150px;
+            padding: 9rem 0;
+            border-bottom: 1px solid var(--line-soft);
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: minmax(150px, 0.55fr) minmax(0, 2.45fr);
+            gap: clamp(3rem, 8vw, 8rem);
+        }
+
+        .section-kicker {
+            position: sticky;
+            top: 165px;
+            align-self: start;
+            color: var(--muted);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .section-kicker span {
+            display: block;
+            width: 42px;
+            height: 1px;
+            margin-top: 1rem;
+            background: var(--green);
+        }
+
+        .section-content {
+            min-width: 0;
+        }
+
+        h2 {
+            max-width: 990px;
+            margin-bottom: 1.8rem;
+            font-family: var(--serif);
+            font-size: clamp(3.2rem, 6.4vw, 5.7rem);
+            font-weight: 400;
+            letter-spacing: -0.05em;
+            line-height: 0.94;
+        }
+
+        h3 {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 3.7vw, 3.05rem);
+            font-weight: 400;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+        }
+
+        .intro {
+            max-width: 850px;
+            margin-bottom: 1.7rem;
+            color: var(--body);
+            font-size: 1.08rem;
+            line-height: 1.86;
+        }
+
+        .scope-note {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            max-width: 930px;
+            margin-top: 3rem;
+            padding: 1.45rem 1.55rem;
+            border: 1px solid rgba(47, 74, 58, 0.22);
+            border-radius: 19px;
+            background: rgba(223, 230, 221, 0.52);
+        }
+
+        .scope-icon {
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        .scope-note p {
+            margin: 0;
+            color: #45574a;
+            font-size: 0.88rem;
+        }
+
+        .scope-note strong {
+            color: var(--green-dark);
+        }
+
+        /* Overview and recruiter framing */
+        .overview-grid,
+        .attribute-grid,
+        .capability-grid,
+        .application-index,
+        .production-grid,
+        .reflection-grid {
+            display: grid;
+            gap: 1.35rem;
+        }
+
+        .overview-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .info-card {
+            min-height: 255px;
+            padding: 2rem;
+            border: 1px solid var(--line);
+            border-radius: 23px;
+            background: var(--surface);
+        }
+
+        .card-number {
+            display: block;
+            margin-bottom: 3rem;
+            color: var(--green);
+            font-family: var(--serif);
+            font-size: 1.45rem;
+        }
+
+        .info-card h3 {
+            margin-bottom: 0.8rem;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .info-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: 0.88rem;
+        }
+
+        .capability-strip {
+            margin-top: 4rem;
+            padding: 2.2rem;
+            border-radius: 25px;
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .capability-strip > span {
+            display: block;
+            margin-bottom: 1.5rem;
+            color: #c9d8ca;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .capability-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .capability-item {
+            padding: 1.2rem;
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 15px;
+            background: rgba(255,255,255,0.045);
+        }
+
+        .capability-item strong {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-size: 0.79rem;
+        }
+
+        .capability-item p {
+            margin: 0;
+            color: rgba(255,255,255,0.62);
+            font-size: 0.74rem;
+        }
+
+        /* Brand foundation */
+        .foundation-section {
+            background: var(--surface);
+        }
+
+        .foundation-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+            gap: 4rem;
+            align-items: start;
+            margin-top: 4rem;
+        }
+
+        .positioning-card {
+            padding: 2.6rem;
+            border-radius: 25px;
+            background: var(--green);
+            color: #fff;
+        }
+
+        .positioning-card span {
+            display: block;
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.65);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .positioning-card blockquote {
+            margin: 0;
+            font-family: var(--serif);
+            font-size: clamp(2.2rem, 4vw, 3.45rem);
+            line-height: 1.02;
+        }
+
+        .foundation-list {
+            display: grid;
+            gap: 1.3rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .foundation-list li {
+            padding-bottom: 1.3rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .foundation-list strong {
+            display: block;
+            margin-bottom: 0.38rem;
+            color: var(--ink);
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .foundation-list span {
+            color: var(--body);
+            font-size: 0.9rem;
+        }
+
+        .attribute-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .attribute-card {
+            min-height: 190px;
+            padding: 1.6rem;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            background: var(--paper);
+        }
+
+        .attribute-card span {
+            display: block;
+            margin-bottom: 2rem;
+            color: var(--green);
+            font-family: var(--serif);
+            font-size: 1.35rem;
+        }
+
+        .attribute-card h3 {
+            margin-bottom: 0.55rem;
+            font-family: var(--sans);
+            font-size: 0.92rem;
+            font-weight: 700;
+        }
+
+        .attribute-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: 0.8rem;
+        }
+
+        /* Image boards */
+        .board-section {
+            background: #ebe3d9;
+        }
+
+        .board-wrap {
+            margin-top: 4rem;
+        }
+
+        .image-button {
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
+            border: 0;
+            border-radius: 30px;
+            background: transparent;
+            cursor: zoom-in;
+            box-shadow: 0 24px 76px rgba(44, 30, 25, 0.10);
+        }
+
+        .image-button img {
+            width: 100%;
+            transition: transform 0.55s ease;
+        }
+
+        .image-button:hover img {
+            transform: scale(1.012);
+        }
+
+        .caption {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+            color: var(--muted);
+            font-size: 0.76rem;
+        }
+
+        .caption-index {
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        .decision-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.35rem;
+            margin-top: 4rem;
+        }
+
+        .decision-card {
+            padding: 2rem;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--surface);
+        }
+
+        .decision-card span {
+            display: inline-flex;
+            margin-bottom: 1.5rem;
+            color: var(--green);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .decision-card h3 {
+            margin-bottom: 0.75rem;
+        }
+
+        .decision-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: 0.87rem;
+        }
+
+        /* Publishing system */
+        .publishing-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.08fr) minmax(350px, 0.92fr);
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .publishing-copy p {
+            color: var(--body);
+        }
+
+        .plain-list {
+            display: grid;
+            gap: 0.8rem;
+            margin: 1.8rem 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .plain-list li {
+            display: grid;
+            grid-template-columns: 18px 1fr;
+            gap: 0.65rem;
+            color: var(--body);
+            font-size: 0.87rem;
+        }
+
+        .plain-list li::before {
+            content: "↳";
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        /* Applications */
+        .applications-section {
+            background: var(--surface);
+        }
+
+        .application-index {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .application-card {
+            min-height: 220px;
+            padding: 1.7rem;
+            border: 1px solid var(--line);
+            border-radius: 21px;
+            background: var(--paper);
+        }
+
+        .application-card span {
+            display: block;
+            margin-bottom: 1.7rem;
+            color: var(--green);
+            font-size: 0.61rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .application-card h3 {
+            margin-bottom: 0.55rem;
+            font-family: var(--sans);
+            font-size: 0.94rem;
+            font-weight: 700;
+        }
+
+        .application-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: 0.8rem;
+        }
+
+        /* Presentation and digital */
+        .digital-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+            gap: 4rem;
+            align-items: start;
+            margin-top: 4rem;
+        }
+
+        .system-panel {
+            padding: 2.2rem;
+            border-radius: 24px;
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .system-panel span {
+            display: block;
+            margin-bottom: 1.5rem;
+            color: #c7d5c8;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .system-panel h3 {
+            color: #fff;
+        }
+
+        .system-panel p {
+            color: rgba(255,255,255,0.68);
+        }
+
+        .system-panel .plain-list li {
+            color: rgba(255,255,255,0.72);
+        }
+
+        .system-panel .plain-list li::before {
+            color: #c7d5c8;
+        }
+
+        .ux-callout {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 15px;
+            background: rgba(255,255,255,0.045);
+        }
+
+        .ux-callout strong {
+            display: block;
+            margin-bottom: 0.45rem;
+            font-size: 0.8rem;
+        }
+
+        .ux-callout p {
+            margin: 0;
+            font-size: 0.79rem;
+        }
+
+        /* Production */
+        .production-section {
+            background: #e9e1d7;
+        }
+
+        .production-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .production-card {
+            min-height: 215px;
+            padding: 1.7rem;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            background: var(--surface);
+        }
+
+        .production-card strong {
+            display: block;
+            margin-bottom: 1.4rem;
+            color: var(--green);
+            font-size: 0.66rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .production-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: 0.82rem;
+        }
+
+        .file-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .file-tree,
+        .naming-panel {
+            padding: 2.2rem;
+            border-radius: 24px;
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .panel-label {
+            display: block;
+            margin-bottom: 1.8rem;
+            color: #c9d8ca;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .file-tree pre,
+        .naming-panel code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        }
+
+        .file-tree pre {
+            margin: 0;
+            overflow-x: auto;
+            color: rgba(255,255,255,0.82);
+            font-size: 0.8rem;
+            line-height: 1.85;
+        }
+
+        .naming-list {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .naming-panel code {
+            display: block;
+            padding: 0.9rem 1rem;
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.13);
+            border-radius: 11px;
+            background: rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.83);
+            font-size: 0.74rem;
+        }
+
+        .qa-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.35rem;
+            margin-top: 4rem;
+        }
+
+        .qa-card {
+            min-height: 245px;
+            padding: 2rem;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--surface);
+        }
+
+        .qa-card span {
+            display: block;
+            margin-bottom: 2rem;
+            color: var(--green);
+            font-family: var(--serif);
+            font-size: 1.45rem;
+        }
+
+        .qa-card h3 {
+            margin-bottom: 0.75rem;
+            font-family: var(--sans);
+            font-size: 0.96rem;
+            font-weight: 700;
+        }
+
+        .qa-card ul {
+            display: grid;
+            gap: 0.55rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .qa-card li {
+            display: grid;
+            grid-template-columns: 16px 1fr;
+            gap: 0.55rem;
+            color: var(--body);
+            font-size: 0.8rem;
+        }
+
+        .qa-card li::before {
+            content: "✓";
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        /* Reflection */
+        .reflection-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .reflection-card {
+            min-height: 240px;
+            padding: 2rem;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--surface);
+        }
+
+        .reflection-card span {
+            display: block;
+            margin-bottom: 2.4rem;
+            color: var(--green);
+            font-family: var(--serif);
+            font-size: 1.45rem;
+        }
+
+        .reflection-card h3 {
+            margin-bottom: 0.7rem;
+            font-family: var(--sans);
+            font-size: 0.97rem;
+            font-weight: 700;
+        }
+
+        .reflection-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: 0.85rem;
+        }
+
+        .download-panel {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 4rem;
+            padding: 2.4rem;
+            border-radius: 25px;
+            background: var(--green);
+            color: #fff;
+        }
+
+        .download-panel h3 {
+            margin-bottom: 0.55rem;
+            color: #fff;
+        }
+
+        .download-panel p {
+            max-width: 700px;
+            margin: 0;
+            color: rgba(255,255,255,0.72);
+            font-size: 0.86rem;
+        }
+
+        .download-panel .button {
+            border-color: rgba(255,255,255,0.36);
+            color: #fff;
+        }
+
+        .download-panel .button:hover {
+            border-color: #fff;
+            background: #fff;
+            color: var(--green);
+        }
+
+        /* Footer */
+        .next-case {
+            padding: 7rem 0;
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .next-inner {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .next-case p {
+            margin-bottom: 0.7rem;
+            color: rgba(255,255,255,0.60);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .next-case h2 {
+            max-width: 790px;
+            margin-bottom: 0;
+            color: #fff;
+        }
+
+        .next-link {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 0.95rem 1.2rem;
+            border: 1px solid rgba(255,255,255,0.30);
+            border-radius: 999px;
+            color: #fff;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .next-link:hover {
+            background: #fff;
+            color: var(--ink);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 4000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 2rem 2rem;
+            background: rgba(17, 15, 14, 0.94);
+            backdrop-filter: blur(14px);
+        }
+
+        .lightbox[aria-hidden="false"] {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: min(1400px, 94vw);
+            max-height: 86vh;
+            border-radius: 15px;
+            box-shadow: 0 50px 110px rgba(0,0,0,0.48);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 28px;
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 50%;
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.74s ease, transform 0.74s ease;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (max-width: 1080px) {
+            :root {
+                --content: 860px;
+            }
+
+            .nav-links a:not(.back-link) {
+                display: none;
+            }
+
+            .hero-grid,
+            .foundation-layout,
+            .publishing-layout,
+            .digital-layout,
+            .file-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                max-width: 780px;
+            }
+
+            .project-meta,
+            .overview-grid,
+            .attribute-grid,
+            .capability-grid,
+            .application-index,
+            .production-grid,
+            .reflection-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-kicker {
+                position: static;
+            }
+
+            .qa-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 760px) {
+            .page-shell {
+                width: min(calc(100% - 1.75rem), 620px);
+            }
+
+            .brand-role {
+                display: none;
+            }
+
+            .nav-links {
+                gap: 0.6rem;
+            }
+
+            .back-link {
+                padding: 0.68rem 0.82rem;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 10.6rem 0 5.5rem;
+            }
+
+            h1 {
+                font-size: clamp(4.8rem, 22vw, 7.3rem);
+            }
+
+            h1 em {
+                margin-left: 0.7rem;
+            }
+
+            .hero-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .project-meta,
+            .overview-grid,
+            .attribute-grid,
+            .capability-grid,
+            .application-index,
+            .production-grid,
+            .qa-grid,
+            .reflection-grid,
+            .decision-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 6.5rem 0;
+            }
+
+            .download-panel,
+            .next-inner {
+                grid-template-columns: 1fr;
+                align-items: start;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .caption {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-seal {
+                width: 90px;
+                height: 90px;
+                font-size: 2rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to case study</a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Portfolio navigation">
+        <div class="page-shell nav-inner">
+            <a class="brand" href="index.html">
+                <span class="brand-name">Jocelyn Martinez</span>
+                <span class="brand-role">UX/UI & Visual Designer</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#identity">Identity</a>
+                <a href="#system">Visual system</a>
+                <a href="#applications">Applications</a>
+                <a href="#digital">Digital</a>
+                <a class="back-link" href="index.html#work">← Back to work</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="page-shell">
+            <div class="hero-grid">
+                <div class="reveal">
+                    <p class="eyebrow">Self-directed concept · Brand identity & visual communication</p>
+                    <h1>Solace <em>Press</em></h1>
+                    <p class="hero-subtitle">
+                        A complete identity and communication system for an independent publisher—designed to remain recognizable across books, campaigns, events, packaging, presentations, and digital experiences.
+                    </p>
+                    <p class="hero-note">
+                        Solace Press is a fictional portfolio project. The brand strategy, applications, and production direction are proposed rather than commissioned or commercially launched.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="solace-press/Solace_Press_Brand_Guidelines.pdf" target="_blank" rel="noopener">View brand guidelines ↗</a>
+                        <a class="button button-secondary" href="#overview">Explore the case study ↓</a>
+                    </div>
+                </div>
+
+                <div class="hero-visual reveal">
+                    <img src="solace-press/hero-collage.jpg" alt="Solace Press identity, campaign, and website direction shown as an editorial brand-system collage">
+                    <div class="hero-seal" aria-hidden="true">SP</div>
+                </div>
+            </div>
+
+            <div class="project-meta reveal" aria-label="Project information">
+                <div class="meta-item">
+                    <span class="meta-label">Role</span>
+                    <span class="meta-value">Brand, visual, and digital-direction designer</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Context</span>
+                    <span class="meta-value">Self-directed independent publishing identity</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Focus</span>
+                    <span class="meta-value">Identity architecture, typography, campaigns, print, packaging, and digital systems</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Deliverables</span>
+                    <span class="meta-value">Guidelines, book system, catalog, social campaign, events, mailer, deck, and website direction</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="case-nav" aria-label="Case study sections">
+        <div class="page-shell case-nav-inner">
+            <a href="#overview">Overview</a>
+            <a href="#foundation">Foundation</a>
+            <a href="#identity">Identity</a>
+            <a href="#system">Visual system</a>
+            <a href="#publishing">Publishing</a>
+            <a href="#applications">Applications</a>
+            <a href="#digital">Digital</a>
+            <a href="#production">Production</a>
+            <a href="#reflection">Reflection</a>
+        </div>
+    </nav>
+
+    <main id="main">
+        <section id="overview">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">01 / Overview<span></span></aside>
+
+                <div class="section-content reveal">
+                    <p class="eyebrow">A system, not a single logo</p>
+                    <h2>Build a literary identity that can carry real communication.</h2>
+                    <p class="intro">
+                        Solace Press is conceived as an independent publisher of literary fiction, essays, poetry, and cultural criticism. The design challenge was to create an identity that felt thoughtful and tactile without becoming nostalgic, academic, or visually fragile.
+                    </p>
+                    <p class="intro">
+                        The project therefore extends beyond a wordmark. It defines a family of marks, typography, composition, photography, illustration, templates, campaign behavior, production rules, and digital components that can support an evolving publishing list.
+                    </p>
+
+                    <div class="overview-grid">
+                        <article class="info-card">
+                            <span class="card-number">01</span>
+                            <h3>Recognizable identity</h3>
+                            <p>A flexible family of marks creates continuity across covers, spines, packaging, social thumbnails, events, and institutional communication.</p>
+                        </article>
+                        <article class="info-card">
+                            <span class="card-number">02</span>
+                            <h3>Editorial flexibility</h3>
+                            <p>A restrained type, grid, image, and color system supports varied authors and genres without making every title feel identical.</p>
+                        </article>
+                        <article class="info-card">
+                            <span class="card-number">03</span>
+                            <h3>Repeatable production</h3>
+                            <p>Templates, editable content zones, clear naming, export variants, and quality-control rules make future launches easier to produce.</p>
+                        </article>
+                    </div>
+
+                    <div class="capability-strip">
+                        <span>What this project demonstrates</span>
+                        <div class="capability-grid">
+                            <article class="capability-item">
+                                <strong>Graphic design</strong>
+                                <p>Typography, composition, image treatment, social assets, posters, and print collateral.</p>
+                            </article>
+                            <article class="capability-item">
+                                <strong>Brand design</strong>
+                                <p>Identity architecture, usage rules, voice, art direction, templates, and consistency.</p>
+                            </article>
+                            <article class="capability-item">
+                                <strong>Digital design</strong>
+                                <p>Website hierarchy, reusable components, cards, navigation, newsletter, and email direction.</p>
+                            </article>
+                            <article class="capability-item">
+                                <strong>Production thinking</strong>
+                                <p>Format adaptation, bleeds, resolution, versioning, exports, handoff, and final review.</p>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="scope-note">
+                        <div class="scope-icon" aria-hidden="true">i</div>
+                        <p>
+                            <strong>Production note:</strong> The boards demonstrate the proposed visual system and applications. Before commercial use, the identity would be rebuilt as vector masters, font licenses confirmed, accessibility reviewed, print pieces proofed, and native templates packaged in the appropriate production software.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="foundation" class="foundation-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">02 / Brand foundation<span></span></aside>
+
+                <div class="section-content reveal">
+                    <p class="eyebrow">Positioning and voice</p>
+                    <h2>Quiet does not have to mean passive.</h2>
+                    <p class="intro">
+                        The brand is positioned for readers who value thoughtful editing, enduring objects, and cultural conversation. Its tone needed to feel calm and intimate while retaining enough confidence to promote new titles, events, authors, and ideas.
+                    </p>
+
+                    <div class="foundation-layout">
+                        <div class="positioning-card">
+                            <span>Positioning statement</span>
+                            <blockquote>
+                                Solace Press creates quiet space for stories that linger—books that open minds, invite reflection, and deepen cultural understanding.
+                            </blockquote>
+                        </div>
+
+                        <ul class="foundation-list">
+                            <li>
+                                <strong>Audience</strong>
+                                <span>Curious adult readers, independent booksellers, cultural organizations, authors, reviewers, and literary communities.</span>
+                            </li>
+                            <li>
+                                <strong>Market tension</strong>
+                                <span>Avoid both cold academic severity and overly nostalgic “heritage bookstore” styling.</span>
+                            </li>
+                            <li>
+                                <strong>Communication goal</strong>
+                                <span>Make every title feel authored and distinctive while keeping the publisher immediately recognizable.</span>
+                            </li>
+                            <li>
+                                <strong>Voice</strong>
+                                <span>Thoughtful, warm, clear, culturally engaged, and confident without being promotional or loud.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="attribute-grid">
+                        <article class="attribute-card">
+                            <span>01</span>
+                            <h3>Thoughtful</h3>
+                            <p>Language and composition create space for attention rather than forcing urgency.</p>
+                        </article>
+                        <article class="attribute-card">
+                            <span>02</span>
+                            <h3>Warm</h3>
+                            <p>Tactile materials, natural imagery, and human stories keep the identity emotionally accessible.</p>
+                        </article>
+                        <article class="attribute-card">
+                            <span>03</span>
+                            <h3>Literary</h3>
+                            <p>Editorial typography and careful pacing signal the publisher’s relationship to reading and ideas.</p>
+                        </article>
+                        <article class="attribute-card">
+                            <span>04</span>
+                            <h3>Contemporary</h3>
+                            <p>Clear hierarchy and restrained systems prevent the brand from feeling ornamental or historical.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="identity" class="board-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">03 / Identity system<span></span></aside>
+
+                <div class="section-content reveal">
+                    <p class="eyebrow">Identity architecture</p>
+                    <h2>One publisher, several useful signatures.</h2>
+                    <p class="intro">
+                        The identity is designed as a family rather than a single immutable logo. Each mark has a specific role: institutional recognition, editorial hierarchy, constrained digital use, tactile publishing details, or event and packaging applications.
+                    </p>
+
+                    <div class="decision-grid">
+                        <article class="decision-card">
+                            <span>Primary wordmark</span>
+                            <h3>The publisher’s clearest signature.</h3>
+                            <p>Used on covers, catalogs, presentations, websites, press materials, and communications where the full name should lead.</p>
+                        </article>
+                        <article class="decision-card">
+                            <span>Stacked mark</span>
+                            <h3>A compact editorial alternative.</h3>
+                            <p>Supports narrow formats, book spines, portrait collateral, social posts, and layouts where the horizontal wordmark becomes too small.</p>
+                        </article>
+                        <article class="decision-card">
+                            <span>SP monogram</span>
+                            <h3>Recognition at constrained sizes.</h3>
+                            <p>Designed for profile images, browser icons, pagination, navigation, and quiet secondary branding.</p>
+                        </article>
+                        <article class="decision-card">
+                            <span>Seal and botanical mark</span>
+                            <h3>A tactile publishing voice.</h3>
+                            <p>Applied to stickers, embossing, tissue, endpapers, packaging, bookmarks, event materials, and collectible details.</p>
+                        </article>
+                    </div>
+
+                    <div class="board-wrap">
+                        <button class="image-button" type="button"
+                                data-lightbox-src="solace-press/01-identity-guidelines.png"
+                                data-lightbox-alt="Solace Press identity guidelines board">
+                            <img src="solace-press/01-identity-guidelines.png"
+                                 alt="Solace Press identity guidelines showing the primary wordmark, secondary marks, construction, clear space, minimum sizes, misuse, palette, and typography"
+                                 loading="lazy">
+                        </button>
+                        <div class="caption">
+                            <span class="caption-index">03.1</span>
+                            <span>Identity family, construction logic, clear-space behavior, minimum sizes, misuse examples, palette, and proposed typography.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="system">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">04 / Visual system<span></span></aside>
+
+                <div class="section-content reveal">
+                    <p class="eyebrow">Typography, grid, imagery, and illustration</p>
+                    <h2>Repeat relationships—not identical layouts.</h2>
+                    <p class="intro">
+                        The visual system combines expressive display typography with a neutral functional voice. Generous spacing, limited colors, controlled image crops, and a small illustration vocabulary allow the brand to feel consistent while adapting to books, data, events, campaigns, and interface components.
+                    </p>
+
+                    <div class="decision-grid">
+                        <article class="decision-card">
+                            <span>Typography</span>
+                            <h3>Editorial expression plus functional clarity.</h3>
+                            <p>A high-contrast serif carries titles and emotional statements; a neutral sans supports body text, captions, labels, specifications, and interface controls.</p>
+                        </article>
+                        <article class="decision-card">
+                            <span>Grid</span>
+                            <h3>A stable framework for varied content.</h3>
+                            <p>A twelve-column layout and repeatable spacing rhythm support asymmetry, centered statements, editorial spreads, social posts, and digital modules.</p>
+                        </article>
+                        <article class="decision-card">
+                            <span>Photography</span>
+                            <h3>Quiet, human, and materially grounded.</h3>
+                            <p>Natural light, restrained contrast, tactile still life, intimate portraiture, and contemplative spaces communicate the world surrounding the books.</p>
+                        </article>
+                        <article class="decision-card">
+                            <span>Illustration and icons</span>
+                            <h3>Supporting details, not decoration.</h3>
+                            <p>Hand-drawn botanical motifs and simple line icons identify categories, create tactile moments, and reduce reliance on repeated photography.</p>
+                        </article>
+                    </div>
+
+                    <div class="board-wrap">
+                        <button class="image-button" type="button"
+                                data-lightbox-src="solace-press/02-visual-system.png"
+                                data-lightbox-alt="Solace Press visual system guidelines board">
+                            <img src="solace-press/02-visual-system.png"
+                                 alt="Solace Press visual system showing typography, grid rules, photography direction, illustration, icons, book covers, and a seasonal catalog"
+                                 loading="lazy">
+                        </button>
+                        <div class="caption">
+                            <span class="caption-index">04.1</span>
+                            <span>Proposed typography and grid roles, photography direction, botanical motifs, icon vocabulary, cover family, and seasonal catalog.</span>
+                        </div>
+                    </div>
+
+                    <div class="scope-note">
+                        <div class="scope-icon" aria-hidden="true">Aa</div>
+                        <p>
+                            <strong>Typography licensing:</strong> The guideline boards reference Canela Display and Suisse Intl as proposed type families. A commercial implementation would require appropriate licenses or equivalent licensed substitutions before release.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="publishing" class="board-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">05 / Publishing system<span></span></aside>
+
+                <div class="section-content reveal">
+                    <p class="eyebrow">Books and seasonal storytelling</p>
+                    <h2>The identity should frame each title—not overpower it.</h2>
+
+                    <div class="publishing-layout">
+                        <div>
+                            <button class="image-button" type="button"
+                                    data-lightbox-src="solace-press/02-visual-system.png"
+                                    data-lightbox-alt="Solace Press book-cover and catalog system">
+                                <img src="solace-press/02-visual-system.png"
+                                     alt="Solace Press book-cover family and seasonal catalog within the broader visual system"
+                                     loading="lazy">
+                            </button>
+                        </div>
+
+                        <div class="publishing-copy">
+                            <h3>Publishing architecture</h3>
+                            <p>
+                                Covers share hierarchy, publisher placement, material tone, and spine logic, but each title receives its own dominant color, typographic composition, and illustration behavior.
+                            </p>
+
+                            <ul class="plain-list">
+                                <li>Consistent publisher identification across front cover, spine, and back cover.</li>
+                                <li>Flexible title scale and alignment based on the tone and length of each work.</li>
+                                <li>Series recognition without turning different authors into one visual product.</li>
+                                <li>Catalog layouts designed for browsing, comparison, and bookseller communication.</li>
+                                <li>Press sheets that combine metadata, summary, availability, and campaign information.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="applications" class="applications-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">06 / Brand applications<span></span></aside>
+
+                <div class="section-content reveal">
+                    <p class="eyebrow">Communication in practice</p>
+                    <h2>The strongest section is where the system has to work.</h2>
+                    <p class="intro">
+                        Applications are organized by communication purpose rather than treated as a wall of decorative mockups. Each artifact has a different reading distance, content load, production constraint, and audience action.
+                    </p>
+
+                    <div class="application-index">
+                        <article class="application-card">
+                            <span>Publishing</span>
+                            <h3>Book covers and catalog</h3>
+                            <p>Title hierarchy, series recognition, spine behavior, seasonal browsing, and bookseller information.</p>
+                        </article>
+                        <article class="application-card">
+                            <span>Campaign</span>
+                            <h3>Launch and social assets</h3>
+                            <p>Book announcements, author quotes, recommendations, stories, event frames, and reusable templates.</p>
+                        </article>
+                        <article class="application-card">
+                            <span>Events and press</span>
+                            <h3>Posters and collateral</h3>
+                            <p>Author-event posters, invitations, bookmarks, thank-you cards, and one-page press sheets.</p>
+                        </article>
+                        <article class="application-card">
+                            <span>Packaging</span>
+                            <h3>Mailer and tactile details</h3>
+                            <p>Mailer box, tissue, seal, insert card, sticker, label, and small branded touchpoints.</p>
+                        </article>
+                    </div>
+
+                    <div class="board-wrap">
+                        <button class="image-button" type="button"
+                                data-lightbox-src="solace-press/03-applications.png"
+                                data-lightbox-alt="Solace Press brand applications board">
+                            <img src="solace-press/03-applications.png"
+                                 alt="Solace Press applications showing social templates, an author-event poster, print collateral, packaging, stationery, and brand-in-context mockups"
+                                 loading="lazy">
+                        </button>
+                        <div class="caption">
+                            <span class="caption-index">06.1</span>
+                            <span>Applications across launch campaigns, author events, print collateral, mailers, stationery, bookshelves, and small branded objects.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="digital">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">07 / Presentation & digital<span></span></aside>
+
+                <div class="section-content reveal">
+                    <p class="eyebrow">From identity to usable system</p>
+                    <h2>Translate the brand into templates and components.</h2>
+                    <p class="intro">
+                        The presentation and digital directions extend the brand through hierarchy and reusable modules—not by copying the same composition into every format.
+                    </p>
+
+                    <div class="digital-layout">
+                        <div class="system-panel">
+                            <span>Presentation template</span>
+                            <h3>A repeatable editorial deck</h3>
+                            <p>
+                                The proposed presentation system supports publisher introductions, seasonal lists, sales meetings, author partnerships, cultural programming, and internal communication.
+                            </p>
+                            <ul class="plain-list">
+                                <li>Cover and title slides for institutional recognition.</li>
+                                <li>Section dividers for pacing and navigation.</li>
+                                <li>Editorial content slides for book, author, and campaign information.</li>
+                                <li>Image-and-quote slides for atmosphere and storytelling.</li>
+                                <li>Templates designed so content can change without breaking hierarchy.</li>
+                            </ul>
+                        </div>
+
+                        <div class="system-panel">
+                            <span>Website and email direction</span>
+                            <h3>Digital hierarchy for discovery and trust</h3>
+                            <p>
+                                The digital system organizes featured books, new releases, authors, events, journal content, and newsletter subscription while preserving the calm visual voice.
+                            </p>
+                            <ul class="plain-list">
+                                <li>Clear navigation for books, authors, events, about, and editorial content.</li>
+                                <li>Reusable book, article, and event cards.</li>
+                                <li>Consistent metadata and calls to action.</li>
+                                <li>Newsletter components that work across landing pages and email campaigns.</li>
+                                <li>Responsive direction that prioritizes reading and accessible interaction.</li>
+                            </ul>
+                            <div class="ux-callout">
+                                <strong>Where UX appears</strong>
+                                <p>Information hierarchy, navigation, content architecture, reusable components, form behavior, responsive priorities, and accessibility—not formal user research or usability validation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="board-wrap">
+                        <button class="image-button" type="button"
+                                data-lightbox-src="solace-press/04-digital-experience.png"
+                                data-lightbox-alt="Solace Press presentation and digital experience board">
+                            <img src="solace-press/04-digital-experience.png"
+                                 alt="Solace Press digital direction showing presentation templates, website direction, UI components, newsletter design, voice principles, and messaging"
+                                 loading="lazy">
+                        </button>
+                        <div class="caption">
+                            <span class="caption-index">07.1</span>
+                            <span>Presentation templates, website direction, digital components, newsletter design, and brand voice translated into practical communication patterns.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="production" class="production-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">08 / Production & QA<span></span></aside>
+
+                <div class="section-content reveal">
+                    <p class="eyebrow">Designed to be continued by a team</p>
+                    <h2>A brand system is only useful when people can produce with it.</h2>
+                    <p class="intro">
+                        A commercial version of Solace Press would separate protected brand elements from editable content, define output specifications, and provide files that designers, marketers, editors, and production partners could understand without rebuilding the system.
+                    </p>
+
+                    <div class="production-grid">
+                        <article class="production-card">
+                            <strong>Print files</strong>
+                            <p>Define trim, bleed, safe area, color profile, paper assumptions, effective resolution, finishing, and proof requirements for each artifact.</p>
+                        </article>
+                        <article class="production-card">
+                            <strong>Digital formats</strong>
+                            <p>Maintain platform dimensions, safe zones, thumbnail legibility, responsive crops, accessible contrast, and optimized exports.</p>
+                        </article>
+                        <article class="production-card">
+                            <strong>Template logic</strong>
+                            <p>Lock identity and spacing rules while leaving titles, images, dates, metadata, calls to action, and campaign fields editable.</p>
+                        </article>
+                        <article class="production-card">
+                            <strong>Handoff</strong>
+                            <p>Package vector marks, linked assets, font documentation, master templates, export presets, usage notes, and archived versions.</p>
+                        </article>
+                    </div>
+
+                    <div class="file-layout">
+                        <div class="file-tree">
+                            <span class="panel-label">Recommended package structure</span>
+                            <pre>Solace_Press/
+├── 01_Brand_Masters/
+│   ├── Logos/
+│   ├── Illustrations/
+│   ├── Icons/
+│   └── Guidelines/
+├── 02_Publishing/
+│   ├── Covers/
+│   ├── Catalogs/
+│   └── Press_Sheets/
+├── 03_Campaigns/
+│   ├── Social/
+│   ├── Events/
+│   └── Email/
+├── 04_Print_Packaging/
+├── 05_Presentations/
+├── 06_Web_Direction/
+└── 07_Exports_Archive/</pre>
+                        </div>
+
+                        <div class="naming-panel">
+                            <span class="panel-label">Example file naming</span>
+                            <div class="naming-list">
+                                <code>SolacePress_Wordmark_Primary_Black.ai</code>
+                                <code>SolacePress_BookCover_QuietHours_v04.indd</code>
+                                <code>SolacePress_Catalog_Spring2026_Review_v03.pdf</code>
+                                <code>SolacePress_IG-Feed_QuietHours_Launch_01.png</code>
+                                <code>SolacePress_AuthorEvent_Poster_18x24_Print.pdf</code>
+                                <code>SolacePress_SeasonalDeck_v05_Client.pptx</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="qa-grid">
+                        <article class="qa-card">
+                            <span>01</span>
+                            <h3>Brand QA</h3>
+                            <ul>
+                                <li>Correct mark and lockup</li>
+                                <li>Clear space and minimum size</li>
+                                <li>Approved colors and contrast</li>
+                                <li>Typography and hierarchy</li>
+                            </ul>
+                        </article>
+                        <article class="qa-card">
+                            <span>02</span>
+                            <h3>Content QA</h3>
+                            <ul>
+                                <li>Author and title spelling</li>
+                                <li>Dates, venues, prices, and ISBNs</li>
+                                <li>Captions, credits, and metadata</li>
+                                <li>Links and calls to action</li>
+                            </ul>
+                        </article>
+                        <article class="qa-card">
+                            <span>03</span>
+                            <h3>Production QA</h3>
+                            <ul>
+                                <li>Bleed, trim, and safe area</li>
+                                <li>Image resolution and color mode</li>
+                                <li>Linked assets and embedded fonts</li>
+                                <li>Export preset and final filename</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reflection">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">09 / Reflection<span></span></aside>
+
+                <div class="section-content reveal">
+                    <p class="eyebrow">What the project proves</p>
+                    <h2>Recognition comes from relationships, not repetition.</h2>
+                    <p class="intro">
+                        Solace Press demonstrates how one visual idea can become an operating system for publishing and communication. The brand remains recognizable because typography, spacing, crop behavior, voice, and material tone repeat—even when the artifact, audience, and content change.
+                    </p>
+
+                    <div class="reflection-grid">
+                        <article class="reflection-card">
+                            <span>01</span>
+                            <h3>Strongest contribution</h3>
+                            <p>A complete identity architecture applied across publishing, campaigns, events, packaging, presentations, and digital communication.</p>
+                        </article>
+                        <article class="reflection-card">
+                            <span>02</span>
+                            <h3>Largest design risk</h3>
+                            <p>The quiet aesthetic could become too delicate or low-contrast without disciplined hierarchy, proofing, accessibility review, and production testing.</p>
+                        </article>
+                        <article class="reflection-card">
+                            <span>03</span>
+                            <h3>Next iteration</h3>
+                            <p>Rebuild the marks and templates in native production tools, test the system with new title genres, and prototype a responsive storefront.</p>
+                        </article>
+                    </div>
+
+                    <div class="download-panel">
+                        <div>
+                            <h3>Review the complete guideline boards.</h3>
+                            <p>The four-page PDF contains the identity, visual system, application family, presentation template, website direction, components, and messaging system.</p>
+                        </div>
+                        <a class="button" href="solace-press/Solace_Press_Brand_Guidelines.pdf" target="_blank" rel="noopener">Open guidelines PDF ↗</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="next-case">
+        <div class="page-shell next-inner">
+            <div>
+                <p>Continue exploring</p>
+                <h2>Return to selected work.</h2>
+            </div>
+            <a class="next-link" href="index.html#work">View portfolio ↗</a>
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged Solace Press project image" aria-hidden="true">
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close enlarged image">×</button>
+        <img id="lightboxImage" src="" alt="">
+    </div>
+
+    <script>
+        const siteNav = document.getElementById("siteNav");
+        const revealItems = document.querySelectorAll(".reveal");
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        function updateNavigation() {
+            siteNav.classList.toggle("scrolled", window.scrollY > 12);
+        }
+
+        updateNavigation();
+        window.addEventListener("scroll", updateNavigation, { passive: true });
+
+        if (reducedMotion || !("IntersectionObserver" in window)) {
+            revealItems.forEach(item => item.classList.add("is-visible"));
+        } else {
+            const observer = new IntersectionObserver((entries, currentObserver) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        currentObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealItems.forEach(item => observer.observe(item));
+        }
+
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxClose = document.getElementById("lightboxClose");
+        const lightboxTriggers = document.querySelectorAll("[data-lightbox-src]");
+        let previouslyFocused = null;
+
+        function openLightbox(trigger) {
+            previouslyFocused = trigger;
+            lightboxImage.src = trigger.dataset.lightboxSrc;
+            lightboxImage.alt = trigger.dataset.lightboxAlt || "Enlarged Solace Press project image";
+            lightbox.setAttribute("aria-hidden", "false");
+            document.body.classList.add("lightbox-open");
+            lightboxClose.focus();
+        }
+
+        function closeLightbox() {
+            lightbox.setAttribute("aria-hidden", "true");
+            lightboxImage.src = "";
+            lightboxImage.alt = "";
+            document.body.classList.remove("lightbox-open");
+            if (previouslyFocused) previouslyFocused.focus();
+        }
+
+        lightboxTriggers.forEach(trigger => {
+            trigger.addEventListener("click", () => openLightbox(trigger));
+        });
+
+        lightboxClose.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", event => {
+            if (event.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && lightbox.getAttribute("aria-hidden") === "false") {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "project": "Night Shift",
+  "version": 2,
+  "html": "night-shift.html",
+  "new_assets": [
+    "night-shift/mockups/hero-collage-v2.jpg",
+    "night-shift/mockups/spread-rhythm-v2.jpg",
+    "night-shift/mockups/type-color-specimen-v2.png",
+    "night-shift/mockups/production-details-v2.jpg",
+    "night-shift/Night_Shift_Project_Overview.pdf"
+  ]
+}
