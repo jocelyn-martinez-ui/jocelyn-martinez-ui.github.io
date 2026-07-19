@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nutriva is a self-directed UX/UI product concept by Jocelyn Martinez exploring inventory-assisted meal planning, recipe matching, and food-use visibility.">
+    <meta name="description" content="A product strategy, UX architecture, responsive UI, and front-end case study by Jocelyn Martinez exploring explainable meal planning from an imperfect household inventory.">
     <meta name="theme-color" content="#f5f8fb">
-    <meta property="og:title" content="Nutriva — UX/UI Case Study by Jocelyn Martinez">
-    <meta property="og:description" content="A food-planning concept designed to turn available ingredients into practical meal options with clear, editable inventory information.">
+    <meta property="og:title" content="Nutriva — Product Systems &amp; UX/UI Case Study">
+    <meta property="og:description" content="A responsive food-planning concept connecting editable inventory, explainable recommendations, weekly planning, and a working web/mobile prototype.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="mainpage.png">
-    <title>Nutriva — UX/UI Case Study | Jocelyn Martinez</title>
+    <title>Nutriva — Product Systems &amp; UX/UI Case Study</title>
+
+    <script>document.documentElement.classList.add("js");</script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,16 +25,16 @@
             --surface-soft: #f8fafc;
             --ink: #18212b;
             --body: #53606d;
-            --muted: #7a8794;
+            --muted: #63707c;
             --blue: #5a98d2;
             --blue-dark: #285f91;
             --blue-soft: #dceefd;
-            --coral: #dd716f;
-            --coral-dark: #a94d4c;
+            --coral: #b84a38;
+            --coral-dark: #923528;
             --coral-soft: #fae5e4;
-            --green: #55846c;
+            --green: #35634d;
             --green-soft: #e5f1e9;
-            --amber: #a97730;
+            --amber: #765015;
             --amber-soft: #f8eedb;
             --line: #dfe6ec;
             --line-soft: rgba(24, 33, 43, 0.08);
@@ -121,6 +123,17 @@
             transform: translateY(0);
         }
 
+        .reading-progress {
+            position: fixed;
+            inset: 0 auto auto 0;
+            z-index: 1400;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blue-dark), var(--coral));
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
         .page-shell {
             width: min(calc(100% - 3rem), var(--content));
             margin-inline: auto;
@@ -195,7 +208,7 @@
             overflow: hidden;
             background:
                 radial-gradient(circle at 84% 18%, rgba(90, 152, 210, 0.25), transparent 29rem),
-                radial-gradient(circle at 10% 88%, rgba(221, 113, 111, 0.16), transparent 24rem),
+                radial-gradient(circle at 10% 88%, rgba(184, 74, 56, 0.16), transparent 24rem),
                 linear-gradient(180deg, #ffffff 0%, var(--canvas) 100%);
         }
 
@@ -210,7 +223,7 @@
             border-radius: 48% 52% 61% 39% / 43% 40% 60% 57%;
             transform: rotate(22deg);
             box-shadow:
-                -6rem -3rem 0 -1px rgba(221, 113, 111, 0.045),
+                -6rem -3rem 0 -1px rgba(184, 74, 56, 0.045),
                 -12rem 5rem 0 -1px rgba(90, 152, 210, 0.045);
             pointer-events: none;
         }
@@ -288,6 +301,7 @@
             border-radius: 22px;
             background: var(--line);
             gap: 1px;
+            margin: 0;
         }
 
         .meta-item {
@@ -307,6 +321,8 @@
         }
 
         .meta-value {
+            display: block;
+            margin: 0;
             color: var(--ink);
             font-size: 0.93rem;
             font-weight: 600;
@@ -347,6 +363,11 @@
 
         .case-nav a:hover {
             color: var(--blue-dark);
+        }
+
+        .case-nav a.is-active {
+            color: var(--blue-dark);
+            box-shadow: inset 0 -2px 0 var(--coral);
         }
 
         /* Shared sections */
@@ -443,6 +464,32 @@
 
         .project-note strong {
             color: var(--blue-dark);
+        }
+
+        .strategy-thesis {
+            display: grid;
+            grid-template-columns: minmax(140px, 0.45fr) minmax(0, 2fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            padding: 2rem;
+            border-radius: 22px;
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .strategy-thesis strong {
+            color: #9ecbf2;
+            font-size: 0.67rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .strategy-thesis p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.82);
+            font-family: var(--serif);
+            font-size: clamp(1.45rem, 2.7vw, 2.2rem);
+            line-height: 1.25;
         }
 
         /* Cards */
@@ -569,6 +616,8 @@
             border: 1px solid var(--line);
             border-radius: 24px;
             background: var(--line);
+            padding: 0;
+            list-style: none;
         }
 
         .opportunity-item {
@@ -582,13 +631,13 @@
         }
 
         .opportunity-item:nth-child(3) {
-            background: #dd716f;
+            background: var(--coral);
         }
 
         .opportunity-item span {
             display: block;
             margin-bottom: 1.4rem;
-            color: rgba(255, 255, 255, 0.65);
+            color: #fff;
             font-size: 0.63rem;
             font-weight: 700;
             letter-spacing: 0.13em;
@@ -597,7 +646,7 @@
 
         .opportunity-item p {
             margin: 0;
-            color: rgba(255, 255, 255, 0.88);
+            color: #fff;
             font-size: 0.9rem;
             line-height: 1.7;
         }
@@ -759,6 +808,124 @@
             color: rgba(255, 255, 255, 0.74);
         }
 
+        .system-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 2rem;
+            margin: 4rem 0 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .system-heading h3,
+        .system-heading p {
+            margin: 0;
+        }
+
+        .system-heading p {
+            max-width: 470px;
+            color: var(--body);
+            font-size: 0.88rem;
+        }
+
+        .system-lifecycles {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .lifecycle-card {
+            padding: 1.8rem;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            background: var(--surface);
+        }
+
+        .lifecycle-card h3 {
+            margin-bottom: 1.3rem;
+            font-family: var(--sans);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .state-chain {
+            display: grid;
+            gap: 0.7rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .state-chain li {
+            position: relative;
+            padding: 0.85rem 2.2rem 0.85rem 1rem;
+            border-radius: 12px;
+            background: var(--surface-soft);
+            color: var(--body);
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .state-chain li:not(:last-child)::after {
+            content: "↓";
+            position: absolute;
+            right: 0.9rem;
+            color: var(--coral-dark);
+        }
+
+        .automation-table-wrap {
+            margin-top: 1rem;
+            overflow-x: auto;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            background: var(--surface);
+        }
+
+        .automation-table {
+            width: 100%;
+            min-width: 820px;
+            border-collapse: collapse;
+        }
+
+        .automation-table caption {
+            padding: 1.35rem 1.5rem;
+            color: var(--ink);
+            font-family: var(--serif);
+            font-size: 1.45rem;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .automation-table th,
+        .automation-table td {
+            padding: 1rem 1.2rem;
+            border-top: 1px solid var(--line);
+            vertical-align: top;
+            text-align: left;
+        }
+
+        .automation-table th {
+            color: var(--blue-dark);
+            background: var(--surface-soft);
+            font-size: 0.67rem;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .automation-table td {
+            color: var(--body);
+            font-size: 0.82rem;
+            line-height: 1.6;
+        }
+
+        .automation-table td:first-child {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
         /* Principles */
         .principle-grid {
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -829,6 +996,40 @@
             font-size: 0.76rem;
             letter-spacing: 0.07em;
             text-transform: uppercase;
+        }
+
+        .prototype-coverage {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1px;
+            margin: 2.7rem 0 0;
+            padding: 1px;
+            overflow: hidden;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.15);
+            list-style: none;
+        }
+
+        .prototype-coverage li {
+            min-height: 118px;
+            padding: 1.3rem;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .prototype-coverage strong {
+            display: block;
+            margin-bottom: 0.45rem;
+            color: #f0d575;
+            font-family: var(--serif);
+            font-size: 2.2rem;
+            font-weight: 500;
+            line-height: 0.95;
+        }
+
+        .prototype-coverage span {
+            color: rgba(255, 255, 255, 0.74);
+            font-size: 0.77rem;
+            line-height: 1.5;
         }
 
         /* Screens */
@@ -902,6 +1103,41 @@
             letter-spacing: 0.12em;
         }
 
+        .evolution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 4rem;
+        }
+
+        .evolution-card {
+            padding: 1.6rem;
+            border: 1px solid rgba(40, 95, 145, 0.16);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.72);
+        }
+
+        .evolution-card span {
+            display: block;
+            margin-bottom: 1.2rem;
+            color: var(--coral-dark);
+            font-size: 0.64rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .evolution-card strong {
+            display: block;
+            margin-bottom: 0.45rem;
+        }
+
+        .evolution-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: 0.82rem;
+        }
+
         /* Visual system */
         .visual-section {
             background: var(--surface);
@@ -931,6 +1167,9 @@
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
         }
 
         .swatch {
@@ -945,6 +1184,26 @@
             font-weight: 700;
             letter-spacing: 0.06em;
             text-transform: uppercase;
+        }
+
+        .swatch:nth-child(1) {
+            color: #fff;
+            background: #1b1e18;
+        }
+
+        .swatch:nth-child(2) {
+            color: #fff;
+            background: #b84a38;
+        }
+
+        .swatch:nth-child(3) {
+            color: #1b1e18;
+            background: #f4efe4;
+        }
+
+        .swatch:nth-child(4) {
+            color: #fff;
+            background: #63745b;
         }
 
         .type-stack {
@@ -999,6 +1258,8 @@
             border: 1px solid var(--line);
             border-radius: 22px;
             background: var(--line);
+            padding: 0;
+            list-style: none;
         }
 
         .status-card {
@@ -1041,6 +1302,37 @@
             font-size: 0.85rem;
         }
 
+        .qa-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1px;
+            margin-top: 1rem;
+            padding: 1px;
+            overflow: hidden;
+            border-radius: 20px;
+            background: var(--line);
+        }
+
+        .qa-item {
+            min-height: 185px;
+            padding: 1.5rem;
+            background: var(--surface-soft);
+        }
+
+        .qa-item strong {
+            display: block;
+            margin-bottom: 0.65rem;
+            color: var(--ink);
+            font-size: 0.88rem;
+        }
+
+        .qa-item p {
+            margin: 0;
+            color: var(--body);
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
         /* Validation */
         .validation-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1061,6 +1353,96 @@
             background: var(--blue-soft);
             color: var(--blue-dark);
             font-weight: 700;
+        }
+
+        .measurement-grid,
+        .validation-roadmap,
+        .delivery-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .measurement-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 1rem;
+        }
+
+        .measurement-card,
+        .validation-step,
+        .delivery-card {
+            padding: 1.7rem;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: var(--surface);
+        }
+
+        .measurement-card > span,
+        .validation-step > span,
+        .delivery-card > span {
+            display: block;
+            margin-bottom: 1.5rem;
+            color: var(--coral-dark);
+            font-size: 0.64rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .measurement-card h3,
+        .validation-step h3,
+        .delivery-card h3 {
+            margin-bottom: 0.65rem;
+            font-family: var(--sans);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .measurement-card p,
+        .validation-step p,
+        .delivery-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: 0.82rem;
+            line-height: 1.65;
+        }
+
+        .measurement-card ul {
+            margin: 1rem 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .measurement-card li {
+            padding: 0.45rem 0;
+            border-top: 1px solid var(--line);
+            color: var(--body);
+            font-size: 0.78rem;
+        }
+
+        .validation-roadmap {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 1rem;
+        }
+
+        .delivery-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            margin-top: 1rem;
+        }
+
+        .validation-heading {
+            margin: 4rem 0 1.1rem;
+            font-size: clamp(2rem, 4vw, 3.1rem);
+        }
+
+        .validation-note {
+            margin-top: 1rem;
+            padding: 1.2rem 1.35rem;
+            border: 1px solid rgba(40, 95, 145, 0.25);
+            border-radius: 14px;
+            background: var(--blue-soft);
+            color: #35536b;
+            font-size: 0.84rem;
         }
 
         /* Reflection */
@@ -1164,14 +1546,23 @@
             font-size: 1.5rem;
         }
 
-        /* Motion */
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.72s ease, transform 0.72s ease;
+        .lightbox-close:focus-visible {
+            outline-color: #f0d575;
         }
 
-        .reveal.is-visible {
+        /* Motion */
+        .reveal {
+            opacity: 1;
+            transform: none;
+        }
+
+        .js .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.46s ease, transform 0.46s ease;
+        }
+
+        .js .reveal.is-visible {
             opacity: 1;
             transform: none;
         }
@@ -1187,7 +1578,11 @@
             .opportunity-strip,
             .flow,
             .principle-grid,
-            .reflection-grid {
+            .reflection-grid,
+            .evolution-grid,
+            .measurement-grid,
+            .qa-grid,
+            .delivery-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
@@ -1257,8 +1652,21 @@
             .visual-layout,
             .validation-grid,
             .reflection-grid,
-            .status-system {
+            .status-system,
+            .strategy-thesis,
+            .system-lifecycles,
+            .prototype-coverage,
+            .evolution-grid,
+            .qa-grid,
+            .measurement-grid,
+            .validation-roadmap,
+            .delivery-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .system-heading {
+                align-items: start;
+                flex-direction: column;
             }
 
             .meta-item {
@@ -1324,7 +1732,7 @@
                 transition-duration: 0.01ms !important;
             }
 
-            .reveal {
+            .js .reveal {
                 opacity: 1;
                 transform: none;
             }
@@ -1334,9 +1742,9 @@
             --nv-ink: #1b1e18;
             --nv-paper: #f4efe4;
             --nv-cream: #fffaf0;
-            --nv-coral: #dd6b57;
-            --nv-coral-dark: #b84a38;
-            --nv-sage: #78886f;
+            --nv-coral: #b84a38;
+            --nv-coral-dark: #923528;
+            --nv-sage: #63745b;
             --nv-sage-soft: #dfe7d9;
             --nv-butter: #f0d575;
             --nv-line: rgba(27, 30, 24, 0.13);
@@ -1345,7 +1753,7 @@
             padding: 8rem 0;
             color: #f7f1e6;
             background:
-                radial-gradient(circle at 13% 14%, rgba(221, 107, 87, 0.2), transparent 30rem),
+                radial-gradient(circle at 13% 14%, rgba(184, 74, 56, 0.2), transparent 30rem),
                 radial-gradient(circle at 92% 88%, rgba(240, 213, 117, 0.12), transparent 34rem),
                 #171a15;
         }
@@ -1461,6 +1869,18 @@
             box-shadow: 0 0 0 5px rgba(130,211,113,.12);
         }
 
+        .nv-demo-announcer {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         .nv-stage {
             position: relative;
             display: grid;
@@ -1557,7 +1977,7 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: #dd6b57;
+            background: #b84a38;
         }
 
         .nv-window-dots i:nth-child(2) { background: #f0d575; }
@@ -1745,6 +2165,10 @@
             font-weight: 800;
             letter-spacing: .13em;
             text-transform: uppercase;
+        }
+
+        .nv-freshness-card .nv-page-kicker {
+            color: #f0d575;
         }
 
         .nv-page h3,
@@ -2000,7 +2424,7 @@
         }
 
         .nv-use-item strong { font-size: .72rem; }
-        .nv-use-item small { color: #83877e; font-size: .62rem; }
+        .nv-use-item small { color: #5f655c; font-size: .62rem; }
         .nv-use-item .nv-mini-pill { color: #984132; background: #f8ddd7; }
 
         .nv-search-row {
@@ -2036,7 +2460,7 @@
 
         .nv-search-field input:focus {
             border-color: var(--nv-coral);
-            box-shadow: 0 0 0 4px rgba(221,107,87,.12);
+            box-shadow: 0 0 0 4px rgba(184,74,56,.12);
         }
 
         .nv-chip-row {
@@ -2145,7 +2569,7 @@
             margin-top: .8rem;
             padding-top: .72rem;
             border-top: 1px solid var(--nv-line);
-            color: #71756c;
+            color: #5f655c;
             font-size: .63rem;
         }
 
@@ -2219,7 +2643,7 @@
         .nv-pantry-row strong,
         .nv-pantry-row small { display: block; }
         .nv-pantry-row strong { font-size: .75rem; }
-        .nv-pantry-row small { color: #81847c; font-size: .63rem; }
+        .nv-pantry-row small { color: #5f655c; font-size: .63rem; }
 
         .nv-status {
             display: inline-flex;
@@ -2319,7 +2743,7 @@
         }
 
         .nv-day-copy small {
-            color: #7b7f76;
+            color: #5f655c;
             font-size: .58rem;
         }
 
@@ -2330,7 +2754,7 @@
             padding: .65rem;
             border: 1px dashed rgba(27,30,24,.22);
             border-radius: 13px;
-            color: #777b72;
+            color: #5f655c;
             background: rgba(255,255,255,.4);
             font-size: .64rem;
             text-align: center;
@@ -2418,7 +2842,7 @@
             padding: .5rem .7rem;
             border: 0;
             border-radius: 9px;
-            color: #6e7269;
+            color: #5f655c;
             background: transparent;
             font-size: .68rem;
             font-weight: 800;
@@ -2456,7 +2880,7 @@
         }
 
         .nv-check-row span { font-size: .69rem; font-weight: 700; }
-        .nv-check-row small { color: #858980; font-size: .61rem; }
+        .nv-check-row small { color: #5f655c; font-size: .61rem; }
 
         .nv-step-row {
             display: grid;
@@ -2525,8 +2949,8 @@
         }
 
         .nv-grocery-item span { font-size: .69rem; font-weight: 700; }
-        .nv-grocery-item small { color: #878a82; font-size: .61rem; }
-        .nv-grocery-item:has(input:checked) span { color: #989b94; text-decoration: line-through; }
+        .nv-grocery-item small { color: #5f655c; font-size: .61rem; }
+        .nv-grocery-item:has(input:checked) span { color: #62665d; text-decoration: line-through; }
 
         .nv-phone {
             position: relative;
@@ -2643,7 +3067,7 @@
             padding: 4px 0;
             border: 0;
             border-radius: 11px;
-            color: #797d73;
+            color: #5f655c;
             background: transparent;
             font-size: 9px;
             font-weight: 800;
@@ -2654,7 +3078,7 @@
 
         .nv-mobile-nav button.is-active {
             color: var(--nv-coral-dark);
-            background: rgba(221,107,87,.1);
+            background: rgba(184,74,56,.1);
         }
 
         .nv-phone .nv-page-head {
@@ -2974,57 +3398,59 @@
 
 <body>
     <a class="skip-link" href="#main">Skip to case study</a>
+    <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
 
     <nav class="site-nav" id="siteNav" aria-label="Portfolio navigation">
         <div class="page-shell nav-inner">
-            <a class="brand" href="index.html">Jocelyn Martinez</a>
+            <a class="brand" href="../index.html">Jocelyn Martinez</a>
             <div class="nav-links">
-                <a href="#prototype">Interactive prototype</a>
-                <a href="#validation">Validation plan</a>
-                <a class="back-link" href="index.html#portfolio"><span aria-hidden="true">←</span> Back to work</a>
+                <a href="#overview">Strategy</a>
+                <a href="#prototype">Prototype</a>
+                <a href="#validation">Validation</a>
+                <a class="back-link" href="../index.html#work"><span aria-hidden="true">←</span> Back to work</a>
             </div>
         </div>
     </nav>
 
     <header class="hero">
         <div class="page-shell hero-content reveal">
-            <p class="eyebrow">Self-directed concept · Product & UX/UI design</p>
+            <p class="eyebrow">Product strategy · UX architecture · Responsive UI engineering</p>
             <h1>Nutriva <em>Kitchen</em></h1>
             <p class="hero-lede">
-                An inventory-assisted meal-planning concept that helps people understand what food they have, find realistic recipes, and use ingredients before they are forgotten.
+                Nutriva turns an imperfect, editable household inventory into explainable meal options. I designed the product system—and a working web/mobile prototype—around low-effort upkeep, reversible automation, and clear recommendation logic.
             </p>
 
-            <div class="hero-meta" aria-label="Project summary">
+            <dl class="hero-meta">
                 <div class="meta-item">
-                    <span class="meta-label">My focus</span>
-                    <span class="meta-value">Product strategy, information architecture, interaction design, UI design</span>
+                    <dt class="meta-label">My ownership</dt>
+                    <dd class="meta-value">End-to-end product, UX/UI &amp; prototype implementation</dd>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-label">Context</span>
-                    <span class="meta-value">Self-directed mobile product concept</span>
+                    <dt class="meta-label">Platforms</dt>
+                    <dd class="meta-value">Responsive web + mobile product experience</dd>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-label">Audience</span>
-                    <span class="meta-value">People planning meals around limited time, energy, and existing ingredients</span>
+                    <dt class="meta-label">Core product risk</dt>
+                    <dd class="meta-value">Maintenance effort may exceed planning value</dd>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-label">Deliverables</span>
-                    <span class="meta-value">Inventory model, recipe flow, mobile UI, validation plan</span>
+                    <dt class="meta-label">Evidence status</dt>
+                    <dd class="meta-value">Self-directed concept · not launched or validated</dd>
                 </div>
-            </div>
+            </dl>
         </div>
     </header>
 
     <nav class="case-nav" aria-label="Case study sections">
         <div class="page-shell case-nav-inner">
             <a href="#overview">Overview</a>
-            <a href="#review">Comparative review</a>
-            <a href="#audience">Audience</a>
-            <a href="#flow">Experience flow</a>
+            <a href="#review">Product lens</a>
+            <a href="#audience">Behaviors</a>
+            <a href="#flow">System model</a>
             <a href="#decisions">Decisions</a>
             <a href="#prototype">Prototype</a>
-            <a href="#screens">Screens</a>
-            <a href="#visual">Visual system</a>
+            <a href="#screens">Evolution</a>
+            <a href="#visual">Interface system</a>
             <a href="#validation">Validation</a>
             <a href="#reflection">Reflection</a>
         </div>
@@ -3033,33 +3459,38 @@
     <main id="main">
         <section id="overview">
             <div class="page-shell section-grid">
-                <aside class="section-kicker">01 / Overview<span></span></aside>
+                <div class="section-kicker">01 / Executive brief<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">The opportunity</p>
-                    <h2>Make dinner planning begin with what is already available.</h2>
+                    <p class="eyebrow">The product thesis</p>
+                    <h2>This is not a recipe feed. It is a household information system.</h2>
                     <p class="intro">
-                        Deciding what to cook requires several small but connected tasks: remembering what is in the kitchen, checking which items should be used soon, comparing ingredients against recipes, considering time and dietary needs, and deciding whether missing items are worth purchasing.
+                        Dinner planning breaks because the information needed to decide is scattered: what is available, what may need attention, how much effort is realistic, which preferences matter tonight, and whether missing ingredients justify a purchase.
                     </p>
                     <p class="intro">
-                        Nutriva explores one connected experience for those tasks. The product concept combines an editable kitchen inventory with recipe matching, then explains why each suggestion is practical. The goal is not to remove user judgment—it is to reduce the amount of information a person must assemble before making a decision.
+                        Nutriva explores one connected decision loop. An editable inventory informs recipe ranking; each recommendation explains its fit; planning updates the grocery list; and every inferred input remains reviewable. The system succeeds only if that loop creates more value than the work required to maintain it.
                     </p>
 
                     <div class="summary-grid">
                         <article class="summary-card">
                             <span class="card-number">01</span>
-                            <h3>Understand the kitchen</h3>
-                            <p>A visual inventory shows what is available, what needs confirmation, and which items may be useful to prioritize.</p>
+                            <h3>Reduce setup cost</h3>
+                            <p>Support photo, receipt, barcode, and manual entry while routing uncertain information into a lightweight confirmation queue.</p>
                         </article>
                         <article class="summary-card">
                             <span class="card-number">02</span>
-                            <h3>Match realistic meals</h3>
-                            <p>Recipes are ranked by ingredient coverage, preparation time, dietary settings, and the user’s willingness to substitute or shop.</p>
+                            <h3>Explain every match</h3>
+                            <p>Rank meals by declared constraints, then show ingredient coverage, missing items, effort, and substitution options before selection.</p>
                         </article>
                         <article class="summary-card">
                             <span class="card-number">03</span>
-                            <h3>Keep people in control</h3>
-                            <p>Recognition results, quantities, freshness estimates, and substitutions remain visible and editable before affecting recommendations.</p>
+                            <h3>Close the loop</h3>
+                            <p>Connect recipe choice, weekly planning, and grocery preparation while keeping inventory changes and household judgment reversible.</p>
                         </article>
+                    </div>
+
+                    <div class="strategy-thesis">
+                        <strong>Product hypothesis</strong>
+                        <p>If a household can maintain a “good enough” inventory with little correction effort, then explainable recipe matching can shorten dinner decisions and make grocery planning more intentional.</p>
                     </div>
 
                     <div class="project-note">
@@ -3074,12 +3505,12 @@
 
         <section id="review" class="review-section">
             <div class="page-shell section-grid">
-                <aside class="section-kicker">02 / Comparative review<span></span></aside>
+                <div class="section-kicker">02 / Product landscape<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">Informal product audit</p>
-                    <h2>Existing products solve adjacent parts of the meal-planning journey.</h2>
+                    <p class="eyebrow">Strategic product lens</p>
+                    <h2>Adjacent products optimize different parts of the same decision.</h2>
                     <p class="intro">
-                        I reviewed common workflows in MyFitnessPal, Mealime, and HelloFresh to understand how nutrition tracking, recipe planning, and meal delivery address different user needs. This was a directional product review—not formal market research or an objective ranking.
+                        At the time of this concept review, I used common workflows in MyFitnessPal, Mealime, and HelloFresh to examine three different product models: tracking, planning, and provisioning. The goal was to isolate an interaction opportunity—not claim a comprehensive or current market ranking.
                     </p>
 
                     <div class="review-grid">
@@ -3135,29 +3566,29 @@
                         </article>
                     </div>
 
-                    <div class="opportunity-strip" aria-label="Nutriva product opportunities">
-                        <div class="opportunity-item">
+                    <ul class="opportunity-strip">
+                        <li class="opportunity-item">
                             <span>Opportunity 01</span>
                             <p>Connect inventory and recipe discovery so the user does not need to mentally compare two separate systems.</p>
-                        </div>
-                        <div class="opportunity-item">
+                        </li>
+                        <li class="opportunity-item">
                             <span>Opportunity 02</span>
                             <p>Explain recommendation fit through ingredients available, ingredients missing, time, and substitution options.</p>
-                        </div>
-                        <div class="opportunity-item">
+                        </li>
+                        <li class="opportunity-item">
                             <span>Opportunity 03</span>
                             <p>Make uncertain system information editable rather than presenting recognition or freshness estimates as fact.</p>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
 
         <section id="audience">
             <div class="page-shell section-grid">
-                <aside class="section-kicker">03 / Audience<span></span></aside>
+                <div class="section-kicker">03 / Behavioral contexts<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">Behavior-based needs</p>
+                    <p class="eyebrow">Jobs and constraints</p>
                     <h2>The product supports two moments in the same household.</h2>
                     <p class="intro">
                         Rather than relying on a fictional demographic persona, I framed the audience around observable situations. The same person may use Nutriva differently during a rushed weeknight and a planned grocery session.
@@ -3188,18 +3619,23 @@
                             </ul>
                         </article>
                     </div>
+
+                    <div class="project-note">
+                        <div class="note-icon" aria-hidden="true">!</div>
+                        <p><strong>Shared constraint:</strong> Kitchen state changes outside the product. Multiple people may buy, move, consume, or discard food, so the design cannot depend on perfect ownership or perfectly current data.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="flow">
             <div class="page-shell section-grid">
-                <aside class="section-kicker">04 / Experience flow<span></span></aside>
+                <div class="section-kicker">04 / System model<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">Proposed interaction model</p>
-                    <h2>Capture, confirm, compare, and cook.</h2>
+                    <p class="eyebrow">Experience architecture</p>
+                    <h2>Two synchronized lifecycles turn uncertain input into an explainable choice.</h2>
                     <p class="intro">
-                        The core flow keeps recognition and recommendation separate. The system may assist with identifying food, but the user confirms uncertain information before it meaningfully changes the recipe results.
+                        The experience keeps recognition and recommendation separate. Inventory state determines what may be eligible; declared constraints and ranking logic determine what is shown; and the explanation layer lets the user inspect the result before acting.
                     </p>
 
                     <div class="flow">
@@ -3225,8 +3661,74 @@
                         </article>
                     </div>
 
+                    <div class="system-heading">
+                        <h3>State before screen</h3>
+                        <p>Responsive interfaces may change density, but the underlying inventory and recommendation states must remain consistent.</p>
+                    </div>
+
+                    <div class="system-lifecycles">
+                        <article class="lifecycle-card">
+                            <h3>Inventory lifecycle</h3>
+                            <ol class="state-chain">
+                                <li>Uncaptured or stale</li>
+                                <li>Detected or manually entered</li>
+                                <li>Needs review or confirmed</li>
+                                <li>Updated, consumed, or removed</li>
+                            </ol>
+                        </article>
+                        <article class="lifecycle-card">
+                            <h3>Recommendation lifecycle</h3>
+                            <ol class="state-chain">
+                                <li>Eligible under current constraints</li>
+                                <li>Ranked with visible rationale</li>
+                                <li>Chosen, adjusted, saved, or dismissed</li>
+                                <li>Added to plan and grocery workflow</li>
+                            </ol>
+                        </article>
+                    </div>
+
+                    <div class="automation-table-wrap">
+                        <table class="automation-table">
+                            <caption>Proposed automation contract</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Capability</th>
+                                    <th scope="col">The system may assist</th>
+                                    <th scope="col">The user must control</th>
+                                    <th scope="col">The product must not claim</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Recognition</td>
+                                    <td>Suggest an ingredient, quantity range, source, and confidence.</td>
+                                    <td>Confirm, correct, add manually, or skip uncertain items.</td>
+                                    <td>That a visual guess is an exact kitchen record.</td>
+                                </tr>
+                                <tr>
+                                    <td>Freshness cues</td>
+                                    <td>Surface user-entered dates and items worth checking.</td>
+                                    <td>Inspect the food and decide whether it should be used or removed.</td>
+                                    <td>That an inferred date determines whether food is safe.</td>
+                                </tr>
+                                <tr>
+                                    <td>Recipe ranking</td>
+                                    <td>Order options by declared inventory, time, effort, and preferences.</td>
+                                    <td>Review rationale, substitutions, dietary settings, and missing items.</td>
+                                    <td>Medical suitability or universal dietary safety.</td>
+                                </tr>
+                                <tr>
+                                    <td>Grocery planning</td>
+                                    <td>Generate editable items from selected meals and current inventory.</td>
+                                    <td>Resolve quantities, household needs, priorities, and final purchases.</td>
+                                    <td>Perfect knowledge of what the household already has.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                     <div class="system-boundary">
-                        <p class="eyebrow">Product boundary</p>
+                        <p class="eyebrow">Safety boundary</p>
                         <h3>Recognition should reduce entry effort—not disguise uncertainty.</h3>
                         <p>
                             A responsible product would show confidence, request confirmation, and avoid presenting inferred food condition or safety as a guarantee. Manual entry must remain available, and recommendations should never replace food-safety guidance or professional dietary advice.
@@ -3238,10 +3740,11 @@
 
         <section id="decisions">
             <div class="page-shell section-grid">
-                <aside class="section-kicker">05 / Design decisions<span></span></aside>
+                <div class="section-kicker">05 / Decision records<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">Interaction and information design</p>
+                    <p class="eyebrow">Interaction and information strategy</p>
                     <h2>Make the next decision easier without hiding the tradeoffs.</h2>
+                    <p class="intro">Each decision links the interface response to a product risk so design, engineering, content, and domain partners can challenge the same assumptions.</p>
 
                     <div class="principle-grid">
                         <article class="principle-card">
@@ -3267,8 +3770,8 @@
                             <h3>Prioritize confidence and correction.</h3>
                             <p>Each recognized item can display its source, quantity, storage location, and confidence. Editing is available directly from the inventory card.</p>
                             <div class="decision-detail">
-                                <strong>Design response</strong>
-                                <p>Visible “needs review” states, batch confirmation, and manual alternatives to scanning.</p>
+                                <strong>Tradeoff &amp; mitigation</strong>
+                                <p>Review creates friction, but silent errors erode the entire recommendation model. Batch confirmation and manual alternatives keep correction proportional to uncertainty.</p>
                             </div>
                         </article>
 
@@ -3277,8 +3780,8 @@
                             <h3>Explain why a meal is practical.</h3>
                             <p>A recommendation should not appear as a mysterious algorithmic answer. It should show which ingredients are available, which are missing, and what can be substituted.</p>
                             <div class="decision-detail">
-                                <strong>Design response</strong>
-                                <p>Ingredient coverage, effort, time, dietary fit, and missing-item visibility before selection.</p>
+                                <strong>Tradeoff &amp; mitigation</strong>
+                                <p>Explanation adds card density, so the first layer shows match, time, and missing items while recipe detail carries substitutions and complete rationale.</p>
                             </div>
                         </article>
 
@@ -3287,8 +3790,8 @@
                             <h3>Avoid false precision.</h3>
                             <p>Food condition depends on purchase date, storage, preparation, and other factors. A concept should not imply that an automated date is certain.</p>
                             <div class="decision-detail">
-                                <strong>Design response</strong>
-                                <p>Plain-language estimates, user-entered dates, “check item” guidance, and no automatic food-safety guarantees.</p>
+                                <strong>Tradeoff &amp; mitigation</strong>
+                                <p>Less precise language can feel less convenient, so each estimate pairs uncertainty with a useful next action: review, prioritize, update, or remove.</p>
                             </div>
                         </article>
 
@@ -3297,8 +3800,8 @@
                             <h3>Lead with tonight’s constraints.</h3>
                             <p>Time, effort, dietary requirements, and willingness to shop are more immediately useful than exposing every possible filter at once.</p>
                             <div class="decision-detail">
-                                <strong>Design response</strong>
-                                <p>Persistent household settings with a small set of situational controls for the current meal.</p>
+                                <strong>Tradeoff &amp; mitigation</strong>
+                                <p>Defaults reduce effort but can hide control. Persistent household settings remain editable, while a small set of situational filters handles tonight’s context.</p>
                             </div>
                         </article>
                     </div>
@@ -3308,32 +3811,40 @@
 
         <section id="prototype" class="nv-prototype-section">
             <div class="page-shell section-grid">
-                <aside class="section-kicker">06 / Prototype<span></span></aside>
+                <div class="section-kicker">06 / Working prototype<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">Interactive product experience</p>
-                    <h2>Try the redesigned Nutriva.</h2>
+                    <p class="eyebrow">Interaction evidence</p>
+                    <h2 id="prototypeHeading">Test the system, not just the screens.</h2>
                     <p class="intro">
-                        This working prototype connects recipe discovery, pantry awareness, weekly planning, and grocery preparation. Switch between the responsive website and iPhone 16 Pro Max app, then explore the core journey directly in the case study.
+                        This coded prototype connects recipe discovery, pantry awareness, weekly planning, grocery preparation, and cook mode. Switch between responsive website and phone densities, then explore the shared product state directly in the case study.
                     </p>
 
+                    <ul class="prototype-coverage">
+                        <li><strong>6</strong><span>connected destinations across planning, inventory, discovery, and execution</span></li>
+                        <li><strong>2</strong><span>responsive densities sharing the same navigation, content, and state model</span></li>
+                        <li><strong>Live</strong><span>search, filtering, saving, quantity changes, planning, and grocery interactions</span></li>
+                    </ul>
+
                     <div class="nv-demo">
-                        <div class="nv-demo-toolbar" aria-label="Prototype display controls">
+                        <div class="nv-demo-toolbar">
                             <div class="nv-mode-switch" role="group" aria-label="Choose prototype display">
                                 <button class="nv-mode-button" type="button" data-nv-mode="website" aria-pressed="true">Responsive website</button>
-                                <button class="nv-mode-button" type="button" data-nv-mode="iphone" aria-pressed="false">iPhone 16 Pro Max</button>
+                                <button class="nv-mode-button" type="button" data-nv-mode="iphone" aria-pressed="false">Mobile app</button>
                             </div>
                             <span class="nv-demo-status">Live prototype · tap anything</span>
                         </div>
 
+                        <p class="nv-demo-announcer" id="nvPrototypeStatus" aria-live="polite" aria-atomic="true"></p>
+
                         <div class="nv-stage" id="nvStage">
-                            <div id="nvPrototypeRoot" aria-live="polite">
+                            <div id="nvPrototypeRoot">
                                 <noscript>Please enable JavaScript to explore the interactive Nutriva prototype.</noscript>
                             </div>
                         </div>
 
                         <div class="nv-demo-note">
                             <span>Try: search recipes, save a favorite, update pantry quantities, plan a meal, and check off groceries.</span>
-                            <span>Concept prototype · sample content</span>
+                            <span>Interaction prototype · sample content · not validation evidence</span>
                         </div>
                     </div>
                 </div>
@@ -3342,10 +3853,10 @@
 
         <section id="screens" class="screens-section">
             <div class="page-shell section-grid">
-                <aside class="section-kicker">07 / Screens<span></span></aside>
+                <div class="section-kicker">07 / Design evolution<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">Earlier interface exploration</p>
-                    <h2>The first direction established the product model.</h2>
+                    <p class="eyebrow">Iteration evidence</p>
+                    <h2>The first direction made the idea visible; the refinement made it operable.</h2>
                     <p class="intro">
                         These original screens document how the dashboard, recipe discovery, and inventory model began. The interactive prototype above shows the refined visual direction and expanded end-to-end flow. Select any earlier screen to enlarge it.
                     </p>
@@ -3378,38 +3889,56 @@
                             <p>Organizes available food while keeping quantities, status, and uncertain information easy to review.</p>
                         </article>
                     </div>
+
+                    <div class="evolution-grid">
+                        <article class="evolution-card">
+                            <span>From isolated screens</span>
+                            <strong>To a connected decision loop</strong>
+                            <p>The refinement links pantry state, recipe rationale, weekly planning, groceries, and cooking instead of presenting independent destinations.</p>
+                        </article>
+                        <article class="evolution-card">
+                            <span>From mobile presentation</span>
+                            <strong>To responsive task density</strong>
+                            <p>Phone layouts prioritize one action and progressive disclosure; the website expands planning and inventory into scannable operational views.</p>
+                        </article>
+                        <article class="evolution-card">
+                            <span>From attractive status</span>
+                            <strong>To accountable language</strong>
+                            <p>States now describe confidence, review, and next action without treating color, recognition, or freshness estimates as fact.</p>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="visual" class="visual-section">
             <div class="page-shell section-grid">
-                <aside class="section-kicker">08 / Visual system<span></span></aside>
+                <div class="section-kicker">08 / Interface system<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">Clear, fresh, and task-oriented</p>
-                    <h2>A food interface that lets information and imagery lead.</h2>
+                    <p class="eyebrow">Visual language &amp; delivery rules</p>
+                    <h2>One product language, tuned for appetite, planning, and operational clarity.</h2>
                     <p class="intro">
-                        The refined system pairs warm parchment with garden sage, butter yellow, and focused coral actions. Editorial typography gives recipes appetite and personality; compact sans-serif controls keep planning and inventory tasks clear.
+                        The system pairs warm parchment with garden sage, butter yellow, and an accessible coral action color. Editorial typography gives recipes appetite and personality; compact sans-serif controls keep quantities, status, filters, and instructions legible across densities.
                     </p>
 
                     <div class="visual-layout">
                         <div>
                             <h3 class="subheading">Core palette</h3>
                             <p class="subcopy">Color roles remain consistent across navigation, actions, status, and supporting surfaces.</p>
-                            <div class="palette-grid" aria-label="Nutriva color palette">
-                                <div class="swatch" style="background:#1b1e18;color:#fff;">
+                            <ul class="palette-grid">
+                                <li class="swatch">
                                     <span>Kitchen ink</span><span>#1B1E18</span>
-                                </div>
-                                <div class="swatch" style="background:#dd6b57;color:#fff;">
-                                    <span>Action coral</span><span>#DD6B57</span>
-                                </div>
-                                <div class="swatch" style="background:#f4efe4;color:#1b1e18;">
+                                </li>
+                                <li class="swatch">
+                                    <span>Accessible action coral</span><span>#B84A38</span>
+                                </li>
+                                <li class="swatch">
                                     <span>Warm parchment</span><span>#F4EFE4</span>
-                                </div>
-                                <div class="swatch" style="background:#78886f;color:#fff;">
-                                    <span>Garden sage</span><span>#78886F</span>
-                                </div>
-                            </div>
+                                </li>
+                                <li class="swatch">
+                                    <span>Accessible garden sage</span><span>#63745B</span>
+                                </li>
+                            </ul>
                         </div>
 
                         <div>
@@ -3430,21 +3959,45 @@
                         </div>
                     </div>
 
-                    <div class="status-system" aria-label="Inventory status examples">
-                        <article class="status-card">
+                    <ul class="status-system">
+                        <li class="status-card">
                             <span class="status-chip stable">Stable</span>
                             <strong>No immediate action</strong>
                             <p>Uses language and a calm visual state rather than implying exact freshness.</p>
-                        </article>
-                        <article class="status-card">
+                        </li>
+                        <li class="status-card">
                             <span class="status-chip use-soon">Use soon</span>
                             <strong>Worth considering</strong>
                             <p>Surfaces the item in relevant recipes without treating it as an emergency.</p>
-                        </article>
-                        <article class="status-card">
+                        </li>
+                        <li class="status-card">
                             <span class="status-chip priority">Check item</span>
                             <strong>User review needed</strong>
                             <p>Signals uncertainty or an entered date that warrants attention—not a safety determination.</p>
+                        </li>
+                    </ul>
+
+                    <div class="system-heading">
+                        <h3>Interface quality contract</h3>
+                        <p>These rules translate the product model into repeatable responsive and accessible behavior.</p>
+                    </div>
+
+                    <div class="qa-grid">
+                        <article class="qa-item">
+                            <strong>Action hierarchy</strong>
+                            <p>One primary action per decision moment; secondary and reversible actions remain visible without competing for attention.</p>
+                        </article>
+                        <article class="qa-item">
+                            <strong>State grammar</strong>
+                            <p>Detected, needs review, confirmed, stable, use soon, and check item pair plain language with structure—not color alone.</p>
+                        </article>
+                        <article class="qa-item">
+                            <strong>Responsive density</strong>
+                            <p>Phone views sequence decisions; web views expose comparison and planning density while preserving component meaning.</p>
+                        </article>
+                        <article class="qa-item">
+                            <strong>Implementation QA</strong>
+                            <p>Keyboard focus, touch targets, reflow, live updates, dialog behavior, contrast, and screen-reader output require documented testing.</p>
                         </article>
                     </div>
                 </div>
@@ -3453,12 +4006,12 @@
 
         <section id="validation">
             <div class="page-shell section-grid">
-                <aside class="section-kicker">09 / Validation plan<span></span></aside>
+                <div class="section-kicker">09 / Validation &amp; delivery<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">What I would test next</p>
-                    <h2>Validate whether the system saves effort—or simply moves it elsewhere.</h2>
+                    <p class="eyebrow">Evidence before expansion</p>
+                    <h2>Validate the maintenance-value exchange before investing in automation.</h2>
                     <p class="intro">
-                        Inventory-based planning only works when maintaining the inventory costs less effort than the value it creates. That tradeoff should be tested before expanding the concept.
+                        Inventory-based planning works only when upkeep costs less effort than the decisions it improves. The riskiest assumptions should be tested in sequence, using lightweight simulation before computer vision, dietary logic, or integrations create false confidence.
                     </p>
 
                     <div class="validation-grid">
@@ -3486,37 +4039,119 @@
                             <p>Test screen-reader output, dynamic type, keyboard behavior, color-independent status, motion, comprehension of estimates, and food-safety boundaries.</p>
                         </article>
                     </div>
+
+                    <h3 class="validation-heading">Measures tied to product risk</h3>
+
+                    <div class="measurement-grid">
+                        <article class="measurement-card">
+                            <span>Setup &amp; maintenance</span>
+                            <h3>Is the inventory affordable to keep current?</h3>
+                            <p>Track the work the system creates, not only initial completion.</p>
+                            <ul>
+                                <li>Time to a useful first inventory</li>
+                                <li>Corrections and abandoned capture attempts</li>
+                                <li>Maintenance actions per planned meal</li>
+                            </ul>
+                        </article>
+                        <article class="measurement-card">
+                            <span>Decision usefulness</span>
+                            <h3>Do recommendations make choosing easier?</h3>
+                            <p>Measure whether people understand and act on the ranking.</p>
+                            <ul>
+                                <li>Time to a viable meal choice</li>
+                                <li>Recipe rationale comprehension</li>
+                                <li>Plan, substitute, save, and dismiss behavior</li>
+                            </ul>
+                        </article>
+                        <article class="measurement-card">
+                            <span>Trust &amp; safety</span>
+                            <h3>Does uncertainty stay visible?</h3>
+                            <p>Watch for automation that appears more certain than the evidence.</p>
+                            <ul>
+                                <li>Low-confidence correction success</li>
+                                <li>Freshness and dietary-language comprehension</li>
+                                <li>Accessibility and support failures by task</li>
+                            </ul>
+                        </article>
+                    </div>
+
+                    <h3 class="validation-heading">A staged path from concept to pilot</h3>
+
+                    <div class="validation-roadmap">
+                        <article class="validation-step">
+                            <span>Phase 01 · Comprehend</span>
+                            <h3>Test the model without automation</h3>
+                            <p>Use task-based prototypes to validate terminology, recommendation rationale, correction, substitutions, and responsive navigation.</p>
+                        </article>
+                        <article class="validation-step">
+                            <span>Phase 02 · Simulate</span>
+                            <h3>Measure real upkeep over time</h3>
+                            <p>Run a diary or concierge study with manually supported recognition to learn how kitchens change and when inventory becomes stale.</p>
+                        </article>
+                        <article class="validation-step">
+                            <span>Phase 03 · Constrain</span>
+                            <h3>Pilot only the proven loop</h3>
+                            <p>Test a narrow inventory and recipe set, monitor harm and support signals, and require explicit go, revise, or stop criteria before expansion.</p>
+                        </article>
+                    </div>
+
+                    <h3 class="validation-heading">Cross-functional decision owners</h3>
+
+                    <div class="delivery-grid">
+                        <article class="delivery-card">
+                            <span>Product &amp; design</span>
+                            <h3>Experience contract</h3>
+                            <p>Own state, rationale, correction, fallback, success criteria, and which assumptions deserve investment.</p>
+                        </article>
+                        <article class="delivery-card">
+                            <span>Engineering &amp; data</span>
+                            <h3>Reliability contract</h3>
+                            <p>Own confidence signals, latency, observability, data lineage, synchronization, privacy, and graceful failure.</p>
+                        </article>
+                        <article class="delivery-card">
+                            <span>Food &amp; legal experts</span>
+                            <h3>Safety contract</h3>
+                            <p>Review dietary language, food-safety boundaries, disclaimers, data use, and claims the interface must not make.</p>
+                        </article>
+                        <article class="delivery-card">
+                            <span>Households &amp; access</span>
+                            <h3>Lived-use contract</h3>
+                            <p>Validate shared kitchens, assistive technology, low-energy contexts, device constraints, correction, and trust.</p>
+                        </article>
+                    </div>
+
+                    <div class="validation-note">This is a proposed evidence and delivery framework—not proof of product-market fit, technical accuracy, time savings, food-waste reduction, accessibility conformance, or safety. Those outcomes remain to be tested.</div>
                 </div>
             </div>
         </section>
 
         <section id="reflection">
             <div class="page-shell section-grid">
-                <aside class="section-kicker">10 / Reflection<span></span></aside>
+                <div class="section-kicker">10 / Reflection<span></span></div>
                 <div class="section-content reveal">
-                    <p class="eyebrow">What the project demonstrates</p>
+                    <p class="eyebrow">Strategic takeaway</p>
                     <h2>The most important interface state is uncertainty.</h2>
                     <p class="intro">
-                        Nutriva pushed me to think beyond an attractive recipe feed. A useful inventory product must account for imperfect recognition, changing quantities, household habits, substitutions, and food information that cannot safely be inferred. The project demonstrates how I connect visual design with system states and product boundaries—even when the concept still requires research.
+                        Nutriva moved from an attractive recipe concept into a more coherent product system: synchronized states, explicit automation boundaries, explainable ranking, responsive task density, and a measurable path to evidence. Building the prototype helped connect those UX decisions to implementation behavior; the validation framework keeps the concept honest about what design alone cannot prove.
                     </p>
 
                     <div class="reflection-grid">
                         <article class="reflection-card">
                             <span class="card-number">01</span>
-                            <h3>Strongest contribution</h3>
-                            <p>A connected model that moves from kitchen inventory to explained recipe options without requiring a precise meal idea first.</p>
+                            <h3>A decision system, not a feed</h3>
+                            <p>The work connects uncertain kitchen state to explained options, plans, groceries, and cooking without requiring a precise meal idea first.</p>
                         </article>
 
                         <article class="reflection-card">
                             <span class="card-number">02</span>
-                            <h3>Largest product risk</h3>
-                            <p>Maintaining an accurate inventory may become more work than the problem it solves, especially in shared households.</p>
+                            <h3>Maintenance is the product risk</h3>
+                            <p>The interface can make upkeep pleasant, but only longitudinal evidence can show whether a shared inventory stays worth maintaining.</p>
                         </article>
 
                         <article class="reflection-card">
                             <span class="card-number">03</span>
-                            <h3>Next design step</h3>
-                            <p>Prototype inventory capture and correction first, then test recipe ranking with real household constraints before adding predictive features.</p>
+                            <h3>Evidence should gate automation</h3>
+                            <p>Prototype capture and correction with real households first, then earn investment in recognition and ranking instead of leading with technical novelty.</p>
                         </article>
                     </div>
                 </div>
@@ -3530,26 +4165,81 @@
                 <p>Continue exploring</p>
                 <h2>Return to selected work.</h2>
             </div>
-            <a class="next-link" href="index.html#portfolio">View portfolio <span aria-hidden="true">↗</span></a>
+            <a class="next-link" href="../index.html#work">View portfolio <span aria-hidden="true">↗</span></a>
         </div>
     </footer>
 
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged Nutriva interface screen" aria-hidden="true">
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged Nutriva interface screen" aria-hidden="true" inert>
         <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close enlarged image">×</button>
-        <img id="lightboxImage" src="" alt="">
+        <img id="lightboxImage" src="mainpage.png" alt="">
     </div>
 
     <script>
         const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         const revealItems = document.querySelectorAll(".reveal");
         const siteNav = document.getElementById("siteNav");
+        const readingProgress = document.getElementById("readingProgress");
+        const caseNavScroller = document.querySelector(".case-nav-inner");
+        const caseNavLinks = [...document.querySelectorAll('.case-nav a[href^="#"]')];
+        const navSections = caseNavLinks
+            .map(link => document.getElementById(link.getAttribute("href").slice(1)))
+            .filter(Boolean);
+        let pageChromeTicking = false;
+        let currentCaseNavId = "";
 
-        function updateNavigation() {
-            siteNav.classList.toggle("scrolled", window.scrollY > 12);
+        function revealHashTarget() {
+            if (!window.location.hash) return;
+            const target = document.getElementById(window.location.hash.slice(1));
+            if (!target) return;
+            const revealTarget = target.matches(".reveal") ? target : target.querySelector(".reveal");
+            if (revealTarget) revealTarget.classList.add("is-visible");
         }
 
-        updateNavigation();
-        window.addEventListener("scroll", updateNavigation, { passive: true });
+        function updatePageChrome() {
+            siteNav.classList.toggle("scrolled", window.scrollY > 12);
+            const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+            readingProgress.style.transform = `scaleX(${Math.min(Math.max(progress, 0), 1)})`;
+
+            const readingLine = window.scrollY + window.innerHeight * 0.34;
+            let activeSection = navSections[0];
+            navSections.forEach(section => {
+                if (section.offsetTop <= readingLine) activeSection = section;
+            });
+
+            caseNavLinks.forEach(link => {
+                const isActive = activeSection && link.getAttribute("href") === `#${activeSection.id}`;
+                link.classList.toggle("is-active", Boolean(isActive));
+                if (isActive) {
+                    link.setAttribute("aria-current", "location");
+                } else {
+                    link.removeAttribute("aria-current");
+                }
+            });
+
+            if (activeSection && activeSection.id !== currentCaseNavId) {
+                const activeLink = caseNavLinks.find(link => link.getAttribute("href") === `#${activeSection.id}`);
+                if (activeLink && caseNavScroller?.scrollTo) {
+                    caseNavScroller.scrollTo({
+                        left: activeLink.offsetLeft - (caseNavScroller.clientWidth - activeLink.offsetWidth) / 2,
+                        behavior: reducedMotion ? "auto" : "smooth"
+                    });
+                }
+                currentCaseNavId = activeSection.id;
+            }
+
+            pageChromeTicking = false;
+        }
+
+        function requestPageChromeUpdate() {
+            if (pageChromeTicking) return;
+            pageChromeTicking = true;
+            window.requestAnimationFrame(updatePageChrome);
+        }
+
+        updatePageChrome();
+        window.addEventListener("scroll", requestPageChromeUpdate, { passive: true });
+        window.addEventListener("resize", requestPageChromeUpdate);
 
         if (reducedMotion || !("IntersectionObserver" in window)) {
             revealItems.forEach(item => item.classList.add("is-visible"));
@@ -3561,10 +4251,22 @@
                         currentObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.12 });
+            }, { threshold: 0.06, rootMargin: "0px 0px -8% 0px" });
 
-            revealItems.forEach(item => observer.observe(item));
+            revealItems.forEach(item => {
+                if (item.getBoundingClientRect().top < window.innerHeight * 0.94) {
+                    item.classList.add("is-visible");
+                } else {
+                    observer.observe(item);
+                }
+            });
         }
+
+        revealHashTarget();
+        window.addEventListener("hashchange", () => {
+            revealHashTarget();
+            requestPageChromeUpdate();
+        });
 
         const lightbox = document.getElementById("lightbox");
         const lightboxImage = document.getElementById("lightboxImage");
@@ -3576,6 +4278,7 @@
             previouslyFocused = trigger;
             lightboxImage.src = trigger.dataset.lightboxSrc;
             lightboxImage.alt = trigger.dataset.lightboxAlt || "Enlarged Nutriva interface screen";
+            lightbox.removeAttribute("inert");
             lightbox.setAttribute("aria-hidden", "false");
             document.body.style.overflow = "hidden";
             lightboxClose.focus();
@@ -3583,10 +4286,10 @@
 
         function closeLightbox() {
             lightbox.setAttribute("aria-hidden", "true");
-            lightboxImage.src = "";
+            lightbox.setAttribute("inert", "");
             lightboxImage.alt = "";
             document.body.style.overflow = "";
-            if (previouslyFocused) previouslyFocused.focus();
+            if (previouslyFocused && document.contains(previouslyFocused)) previouslyFocused.focus();
         }
 
         lightboxTriggers.forEach(trigger => {
@@ -3600,8 +4303,14 @@
         });
 
         document.addEventListener("keydown", event => {
-            if (event.key === "Escape" && lightbox.getAttribute("aria-hidden") === "false") {
+            const isOpen = lightbox.getAttribute("aria-hidden") === "false";
+            if (!isOpen) return;
+
+            if (event.key === "Escape") {
                 closeLightbox();
+            } else if (event.key === "Tab") {
+                event.preventDefault();
+                lightboxClose.focus();
             }
         });
 
@@ -3609,7 +4318,10 @@
         (() => {
             const root = document.getElementById("nvPrototypeRoot");
             const stage = document.getElementById("nvStage");
+            const prototypeStatus = document.getElementById("nvPrototypeStatus");
             const modeButtons = document.querySelectorAll("[data-nv-mode]");
+            const focusableSelector = 'button:not([disabled]), input:not([disabled]), select:not([disabled]), [href], [tabindex]:not([tabindex="-1"])';
+            let overlayTrigger = null;
 
             if (!root || !stage) return;
 
@@ -3715,22 +4427,24 @@
                 page: "today",
                 selectedRecipe: "salmon",
                 filter: "all",
+                pantryFilter: "all",
                 favorites: new Set(["soup"]),
                 groceryChecked: new Set(["Parmesan"]),
                 detailTab: "ingredients",
                 plan: ["pasta", "salmon", null, "soup", null],
                 cookStep: 0,
                 pantry: [
-                    { id: "greens", icon: "🥬", name: "Spring greens", detail: "1 open bag", status: "Use within 2 days", tone: "soon", qty: 1 },
-                    { id: "tomatoes", icon: "🍅", name: "Cherry tomatoes", detail: "About 2 cups", status: "Use within 3 days", tone: "soon", qty: 2 },
-                    { id: "salmon", icon: "🐟", name: "Salmon fillets", detail: "Frozen", status: "Good for 2 weeks", tone: "fresh", qty: 2 },
-                    { id: "lentils", icon: "🫘", name: "Red lentils", detail: "Dry pantry", status: "Plenty on hand", tone: "fresh", qty: 3 },
-                    { id: "herbs", icon: "🌿", name: "Fresh dill", detail: "Half bunch", status: "Check today", tone: "check", qty: 1 }
+                    { id: "greens", icon: "🥬", name: "Spring greens", detail: "1 open bag", location: "fridge", status: "Use within 2 days", tone: "soon", qty: 1 },
+                    { id: "tomatoes", icon: "🍅", name: "Cherry tomatoes", detail: "About 2 cups", location: "fridge", status: "Use within 3 days", tone: "soon", qty: 2 },
+                    { id: "salmon", icon: "🐟", name: "Salmon fillets", detail: "Frozen", location: "freezer", status: "Good for 2 weeks", tone: "fresh", qty: 2 },
+                    { id: "lentils", icon: "🫘", name: "Red lentils", detail: "Dry pantry", location: "pantry", status: "Plenty on hand", tone: "fresh", qty: 3 },
+                    { id: "herbs", icon: "🌿", name: "Fresh dill", detail: "Half bunch", location: "fridge", status: "Check today", tone: "check", qty: 1 }
                 ]
             };
 
             const recipeById = id => recipes.find(recipe => recipe.id === id) || recipes[0];
             const activeNavPage = () => state.page === "recipe" ? "discover" : state.page === "grocery" ? "plan" : state.page;
+            const pageNames = { today: "Today", discover: "Discover", pantry: "Pantry", plan: "Weekly plan", recipe: "Recipe detail", grocery: "Grocery list" };
 
             function wordmark() {
                 return `<button class="nv-wordmark" type="button" data-nv-page="today" aria-label="Go to Nutriva Today"><span class="nv-wordmark-mark" aria-hidden="true"></span>Nutriva</button>`;
@@ -3743,7 +4457,7 @@
 
             function appHeader() {
                 if (state.mode === "iphone") {
-                    return `<header class="nv-app-header">${wordmark()}<div class="nv-head-actions"><button class="nv-icon-button" type="button" data-nv-page="grocery" aria-label="Open grocery list">${nvIcon("cart")}</button><span class="nv-avatar" aria-label="Jocelyn's profile">JM</span></div></header>`;
+                    return `<header class="nv-app-header">${wordmark()}<div class="nv-head-actions"><button class="nv-icon-button" type="button" data-nv-page="grocery" aria-label="Open grocery list">${nvIcon("cart")}</button><span class="nv-avatar" aria-hidden="true">JM</span></div></header>`;
                 }
                 return `<header class="nv-app-header">
                     ${wordmark()}
@@ -3755,7 +4469,7 @@
                     </nav>
                     <div class="nv-head-actions">
                         <button class="nv-icon-button" type="button" data-nv-page="grocery" aria-label="Open grocery list">${nvIcon("cart")}</button>
-                        <span class="nv-avatar" aria-label="Jocelyn's profile">JM</span>
+                        <span class="nv-avatar" aria-hidden="true">JM</span>
                     </div>
                 </header>`;
             }
@@ -3775,7 +4489,7 @@
             }
 
             function pageHead(kicker, title, copy, action = "") {
-                return `<div class="nv-page-head"><div><span class="nv-page-kicker">${kicker}</span><h3>${title}</h3>${copy ? `<p>${copy}</p>` : ""}</div>${action ? `<div>${action}</div>` : ""}</div>`;
+                return `<div class="nv-page-head"><div><span class="nv-page-kicker">${kicker}</span><h3 class="nv-page-title" tabindex="-1">${title}</h3>${copy ? `<p>${copy}</p>` : ""}</div>${action ? `<div>${action}</div>` : ""}</div>`;
             }
 
             function todayPage() {
@@ -3794,7 +4508,7 @@
                         </article>
                         <div class="nv-side-stack">
                             <article class="nv-soft-card">
-                                <div class="nv-week-ring-row"><div class="nv-week-ring" aria-label="Four of five dinners planned"></div><div><h4>Your week is nearly set.</h4><p>One open night. Your pantry can cover it.</p><button class="nv-text-button" type="button" data-nv-page="plan">Finish planning →</button></div></div>
+                                <div class="nv-week-ring-row"><div class="nv-week-ring" role="img" aria-label="Four of five dinners planned"></div><div><h4>Your week is nearly set.</h4><p>One open night. Your pantry can cover it.</p><button class="nv-text-button" type="button" data-nv-page="plan">Finish planning →</button></div></div>
                             </article>
                             <article class="nv-soft-card">
                                 <span class="nv-page-kicker">Use first</span>
@@ -3813,7 +4527,7 @@
                 return `<article class="nv-recipe-card" data-nv-recipe-card data-title="${nvEscape(`${recipe.title} ${recipe.description} ${recipe.filter.join(" ")}`.toLowerCase())}" data-filter="${recipe.filter.join(" ")}">
                     <div class="nv-recipe-image">
                         <img src="${recipe.image}" alt="${nvEscape(recipe.title)}">
-                        <button class="nv-favorite-button${saved ? " is-saved" : ""}" type="button" data-nv-action="toggle-favorite" data-id="${recipe.id}" aria-label="${saved ? "Remove from" : "Save to"} favorites">${nvIcon("heart")}</button>
+                        <button class="nv-favorite-button${saved ? " is-saved" : ""}" type="button" data-nv-action="toggle-favorite" data-id="${recipe.id}" aria-label="${saved ? "Remove" : "Save"} ${nvEscape(recipe.title)} ${saved ? "from" : "to"} favorites">${nvIcon("heart")}</button>
                     </div>
                     <div class="nv-recipe-body">
                         <div class="nv-card-topline"><span class="nv-tag">${recipe.match}</span><span class="nv-tag nv-warm">${recipe.missing}</span></div>
@@ -3830,12 +4544,23 @@
                         <label class="nv-search-field">${nvIcon("search")}<span class="sr-only">Search recipes</span><input id="nvRecipeSearch" type="search" placeholder="Try ‘quick dinner’ or ‘use tomatoes’" autocomplete="off"></label>
                         <button class="nv-secondary-button" type="button" data-nv-action="focus-filters">${nvIcon("sliders")} Filters</button>
                     </div>
-                    <div class="nv-chip-row" id="nvFilterRow" aria-label="Recipe filters">${filters.map(([value, label]) => `<button class="nv-chip${state.filter === value ? " is-active" : ""}" type="button" data-nv-action="filter" data-filter="${value}">${label}</button>`).join("")}</div>
+                    <div class="nv-chip-row" id="nvFilterRow" role="group" aria-label="Recipe filters">${filters.map(([value, label]) => `<button class="nv-chip${state.filter === value ? " is-active" : ""}" type="button" data-nv-action="filter" data-filter="${value}" aria-pressed="${state.filter === value}">${label}</button>`).join("")}</div>
                     <div class="nv-recipe-grid" id="nvRecipeGrid">${recipes.filter(recipe => state.filter === "all" || recipe.filter.includes(state.filter)).map(recipeCard).join("")}</div>`;
             }
 
             function pantryPage() {
-                const rows = state.pantry.map(item => `<div class="nv-pantry-row">
+                const visibleItems = state.pantry.filter(item => {
+                    if (state.pantryFilter === "all") return true;
+                    if (state.pantryFilter === "soon") return item.tone === "soon" || item.tone === "check";
+                    return item.location === state.pantryFilter;
+                });
+                const pantryFilters = [
+                    ["all", `All items · ${state.pantry.length}`],
+                    ["soon", `Use soon · ${state.pantry.filter(item => item.tone === "soon" || item.tone === "check").length}`],
+                    ["fridge", `Fridge · ${state.pantry.filter(item => item.location === "fridge").length}`],
+                    ["pantry", `Pantry · ${state.pantry.filter(item => item.location === "pantry").length}`]
+                ];
+                const rows = visibleItems.map(item => `<div class="nv-pantry-row">
                     <span class="nv-food-icon">${item.icon}</span>
                     <span><strong>${nvEscape(item.name)}</strong><small>${nvEscape(item.detail)}</small></span>
                     <span class="nv-status ${item.tone === "soon" ? "nv-soon" : item.tone === "check" ? "nv-check" : ""}">${nvEscape(item.status)}</span>
@@ -3843,11 +4568,11 @@
                 </div>`).join("");
                 return `${pageHead("Pantry · ${state.pantry.length + 13} items", "Know what you have.", "Editable, human-checked inventory instead of false precision.", `<button class="nv-primary-button" type="button" data-nv-action="add-ingredient">${nvIcon("plus")} Add ingredient</button>`)}
                     <div class="nv-pantry-top">
-                        <article class="nv-freshness-card"><span class="nv-page-kicker" style="color:#f0d575">Freshness snapshot</span><h4>Most of your kitchen is in a good place.</h4><p>Two ingredients deserve attention this weekend.</p><div class="nv-freshness-bar" aria-label="62 percent fresh, 25 percent use soon, 13 percent check"><i></i><i></i><i></i></div></article>
+                        <article class="nv-freshness-card"><span class="nv-page-kicker">Freshness snapshot</span><h4>Most of your kitchen is in a good place.</h4><p>Two ingredients deserve attention this weekend.</p><div class="nv-freshness-bar" role="img" aria-label="62 percent fresh, 25 percent use soon, 13 percent check"><i></i><i></i><i></i></div></article>
                         <article class="nv-soft-card"><span class="nv-page-kicker">Smart suggestion</span><h4>Cook the greens tonight.</h4><p>They fit your salmon recipe and reduce the chance they are forgotten.</p><button class="nv-text-button" type="button" data-nv-action="open-recipe" data-id="salmon">See the match →</button></article>
                     </div>
-                    <div class="nv-chip-row"><button class="nv-chip is-active" type="button">All items</button><button class="nv-chip" type="button">Use soon · 2</button><button class="nv-chip" type="button">Fridge · 9</button><button class="nv-chip" type="button">Pantry · 6</button></div>
-                    <div class="nv-pantry-list">${rows}</div>`;
+                    <div class="nv-chip-row" role="group" aria-label="Pantry filters">${pantryFilters.map(([value, label]) => `<button class="nv-chip${state.pantryFilter === value ? " is-active" : ""}" type="button" data-nv-action="pantry-filter" data-pantry-filter="${value}" aria-pressed="${state.pantryFilter === value}">${label}</button>`).join("")}</div>
+                    <div class="nv-pantry-list">${rows || '<p class="nv-empty-state">No items match this filter.</p>'}</div>`;
             }
 
             function planPage() {
@@ -3865,13 +4590,14 @@
             function recipePage() {
                 const recipe = recipeById(state.selectedRecipe);
                 const saved = state.favorites.has(recipe.id);
+                const activeTabId = state.detailTab === "ingredients" ? "nvIngredientsTab" : "nvMethodTab";
                 const tabContent = state.detailTab === "ingredients"
                     ? `<div class="nv-ingredient-list">${recipe.ingredients.map(([name, detail]) => `<label class="nv-check-row"><input type="checkbox"><span>${name}</span><small>${detail}</small></label>`).join("")}</div>`
                     : `<div class="nv-step-list">${recipe.steps.map((step, index) => `<div class="nv-step-row"><b>${index + 1}</b><span>${step}</span></div>`).join("")}</div>`;
                 return `<div class="nv-page-head"><button class="nv-text-button" type="button" data-nv-page="discover">${nvIcon("back")} Back to discover</button><div><button class="nv-secondary-button" type="button" data-nv-action="toggle-favorite" data-id="${recipe.id}">${nvIcon("heart")} ${saved ? "Saved" : "Save"}</button></div></div>
                     <div class="nv-recipe-detail">
-                        <article class="nv-recipe-hero"><img src="${recipe.image}" alt="${recipe.title}"><div class="nv-recipe-hero-copy"><span class="nv-match-pill">${nvIcon("spark")} ${recipe.match}</span><h3>${recipe.title}</h3><p>${recipe.description}</p><div class="nv-feature-meta"><span>${nvIcon("clock")} ${recipe.time}</span><span>${recipe.missing}</span><span>2 servings</span></div></div></article>
-                        <aside class="nv-detail-panel"><div class="nv-detail-tabs"><button class="${state.detailTab === "ingredients" ? "is-active" : ""}" type="button" data-nv-action="detail-tab" data-tab="ingredients">Ingredients</button><button class="${state.detailTab === "steps" ? "is-active" : ""}" type="button" data-nv-action="detail-tab" data-tab="steps">Method</button></div>${tabContent}<div class="nv-detail-actions"><button class="nv-secondary-button" type="button" data-nv-action="add-plan">${nvIcon("plan")} Add to week</button><button class="nv-primary-button" type="button" data-nv-action="start-cook">Start cooking ${nvIcon("arrow")}</button></div></aside>
+                        <article class="nv-recipe-hero"><img src="${recipe.image}" alt="${recipe.title}"><div class="nv-recipe-hero-copy"><span class="nv-match-pill">${nvIcon("spark")} ${recipe.match}</span><h3 class="nv-page-title" tabindex="-1">${recipe.title}</h3><p>${recipe.description}</p><div class="nv-feature-meta"><span>${nvIcon("clock")} ${recipe.time}</span><span>${recipe.missing}</span><span>2 servings</span></div></div></article>
+                        <div class="nv-detail-panel"><div class="nv-detail-tabs" role="tablist" aria-label="Recipe information"><button id="nvIngredientsTab" class="${state.detailTab === "ingredients" ? "is-active" : ""}" type="button" role="tab" aria-selected="${state.detailTab === "ingredients"}" aria-controls="nvRecipePanel" tabindex="${state.detailTab === "ingredients" ? "0" : "-1"}" data-nv-action="detail-tab" data-tab="ingredients">Ingredients</button><button id="nvMethodTab" class="${state.detailTab === "steps" ? "is-active" : ""}" type="button" role="tab" aria-selected="${state.detailTab === "steps"}" aria-controls="nvRecipePanel" tabindex="${state.detailTab === "steps" ? "0" : "-1"}" data-nv-action="detail-tab" data-tab="steps">Method</button></div><div id="nvRecipePanel" role="tabpanel" aria-labelledby="${activeTabId}">${tabContent}</div><div class="nv-detail-actions"><button class="nv-secondary-button" type="button" data-nv-action="add-plan">${nvIcon("plan")} Add to week</button><button class="nv-primary-button" type="button" data-nv-action="start-cook">Start cooking ${nvIcon("arrow")}</button></div></div>
                     </div>`;
             }
 
@@ -3890,8 +4616,16 @@
                 return ({ today: todayPage, discover: discoverPage, pantry: pantryPage, plan: planPage, recipe: recipePage, grocery: groceryPage }[state.page] || todayPage)();
             }
 
-            function render() {
-                const page = `<main class="nv-main"><div class="nv-page">${currentPage()}</div></main>`;
+            function announcePrototype(message) {
+                if (!prototypeStatus) return;
+                prototypeStatus.textContent = "";
+                window.requestAnimationFrame(() => {
+                    prototypeStatus.textContent = message;
+                });
+            }
+
+            function render({ focusHeading = false, focusSelector = "", announcement = "" } = {}) {
+                const page = `<div class="nv-main"><div class="nv-page">${currentPage()}</div></div>`;
                 if (state.mode === "iphone") {
                     root.innerHTML = `<div class="nv-product nv-phone"><div class="nv-island" aria-hidden="true"></div><div class="nv-phone-status"><span>9:41</span><span>● ● ▰</span></div><div class="nv-phone-app">${appHeader()}${page}${mobileNav()}</div></div>`;
                     stage.classList.add("is-phone");
@@ -3900,6 +4634,10 @@
                     stage.classList.remove("is-phone");
                 }
                 modeButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.nvMode === state.mode)));
+
+                const focusTarget = focusSelector ? root.querySelector(focusSelector) : focusHeading ? root.querySelector(".nv-page-title") : null;
+                if (focusTarget) focusTarget.focus({ preventScroll: true });
+                if (announcement) announcePrototype(announcement);
             }
 
             function showToast(message) {
@@ -3914,7 +4652,8 @@
 
             function openAddIngredient() {
                 const product = root.querySelector(".nv-product");
-                product.insertAdjacentHTML("beforeend", `<div class="nv-proto-overlay" data-nv-action="close-overlay"><form class="nv-proto-modal" id="nvAddForm" data-nv-modal><div class="nv-proto-modal-head"><h4>Add an ingredient</h4><button class="nv-icon-button" type="button" data-nv-action="close-overlay" aria-label="Close">${nvIcon("close")}</button></div><label>Ingredient name<input id="nvIngredientName" required placeholder="e.g. Avocados"></label><label>Where is it stored?<select id="nvIngredientLocation"><option>Fridge</option><option>Freezer</option><option>Pantry</option></select></label><label>Quantity<input id="nvIngredientQuantity" type="number" min="1" max="20" value="1"></label><button class="nv-primary-button" type="submit">Add to pantry ${nvIcon("plus")}</button></form></div>`);
+                overlayTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+                product.insertAdjacentHTML("beforeend", `<div class="nv-proto-overlay" data-nv-action="close-overlay"><form class="nv-proto-modal" id="nvAddForm" role="dialog" aria-modal="true" aria-labelledby="nvAddTitle" data-nv-modal><div class="nv-proto-modal-head"><h4 id="nvAddTitle">Add an ingredient</h4><button class="nv-icon-button" type="button" data-nv-action="close-overlay" aria-label="Close ingredient dialog">${nvIcon("close")}</button></div><label>Ingredient name<input id="nvIngredientName" required placeholder="e.g. Avocados"></label><label>Where is it stored?<select id="nvIngredientLocation"><option>Fridge</option><option>Freezer</option><option>Pantry</option></select></label><label>Quantity<input id="nvIngredientQuantity" type="number" min="1" max="20" value="1"></label><button class="nv-primary-button" type="submit">Add to pantry ${nvIcon("plus")}</button></form></div>`);
                 product.querySelector("#nvIngredientName")?.focus();
             }
 
@@ -3922,25 +4661,35 @@
                 const recipe = recipeById(state.selectedRecipe);
                 const step = recipe.steps[state.cookStep];
                 const product = root.querySelector(".nv-product");
+                if (!product.querySelector(".nv-proto-overlay")) {
+                    overlayTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+                }
                 product.querySelector(".nv-proto-overlay")?.remove();
-                product.insertAdjacentHTML("beforeend", `<div class="nv-proto-overlay"><section class="nv-cook-card" aria-label="Cook mode"><div><span class="nv-cook-step">Step ${state.cookStep + 1} of ${recipe.steps.length}</span><h4>${step}</h4><p>Keep this screen open while you cook. Your place is saved if you close it.</p></div><div class="nv-cook-actions"><button class="nv-secondary-button" type="button" data-nv-action="close-overlay">Exit</button><div><button class="nv-secondary-button" type="button" data-nv-action="cook-prev"${state.cookStep === 0 ? " disabled" : ""}>Back</button> <button class="nv-primary-button" type="button" data-nv-action="cook-next">${state.cookStep === recipe.steps.length - 1 ? "Finish" : "Next step"} ${nvIcon(state.cookStep === recipe.steps.length - 1 ? "check" : "arrow")}</button></div></div></section></div>`);
+                product.insertAdjacentHTML("beforeend", `<div class="nv-proto-overlay" data-nv-action="close-overlay"><section class="nv-cook-card" role="dialog" aria-modal="true" aria-labelledby="nvCookTitle"><div><span class="nv-cook-step">Step ${state.cookStep + 1} of ${recipe.steps.length}</span><h4 id="nvCookTitle">${step}</h4><p>Keep this screen open while you cook. Your place is saved if you close it.</p></div><div class="nv-cook-actions"><button class="nv-secondary-button" type="button" data-nv-action="close-overlay">Exit</button><div><button class="nv-secondary-button" type="button" data-nv-action="cook-prev"${state.cookStep === 0 ? " disabled" : ""}>Back</button> <button class="nv-primary-button" type="button" data-nv-action="cook-next">${state.cookStep === recipe.steps.length - 1 ? "Finish" : "Next step"} ${nvIcon(state.cookStep === recipe.steps.length - 1 ? "check" : "arrow")}</button></div></div></section></div>`);
+                product.querySelector('[data-nv-action="cook-next"]')?.focus();
             }
 
-            function closeOverlay() {
+            function closeOverlay({ restoreFocus = true } = {}) {
                 root.querySelector(".nv-proto-overlay")?.remove();
+                const trigger = overlayTrigger;
+                overlayTrigger = null;
+                if (restoreFocus && trigger && document.contains(trigger)) trigger.focus();
             }
 
             function filterRecipeCards(query = "") {
                 const normalizedQuery = query.trim().toLowerCase();
+                let visibleCount = 0;
                 root.querySelectorAll("[data-nv-recipe-card]").forEach(card => {
                     card.hidden = Boolean(normalizedQuery) && !card.dataset.title.includes(normalizedQuery);
+                    if (!card.hidden) visibleCount += 1;
                 });
+                announcePrototype(`${visibleCount} recipe${visibleCount === 1 ? "" : "s"} shown.`);
             }
 
             modeButtons.forEach(button => {
                 button.addEventListener("click", () => {
                     state.mode = button.dataset.nvMode;
-                    render();
+                    render({ announcement: `${state.mode === "iphone" ? "Phone" : "Responsive website"} prototype selected.` });
                 });
             });
 
@@ -3961,9 +4710,9 @@
                 const location = root.querySelector("#nvIngredientLocation").value;
                 const quantity = Math.max(1, Number(root.querySelector("#nvIngredientQuantity").value) || 1);
                 if (!name) return;
-                state.pantry.unshift({ id: `custom-${Date.now()}`, icon: location === "Freezer" ? "❄️" : location === "Pantry" ? "🫙" : "🥑", name, detail: location, status: "Just added", tone: "fresh", qty: quantity });
-                closeOverlay();
-                render();
+                state.pantry.unshift({ id: `custom-${Date.now()}`, icon: location === "Freezer" ? "❄️" : location === "Pantry" ? "🫙" : "🥑", name, detail: location, location: location.toLowerCase(), status: "Just added", tone: "fresh", qty: quantity });
+                closeOverlay({ restoreFocus: false });
+                render({ focusHeading: true });
                 showToast(`${name} was added to your pantry.`);
             });
 
@@ -3976,7 +4725,7 @@
 
                 if (button.dataset.nvPage) {
                     state.page = button.dataset.nvPage;
-                    render();
+                    render({ focusHeading: true, announcement: `${pageNames[state.page] || "Nutriva"} view opened.` });
                     return;
                 }
 
@@ -3987,20 +4736,33 @@
                     state.selectedRecipe = button.dataset.id;
                     state.detailTab = "ingredients";
                     state.page = "recipe";
-                    render();
+                    render({ focusHeading: true, announcement: `${recipeById(state.selectedRecipe).title} recipe opened.` });
                 }
 
                 if (action === "toggle-favorite") {
                     const id = button.dataset.id;
                     const isSaved = state.favorites.has(id);
                     isSaved ? state.favorites.delete(id) : state.favorites.add(id);
-                    render();
+                    render({
+                        focusSelector: `[data-nv-action="toggle-favorite"][data-id="${id}"]`
+                    });
                     showToast(isSaved ? "Removed from saved recipes." : "Saved for later.");
                 }
 
                 if (action === "filter") {
                     state.filter = button.dataset.filter;
-                    render();
+                    render({
+                        focusSelector: `[data-nv-action="filter"][data-filter="${state.filter}"]`,
+                        announcement: `${button.textContent.trim()} recipe filter applied.`
+                    });
+                }
+
+                if (action === "pantry-filter") {
+                    state.pantryFilter = button.dataset.pantryFilter;
+                    render({
+                        focusSelector: `[data-nv-action="pantry-filter"][data-pantry-filter="${state.pantryFilter}"]`,
+                        announcement: `${button.textContent.trim()} pantry filter applied.`
+                    });
                 }
 
                 if (action === "focus-filters") {
@@ -4012,7 +4774,7 @@
                     const recipe = recipes[Math.floor(Math.random() * recipes.length)];
                     state.selectedRecipe = recipe.id;
                     state.page = "recipe";
-                    render();
+                    render({ focusHeading: true });
                     showToast(`Tonight's idea: ${recipe.title}.`);
                 }
 
@@ -4020,7 +4782,9 @@
                     const item = state.pantry.find(pantryItem => pantryItem.id === button.dataset.id);
                     if (!item) return;
                     item.qty = Math.max(0, item.qty + Number(button.dataset.delta));
-                    render();
+                    render({
+                        focusSelector: `[data-nv-action="quantity"][data-id="${item.id}"][data-delta="${button.dataset.delta}"]`
+                    });
                     showToast(`${item.name} quantity updated.`);
                 }
 
@@ -4029,7 +4793,10 @@
 
                 if (action === "detail-tab") {
                     state.detailTab = button.dataset.tab;
-                    render();
+                    render({
+                        focusSelector: `[data-nv-action="detail-tab"][data-tab="${state.detailTab}"]`,
+                        announcement: `${button.textContent.trim()} tab selected.`
+                    });
                 }
 
                 if (action === "add-plan") {
@@ -4040,7 +4807,7 @@
                         state.plan[openIndex] = state.selectedRecipe;
                     }
                     state.page = "plan";
-                    render();
+                    render({ focusHeading: true });
                     showToast("Added to your weekly plan.");
                 }
 
@@ -4067,13 +4834,55 @@
 
                 if (action === "clear-grocery") {
                     state.groceryChecked.clear();
-                    render();
+                    render({ focusSelector: '[data-nv-action="clear-grocery"]' });
                     showToast("Grocery checks reset.");
                 }
             });
 
             document.addEventListener("keydown", event => {
-                if (event.key === "Escape") closeOverlay();
+                const overlay = root.querySelector(".nv-proto-overlay");
+
+                if (overlay) {
+                    if (event.key === "Escape") {
+                        event.preventDefault();
+                        closeOverlay();
+                        return;
+                    }
+
+                    if (event.key === "Tab") {
+                        const focusable = [...overlay.querySelectorAll(focusableSelector)].filter(element => element.getClientRects().length);
+                        if (!focusable.length) return;
+                        const first = focusable[0];
+                        const last = focusable[focusable.length - 1];
+
+                        if (event.shiftKey && document.activeElement === first) {
+                            event.preventDefault();
+                            last.focus();
+                        } else if (!event.shiftKey && document.activeElement === last) {
+                            event.preventDefault();
+                            first.focus();
+                        } else if (!overlay.contains(document.activeElement)) {
+                            event.preventDefault();
+                            first.focus();
+                        }
+                    }
+                    return;
+                }
+
+                const tab = event.target.closest?.('[role="tab"][data-nv-action="detail-tab"]');
+                if (!tab || !root.contains(tab) || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+                event.preventDefault();
+                const tabs = [...root.querySelectorAll('[role="tab"][data-nv-action="detail-tab"]')];
+                let nextIndex = tabs.indexOf(tab);
+                if (event.key === "ArrowRight") nextIndex = (nextIndex + 1) % tabs.length;
+                if (event.key === "ArrowLeft") nextIndex = (nextIndex - 1 + tabs.length) % tabs.length;
+                if (event.key === "Home") nextIndex = 0;
+                if (event.key === "End") nextIndex = tabs.length - 1;
+                state.detailTab = tabs[nextIndex].dataset.tab;
+                render({
+                    focusSelector: `[data-nv-action="detail-tab"][data-tab="${state.detailTab}"]`,
+                    announcement: `${tabs[nextIndex].textContent.trim()} tab selected.`
+                });
             });
 
             render();
