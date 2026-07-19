@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jocelyn Martinez is a UX/UI designer with a computer science background, creating accessible digital products, thoughtful interaction systems, and polished responsive interfaces.">
+    <meta name="description" content="Jocelyn Martinez is a product and UX/UI designer who turns complex systems into clear, accessible experiences through research synthesis, interaction design, visual systems, and front-end prototyping.">
     <meta name="theme-color" content="#f7f3ed">
-    <meta property="og:title" content="Jocelyn Martinez — UX/UI & Product Designer">
-    <meta property="og:description" content="Selected UX/UI, product design, visual design, and front-end work by Jocelyn Martinez.">
+    <meta property="og:title" content="Jocelyn Martinez — Product &amp; UX/UI Designer">
+    <meta property="og:description" content="Selected product design work spanning research synthesis, multi-role systems, responsive interface design, and coded prototypes.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="hwtimg.png">
-    <title>Jocelyn Martinez — UX/UI & Product Designer</title>
+    <title>Jocelyn Martinez — Product &amp; UX/UI Designer</title>
+
+    <script>document.documentElement.classList.add("js");</script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -182,6 +184,7 @@
         }
 
         .nav-links a {
+            position: relative;
             color: var(--muted);
             font-size: 0.69rem;
             font-weight: 700;
@@ -193,6 +196,20 @@
 
         .nav-links a:hover {
             color: var(--rose-dark);
+        }
+
+        .nav-links a.is-active:not(.nav-contact) {
+            color: var(--ink);
+        }
+
+        .nav-links a.is-active:not(.nav-contact)::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: -0.7rem;
+            left: 0;
+            height: 1px;
+            background: var(--rose-dark);
         }
 
         .nav-contact {
@@ -537,6 +554,16 @@
             font-size: 0.9rem;
         }
 
+        .trust-item .trust-metric {
+            margin: -0.15rem 0 0.8rem;
+            color: var(--ink);
+            font-family: var(--serif);
+            font-size: clamp(3.2rem, 5vw, 4.8rem);
+            font-weight: 500;
+            letter-spacing: -0.055em;
+            line-height: 0.76;
+        }
+
         .trust-item p {
             margin: 0;
             color: var(--muted);
@@ -662,6 +689,8 @@
             flex-wrap: wrap;
             gap: 0.65rem;
             margin-top: 2.5rem;
+            padding: 0;
+            list-style: none;
         }
 
         .skill {
@@ -771,10 +800,44 @@
 
         .project-description {
             max-width: 490px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.35rem;
             color: var(--body);
             font-size: 0.95rem;
             line-height: 1.8;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1px;
+            overflow: hidden;
+            margin: 0 0 1.7rem;
+            padding: 1px;
+            border-radius: 14px;
+            background: var(--line-soft);
+        }
+
+        .project-meta div {
+            min-width: 0;
+            padding: 0.9rem 0.95rem;
+            background: var(--paper);
+        }
+
+        .project-meta dt {
+            color: var(--muted);
+            font-size: 0.54rem;
+            font-weight: 700;
+            letter-spacing: 0.11em;
+            line-height: 1.4;
+            text-transform: uppercase;
+        }
+
+        .project-meta dd {
+            margin: 0.35rem 0 0;
+            color: var(--ink);
+            font-size: 0.67rem;
+            font-weight: 600;
+            line-height: 1.5;
         }
 
         .project-proof {
@@ -932,6 +995,48 @@
             line-height: 1.7;
         }
 
+        .concept-status {
+            display: inline-flex;
+            align-items: center;
+            align-self: flex-start;
+            gap: 0.5rem;
+            margin: 0 0 1rem;
+            color: var(--rose-dark);
+            font-size: 0.61rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            line-height: 1.45;
+            text-transform: uppercase;
+        }
+
+        .concept-status::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            flex: 0 0 auto;
+            border-radius: 50%;
+            background: var(--rose);
+            box-shadow: 0 0 0 4px var(--rose-soft);
+        }
+
+        .concept-content .concept-evidence {
+            margin: 0 0 1.6rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--line-soft);
+            color: var(--muted);
+            font-size: 0.76rem;
+            line-height: 1.65;
+        }
+
+        .concept-evidence strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--ink);
+            font-size: 0.62rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
         .concept-content .project-footer {
             margin-top: auto;
         }
@@ -942,6 +1047,15 @@
             color: var(--muted);
             font-size: 0.83rem;
             line-height: 1.7;
+        }
+
+        .concept-heading {
+            margin-top: 8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .concept-heading h2 {
+            font-size: clamp(2.6rem, 5vw, 4.2rem);
         }
 
         /* Process / difference */
@@ -980,90 +1094,6 @@
             margin: 0;
             color: var(--body);
             font-size: 0.84rem;
-        }
-
-        /* Playground */
-        .playground {
-            background:
-                radial-gradient(circle at 15% 25%, rgba(167, 119, 117, 0.2), transparent 25rem),
-                var(--surface-dark);
-            color: #fff;
-        }
-
-        .playground .section-kicker,
-        .playground .section-lede {
-            color: rgba(255, 255, 255, 0.62);
-        }
-
-        .playground .section-kicker span {
-            background: var(--rose-soft);
-        }
-
-        .playground h2 {
-            color: #fff;
-        }
-
-        .playground-card {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 3rem;
-            align-items: center;
-            min-height: 310px;
-            padding: clamp(2.2rem, 5vw, 4.5rem);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: var(--radius-lg);
-            color: #fff;
-            text-decoration: none;
-            transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .playground-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.5);
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        .playground-label {
-            display: block;
-            margin-bottom: 1.2rem;
-            color: #dfc4c2;
-            font-size: 0.64rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-        }
-
-        .playground-card h3 {
-            margin-bottom: 1rem;
-            color: #fff;
-            font-family: var(--serif);
-            font-size: clamp(2.8rem, 6vw, 5rem);
-            font-style: italic;
-            font-weight: 400;
-            line-height: 0.95;
-        }
-
-        .playground-card p {
-            max-width: 650px;
-            margin: 0;
-            color: rgba(255, 255, 255, 0.67);
-        }
-
-        .playground-arrow {
-            width: 68px;
-            height: 68px;
-            display: grid;
-            place-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            font-size: 1.4rem;
-            transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
-        }
-
-        .playground-card:hover .playground-arrow {
-            transform: translateX(5px);
-            background: #fff;
-            color: var(--surface-dark);
         }
 
         /* Contact */
@@ -1166,12 +1196,17 @@
 
         /* Reveal */
         .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.72s ease, transform 0.72s ease;
+            opacity: 1;
+            transform: none;
         }
 
-        .reveal.is-visible {
+        .js .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.46s ease, transform 0.46s ease;
+        }
+
+        .js .reveal.is-visible {
             opacity: 1;
             transform: none;
         }
@@ -1287,22 +1322,16 @@
                 flex-direction: column;
             }
 
+            .project-meta {
+                grid-template-columns: 1fr;
+            }
+
             .concept-card {
                 min-height: 0;
             }
 
             .concept-image {
                 height: 360px;
-            }
-
-            .playground-card {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .playground-arrow {
-                width: 56px;
-                height: 56px;
             }
 
             .footer-bottom {
@@ -1347,7 +1376,7 @@
                 transition-duration: 0.01ms !important;
             }
 
-            .reveal {
+            .js .reveal {
                 opacity: 1;
                 transform: none;
             }
@@ -1356,20 +1385,19 @@
 </head>
 
 <body>
-    <a class="skip-link" href="#main">Skip to selected work</a>
+    <a class="skip-link" href="#main">Skip to main content</a>
 
     <nav class="site-nav" id="siteNav" aria-label="Portfolio navigation">
         <div class="page-shell nav-inner">
             <a class="brand" href="#top" aria-label="Jocelyn Martinez, home">
                 <span class="brand-name">Jocelyn Martinez</span>
-                <span class="brand-role">UX/UI Designer</span>
+                <span class="brand-role">Product &amp; UX/UI Designer</span>
             </a>
 
             <div class="nav-links">
                 <a href="#about">About</a>
                 <a href="#work">Work</a>
                 <a href="#process">Approach</a>
-                <a href="#playground">Playground</a>
                 <a class="nav-contact" href="mailto:jocelyn.wisteria@gmail.com">Email me <span aria-hidden="true">↗</span></a>
             </div>
 
@@ -1382,7 +1410,6 @@
             <a href="#about">About</a>
             <a href="#work">Selected work</a>
             <a href="#process">Approach</a>
-            <a href="#playground">Playground</a>
             <a href="mailto:jocelyn.wisteria@gmail.com">Email Jocelyn</a>
         </div>
     </nav>
@@ -1390,10 +1417,10 @@
     <header class="hero" id="top">
         <div class="page-shell hero-grid">
             <div class="reveal">
-                <p class="eyebrow">UX/UI designer · Product thinker · Front-end fluent</p>
-                <h1>Designing clear, <em>human</em> digital experiences.</h1>
+                <p class="eyebrow">Product designer · Interaction systems · Front-end fluent</p>
+                <h1>Making complex systems feel clear and <em>human.</em></h1>
                 <p class="hero-lede">
-                    I combine human insight, visual craft, and a computer science background to shape accessible products—from research and flows to polished responsive interfaces.
+                    I work across research synthesis, product framing, interaction design, visual systems, and front-end prototyping—connecting what people need with what teams can realistically build.
                 </p>
 
                 <div class="hero-actions">
@@ -1402,32 +1429,32 @@
                 </div>
             </div>
 
-            <aside class="hero-aside reveal" aria-label="Portfolio overview">
-                <span class="hero-aside-label">What you will find here</span>
+            <aside class="hero-aside reveal" aria-label="How I add value to a product team">
+                <span class="hero-aside-label">How I add value</span>
                 <p>
-                    Real-world collaboration, systems-focused product thinking, and self-directed concepts that show my range in interaction and visual design.
+                    I move between evidence, behavior, interface, and implementation—making both the experience and the reasoning behind it visible.
                 </p>
 
                 <div class="hero-index">
                     <div class="index-item">
                         <span>01</span>
                         <div>
-                            <strong>Product thinking</strong>
-                            <small>Research, flows, states, and scope</small>
+                            <strong>Frame ambiguous problems</strong>
+                            <small>People, constraints, priorities, and scope</small>
                         </div>
                     </div>
                     <div class="index-item">
                         <span>02</span>
                         <div>
-                            <strong>Interface craft</strong>
-                            <small>Responsive, accessible, and polished</small>
+                            <strong>Design the whole system</strong>
+                            <small>Roles, states, permissions, and recovery</small>
                         </div>
                     </div>
                     <div class="index-item">
                         <span>03</span>
                         <div>
-                            <strong>Technical fluency</strong>
-                            <small>Design decisions grounded in implementation</small>
+                            <strong>Carry quality into delivery</strong>
+                            <small>Responsive UI, accessibility, and prototypes</small>
                         </div>
                     </div>
                 </div>
@@ -1438,26 +1465,26 @@
     </header>
 
     <main id="main">
-        <section class="trust-strip" aria-label="Portfolio strengths">
+        <section class="trust-strip" aria-label="Portfolio evidence at a glance">
             <div class="page-shell trust-grid">
                 <div class="trust-intro">
-                    <span class="hero-aside-label">Portfolio at a glance</span>
-                    <p>Designing the experience—and understanding the system beneath it.</p>
+                    <span class="hero-aside-label">Evidence at a glance</span>
+                    <p>Product thinking made visible through scope, states, and working behavior.</p>
                 </div>
                 <div class="trust-item">
-                    <span>Real-world work</span>
-                    <strong>Public-facing tourism product</strong>
-                    <p>Stakeholder collaboration, content structure, responsive UI, and administrative workflows.</p>
+                    <span>Research synthesis</span>
+                    <strong class="trust-metric">28</strong>
+                    <p>Participants and collaborators represented in the Holland project synthesis.</p>
                 </div>
                 <div class="trust-item">
-                    <span>Systems thinking</span>
-                    <strong>Student and faculty ecosystem</strong>
-                    <p>Role-based interfaces, permission states, privacy boundaries, and exception handling.</p>
+                    <span>Connected roles</span>
+                    <strong class="trust-metric">2</strong>
+                    <p>Student and faculty experiences designed as one attendance ecosystem.</p>
                 </div>
                 <div class="trust-item">
-                    <span>Visual range</span>
-                    <strong>Editorial product concepts</strong>
-                    <p>Distinct art direction supported by clear information hierarchy and honest validation plans.</p>
+                    <span>Coded concepts</span>
+                    <strong class="trust-metric">2</strong>
+                    <p>Working prototypes used to explore state, logic, and responsive behavior.</p>
                 </div>
             </div>
         </section>
@@ -1467,24 +1494,24 @@
                 <div class="section-header reveal">
                     <div class="section-kicker">01 / About<span></span></div>
                     <div>
-                        <h2>Design shaped by empathy, structure, and technical curiosity.</h2>
+                        <h2>I connect product reasoning, interaction systems, and interface craft.</h2>
                         <p class="section-lede">
-                            I care about how a product feels, but I also care about whether people understand it, trust it, recover from mistakes, and can realistically use it.
+                            The value I bring is range with connective tissue: I can frame what needs to be solved, model how it should behave, and carry the idea into a responsive, high-fidelity prototype.
                         </p>
                     </div>
                 </div>
 
                 <div class="about-grid reveal">
                     <div class="about-statement">
-                        My computer science background helps me understand constraints and systems. My design practice keeps those systems accountable to the <em>people inside them.</em>
+                        I use technical fluency to make design decisions more realistic—and human-centered practice to keep system logic <em>understandable, trustworthy, and useful.</em>
                     </div>
 
                     <div class="about-copy">
                         <p>
-                            I work across UX strategy, interaction design, visual design, prototyping, and front-end implementation. I am especially drawn to products that need warmth without losing clarity—education, culture, wellness, public services, and thoughtfully designed consumer experiences.
+                            I am most useful where a product has multiple audiences, unclear rules, or dense information. I turn those conditions into task models, role-aware flows, content structures, and interface patterns.
                         </p>
                         <p>
-                            I approach each project by clarifying the real task, separating assumptions from evidence, and giving complex information a readable structure.
+                            I document what is known, what is assumed, and what still needs validation so collaborators can make decisions without pretending certainty.
                         </p>
                     </div>
                 </div>
@@ -1492,35 +1519,35 @@
                 <div class="capability-grid reveal">
                     <article class="capability-card">
                         <span class="capability-number">01</span>
-                        <h3>Frame the product</h3>
-                        <p>Define users, constraints, roles, system boundaries, and the decisions the interface must support.</p>
+                        <h3>Product framing</h3>
+                        <p>Translate research, stakeholder input, and constraints into priorities, design principles, and a tractable scope.</p>
                     </article>
                     <article class="capability-card">
                         <span class="capability-number">02</span>
-                        <h3>Shape the interaction</h3>
-                        <p>Build flows, hierarchy, feedback, permissions, empty states, and recovery paths—not only ideal screens.</p>
+                        <h3>Interaction systems</h3>
+                        <p>Model roles, states, permissions, feedback, edge cases, and recovery paths—not only the ideal journey.</p>
                     </article>
                     <article class="capability-card">
                         <span class="capability-number">03</span>
-                        <h3>Craft the interface</h3>
-                        <p>Create responsive visual systems with intentional typography, accessible interaction, and implementation awareness.</p>
+                        <h3>Delivery-minded UI</h3>
+                        <p>Build responsive, accessible visual systems and high-fidelity prototypes that support implementation and design QA.</p>
                     </article>
                 </div>
 
-                <div class="skills-list reveal" aria-label="Skills and tools">
-                    <span class="skill">UX strategy</span>
-                    <span class="skill">User flows</span>
-                    <span class="skill">Information architecture</span>
-                    <span class="skill">Interaction design</span>
-                    <span class="skill">Visual design</span>
-                    <span class="skill">Responsive design</span>
-                    <span class="skill">Accessibility</span>
-                    <span class="skill">Figma</span>
-                    <span class="skill">HTML & CSS</span>
-                    <span class="skill">JavaScript</span>
-                    <span class="skill">React</span>
-                    <span class="skill">Python</span>
-                </div>
+                <ul class="skills-list reveal">
+                    <li class="skill">Product framing</li>
+                    <li class="skill">Research synthesis</li>
+                    <li class="skill">Information architecture</li>
+                    <li class="skill">Interaction design</li>
+                    <li class="skill">Complex flows &amp; states</li>
+                    <li class="skill">Design systems</li>
+                    <li class="skill">High-fidelity prototyping</li>
+                    <li class="skill">Accessibility</li>
+                    <li class="skill">Responsive UI</li>
+                    <li class="skill">Design QA</li>
+                    <li class="skill">Figma</li>
+                    <li class="skill">HTML · CSS · JavaScript</li>
+                </ul>
             </div>
         </section>
 
@@ -1529,45 +1556,59 @@
                 <div class="section-header reveal">
                     <div class="section-kicker">02 / Selected work<span></span></div>
                     <div>
-                        <h2>Case studies that show both judgment and craft.</h2>
+                        <h2>Work that makes the product decisions visible.</h2>
                         <p class="section-lede">
-                            The first two projects demonstrate collaboration and system thinking. The concept work that follows shows visual range, product framing, and how I distinguish a design hypothesis from validated evidence.
+                            Each case study clarifies my role, the system I designed, the evidence behind key decisions, and the next risk I would validate. Together, the work spans real stakeholder collaboration, multi-role workflows, and stateful coded prototypes.
                         </p>
                     </div>
                 </div>
 
                 <div class="project-list">
-                    <a class="project-card reveal" href="Holland-Walking-Tour-site\holland-walking-tour-case-study.html" aria-label="View Holland Walking Tour case study">
+                    <a class="project-card reveal" href="Holland-Walking-Tour-site/holland-walking-tour-case-study.html" aria-label="View Holland Walking Tour case study">
                         <div class="project-visual">
                             <span class="project-number">01</span>
                             <img src="holland-walking-tour-thumbnail.webp" alt="Holland Walking Tour discovery, route-building, navigation, and landmark story interfaces">
                         </div>
                         <div class="project-content">
                             <div>
-                                <span class="project-type">Real-world collaboration · Tourism & public history · 2024</span>
+                                <span class="project-type">Live collaboration · Tourism &amp; public history · 2024</span>
                                 <h3>Holland Walking Tour</h3>
                                 <p class="project-description">
-                                    A responsive heritage-tourism experience that helps visitors explore local stories while giving collaborators a clearer way to manage public content.
+                                    A responsive public-history product that helps visitors choose and follow a walking tour while giving collaborators a reusable model for publishing local stories.
                                 </p>
+                                <dl class="project-meta">
+                                    <div>
+                                        <dt>My role</dt>
+                                        <dd>UX intern &amp; programmer</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Scope</dt>
+                                        <dd>Visitor journey + content workflow</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Evidence</dt>
+                                        <dd>28 people represented in synthesis</dd>
+                                    </div>
+                                </dl>
                                 <ul class="project-proof">
-                                    <li>Connected the visitor-facing journey with an administrative content workflow.</li>
-                                    <li>Translated research and stakeholder needs into navigation, maps, stories, and accessible mobile patterns.</li>
-                                    <li>Demonstrates UX strategy, interface design, front-end awareness, and collaborative delivery.</li>
+                                    <li>Turned outdoor legibility, route confidence, and flexible exploration into concrete requirements.</li>
+                                    <li>Designed the journey from discovery and route selection through navigation and story detail.</li>
+                                    <li>Connected the content model to the interface so the experience can grow beyond one tour.</li>
                                 </ul>
                             </div>
                             <div class="project-footer">
                                 <div class="project-tags">
-                                    <span class="project-tag">UX research</span>
-                                    <span class="project-tag">Product design</span>
-                                    <span class="project-tag">Responsive UI</span>
-                                    <span class="project-tag">CMS thinking</span>
+                                    <span class="project-tag">Research synthesis</span>
+                                    <span class="project-tag">Information architecture</span>
+                                    <span class="project-tag">Responsive product</span>
+                                    <span class="project-tag">Front-end</span>
                                 </div>
                                 <span class="project-link">View case study <span aria-hidden="true">↗</span></span>
                             </div>
                         </div>
                     </a>
 
-                    <a class="project-card reverse reveal" href="ImHere-case-study\imhere-case-study.html" aria-label="View ImHere case study">
+                    <a class="project-card reverse reveal" href="ImHere-case-study/imhere-case-study.html" aria-label="View ImHere case study">
                         <div class="project-visual">
                             <span class="project-number">02</span>
                             <img src="imhere-thumbnail.webp" alt="ImHere student attendance app and connected faculty dashboard system" loading="lazy">
@@ -1577,20 +1618,34 @@
                                 <span class="project-type">University capstone · Education technology · 2023–2024</span>
                                 <h3>ImHere</h3>
                                 <p class="project-description">
-                                    A role-based attendance concept designed around fast student check-in, manageable faculty workflows, visible system status, and careful location-data boundaries.
+                                    A role-based attendance system designed around quick student check-in, manageable faculty review, visible system status, and careful location-data boundaries.
                                 </p>
+                                <dl class="project-meta">
+                                    <div>
+                                        <dt>My role</dt>
+                                        <dd>UX strategy, interaction &amp; UI</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Scope</dt>
+                                        <dd>Student app + faculty workspace</dd>
+                                    </div>
+                                    <div>
+                                        <dt>System depth</dt>
+                                        <dd>Roles, permissions &amp; status logic</dd>
+                                    </div>
+                                </dl>
                                 <ul class="project-proof">
-                                    <li>Designed two connected experiences for students and faculty with different levels of complexity.</li>
-                                    <li>Explored permissions, privacy, failure states, manual correction, and non-ideal conditions.</li>
-                                    <li>Shows how my technical background supports system-aware interaction design.</li>
+                                    <li>Separated student and faculty jobs while designing around one shared attendance record.</li>
+                                    <li>Mapped privacy, permission, and status boundaries across check-in, review, and correction.</li>
+                                    <li>Designed non-ideal paths for GPS failure, pending validation, and manual edits.</li>
                                 </ul>
                             </div>
                             <div class="project-footer">
                                 <div class="project-tags">
-                                    <span class="project-tag">Systems thinking</span>
+                                    <span class="project-tag">Service logic</span>
                                     <span class="project-tag">Interaction design</span>
                                     <span class="project-tag">Privacy</span>
-                                    <span class="project-tag">UI design</span>
+                                    <span class="project-tag">Edge cases</span>
                                 </div>
                                 <span class="project-link">View case study <span aria-hidden="true">↗</span></span>
                             </div>
@@ -1598,26 +1653,31 @@
                     </a>
                 </div>
 
-                <div class="section-header reveal" style="margin-top:8rem;margin-bottom:2.5rem;">
-                    <div class="section-kicker">Concept explorations<span></span></div>
+                <div class="section-header concept-heading reveal">
+                    <div class="section-kicker">Independent product directions<span></span></div>
                     <div>
-                        <h2 style="font-size:clamp(2.6rem,5vw,4.2rem);">Self-directed work with distinct product and visual directions.</h2>
+                        <h2>Working prototypes and focused visual systems.</h2>
+                        <p class="section-lede">
+                            These projects show how I define a product hypothesis, model behavior, and use visual direction to support a specific kind of decision.
+                        </p>
                     </div>
                 </div>
 
                 <div class="concept-grid">
-                    <a class="concept-card reveal" href="aurea.html" aria-label="View Aurea case study">
+                    <a class="concept-card reveal" href="nutriva-portfolio-prototype/nutriva.html" aria-label="View Nutriva case study">
                         <div class="concept-image">
-                            <img src="aurea-thumbnail.webp" alt="Aurea personalized fragrance discovery and scent portrait interfaces" loading="lazy">
+                            <img src="nutriva-thumbnail.webp" alt="Nutriva responsive meal-planning website and mobile app interface" loading="lazy">
                         </div>
                         <div class="concept-content">
-                            <span class="project-type">Visual & product concept · 2026</span>
-                            <h3>Aurea</h3>
-                            <p>An editorial fragrance archive exploring progressive disclosure, comparison, collection-building, and luxury visual direction.</p>
+                            <span class="project-type">Product systems concept · 2025</span>
+                            <span class="concept-status">Working coded prototype</span>
+                            <h3>Nutriva</h3>
+                            <p>A stateful meal-planning experience connecting pantry inventory, recipe matching, weekly planning, and grocery decisions.</p>
+                            <p class="concept-evidence"><strong>Prototype depth</strong>Stateful pantry, planning, grocery, and recipe flows across responsive web and iPhone views.</p>
                             <div class="project-footer">
                                 <div class="project-tags">
-                                    <span class="project-tag">Art direction</span>
-                                    <span class="project-tag">UI design</span>
+                                    <span class="project-tag">State design</span>
+                                    <span class="project-tag">Uncertainty design</span>
                                 </div>
                                 <span class="project-link">Explore <span aria-hidden="true">↗</span></span>
                             </div>
@@ -1629,12 +1689,14 @@
                             <img src="novella-thumbnail.webp" alt="Novella responsive literary discovery website and mobile experience" loading="lazy">
                         </div>
                         <div class="concept-content">
-                            <span class="project-type">Product & visual concept · 2025</span>
+                            <span class="project-type">Discovery product concept · 2025</span>
+                            <span class="concept-status">Working interactive prototype</span>
                             <h3>Novella</h3>
-                            <p>A calmer reading concept that helps people move from vague reading intent to a confident book choice.</p>
+                            <p>A calmer literary-discovery experience that turns vague reading intent into a browsable path toward a confident choice.</p>
+                            <p class="concept-evidence"><strong>Prototype depth</strong>A 10-screen app journey plus responsive web views exploring pacing, comparison, and progressive disclosure.</p>
                             <div class="project-footer">
                                 <div class="project-tags">
-                                    <span class="project-tag">Discovery</span>
+                                    <span class="project-tag">Product narrative</span>
                                     <span class="project-tag">Editorial UI</span>
                                 </div>
                                 <span class="project-link">Explore <span aria-hidden="true">↗</span></span>
@@ -1642,18 +1704,20 @@
                         </div>
                     </a>
 
-                    <a class="concept-card reveal" href="nutriva-portfolio-prototype\nutriva.html" aria-label="View Nutriva case study">
+                    <a class="concept-card reveal" href="aurea.html" aria-label="View Aurea case study">
                         <div class="concept-image">
-                            <img src="nutriva-thumbnail.webp" alt="Nutriva responsive meal-planning website and mobile app interface" loading="lazy">
+                            <img src="aurea-thumbnail.webp" alt="Aurea personalized fragrance discovery and scent portrait interfaces" loading="lazy">
                         </div>
                         <div class="concept-content">
-                            <span class="project-type">Product concept · 2025</span>
-                            <h3>Nutriva</h3>
-                            <p>An inventory-assisted meal-planning concept built around editable information, practical recipe matching, and uncertainty.</p>
+                            <span class="project-type">Personalization &amp; visual concept · 2026</span>
+                            <span class="concept-status">High-fidelity design concept</span>
+                            <h3>Aurea</h3>
+                            <p>An editorial fragrance archive that makes an abstract sensory category easier to discover, compare, and collect.</p>
+                            <p class="concept-evidence"><strong>System depth</strong>Ten product moments spanning discovery, comparison, scent profiles, and a personal archive.</p>
                             <div class="project-footer">
                                 <div class="project-tags">
-                                    <span class="project-tag">Product framing</span>
-                                    <span class="project-tag">Responsible AI</span>
+                                    <span class="project-tag">Visual system</span>
+                                    <span class="project-tag">Personalization</span>
                                 </div>
                                 <span class="project-link">Explore <span aria-hidden="true">↗</span></span>
                             </div>
@@ -1662,7 +1726,7 @@
                 </div>
 
                 <p class="concept-note reveal">
-                    Concept projects are presented transparently as design hypotheses. Each case study identifies what was designed, what remains unvalidated, and what I would test next.
+                    Concept work is presented as product hypotheses, not shipped outcomes. Each case study names what is working, what remains unvalidated, and what I would test next.
                 </p>
             </div>
         </section>
@@ -1672,9 +1736,9 @@
                 <div class="section-header reveal">
                     <div class="section-kicker">03 / Approach<span></span></div>
                     <div>
-                        <h2>A process that keeps beautiful ideas accountable.</h2>
+                        <h2>A product process built around decisions, not deliverables.</h2>
                         <p class="section-lede">
-                            I do not treat UX terminology as evidence. I connect each design decision to a user task, system condition, observed pattern, or clearly labeled hypothesis.
+                            I use the lightest method that reduces uncertainty, make assumptions and tradeoffs visible, and keep a clear line from evidence to interface behavior.
                         </p>
                     </div>
                 </div>
@@ -1682,70 +1746,46 @@
                 <div class="process-grid reveal">
                     <article class="process-step">
                         <span class="process-number">01</span>
-                        <h3>Clarify</h3>
-                        <p>Define the user, task, context, constraints, stakeholders, and what success must actually mean.</p>
+                        <h3>Frame</h3>
+                        <p>Align on the audience, desired outcome, constraints, and core decision before making screens.</p>
                     </article>
                     <article class="process-step">
                         <span class="process-number">02</span>
-                        <h3>Structure</h3>
-                        <p>Map information, roles, flows, permissions, feedback, and failure states before polishing screens.</p>
+                        <h3>Model</h3>
+                        <p>Map content, roles, flows, states, permissions, edge cases, and recovery across the system.</p>
                     </article>
                     <article class="process-step">
                         <span class="process-number">03</span>
-                        <h3>Craft</h3>
-                        <p>Build a visual system that supports hierarchy, accessibility, responsive behavior, and product character.</p>
+                        <h3>Prototype</h3>
+                        <p>Choose fidelity based on risk, then iterate content, behavior, and the visual system together.</p>
                     </article>
                     <article class="process-step">
                         <span class="process-number">04</span>
-                        <h3>Validate</h3>
-                        <p>Separate assumptions from findings, test the risky moments, and revise the product—not only the presentation.</p>
+                        <h3>Validate &amp; prepare</h3>
+                        <p>Test the riskiest moments, capture findings, document behavior, and support implementation and design QA.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="section playground" id="playground">
-            <div class="page-shell">
-                <div class="section-header reveal">
-                    <div class="section-kicker">04 / Playground<span></span></div>
-                    <div>
-                        <h2>Experiments beyond the case-study format.</h2>
-                        <p class="section-lede">
-                            A looser collection of visual studies, code experiments, interface sketches, and design exploration.
-                        </p>
-                    </div>
-                </div>
-
-                <a class="playground-card reveal" href="playground.html">
-                    <div>
-                        <span class="playground-label">Open the creative archive</span>
-                        <h3>The Playground</h3>
-                        <p>
-                            Process fragments and small experiments that show how I explore form, interaction, illustration, and front-end ideas before they become polished portfolio work.
-                        </p>
-                    </div>
-                    <span class="playground-arrow" aria-hidden="true">→</span>
-                </a>
-            </div>
-        </section>
     </main>
 
     <footer class="contact-section" id="contact">
         <div class="page-shell">
             <div class="contact-grid reveal">
                 <div>
-                    <span class="contact-label">Open to thoughtful design opportunities</span>
-                    <div class="contact-title">Let’s make something <em>clear and memorable.</em></div>
+                    <span class="contact-label">Open to product design opportunities</span>
+                    <h2 class="contact-title">Let’s build something <em>clear, credible, and memorable.</em></h2>
                     <p class="contact-copy">
-                        I am interested in junior UX/UI, product design, and visual design opportunities where I can contribute strong interface craft, systems thinking, and technical fluency.
+                        I am interested in product design and UX/UI roles where I can contribute research synthesis, interaction systems, high-fidelity interface craft, and front-end fluency.
                     </p>
                     <a class="button button-primary" href="mailto:jocelyn.wisteria@gmail.com">Email Jocelyn <span aria-hidden="true">↗</span></a>
                 </div>
 
-                <aside class="contact-card">
+                <aside class="contact-card" aria-label="Direct contact">
                     <span>Direct contact</span>
                     <a href="mailto:jocelyn.wisteria@gmail.com">jocelyn.wisteria@gmail.com</a>
-                    <p>For roles, collaborations, portfolio questions, or a résumé request.</p>
+                    <p>For product design roles, collaborations, portfolio questions, or a résumé request.</p>
                 </aside>
             </div>
 
@@ -1762,9 +1802,40 @@
         const mobileMenu = document.getElementById("mobileMenu");
         const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         const revealItems = document.querySelectorAll(".reveal");
+        const sectionNavLinks = document.querySelectorAll('.nav-links a[href^="#"], .mobile-menu a[href^="#"]');
+        const navSections = [...new Set(
+            [...sectionNavLinks]
+                .map(link => document.querySelector(link.getAttribute("href")))
+                .filter(Boolean)
+        )];
 
         function updateNavigation() {
             siteNav.classList.toggle("scrolled", window.scrollY > 12);
+
+            const readingLine = window.scrollY + window.innerHeight * 0.34;
+            let currentSection = "";
+
+            navSections.forEach(section => {
+                if (section.offsetTop <= readingLine) currentSection = section.id;
+            });
+
+            sectionNavLinks.forEach(link => {
+                const isCurrent = currentSection && link.getAttribute("href") === `#${currentSection}`;
+                link.classList.toggle("is-active", Boolean(isCurrent));
+                if (isCurrent) {
+                    link.setAttribute("aria-current", "location");
+                } else {
+                    link.removeAttribute("aria-current");
+                }
+            });
+        }
+
+        function revealCurrentHash() {
+            const target = document.getElementById(window.location.hash.slice(1));
+            if (!target) return;
+
+            if (target.matches(".reveal")) target.classList.add("is-visible");
+            target.querySelectorAll(".reveal").forEach(item => item.classList.add("is-visible"));
         }
 
         function closeMenu() {
@@ -1784,6 +1855,10 @@
 
         updateNavigation();
         window.addEventListener("scroll", updateNavigation, { passive: true });
+        window.addEventListener("hashchange", () => {
+            revealCurrentHash();
+            updateNavigation();
+        });
         menuButton.addEventListener("click", toggleMenu);
 
         mobileMenu.querySelectorAll("a").forEach(link => {
@@ -1797,6 +1872,8 @@
         if (reducedMotion || !("IntersectionObserver" in window)) {
             revealItems.forEach(item => item.classList.add("is-visible"));
         } else {
+            revealCurrentHash();
+
             const observer = new IntersectionObserver((entries, currentObserver) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1804,9 +1881,15 @@
                         currentObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.06, rootMargin: "0px 0px -8% 0px" });
 
-            revealItems.forEach(item => observer.observe(item));
+            revealItems.forEach(item => {
+                if (item.classList.contains("is-visible") || item.getBoundingClientRect().top < window.innerHeight * 1.05) {
+                    item.classList.add("is-visible");
+                } else {
+                    observer.observe(item);
+                }
+            });
         }
     </script>
 </body>
