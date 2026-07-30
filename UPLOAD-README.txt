@@ -8,7 +8,10 @@ Upload these files to the same folder as your portfolio index:
 
 2. loopline.html
    The complete, standalone Loopline case study. Its CSS and JavaScript are
-   embedded, so no framework or build step is required.
+   embedded, so no framework or build step is required. This upgraded version
+   includes finished Adobe-style production layouts, three connected pickup
+   screens, an interactive motion reel, rejected logo directions, a decision
+   matrix, and a before/after critique revision.
 
 3. loopline-thumbnail.webp
    The portfolio-card preview image used by index.html and the case study’s
