@@ -6123,11 +6123,2179 @@ a:focus-visible {
   html { scroll-behavior: auto; }
 }
 
-  </style>
+  
+
+/* Advanced responsive prototype + motion direction */
+.prototype-showcase--advanced {
+  margin-top: 120px;
+}
+
+.prototype-showcase--advanced .prototype-showcase__head {
+  align-items: start;
+}
+
+.prototype-showcase--advanced .prototype-showcase__head h3 {
+  max-width: 980px;
+}
+
+.prototype-controls--advanced {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.prototype-controls--advanced button {
+  min-height: 86px;
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  grid-template-rows: auto auto;
+  align-content: center;
+  column-gap: 14px;
+  row-gap: 5px;
+}
+
+.prototype-controls--advanced button > span {
+  grid-row: 1 / span 2;
+  align-self: center;
+}
+
+.prototype-controls--advanced button b,
+.prototype-controls--advanced button small {
+  display: block;
+}
+
+.prototype-controls--advanced button b {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.prototype-controls--advanced button small {
+  color: rgba(16, 33, 26, 0.56);
+  font: 600 8px/1.25 var(--mono);
+}
+
+.prototype-controls--advanced button[aria-selected="true"] small {
+  color: rgba(244, 240, 232, 0.62);
+}
+
+.prototype-stage {
+  position: relative;
+  margin-top: 18px;
+  overflow: hidden;
+  border: 1px solid var(--forest);
+  background:
+    linear-gradient(rgba(187, 220, 203, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(187, 220, 203, 0.07) 1px, transparent 1px),
+    var(--forest-deep);
+  background-size: 54px 54px;
+}
+
+.prototype-stage::before {
+  content: "GOOD FOOD → FURTHER";
+  position: absolute;
+  z-index: 0;
+  right: -1.5%;
+  bottom: -0.12em;
+  color: rgba(244, 240, 232, 0.035);
+  font-size: clamp(70px, 10vw, 170px);
+  font-weight: 800;
+  letter-spacing: -0.07em;
+  line-height: 0.76;
+  white-space: nowrap;
+}
+
+.prototype-stage__bar {
+  position: relative;
+  z-index: 4;
+  min-height: 72px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid rgba(244, 240, 232, 0.18);
+  color: var(--oat);
+}
+
+.prototype-stage__state {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font: 700 8px/1 var(--mono);
+  letter-spacing: 0.08em;
+}
+
+.prototype-stage__state::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 0 0 5px rgba(241, 91, 64, 0.15);
+}
+
+.prototype-stage__tools {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.prototype-stage__tools > span {
+  color: rgba(244, 240, 232, 0.52);
+  font: 600 7px/1 var(--mono);
+}
+
+.prototype-stage__tools button {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid rgba(244, 240, 232, 0.3);
+  background: transparent;
+  color: var(--oat);
+  cursor: pointer;
+  font: 700 8px/1 var(--mono);
+  letter-spacing: 0.04em;
+}
+
+.prototype-stage__tools button:hover {
+  border-color: var(--yellow);
+  color: var(--yellow);
+}
+
+.prototype-device-grid {
+  position: relative;
+  z-index: 2;
+  min-height: 780px;
+  padding: clamp(26px, 4vw, 64px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.31fr);
+  gap: clamp(22px, 3.5vw, 56px);
+  align-items: center;
+}
+
+.prototype-desktop,
+.prototype-phone {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 32px 74px rgba(0, 0, 0, 0.28);
+}
+
+.prototype-desktop {
+  min-width: 0;
+  border: 1px solid rgba(244, 240, 232, 0.24);
+  background: var(--paper);
+}
+
+.prototype-desktop__chrome {
+  min-height: 42px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border-bottom: 1px solid rgba(16, 33, 26, 0.16);
+  background: var(--oat);
+}
+
+.prototype-desktop__chrome i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--mint);
+}
+
+.prototype-desktop__chrome i:first-child {
+  background: var(--coral);
+}
+
+.prototype-desktop__chrome i:nth-child(2) {
+  background: var(--yellow);
+}
+
+.prototype-desktop__chrome span {
+  margin-left: 8px;
+  color: rgba(16, 33, 26, 0.46);
+  font: 650 7px/1 var(--mono);
+}
+
+.prototype-desktop__viewport {
+  position: relative;
+  min-height: 610px;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.proto-screen,
+.proto-mobile-screen {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.proto-screen.is-active,
+.proto-mobile-screen.is-active {
+  z-index: 2;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.proto-screen.is-entering,
+.proto-mobile-screen.is-entering {
+  animation: proto-scene-enter 520ms var(--motion-ease) both;
+}
+
+.proto-screen__brandbar {
+  min-height: 58px;
+  padding: 0 clamp(18px, 2vw, 30px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid currentColor;
+  background: var(--forest);
+  color: var(--oat);
+}
+
+.proto-screen__brandbar b {
+  font-size: 14px;
+  letter-spacing: -0.045em;
+}
+
+.proto-screen__brandbar span {
+  color: var(--mint);
+  font: 700 7px/1 var(--mono);
+  letter-spacing: 0.08em;
+}
+
+.proto-poster {
+  min-height: 552px;
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1.08fr) minmax(270px, 0.92fr);
+}
+
+.proto-route-index {
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid rgba(16, 33, 26, 0.22);
+  background: var(--yellow);
+}
+
+.proto-route-index > span {
+  font: 700 8px/1 var(--mono);
+}
+
+.proto-route-index > b {
+  margin-top: auto;
+  font: 800 clamp(42px, 5vw, 76px)/0.8 var(--sans);
+  letter-spacing: -0.08em;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.proto-route-index__line {
+  position: relative;
+  width: 2px;
+  height: 180px;
+  margin-top: 26px;
+  background: rgba(16, 33, 26, 0.22);
+}
+
+.proto-route-index__line i {
+  position: absolute;
+  left: 50%;
+  width: 11px;
+  height: 11px;
+  border: 2px solid var(--yellow);
+  border-radius: 50%;
+  background: var(--forest);
+  transform: translateX(-50%);
+}
+
+.proto-route-index__line i:nth-child(1) { top: 0; }
+.proto-route-index__line i:nth-child(2) { top: 48%; }
+.proto-route-index__line i:nth-child(3) { bottom: 0; }
+
+.proto-poster__statement {
+  position: relative;
+  padding: clamp(30px, 4vw, 66px) clamp(25px, 3.2vw, 52px);
+  overflow: hidden;
+}
+
+.proto-poster__statement .ui-kicker {
+  margin: 0 0 17px;
+  color: var(--coral-ink);
+  font: 700 8px/1 var(--mono);
+  letter-spacing: 0.1em;
+}
+
+.proto-poster__statement h4 {
+  max-width: 630px;
+  margin: 0;
+  font-size: clamp(42px, 5.35vw, 86px);
+  line-height: 0.82;
+  letter-spacing: -0.075em;
+}
+
+.proto-poster__statement h4 em {
+  color: var(--coral);
+  font-family: var(--display);
+  font-weight: 400;
+}
+
+.proto-poster__statement > p:last-child {
+  max-width: 430px;
+  margin: 27px 0 0;
+  color: rgba(16, 33, 26, 0.62);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.proto-poster__statement::after {
+  content: "";
+  position: absolute;
+  right: -130px;
+  bottom: -160px;
+  width: 350px;
+  height: 350px;
+  border: 1px solid rgba(16, 33, 26, 0.13);
+  border-radius: 50%;
+}
+
+.proto-action-panel {
+  padding: clamp(26px, 3vw, 46px);
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgba(16, 33, 26, 0.2);
+  background: var(--oat);
+}
+
+.proto-panel-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  font: 700 7px/1 var(--mono);
+  letter-spacing: 0.07em;
+}
+
+.proto-panel-meta span:last-child {
+  color: var(--coral-ink);
+}
+
+.proto-readiness {
+  margin-bottom: 17px;
+}
+
+.proto-readiness > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 9px;
+  font: 700 8px/1 var(--mono);
+}
+
+.proto-readiness__track {
+  height: 4px;
+  overflow: hidden;
+  background: rgba(16, 33, 26, 0.14);
+}
+
+.proto-readiness__track i {
+  display: block;
+  width: var(--readiness, 100%);
+  height: 100%;
+  background: var(--coral);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 320ms var(--motion-ease);
+}
+
+.proto-screen.is-active .proto-readiness__track i {
+  transform: scaleX(1);
+}
+
+.proto-check-list {
+  display: grid;
+  gap: 8px;
+}
+
+.proto-check {
+  min-height: 69px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(16, 33, 26, 0.22);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.proto-check:hover {
+  transform: translateX(3px);
+}
+
+.proto-check[aria-pressed="true"] {
+  border-color: var(--forest);
+  background: var(--mint);
+}
+
+.proto-check > span:first-child {
+  width: 27px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font: 700 8px/1 var(--mono);
+}
+
+.proto-check b,
+.proto-check small {
+  display: block;
+}
+
+.proto-check b {
+  font-size: 10px;
+}
+
+.proto-check small {
+  margin-top: 4px;
+  color: rgba(16, 33, 26, 0.55);
+  font-size: 8px;
+}
+
+.proto-check > span:last-child {
+  color: var(--forest);
+  font-size: 14px;
+}
+
+.proto-action {
+  min-height: 52px;
+  margin-top: auto;
+  padding: 0 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 0;
+  background: var(--coral);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.015em;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.proto-action:hover {
+  background: var(--yellow);
+}
+
+.proto-action:active {
+  transform: translateY(1px);
+}
+
+.proto-screen--schedule .proto-route-index {
+  background: var(--coral);
+}
+
+.proto-screen--schedule .proto-route-index__line i {
+  border-color: var(--coral);
+}
+
+.proto-screen--schedule .proto-poster__statement {
+  background: var(--forest);
+  color: var(--oat);
+}
+
+.proto-screen--schedule .proto-poster__statement .ui-kicker {
+  color: var(--yellow);
+}
+
+.proto-screen--schedule .proto-poster__statement h4 em {
+  color: var(--mint);
+}
+
+.proto-screen--schedule .proto-poster__statement > p:last-child {
+  color: rgba(244, 240, 232, 0.62);
+}
+
+.proto-screen--schedule .proto-poster__statement::after {
+  border-color: rgba(244, 240, 232, 0.15);
+}
+
+.proto-schedule-flow {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.proto-date-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.proto-date-row button,
+.proto-time-row button {
+  border: 1px solid rgba(16, 33, 26, 0.22);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.proto-date-row button {
+  min-height: 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.proto-date-row button small {
+  font: 700 7px/1 var(--mono);
+}
+
+.proto-date-row button b {
+  font-size: 20px;
+}
+
+.proto-date-row button[aria-pressed="true"],
+.proto-time-row button[aria-pressed="true"] {
+  border-color: var(--forest);
+  background: var(--yellow);
+}
+
+.proto-field-label {
+  margin: 24px 0 10px;
+  color: rgba(16, 33, 26, 0.55);
+  font: 700 7px/1 var(--mono);
+}
+
+.proto-time-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+.proto-time-row button {
+  min-height: 44px;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.proto-route-ticket {
+  position: relative;
+  margin: 20px 0;
+  padding: 15px 14px 14px 48px;
+  overflow: hidden;
+  background: var(--forest);
+  color: var(--oat);
+}
+
+.proto-route-ticket::before {
+  content: "04";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 36px;
+  display: grid;
+  place-items: center;
+  background: var(--mint);
+  color: var(--ink);
+  font: 800 9px/1 var(--mono);
+}
+
+.proto-route-ticket b,
+.proto-route-ticket span {
+  display: block;
+}
+
+.proto-route-ticket b {
+  font-size: 10px;
+}
+
+.proto-route-ticket span {
+  margin-top: 7px;
+  color: rgba(244, 240, 232, 0.58);
+  font: 600 7px/1.25 var(--mono);
+}
+
+.proto-screen--confirmation {
+  background: var(--mint);
+}
+
+.proto-screen--confirmation .proto-screen__brandbar {
+  background: var(--coral);
+  color: var(--ink);
+}
+
+.proto-screen--confirmation .proto-screen__brandbar span {
+  color: var(--ink);
+}
+
+.proto-confirmation {
+  min-height: 552px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+}
+
+.proto-confirmation__statement {
+  position: relative;
+  padding: clamp(42px, 5vw, 78px);
+  overflow: hidden;
+  border-right: 1px solid rgba(16, 33, 26, 0.25);
+}
+
+.proto-confirmation__statement .ui-kicker {
+  color: var(--coral-ink);
+  font: 700 8px/1 var(--mono);
+}
+
+.proto-confirmation__statement h4 {
+  max-width: 730px;
+  margin: 20px 0 0;
+  font-size: clamp(52px, 6vw, 94px);
+  line-height: 0.82;
+  letter-spacing: -0.075em;
+}
+
+.proto-confirmation__statement h4 em {
+  color: var(--coral);
+  font-family: var(--display);
+  font-weight: 400;
+}
+
+.proto-confirmation__statement > span {
+  display: block;
+  margin-top: 28px;
+  font: 700 8px/1.4 var(--mono);
+}
+
+.proto-confirmation__orbit {
+  position: absolute;
+  right: -70px;
+  bottom: -100px;
+  width: 320px;
+  height: 320px;
+  border: 1px solid rgba(16, 33, 26, 0.22);
+  border-radius: 50%;
+}
+
+.proto-confirmation__orbit::before,
+.proto-confirmation__orbit::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.proto-confirmation__orbit::before {
+  inset: 70px;
+  border: 1px solid rgba(16, 33, 26, 0.2);
+}
+
+.proto-confirmation__orbit::after {
+  left: 28px;
+  top: 82px;
+  width: 24px;
+  height: 24px;
+  background: var(--coral);
+  box-shadow: 164px 150px 0 var(--yellow), 208px -4px 0 var(--forest);
+}
+
+.proto-confirmation__status {
+  padding: clamp(30px, 4vw, 58px);
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+}
+
+.proto-confirmation__stamp {
+  width: 84px;
+  height: 84px;
+  margin-bottom: 30px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--yellow);
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.proto-status-rail {
+  display: grid;
+  gap: 0;
+}
+
+.proto-status-rail > div {
+  position: relative;
+  min-height: 62px;
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 10px;
+}
+
+.proto-status-rail > div:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 31px;
+  width: 2px;
+  height: 32px;
+  background: rgba(16, 33, 26, 0.2);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.proto-status-rail i {
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(16, 33, 26, 0.34);
+  border-radius: 50%;
+  background: var(--paper);
+  font: normal 800 7px/1 var(--mono);
+}
+
+.proto-status-rail .is-complete i {
+  background: var(--forest);
+  color: var(--oat);
+}
+
+.proto-status-rail .is-current i {
+  border-color: var(--coral);
+  background: var(--coral);
+}
+
+.proto-status-rail b,
+.proto-status-rail small {
+  display: block;
+}
+
+.proto-status-rail b {
+  font-size: 10px;
+}
+
+.proto-status-rail small {
+  margin-top: 4px;
+  color: rgba(16, 33, 26, 0.55);
+  font-size: 8px;
+}
+
+.prototype-phone {
+  width: min(100%, 310px);
+  justify-self: center;
+  border: 9px solid var(--ink);
+  border-radius: 38px;
+  background: var(--paper);
+}
+
+.prototype-phone::before {
+  content: "";
+  position: absolute;
+  z-index: 8;
+  top: 10px;
+  left: 50%;
+  width: 72px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--ink);
+  transform: translateX(-50%);
+}
+
+.prototype-phone__viewport {
+  position: relative;
+  min-height: 590px;
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.proto-mobile-screen {
+  padding: 54px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+}
+
+.proto-mobile-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: 800 8px/1 var(--mono);
+}
+
+.proto-mobile-brand b {
+  font-size: 12px;
+}
+
+.proto-mobile-screen > span {
+  margin-top: 42px;
+  color: var(--coral-ink);
+  font: 700 7px/1 var(--mono);
+}
+
+.proto-mobile-screen h4 {
+  margin: 13px 0 0;
+  font-size: 37px;
+  line-height: 0.88;
+  letter-spacing: -0.065em;
+}
+
+.proto-mobile-screen h4 em {
+  color: var(--coral);
+  font-family: var(--display);
+  font-weight: 400;
+}
+
+.proto-mobile-route {
+  position: relative;
+  height: 68px;
+  margin: 24px 0;
+  border-top: 1px solid rgba(16, 33, 26, 0.23);
+  border-bottom: 1px solid rgba(16, 33, 26, 0.23);
+}
+
+.proto-mobile-route i {
+  position: absolute;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  border: 2px solid var(--paper);
+  border-radius: 50%;
+  background: var(--forest);
+  transform: translateY(-50%);
+}
+
+.proto-mobile-route i:nth-child(1) { left: 0; }
+.proto-mobile-route i:nth-child(2) { left: calc(50% - 5px); background: var(--yellow); }
+.proto-mobile-route i:nth-child(3) { right: 0; background: var(--coral); }
+
+.proto-mobile-cards {
+  display: grid;
+  gap: 7px;
+}
+
+.proto-mobile-cards div {
+  min-height: 55px;
+  padding: 11px;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(16, 33, 26, 0.2);
+  background: var(--mint);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.proto-mobile-cards div i {
+  width: 23px;
+  height: 23px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--forest);
+  color: var(--oat);
+  font-style: normal;
+  font-size: 8px;
+}
+
+.proto-mobile-action {
+  min-height: 48px;
+  margin-top: auto;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--coral);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.proto-mobile-screen--schedule {
+  background: var(--coral);
+}
+
+.proto-mobile-screen--schedule > span {
+  color: var(--ink);
+}
+
+.proto-mobile-screen--schedule h4 em {
+  color: var(--forest);
+}
+
+.proto-mobile-date {
+  margin: 26px 0 8px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.proto-mobile-date b {
+  min-height: 62px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--ink);
+  font-size: 17px;
+}
+
+.proto-mobile-date b:nth-child(2) {
+  background: var(--yellow);
+}
+
+.proto-mobile-ticket {
+  margin-top: 16px;
+  padding: 16px;
+  background: var(--forest);
+  color: var(--oat);
+}
+
+.proto-mobile-ticket span,
+.proto-mobile-ticket b {
+  display: block;
+}
+
+.proto-mobile-ticket span {
+  color: var(--mint);
+  font: 700 7px/1 var(--mono);
+}
+
+.proto-mobile-ticket b {
+  margin-top: 9px;
+  font-size: 13px;
+}
+
+.proto-mobile-screen--confirmation {
+  background: var(--mint);
+}
+
+.proto-mobile-screen--confirmation h4 {
+  font-size: 43px;
+}
+
+.proto-mobile-confirm {
+  width: 76px;
+  height: 76px;
+  margin: 28px 0 22px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--yellow);
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.proto-mobile-status {
+  display: grid;
+  gap: 7px;
+}
+
+.proto-mobile-status div {
+  min-height: 53px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid rgba(16, 33, 26, 0.28);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.proto-mobile-status i {
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--forest);
+  color: var(--oat);
+  font: normal 700 7px/1 var(--mono);
+}
+
+.prototype-stage__footer {
+  position: relative;
+  z-index: 4;
+  min-height: 75px;
+  padding: 18px 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+  border-top: 1px solid rgba(244, 240, 232, 0.18);
+  color: var(--oat);
+}
+
+.prototype-stage__footer > span {
+  padding: 7px 10px;
+  border: 1px solid var(--yellow);
+  color: var(--yellow);
+  font: 700 7px/1 var(--mono);
+}
+
+.prototype-stage__footer p {
+  margin: 0;
+  color: rgba(244, 240, 232, 0.58);
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.prototype-stage__footer b {
+  font: 700 8px/1 var(--mono);
+}
+
+.prototype-behavior-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(16, 33, 26, 0.3);
+  border-bottom: 1px solid rgba(16, 33, 26, 0.3);
+}
+
+.prototype-behavior-grid article {
+  min-height: 220px;
+  padding: 25px;
+  border-right: 1px solid rgba(16, 33, 26, 0.22);
+}
+
+.prototype-behavior-grid article:last-child {
+  border-right: 0;
+}
+
+.prototype-behavior-grid > article > span {
+  color: var(--coral-ink);
+  font: 700 8px/1 var(--mono);
+}
+
+.prototype-behavior-grid h4 {
+  margin: 45px 0 12px;
+  font-size: 20px;
+  letter-spacing: -0.035em;
+}
+
+.prototype-behavior-grid p {
+  margin: 0;
+  color: rgba(16, 33, 26, 0.6);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.prototype-behavior-grid b {
+  display: block;
+  margin-top: 18px;
+  font: 700 7px/1.4 var(--mono);
+}
+
+.proto-screen.is-active .proto-reveal,
+.proto-mobile-screen.is-active .proto-reveal {
+  animation: proto-content-reveal 520ms var(--motion-ease) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.proto-screen.is-active .proto-route-index__line {
+  animation: proto-line-grow 720ms var(--motion-ease) 160ms both;
+}
+
+.proto-screen.is-active .proto-confirmation__stamp,
+.proto-mobile-screen.is-active .proto-mobile-confirm {
+  animation: proto-stamp-settle 480ms var(--motion-ease) 120ms both;
+}
+
+.proto-screen.is-active .proto-status-rail > div:not(:last-child)::after {
+  animation: proto-status-draw 360ms var(--motion-ease) both;
+}
+
+.proto-screen.is-active .proto-status-rail > div:nth-child(1)::after { animation-delay: 360ms; }
+.proto-screen.is-active .proto-status-rail > div:nth-child(2)::after { animation-delay: 640ms; }
+
+.proto-screen.is-active .proto-confirmation__orbit {
+  animation: proto-orbit-settle 720ms var(--motion-ease) 180ms both;
+}
+
+.motion-heading--advanced {
+  margin-bottom: 66px;
+}
+
+.motion-heading--advanced > p {
+  max-width: 590px;
+}
+
+.motion-director {
+  border: 1px solid rgba(244, 240, 232, 0.27);
+  background: var(--forest-deep);
+}
+
+.motion-director__header {
+  min-height: 118px;
+  padding: 25px 28px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 40px;
+  border-bottom: 1px solid rgba(244, 240, 232, 0.2);
+}
+
+.motion-director__header h3 {
+  margin: 13px 0 0;
+  font-size: clamp(29px, 3.2vw, 50px);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.motion-director__meta {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 20px;
+}
+
+.motion-director__meta span {
+  padding-left: 18px;
+  border-left: 1px solid rgba(244, 240, 232, 0.22);
+}
+
+.motion-director__meta b,
+.motion-director__meta small {
+  display: block;
+}
+
+.motion-director__meta b {
+  color: var(--yellow);
+  font: 700 8px/1 var(--mono);
+}
+
+.motion-director__meta small {
+  margin-top: 7px;
+  color: rgba(244, 240, 232, 0.48);
+  font-size: 8px;
+}
+
+.motion-director__stage {
+  position: relative;
+  min-height: clamp(520px, 48vw, 720px);
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(rgba(187, 220, 203, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(187, 220, 203, 0.07) 1px, transparent 1px),
+    radial-gradient(circle at 52% 45%, rgba(187, 220, 203, 0.08), transparent 34%);
+  background-size: 64px 64px, 64px 64px, auto;
+}
+
+.motion-director__stage::before {
+  content: attr(data-phase-word);
+  position: absolute;
+  z-index: -1;
+  left: 2%;
+  bottom: -0.11em;
+  color: rgba(244, 240, 232, 0.035);
+  font-size: clamp(120px, 18vw, 300px);
+  font-weight: 800;
+  letter-spacing: -0.085em;
+  line-height: 0.75;
+  transition: opacity 240ms ease;
+}
+
+.motion-stage__brand {
+  position: absolute;
+  z-index: 5;
+  top: 5%;
+  left: 3.5%;
+  color: var(--oat);
+  font-size: clamp(22px, 2.6vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+}
+
+.motion-stage__brand sup {
+  color: var(--yellow);
+  font-size: 0.32em;
+}
+
+.motion-stage__timecode {
+  position: absolute;
+  z-index: 5;
+  top: 6%;
+  right: 3.5%;
+  color: var(--mint);
+  font: 700 8px/1 var(--mono);
+  letter-spacing: 0.08em;
+}
+
+.motion-stage__network {
+  position: absolute;
+  z-index: 1;
+  left: 3%;
+  top: 18%;
+  width: 94%;
+  height: 67%;
+  overflow: visible;
+}
+
+.motion-stage__path {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.motion-stage__path--ghost {
+  stroke: rgba(244, 240, 232, 0.15);
+  stroke-width: 3;
+}
+
+.motion-stage__path--active {
+  stroke: var(--yellow);
+  stroke-width: 5;
+  will-change: stroke-dashoffset;
+}
+
+.motion-stage__runner circle:first-child {
+  fill: rgba(244, 201, 93, 0.18);
+}
+
+.motion-stage__runner circle:last-child {
+  fill: var(--yellow);
+  stroke: var(--forest-deep);
+  stroke-width: 7;
+}
+
+.motion-stage__node {
+  stroke: var(--forest-deep);
+  stroke-width: 7;
+  opacity: 0.28;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0.72);
+  transition: opacity 260ms ease, transform 380ms var(--motion-ease);
+}
+
+.motion-stage__node.is-reached {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.motion-stage__node--source { fill: var(--coral); }
+.motion-stage__node--match { fill: var(--yellow); }
+.motion-stage__node--move { fill: var(--mint); }
+.motion-stage__node--arrive { fill: var(--oat); }
+
+.motion-stage__caption {
+  position: absolute;
+  z-index: 4;
+  width: min(250px, 23%);
+  padding: 14px;
+  border: 1px solid rgba(244, 240, 232, 0.18);
+  background: rgba(16, 39, 29, 0.9);
+  color: var(--oat);
+  opacity: 0.28;
+  transform: translateY(7px);
+  transition: opacity 260ms ease, transform 380ms var(--motion-ease), border-color 260ms ease;
+}
+
+.motion-stage__caption.is-current {
+  border-color: var(--yellow);
+  opacity: 1;
+  transform: none;
+}
+
+.motion-stage__caption > span {
+  color: var(--yellow);
+  font: 700 7px/1 var(--mono);
+}
+
+.motion-stage__caption b,
+.motion-stage__caption small {
+  display: block;
+}
+
+.motion-stage__caption b {
+  margin-top: 9px;
+  font-size: 10px;
+}
+
+.motion-stage__caption small {
+  margin-top: 6px;
+  color: rgba(244, 240, 232, 0.55);
+  font-size: 8px;
+}
+
+.motion-stage__caption--post { left: 4%; bottom: 8%; }
+.motion-stage__caption--match { left: 29%; top: 14%; }
+.motion-stage__caption--move { right: 28%; bottom: 7%; }
+.motion-stage__caption--arrive { right: 4%; top: 21%; }
+
+.motion-stage__result {
+  position: absolute;
+  z-index: 8;
+  inset: 0;
+  padding: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(25px, 4vw, 58px);
+  background: var(--mint);
+  color: var(--ink);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.012);
+  transition: opacity 420ms var(--motion-ease), transform 520ms var(--motion-ease), visibility 0s linear 520ms;
+}
+
+.motion-stage__result.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.motion-stage__result-mark {
+  width: clamp(90px, 11vw, 160px);
+  height: clamp(90px, 11vw, 160px);
+  display: grid;
+  place-items: center;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: var(--yellow);
+  font-size: clamp(34px, 4.5vw, 64px);
+  font-weight: 800;
+}
+
+.motion-stage__result small,
+.motion-stage__result b {
+  display: block;
+}
+
+.motion-stage__result small {
+  margin-bottom: 14px;
+  font: 700 8px/1 var(--mono);
+  letter-spacing: 0.08em;
+}
+
+.motion-stage__result b {
+  font-size: clamp(42px, 6vw, 94px);
+  line-height: 0.84;
+  letter-spacing: -0.07em;
+}
+
+.motion-stage__progress {
+  position: absolute;
+  z-index: 10;
+  left: 3.5%;
+  right: 3.5%;
+  bottom: 3.5%;
+  height: 3px;
+  background: rgba(244, 240, 232, 0.18);
+}
+
+.motion-stage__progress i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  will-change: transform;
+}
+
+.motion-director__controls {
+  min-height: 90px;
+  padding: 17px 24px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 28px;
+  align-items: center;
+  border-top: 1px solid rgba(244, 240, 232, 0.2);
+}
+
+.motion-director__buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.motion-director__buttons button {
+  min-height: 43px;
+  padding: 0 16px;
+  border: 1px solid rgba(244, 240, 232, 0.35);
+  background: transparent;
+  color: var(--oat);
+  cursor: pointer;
+  font: 700 8px/1 var(--mono);
+}
+
+.motion-director__buttons button:first-child {
+  background: var(--oat);
+  color: var(--ink);
+}
+
+.motion-director__buttons button:hover {
+  border-color: var(--yellow);
+}
+
+.motion-chapters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.motion-chapters button {
+  min-height: 55px;
+  padding: 0 14px;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-content: center;
+  gap: 3px 8px;
+  border: 0;
+  border-left: 1px solid rgba(244, 240, 232, 0.18);
+  background: transparent;
+  color: rgba(244, 240, 232, 0.46);
+  cursor: pointer;
+  text-align: left;
+}
+
+.motion-chapters button span {
+  grid-row: 1 / span 2;
+  align-self: center;
+  color: var(--yellow);
+  font: 700 7px/1 var(--mono);
+}
+
+.motion-chapters button b,
+.motion-chapters button small {
+  display: block;
+}
+
+.motion-chapters button b {
+  font-size: 9px;
+}
+
+.motion-chapters button small {
+  font-size: 7px;
+}
+
+.motion-chapters button.is-current {
+  background: rgba(244, 201, 93, 0.09);
+  color: var(--oat);
+}
+
+.motion-lab-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(244, 240, 232, 0.22);
+  border-bottom: 1px solid rgba(244, 240, 232, 0.22);
+}
+
+.motion-lab {
+  min-width: 0;
+  border-right: 1px solid rgba(244, 240, 232, 0.18);
+}
+
+.motion-lab:last-child {
+  border-right: 0;
+}
+
+.motion-lab__demo {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border-bottom: 1px solid rgba(244, 240, 232, 0.16);
+}
+
+.motion-lab__copy {
+  min-height: 230px;
+  padding: 22px;
+}
+
+.motion-lab__copy > span {
+  color: var(--yellow);
+  font: 700 7px/1 var(--mono);
+}
+
+.motion-lab__copy h3 {
+  margin: 20px 0 10px;
+  font-size: 21px;
+}
+
+.motion-lab__copy p {
+  min-height: 50px;
+  margin: 0;
+  color: rgba(244, 240, 232, 0.55);
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.motion-lab__copy dl {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 12px;
+  font-size: 8px;
+}
+
+.motion-lab__copy dt {
+  color: rgba(244, 240, 232, 0.42);
+  font-family: var(--mono);
+}
+
+.motion-lab__copy dd {
+  margin: 0;
+  color: var(--mint);
+}
+
+.motion-lab__copy button {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid rgba(244, 240, 232, 0.3);
+  background: transparent;
+  color: var(--oat);
+  cursor: pointer;
+  font: 700 7px/1 var(--mono);
+}
+
+.lab-advance__line {
+  width: 72%;
+  height: 1px;
+  background: rgba(244, 240, 232, 0.3);
+}
+
+.lab-advance__line::before,
+.lab-advance__line::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 7px);
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--forest);
+  border-radius: 50%;
+  background: var(--mint);
+}
+
+.lab-advance__line::before { left: 14%; }
+.lab-advance__line::after { right: 14%; }
+
+.lab-advance__dot {
+  position: absolute;
+  left: calc(14% - 4px);
+  top: calc(50% - 12px);
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--forest);
+  border-radius: 50%;
+  background: var(--yellow);
+}
+
+.lab-confirm__stamp,
+.lab-attention__core {
+  width: 96px;
+  height: 96px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.lab-confirm__stamp {
+  background: var(--mint);
+  color: var(--forest);
+}
+
+.lab-attention__core {
+  border: 2px solid var(--ink);
+  background: var(--coral);
+  color: var(--ink);
+}
+
+.lab-attention__ring {
+  position: absolute;
+  width: 112px;
+  height: 112px;
+  border: 1px solid var(--coral);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.lab-continuity {
+  width: 72%;
+  display: grid;
+  gap: 8px;
+}
+
+.lab-continuity div {
+  min-height: 45px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(244, 240, 232, 0.2);
+  color: rgba(244, 240, 232, 0.46);
+  font: 700 7px/1 var(--mono);
+}
+
+.lab-continuity div:first-child {
+  border-color: var(--yellow);
+  color: var(--oat);
+}
+
+.lab-continuity i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--yellow);
+}
+
+.motion-spec {
+  margin-top: 72px;
+}
+
+.motion-spec__head {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr;
+  gap: 8vw;
+  align-items: end;
+  margin-bottom: 30px;
+}
+
+.motion-spec__head h3 {
+  margin: 16px 0 0;
+  font-size: clamp(34px, 4vw, 62px);
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+}
+
+.motion-spec__head > p {
+  margin: 0;
+  color: rgba(244, 240, 232, 0.55);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.motion-spec__table {
+  border-top: 1px solid rgba(244, 240, 232, 0.25);
+}
+
+.motion-spec__row {
+  min-height: 78px;
+  padding: 16px 0;
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr 0.7fr 0.9fr 1.3fr;
+  gap: 20px;
+  align-items: center;
+  border-bottom: 1px solid rgba(244, 240, 232, 0.16);
+}
+
+.motion-spec__row--head {
+  min-height: 48px;
+  color: rgba(244, 240, 232, 0.42);
+  font: 700 7px/1 var(--mono);
+  letter-spacing: 0.06em;
+}
+
+.motion-spec__row > span {
+  color: var(--yellow);
+  font: 700 8px/1.3 var(--mono);
+}
+
+.motion-spec__row > b {
+  font-size: 10px;
+}
+
+.motion-spec__row > p {
+  margin: 0;
+  color: rgba(244, 240, 232, 0.55);
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.motion-access-note {
+  margin-top: 25px;
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  border: 1px solid rgba(187, 220, 203, 0.24);
+  color: rgba(244, 240, 232, 0.58);
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.motion-access-note b {
+  color: var(--mint);
+  font: 700 8px/1 var(--mono);
+}
+
+@keyframes proto-scene-enter {
+  from { opacity: 0; transform: translate3d(0, 16px, 0); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes proto-content-reveal {
+  from { opacity: 0; transform: translate3d(0, 14px, 0); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes proto-line-grow {
+  from { opacity: 0; transform: scaleY(0); transform-origin: top; }
+  to { opacity: 1; transform: scaleY(1); transform-origin: top; }
+}
+
+@keyframes proto-stamp-settle {
+  0% { opacity: 0; transform: scale(0.84) rotate(-8deg); }
+  68% { opacity: 1; transform: scale(1.025) rotate(1deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes proto-status-draw {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes proto-orbit-settle {
+  from { opacity: 0; transform: rotate(-12deg) scale(0.92); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 1180px) {
+  .prototype-device-grid {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 28px;
+  }
+
+  .prototype-phone {
+    display: none;
+  }
+
+  .proto-poster {
+    grid-template-columns: 70px minmax(0, 1.08fr) minmax(250px, 0.92fr);
+  }
+
+  .motion-lab-grid,
+  .prototype-behavior-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .motion-lab:nth-child(2),
+  .prototype-behavior-grid article:nth-child(2) {
+    border-right: 0;
+  }
+
+  .motion-lab:nth-child(-n+2),
+  .prototype-behavior-grid article:nth-child(-n+2) {
+    border-bottom: 1px solid rgba(244, 240, 232, 0.18);
+  }
+}
+
+@media (max-width: 780px) {
+  .prototype-controls--advanced button {
+    min-height: 74px;
+    padding: 8px 5px;
+    display: flex;
+  }
+
+  .prototype-controls--advanced button small {
+    display: none;
+  }
+
+  .prototype-stage__bar,
+  .prototype-stage__footer {
+    display: block;
+  }
+
+  .prototype-stage__tools {
+    margin-top: 14px;
+    justify-content: space-between;
+  }
+
+  .prototype-device-grid {
+    min-height: 0;
+    display: block;
+    padding: 18px;
+  }
+
+  .prototype-desktop {
+    display: none;
+  }
+
+  .prototype-phone {
+    display: block;
+    margin: 8px auto;
+  }
+
+  .prototype-stage__footer > span,
+  .prototype-stage__footer b {
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+
+  .prototype-stage__footer b {
+    float: right;
+  }
+
+  .prototype-behavior-grid {
+    display: block;
+  }
+
+  .prototype-behavior-grid article {
+    min-height: 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(16, 33, 26, 0.22);
+  }
+
+  .prototype-behavior-grid h4 {
+    margin-top: 28px;
+  }
+
+  .motion-director__header,
+  .motion-spec__head {
+    display: block;
+  }
+
+  .motion-director__meta {
+    margin-top: 25px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .motion-director__stage {
+    min-height: 520px;
+  }
+
+  .motion-stage__network {
+    left: -18%;
+    top: 20%;
+    width: 136%;
+  }
+
+  .motion-stage__caption {
+    width: 42%;
+  }
+
+  .motion-stage__caption--post { left: 4%; bottom: 12%; }
+  .motion-stage__caption--match { left: 5%; top: 21%; }
+  .motion-stage__caption--move { right: 4%; bottom: 12%; }
+  .motion-stage__caption--arrive { right: 4%; top: 21%; }
+
+  .motion-director__controls {
+    display: block;
+  }
+
+  .motion-chapters {
+    margin-top: 16px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .motion-chapters button {
+    border-top: 1px solid rgba(244, 240, 232, 0.15);
+  }
+
+  .motion-lab-grid {
+    display: block;
+  }
+
+  .motion-lab {
+    border-right: 0;
+    border-bottom: 1px solid rgba(244, 240, 232, 0.18);
+  }
+
+  .motion-lab__copy {
+    min-height: 0;
+  }
+
+  .motion-lab__copy p {
+    min-height: 0;
+  }
+
+  .motion-spec__head > p {
+    margin-top: 22px;
+  }
+
+  .motion-spec__table {
+    overflow-x: auto;
+  }
+
+  .motion-spec__row {
+    min-width: 760px;
+  }
+
+  .motion-access-note {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proto-screen.is-entering,
+  .proto-mobile-screen.is-entering,
+  .proto-screen.is-active .proto-reveal,
+  .proto-mobile-screen.is-active .proto-reveal,
+  .proto-screen.is-active .proto-route-index__line,
+  .proto-screen.is-active .proto-confirmation__stamp,
+  .proto-mobile-screen.is-active .proto-mobile-confirm,
+  .proto-screen.is-active .proto-status-rail > div:not(:last-child)::after,
+  .proto-screen.is-active .proto-confirmation__orbit {
+    animation: none !important;
+  }
+
+  .proto-readiness__track i,
+  .proto-status-rail > div:not(:last-child)::after {
+    transform: none;
+  }
+}
+
+</style>
 </head>
 <body>
   <a class="skip-link" href="#brief">Skip to case study</a>
-<main id="top"><div class="scroll-progress" aria-hidden="true"><span style="width:0%"></span></div><header class="site-header"><a class="portfolio-signature" href="index.html" aria-label="Back to portfolio"><span>JM</span><p>Jocelyn Martinez<br/><b>Selected work</b></p></a><nav class="site-nav" aria-label="Case study"><a href="#brief">Brief</a><a href="#system">System</a><a href="#applications">Applications</a><a href="#exploration">Exploration</a><a href="#process">Process</a></nav><div class="header-meta"><span>Self-directed case study · In progress</span><button class="menu-button" type="button" aria-label="Toggle navigation" aria-expanded="false"><i></i><i></i></button></div></header><section class="hero section-dark"><div class="hero-grid"><div class="hero-copy"><div class="eyebrow eyebrow--light"><span>Brand identity</span><i></i><span>Campaign</span><i></i><span>Digital product</span></div><h1>Keep good<br/>food <em>moving.</em></h1><p class="hero-lede">A strategic identity and service experience for the network turning Chicago’s surplus food into neighborhood momentum.</p><a class="text-link text-link--light" href="#brief">Explore the system <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a></div><div class="hero-art" aria-hidden="true"><div class="hero-wordmark">LOOPLINE<sup>°</sup></div><div class="hero-orbit hero-orbit--outer"></div><div class="hero-orbit hero-orbit--inner"></div><div class="hero-node hero-node--one"><span>01</span><b>KITCHENS</b></div><div class="hero-node hero-node--two"><span>02</span><b>ROUTES</b></div><div class="hero-node hero-node--three"><span>03</span><b>NEIGHBORS</b></div><div class="hero-mark"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><div class="hero-stamp">CHI<br/>41.88°N</div></div></div><div class="hero-facts"><div><span>Role</span><b>Brand + Digital Designer</b></div><div><span>Timeline</span><b>8-week concept sprint</b></div><div><span>Scope</span><b>Strategy to production</b></div><div><span>Designed for</span><b>B2B + B2C audiences</b></div></div></section><section class="case-intro" id="brief"><div class="section-label"><span>01</span><p>THE BRIEF</p></div><div class="case-intro__statement"><p class="kicker">THE CHALLENGE</p><h2>Food rescue has a logistics problem—and a <em>language problem.</em></h2><p class="large-copy">Loopline needed to feel efficient enough for kitchen operators, trustworthy enough for funders, and human enough for neighbors. The identity could not simply decorate the service; it had to make the service easier to understand and use.</p></div><aside class="case-intro__aside"><p class="kicker">PROJECT MANDATE</p><ul><li><span>01</span>Unify three audiences without flattening their needs.</li><li><span>02</span>Work from polished decks to low-cost office prints.</li><li><span>03</span>Turn operational complexity into clear next steps.</li><li><span>04</span>Leave behind a system the client can actually own.</li></ul></aside></section><section class="tension-section section-coral"><div class="section-label section-label--light"><span>02</span><p>THE STRATEGIC TENSION</p></div><div class="tension-head"><p class="kicker">ONE NETWORK / THREE DEFINITIONS OF VALUE</p><h2>Design for the handoff,<br/>not just the headline.</h2></div><div class="audience-grid"><article><span class="audience-number">A</span><p class="kicker">KITCHEN PARTNERS</p><h3>“Make it easy to do the right thing during a rush.”</h3><ul><li>Fast pickup setup</li><li>Clear safety guidance</li><li>Predictable reporting</li></ul></article><article><span class="audience-number">B</span><p class="kicker">COMMUNITY PARTNERS</p><h3>“Show me what is coming and when it will arrive.”</h3><ul><li>Plain-language alerts</li><li>Flexible quantities</li><li>Dignified public messaging</li></ul></article><article><span class="audience-number">C</span><p class="kicker">FUNDERS + SPONSORS</p><h3>“Prove that coordinated action compounds impact.”</h3><ul><li>Credible measurement</li><li>Scalable operating model</li><li>Executive-ready story</li></ul></article></div></section><section class="strategy-section"><div class="section-label"><span>03</span><p>THE IDEA</p></div><div class="strategy-title"><p class="kicker">BRAND PLATFORM</p><h2>A city works better<br/>when good things <em>circulate.</em></h2></div><div class="strategy-grid"><article class="strategy-card strategy-card--dark"><p class="kicker">POSITIONING</p><h3>The connective layer between surplus and service.</h3><p>Not a charity bin. Not a delivery app. Loopline is shared infrastructure for a more resourceful city.</p><span class="card-index">01 / 03</span></article><article class="strategy-card strategy-card--yellow"><p class="kicker">PROMISE</p><h3>Good food.<br/>Further.</h3><div class="card-route"><i></i><i></i><i></i></div><span class="card-index">02 / 03</span></article><article class="strategy-card strategy-card--cream"><p class="kicker">VOICE</p><div class="voice-pairs"><div><b>Direct</b><span>not abrupt</span></div><div><b>Optimistic</b><span>not naive</span></div><div><b>Human</b><span>not sentimental</span></div><div><b>Informed</b><span>not institutional</span></div></div><span class="card-index">03 / 03</span></article></div></section><section class="identity-section section-dark" id="system"><div class="section-label section-label--light"><span>04</span><p>THE IDENTITY SYSTEM</p></div><div class="identity-lead"><div><p class="kicker">A MARK BUILT TO MOVE</p><h2>A route, a cycle,<br/>and a shared table.</h2></div><p>The symbol combines a continuous route with three handoff points: source, movement, and destination. Its open turn prevents the circular form from reading as closed or static.</p></div><div class="logo-stage"><div class="logo-lockup"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><div class="logo-name">LOOPLINE<sup>°</sup></div></div><div class="logo-annotations"><div class="annotation annotation--one"><i></i><span>OPEN TURN<br/><b>Signals forward motion</b></span></div><div class="annotation annotation--two"><i></i><span>THREE NODES<br/><b>Source · route · destination</b></span></div><div class="annotation annotation--three"><i></i><span>OFFSET ORBIT<br/><b>Creates a human, active rhythm</b></span></div></div><div class="clear-space"><span>CLEAR SPACE = 1 NODE</span></div></div><div class="logo-scale-row"><div class="logo-scale-item logo-scale-item--primary"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><b>LOOPLINE<sup>°</sup></b><span>PRIMARY LOCKUP</span></div><div class="logo-scale-item logo-scale-item--compact"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><span>COMPACT MARK</span></div><div class="logo-scale-item logo-scale-item--micro"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><span>16 PX MINIMUM</span></div><div class="logo-scale-item logo-scale-item--one-color"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><b>LOOPLINE<sup>°</sup></b><span>ONE-COLOR FALLBACK</span></div></div><div class="color-section"><div class="color-heading"><p class="kicker">COLOR WITH A JOB</p><h3>Warmth leads.<br/>Structure supports.</h3><p>Each color has a defined role, recommended proportion, and accessible pairing—so expression never comes at the cost of clarity.</p></div><div class="swatch swatch--forest"><span>ROUTE FOREST</span><b>#173629</b><small>Primary / Oat 11.6:1</small></div><div class="swatch swatch--coral"><span>HANDOFF CORAL</span><b>#F15B40</b><small>Action / Ink 5.0:1</small></div><div class="swatch swatch--yellow"><span>SIGNAL YELLOW</span><b>#F4C95D</b><small>Highlight / Ink 10.7:1</small></div><div class="swatch swatch--mint"><span>FRESH MINT</span><b>#BBDCCB</b><small>Support / Ink 11.3:1</small></div><div class="swatch swatch--oat"><span>GROUND OAT</span><b>#F4F0E8</b><small>Canvas / Ink 14.7:1</small></div></div><div class="type-system"><div class="type-intro"><p class="kicker">TYPOGRAPHY / BUILT FOR HANDOFF</p><h3>Expressive where it matters.<br/>Universal where it counts.</h3><p>Aptos and Georgia are intentionally familiar, widely available, and PowerPoint-safe. Scale, contrast, and composition—not an exotic font license—create the voice.</p></div><div class="type-display"><span>DISPLAY / GEORGIA ITALIC</span><b>Further.</b></div><div class="type-grotesk"><span>HEADLINE / APTOS DISPLAY BOLD</span><b>MOVE WHAT<br/>MATTERS.</b></div><div class="type-detail"><span>INFORMATION / APTOS MONO FALLBACK</span><p>ROUTE 04 / WEST SIDE<br/>PICKUP WINDOW 14:30–15:15<br/>STATUS: READY TO MOVE</p></div></div></section><section class="applications-section" id="applications"><div class="section-label"><span>05</span><p>THE SYSTEM AT WORK</p></div><div class="applications-heading"><div><p class="kicker">ONE IDEA / MULTIPLE CONDITIONS</p><h2>Flexible enough to travel.<br/>Disciplined enough to stay recognizable.</h2></div><p>The application system is built from repeatable moves: oversized action language, route-based lines, modular data blocks, and a consistent information footer.</p></div><div class="application-tabs" role="tablist" aria-label="Project applications"><button type="button" role="tab" aria-selected="true" aria-controls="application-panel"><span>01</span>Print</button><button type="button" role="tab" aria-selected="false" aria-controls="application-panel"><span>02</span>Campaign</button><button type="button" role="tab" aria-selected="false" aria-controls="application-panel"><span>03</span>Digital</button><button type="button" role="tab" aria-selected="false" aria-controls="application-panel"><span>04</span>PowerPoint</button></div><div class="application-panel" id="application-panel" role="tabpanel"><div class="application-copy"><p class="kicker">Partner field kit</p><h3>Built for counters, clipboards, and real working hands.</h3><p>A modular print system makes the brand recognizable without slowing down production. High-contrast hierarchy, oversized action language, and a one-ink fallback keep every piece useful in imperfect environments.</p><ul><li>0.125 in bleed</li><li>CMYK + 1-color</li><li>WCAG-minded type</li><li>Office-print fallback</li></ul></div><div class="application-visual print-stage" aria-label="Print collateral mockups"><div class="print-sheet print-sheet--back"><div class="mini-mark"><svg class="mark mark--compact" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><p>PARTNER<br/>PLAYBOOK</p><span>CHICAGO / 2026</span></div><div class="print-sheet print-sheet--front"><div class="print-kicker">KITCHEN QUICK GUIDE / 01</div><h4>PACK IT.<br/>POST IT.<br/>PASS IT ON.</h4><div class="print-rule"></div><div class="print-columns"><p><b>01</b> Cool prepared food safely.</p><p><b>02</b> Label every container.</p><p><b>03</b> Confirm your pickup.</p></div><div class="print-footer"><span>loopline.chi</span><span>GOOD FOOD → FURTHER</span></div></div><div class="label-roll"><span>READY TO MOVE</span><i>LL·0426</i></div></div></div></section><section class="message-section"><div class="message-marquee" aria-hidden="true"><span>GOOD FOOD → FURTHER → GOOD FOOD → FURTHER →</span></div><div class="message-grid"><div class="message-poster message-poster--one"><div class="poster-header"><span>LOOPLINE°</span><span>CHI / 2026</span></div><h3>KEEP<br/>WHAT’S<br/><em>GOOD</em><br/>GOING.</h3><div class="poster-footer"><span>JOIN THE LOOP</span><b>↗</b></div></div><div class="message-copy"><p class="kicker">MESSAGE ARCHITECTURE</p><h2>Designed to work at<br/>three reading speeds.</h2><div class="reading-speed"><span>2 SEC</span><div><b>Keep good food moving.</b><p>A memorable promise for headlines and outdoor.</p></div></div><div class="reading-speed"><span>10 SEC</span><div><b>One pickup can begin 84 meals.</b><p>A concrete proof point for social and email.</p></div></div><div class="reading-speed"><span>30 SEC</span><div><b>Schedule surplus once. Track its impact every time.</b><p>A functional benefit for partner acquisition.</p></div></div></div><div class="message-poster message-poster--two"><div class="poster-header"><span>LOOPLINE°</span><span>ROUTE 04</span></div><div class="poster-stat"><b>84</b><span>MEALS<br/>CAN BEGIN<br/>RIGHT HERE.</span></div><div class="poster-route"><i></i><i></i><i></i></div><div class="poster-footer"><span>PACK · POST · PASS IT ON</span><b>04</b></div></div></div></section><section class="ux-section section-mint"><div class="section-label"><span>06</span><p>THE DIGITAL EXPERIENCE</p></div><div class="ux-heading"><p class="kicker">FROM INTENT TO CONFIRMATION</p><h2>Reduce hesitation.<br/>Reveal complexity <em>only when needed.</em></h2></div><div class="flow-map"><article><div class="flow-node"><span>01</span></div><i class="flow-line"></i><p class="kicker">QUALIFY</p><h3>Is this donation eligible?</h3></article><article><div class="flow-node"><span>02</span></div><i class="flow-line"></i><p class="kicker">DESCRIBE</p><h3>What is ready to move?</h3></article><article><div class="flow-node"><span>03</span></div><i class="flow-line"></i><p class="kicker">SCHEDULE</p><h3>When can we collect it?</h3></article><article><div class="flow-node"><span>04</span></div><i class="flow-line"></i><p class="kicker">CONFIRM</p><h3>Who is handling pickup?</h3></article><article><div class="flow-node"><span>05</span></div><p class="kicker">REPORT</p><h3>Where did it create value?</h3></article></div><div class="prototype-showcase" aria-labelledby="prototype-title"><div class="prototype-showcase__head"><div><p class="kicker">RESPONSIVE PROTOTYPE / THREE DECISION STATES</p><h3 id="prototype-title">A working sequence,<br/>not a single polished screen.</h3></div><p>The prototype carries one pickup from eligibility through a scheduled handoff. Each state answers a different risk: can I donate this, when will it move, and what happens after I submit?</p></div><div class="prototype-controls" role="tablist" aria-label="Pickup scheduling prototype"><button type="button" role="tab" data-prototype-step="0" aria-selected="true"><span>01</span>Eligibility</button><button type="button" role="tab" data-prototype-step="1" aria-selected="false"><span>02</span>Schedule</button><button type="button" role="tab" data-prototype-step="2" aria-selected="false"><span>03</span>Confirmation</button></div><div class="prototype-screen-grid"><article class="prototype-screen is-active" data-prototype-screen="0" aria-label="Eligibility screen"><div class="prototype-window"><div class="prototype-chrome"><i></i><i></i><i></i><span>partner.loopline.chi/pickup</span></div><div class="prototype-ui"><div class="prototype-nav"><b>LOOPLINE°</b><span>01 / 05</span></div><p class="ui-kicker">ELIGIBILITY CHECK</p><h4>Can this food<br/>join the loop?</h4><p class="prototype-helper">Confirm three safety basics before scheduling.</p><div class="eligibility-list"><label><span>✓</span><b>Prepared today</b><small>Within the approved holding window</small></label><label><span>✓</span><b>Stored safely</b><small>Chilled at 41°F or below</small></label><label><span>✓</span><b>Clearly labeled</b><small>Contents, date, and allergens</small></label></div><button type="button" class="prototype-primary" data-prototype-target="1">Eligible — continue <b>→</b></button><button type="button" class="prototype-secondary">I’m not sure</button></div></div><div class="prototype-caption"><span>SCREEN 01</span><div><b>Eligibility</b><p>Front-loads policy without forcing partners to read a manual.</p></div></div></article><article class="prototype-screen" data-prototype-screen="1" aria-label="Pickup scheduling screen"><div class="prototype-window"><div class="prototype-chrome"><i></i><i></i><i></i><span>partner.loopline.chi/pickup</span></div><div class="prototype-ui"><div class="prototype-nav"><b>LOOPLINE°</b><span>03 / 05</span></div><p class="ui-kicker">PICKUP WINDOW</p><h4>When should<br/>we collect it?</h4><div class="date-strip" aria-label="Available pickup dates"><button type="button"><small>MON</small><b>18</b></button><button type="button" class="selected"><small>TUE</small><b>19</b></button><button type="button"><small>WED</small><b>20</b></button><button type="button"><small>THU</small><b>21</b></button></div><p class="prototype-field-label">AVAILABLE WINDOWS</p><div class="time-grid"><button type="button">10:00–10:45</button><button type="button" class="selected">11:30–12:15</button><button type="button">14:00–14:45</button></div><div class="pickup-summary"><span>Pickup from</span><b>West Loop Kitchen · Dock B</b></div><button type="button" class="prototype-primary" data-prototype-target="2">Confirm pickup <b>→</b></button></div></div><div class="prototype-caption"><span>SCREEN 02</span><div><b>Scheduling</b><p>Shows only viable windows and keeps the pickup context visible.</p></div></div></article><article class="prototype-screen" data-prototype-screen="2" aria-label="Pickup confirmation and status screen"><div class="prototype-window"><div class="prototype-chrome"><i></i><i></i><i></i><span>partner.loopline.chi/pickup</span></div><div class="prototype-ui prototype-ui--confirmation"><div class="prototype-nav"><b>LOOPLINE°</b><span>CONFIRMED</span></div><div class="confirmation-mark"><span>✓</span></div><p class="ui-kicker">PICKUP LL-0426</p><h4>Your food<br/>has a route.</h4><p class="prototype-helper">Tuesday, May 19 · 11:30–12:15</p><div class="status-timeline"><div class="complete"><i>✓</i><span><b>Pickup confirmed</b><small>Today · 09:42</small></span></div><div class="current"><i>02</i><span><b>Driver assigned</b><small>By 10:30 Tuesday</small></span></div><div><i>03</i><span><b>Impact reported</b><small>After delivery</small></span></div></div><div class="confirmation-actions"><button type="button" class="prototype-primary">Add to calendar</button><button type="button" class="prototype-secondary" data-prototype-target="0">Schedule another</button></div></div></div><div class="prototype-caption"><span>SCREEN 03</span><div><b>Confirmation + status</b><p>Names the owner and next event so submission never becomes a black box.</p></div></div></article></div><div class="prototype-spec-strip"><div><span>COMPONENT LOGIC</span><b>12 reusable patterns</b></div><div><span>ACCESSIBILITY</span><b>Keyboard flow + AA contrast</b></div><div><span>RECOVERY</span><b>Uncertain, unavailable, and edit states</b></div><div><span>HANDOFF</span><b>Annotated behavior + responsive rules</b></div></div></div><div class="ux-detail-grid"><article><span class="ux-icon">Aa</span><p class="kicker">PLAIN LANGUAGE</p><h3>“What’s ready to move?”</h3><p>Every question uses the partner’s vocabulary, not internal operational language.</p></article><article><span class="ux-icon">1×</span><p class="kicker">SMART DEFAULTS</p><h3>Repeat without retyping.</h3><p>Returning kitchens can reuse pickup details while still confirming food safety.</p></article><article><span class="ux-icon">✓</span><p class="kicker">VISIBLE STATUS</p><h3>No mystery after submit.</h3><p>A clear confirmation tells partners what is set, what is pending, and who owns the next action.</p></article></div></section><section class="motion-section section-dark"><div class="section-label section-label--light"><span>07</span><p>MOTION BEHAVIOR</p></div><div class="motion-heading"><div><p class="kicker">MOTION AS FEEDBACK</p><h2>Never decoration<br/>for decoration’s sake.</h2></div><p>Movement reinforces status and direction: a node advances when a pickup moves forward, settles when confirmed, and never blocks task completion.</p></div><div class="motion-reel"><div class="motion-reel__header"><div><p class="kicker">INTERACTIVE MOTION STUDY / 06.4 SECONDS</p><h3>One pickup becomes a visible handoff.</h3></div><div class="motion-reel__legend" aria-label="Motion sequence"><span><i class="source"></i>Source</span><span><i class="route"></i>Route</span><span><i class="handoff"></i>Handoff</span></div></div><div class="motion-reel__stage" data-motion-stage="true"><div class="motion-reel__wordmark">LOOPLINE<sup>°</sup></div><svg class="motion-reel__network" viewBox="0 0 1200 410" aria-hidden="true"><path class="motion-reel__path motion-reel__path--ghost" d="M82 278C242 278 270 108 432 108C606 108 619 302 790 302C944 302 970 158 1122 158"></path><path class="motion-reel__path motion-reel__path--active" d="M82 278C242 278 270 108 432 108C606 108 619 302 790 302C944 302 970 158 1122 158"></path><circle class="motion-reel__node motion-reel__node--source" cx="82" cy="278" r="19"></circle><circle class="motion-reel__node motion-reel__node--route" cx="432" cy="108" r="19"></circle><circle class="motion-reel__node motion-reel__node--handoff" cx="790" cy="302" r="19"></circle><circle class="motion-reel__node motion-reel__node--arrival" cx="1122" cy="158" r="19"></circle></svg><div class="motion-reel__label motion-reel__label--source"><span>01</span><b>KITCHEN POSTS</b><small>12 trays · chilled</small></div><div class="motion-reel__label motion-reel__label--route"><span>02</span><b>ROUTE ACCEPTS</b><small>Driver Maya · 11:30</small></div><div class="motion-reel__label motion-reel__label--handoff"><span>03</span><b>PARTNER RECEIVES</b><small>84 meals begin here</small></div><div class="motion-reel__result"><span class="motion-reel__check">✓</span><p><small>PICKUP LL-0426</small><b>GOOD FOOD<br/>WENT FURTHER.</b></p></div><div class="motion-reel__progress"><span></span></div></div><div class="motion-reel__controls"><div><button type="button" data-motion-toggle="true" aria-pressed="false"><span aria-hidden="true">Ⅱ</span>Pause motion</button><button type="button" data-motion-replay="true"><span aria-hidden="true">↻</span>Replay</button></div><p>Produced as a native CSS/SVG motion study so timing, easing, and reduced-motion behavior remain inspectable in the prototype.</p></div></div><div class="motion-grid"><article class="motion-card"><div class="motion-demo motion-demo--advance"><i></i><i></i><i></i><span></span></div><div><p class="kicker">01 / ADVANCE</p><h3>Directional progress</h3><span>280 ms · ease out</span></div></article><article class="motion-card"><div class="motion-demo motion-demo--confirm"><span><svg class="mark mark--compact" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></span></div><div><p class="kicker">02 / CONFIRM</p><h3>Confident closure</h3><span>360 ms · soft settle</span></div></article><article class="motion-card"><div class="motion-demo motion-demo--alert"><span>!</span><i></i></div><div><p class="kicker">03 / ATTENTION</p><h3>Useful urgency</h3><span>720 ms · single pulse</span></div></article></div><p class="reduced-motion-note">All essential meaning remains available when “reduce motion” is enabled.</p></section><section class="production-section"><div class="section-label"><span>08</span><p>PRODUCTION + HANDOFF</p></div><div class="production-heading"><p class="kicker">A SYSTEM IS ONLY REAL IF SOMEONE ELSE CAN USE IT</p><h2>Craft includes<br/>the files no one posts.</h2><p>The handoff model treats governance as part of the design. Every asset has an owner, format, fallback, and quality check.</p></div><div class="production-proof"><div class="production-proof__intro"><div><p class="kicker">FINAL ART / CLOSE-UP REVIEW</p><h3>Finished pieces,<br/>shown at production depth.</h3></div><p>Each artifact is shown with the decisions that matter after approval: page architecture, vector construction, color mode, fallback behavior, export requirements, and the application used to finish the work.</p></div><div class="artifact-grid"><article class="artifact-card artifact-card--guide"><div class="artifact-visual guide-spread" aria-label="Two-page Loopline partner guide spread"><div class="guide-page guide-page--left"><div class="guide-running-head"><span>LOOPLINE / PARTNER GUIDE</span><b>06</b></div><p class="guide-kicker">PREPARE A PICKUP</p><h4>PACK IT.<br/>POST IT.<br/>PASS IT ON.</h4><div class="guide-route"><i></i><i></i><i></i></div><div class="guide-foot"><span>VERSION 1.0 / MAY 2026</span><span>loopline.chi</span></div></div><div class="guide-page guide-page--right"><div class="guide-running-head"><span>KITCHEN QUICK START</span><b>07</b></div><div class="guide-step"><span>01</span><div><b>COOL</b><p>Hold prepared food at 41°F or below.</p></div></div><div class="guide-step"><span>02</span><div><b>LABEL</b><p>Name contents, allergens, and preparation date.</p></div></div><div class="guide-step"><span>03</span><div><b>POST</b><p>Choose a pickup window and confirm dock access.</p></div></div><div class="guide-callout"><b>NEED HELP?</b><span>Use “I’m not sure” in the eligibility check.</span></div><div class="guide-baseline" aria-hidden="true"></div></div></div><div class="artifact-caption"><span>01 / EDITORIAL SYSTEM</span><div><h4>Two-page partner guide</h4><p>Parent pages, paragraph styles, baseline grid, 0.125-inch bleed, and accessible PDF reading order.</p><b class="software-tag software-tag--indesign">Adobe InDesign</b></div></div></article><article class="artifact-card artifact-card--poster"><div class="artifact-visual poster-flat" aria-label="Loopline printed campaign flyer"><div class="crop-mark crop-mark--tl"></div><div class="crop-mark crop-mark--tr"></div><div class="crop-mark crop-mark--bl"></div><div class="crop-mark crop-mark--br"></div><div class="poster-flat__sheet"><div class="poster-flat__head"><span>LOOPLINE°</span><span>CHI / 2026</span></div><h4>GOOD<br/>FOOD HAS<br/><em>PLACES</em><br/>TO GO.</h4><div class="poster-flat__route"><i></i><i></i><i></i></div><p>One pickup can begin 84 meals.</p><div class="poster-flat__foot"><span>BECOME A PARTNER</span><b>↗</b></div></div></div><div class="artifact-caption"><span>02 / PRINT CAMPAIGN</span><div><h4>11 × 17 partner flyer</h4><p>CMYK build, crop and bleed marks, rich-black control, and a one-ink office-print fallback.</p><b class="software-tag software-tag--indesign">Adobe InDesign</b></div></div></article><article class="artifact-card artifact-card--social"><div class="artifact-visual social-flat" aria-label="Loopline social campaign graphics"><div class="social-flat__square"><div class="social-flat__head"><span>LOOPLINE°</span><span>01 / 03</span></div><b class="social-flat__number">84</b><h4>MEALS CAN<br/>BEGIN WITH<br/>ONE PICKUP.</h4><p>See what’s moving →</p></div><div class="social-flat__story"><span>LOOPLINE°</span><div><svg class="mark mark--compact" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><h4>KEEP IT<br/>MOVING.</h4><p>BECOME A PARTNER ↗</p></div><div class="social-flat__safe-zone"><span>4:5 SAFE ZONE</span><b>1080 × 1350</b></div></div><div class="artifact-caption"><span>03 / CAMPAIGN COMPOSITING</span><div><h4>Social launch system</h4><p>Smart-object templates, non-destructive color, platform-safe crops, and a motion-ready layer hierarchy.</p><b class="software-tag software-tag--photoshop">Adobe Photoshop</b></div></div></article><article class="artifact-card artifact-card--construction"><div class="artifact-visual construction-flat" aria-label="Loopline logo vector construction drawing"><div class="construction-toolbar"><span>LL_LOGO_MASTER_V03.AI</span><b>600%</b></div><div class="construction-canvas"><div class="construction-grid"></div><div class="construction-orbit construction-orbit--outer"></div><div class="construction-orbit construction-orbit--inner"></div><div class="construction-axis construction-axis--x"></div><div class="construction-axis construction-axis--y"></div><div class="construction-mark"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><i class="anchor anchor--one"></i><i class="anchor anchor--two"></i><i class="anchor anchor--three"></i><i class="anchor anchor--four"></i><div class="construction-note construction-note--one"><span>10 u</span><b>STROKE</b></div><div class="construction-note construction-note--two"><span>15 u</span><b>NODE</b></div><div class="construction-note construction-note--three"><span>20.2 u</span><b>OPEN TURN</b></div></div></div><div class="artifact-caption"><span>04 / VECTOR MASTER</span><div><h4>Logo construction artwork</h4><p>Live-stroke master, expanded production copy, optical node spacing, pixel-hinted micro mark, and SVG cleanup.</p><b class="software-tag software-tag--illustrator">Adobe Illustrator</b></div></div></article><article class="artifact-card artifact-card--fallback"><div class="artifact-visual fallback-flat" aria-label="One-color and low-cost Loopline print versions"><div class="fallback-sample fallback-sample--ink"><span>ONE-COLOR / POSITIVE</span><div><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><b>LOOPLINE<sup>°</sup></b></div><p>100 K / uncoated stock</p></div><div class="fallback-sample fallback-sample--reverse"><span>ONE-COLOR / REVERSED</span><div><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><b>LOOPLINE<sup>°</sup></b></div><p>Paper white / solid ink</p></div><div class="fallback-sample fallback-sample--office"><span>OFFICE PRINT / LETTER</span><div class="office-sheet"><b>KITCHEN<br/>QUICK GUIDE</b><ol><li>Cool safely</li><li>Label clearly</li><li>Confirm pickup</li></ol><i>GOOD FOOD → FURTHER</i></div><p>Grayscale-safe / no bleed / 0.5 in margin</p></div></div><div class="artifact-caption"><span>05 / LOW-COST PRODUCTION</span><div><h4>One-color + office-print suite</h4><p>Every critical asset keeps its hierarchy when spot color, bleed, specialty stock, and professional output disappear.</p><b class="software-tag software-tag--suite">Illustrator + InDesign</b></div></div></article></div><div class="production-detail-strip"><span>PRODUCTION STANDARD</span><div><b>Print</b><p>CMYK · spot · grayscale · office</p></div><div><b>Digital</b><p>RGB · SVG · WebP · social crops</p></div><div><b>Source</b><p>Linked · packaged · editable · named</p></div><div><b>QA</b><p>Preflight · contrast · compression · export</p></div></div></div><div class="production-board"><div class="file-tree"><div class="file-tree__header"><span>LOOPLINE_MASTER_ASSETS</span><i>•••</i></div><ul><li class="folder"><b>01_Brand</b><span>↘</span></li><li><i>AI</i>LL_Logo_Master_v03.ai</li><li><i>SVG</i>LL_Logo_RGB_Primary.svg</li><li><i>PDF</i>LL_Guidelines_v01.pdf</li><li class="folder"><b>02_Print</b><span>→</span></li><li class="folder"><b>03_Digital</b><span>→</span></li><li class="folder"><b>04_Presentations</b><span>↘</span></li><li><i>PPT</i>LL_Partner_Deck_16x9.pptx</li></ul></div><div class="preflight-list"><p class="kicker">PRE-FLIGHT / 12 OF 12 PASSED</p><div><span>01</span><b>COLOR</b><p>RGB, CMYK, and one-color variants</p><i>✓</i></div><div><span>02</span><b>PRINT</b><p>Bleed, trim, safety, rich black</p><i>✓</i></div><div><span>03</span><b>ACCESS</b><p>Contrast, reading order, alt text</p><i>✓</i></div><div><span>04</span><b>TYPE</b><p>Packaged or system-font fallback</p><i>✓</i></div><div><span>05</span><b>EXPORT</b><p>Naming, dimensions, compression</p><i>✓</i></div><div><span>06</span><b>HANDOFF</b><p>Editable source + quick-start guide</p><i>✓</i></div></div></div><div class="proof-map"><p class="kicker">CAPABILITY MAP</p><div><span>01</span><b>Brand strategy</b><p>Positioning, message architecture, voice</p></div><div><span>02</span><b>Identity</b><p>Logo system, color, typography, motion</p></div><div><span>03</span><b>Production</b><p>Print specs, templates, asset governance</p></div><div><span>04</span><b>Digital</b><p>Responsive UX, component logic, campaign</p></div><div><span>05</span><b>Presentation</b><p>Editable 16:9 client storytelling</p></div></div></section><section class="exploration-section" id="exploration"><div class="section-label"><span>09</span><p>CONCEPT EXPLORATION + CRITIQUE</p></div><div class="exploration-heading"><div><p class="kicker">DECISION HISTORY / WHAT DID NOT SHIP</p><h2>Three directions entered critique.<br/>One survived the system test.</h2></div><p>Because Loopline is a self-directed concept, this section does not invent client feedback. Instead, each route was reviewed against a consistent studio critique: clarity, distinctiveness, small-scale performance, motion potential, and low-cost reproduction.</p></div><div class="route-explorations"><article class="route-concept"><div class="route-concept__visual route-concept__visual--closed" aria-label="Rejected closed loop logo direction"><span class="route-concept__status">REJECTED / A</span><div class="closed-loop-mark"><i></i><i></i><i></i></div><b>CLOSED LOOP</b></div><div class="route-concept__copy"><span>FAMILIAR / TOO GENERIC</span><h3>A circular-arrow metaphor.</h3><p>Immediate sustainability recognition, but it read as recycling software and erased the human handoff.</p><ul><li>Strong at small sizes</li><li>Low category distinction</li><li>No clear source or destination</li></ul></div></article><article class="route-concept"><div class="route-concept__visual route-concept__visual--table" aria-label="Rejected shared table logo direction"><span class="route-concept__status">REJECTED / B</span><div class="shared-table-mark"><i></i><i></i><i></i><b></b></div><b>SHARED TABLE</b></div><div class="route-concept__copy"><span>HUMAN / TOO STATIC</span><h3>Three seats around one table.</h3><p>Warm and community-led, but the symbol felt stationary, lost legibility below 28 px, and resisted motion.</p><ul><li>Strong emotional cue</li><li>Weak logistics story</li><li>Fragile one-color detail</li></ul></div></article><article class="route-concept"><div class="route-concept__visual route-concept__visual--monogram" aria-label="Rejected route monogram logo direction"><span class="route-concept__status">REJECTED / C</span><div class="route-monogram-mark"><i></i><i></i><i></i></div><b>ROUTE MONOGRAM</b></div><div class="route-concept__copy"><span>DISTINCT / OVER-ENGINEERED</span><h3>An interlocking “LL” route.</h3><p>Ownable in isolation, but the reading required explanation and the tight turns filled in during low-cost output.</p><ul><li>High brand ownership</li><li>Slow first read</li><li>Poor office-print survival</li></ul></div></article></div><div class="selection-board"><div class="selection-final"><div class="selection-final__mark"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><div><p class="kicker">SELECTED / OPEN HANDOFF</p><h3>The final mark does more with less.</h3><p>One open turn establishes forward motion. Three nodes carry the operating story. A single-weight route survives 16 px, one ink, animation, signage, and a sponsor deck without changing meaning.</p><div class="selection-tags"><span>16 px ready</span><span>One-color safe</span><span>Motion-native</span><span>Story-led</span></div></div></div><div class="decision-matrix" role="table" aria-label="Logo concept decision matrix"><div class="decision-matrix__row decision-matrix__head" role="row"><span role="columnheader">Direction</span><span role="columnheader">Clarity</span><span role="columnheader">Ownability</span><span role="columnheader">16 px</span><span role="columnheader">System fit</span></div><div class="decision-matrix__row" role="row"><span role="cell">A / Closed loop</span><span role="cell">2/5</span><span role="cell">2/5</span><span role="cell">4/5</span><span role="cell">2/5</span></div><div class="decision-matrix__row" role="row"><span role="cell">B / Shared table</span><span role="cell">3/5</span><span role="cell">4/5</span><span role="cell">2/5</span><span role="cell">3/5</span></div><div class="decision-matrix__row" role="row"><span role="cell">C / Route monogram</span><span role="cell">2/5</span><span role="cell">4/5</span><span role="cell">2/5</span><span role="cell">3/5</span></div><div class="decision-matrix__row is-selected" role="row"><span role="cell">Final / Open handoff</span><span role="cell">5/5</span><span role="cell">4/5</span><span role="cell">5/5</span><span role="cell">5/5</span></div></div></div><div class="critique-revision"><div class="critique-revision__heading"><p class="kicker">ONE DESIGN CHANGED AFTER CRITIQUE</p><h3>Feedback became a visible hierarchy change.</h3><blockquote>“Can a kitchen manager understand the action before noticing the brand?”</blockquote></div><div class="revision-comparison"><article><div class="revision-label"><span>BEFORE / V01</span><b>Too many signals</b></div><div class="revision-poster revision-poster--before"><div class="revision-brand">LOOPLINE°</div><span class="revision-badge">JOIN THE LOOP</span><h4>GOOD FOOD<br/>HAS PLACES<br/>TO GO.</h4><p>Schedule surplus. Track impact. Feed neighbors. Build a more resourceful city.</p><div class="revision-routes"><i></i><i></i><i></i><i></i></div><b class="revision-stat">84 MEALS</b><div class="revision-cta">BECOME A PARTNER ↗</div></div><p class="revision-note">Five competing moves split attention between brand, proof, and action.</p></article><article><div class="revision-label"><span>AFTER / V03</span><b>Action first</b></div><div class="revision-poster revision-poster--after"><div class="revision-brand">LOOPLINE° <span>ROUTE 04</span></div><h4>PACK IT.<br/>POST IT.<br/><em>PASS IT ON.</em></h4><div class="revision-route"><i></i><i></i><i></i></div><p>One pickup can begin 84 meals.</p><div class="revision-cta">SCHEDULE A PICKUP <b>↗</b></div></div><p class="revision-note">One directive, one proof point, and one CTA create a two-second reading path.</p></article></div><div class="critique-actions"><div><span>01</span><b>Reduced</b><p>Five graphic moves to two repeatable brand behaviors.</p></div><div><span>02</span><b>Reordered</b><p>Action language before organizational explanation.</p></div><div><span>03</span><b>Strengthened</b><p>Contrast and hierarchy for office-print conditions.</p></div><div><span>04</span><b>Documented</b><p>The rationale so the choice remains reviewable.</p></div></div></div></section><section class="process-section section-coral" id="process"><div class="section-label section-label--light"><span>10</span><p>PROCESS + ACCOUNTABILITY</p></div><div class="process-heading"><p class="kicker">AN 8-WEEK PLAN WITH DECISIONS BUILT IN</p><h2>Move quickly.<br/>Make the work traceable.</h2><p>Each phase ends with a clear decision, a documented rationale, and an artifact that can be reviewed asynchronously.</p></div><div class="timeline"><article><div class="timeline-top"><span>01</span><b>Weeks 1–2</b></div><h3>Frame</h3><p>Stakeholder interviews, content audit, audience tensions, success criteria.</p></article><article><div class="timeline-top"><span>02</span><b>Weeks 3–4</b></div><h3>Focus</h3><p>Positioning, verbal system, identity routes, rapid application tests.</p></article><article><div class="timeline-top"><span>03</span><b>Weeks 5–6</b></div><h3>Form</h3><p>Selected identity, web prototype, campaign and presentation system.</p></article><article><div class="timeline-top"><span>04</span><b>Weeks 7–8</b></div><h3>Finish</h3><p>Production rollout, accessibility review, templates, training and handoff.</p></article></div><div class="accountability-strip"><div><span>WEEKLY</span><b>30-minute decision review</b></div><div><span>DAILY</span><b>Time + scope tracking</b></div><div><span>AT RISK</span><b>Flag within 24 hours</b></div><div><span>HANDOFF</span><b>Recorded walkthrough</b></div></div></section><section class="measurement-section"><div class="section-label"><span>11</span><p>MEASUREMENT PLAN</p></div><div class="measurement-grid"><div class="measurement-heading"><p class="kicker">CONCEPT PROJECT / TARGETS, NOT CLAIMS</p><h2>Define what success means before choosing what to polish.</h2><p>Because Loopline is a concept, these are proposed launch targets—not fabricated outcomes. A real engagement would baseline each metric during discovery.</p></div><div class="target-card"><span class="target-number">&lt;4</span><b>minutes</b><p>Target median time to schedule a first pickup.</p><i><span style="width:82%"></span></i></div><div class="target-card"><span class="target-number">80%</span><b>completion</b><p>Target partner onboarding completion rate.</p><i><span style="width:80%"></span></i></div><div class="target-card"><span class="target-number">AA</span><b>minimum</b><p>Accessibility target for core digital interactions.</p><i><span style="width:100%"></span></i></div><div class="target-card"><span class="target-number">2×</span><b>faster</b><p>Target reduction in routine asset-production time.</p><i><span style="width:72%"></span></i></div></div></section><section class="reflection-section section-dark"><div class="reflection-mark"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><p class="kicker">THE DESIGN PRINCIPLE</p><blockquote>“The difference between a good-looking brand and a useful one is whether the <em>decisions still hold</em> when the conditions change.”</blockquote><p class="reflection-copy">Loopline was designed as infrastructure: expressive enough to earn attention, systematic enough to move across channels, and simple enough for a real team to maintain.</p></section><section class="next-project"><div><p class="kicker">JOCELYN MARTINEZ / BRAND · UX · DIGITAL</p><h2>Thoughtful systems.<br/>Beautifully finished.</h2></div><a class="next-link" href="index.html"><span>View portfolio</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a></section><footer><span>LOOPLINE / CONCEPT CASE STUDY © 2026</span><a href="#top">BACK TO TOP ↑</a><span>DESIGNED BY JOCELYN MARTINEZ</span></footer></main>
+<main id="top"><div class="scroll-progress" aria-hidden="true"><span style="width:0%"></span></div><header class="site-header"><a class="portfolio-signature" href="index.html" aria-label="Back to portfolio"><span>JM</span><p>Jocelyn Martinez<br/><b>Selected work</b></p></a><nav class="site-nav" aria-label="Case study"><a href="#brief">Brief</a><a href="#system">System</a><a href="#applications">Applications</a><a href="#exploration">Exploration</a><a href="#process">Process</a></nav><div class="header-meta"><span>Self-directed case study · In progress</span><button class="menu-button" type="button" aria-label="Toggle navigation" aria-expanded="false"><i></i><i></i></button></div></header><section class="hero section-dark"><div class="hero-grid"><div class="hero-copy"><div class="eyebrow eyebrow--light"><span>Brand identity</span><i></i><span>Campaign</span><i></i><span>Digital product</span></div><h1>Keep good<br/>food <em>moving.</em></h1><p class="hero-lede">A strategic identity and service experience for the network turning Chicago’s surplus food into neighborhood momentum.</p><a class="text-link text-link--light" href="#brief">Explore the system <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a></div><div class="hero-art" aria-hidden="true"><div class="hero-wordmark">LOOPLINE<sup>°</sup></div><div class="hero-orbit hero-orbit--outer"></div><div class="hero-orbit hero-orbit--inner"></div><div class="hero-node hero-node--one"><span>01</span><b>KITCHENS</b></div><div class="hero-node hero-node--two"><span>02</span><b>ROUTES</b></div><div class="hero-node hero-node--three"><span>03</span><b>NEIGHBORS</b></div><div class="hero-mark"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><div class="hero-stamp">CHI<br/>41.88°N</div></div></div><div class="hero-facts"><div><span>Role</span><b>Brand + Digital Designer</b></div><div><span>Timeline</span><b>8-week concept sprint</b></div><div><span>Scope</span><b>Strategy to production</b></div><div><span>Designed for</span><b>B2B + B2C audiences</b></div></div></section><section class="case-intro" id="brief"><div class="section-label"><span>01</span><p>THE BRIEF</p></div><div class="case-intro__statement"><p class="kicker">THE CHALLENGE</p><h2>Food rescue has a logistics problem—and a <em>language problem.</em></h2><p class="large-copy">Loopline needed to feel efficient enough for kitchen operators, trustworthy enough for funders, and human enough for neighbors. The identity could not simply decorate the service; it had to make the service easier to understand and use.</p></div><aside class="case-intro__aside"><p class="kicker">PROJECT MANDATE</p><ul><li><span>01</span>Unify three audiences without flattening their needs.</li><li><span>02</span>Work from polished decks to low-cost office prints.</li><li><span>03</span>Turn operational complexity into clear next steps.</li><li><span>04</span>Leave behind a system the client can actually own.</li></ul></aside></section><section class="tension-section section-coral"><div class="section-label section-label--light"><span>02</span><p>THE STRATEGIC TENSION</p></div><div class="tension-head"><p class="kicker">ONE NETWORK / THREE DEFINITIONS OF VALUE</p><h2>Design for the handoff,<br/>not just the headline.</h2></div><div class="audience-grid"><article><span class="audience-number">A</span><p class="kicker">KITCHEN PARTNERS</p><h3>“Make it easy to do the right thing during a rush.”</h3><ul><li>Fast pickup setup</li><li>Clear safety guidance</li><li>Predictable reporting</li></ul></article><article><span class="audience-number">B</span><p class="kicker">COMMUNITY PARTNERS</p><h3>“Show me what is coming and when it will arrive.”</h3><ul><li>Plain-language alerts</li><li>Flexible quantities</li><li>Dignified public messaging</li></ul></article><article><span class="audience-number">C</span><p class="kicker">FUNDERS + SPONSORS</p><h3>“Prove that coordinated action compounds impact.”</h3><ul><li>Credible measurement</li><li>Scalable operating model</li><li>Executive-ready story</li></ul></article></div></section><section class="strategy-section"><div class="section-label"><span>03</span><p>THE IDEA</p></div><div class="strategy-title"><p class="kicker">BRAND PLATFORM</p><h2>A city works better<br/>when good things <em>circulate.</em></h2></div><div class="strategy-grid"><article class="strategy-card strategy-card--dark"><p class="kicker">POSITIONING</p><h3>The connective layer between surplus and service.</h3><p>Not a charity bin. Not a delivery app. Loopline is shared infrastructure for a more resourceful city.</p><span class="card-index">01 / 03</span></article><article class="strategy-card strategy-card--yellow"><p class="kicker">PROMISE</p><h3>Good food.<br/>Further.</h3><div class="card-route"><i></i><i></i><i></i></div><span class="card-index">02 / 03</span></article><article class="strategy-card strategy-card--cream"><p class="kicker">VOICE</p><div class="voice-pairs"><div><b>Direct</b><span>not abrupt</span></div><div><b>Optimistic</b><span>not naive</span></div><div><b>Human</b><span>not sentimental</span></div><div><b>Informed</b><span>not institutional</span></div></div><span class="card-index">03 / 03</span></article></div></section><section class="identity-section section-dark" id="system"><div class="section-label section-label--light"><span>04</span><p>THE IDENTITY SYSTEM</p></div><div class="identity-lead"><div><p class="kicker">A MARK BUILT TO MOVE</p><h2>A route, a cycle,<br/>and a shared table.</h2></div><p>The symbol combines a continuous route with three handoff points: source, movement, and destination. Its open turn prevents the circular form from reading as closed or static.</p></div><div class="logo-stage"><div class="logo-lockup"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><div class="logo-name">LOOPLINE<sup>°</sup></div></div><div class="logo-annotations"><div class="annotation annotation--one"><i></i><span>OPEN TURN<br/><b>Signals forward motion</b></span></div><div class="annotation annotation--two"><i></i><span>THREE NODES<br/><b>Source · route · destination</b></span></div><div class="annotation annotation--three"><i></i><span>OFFSET ORBIT<br/><b>Creates a human, active rhythm</b></span></div></div><div class="clear-space"><span>CLEAR SPACE = 1 NODE</span></div></div><div class="logo-scale-row"><div class="logo-scale-item logo-scale-item--primary"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><b>LOOPLINE<sup>°</sup></b><span>PRIMARY LOCKUP</span></div><div class="logo-scale-item logo-scale-item--compact"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><span>COMPACT MARK</span></div><div class="logo-scale-item logo-scale-item--micro"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><span>16 PX MINIMUM</span></div><div class="logo-scale-item logo-scale-item--one-color"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><b>LOOPLINE<sup>°</sup></b><span>ONE-COLOR FALLBACK</span></div></div><div class="color-section"><div class="color-heading"><p class="kicker">COLOR WITH A JOB</p><h3>Warmth leads.<br/>Structure supports.</h3><p>Each color has a defined role, recommended proportion, and accessible pairing—so expression never comes at the cost of clarity.</p></div><div class="swatch swatch--forest"><span>ROUTE FOREST</span><b>#173629</b><small>Primary / Oat 11.6:1</small></div><div class="swatch swatch--coral"><span>HANDOFF CORAL</span><b>#F15B40</b><small>Action / Ink 5.0:1</small></div><div class="swatch swatch--yellow"><span>SIGNAL YELLOW</span><b>#F4C95D</b><small>Highlight / Ink 10.7:1</small></div><div class="swatch swatch--mint"><span>FRESH MINT</span><b>#BBDCCB</b><small>Support / Ink 11.3:1</small></div><div class="swatch swatch--oat"><span>GROUND OAT</span><b>#F4F0E8</b><small>Canvas / Ink 14.7:1</small></div></div><div class="type-system"><div class="type-intro"><p class="kicker">TYPOGRAPHY / BUILT FOR HANDOFF</p><h3>Expressive where it matters.<br/>Universal where it counts.</h3><p>Aptos and Georgia are intentionally familiar, widely available, and PowerPoint-safe. Scale, contrast, and composition—not an exotic font license—create the voice.</p></div><div class="type-display"><span>DISPLAY / GEORGIA ITALIC</span><b>Further.</b></div><div class="type-grotesk"><span>HEADLINE / APTOS DISPLAY BOLD</span><b>MOVE WHAT<br/>MATTERS.</b></div><div class="type-detail"><span>INFORMATION / APTOS MONO FALLBACK</span><p>ROUTE 04 / WEST SIDE<br/>PICKUP WINDOW 14:30–15:15<br/>STATUS: READY TO MOVE</p></div></div></section><section class="applications-section" id="applications"><div class="section-label"><span>05</span><p>THE SYSTEM AT WORK</p></div><div class="applications-heading"><div><p class="kicker">ONE IDEA / MULTIPLE CONDITIONS</p><h2>Flexible enough to travel.<br/>Disciplined enough to stay recognizable.</h2></div><p>The application system is built from repeatable moves: oversized action language, route-based lines, modular data blocks, and a consistent information footer.</p></div><div class="application-tabs" role="tablist" aria-label="Project applications"><button type="button" role="tab" aria-selected="true" aria-controls="application-panel"><span>01</span>Print</button><button type="button" role="tab" aria-selected="false" aria-controls="application-panel"><span>02</span>Campaign</button><button type="button" role="tab" aria-selected="false" aria-controls="application-panel"><span>03</span>Digital</button><button type="button" role="tab" aria-selected="false" aria-controls="application-panel"><span>04</span>PowerPoint</button></div><div class="application-panel" id="application-panel" role="tabpanel"><div class="application-copy"><p class="kicker">Partner field kit</p><h3>Built for counters, clipboards, and real working hands.</h3><p>A modular print system makes the brand recognizable without slowing down production. High-contrast hierarchy, oversized action language, and a one-ink fallback keep every piece useful in imperfect environments.</p><ul><li>0.125 in bleed</li><li>CMYK + 1-color</li><li>WCAG-minded type</li><li>Office-print fallback</li></ul></div><div class="application-visual print-stage" aria-label="Print collateral mockups"><div class="print-sheet print-sheet--back"><div class="mini-mark"><svg class="mark mark--compact" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><p>PARTNER<br/>PLAYBOOK</p><span>CHICAGO / 2026</span></div><div class="print-sheet print-sheet--front"><div class="print-kicker">KITCHEN QUICK GUIDE / 01</div><h4>PACK IT.<br/>POST IT.<br/>PASS IT ON.</h4><div class="print-rule"></div><div class="print-columns"><p><b>01</b> Cool prepared food safely.</p><p><b>02</b> Label every container.</p><p><b>03</b> Confirm your pickup.</p></div><div class="print-footer"><span>loopline.chi</span><span>GOOD FOOD → FURTHER</span></div></div><div class="label-roll"><span>READY TO MOVE</span><i>LL·0426</i></div></div></div></section><section class="message-section"><div class="message-marquee" aria-hidden="true"><span>GOOD FOOD → FURTHER → GOOD FOOD → FURTHER →</span></div><div class="message-grid"><div class="message-poster message-poster--one"><div class="poster-header"><span>LOOPLINE°</span><span>CHI / 2026</span></div><h3>KEEP<br/>WHAT’S<br/><em>GOOD</em><br/>GOING.</h3><div class="poster-footer"><span>JOIN THE LOOP</span><b>↗</b></div></div><div class="message-copy"><p class="kicker">MESSAGE ARCHITECTURE</p><h2>Designed to work at<br/>three reading speeds.</h2><div class="reading-speed"><span>2 SEC</span><div><b>Keep good food moving.</b><p>A memorable promise for headlines and outdoor.</p></div></div><div class="reading-speed"><span>10 SEC</span><div><b>One pickup can begin 84 meals.</b><p>A concrete proof point for social and email.</p></div></div><div class="reading-speed"><span>30 SEC</span><div><b>Schedule surplus once. Track its impact every time.</b><p>A functional benefit for partner acquisition.</p></div></div></div><div class="message-poster message-poster--two"><div class="poster-header"><span>LOOPLINE°</span><span>ROUTE 04</span></div><div class="poster-stat"><b>84</b><span>MEALS<br/>CAN BEGIN<br/>RIGHT HERE.</span></div><div class="poster-route"><i></i><i></i><i></i></div><div class="poster-footer"><span>PACK · POST · PASS IT ON</span><b>04</b></div></div></div></section><section class="ux-section section-mint"><div class="section-label"><span>06</span><p>THE DIGITAL EXPERIENCE</p></div><div class="ux-heading"><p class="kicker">FROM INTENT TO CONFIRMATION</p><h2>Reduce hesitation.<br/>Reveal complexity <em>only when needed.</em></h2></div><div class="flow-map"><article><div class="flow-node"><span>01</span></div><i class="flow-line"></i><p class="kicker">QUALIFY</p><h3>Is this donation eligible?</h3></article><article><div class="flow-node"><span>02</span></div><i class="flow-line"></i><p class="kicker">DESCRIBE</p><h3>What is ready to move?</h3></article><article><div class="flow-node"><span>03</span></div><i class="flow-line"></i><p class="kicker">SCHEDULE</p><h3>When can we collect it?</h3></article><article><div class="flow-node"><span>04</span></div><i class="flow-line"></i><p class="kicker">CONFIRM</p><h3>Who is handling pickup?</h3></article><article><div class="flow-node"><span>05</span></div><p class="kicker">REPORT</p><h3>Where did it create value?</h3></article></div><div class="prototype-showcase prototype-showcase--advanced" aria-labelledby="prototype-title">
+  <div class="prototype-showcase__head">
+    <div>
+      <p class="kicker">RESPONSIVE SERVICE PROTOTYPE / LIVE BEHAVIOR</p>
+      <h3 id="prototype-title">The poster system<br/>becomes the interface.</h3>
+    </div>
+    <p>Oversized verbs, route logic, and status color move intact from an 11 × 17 flyer into a responsive scheduling flow. Desktop and mobile views stay synchronized so the interaction—not the device frame—carries the brand.</p>
+  </div>
+  <div class="prototype-controls prototype-controls--advanced" role="tablist" aria-label="Pickup scheduling prototype states">
+    <button type="button" role="tab" data-prototype-step="0" aria-selected="true">
+      <span>01</span><b>Qualify</b><small>Safety + confidence</small>
+    </button>
+    <button type="button" role="tab" data-prototype-step="1" aria-selected="false">
+      <span>02</span><b>Schedule</b><small>Availability + route</small>
+    </button>
+    <button type="button" role="tab" data-prototype-step="2" aria-selected="false">
+      <span>03</span><b>Confirm</b><small>Ownership + status</small>
+    </button>
+  </div>
+  <div class="prototype-stage">
+    <div class="prototype-stage__bar">
+      <span class="prototype-stage__state" data-prototype-state-label>STATE 01 / QUALIFY</span>
+      <div class="prototype-stage__tools">
+        <span>DESKTOP + MOBILE / SYNCHRONIZED</span>
+        <button type="button" data-prototype-autoplay aria-pressed="false">▶ Run guided flow</button>
+      </div>
+    </div>
+    <div class="prototype-device-grid">
+      <div class="prototype-desktop" aria-label="Desktop scheduling prototype">
+        <div class="prototype-desktop__chrome"><i></i><i></i><i></i><span>partner.loopline.chi/new-pickup</span></div>
+        <div class="prototype-desktop__viewport">
+          <article class="proto-screen proto-screen--eligibility is-active" data-prototype-screen="0" aria-label="Eligibility state">
+            <div class="proto-screen__brandbar"><b>LOOPLINE°</b><span>PARTNER DESK / PICKUP 01</span></div>
+            <div class="proto-poster">
+              <aside class="proto-route-index"><span>QUALIFY</span><div class="proto-route-index__line"><i></i><i></i><i></i></div><b>01</b></aside>
+              <div class="proto-poster__statement">
+                <p class="ui-kicker proto-reveal" style="--delay:80ms">ELIGIBILITY / 01 OF 05</p>
+                <h4 class="proto-reveal" style="--delay:140ms">CAN THIS<br/>FOOD <em>JOIN<br/>THE LOOP?</em></h4>
+                <p class="proto-reveal" style="--delay:220ms">Three fast checks protect partners without turning policy into a wall of text.</p>
+              </div>
+              <div class="proto-action-panel">
+                <div class="proto-panel-meta proto-reveal" style="--delay:180ms"><span>SAFETY CHECK</span><span data-readiness-count>3 / 3 READY</span></div>
+                <div class="proto-readiness proto-reveal" style="--delay:220ms">
+                  <div><span>ROUTE READINESS</span><b data-readiness-percent>100%</b></div>
+                  <span class="proto-readiness__track"><i data-readiness-bar></i></span>
+                </div>
+                <div class="proto-check-list">
+                  <button type="button" class="proto-check proto-reveal" style="--delay:260ms" data-eligibility-check aria-pressed="true"><span>01</span><span><b>Freshly prepared</b><small>Inside approved holding window</small></span><span>✓</span></button>
+                  <button type="button" class="proto-check proto-reveal" style="--delay:320ms" data-eligibility-check aria-pressed="true"><span>02</span><span><b>Cold-hold verified</b><small>Stored at 41°F or below</small></span><span>✓</span></button>
+                  <button type="button" class="proto-check proto-reveal" style="--delay:380ms" data-eligibility-check aria-pressed="true"><span>03</span><span><b>Label + allergens</b><small>Contents, date, and allergens named</small></span><span>✓</span></button>
+                </div>
+                <button type="button" class="proto-action proto-reveal" style="--delay:440ms" data-prototype-target="1"><span>MOVE TO PICKUP WINDOWS</span><b>→</b></button>
+              </div>
+            </div>
+          </article>
+          <article class="proto-screen proto-screen--schedule" data-prototype-screen="1" aria-label="Scheduling state">
+            <div class="proto-screen__brandbar"><b>LOOPLINE°</b><span>PARTNER DESK / PICKUP 01</span></div>
+            <div class="proto-poster">
+              <aside class="proto-route-index"><span>SCHEDULE</span><div class="proto-route-index__line"><i></i><i></i><i></i></div><b>03</b></aside>
+              <div class="proto-poster__statement">
+                <p class="ui-kicker proto-reveal" style="--delay:80ms">PICKUP WINDOW / 03 OF 05</p>
+                <h4 class="proto-reveal" style="--delay:140ms">PICK A<br/>WINDOW.<br/><em>KEEP IT<br/>MOVING.</em></h4>
+                <p class="proto-reveal" style="--delay:220ms">Only viable windows appear. Route context stays visible while the partner decides.</p>
+              </div>
+              <div class="proto-action-panel">
+                <div class="proto-panel-meta proto-reveal" style="--delay:180ms"><span>MAY / ROUTE 04</span><span>3 WINDOWS OPEN</span></div>
+                <div class="proto-schedule-flow">
+                  <div class="proto-date-row proto-reveal" style="--delay:230ms" aria-label="Pickup dates">
+                    <button type="button" data-date-choice data-date-label="MON 18" aria-pressed="false"><small>MON</small><b>18</b></button>
+                    <button type="button" data-date-choice data-date-label="TUE 19" aria-pressed="true"><small>TUE</small><b>19</b></button>
+                    <button type="button" data-date-choice data-date-label="WED 20" aria-pressed="false"><small>WED</small><b>20</b></button>
+                    <button type="button" data-date-choice data-date-label="THU 21" aria-pressed="false"><small>THU</small><b>21</b></button>
+                  </div>
+                  <p class="proto-field-label proto-reveal" style="--delay:270ms">AVAILABLE WINDOWS</p>
+                  <div class="proto-time-row proto-reveal" style="--delay:300ms" aria-label="Pickup times">
+                    <button type="button" data-time-choice data-time-label="10:00–10:45" aria-pressed="false">10:00–10:45</button>
+                    <button type="button" data-time-choice data-time-label="11:30–12:15" aria-pressed="true">11:30–12:15</button>
+                    <button type="button" data-time-choice data-time-label="14:00–14:45" aria-pressed="false">14:00–14:45</button>
+                  </div>
+                  <div class="proto-route-ticket proto-reveal" style="--delay:350ms"><b>WEST LOOP KITCHEN → PILSEN PANTRY</b><span>MAYA / VAN 04 · SHARED ROUTE CAPACITY AVAILABLE</span></div>
+                  <button type="button" class="proto-action proto-reveal" style="--delay:410ms" data-prototype-target="2"><span data-schedule-summary>CONFIRM TUE 19 · 11:30–12:15</span><b>→</b></button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="proto-screen proto-screen--confirmation" data-prototype-screen="2" aria-label="Confirmation and status state">
+            <div class="proto-screen__brandbar"><b>LOOPLINE°</b><span>CONFIRMED / LL-0426</span></div>
+            <div class="proto-confirmation">
+              <div class="proto-confirmation__statement">
+                <p class="ui-kicker proto-reveal" style="--delay:80ms">PICKUP LL-0426 / ROUTE 04</p>
+                <h4 class="proto-reveal" style="--delay:140ms">YOUR FOOD<br/><em>HAS A ROUTE.</em></h4>
+                <span class="proto-reveal" style="--delay:220ms">TUE 19 · 11:30–12:15<br/>WEST LOOP → PILSEN</span>
+                <div class="proto-confirmation__orbit" aria-hidden="true"></div>
+              </div>
+              <div class="proto-confirmation__status">
+                <div class="proto-confirmation__stamp">✓</div>
+                <div class="proto-status-rail">
+                  <div class="is-complete proto-reveal" style="--delay:240ms"><i>✓</i><span><b>Pickup posted</b><small>Today · 09:42</small></span></div>
+                  <div class="is-current proto-reveal" style="--delay:340ms"><i>02</i><span><b>Route matched</b><small>Maya · Van 04</small></span></div>
+                  <div class="proto-reveal" style="--delay:440ms"><i>03</i><span><b>Pickup begins</b><small>Tuesday · 11:30</small></span></div>
+                  <div class="proto-reveal" style="--delay:540ms"><i>04</i><span><b>Impact reported</b><small>After delivery</small></span></div>
+                </div>
+                <button type="button" class="proto-action proto-reveal" style="--delay:600ms" data-prototype-target="0"><span>SCHEDULE ANOTHER</span><b>↻</b></button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="prototype-phone" aria-label="Mobile scheduling prototype">
+        <div class="prototype-phone__viewport">
+          <article class="proto-mobile-screen is-active" data-prototype-mobile-screen="0">
+            <div class="proto-mobile-brand"><b>LOOPLINE°</b><span>01 / 05</span></div>
+            <span class="proto-reveal" style="--delay:80ms">ELIGIBILITY CHECK</span>
+            <h4 class="proto-reveal" style="--delay:140ms">CAN THIS FOOD<br/><em>JOIN THE LOOP?</em></h4>
+            <div class="proto-mobile-route proto-reveal" style="--delay:200ms"><i></i><i></i><i></i></div>
+            <div class="proto-mobile-cards">
+              <div class="proto-reveal" style="--delay:250ms"><i>✓</i>Freshly prepared</div>
+              <div class="proto-reveal" style="--delay:310ms"><i>✓</i>Cold-hold verified</div>
+              <div class="proto-reveal" style="--delay:370ms"><i>✓</i>Label + allergens</div>
+            </div>
+            <div class="proto-mobile-action proto-reveal" style="--delay:430ms"><span>ROUTE READY</span><b>→</b></div>
+          </article>
+          <article class="proto-mobile-screen proto-mobile-screen--schedule" data-prototype-mobile-screen="1">
+            <div class="proto-mobile-brand"><b>LOOPLINE°</b><span>03 / 05</span></div>
+            <span class="proto-reveal" style="--delay:80ms">PICKUP WINDOW</span>
+            <h4 class="proto-reveal" style="--delay:140ms">PICK A WINDOW.<br/><em>KEEP IT MOVING.</em></h4>
+            <div class="proto-mobile-date proto-reveal" style="--delay:220ms"><b>18</b><b>19</b><b>20</b></div>
+            <div class="proto-mobile-ticket proto-reveal" style="--delay:300ms"><span>ROUTE 04 / MATCH AVAILABLE</span><b>TUE 19 · 11:30–12:15</b></div>
+            <div class="proto-mobile-action proto-reveal" style="--delay:390ms"><span>CONFIRM PICKUP</span><b>→</b></div>
+          </article>
+          <article class="proto-mobile-screen proto-mobile-screen--confirmation" data-prototype-mobile-screen="2">
+            <div class="proto-mobile-brand"><b>LOOPLINE°</b><span>LL-0426</span></div>
+            <div class="proto-mobile-confirm">✓</div>
+            <span class="proto-reveal" style="--delay:100ms">PICKUP CONFIRMED</span>
+            <h4 class="proto-reveal" style="--delay:160ms">YOUR FOOD<br/><em>HAS A ROUTE.</em></h4>
+            <div class="proto-mobile-status">
+              <div class="proto-reveal" style="--delay:260ms"><i>✓</i>Pickup posted</div>
+              <div class="proto-reveal" style="--delay:340ms"><i>02</i>Route matched</div>
+              <div class="proto-reveal" style="--delay:420ms"><i>03</i>Pickup at 11:30</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="prototype-stage__footer">
+      <span>LIVE MOTION</span>
+      <p data-prototype-motion-note>Choice feedback fills the readiness rail, then the next scene enters along the route direction.</p>
+      <b data-prototype-timing>160–520 MS</b>
+    </div>
+  </div>
+  <div class="prototype-behavior-grid">
+    <article><span>01 / VERIFY</span><h4>Feedback builds confidence.</h4><p>Each safety choice changes state immediately; the readiness rail summarizes progress without replacing the labels.</p><b>160 MS COLOR · 320 MS RAIL</b></article>
+    <article><span>02 / TRANSITION</span><h4>Scenes move with the route.</h4><p>The outgoing state clears before the next state enters upward, preserving direction without theatrical page movement.</p><b>180 MS OUT · 520 MS IN</b></article>
+    <article><span>03 / SCHEDULE</span><h4>Selection stays anchored.</h4><p>Date, time, route, and CTA update as one decision object so the user never has to reconcile conflicting summaries.</p><b>180 MS STATE FILL</b></article>
+    <article><span>04 / CONFIRM</span><h4>Status resolves in sequence.</h4><p>The confirmation stamp settles once; the status rail reveals ownership and the next expected event.</p><b>480 MS SETTLE · NO LOOP</b></article>
+  </div>
+  <div class="prototype-spec-strip">
+    <div><span>RESPONSIVE SYSTEM</span><b>Shared state across desktop + mobile</b></div>
+    <div><span>INTERACTION LOGIC</span><b>Selectable safety, date, and time states</b></div>
+    <div><span>MOTION</span><b>Trigger-based, directional, non-blocking</b></div>
+    <div><span>ACCESSIBILITY</span><b>Keyboard flow + reduced-motion final states</b></div>
+  </div>
+</div><div class="ux-detail-grid"><article><span class="ux-icon">Aa</span><p class="kicker">PLAIN LANGUAGE</p><h3>“What’s ready to move?”</h3><p>Every question uses the partner’s vocabulary, not internal operational language.</p></article><article><span class="ux-icon">1×</span><p class="kicker">SMART DEFAULTS</p><h3>Repeat without retyping.</h3><p>Returning kitchens can reuse pickup details while still confirming food safety.</p></article><article><span class="ux-icon">✓</span><p class="kicker">VISIBLE STATUS</p><h3>No mystery after submit.</h3><p>A clear confirmation tells partners what is set, what is pending, and who owns the next action.</p></article></div></section><section class="motion-section section-dark" id="motion">
+  <div class="section-label section-label--light"><span>07</span><p>MOTION BEHAVIOR</p></div>
+  <div class="motion-heading motion-heading--advanced">
+    <div><p class="kicker">MOTION AS OPERATING LANGUAGE</p><h2>Every movement<br/>explains a state change.</h2></div>
+    <p>The system uses one directional grammar across product, campaign, and presentation work: reveal the source, draw the route, activate the handoff, then settle into a clear result. Nothing loops just to look alive.</p>
+  </div>
+  <div class="motion-director">
+    <div class="motion-director__header">
+      <div><p class="kicker">LIVE MOTION DIRECTOR / 07.2 SECONDS</p><h3>Post → match → move → arrive.</h3></div>
+      <div class="motion-director__meta">
+        <span><b>60 FPS</b><small>frame-synced</small></span>
+        <span><b>1×</b><small>single playback</small></span>
+        <span><b>SAFE</b><small>reduced-motion</small></span>
+      </div>
+    </div>
+    <div class="motion-director__stage" data-motion-stage data-phase-word="POST">
+      <div class="motion-stage__brand">LOOPLINE<sup>°</sup></div>
+      <div class="motion-stage__timecode" data-motion-timecode>00:00 / 07:20</div>
+      <svg class="motion-stage__network" viewBox="0 0 1200 430" aria-hidden="true">
+        <path class="motion-stage__path motion-stage__path--ghost" data-motion-path d="M76 294C229 294 254 104 417 104C581 104 622 320 790 320C945 320 972 148 1128 148"></path>
+        <path class="motion-stage__path motion-stage__path--active" data-motion-active-path d="M76 294C229 294 254 104 417 104C581 104 622 320 790 320C945 320 972 148 1128 148"></path>
+        <g class="motion-stage__runner" data-motion-runner><circle r="25"></circle><circle r="13"></circle></g>
+        <circle class="motion-stage__node motion-stage__node--source" data-motion-node="0" cx="76" cy="294" r="19"></circle>
+        <circle class="motion-stage__node motion-stage__node--match" data-motion-node="1" cx="417" cy="104" r="19"></circle>
+        <circle class="motion-stage__node motion-stage__node--move" data-motion-node="2" cx="790" cy="320" r="19"></circle>
+        <circle class="motion-stage__node motion-stage__node--arrive" data-motion-node="3" cx="1128" cy="148" r="19"></circle>
+      </svg>
+      <div class="motion-stage__caption motion-stage__caption--post" data-motion-caption="0"><span>01 / POST</span><b>KITCHEN RELEASES</b><small>12 trays · chilled + labeled</small></div>
+      <div class="motion-stage__caption motion-stage__caption--match" data-motion-caption="1"><span>02 / MATCH</span><b>ROUTE ACCEPTS</b><small>Maya · Van 04 · 11:30</small></div>
+      <div class="motion-stage__caption motion-stage__caption--move" data-motion-caption="2"><span>03 / MOVE</span><b>PICKUP IN TRANSIT</b><small>West Loop → Pilsen</small></div>
+      <div class="motion-stage__caption motion-stage__caption--arrive" data-motion-caption="3"><span>04 / ARRIVE</span><b>PARTNER RECEIVES</b><small>Handoff confirmed</small></div>
+      <div class="motion-stage__result" data-motion-result>
+        <span class="motion-stage__result-mark">✓</span>
+        <p><small>PICKUP LL-0426 / HANDOFF COMPLETE</small><b>GOOD FOOD<br/>WENT FURTHER.</b></p>
+      </div>
+      <div class="motion-stage__progress"><i data-motion-progress></i></div>
+    </div>
+    <div class="motion-director__controls">
+      <div class="motion-director__buttons">
+        <button type="button" data-motion-toggle aria-pressed="false">▶ Play sequence</button>
+        <button type="button" data-motion-replay>↻ Replay</button>
+      </div>
+      <div class="motion-chapters" aria-label="Motion sequence chapters">
+        <button type="button" data-motion-jump="0" class="is-current"><span>01</span><b>Post</b><small>0.0–1.6 s</small></button>
+        <button type="button" data-motion-jump="1"><span>02</span><b>Match</b><small>1.6–3.5 s</small></button>
+        <button type="button" data-motion-jump="2"><span>03</span><b>Move</b><small>3.5–5.6 s</small></button>
+        <button type="button" data-motion-jump="3"><span>04</span><b>Arrive</b><small>5.6–7.2 s</small></button>
+      </div>
+    </div>
+  </div>
+  <div class="motion-lab-grid">
+    <article class="motion-lab">
+      <div class="motion-lab__demo lab-advance"><div class="lab-advance__line"></div><span class="lab-advance__dot" data-demo-target></span></div>
+      <div class="motion-lab__copy"><span>01 / ADVANCE</span><h3>Directional progress</h3><p>A route node moves only after the system accepts the preceding decision.</p><dl><dt>TRIGGER</dt><dd>Valid submit</dd><dt>TIMING</dt><dd>280 ms · ease out</dd></dl><button type="button" data-behavior-demo="advance">Play once ↗</button></div>
+    </article>
+    <article class="motion-lab">
+      <div class="motion-lab__demo lab-confirm"><span class="lab-confirm__stamp" data-demo-target>✓</span></div>
+      <div class="motion-lab__copy"><span>02 / CONFIRM</span><h3>Confident closure</h3><p>A restrained settle confirms completion without delaying the next action.</p><dl><dt>TRIGGER</dt><dd>Server success</dd><dt>TIMING</dt><dd>360 ms · soft settle</dd></dl><button type="button" data-behavior-demo="confirm">Play once ↗</button></div>
+    </article>
+    <article class="motion-lab">
+      <div class="motion-lab__demo lab-attention"><i class="lab-attention__ring" data-demo-ring></i><span class="lab-attention__core" data-demo-target>!</span></div>
+      <div class="motion-lab__copy"><span>03 / ATTENTION</span><h3>Useful urgency</h3><p>One pulse identifies the field needing action; it never repeats or competes with copy.</p><dl><dt>TRIGGER</dt><dd>Blocking exception</dd><dt>TIMING</dt><dd>720 ms · single pulse</dd></dl><button type="button" data-behavior-demo="attention">Play once ↗</button></div>
+    </article>
+    <article class="motion-lab">
+      <div class="motion-lab__demo"><div class="lab-continuity" data-demo-target><div><span>POSTED</span><i></i></div><div><span>MATCHED</span><i></i></div><div><span>PICKUP</span><i></i></div></div></div>
+      <div class="motion-lab__copy"><span>04 / CONTINUITY</span><h3>State stays traceable</h3><p>The active state advances while previous states remain visible as evidence.</p><dl><dt>TRIGGER</dt><dd>Status update</dd><dt>TIMING</dt><dd>420 ms · stagger</dd></dl><button type="button" data-behavior-demo="continuity">Play once ↗</button></div>
+    </article>
+  </div>
+  <div class="motion-spec">
+    <div class="motion-spec__head">
+      <div><p class="kicker">BEHAVIOR SPECIFICATION / HANDOFF READY</p><h3>Motion is documented like any other component.</h3></div>
+      <p>Each behavior names its trigger, visual response, timing, easing, and reduced-motion equivalent so engineering does not have to reverse-engineer intent from a video.</p>
+    </div>
+    <div class="motion-spec__table" role="table" aria-label="Loopline motion specification">
+      <div class="motion-spec__row motion-spec__row--head" role="row"><span>BEHAVIOR</span><span>TRIGGER + RESPONSE</span><span>DURATION</span><span>EASING</span><span>REDUCED MOTION</span></div>
+      <div class="motion-spec__row" role="row"><span>Scene transition</span><b>Valid step → next state enters in route direction</b><p>180 out / 520 in</p><p>Cubic-bezier .22,1,.36,1</p><p>Instant state replacement + focus move</p></div>
+      <div class="motion-spec__row" role="row"><span>Route progress</span><b>Status accepted → path draws to the next node</b><p>280–720 ms</p><p>Ease out</p><p>Completed path shown immediately</p></div>
+      <div class="motion-spec__row" role="row"><span>Confirmation</span><b>Server success → stamp settles once</b><p>360–480 ms</p><p>Soft settle</p><p>Static check + status heading</p></div>
+      <div class="motion-spec__row" role="row"><span>Attention</span><b>Blocking issue → one field-level pulse</b><p>720 ms</p><p>Ease out</p><p>Persistent border, icon, and error text</p></div>
+    </div>
+    <div class="motion-access-note"><b>ACCESSIBILITY RULE</b><span>Motion never carries the only copy of meaning. Focus moves after the visual transition, controls remain operable while animation is paused, background playback stops when the tab is hidden, and “reduce motion” resolves directly to the final state.</span></div>
+  </div>
+</section><section class="production-section"><div class="section-label"><span>08</span><p>PRODUCTION + HANDOFF</p></div><div class="production-heading"><p class="kicker">A SYSTEM IS ONLY REAL IF SOMEONE ELSE CAN USE IT</p><h2>Craft includes<br/>the files no one posts.</h2><p>The handoff model treats governance as part of the design. Every asset has an owner, format, fallback, and quality check.</p></div><div class="production-proof"><div class="production-proof__intro"><div><p class="kicker">FINAL ART / CLOSE-UP REVIEW</p><h3>Finished pieces,<br/>shown at production depth.</h3></div><p>Each artifact is shown with the decisions that matter after approval: page architecture, vector construction, color mode, fallback behavior, export requirements, and the application used to finish the work.</p></div><div class="artifact-grid"><article class="artifact-card artifact-card--guide"><div class="artifact-visual guide-spread" aria-label="Two-page Loopline partner guide spread"><div class="guide-page guide-page--left"><div class="guide-running-head"><span>LOOPLINE / PARTNER GUIDE</span><b>06</b></div><p class="guide-kicker">PREPARE A PICKUP</p><h4>PACK IT.<br/>POST IT.<br/>PASS IT ON.</h4><div class="guide-route"><i></i><i></i><i></i></div><div class="guide-foot"><span>VERSION 1.0 / MAY 2026</span><span>loopline.chi</span></div></div><div class="guide-page guide-page--right"><div class="guide-running-head"><span>KITCHEN QUICK START</span><b>07</b></div><div class="guide-step"><span>01</span><div><b>COOL</b><p>Hold prepared food at 41°F or below.</p></div></div><div class="guide-step"><span>02</span><div><b>LABEL</b><p>Name contents, allergens, and preparation date.</p></div></div><div class="guide-step"><span>03</span><div><b>POST</b><p>Choose a pickup window and confirm dock access.</p></div></div><div class="guide-callout"><b>NEED HELP?</b><span>Use “I’m not sure” in the eligibility check.</span></div><div class="guide-baseline" aria-hidden="true"></div></div></div><div class="artifact-caption"><span>01 / EDITORIAL SYSTEM</span><div><h4>Two-page partner guide</h4><p>Parent pages, paragraph styles, baseline grid, 0.125-inch bleed, and accessible PDF reading order.</p><b class="software-tag software-tag--indesign">Adobe InDesign</b></div></div></article><article class="artifact-card artifact-card--poster"><div class="artifact-visual poster-flat" aria-label="Loopline printed campaign flyer"><div class="crop-mark crop-mark--tl"></div><div class="crop-mark crop-mark--tr"></div><div class="crop-mark crop-mark--bl"></div><div class="crop-mark crop-mark--br"></div><div class="poster-flat__sheet"><div class="poster-flat__head"><span>LOOPLINE°</span><span>CHI / 2026</span></div><h4>GOOD<br/>FOOD HAS<br/><em>PLACES</em><br/>TO GO.</h4><div class="poster-flat__route"><i></i><i></i><i></i></div><p>One pickup can begin 84 meals.</p><div class="poster-flat__foot"><span>BECOME A PARTNER</span><b>↗</b></div></div></div><div class="artifact-caption"><span>02 / PRINT CAMPAIGN</span><div><h4>11 × 17 partner flyer</h4><p>CMYK build, crop and bleed marks, rich-black control, and a one-ink office-print fallback.</p><b class="software-tag software-tag--indesign">Adobe InDesign</b></div></div></article><article class="artifact-card artifact-card--social"><div class="artifact-visual social-flat" aria-label="Loopline social campaign graphics"><div class="social-flat__square"><div class="social-flat__head"><span>LOOPLINE°</span><span>01 / 03</span></div><b class="social-flat__number">84</b><h4>MEALS CAN<br/>BEGIN WITH<br/>ONE PICKUP.</h4><p>See what’s moving →</p></div><div class="social-flat__story"><span>LOOPLINE°</span><div><svg class="mark mark--compact" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><h4>KEEP IT<br/>MOVING.</h4><p>BECOME A PARTNER ↗</p></div><div class="social-flat__safe-zone"><span>4:5 SAFE ZONE</span><b>1080 × 1350</b></div></div><div class="artifact-caption"><span>03 / CAMPAIGN COMPOSITING</span><div><h4>Social launch system</h4><p>Smart-object templates, non-destructive color, platform-safe crops, and a motion-ready layer hierarchy.</p><b class="software-tag software-tag--photoshop">Adobe Photoshop</b></div></div></article><article class="artifact-card artifact-card--construction"><div class="artifact-visual construction-flat" aria-label="Loopline logo vector construction drawing"><div class="construction-toolbar"><span>LL_LOGO_MASTER_V03.AI</span><b>600%</b></div><div class="construction-canvas"><div class="construction-grid"></div><div class="construction-orbit construction-orbit--outer"></div><div class="construction-orbit construction-orbit--inner"></div><div class="construction-axis construction-axis--x"></div><div class="construction-axis construction-axis--y"></div><div class="construction-mark"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><i class="anchor anchor--one"></i><i class="anchor anchor--two"></i><i class="anchor anchor--three"></i><i class="anchor anchor--four"></i><div class="construction-note construction-note--one"><span>10 u</span><b>STROKE</b></div><div class="construction-note construction-note--two"><span>15 u</span><b>NODE</b></div><div class="construction-note construction-note--three"><span>20.2 u</span><b>OPEN TURN</b></div></div></div><div class="artifact-caption"><span>04 / VECTOR MASTER</span><div><h4>Logo construction artwork</h4><p>Live-stroke master, expanded production copy, optical node spacing, pixel-hinted micro mark, and SVG cleanup.</p><b class="software-tag software-tag--illustrator">Adobe Illustrator</b></div></div></article><article class="artifact-card artifact-card--fallback"><div class="artifact-visual fallback-flat" aria-label="One-color and low-cost Loopline print versions"><div class="fallback-sample fallback-sample--ink"><span>ONE-COLOR / POSITIVE</span><div><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><b>LOOPLINE<sup>°</sup></b></div><p>100 K / uncoated stock</p></div><div class="fallback-sample fallback-sample--reverse"><span>ONE-COLOR / REVERSED</span><div><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><b>LOOPLINE<sup>°</sup></b></div><p>Paper white / solid ink</p></div><div class="fallback-sample fallback-sample--office"><span>OFFICE PRINT / LETTER</span><div class="office-sheet"><b>KITCHEN<br/>QUICK GUIDE</b><ol><li>Cool safely</li><li>Label clearly</li><li>Confirm pickup</li></ol><i>GOOD FOOD → FURTHER</i></div><p>Grayscale-safe / no bleed / 0.5 in margin</p></div></div><div class="artifact-caption"><span>05 / LOW-COST PRODUCTION</span><div><h4>One-color + office-print suite</h4><p>Every critical asset keeps its hierarchy when spot color, bleed, specialty stock, and professional output disappear.</p><b class="software-tag software-tag--suite">Illustrator + InDesign</b></div></div></article></div><div class="production-detail-strip"><span>PRODUCTION STANDARD</span><div><b>Print</b><p>CMYK · spot · grayscale · office</p></div><div><b>Digital</b><p>RGB · SVG · WebP · social crops</p></div><div><b>Source</b><p>Linked · packaged · editable · named</p></div><div><b>QA</b><p>Preflight · contrast · compression · export</p></div></div></div><div class="production-board"><div class="file-tree"><div class="file-tree__header"><span>LOOPLINE_MASTER_ASSETS</span><i>•••</i></div><ul><li class="folder"><b>01_Brand</b><span>↘</span></li><li><i>AI</i>LL_Logo_Master_v03.ai</li><li><i>SVG</i>LL_Logo_RGB_Primary.svg</li><li><i>PDF</i>LL_Guidelines_v01.pdf</li><li class="folder"><b>02_Print</b><span>→</span></li><li class="folder"><b>03_Digital</b><span>→</span></li><li class="folder"><b>04_Presentations</b><span>↘</span></li><li><i>PPT</i>LL_Partner_Deck_16x9.pptx</li></ul></div><div class="preflight-list"><p class="kicker">PRE-FLIGHT / 12 OF 12 PASSED</p><div><span>01</span><b>COLOR</b><p>RGB, CMYK, and one-color variants</p><i>✓</i></div><div><span>02</span><b>PRINT</b><p>Bleed, trim, safety, rich black</p><i>✓</i></div><div><span>03</span><b>ACCESS</b><p>Contrast, reading order, alt text</p><i>✓</i></div><div><span>04</span><b>TYPE</b><p>Packaged or system-font fallback</p><i>✓</i></div><div><span>05</span><b>EXPORT</b><p>Naming, dimensions, compression</p><i>✓</i></div><div><span>06</span><b>HANDOFF</b><p>Editable source + quick-start guide</p><i>✓</i></div></div></div><div class="proof-map"><p class="kicker">CAPABILITY MAP</p><div><span>01</span><b>Brand strategy</b><p>Positioning, message architecture, voice</p></div><div><span>02</span><b>Identity</b><p>Logo system, color, typography, motion</p></div><div><span>03</span><b>Production</b><p>Print specs, templates, asset governance</p></div><div><span>04</span><b>Digital</b><p>Responsive UX, component logic, campaign</p></div><div><span>05</span><b>Presentation</b><p>Editable 16:9 client storytelling</p></div></div></section><section class="exploration-section" id="exploration"><div class="section-label"><span>09</span><p>CONCEPT EXPLORATION + CRITIQUE</p></div><div class="exploration-heading"><div><p class="kicker">DECISION HISTORY / WHAT DID NOT SHIP</p><h2>Three directions entered critique.<br/>One survived the system test.</h2></div><p>Because Loopline is a self-directed concept, this section does not invent client feedback. Instead, each route was reviewed against a consistent studio critique: clarity, distinctiveness, small-scale performance, motion potential, and low-cost reproduction.</p></div><div class="route-explorations"><article class="route-concept"><div class="route-concept__visual route-concept__visual--closed" aria-label="Rejected closed loop logo direction"><span class="route-concept__status">REJECTED / A</span><div class="closed-loop-mark"><i></i><i></i><i></i></div><b>CLOSED LOOP</b></div><div class="route-concept__copy"><span>FAMILIAR / TOO GENERIC</span><h3>A circular-arrow metaphor.</h3><p>Immediate sustainability recognition, but it read as recycling software and erased the human handoff.</p><ul><li>Strong at small sizes</li><li>Low category distinction</li><li>No clear source or destination</li></ul></div></article><article class="route-concept"><div class="route-concept__visual route-concept__visual--table" aria-label="Rejected shared table logo direction"><span class="route-concept__status">REJECTED / B</span><div class="shared-table-mark"><i></i><i></i><i></i><b></b></div><b>SHARED TABLE</b></div><div class="route-concept__copy"><span>HUMAN / TOO STATIC</span><h3>Three seats around one table.</h3><p>Warm and community-led, but the symbol felt stationary, lost legibility below 28 px, and resisted motion.</p><ul><li>Strong emotional cue</li><li>Weak logistics story</li><li>Fragile one-color detail</li></ul></div></article><article class="route-concept"><div class="route-concept__visual route-concept__visual--monogram" aria-label="Rejected route monogram logo direction"><span class="route-concept__status">REJECTED / C</span><div class="route-monogram-mark"><i></i><i></i><i></i></div><b>ROUTE MONOGRAM</b></div><div class="route-concept__copy"><span>DISTINCT / OVER-ENGINEERED</span><h3>An interlocking “LL” route.</h3><p>Ownable in isolation, but the reading required explanation and the tight turns filled in during low-cost output.</p><ul><li>High brand ownership</li><li>Slow first read</li><li>Poor office-print survival</li></ul></div></article></div><div class="selection-board"><div class="selection-final"><div class="selection-final__mark"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><div><p class="kicker">SELECTED / OPEN HANDOFF</p><h3>The final mark does more with less.</h3><p>One open turn establishes forward motion. Three nodes carry the operating story. A single-weight route survives 16 px, one ink, animation, signage, and a sponsor deck without changing meaning.</p><div class="selection-tags"><span>16 px ready</span><span>One-color safe</span><span>Motion-native</span><span>Story-led</span></div></div></div><div class="decision-matrix" role="table" aria-label="Logo concept decision matrix"><div class="decision-matrix__row decision-matrix__head" role="row"><span role="columnheader">Direction</span><span role="columnheader">Clarity</span><span role="columnheader">Ownability</span><span role="columnheader">16 px</span><span role="columnheader">System fit</span></div><div class="decision-matrix__row" role="row"><span role="cell">A / Closed loop</span><span role="cell">2/5</span><span role="cell">2/5</span><span role="cell">4/5</span><span role="cell">2/5</span></div><div class="decision-matrix__row" role="row"><span role="cell">B / Shared table</span><span role="cell">3/5</span><span role="cell">4/5</span><span role="cell">2/5</span><span role="cell">3/5</span></div><div class="decision-matrix__row" role="row"><span role="cell">C / Route monogram</span><span role="cell">2/5</span><span role="cell">4/5</span><span role="cell">2/5</span><span role="cell">3/5</span></div><div class="decision-matrix__row is-selected" role="row"><span role="cell">Final / Open handoff</span><span role="cell">5/5</span><span role="cell">4/5</span><span role="cell">5/5</span><span role="cell">5/5</span></div></div></div><div class="critique-revision"><div class="critique-revision__heading"><p class="kicker">ONE DESIGN CHANGED AFTER CRITIQUE</p><h3>Feedback became a visible hierarchy change.</h3><blockquote>“Can a kitchen manager understand the action before noticing the brand?”</blockquote></div><div class="revision-comparison"><article><div class="revision-label"><span>BEFORE / V01</span><b>Too many signals</b></div><div class="revision-poster revision-poster--before"><div class="revision-brand">LOOPLINE°</div><span class="revision-badge">JOIN THE LOOP</span><h4>GOOD FOOD<br/>HAS PLACES<br/>TO GO.</h4><p>Schedule surplus. Track impact. Feed neighbors. Build a more resourceful city.</p><div class="revision-routes"><i></i><i></i><i></i><i></i></div><b class="revision-stat">84 MEALS</b><div class="revision-cta">BECOME A PARTNER ↗</div></div><p class="revision-note">Five competing moves split attention between brand, proof, and action.</p></article><article><div class="revision-label"><span>AFTER / V03</span><b>Action first</b></div><div class="revision-poster revision-poster--after"><div class="revision-brand">LOOPLINE° <span>ROUTE 04</span></div><h4>PACK IT.<br/>POST IT.<br/><em>PASS IT ON.</em></h4><div class="revision-route"><i></i><i></i><i></i></div><p>One pickup can begin 84 meals.</p><div class="revision-cta">SCHEDULE A PICKUP <b>↗</b></div></div><p class="revision-note">One directive, one proof point, and one CTA create a two-second reading path.</p></article></div><div class="critique-actions"><div><span>01</span><b>Reduced</b><p>Five graphic moves to two repeatable brand behaviors.</p></div><div><span>02</span><b>Reordered</b><p>Action language before organizational explanation.</p></div><div><span>03</span><b>Strengthened</b><p>Contrast and hierarchy for office-print conditions.</p></div><div><span>04</span><b>Documented</b><p>The rationale so the choice remains reviewable.</p></div></div></div></section><section class="process-section section-coral" id="process"><div class="section-label section-label--light"><span>10</span><p>PROCESS + ACCOUNTABILITY</p></div><div class="process-heading"><p class="kicker">AN 8-WEEK PLAN WITH DECISIONS BUILT IN</p><h2>Move quickly.<br/>Make the work traceable.</h2><p>Each phase ends with a clear decision, a documented rationale, and an artifact that can be reviewed asynchronously.</p></div><div class="timeline"><article><div class="timeline-top"><span>01</span><b>Weeks 1–2</b></div><h3>Frame</h3><p>Stakeholder interviews, content audit, audience tensions, success criteria.</p></article><article><div class="timeline-top"><span>02</span><b>Weeks 3–4</b></div><h3>Focus</h3><p>Positioning, verbal system, identity routes, rapid application tests.</p></article><article><div class="timeline-top"><span>03</span><b>Weeks 5–6</b></div><h3>Form</h3><p>Selected identity, web prototype, campaign and presentation system.</p></article><article><div class="timeline-top"><span>04</span><b>Weeks 7–8</b></div><h3>Finish</h3><p>Production rollout, accessibility review, templates, training and handoff.</p></article></div><div class="accountability-strip"><div><span>WEEKLY</span><b>30-minute decision review</b></div><div><span>DAILY</span><b>Time + scope tracking</b></div><div><span>AT RISK</span><b>Flag within 24 hours</b></div><div><span>HANDOFF</span><b>Recorded walkthrough</b></div></div></section><section class="measurement-section"><div class="section-label"><span>11</span><p>MEASUREMENT PLAN</p></div><div class="measurement-grid"><div class="measurement-heading"><p class="kicker">CONCEPT PROJECT / TARGETS, NOT CLAIMS</p><h2>Define what success means before choosing what to polish.</h2><p>Because Loopline is a concept, these are proposed launch targets—not fabricated outcomes. A real engagement would baseline each metric during discovery.</p></div><div class="target-card"><span class="target-number">&lt;4</span><b>minutes</b><p>Target median time to schedule a first pickup.</p><i><span style="width:82%"></span></i></div><div class="target-card"><span class="target-number">80%</span><b>completion</b><p>Target partner onboarding completion rate.</p><i><span style="width:80%"></span></i></div><div class="target-card"><span class="target-number">AA</span><b>minimum</b><p>Accessibility target for core digital interactions.</p><i><span style="width:100%"></span></i></div><div class="target-card"><span class="target-number">2×</span><b>faster</b><p>Target reduction in routine asset-production time.</p><i><span style="width:72%"></span></i></div></div></section><section class="reflection-section section-dark"><div class="reflection-mark"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><p class="kicker">THE DESIGN PRINCIPLE</p><blockquote>“The difference between a good-looking brand and a useful one is whether the <em>decisions still hold</em> when the conditions change.”</blockquote><p class="reflection-copy">Loopline was designed as infrastructure: expressive enough to earn attention, systematic enough to move across channels, and simple enough for a real team to maintain.</p></section><section class="next-project"><div><p class="kicker">JOCELYN MARTINEZ / BRAND · UX · DIGITAL</p><h2>Thoughtful systems.<br/>Beautifully finished.</h2></div><a class="next-link" href="index.html"><span>View portfolio</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a></section><footer><span>LOOPLINE / CONCEPT CASE STUDY © 2026</span><a href="#top">BACK TO TOP ↑</a><span>DESIGNED BY JOCELYN MARTINEZ</span></footer></main>
   <script>
 
 (() => {
@@ -6163,23 +8331,61 @@ a:focus-visible {
 
   const prototypeTabs = Array.from(document.querySelectorAll("[data-prototype-step]"));
   const prototypeScreens = Array.from(document.querySelectorAll("[data-prototype-screen]"));
+  const prototypeMobileScreens = Array.from(document.querySelectorAll("[data-prototype-mobile-screen]"));
+  const prototypeStateLabel = document.querySelector("[data-prototype-state-label]");
+  const prototypeMotionNote = document.querySelector("[data-prototype-motion-note]");
+  const prototypeTiming = document.querySelector("[data-prototype-timing]");
+  const prototypeAutoplay = document.querySelector("[data-prototype-autoplay]");
+  const prototypeStateNames = ["STATE 01 / QUALIFY", "STATE 02 / SCHEDULE", "STATE 03 / CONFIRM"];
+  const prototypeNotes = [
+    "Choice feedback fills the readiness rail, then the next scene enters along the route direction.",
+    "Date, time, route, and CTA update together so the decision remains coherent.",
+    "The stamp settles once; the status rail reveals ownership and the next expected event."
+  ];
+  const prototypeTimings = ["160–520 MS", "180–420 MS", "360–640 MS"];
+  let prototypeFlowTimer = null;
+  let prototypeFlowStep = 0;
+
+  function restartPrototypeScene(screen) {
+    if (!screen) return;
+    screen.classList.remove("is-entering");
+    void screen.offsetWidth;
+    screen.classList.add("is-entering");
+    window.setTimeout(function () { screen.classList.remove("is-entering"); }, 560);
+  }
 
   function selectPrototype(index, moveFocus = false) {
-    prototypeTabs.forEach((tab, tabIndex) => {
+    prototypeTabs.forEach(function (tab, tabIndex) {
       const selected = tabIndex === index;
       tab.setAttribute("aria-selected", String(selected));
       tab.setAttribute("tabindex", selected ? "0" : "-1");
     });
-    prototypeScreens.forEach((screen, screenIndex) => {
-      screen.classList.toggle("is-active", screenIndex === index);
+    prototypeScreens.forEach(function (screen, screenIndex) {
+      const selected = screenIndex === index;
+      screen.classList.toggle("is-active", selected);
+      screen.setAttribute("aria-hidden", String(!selected));
+      if (selected) restartPrototypeScene(screen);
     });
+    prototypeMobileScreens.forEach(function (screen, screenIndex) {
+      const selected = screenIndex === index;
+      screen.classList.toggle("is-active", selected);
+      screen.setAttribute("aria-hidden", String(!selected));
+      if (selected) restartPrototypeScene(screen);
+    });
+    if (prototypeStateLabel) prototypeStateLabel.textContent = prototypeStateNames[index];
+    if (prototypeMotionNote) prototypeMotionNote.textContent = prototypeNotes[index];
+    if (prototypeTiming) prototypeTiming.textContent = prototypeTimings[index];
+    prototypeFlowStep = index;
     if (moveFocus && prototypeTabs[index]) prototypeTabs[index].focus();
   }
 
-  prototypeTabs.forEach((tab, index) => {
+  prototypeTabs.forEach(function (tab, index) {
     tab.setAttribute("tabindex", index === 0 ? "0" : "-1");
-    tab.addEventListener("click", () => selectPrototype(index));
-    tab.addEventListener("keydown", (event) => {
+    tab.addEventListener("click", function () {
+      stopPrototypeFlow();
+      selectPrototype(index);
+    });
+    tab.addEventListener("keydown", function (event) {
       if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
       event.preventDefault();
       let next = index;
@@ -6187,47 +8393,322 @@ a:focus-visible {
       if (event.key === "ArrowLeft") next = (index - 1 + prototypeTabs.length) % prototypeTabs.length;
       if (event.key === "Home") next = 0;
       if (event.key === "End") next = prototypeTabs.length - 1;
+      stopPrototypeFlow();
       selectPrototype(next, true);
     });
   });
 
-  document.querySelectorAll("[data-prototype-target]").forEach((button) => {
-    button.addEventListener("click", () => {
+  document.querySelectorAll("[data-prototype-target]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      stopPrototypeFlow();
       const target = Number(button.getAttribute("data-prototype-target"));
       if (Number.isInteger(target)) selectPrototype(target);
     });
   });
 
-  let motionStage = document.querySelector("[data-motion-stage]");
+  const eligibilityChecks = Array.from(document.querySelectorAll("[data-eligibility-check]"));
+  function updateReadiness() {
+    const complete = eligibilityChecks.filter(function (button) {
+      return button.getAttribute("aria-pressed") === "true";
+    }).length;
+    const percent = Math.round((complete / Math.max(1, eligibilityChecks.length)) * 100);
+    document.querySelectorAll("[data-readiness-count]").forEach(function (node) {
+      node.textContent = complete + " / " + eligibilityChecks.length + (complete === eligibilityChecks.length ? " READY" : " CHECKED");
+    });
+    document.querySelectorAll("[data-readiness-percent]").forEach(function (node) {
+      node.textContent = percent + "%";
+    });
+    document.querySelectorAll("[data-readiness-bar]").forEach(function (node) {
+      node.style.setProperty("--readiness", percent + "%");
+      node.style.width = percent + "%";
+    });
+  }
+
+  eligibilityChecks.forEach(function (button) {
+    button.addEventListener("click", function () {
+      const pressed = button.getAttribute("aria-pressed") !== "true";
+      button.setAttribute("aria-pressed", String(pressed));
+      const status = button.lastElementChild;
+      if (status) status.textContent = pressed ? "✓" : "○";
+      updateReadiness();
+    });
+  });
+
+  let selectedDate = "TUE 19";
+  let selectedTime = "11:30–12:15";
+  function updateScheduleSummary() {
+    document.querySelectorAll("[data-schedule-summary]").forEach(function (node) {
+      node.textContent = "CONFIRM " + selectedDate + " · " + selectedTime;
+    });
+  }
+
+  document.querySelectorAll("[data-date-choice]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      document.querySelectorAll("[data-date-choice]").forEach(function (candidate) {
+        candidate.setAttribute("aria-pressed", String(candidate === button));
+      });
+      selectedDate = button.getAttribute("data-date-label") || selectedDate;
+      updateScheduleSummary();
+    });
+  });
+
+  document.querySelectorAll("[data-time-choice]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      document.querySelectorAll("[data-time-choice]").forEach(function (candidate) {
+        candidate.setAttribute("aria-pressed", String(candidate === button));
+      });
+      selectedTime = button.getAttribute("data-time-label") || selectedTime;
+      updateScheduleSummary();
+    });
+  });
+
+  function stopPrototypeFlow() {
+    if (prototypeFlowTimer) window.clearTimeout(prototypeFlowTimer);
+    prototypeFlowTimer = null;
+    if (prototypeAutoplay) {
+      prototypeAutoplay.setAttribute("aria-pressed", "false");
+      prototypeAutoplay.textContent = "▶ Run guided flow";
+    }
+  }
+
+  function runPrototypeFlow() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      selectPrototype(2);
+      return;
+    }
+    stopPrototypeFlow();
+    prototypeFlowStep = 0;
+    selectPrototype(0);
+    if (prototypeAutoplay) {
+      prototypeAutoplay.setAttribute("aria-pressed", "true");
+      prototypeAutoplay.textContent = "Ⅱ Pause guided flow";
+    }
+    const advance = function () {
+      prototypeFlowTimer = window.setTimeout(function () {
+        prototypeFlowStep += 1;
+        if (prototypeFlowStep > 2) {
+          stopPrototypeFlow();
+          return;
+        }
+        selectPrototype(prototypeFlowStep);
+        advance();
+      }, prototypeFlowStep === 0 ? 1900 : 2200);
+    };
+    advance();
+  }
+
+  if (prototypeAutoplay) {
+    prototypeAutoplay.addEventListener("click", function () {
+      if (prototypeFlowTimer) stopPrototypeFlow();
+      else runPrototypeFlow();
+    });
+  }
+
+  updateReadiness();
+  updateScheduleSummary();
+  selectPrototype(0);
+
+  const motionStage = document.querySelector("[data-motion-stage]");
   const motionToggle = document.querySelector("[data-motion-toggle]");
   const motionReplay = document.querySelector("[data-motion-replay]");
-  let motionPaused = false;
+  const motionPath = document.querySelector("[data-motion-path]");
+  const motionActivePath = document.querySelector("[data-motion-active-path]");
+  const motionRunner = document.querySelector("[data-motion-runner]");
+  const motionProgress = document.querySelector("[data-motion-progress]");
+  const motionResult = document.querySelector("[data-motion-result]");
+  const motionTimecode = document.querySelector("[data-motion-timecode]");
+  const motionNodes = Array.from(document.querySelectorAll("[data-motion-node]"));
+  const motionCaptions = Array.from(document.querySelectorAll("[data-motion-caption]"));
+  const motionChapters = Array.from(document.querySelectorAll("[data-motion-jump]"));
+  const motionDuration = 7200;
+  const motionThresholds = [0, 0.23, 0.49, 0.77];
+  const phaseWords = ["POST", "MATCH", "MOVE", "ARRIVE"];
+  let motionFrame = null;
+  let motionStartedAt = 0;
+  let motionElapsed = 0;
+  let motionPlaying = false;
+  let motionLength = 0;
+  let motionHasAutoplayed = false;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function easeInOutCubic(value) {
+    return value < 0.5 ? 4 * value * value * value : 1 - Math.pow(-2 * value + 2, 3) / 2;
+  }
+
+  function formatMotionTime(milliseconds) {
+    const total = Math.round(milliseconds / 10);
+    const seconds = Math.floor(total / 100);
+    const hundredths = String(total % 100).padStart(2, "0");
+    return "00:" + String(seconds).padStart(2, "0") + ":" + hundredths + " / 00:07:20";
+  }
+
+  function phaseForProgress(progress) {
+    if (progress >= motionThresholds[3]) return 3;
+    if (progress >= motionThresholds[2]) return 2;
+    if (progress >= motionThresholds[1]) return 1;
+    return 0;
+  }
+
+  function renderMotion(progress) {
+    if (!motionStage || !motionPath || !motionActivePath || !motionRunner) return;
+    const phase = phaseForProgress(progress);
+    const routeProgress = easeInOutCubic(clamp((progress - 0.035) / 0.82, 0, 1));
+    const point = motionPath.getPointAtLength(motionLength * routeProgress);
+    motionRunner.setAttribute("transform", "translate(" + point.x.toFixed(2) + " " + point.y.toFixed(2) + ")");
+    motionRunner.style.opacity = progress < 0.91 ? "1" : "0";
+    motionActivePath.style.strokeDashoffset = String(motionLength * (1 - routeProgress));
+    if (motionProgress) motionProgress.style.transform = "scaleX(" + progress.toFixed(4) + ")";
+    if (motionTimecode) motionTimecode.textContent = formatMotionTime(progress * motionDuration);
+    motionStage.setAttribute("data-phase-word", phaseWords[phase]);
+    motionNodes.forEach(function (node, index) {
+      node.classList.toggle("is-reached", index <= phase);
+    });
+    motionCaptions.forEach(function (caption, index) {
+      caption.classList.toggle("is-current", index === phase && progress < 0.91);
+    });
+    motionChapters.forEach(function (chapter, index) {
+      chapter.classList.toggle("is-current", index === phase);
+    });
+    if (motionResult) motionResult.classList.toggle("is-visible", progress >= 0.91);
+  }
 
   function updateMotionButton() {
     if (!motionToggle) return;
-    motionToggle.setAttribute("aria-pressed", String(motionPaused));
-    motionToggle.innerHTML = motionPaused
-      ? '<span aria-hidden="true">▶</span>Play motion'
-      : '<span aria-hidden="true">Ⅱ</span>Pause motion';
+    motionToggle.setAttribute("aria-pressed", String(motionPlaying));
+    motionToggle.textContent = motionPlaying ? "Ⅱ Pause sequence" : (motionElapsed > 0 && motionElapsed < motionDuration ? "▶ Resume sequence" : "▶ Play sequence");
   }
 
-  if (motionToggle && motionStage) {
-    motionToggle.addEventListener("click", () => {
-      motionPaused = !motionPaused;
-      motionStage.classList.toggle("is-paused", motionPaused);
+  function pauseMotion() {
+    if (motionFrame) cancelAnimationFrame(motionFrame);
+    motionFrame = null;
+    motionPlaying = false;
+    updateMotionButton();
+  }
+
+  function motionTick(now) {
+    if (!motionPlaying) return;
+    motionElapsed = Math.min(motionDuration, now - motionStartedAt);
+    renderMotion(motionElapsed / motionDuration);
+    if (motionElapsed >= motionDuration) {
+      pauseMotion();
+      return;
+    }
+    motionFrame = requestAnimationFrame(motionTick);
+  }
+
+  function playMotion(restart = false) {
+    if (!motionStage || reduceMotion.matches) {
+      motionElapsed = motionDuration;
+      renderMotion(1);
       updateMotionButton();
+      return;
+    }
+    if (restart || motionElapsed >= motionDuration) motionElapsed = 0;
+    motionStartedAt = performance.now() - motionElapsed;
+    motionPlaying = true;
+    updateMotionButton();
+    if (motionFrame) cancelAnimationFrame(motionFrame);
+    motionFrame = requestAnimationFrame(motionTick);
+  }
+
+  if (motionPath && motionActivePath) {
+    motionLength = motionPath.getTotalLength();
+    motionActivePath.style.strokeDasharray = String(motionLength);
+    motionActivePath.style.strokeDashoffset = String(motionLength);
+    renderMotion(reduceMotion.matches ? 1 : 0);
+  }
+
+  if (motionToggle) {
+    motionToggle.addEventListener("click", function () {
+      if (motionPlaying) pauseMotion();
+      else playMotion(false);
     });
   }
 
-  if (motionReplay && motionStage) {
-    motionReplay.addEventListener("click", () => {
-      const freshStage = motionStage.cloneNode(true);
-      motionStage.replaceWith(freshStage);
-      motionStage = freshStage;
-      motionPaused = false;
-      updateMotionButton();
+  if (motionReplay) {
+    motionReplay.addEventListener("click", function () {
+      motionElapsed = 0;
+      renderMotion(0);
+      playMotion(true);
     });
   }
+
+  motionChapters.forEach(function (button) {
+    button.addEventListener("click", function () {
+      const index = Number(button.getAttribute("data-motion-jump"));
+      if (!Number.isInteger(index)) return;
+      pauseMotion();
+      motionElapsed = motionThresholds[index] * motionDuration;
+      renderMotion(motionElapsed / motionDuration);
+    });
+  });
+
+  if (motionStage && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.45 && !motionHasAutoplayed) {
+          motionHasAutoplayed = true;
+          playMotion(true);
+        }
+      });
+    }, { threshold: [0.45] });
+    observer.observe(motionStage);
+  }
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden && motionPlaying) pauseMotion();
+  });
+
+  reduceMotion.addEventListener?.("change", function () {
+    pauseMotion();
+    motionElapsed = reduceMotion.matches ? motionDuration : 0;
+    renderMotion(reduceMotion.matches ? 1 : 0);
+  });
+
+  document.querySelectorAll("[data-behavior-demo]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      if (reduceMotion.matches) return;
+      const kind = button.getAttribute("data-behavior-demo");
+      const demo = button.closest(".motion-lab");
+      const target = demo?.querySelector("[data-demo-target]");
+      const ring = demo?.querySelector("[data-demo-ring]");
+      if (!target) return;
+      target.getAnimations().forEach(function (animation) { animation.cancel(); });
+      ring?.getAnimations().forEach(function (animation) { animation.cancel(); });
+      if (kind === "advance") {
+        const distance = Math.max(0, (demo.querySelector(".motion-lab__demo")?.clientWidth || 240) * 0.58);
+        target.animate(
+          [{ transform: "translateX(0) scale(.88)", opacity: 0.55 }, { offset: 0.18, transform: "translateX(0) scale(1)", opacity: 1 }, { transform: "translateX(" + distance + "px) scale(1)", opacity: 1 }],
+          { duration: 760, easing: "cubic-bezier(.22,1,.36,1)", fill: "none" }
+        );
+      } else if (kind === "confirm") {
+        target.animate(
+          [{ transform: "scale(.82) rotate(-7deg)", opacity: 0 }, { offset: 0.72, transform: "scale(1.025) rotate(1deg)", opacity: 1 }, { transform: "scale(1)", opacity: 1 }],
+          { duration: 480, easing: "cubic-bezier(.22,1,.36,1)" }
+        );
+      } else if (kind === "attention") {
+        target.animate(
+          [{ transform: "scale(.96)" }, { offset: 0.28, transform: "scale(1.025)" }, { transform: "scale(1)" }],
+          { duration: 720, easing: "ease-out" }
+        );
+        ring?.animate(
+          [{ transform: "scale(.72)", opacity: 0 }, { offset: 0.22, opacity: 0.65 }, { transform: "scale(1.35)", opacity: 0 }],
+          { duration: 720, easing: "ease-out" }
+        );
+      } else if (kind === "continuity") {
+        Array.from(target.children).forEach(function (row, index) {
+          row.animate(
+            [{ transform: "translateY(7px)", opacity: 0.35 }, { transform: "translateY(0)", opacity: 1 }],
+            { duration: 360, delay: index * 120, easing: "cubic-bezier(.22,1,.36,1)", fill: "both" }
+          );
+        });
+      }
+    });
+  });
 
   const menuButton = document.querySelector(".menu-button");
   const siteNav = document.querySelector(".site-nav");
