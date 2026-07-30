@@ -6325,9 +6325,16 @@ a:focus-visible {
 .proto-mobile-screen {
   position: absolute;
   inset: 0;
+  overflow-y: auto;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  scrollbar-width: none;
+}
+
+.proto-screen::-webkit-scrollbar,
+.proto-mobile-screen::-webkit-scrollbar {
+  display: none;
 }
 
 .proto-screen.is-active,
@@ -6418,7 +6425,10 @@ a:focus-visible {
 .proto-poster__statement {
   position: relative;
   padding: clamp(30px, 4vw, 66px) clamp(25px, 3.2vw, 52px);
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .proto-poster__statement .ui-kicker {
@@ -6442,7 +6452,7 @@ a:focus-visible {
   font-weight: 400;
 }
 
-.proto-poster__statement > p:last-child {
+.proto-poster__statement > p:not(.ui-kicker) {
   max-width: 430px;
   margin: 27px 0 0;
   color: rgba(16, 33, 26, 0.62);
@@ -6451,14 +6461,7 @@ a:focus-visible {
 }
 
 .proto-poster__statement::after {
-  content: "";
-  position: absolute;
-  right: -130px;
-  bottom: -160px;
-  width: 350px;
-  height: 350px;
-  border: 1px solid rgba(16, 33, 26, 0.13);
-  border-radius: 50%;
+  display: none;
 }
 
 .proto-action-panel {
@@ -6471,15 +6474,22 @@ a:focus-visible {
 
 .proto-panel-meta {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
   margin-bottom: 22px;
   font: 700 7px/1 var(--mono);
   letter-spacing: 0.07em;
 }
 
 .proto-panel-meta span:last-child {
+  max-width: 72%;
+  margin-left: auto;
   color: var(--coral-ink);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  text-align: right;
 }
 
 .proto-readiness {
@@ -6619,7 +6629,7 @@ a:focus-visible {
   color: var(--mint);
 }
 
-.proto-screen--schedule .proto-poster__statement > p:last-child {
+.proto-screen--schedule .proto-poster__statement > p:not(.ui-kicker) {
   color: rgba(244, 240, 232, 0.62);
 }
 
@@ -6747,6 +6757,8 @@ a:focus-visible {
 .proto-confirmation__statement {
   position: relative;
   padding: clamp(42px, 5vw, 78px);
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border-right: 1px solid rgba(16, 33, 26, 0.25);
 }
@@ -6777,11 +6789,13 @@ a:focus-visible {
 }
 
 .proto-confirmation__orbit {
-  position: absolute;
-  right: -70px;
-  bottom: -100px;
-  width: 320px;
-  height: 320px;
+  position: relative;
+  right: auto;
+  bottom: auto;
+  width: clamp(112px, 12vw, 164px);
+  height: clamp(112px, 12vw, 164px);
+  margin: auto 0 0 auto;
+  flex: 0 0 auto;
   border: 1px solid rgba(16, 33, 26, 0.22);
   border-radius: 50%;
 }
@@ -6794,17 +6808,16 @@ a:focus-visible {
 }
 
 .proto-confirmation__orbit::before {
-  inset: 70px;
+  inset: 28%;
   border: 1px solid rgba(16, 33, 26, 0.2);
 }
 
 .proto-confirmation__orbit::after {
-  left: 28px;
-  top: 82px;
-  width: 24px;
-  height: 24px;
+  left: 7%;
+  top: 36%;
+  width: 14px;
+  height: 14px;
   background: var(--coral);
-  box-shadow: 164px 150px 0 var(--yellow), 208px -4px 0 var(--forest);
 }
 
 .proto-confirmation__status {
@@ -7078,6 +7091,10 @@ a:focus-visible {
 
 .proto-mobile-screen--confirmation h4 {
   font-size: 43px;
+}
+
+.proto-mobile-screen--confirmation > span {
+  margin-top: 0;
 }
 
 .proto-mobile-confirm {
@@ -8047,6 +8064,702 @@ a:focus-visible {
   }
 }
 
+
+
+/* Loopline prototype v3: five-state service flow + deliberate motion pacing */
+.prototype-controls--advanced {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.prototype-controls--advanced button {
+  min-height: 94px;
+}
+
+.prototype-stage__tools > span {
+  max-width: 290px;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.proto-screen--describe .proto-route-index {
+  background: var(--mint);
+}
+
+.proto-screen--describe .proto-route-index__line i {
+  border-color: var(--mint);
+}
+
+.proto-screen--describe .proto-poster__statement {
+  background: var(--yellow);
+}
+
+.proto-screen--describe .proto-poster__statement .ui-kicker {
+  color: var(--ink);
+}
+
+.proto-screen--describe .proto-poster__statement h4 em {
+  color: var(--forest);
+}
+
+.proto-load-profile {
+  margin-top: auto;
+  padding: 15px;
+  border: 1px solid rgba(16, 33, 26, 0.32);
+  background: rgba(244, 240, 232, 0.56);
+}
+
+.proto-load-profile__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.proto-load-profile__head > span {
+  font: 800 7px/1 var(--mono);
+  letter-spacing: 0.08em;
+}
+
+.proto-load-profile__head > b {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font: 800 8px/1 var(--mono);
+}
+
+.proto-load-profile__head > b span {
+  color: var(--coral-ink);
+  font: 800 25px/0.8 var(--sans);
+  letter-spacing: -0.06em;
+}
+
+.proto-load-profile__rail {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+.proto-load-profile__rail i {
+  height: 17px;
+  background: var(--forest);
+  transform-origin: left;
+}
+
+.proto-load-profile__rail i:nth-child(2) { background: var(--coral); }
+.proto-load-profile__rail i:nth-child(3) { background: var(--mint); }
+.proto-load-profile__rail i:nth-child(4) { background: var(--paper); }
+
+.proto-load-profile__legend {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 13px;
+  color: rgba(16, 33, 26, 0.64);
+  font: 700 6px/1 var(--mono);
+  letter-spacing: 0.05em;
+}
+
+.proto-food-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+.proto-food-choice {
+  min-height: 72px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  border: 1px solid rgba(16, 33, 26, 0.22);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.proto-food-choice:hover {
+  transform: translateY(-2px);
+}
+
+.proto-food-choice[aria-pressed="true"] {
+  border-color: var(--forest);
+  background: var(--forest);
+  color: var(--oat);
+}
+
+.proto-food-choice span {
+  color: var(--coral);
+  font: 800 7px/1 var(--mono);
+}
+
+.proto-food-choice b {
+  font-size: 9px;
+}
+
+.proto-quantity {
+  margin: 17px 0;
+  padding: 13px 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  border-top: 1px solid rgba(16, 33, 26, 0.2);
+  border-bottom: 1px solid rgba(16, 33, 26, 0.2);
+}
+
+.proto-quantity > span {
+  color: rgba(16, 33, 26, 0.56);
+  font: 700 7px/1.4 var(--mono);
+}
+
+.proto-quantity__stepper {
+  display: grid;
+  grid-template-columns: 34px 48px 34px;
+  align-items: center;
+}
+
+.proto-quantity__stepper button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(16, 33, 26, 0.26);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.proto-quantity__stepper b {
+  text-align: center;
+  font-size: 18px;
+}
+
+.proto-packaging {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 17px;
+}
+
+.proto-packaging span {
+  padding: 7px 9px;
+  border: 1px solid rgba(16, 33, 26, 0.22);
+  color: rgba(16, 33, 26, 0.64);
+  font: 700 7px/1 var(--mono);
+}
+
+.proto-packaging span:first-child {
+  border-color: var(--forest);
+  background: var(--mint);
+  color: var(--ink);
+}
+
+.proto-mini-route {
+  width: 100%;
+  height: 94px;
+  margin: 16px 0 4px;
+  overflow: visible;
+}
+
+.proto-mini-route path {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.proto-mini-route .route-ghost {
+  stroke: rgba(16, 33, 26, 0.18);
+  stroke-width: 3;
+}
+
+.proto-mini-route .route-active {
+  stroke: var(--coral);
+  stroke-width: 5;
+  stroke-dasharray: 520;
+  stroke-dashoffset: 520;
+}
+
+.proto-mini-route circle {
+  stroke: var(--oat);
+  stroke-width: 4;
+}
+
+.proto-screen--handoff .proto-route-index {
+  background: var(--forest);
+  color: var(--oat);
+}
+
+.proto-screen--handoff .proto-route-index__line {
+  background: rgba(244, 240, 232, 0.24);
+}
+
+.proto-screen--handoff .proto-route-index__line i {
+  border-color: var(--forest);
+  background: var(--yellow);
+}
+
+.proto-screen--handoff .proto-poster__statement {
+  background: var(--coral);
+}
+
+.proto-screen--handoff .proto-poster__statement .ui-kicker {
+  color: var(--ink);
+}
+
+.proto-screen--handoff .proto-poster__statement h4 em {
+  color: var(--forest);
+}
+
+.proto-handoff-strip {
+  margin-top: auto;
+  padding: 14px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr) 34px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(16, 33, 26, 0.32);
+  background: rgba(244, 240, 232, 0.28);
+}
+
+.proto-handoff-strip__point span,
+.proto-handoff-strip__point b {
+  display: block;
+}
+
+.proto-handoff-strip__point {
+  min-width: 0;
+}
+
+.proto-handoff-strip__point span {
+  margin-bottom: 6px;
+  color: rgba(16, 33, 26, 0.62);
+  font: 800 6px/1 var(--mono);
+  letter-spacing: 0.08em;
+}
+
+.proto-handoff-strip__point b {
+  font-size: 8px;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.proto-handoff-strip__link {
+  position: relative;
+  height: 1px;
+  background: var(--forest);
+  transform-origin: left;
+}
+
+.proto-handoff-strip__link::after {
+  content: "›";
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  font-size: 17px;
+  line-height: 1;
+  transform: translateY(-55%);
+}
+
+.proto-access-list {
+  display: grid;
+  gap: 8px;
+}
+
+.proto-access-choice {
+  min-height: 64px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(16, 33, 26, 0.22);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.proto-access-choice:hover {
+  transform: translateX(3px);
+}
+
+.proto-access-choice[aria-pressed="true"] {
+  border-color: var(--forest);
+  background: var(--yellow);
+}
+
+.proto-access-choice > span:first-child {
+  width: 27px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font: 800 7px/1 var(--mono);
+}
+
+.proto-access-choice > span:last-child {
+  min-width: 0;
+}
+
+.proto-access-choice b,
+.proto-access-choice small {
+  display: block;
+}
+
+.proto-access-choice b {
+  font-size: 10px;
+}
+
+.proto-access-choice small {
+  margin-top: 4px;
+  color: rgba(16, 33, 26, 0.55);
+  font-size: 8px;
+}
+
+.proto-contact-ticket {
+  margin: 15px 0;
+  padding: 14px;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 10px;
+  background: var(--mint);
+}
+
+.proto-contact-ticket > span {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--forest);
+  color: var(--oat);
+  font: 800 8px/1 var(--mono);
+}
+
+.proto-contact-ticket b,
+.proto-contact-ticket small {
+  display: block;
+}
+
+.proto-contact-ticket b {
+  font-size: 10px;
+}
+
+.proto-contact-ticket small {
+  margin-top: 4px;
+  color: rgba(16, 33, 26, 0.58);
+  font-size: 8px;
+}
+
+.proto-impact-preview {
+  margin: 16px 0;
+  padding: 13px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 13px;
+  align-items: center;
+  border: 1px solid rgba(16, 33, 26, 0.2);
+  background: var(--mint);
+}
+
+.proto-impact-preview > b {
+  font-size: 27px;
+  letter-spacing: -0.06em;
+}
+
+.proto-impact-preview span,
+.proto-impact-preview small {
+  display: block;
+}
+
+.proto-impact-preview span {
+  font: 800 7px/1 var(--mono);
+}
+
+.proto-impact-preview small {
+  margin-top: 4px;
+  color: rgba(16, 33, 26, 0.55);
+  font-size: 7px;
+}
+
+.proto-mobile-screen--describe {
+  background: var(--yellow);
+}
+
+.proto-mobile-screen--describe > span {
+  color: var(--ink);
+}
+
+.proto-mobile-food {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+.proto-mobile-food div {
+  min-height: 66px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--ink);
+  font: 700 8px/1.2 var(--mono);
+}
+
+.proto-mobile-food div:first-child {
+  background: var(--forest);
+  color: var(--oat);
+}
+
+.proto-mobile-quantity {
+  margin-top: 16px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  font: 700 8px/1 var(--mono);
+}
+
+.proto-mobile-quantity b {
+  font-size: 22px;
+}
+
+.proto-mobile-screen--handoff {
+  background: var(--coral);
+}
+
+.proto-mobile-screen--handoff > span {
+  color: var(--ink);
+}
+
+.proto-mobile-handoff {
+  margin-top: 24px;
+  padding: 13px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.proto-mobile-handoff span,
+.proto-mobile-handoff small,
+.proto-mobile-handoff b {
+  display: block;
+}
+
+.proto-mobile-handoff span:last-child {
+  text-align: right;
+}
+
+.proto-mobile-handoff small {
+  margin-bottom: 6px;
+  color: rgba(16, 33, 26, 0.58);
+  font: 800 6px/1 var(--mono);
+}
+
+.proto-mobile-handoff b {
+  font-size: 8px;
+}
+
+.proto-mobile-handoff > i {
+  font-style: normal;
+  font-size: 18px;
+}
+
+.proto-mobile-access {
+  margin-top: 16px;
+  display: grid;
+  gap: 7px;
+}
+
+.proto-mobile-access div {
+  min-height: 58px;
+  padding: 11px;
+  display: grid;
+  grid-template-columns: 27px 1fr;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--ink);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.proto-mobile-access div:first-child {
+  background: var(--yellow);
+}
+
+.proto-mobile-access i {
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  font-style: normal;
+  font: 800 7px/1 var(--mono);
+}
+
+.prototype-behavior-grid--five {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.prototype-behavior-grid--five article {
+  min-height: 240px;
+}
+
+.prototype-spec-strip--five {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.proto-screen.is-active .proto-food-choice {
+  animation: proto-content-reveal 520ms var(--motion-ease) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.proto-screen.is-active .proto-load-profile__rail i {
+  animation: proto-capacity-fill 560ms var(--motion-ease) both;
+}
+
+.proto-screen.is-active .proto-load-profile__rail i:nth-child(1) { animation-delay: 180ms; }
+.proto-screen.is-active .proto-load-profile__rail i:nth-child(2) { animation-delay: 250ms; }
+.proto-screen.is-active .proto-load-profile__rail i:nth-child(3) { animation-delay: 320ms; }
+.proto-screen.is-active .proto-load-profile__rail i:nth-child(4) { animation-delay: 390ms; }
+
+.proto-screen.is-active .proto-mini-route .route-active {
+  animation: proto-route-draw 1050ms var(--motion-ease) 220ms both;
+}
+
+.proto-screen.is-active .proto-handoff-strip__link {
+  animation: proto-handoff-link 760ms var(--motion-ease) both;
+}
+
+.proto-screen.is-active .proto-handoff-strip__link:nth-of-type(1) { animation-delay: 260ms; }
+.proto-screen.is-active .proto-handoff-strip__link:nth-of-type(2) { animation-delay: 520ms; }
+
+@keyframes proto-capacity-fill {
+  from { opacity: 0.25; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes proto-route-draw {
+  from { stroke-dashoffset: 520; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes proto-handoff-link {
+  from { opacity: 0.25; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+.motion-director__meta .motion-pace {
+  min-width: 105px;
+}
+
+.motion-pace b {
+  color: var(--mint);
+}
+
+.motion-stage__hold {
+  position: absolute;
+  z-index: 6;
+  top: 5.5%;
+  left: 50%;
+  padding: 7px 10px;
+  border: 1px solid rgba(244, 240, 232, 0.2);
+  color: rgba(244, 240, 232, 0.58);
+  font: 700 7px/1 var(--mono);
+  transform: translateX(-50%);
+}
+
+.motion-stage__hold.is-holding {
+  border-color: var(--yellow);
+  color: var(--yellow);
+}
+
+@media (max-width: 1180px) {
+  .prototype-controls--advanced {
+    overflow-x: auto;
+    grid-template-columns: repeat(5, minmax(150px, 1fr));
+  }
+
+  .prototype-behavior-grid--five {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .prototype-behavior-grid--five article:nth-child(2) {
+    border-right: 1px solid rgba(16, 33, 26, 0.22);
+  }
+
+  .prototype-behavior-grid--five article:nth-child(3) {
+    border-right: 0;
+  }
+
+  .prototype-behavior-grid--five article:nth-child(-n+3) {
+    border-bottom: 1px solid rgba(16, 33, 26, 0.22);
+  }
+
+  .prototype-spec-strip--five {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .prototype-spec-strip--five > div:nth-child(3) {
+    border-right: 0;
+  }
+
+  .prototype-spec-strip--five > div:nth-child(-n+3) {
+    border-bottom: 1px solid rgba(16, 33, 26, 0.22);
+  }
+}
+
+@media (max-width: 780px) {
+  .prototype-controls--advanced {
+    display: flex;
+    scroll-snap-type: x mandatory;
+  }
+
+  .prototype-controls--advanced button {
+    min-width: 112px;
+    scroll-snap-align: start;
+  }
+
+  .prototype-behavior-grid--five,
+  .prototype-spec-strip--five {
+    display: block;
+  }
+
+  .prototype-stage__tools > span {
+    max-width: none;
+    text-align: left;
+  }
+
+  .motion-stage__hold {
+    top: 11%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proto-screen.is-active .proto-food-choice,
+  .proto-screen.is-active .proto-load-profile__rail i,
+  .proto-screen.is-active .proto-mini-route .route-active,
+  .proto-screen.is-active .proto-handoff-strip__link {
+    animation: none !important;
+  }
+
+  .proto-mini-route .route-active,
+  .proto-handoff-strip__link {
+    stroke-dashoffset: 0;
+    transform: none;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -8054,27 +8767,23 @@ a:focus-visible {
 <main id="top"><div class="scroll-progress" aria-hidden="true"><span style="width:0%"></span></div><header class="site-header"><a class="portfolio-signature" href="index.html" aria-label="Back to portfolio"><span>JM</span><p>Jocelyn Martinez<br/><b>Selected work</b></p></a><nav class="site-nav" aria-label="Case study"><a href="#brief">Brief</a><a href="#system">System</a><a href="#applications">Applications</a><a href="#exploration">Exploration</a><a href="#process">Process</a></nav><div class="header-meta"><span>Self-directed case study · In progress</span><button class="menu-button" type="button" aria-label="Toggle navigation" aria-expanded="false"><i></i><i></i></button></div></header><section class="hero section-dark"><div class="hero-grid"><div class="hero-copy"><div class="eyebrow eyebrow--light"><span>Brand identity</span><i></i><span>Campaign</span><i></i><span>Digital product</span></div><h1>Keep good<br/>food <em>moving.</em></h1><p class="hero-lede">A strategic identity and service experience for the network turning Chicago’s surplus food into neighborhood momentum.</p><a class="text-link text-link--light" href="#brief">Explore the system <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></a></div><div class="hero-art" aria-hidden="true"><div class="hero-wordmark">LOOPLINE<sup>°</sup></div><div class="hero-orbit hero-orbit--outer"></div><div class="hero-orbit hero-orbit--inner"></div><div class="hero-node hero-node--one"><span>01</span><b>KITCHENS</b></div><div class="hero-node hero-node--two"><span>02</span><b>ROUTES</b></div><div class="hero-node hero-node--three"><span>03</span><b>NEIGHBORS</b></div><div class="hero-mark"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><div class="hero-stamp">CHI<br/>41.88°N</div></div></div><div class="hero-facts"><div><span>Role</span><b>Brand + Digital Designer</b></div><div><span>Timeline</span><b>8-week concept sprint</b></div><div><span>Scope</span><b>Strategy to production</b></div><div><span>Designed for</span><b>B2B + B2C audiences</b></div></div></section><section class="case-intro" id="brief"><div class="section-label"><span>01</span><p>THE BRIEF</p></div><div class="case-intro__statement"><p class="kicker">THE CHALLENGE</p><h2>Food rescue has a logistics problem—and a <em>language problem.</em></h2><p class="large-copy">Loopline needed to feel efficient enough for kitchen operators, trustworthy enough for funders, and human enough for neighbors. The identity could not simply decorate the service; it had to make the service easier to understand and use.</p></div><aside class="case-intro__aside"><p class="kicker">PROJECT MANDATE</p><ul><li><span>01</span>Unify three audiences without flattening their needs.</li><li><span>02</span>Work from polished decks to low-cost office prints.</li><li><span>03</span>Turn operational complexity into clear next steps.</li><li><span>04</span>Leave behind a system the client can actually own.</li></ul></aside></section><section class="tension-section section-coral"><div class="section-label section-label--light"><span>02</span><p>THE STRATEGIC TENSION</p></div><div class="tension-head"><p class="kicker">ONE NETWORK / THREE DEFINITIONS OF VALUE</p><h2>Design for the handoff,<br/>not just the headline.</h2></div><div class="audience-grid"><article><span class="audience-number">A</span><p class="kicker">KITCHEN PARTNERS</p><h3>“Make it easy to do the right thing during a rush.”</h3><ul><li>Fast pickup setup</li><li>Clear safety guidance</li><li>Predictable reporting</li></ul></article><article><span class="audience-number">B</span><p class="kicker">COMMUNITY PARTNERS</p><h3>“Show me what is coming and when it will arrive.”</h3><ul><li>Plain-language alerts</li><li>Flexible quantities</li><li>Dignified public messaging</li></ul></article><article><span class="audience-number">C</span><p class="kicker">FUNDERS + SPONSORS</p><h3>“Prove that coordinated action compounds impact.”</h3><ul><li>Credible measurement</li><li>Scalable operating model</li><li>Executive-ready story</li></ul></article></div></section><section class="strategy-section"><div class="section-label"><span>03</span><p>THE IDEA</p></div><div class="strategy-title"><p class="kicker">BRAND PLATFORM</p><h2>A city works better<br/>when good things <em>circulate.</em></h2></div><div class="strategy-grid"><article class="strategy-card strategy-card--dark"><p class="kicker">POSITIONING</p><h3>The connective layer between surplus and service.</h3><p>Not a charity bin. Not a delivery app. Loopline is shared infrastructure for a more resourceful city.</p><span class="card-index">01 / 03</span></article><article class="strategy-card strategy-card--yellow"><p class="kicker">PROMISE</p><h3>Good food.<br/>Further.</h3><div class="card-route"><i></i><i></i><i></i></div><span class="card-index">02 / 03</span></article><article class="strategy-card strategy-card--cream"><p class="kicker">VOICE</p><div class="voice-pairs"><div><b>Direct</b><span>not abrupt</span></div><div><b>Optimistic</b><span>not naive</span></div><div><b>Human</b><span>not sentimental</span></div><div><b>Informed</b><span>not institutional</span></div></div><span class="card-index">03 / 03</span></article></div></section><section class="identity-section section-dark" id="system"><div class="section-label section-label--light"><span>04</span><p>THE IDENTITY SYSTEM</p></div><div class="identity-lead"><div><p class="kicker">A MARK BUILT TO MOVE</p><h2>A route, a cycle,<br/>and a shared table.</h2></div><p>The symbol combines a continuous route with three handoff points: source, movement, and destination. Its open turn prevents the circular form from reading as closed or static.</p></div><div class="logo-stage"><div class="logo-lockup"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><div class="logo-name">LOOPLINE<sup>°</sup></div></div><div class="logo-annotations"><div class="annotation annotation--one"><i></i><span>OPEN TURN<br/><b>Signals forward motion</b></span></div><div class="annotation annotation--two"><i></i><span>THREE NODES<br/><b>Source · route · destination</b></span></div><div class="annotation annotation--three"><i></i><span>OFFSET ORBIT<br/><b>Creates a human, active rhythm</b></span></div></div><div class="clear-space"><span>CLEAR SPACE = 1 NODE</span></div></div><div class="logo-scale-row"><div class="logo-scale-item logo-scale-item--primary"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><b>LOOPLINE<sup>°</sup></b><span>PRIMARY LOCKUP</span></div><div class="logo-scale-item logo-scale-item--compact"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><span>COMPACT MARK</span></div><div class="logo-scale-item logo-scale-item--micro"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><span>16 PX MINIMUM</span></div><div class="logo-scale-item logo-scale-item--one-color"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><b>LOOPLINE<sup>°</sup></b><span>ONE-COLOR FALLBACK</span></div></div><div class="color-section"><div class="color-heading"><p class="kicker">COLOR WITH A JOB</p><h3>Warmth leads.<br/>Structure supports.</h3><p>Each color has a defined role, recommended proportion, and accessible pairing—so expression never comes at the cost of clarity.</p></div><div class="swatch swatch--forest"><span>ROUTE FOREST</span><b>#173629</b><small>Primary / Oat 11.6:1</small></div><div class="swatch swatch--coral"><span>HANDOFF CORAL</span><b>#F15B40</b><small>Action / Ink 5.0:1</small></div><div class="swatch swatch--yellow"><span>SIGNAL YELLOW</span><b>#F4C95D</b><small>Highlight / Ink 10.7:1</small></div><div class="swatch swatch--mint"><span>FRESH MINT</span><b>#BBDCCB</b><small>Support / Ink 11.3:1</small></div><div class="swatch swatch--oat"><span>GROUND OAT</span><b>#F4F0E8</b><small>Canvas / Ink 14.7:1</small></div></div><div class="type-system"><div class="type-intro"><p class="kicker">TYPOGRAPHY / BUILT FOR HANDOFF</p><h3>Expressive where it matters.<br/>Universal where it counts.</h3><p>Aptos and Georgia are intentionally familiar, widely available, and PowerPoint-safe. Scale, contrast, and composition—not an exotic font license—create the voice.</p></div><div class="type-display"><span>DISPLAY / GEORGIA ITALIC</span><b>Further.</b></div><div class="type-grotesk"><span>HEADLINE / APTOS DISPLAY BOLD</span><b>MOVE WHAT<br/>MATTERS.</b></div><div class="type-detail"><span>INFORMATION / APTOS MONO FALLBACK</span><p>ROUTE 04 / WEST SIDE<br/>PICKUP WINDOW 14:30–15:15<br/>STATUS: READY TO MOVE</p></div></div></section><section class="applications-section" id="applications"><div class="section-label"><span>05</span><p>THE SYSTEM AT WORK</p></div><div class="applications-heading"><div><p class="kicker">ONE IDEA / MULTIPLE CONDITIONS</p><h2>Flexible enough to travel.<br/>Disciplined enough to stay recognizable.</h2></div><p>The application system is built from repeatable moves: oversized action language, route-based lines, modular data blocks, and a consistent information footer.</p></div><div class="application-tabs" role="tablist" aria-label="Project applications"><button type="button" role="tab" aria-selected="true" aria-controls="application-panel"><span>01</span>Print</button><button type="button" role="tab" aria-selected="false" aria-controls="application-panel"><span>02</span>Campaign</button><button type="button" role="tab" aria-selected="false" aria-controls="application-panel"><span>03</span>Digital</button><button type="button" role="tab" aria-selected="false" aria-controls="application-panel"><span>04</span>PowerPoint</button></div><div class="application-panel" id="application-panel" role="tabpanel"><div class="application-copy"><p class="kicker">Partner field kit</p><h3>Built for counters, clipboards, and real working hands.</h3><p>A modular print system makes the brand recognizable without slowing down production. High-contrast hierarchy, oversized action language, and a one-ink fallback keep every piece useful in imperfect environments.</p><ul><li>0.125 in bleed</li><li>CMYK + 1-color</li><li>WCAG-minded type</li><li>Office-print fallback</li></ul></div><div class="application-visual print-stage" aria-label="Print collateral mockups"><div class="print-sheet print-sheet--back"><div class="mini-mark"><svg class="mark mark--compact" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><p>PARTNER<br/>PLAYBOOK</p><span>CHICAGO / 2026</span></div><div class="print-sheet print-sheet--front"><div class="print-kicker">KITCHEN QUICK GUIDE / 01</div><h4>PACK IT.<br/>POST IT.<br/>PASS IT ON.</h4><div class="print-rule"></div><div class="print-columns"><p><b>01</b> Cool prepared food safely.</p><p><b>02</b> Label every container.</p><p><b>03</b> Confirm your pickup.</p></div><div class="print-footer"><span>loopline.chi</span><span>GOOD FOOD → FURTHER</span></div></div><div class="label-roll"><span>READY TO MOVE</span><i>LL·0426</i></div></div></div></section><section class="message-section"><div class="message-marquee" aria-hidden="true"><span>GOOD FOOD → FURTHER → GOOD FOOD → FURTHER →</span></div><div class="message-grid"><div class="message-poster message-poster--one"><div class="poster-header"><span>LOOPLINE°</span><span>CHI / 2026</span></div><h3>KEEP<br/>WHAT’S<br/><em>GOOD</em><br/>GOING.</h3><div class="poster-footer"><span>JOIN THE LOOP</span><b>↗</b></div></div><div class="message-copy"><p class="kicker">MESSAGE ARCHITECTURE</p><h2>Designed to work at<br/>three reading speeds.</h2><div class="reading-speed"><span>2 SEC</span><div><b>Keep good food moving.</b><p>A memorable promise for headlines and outdoor.</p></div></div><div class="reading-speed"><span>10 SEC</span><div><b>One pickup can begin 84 meals.</b><p>A concrete proof point for social and email.</p></div></div><div class="reading-speed"><span>30 SEC</span><div><b>Schedule surplus once. Track its impact every time.</b><p>A functional benefit for partner acquisition.</p></div></div></div><div class="message-poster message-poster--two"><div class="poster-header"><span>LOOPLINE°</span><span>ROUTE 04</span></div><div class="poster-stat"><b>84</b><span>MEALS<br/>CAN BEGIN<br/>RIGHT HERE.</span></div><div class="poster-route"><i></i><i></i><i></i></div><div class="poster-footer"><span>PACK · POST · PASS IT ON</span><b>04</b></div></div></div></section><section class="ux-section section-mint"><div class="section-label"><span>06</span><p>THE DIGITAL EXPERIENCE</p></div><div class="ux-heading"><p class="kicker">FROM INTENT TO CONFIRMATION</p><h2>Reduce hesitation.<br/>Reveal complexity <em>only when needed.</em></h2></div><div class="flow-map"><article><div class="flow-node"><span>01</span></div><i class="flow-line"></i><p class="kicker">QUALIFY</p><h3>Is this donation eligible?</h3></article><article><div class="flow-node"><span>02</span></div><i class="flow-line"></i><p class="kicker">DESCRIBE</p><h3>What is ready to move?</h3></article><article><div class="flow-node"><span>03</span></div><i class="flow-line"></i><p class="kicker">SCHEDULE</p><h3>When can we collect it?</h3></article><article><div class="flow-node"><span>04</span></div><i class="flow-line"></i><p class="kicker">CONFIRM</p><h3>Who is handling pickup?</h3></article><article><div class="flow-node"><span>05</span></div><p class="kicker">REPORT</p><h3>Where did it create value?</h3></article></div><div class="prototype-showcase prototype-showcase--advanced" aria-labelledby="prototype-title">
   <div class="prototype-showcase__head">
     <div>
-      <p class="kicker">RESPONSIVE SERVICE PROTOTYPE / LIVE BEHAVIOR</p>
-      <h3 id="prototype-title">The poster system<br/>becomes the interface.</h3>
+      <p class="kicker">RESPONSIVE SERVICE PROTOTYPE / FIVE DECISION STATES</p>
+      <h3 id="prototype-title">The poster system<br/>becomes the service.</h3>
     </div>
-    <p>Oversized verbs, route logic, and status color move intact from an 11 × 17 flyer into a responsive scheduling flow. Desktop and mobile views stay synchronized so the interaction—not the device frame—carries the brand.</p>
+    <p>Five connected states turn a kitchen’s uncertainty into a traceable handoff. Oversized verbs establish the decision, route graphics preserve context, and motion confirms what changed without slowing the task.</p>
   </div>
   <div class="prototype-controls prototype-controls--advanced" role="tablist" aria-label="Pickup scheduling prototype states">
-    <button type="button" role="tab" data-prototype-step="0" aria-selected="true">
-      <span>01</span><b>Qualify</b><small>Safety + confidence</small>
-    </button>
-    <button type="button" role="tab" data-prototype-step="1" aria-selected="false">
-      <span>02</span><b>Schedule</b><small>Availability + route</small>
-    </button>
-    <button type="button" role="tab" data-prototype-step="2" aria-selected="false">
-      <span>03</span><b>Confirm</b><small>Ownership + status</small>
-    </button>
+    <button type="button" role="tab" data-prototype-step="0" aria-selected="true"><span>01</span><b>Qualify</b><small>Safety + confidence</small></button>
+    <button type="button" role="tab" data-prototype-step="1" aria-selected="false"><span>02</span><b>Describe</b><small>Food + quantity</small></button>
+    <button type="button" role="tab" data-prototype-step="2" aria-selected="false"><span>03</span><b>Schedule</b><small>Window + route</small></button>
+    <button type="button" role="tab" data-prototype-step="3" aria-selected="false"><span>04</span><b>Handoff</b><small>Access + owner</small></button>
+    <button type="button" role="tab" data-prototype-step="4" aria-selected="false"><span>05</span><b>Track</b><small>Status + next step</small></button>
   </div>
   <div class="prototype-stage">
     <div class="prototype-stage__bar">
       <span class="prototype-stage__state" data-prototype-state-label>STATE 01 / QUALIFY</span>
       <div class="prototype-stage__tools">
-        <span>DESKTOP + MOBILE / SYNCHRONIZED</span>
+        <span>FIVE STATES / DESKTOP + MOBILE / SYNCHRONIZED</span>
         <button type="button" data-prototype-autoplay aria-pressed="false">▶ Run guided flow</button>
       </div>
     </div>
@@ -8088,149 +8797,220 @@ a:focus-visible {
               <aside class="proto-route-index"><span>QUALIFY</span><div class="proto-route-index__line"><i></i><i></i><i></i></div><b>01</b></aside>
               <div class="proto-poster__statement">
                 <p class="ui-kicker proto-reveal" style="--delay:80ms">ELIGIBILITY / 01 OF 05</p>
-                <h4 class="proto-reveal" style="--delay:140ms">CAN THIS<br/>FOOD <em>JOIN<br/>THE LOOP?</em></h4>
-                <p class="proto-reveal" style="--delay:220ms">Three fast checks protect partners without turning policy into a wall of text.</p>
+                <h4 class="proto-reveal" style="--delay:150ms">CAN THIS<br/>FOOD <em>JOIN<br/>THE LOOP?</em></h4>
+                <p class="proto-reveal" style="--delay:240ms">Three fast checks protect partners without turning policy into a wall of text.</p>
               </div>
               <div class="proto-action-panel">
                 <div class="proto-panel-meta proto-reveal" style="--delay:180ms"><span>SAFETY CHECK</span><span data-readiness-count>3 / 3 READY</span></div>
-                <div class="proto-readiness proto-reveal" style="--delay:220ms">
-                  <div><span>ROUTE READINESS</span><b data-readiness-percent>100%</b></div>
-                  <span class="proto-readiness__track"><i data-readiness-bar></i></span>
-                </div>
+                <div class="proto-readiness proto-reveal" style="--delay:230ms"><div><span>ROUTE READINESS</span><b data-readiness-percent>100%</b></div><span class="proto-readiness__track"><i data-readiness-bar></i></span></div>
                 <div class="proto-check-list">
-                  <button type="button" class="proto-check proto-reveal" style="--delay:260ms" data-eligibility-check aria-pressed="true"><span>01</span><span><b>Freshly prepared</b><small>Inside approved holding window</small></span><span>✓</span></button>
-                  <button type="button" class="proto-check proto-reveal" style="--delay:320ms" data-eligibility-check aria-pressed="true"><span>02</span><span><b>Cold-hold verified</b><small>Stored at 41°F or below</small></span><span>✓</span></button>
-                  <button type="button" class="proto-check proto-reveal" style="--delay:380ms" data-eligibility-check aria-pressed="true"><span>03</span><span><b>Label + allergens</b><small>Contents, date, and allergens named</small></span><span>✓</span></button>
+                  <button type="button" class="proto-check proto-reveal" style="--delay:290ms" data-eligibility-check aria-pressed="true"><span>01</span><span><b>Freshly prepared</b><small>Inside approved holding window</small></span><span>✓</span></button>
+                  <button type="button" class="proto-check proto-reveal" style="--delay:360ms" data-eligibility-check aria-pressed="true"><span>02</span><span><b>Cold-hold verified</b><small>Stored at 41°F or below</small></span><span>✓</span></button>
+                  <button type="button" class="proto-check proto-reveal" style="--delay:430ms" data-eligibility-check aria-pressed="true"><span>03</span><span><b>Label + allergens</b><small>Contents, date, and allergens named</small></span><span>✓</span></button>
                 </div>
-                <button type="button" class="proto-action proto-reveal" style="--delay:440ms" data-prototype-target="1"><span>MOVE TO PICKUP WINDOWS</span><b>→</b></button>
+                <button type="button" class="proto-action proto-reveal" style="--delay:510ms" data-prototype-target="1"><span>DESCRIBE THE PICKUP</span><b>→</b></button>
               </div>
             </div>
           </article>
-          <article class="proto-screen proto-screen--schedule" data-prototype-screen="1" aria-label="Scheduling state">
+
+          <article class="proto-screen proto-screen--describe" data-prototype-screen="1" aria-label="Food description and quantity state">
+            <div class="proto-screen__brandbar"><b>LOOPLINE°</b><span>PARTNER DESK / PICKUP 01</span></div>
+            <div class="proto-poster">
+              <aside class="proto-route-index"><span>DESCRIBE</span><div class="proto-route-index__line"><i></i><i></i><i></i></div><b>02</b></aside>
+              <div class="proto-poster__statement">
+                <p class="ui-kicker proto-reveal" style="--delay:80ms">FOOD DETAILS / 02 OF 05</p>
+                <h4 class="proto-reveal" style="--delay:150ms">WHAT’S<br/><em>READY TO<br/>MOVE?</em></h4>
+                <p class="proto-reveal" style="--delay:240ms">Category, quantity, and packaging give the route enough information to match capacity.</p>
+                <div class="proto-load-profile proto-reveal" style="--delay:310ms" aria-label="Illustrative route load profile">
+                  <div class="proto-load-profile__head"><span>ROUTE LOAD / CAPACITY</span><b><span data-load-quantity>12</span> TRAYS</b></div>
+                  <div class="proto-load-profile__rail" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+                  <div class="proto-load-profile__legend"><span>CHILLED</span><span>SEALED</span><span>LABELED</span><span>STACKABLE</span></div>
+                </div>
+              </div>
+              <div class="proto-action-panel">
+                <div class="proto-panel-meta proto-reveal" style="--delay:180ms"><span>SELECT ALL THAT APPLY</span><span data-food-summary>PREPARED MEALS</span></div>
+                <div class="proto-food-grid">
+                  <button type="button" class="proto-food-choice" style="--delay:240ms" data-food-choice="Prepared meals" aria-pressed="true"><span>01</span><b>Prepared meals</b></button>
+                  <button type="button" class="proto-food-choice" style="--delay:300ms" data-food-choice="Fresh produce" aria-pressed="false"><span>02</span><b>Fresh produce</b></button>
+                  <button type="button" class="proto-food-choice" style="--delay:360ms" data-food-choice="Baked goods" aria-pressed="false"><span>03</span><b>Baked goods</b></button>
+                  <button type="button" class="proto-food-choice" style="--delay:420ms" data-food-choice="Pantry goods" aria-pressed="false"><span>04</span><b>Pantry goods</b></button>
+                </div>
+                <div class="proto-quantity proto-reveal" style="--delay:470ms"><span>ESTIMATED QUANTITY<br/>SEALED TRAYS</span><div class="proto-quantity__stepper"><button type="button" data-quantity-minus aria-label="Decrease tray quantity">−</button><b data-quantity-value>12</b><button type="button" data-quantity-plus aria-label="Increase tray quantity">+</button></div></div>
+                <div class="proto-packaging proto-reveal" style="--delay:520ms"><span>SEALED</span><span>CHILLED</span><span>LABELED</span></div>
+                <button type="button" class="proto-action proto-reveal" style="--delay:580ms" data-prototype-target="2"><span data-describe-cta>FIND A ROUTE FOR 12 TRAYS</span><b>→</b></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="proto-screen proto-screen--schedule" data-prototype-screen="2" aria-label="Scheduling state">
             <div class="proto-screen__brandbar"><b>LOOPLINE°</b><span>PARTNER DESK / PICKUP 01</span></div>
             <div class="proto-poster">
               <aside class="proto-route-index"><span>SCHEDULE</span><div class="proto-route-index__line"><i></i><i></i><i></i></div><b>03</b></aside>
               <div class="proto-poster__statement">
                 <p class="ui-kicker proto-reveal" style="--delay:80ms">PICKUP WINDOW / 03 OF 05</p>
-                <h4 class="proto-reveal" style="--delay:140ms">PICK A<br/>WINDOW.<br/><em>KEEP IT<br/>MOVING.</em></h4>
-                <p class="proto-reveal" style="--delay:220ms">Only viable windows appear. Route context stays visible while the partner decides.</p>
+                <h4 class="proto-reveal" style="--delay:150ms">PICK A<br/>WINDOW.<br/><em>KEEP IT<br/>MOVING.</em></h4>
+                <svg class="proto-mini-route" viewBox="0 0 520 110" aria-hidden="true"><path class="route-ghost" d="M15 76C100 76 103 22 185 22S278 91 360 91S430 39 505 39"></path><path class="route-active" d="M15 76C100 76 103 22 185 22S278 91 360 91S430 39 505 39"></path><circle cx="15" cy="76" r="9" fill="#F15B40"></circle><circle cx="185" cy="22" r="9" fill="#F4C95D"></circle><circle cx="360" cy="91" r="9" fill="#BBDCCB"></circle><circle cx="505" cy="39" r="9" fill="#F4F0E8"></circle></svg>
               </div>
               <div class="proto-action-panel">
                 <div class="proto-panel-meta proto-reveal" style="--delay:180ms"><span>MAY / ROUTE 04</span><span>3 WINDOWS OPEN</span></div>
                 <div class="proto-schedule-flow">
-                  <div class="proto-date-row proto-reveal" style="--delay:230ms" aria-label="Pickup dates">
+                  <div class="proto-date-row proto-reveal" style="--delay:240ms" aria-label="Pickup dates">
                     <button type="button" data-date-choice data-date-label="MON 18" aria-pressed="false"><small>MON</small><b>18</b></button>
                     <button type="button" data-date-choice data-date-label="TUE 19" aria-pressed="true"><small>TUE</small><b>19</b></button>
                     <button type="button" data-date-choice data-date-label="WED 20" aria-pressed="false"><small>WED</small><b>20</b></button>
                     <button type="button" data-date-choice data-date-label="THU 21" aria-pressed="false"><small>THU</small><b>21</b></button>
                   </div>
-                  <p class="proto-field-label proto-reveal" style="--delay:270ms">AVAILABLE WINDOWS</p>
-                  <div class="proto-time-row proto-reveal" style="--delay:300ms" aria-label="Pickup times">
+                  <p class="proto-field-label proto-reveal" style="--delay:300ms">AVAILABLE WINDOWS</p>
+                  <div class="proto-time-row proto-reveal" style="--delay:350ms" aria-label="Pickup times">
                     <button type="button" data-time-choice data-time-label="10:00–10:45" aria-pressed="false">10:00–10:45</button>
                     <button type="button" data-time-choice data-time-label="11:30–12:15" aria-pressed="true">11:30–12:15</button>
                     <button type="button" data-time-choice data-time-label="14:00–14:45" aria-pressed="false">14:00–14:45</button>
                   </div>
-                  <div class="proto-route-ticket proto-reveal" style="--delay:350ms"><b>WEST LOOP KITCHEN → PILSEN PANTRY</b><span>MAYA / VAN 04 · SHARED ROUTE CAPACITY AVAILABLE</span></div>
-                  <button type="button" class="proto-action proto-reveal" style="--delay:410ms" data-prototype-target="2"><span data-schedule-summary>CONFIRM TUE 19 · 11:30–12:15</span><b>→</b></button>
+                  <div class="proto-route-ticket proto-reveal" style="--delay:420ms"><b>WEST LOOP KITCHEN → PILSEN PANTRY</b><span>MAYA / VAN 04 · SHARED ROUTE CAPACITY AVAILABLE</span></div>
+                  <button type="button" class="proto-action proto-reveal" style="--delay:500ms" data-prototype-target="3"><span data-schedule-summary>CHOOSE TUE 19 · 11:30–12:15</span><b>→</b></button>
                 </div>
               </div>
             </div>
           </article>
-          <article class="proto-screen proto-screen--confirmation" data-prototype-screen="2" aria-label="Confirmation and status state">
+
+          <article class="proto-screen proto-screen--handoff" data-prototype-screen="3" aria-label="Handoff and access state">
+            <div class="proto-screen__brandbar"><b>LOOPLINE°</b><span>PARTNER DESK / PICKUP 01</span></div>
+            <div class="proto-poster">
+              <aside class="proto-route-index"><span>HANDOFF</span><div class="proto-route-index__line"><i></i><i></i><i></i></div><b>04</b></aside>
+              <div class="proto-poster__statement">
+                <p class="ui-kicker proto-reveal" style="--delay:80ms">ACCESS DETAILS / 04 OF 05</p>
+                <h4 class="proto-reveal" style="--delay:150ms">HOW SHOULD<br/>THE ROUTE<br/><em>FIND YOU?</em></h4>
+                <p class="proto-reveal" style="--delay:240ms">One precise handoff instruction prevents calls, delays, and missed pickups.</p>
+                <div class="proto-handoff-strip proto-reveal" style="--delay:320ms" aria-label="Handoff sequence">
+                  <div class="proto-handoff-strip__point"><span>ENTRY</span><b data-handoff-route-entry>DOCK B</b></div>
+                  <i class="proto-handoff-strip__link" aria-hidden="true"></i>
+                  <div class="proto-handoff-strip__point"><span>CHECK-IN</span><b>MAYA / VAN 04</b></div>
+                  <i class="proto-handoff-strip__link" aria-hidden="true"></i>
+                  <div class="proto-handoff-strip__point"><span>OWNER</span><b>JORDAN M.</b></div>
+                </div>
+              </div>
+              <div class="proto-action-panel">
+                <div class="proto-panel-meta proto-reveal" style="--delay:180ms"><span>PICKUP ACCESS</span><span data-handoff-summary>DOCK B</span></div>
+                <div class="proto-access-list">
+                  <button type="button" class="proto-access-choice proto-reveal" style="--delay:250ms" data-handoff-choice="Dock B" aria-pressed="true"><span>01</span><span><b>Dock B</b><small>Enter from Morgan Street</small></span></button>
+                  <button type="button" class="proto-access-choice proto-reveal" style="--delay:320ms" data-handoff-choice="Front counter" aria-pressed="false"><span>02</span><span><b>Front counter</b><small>Ask for the shift lead</small></span></button>
+                  <button type="button" class="proto-access-choice proto-reveal" style="--delay:390ms" data-handoff-choice="Call on arrival" aria-pressed="false"><span>03</span><span><b>Call on arrival</b><small>Use only if access is blocked</small></span></button>
+                </div>
+                <div class="proto-contact-ticket proto-reveal" style="--delay:460ms"><span>JM</span><div><b>Jordan M. · Shift lead</b><small>Owns the handoff until driver check-in</small></div></div>
+                <button type="button" class="proto-action proto-reveal" style="--delay:540ms" data-prototype-target="4"><span>REVIEW + CONFIRM HANDOFF</span><b>→</b></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="proto-screen proto-screen--confirmation" data-prototype-screen="4" aria-label="Confirmation and tracking state">
             <div class="proto-screen__brandbar"><b>LOOPLINE°</b><span>CONFIRMED / LL-0426</span></div>
             <div class="proto-confirmation">
               <div class="proto-confirmation__statement">
                 <p class="ui-kicker proto-reveal" style="--delay:80ms">PICKUP LL-0426 / ROUTE 04</p>
-                <h4 class="proto-reveal" style="--delay:140ms">YOUR FOOD<br/><em>HAS A ROUTE.</em></h4>
-                <span class="proto-reveal" style="--delay:220ms">TUE 19 · 11:30–12:15<br/>WEST LOOP → PILSEN</span>
+                <h4 class="proto-reveal" style="--delay:150ms">YOUR FOOD<br/><em>HAS A ROUTE.</em></h4>
+                <span class="proto-reveal" style="--delay:240ms" data-confirmation-window>TUE 19 · 11:30–12:15<br/>WEST LOOP → PILSEN · DOCK B</span>
                 <div class="proto-confirmation__orbit" aria-hidden="true"></div>
               </div>
               <div class="proto-confirmation__status">
                 <div class="proto-confirmation__stamp">✓</div>
                 <div class="proto-status-rail">
-                  <div class="is-complete proto-reveal" style="--delay:240ms"><i>✓</i><span><b>Pickup posted</b><small>Today · 09:42</small></span></div>
-                  <div class="is-current proto-reveal" style="--delay:340ms"><i>02</i><span><b>Route matched</b><small>Maya · Van 04</small></span></div>
-                  <div class="proto-reveal" style="--delay:440ms"><i>03</i><span><b>Pickup begins</b><small>Tuesday · 11:30</small></span></div>
-                  <div class="proto-reveal" style="--delay:540ms"><i>04</i><span><b>Impact reported</b><small>After delivery</small></span></div>
+                  <div class="is-complete proto-reveal" style="--delay:250ms"><i>✓</i><span><b>Pickup posted</b><small>Today · 09:42</small></span></div>
+                  <div class="is-current proto-reveal" style="--delay:350ms"><i>02</i><span><b>Route matched</b><small>Maya · Van 04</small></span></div>
+                  <div class="proto-reveal" style="--delay:450ms"><i>03</i><span><b>Pickup begins</b><small data-confirmation-time>Tuesday · 11:30</small></span></div>
+                  <div class="proto-reveal" style="--delay:550ms"><i>04</i><span><b>Impact reported</b><small>After delivery</small></span></div>
                 </div>
-                <button type="button" class="proto-action proto-reveal" style="--delay:600ms" data-prototype-target="0"><span>SCHEDULE ANOTHER</span><b>↻</b></button>
+                <div class="proto-impact-preview proto-reveal" style="--delay:620ms"><b>84</b><span>ILLUSTRATIVE MEAL CAPACITY<small>Planning estimate—not an outcome claim</small></span></div>
+                <button type="button" class="proto-action proto-reveal" style="--delay:690ms" data-prototype-target="0"><span>SCHEDULE ANOTHER</span><b>↻</b></button>
               </div>
             </div>
           </article>
         </div>
       </div>
+
       <div class="prototype-phone" aria-label="Mobile scheduling prototype">
         <div class="prototype-phone__viewport">
           <article class="proto-mobile-screen is-active" data-prototype-mobile-screen="0">
             <div class="proto-mobile-brand"><b>LOOPLINE°</b><span>01 / 05</span></div>
             <span class="proto-reveal" style="--delay:80ms">ELIGIBILITY CHECK</span>
-            <h4 class="proto-reveal" style="--delay:140ms">CAN THIS FOOD<br/><em>JOIN THE LOOP?</em></h4>
-            <div class="proto-mobile-route proto-reveal" style="--delay:200ms"><i></i><i></i><i></i></div>
-            <div class="proto-mobile-cards">
-              <div class="proto-reveal" style="--delay:250ms"><i>✓</i>Freshly prepared</div>
-              <div class="proto-reveal" style="--delay:310ms"><i>✓</i>Cold-hold verified</div>
-              <div class="proto-reveal" style="--delay:370ms"><i>✓</i>Label + allergens</div>
-            </div>
-            <div class="proto-mobile-action proto-reveal" style="--delay:430ms"><span>ROUTE READY</span><b>→</b></div>
+            <h4 class="proto-reveal" style="--delay:150ms">CAN THIS FOOD<br/><em>JOIN THE LOOP?</em></h4>
+            <div class="proto-mobile-route proto-reveal" style="--delay:230ms"><i></i><i></i><i></i></div>
+            <div class="proto-mobile-cards"><div class="proto-reveal" style="--delay:300ms"><i>✓</i>Freshly prepared</div><div class="proto-reveal" style="--delay:370ms"><i>✓</i>Cold-hold verified</div><div class="proto-reveal" style="--delay:440ms"><i>✓</i>Label + allergens</div></div>
+            <div class="proto-mobile-action proto-reveal" style="--delay:510ms"><span>ROUTE READY</span><b>→</b></div>
           </article>
-          <article class="proto-mobile-screen proto-mobile-screen--schedule" data-prototype-mobile-screen="1">
+          <article class="proto-mobile-screen proto-mobile-screen--describe" data-prototype-mobile-screen="1">
+            <div class="proto-mobile-brand"><b>LOOPLINE°</b><span>02 / 05</span></div>
+            <span class="proto-reveal" style="--delay:80ms">FOOD DETAILS</span>
+            <h4 class="proto-reveal" style="--delay:150ms">WHAT’S READY<br/><em>TO MOVE?</em></h4>
+            <div class="proto-mobile-food"><div class="proto-reveal" style="--delay:230ms">01<br/>PREPARED MEALS</div><div class="proto-reveal" style="--delay:300ms">02<br/>PRODUCE</div><div class="proto-reveal" style="--delay:370ms">03<br/>BAKED GOODS</div><div class="proto-reveal" style="--delay:440ms">04<br/>PANTRY</div></div>
+            <div class="proto-mobile-quantity proto-reveal" style="--delay:500ms"><span>SEALED TRAYS</span><b data-mobile-quantity>12</b></div>
+            <div class="proto-mobile-action proto-reveal" style="--delay:560ms"><span>FIND A ROUTE</span><b>→</b></div>
+          </article>
+          <article class="proto-mobile-screen proto-mobile-screen--schedule" data-prototype-mobile-screen="2">
             <div class="proto-mobile-brand"><b>LOOPLINE°</b><span>03 / 05</span></div>
             <span class="proto-reveal" style="--delay:80ms">PICKUP WINDOW</span>
-            <h4 class="proto-reveal" style="--delay:140ms">PICK A WINDOW.<br/><em>KEEP IT MOVING.</em></h4>
-            <div class="proto-mobile-date proto-reveal" style="--delay:220ms"><b>18</b><b>19</b><b>20</b></div>
-            <div class="proto-mobile-ticket proto-reveal" style="--delay:300ms"><span>ROUTE 04 / MATCH AVAILABLE</span><b>TUE 19 · 11:30–12:15</b></div>
-            <div class="proto-mobile-action proto-reveal" style="--delay:390ms"><span>CONFIRM PICKUP</span><b>→</b></div>
+            <h4 class="proto-reveal" style="--delay:150ms">PICK A WINDOW.<br/><em>KEEP IT MOVING.</em></h4>
+            <div class="proto-mobile-route proto-reveal" style="--delay:230ms"><i></i><i></i><i></i></div>
+            <div class="proto-mobile-date proto-reveal" style="--delay:300ms"><b>18</b><b>19</b><b>20</b></div>
+            <div class="proto-mobile-ticket proto-reveal" style="--delay:390ms"><span>ROUTE 04 / MATCH AVAILABLE</span><b data-mobile-window>TUE 19 · 11:30–12:15</b></div>
+            <div class="proto-mobile-action proto-reveal" style="--delay:470ms"><span>CHOOSE WINDOW</span><b>→</b></div>
           </article>
-          <article class="proto-mobile-screen proto-mobile-screen--confirmation" data-prototype-mobile-screen="2">
+          <article class="proto-mobile-screen proto-mobile-screen--handoff" data-prototype-mobile-screen="3">
+            <div class="proto-mobile-brand"><b>LOOPLINE°</b><span>04 / 05</span></div>
+            <span class="proto-reveal" style="--delay:80ms">ACCESS DETAILS</span>
+            <h4 class="proto-reveal" style="--delay:150ms">HOW SHOULD<br/><em>THE ROUTE<br/>FIND YOU?</em></h4>
+            <div class="proto-mobile-handoff proto-reveal" style="--delay:230ms"><span><small>ENTRY</small><b data-mobile-handoff>DOCK B</b></span><i aria-hidden="true">→</i><span><small>OWNER</small><b>JORDAN M.</b></span></div>
+            <div class="proto-mobile-access"><div class="proto-reveal" style="--delay:310ms"><i>01</i>Dock B</div><div class="proto-reveal" style="--delay:380ms"><i>02</i>Front counter</div><div class="proto-reveal" style="--delay:450ms"><i>03</i>Call on arrival</div></div>
+            <div class="proto-mobile-action proto-reveal" style="--delay:530ms"><span>REVIEW HANDOFF</span><b>→</b></div>
+          </article>
+          <article class="proto-mobile-screen proto-mobile-screen--confirmation" data-prototype-mobile-screen="4">
             <div class="proto-mobile-brand"><b>LOOPLINE°</b><span>LL-0426</span></div>
             <div class="proto-mobile-confirm">✓</div>
             <span class="proto-reveal" style="--delay:100ms">PICKUP CONFIRMED</span>
-            <h4 class="proto-reveal" style="--delay:160ms">YOUR FOOD<br/><em>HAS A ROUTE.</em></h4>
-            <div class="proto-mobile-status">
-              <div class="proto-reveal" style="--delay:260ms"><i>✓</i>Pickup posted</div>
-              <div class="proto-reveal" style="--delay:340ms"><i>02</i>Route matched</div>
-              <div class="proto-reveal" style="--delay:420ms"><i>03</i>Pickup at 11:30</div>
-            </div>
+            <h4 class="proto-reveal" style="--delay:170ms">YOUR FOOD<br/><em>HAS A ROUTE.</em></h4>
+            <div class="proto-mobile-status"><div class="proto-reveal" style="--delay:280ms"><i>✓</i>Pickup posted</div><div class="proto-reveal" style="--delay:360ms"><i>02</i>Route matched</div><div class="proto-reveal" style="--delay:440ms"><i>03</i>Pickup at 11:30</div><div class="proto-reveal" style="--delay:520ms"><i>04</i>Impact after delivery</div></div>
           </article>
         </div>
       </div>
     </div>
     <div class="prototype-stage__footer">
-      <span>LIVE MOTION</span>
-      <p data-prototype-motion-note>Choice feedback fills the readiness rail, then the next scene enters along the route direction.</p>
-      <b data-prototype-timing>160–520 MS</b>
+      <span>LIVE MOTION / PURPOSE</span>
+      <p data-prototype-motion-note>Safety choices update the readiness rail so eligibility never depends on animation alone.</p>
+      <b data-prototype-timing>160–700 MS</b>
     </div>
   </div>
-  <div class="prototype-behavior-grid">
-    <article><span>01 / VERIFY</span><h4>Feedback builds confidence.</h4><p>Each safety choice changes state immediately; the readiness rail summarizes progress without replacing the labels.</p><b>160 MS COLOR · 320 MS RAIL</b></article>
-    <article><span>02 / TRANSITION</span><h4>Scenes move with the route.</h4><p>The outgoing state clears before the next state enters upward, preserving direction without theatrical page movement.</p><b>180 MS OUT · 520 MS IN</b></article>
-    <article><span>03 / SCHEDULE</span><h4>Selection stays anchored.</h4><p>Date, time, route, and CTA update as one decision object so the user never has to reconcile conflicting summaries.</p><b>180 MS STATE FILL</b></article>
-    <article><span>04 / CONFIRM</span><h4>Status resolves in sequence.</h4><p>The confirmation stamp settles once; the status rail reveals ownership and the next expected event.</p><b>480 MS SETTLE · NO LOOP</b></article>
+  <div class="prototype-behavior-grid prototype-behavior-grid--five">
+    <article><span>01 / QUALIFY</span><h4>Progress explains readiness.</h4><p>Each safety choice fills the rail and updates a numeric status. The user sees exactly what remains.</p><b>160 MS FILL · 320 MS RAIL</b></article>
+    <article><span>02 / DESCRIBE</span><h4>Quantity makes capacity visible.</h4><p>Selected categories invert, the labeled capacity rail fills once, and the CTA repeats the quantity being routed.</p><b>180 MS SELECT · 560 MS CAPACITY</b></article>
+    <article><span>03 / SCHEDULE</span><h4>The route draws before commitment.</h4><p>The service path reveals available capacity while date, time, and CTA stay synchronized.</p><b>1,050 MS ROUTE · 180 MS SELECT</b></article>
+    <article><span>04 / HANDOFF</span><h4>Access becomes operational.</h4><p>Entry, driver check-in, and accountable owner resolve in sequence before the pickup is submitted.</p><b>760 MS LINKS · NO OVERLAY</b></article>
+    <article><span>05 / TRACK</span><h4>Status names the next owner.</h4><p>The stamp settles once and the rail reveals what is complete, current, and still pending.</p><b>480 MS SETTLE · NO LOOP</b></article>
   </div>
-  <div class="prototype-spec-strip">
-    <div><span>RESPONSIVE SYSTEM</span><b>Shared state across desktop + mobile</b></div>
-    <div><span>INTERACTION LOGIC</span><b>Selectable safety, date, and time states</b></div>
-    <div><span>MOTION</span><b>Trigger-based, directional, non-blocking</b></div>
-    <div><span>ACCESSIBILITY</span><b>Keyboard flow + reduced-motion final states</b></div>
+  <div class="prototype-spec-strip prototype-spec-strip--five">
+    <div><span>FLOW DEPTH</span><b>Five connected decision states</b></div>
+    <div><span>RESPONSIVE</span><b>Synchronized desktop + mobile</b></div>
+    <div><span>INTERACTION</span><b>Safety, category, quantity, schedule, access</b></div>
+    <div><span>MOTION</span><b>State-specific, triggered, non-blocking</b></div>
+    <div><span>ACCESSIBILITY</span><b>Keyboard flow + static reduced-motion states</b></div>
   </div>
 </div><div class="ux-detail-grid"><article><span class="ux-icon">Aa</span><p class="kicker">PLAIN LANGUAGE</p><h3>“What’s ready to move?”</h3><p>Every question uses the partner’s vocabulary, not internal operational language.</p></article><article><span class="ux-icon">1×</span><p class="kicker">SMART DEFAULTS</p><h3>Repeat without retyping.</h3><p>Returning kitchens can reuse pickup details while still confirming food safety.</p></article><article><span class="ux-icon">✓</span><p class="kicker">VISIBLE STATUS</p><h3>No mystery after submit.</h3><p>A clear confirmation tells partners what is set, what is pending, and who owns the next action.</p></article></div></section><section class="motion-section section-dark" id="motion">
   <div class="section-label section-label--light"><span>07</span><p>MOTION BEHAVIOR</p></div>
   <div class="motion-heading motion-heading--advanced">
-    <div><p class="kicker">MOTION AS OPERATING LANGUAGE</p><h2>Every movement<br/>explains a state change.</h2></div>
-    <p>The system uses one directional grammar across product, campaign, and presentation work: reveal the source, draw the route, activate the handoff, then settle into a clear result. Nothing loops just to look alive.</p>
+    <div><p class="kicker">MOTION AS OPERATING LANGUAGE</p><h2>Slow enough to read.<br/>Precise enough to trust.</h2></div>
+    <p>The sequence now gives each operational stage a full three-second chapter: establish the state, move between nodes, then hold long enough to understand the handoff. It plays once—never as ambient decoration.</p>
   </div>
   <div class="motion-director">
     <div class="motion-director__header">
-      <div><p class="kicker">LIVE MOTION DIRECTOR / 07.2 SECONDS</p><h3>Post → match → move → arrive.</h3></div>
+      <div><p class="kicker">LIVE MOTION DIRECTOR / 12.0 SECONDS</p><h3>Post → match → move → arrive.</h3></div>
       <div class="motion-director__meta">
-        <span><b>60 FPS</b><small>frame-synced</small></span>
+        <span><b>12 SEC</b><small>deliberate pace</small></span>
+        <span class="motion-pace"><b>4 HOLDS</b><small>read before moving</small></span>
         <span><b>1×</b><small>single playback</small></span>
-        <span><b>SAFE</b><small>reduced-motion</small></span>
       </div>
     </div>
     <div class="motion-director__stage" data-motion-stage data-phase-word="POST">
       <div class="motion-stage__brand">LOOPLINE<sup>°</sup></div>
-      <div class="motion-stage__timecode" data-motion-timecode>00:00 / 07:20</div>
+      <div class="motion-stage__hold is-holding" data-motion-hold>READ / HOLD</div>
+      <div class="motion-stage__timecode" data-motion-timecode>00:00:00 / 00:12:00</div>
       <svg class="motion-stage__network" viewBox="0 0 1200 430" aria-hidden="true">
         <path class="motion-stage__path motion-stage__path--ghost" data-motion-path d="M76 294C229 294 254 104 417 104C581 104 622 320 790 320C945 320 972 148 1128 148"></path>
         <path class="motion-stage__path motion-stage__path--active" data-motion-active-path d="M76 294C229 294 254 104 417 104C581 104 622 320 790 320C945 320 972 148 1128 148"></path>
@@ -8240,60 +9020,39 @@ a:focus-visible {
         <circle class="motion-stage__node motion-stage__node--move" data-motion-node="2" cx="790" cy="320" r="19"></circle>
         <circle class="motion-stage__node motion-stage__node--arrive" data-motion-node="3" cx="1128" cy="148" r="19"></circle>
       </svg>
-      <div class="motion-stage__caption motion-stage__caption--post" data-motion-caption="0"><span>01 / POST</span><b>KITCHEN RELEASES</b><small>12 trays · chilled + labeled</small></div>
+      <div class="motion-stage__caption motion-stage__caption--post is-current" data-motion-caption="0"><span>01 / POST</span><b>KITCHEN RELEASES</b><small>12 trays · chilled + labeled</small></div>
       <div class="motion-stage__caption motion-stage__caption--match" data-motion-caption="1"><span>02 / MATCH</span><b>ROUTE ACCEPTS</b><small>Maya · Van 04 · 11:30</small></div>
       <div class="motion-stage__caption motion-stage__caption--move" data-motion-caption="2"><span>03 / MOVE</span><b>PICKUP IN TRANSIT</b><small>West Loop → Pilsen</small></div>
       <div class="motion-stage__caption motion-stage__caption--arrive" data-motion-caption="3"><span>04 / ARRIVE</span><b>PARTNER RECEIVES</b><small>Handoff confirmed</small></div>
-      <div class="motion-stage__result" data-motion-result>
-        <span class="motion-stage__result-mark">✓</span>
-        <p><small>PICKUP LL-0426 / HANDOFF COMPLETE</small><b>GOOD FOOD<br/>WENT FURTHER.</b></p>
-      </div>
+      <div class="motion-stage__result" data-motion-result><span class="motion-stage__result-mark">✓</span><p><small>PICKUP LL-0426 / HANDOFF COMPLETE</small><b>GOOD FOOD<br/>WENT FURTHER.</b></p></div>
       <div class="motion-stage__progress"><i data-motion-progress></i></div>
     </div>
     <div class="motion-director__controls">
-      <div class="motion-director__buttons">
-        <button type="button" data-motion-toggle aria-pressed="false">▶ Play sequence</button>
-        <button type="button" data-motion-replay>↻ Replay</button>
-      </div>
+      <div class="motion-director__buttons"><button type="button" data-motion-toggle aria-pressed="false">▶ Play sequence</button><button type="button" data-motion-replay>↻ Replay slowly</button></div>
       <div class="motion-chapters" aria-label="Motion sequence chapters">
-        <button type="button" data-motion-jump="0" class="is-current"><span>01</span><b>Post</b><small>0.0–1.6 s</small></button>
-        <button type="button" data-motion-jump="1"><span>02</span><b>Match</b><small>1.6–3.5 s</small></button>
-        <button type="button" data-motion-jump="2"><span>03</span><b>Move</b><small>3.5–5.6 s</small></button>
-        <button type="button" data-motion-jump="3"><span>04</span><b>Arrive</b><small>5.6–7.2 s</small></button>
+        <button type="button" data-motion-jump="0" class="is-current"><span>01</span><b>Post</b><small>0.0–3.0 s</small></button>
+        <button type="button" data-motion-jump="1"><span>02</span><b>Match</b><small>3.0–6.0 s</small></button>
+        <button type="button" data-motion-jump="2"><span>03</span><b>Move</b><small>6.0–9.0 s</small></button>
+        <button type="button" data-motion-jump="3"><span>04</span><b>Arrive</b><small>9.0–12.0 s</small></button>
       </div>
     </div>
   </div>
   <div class="motion-lab-grid">
-    <article class="motion-lab">
-      <div class="motion-lab__demo lab-advance"><div class="lab-advance__line"></div><span class="lab-advance__dot" data-demo-target></span></div>
-      <div class="motion-lab__copy"><span>01 / ADVANCE</span><h3>Directional progress</h3><p>A route node moves only after the system accepts the preceding decision.</p><dl><dt>TRIGGER</dt><dd>Valid submit</dd><dt>TIMING</dt><dd>280 ms · ease out</dd></dl><button type="button" data-behavior-demo="advance">Play once ↗</button></div>
-    </article>
-    <article class="motion-lab">
-      <div class="motion-lab__demo lab-confirm"><span class="lab-confirm__stamp" data-demo-target>✓</span></div>
-      <div class="motion-lab__copy"><span>02 / CONFIRM</span><h3>Confident closure</h3><p>A restrained settle confirms completion without delaying the next action.</p><dl><dt>TRIGGER</dt><dd>Server success</dd><dt>TIMING</dt><dd>360 ms · soft settle</dd></dl><button type="button" data-behavior-demo="confirm">Play once ↗</button></div>
-    </article>
-    <article class="motion-lab">
-      <div class="motion-lab__demo lab-attention"><i class="lab-attention__ring" data-demo-ring></i><span class="lab-attention__core" data-demo-target>!</span></div>
-      <div class="motion-lab__copy"><span>03 / ATTENTION</span><h3>Useful urgency</h3><p>One pulse identifies the field needing action; it never repeats or competes with copy.</p><dl><dt>TRIGGER</dt><dd>Blocking exception</dd><dt>TIMING</dt><dd>720 ms · single pulse</dd></dl><button type="button" data-behavior-demo="attention">Play once ↗</button></div>
-    </article>
-    <article class="motion-lab">
-      <div class="motion-lab__demo"><div class="lab-continuity" data-demo-target><div><span>POSTED</span><i></i></div><div><span>MATCHED</span><i></i></div><div><span>PICKUP</span><i></i></div></div></div>
-      <div class="motion-lab__copy"><span>04 / CONTINUITY</span><h3>State stays traceable</h3><p>The active state advances while previous states remain visible as evidence.</p><dl><dt>TRIGGER</dt><dd>Status update</dd><dt>TIMING</dt><dd>420 ms · stagger</dd></dl><button type="button" data-behavior-demo="continuity">Play once ↗</button></div>
-    </article>
+    <article class="motion-lab"><div class="motion-lab__demo lab-advance"><div class="lab-advance__line"></div><span class="lab-advance__dot" data-demo-target></span></div><div class="motion-lab__copy"><span>01 / ADVANCE</span><h3>Directional progress</h3><p>A route node moves only after the system accepts the preceding decision.</p><dl><dt>TRIGGER</dt><dd>Valid submit</dd><dt>TIMING</dt><dd>420 ms · ease out</dd></dl><button type="button" data-behavior-demo="advance">Play once ↗</button></div></article>
+    <article class="motion-lab"><div class="motion-lab__demo lab-confirm"><span class="lab-confirm__stamp" data-demo-target>✓</span></div><div class="motion-lab__copy"><span>02 / CONFIRM</span><h3>Confident closure</h3><p>A restrained settle confirms completion without delaying the next action.</p><dl><dt>TRIGGER</dt><dd>Server success</dd><dt>TIMING</dt><dd>480 ms · soft settle</dd></dl><button type="button" data-behavior-demo="confirm">Play once ↗</button></div></article>
+    <article class="motion-lab"><div class="motion-lab__demo lab-attention"><i class="lab-attention__ring" data-demo-ring></i><span class="lab-attention__core" data-demo-target>!</span></div><div class="motion-lab__copy"><span>03 / ATTENTION</span><h3>Useful urgency</h3><p>One pulse identifies the field needing action; it never repeats or competes with copy.</p><dl><dt>TRIGGER</dt><dd>Blocking exception</dd><dt>TIMING</dt><dd>900 ms · single pulse</dd></dl><button type="button" data-behavior-demo="attention">Play once ↗</button></div></article>
+    <article class="motion-lab"><div class="motion-lab__demo"><div class="lab-continuity" data-demo-target><div><span>POSTED</span><i></i></div><div><span>MATCHED</span><i></i></div><div><span>PICKUP</span><i></i></div></div></div><div class="motion-lab__copy"><span>04 / CONTINUITY</span><h3>State stays traceable</h3><p>The active state advances while previous states remain visible as evidence.</p><dl><dt>TRIGGER</dt><dd>Status update</dd><dt>TIMING</dt><dd>540 ms · stagger</dd></dl><button type="button" data-behavior-demo="continuity">Play once ↗</button></div></article>
   </div>
   <div class="motion-spec">
-    <div class="motion-spec__head">
-      <div><p class="kicker">BEHAVIOR SPECIFICATION / HANDOFF READY</p><h3>Motion is documented like any other component.</h3></div>
-      <p>Each behavior names its trigger, visual response, timing, easing, and reduced-motion equivalent so engineering does not have to reverse-engineer intent from a video.</p>
-    </div>
+    <div class="motion-spec__head"><div><p class="kicker">BEHAVIOR SPECIFICATION / HANDOFF READY</p><h3>Motion is documented like any other component.</h3></div><p>Each behavior names its trigger, visual response, timing, easing, and reduced-motion equivalent. The longer narrative reel demonstrates the grammar; the component timings remain brief enough for real product use.</p></div>
     <div class="motion-spec__table" role="table" aria-label="Loopline motion specification">
       <div class="motion-spec__row motion-spec__row--head" role="row"><span>BEHAVIOR</span><span>TRIGGER + RESPONSE</span><span>DURATION</span><span>EASING</span><span>REDUCED MOTION</span></div>
-      <div class="motion-spec__row" role="row"><span>Scene transition</span><b>Valid step → next state enters in route direction</b><p>180 out / 520 in</p><p>Cubic-bezier .22,1,.36,1</p><p>Instant state replacement + focus move</p></div>
-      <div class="motion-spec__row" role="row"><span>Route progress</span><b>Status accepted → path draws to the next node</b><p>280–720 ms</p><p>Ease out</p><p>Completed path shown immediately</p></div>
-      <div class="motion-spec__row" role="row"><span>Confirmation</span><b>Server success → stamp settles once</b><p>360–480 ms</p><p>Soft settle</p><p>Static check + status heading</p></div>
-      <div class="motion-spec__row" role="row"><span>Attention</span><b>Blocking issue → one field-level pulse</b><p>720 ms</p><p>Ease out</p><p>Persistent border, icon, and error text</p></div>
+      <div class="motion-spec__row" role="row"><span>Scene transition</span><b>Valid step → next state enters in route direction</b><p>220 out / 700 in</p><p>Cubic-bezier .22,1,.36,1</p><p>Instant replacement + focus move</p></div>
+      <div class="motion-spec__row" role="row"><span>Route progress</span><b>Status accepted → path draws to the next node</b><p>420–1,250 ms</p><p>Ease out</p><p>Completed path shown immediately</p></div>
+      <div class="motion-spec__row" role="row"><span>Confirmation</span><b>Server success → stamp settles once</b><p>480 ms</p><p>Soft settle</p><p>Static check + status heading</p></div>
+      <div class="motion-spec__row" role="row"><span>Attention</span><b>Blocking issue → one field-level pulse</b><p>900 ms</p><p>Ease out</p><p>Persistent border, icon, and error text</p></div>
     </div>
-    <div class="motion-access-note"><b>ACCESSIBILITY RULE</b><span>Motion never carries the only copy of meaning. Focus moves after the visual transition, controls remain operable while animation is paused, background playback stops when the tab is hidden, and “reduce motion” resolves directly to the final state.</span></div>
+    <div class="motion-access-note"><b>ACCESSIBILITY RULE</b><span>Motion never carries the only copy of meaning. The narrative reel includes readable holds, controls remain operable while paused, playback stops when the tab is hidden, and “reduce motion” resolves directly to the final state.</span></div>
   </div>
 </section><section class="production-section"><div class="section-label"><span>08</span><p>PRODUCTION + HANDOFF</p></div><div class="production-heading"><p class="kicker">A SYSTEM IS ONLY REAL IF SOMEONE ELSE CAN USE IT</p><h2>Craft includes<br/>the files no one posts.</h2><p>The handoff model treats governance as part of the design. Every asset has an owner, format, fallback, and quality check.</p></div><div class="production-proof"><div class="production-proof__intro"><div><p class="kicker">FINAL ART / CLOSE-UP REVIEW</p><h3>Finished pieces,<br/>shown at production depth.</h3></div><p>Each artifact is shown with the decisions that matter after approval: page architecture, vector construction, color mode, fallback behavior, export requirements, and the application used to finish the work.</p></div><div class="artifact-grid"><article class="artifact-card artifact-card--guide"><div class="artifact-visual guide-spread" aria-label="Two-page Loopline partner guide spread"><div class="guide-page guide-page--left"><div class="guide-running-head"><span>LOOPLINE / PARTNER GUIDE</span><b>06</b></div><p class="guide-kicker">PREPARE A PICKUP</p><h4>PACK IT.<br/>POST IT.<br/>PASS IT ON.</h4><div class="guide-route"><i></i><i></i><i></i></div><div class="guide-foot"><span>VERSION 1.0 / MAY 2026</span><span>loopline.chi</span></div></div><div class="guide-page guide-page--right"><div class="guide-running-head"><span>KITCHEN QUICK START</span><b>07</b></div><div class="guide-step"><span>01</span><div><b>COOL</b><p>Hold prepared food at 41°F or below.</p></div></div><div class="guide-step"><span>02</span><div><b>LABEL</b><p>Name contents, allergens, and preparation date.</p></div></div><div class="guide-step"><span>03</span><div><b>POST</b><p>Choose a pickup window and confirm dock access.</p></div></div><div class="guide-callout"><b>NEED HELP?</b><span>Use “I’m not sure” in the eligibility check.</span></div><div class="guide-baseline" aria-hidden="true"></div></div></div><div class="artifact-caption"><span>01 / EDITORIAL SYSTEM</span><div><h4>Two-page partner guide</h4><p>Parent pages, paragraph styles, baseline grid, 0.125-inch bleed, and accessible PDF reading order.</p><b class="software-tag software-tag--indesign">Adobe InDesign</b></div></div></article><article class="artifact-card artifact-card--poster"><div class="artifact-visual poster-flat" aria-label="Loopline printed campaign flyer"><div class="crop-mark crop-mark--tl"></div><div class="crop-mark crop-mark--tr"></div><div class="crop-mark crop-mark--bl"></div><div class="crop-mark crop-mark--br"></div><div class="poster-flat__sheet"><div class="poster-flat__head"><span>LOOPLINE°</span><span>CHI / 2026</span></div><h4>GOOD<br/>FOOD HAS<br/><em>PLACES</em><br/>TO GO.</h4><div class="poster-flat__route"><i></i><i></i><i></i></div><p>One pickup can begin 84 meals.</p><div class="poster-flat__foot"><span>BECOME A PARTNER</span><b>↗</b></div></div></div><div class="artifact-caption"><span>02 / PRINT CAMPAIGN</span><div><h4>11 × 17 partner flyer</h4><p>CMYK build, crop and bleed marks, rich-black control, and a one-ink office-print fallback.</p><b class="software-tag software-tag--indesign">Adobe InDesign</b></div></div></article><article class="artifact-card artifact-card--social"><div class="artifact-visual social-flat" aria-label="Loopline social campaign graphics"><div class="social-flat__square"><div class="social-flat__head"><span>LOOPLINE°</span><span>01 / 03</span></div><b class="social-flat__number">84</b><h4>MEALS CAN<br/>BEGIN WITH<br/>ONE PICKUP.</h4><p>See what’s moving →</p></div><div class="social-flat__story"><span>LOOPLINE°</span><div><svg class="mark mark--compact" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><h4>KEEP IT<br/>MOVING.</h4><p>BECOME A PARTNER ↗</p></div><div class="social-flat__safe-zone"><span>4:5 SAFE ZONE</span><b>1080 × 1350</b></div></div><div class="artifact-caption"><span>03 / CAMPAIGN COMPOSITING</span><div><h4>Social launch system</h4><p>Smart-object templates, non-destructive color, platform-safe crops, and a motion-ready layer hierarchy.</p><b class="software-tag software-tag--photoshop">Adobe Photoshop</b></div></div></article><article class="artifact-card artifact-card--construction"><div class="artifact-visual construction-flat" aria-label="Loopline logo vector construction drawing"><div class="construction-toolbar"><span>LL_LOGO_MASTER_V03.AI</span><b>600%</b></div><div class="construction-canvas"><div class="construction-grid"></div><div class="construction-orbit construction-orbit--outer"></div><div class="construction-orbit construction-orbit--inner"></div><div class="construction-axis construction-axis--x"></div><div class="construction-axis construction-axis--y"></div><div class="construction-mark"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><i class="anchor anchor--one"></i><i class="anchor anchor--two"></i><i class="anchor anchor--three"></i><i class="anchor anchor--four"></i><div class="construction-note construction-note--one"><span>10 u</span><b>STROKE</b></div><div class="construction-note construction-note--two"><span>15 u</span><b>NODE</b></div><div class="construction-note construction-note--three"><span>20.2 u</span><b>OPEN TURN</b></div></div></div><div class="artifact-caption"><span>04 / VECTOR MASTER</span><div><h4>Logo construction artwork</h4><p>Live-stroke master, expanded production copy, optical node spacing, pixel-hinted micro mark, and SVG cleanup.</p><b class="software-tag software-tag--illustrator">Adobe Illustrator</b></div></div></article><article class="artifact-card artifact-card--fallback"><div class="artifact-visual fallback-flat" aria-label="One-color and low-cost Loopline print versions"><div class="fallback-sample fallback-sample--ink"><span>ONE-COLOR / POSITIVE</span><div><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><b>LOOPLINE<sup>°</sup></b></div><p>100 K / uncoated stock</p></div><div class="fallback-sample fallback-sample--reverse"><span>ONE-COLOR / REVERSED</span><div><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg><b>LOOPLINE<sup>°</sup></b></div><p>Paper white / solid ink</p></div><div class="fallback-sample fallback-sample--office"><span>OFFICE PRINT / LETTER</span><div class="office-sheet"><b>KITCHEN<br/>QUICK GUIDE</b><ol><li>Cool safely</li><li>Label clearly</li><li>Confirm pickup</li></ol><i>GOOD FOOD → FURTHER</i></div><p>Grayscale-safe / no bleed / 0.5 in margin</p></div></div><div class="artifact-caption"><span>05 / LOW-COST PRODUCTION</span><div><h4>One-color + office-print suite</h4><p>Every critical asset keeps its hierarchy when spot color, bleed, specialty stock, and professional output disappear.</p><b class="software-tag software-tag--suite">Illustrator + InDesign</b></div></div></article></div><div class="production-detail-strip"><span>PRODUCTION STANDARD</span><div><b>Print</b><p>CMYK · spot · grayscale · office</p></div><div><b>Digital</b><p>RGB · SVG · WebP · social crops</p></div><div><b>Source</b><p>Linked · packaged · editable · named</p></div><div><b>QA</b><p>Preflight · contrast · compression · export</p></div></div></div><div class="production-board"><div class="file-tree"><div class="file-tree__header"><span>LOOPLINE_MASTER_ASSETS</span><i>•••</i></div><ul><li class="folder"><b>01_Brand</b><span>↘</span></li><li><i>AI</i>LL_Logo_Master_v03.ai</li><li><i>SVG</i>LL_Logo_RGB_Primary.svg</li><li><i>PDF</i>LL_Guidelines_v01.pdf</li><li class="folder"><b>02_Print</b><span>→</span></li><li class="folder"><b>03_Digital</b><span>→</span></li><li class="folder"><b>04_Presentations</b><span>↘</span></li><li><i>PPT</i>LL_Partner_Deck_16x9.pptx</li></ul></div><div class="preflight-list"><p class="kicker">PRE-FLIGHT / 12 OF 12 PASSED</p><div><span>01</span><b>COLOR</b><p>RGB, CMYK, and one-color variants</p><i>✓</i></div><div><span>02</span><b>PRINT</b><p>Bleed, trim, safety, rich black</p><i>✓</i></div><div><span>03</span><b>ACCESS</b><p>Contrast, reading order, alt text</p><i>✓</i></div><div><span>04</span><b>TYPE</b><p>Packaged or system-font fallback</p><i>✓</i></div><div><span>05</span><b>EXPORT</b><p>Naming, dimensions, compression</p><i>✓</i></div><div><span>06</span><b>HANDOFF</b><p>Editable source + quick-start guide</p><i>✓</i></div></div></div><div class="proof-map"><p class="kicker">CAPABILITY MAP</p><div><span>01</span><b>Brand strategy</b><p>Positioning, message architecture, voice</p></div><div><span>02</span><b>Identity</b><p>Logo system, color, typography, motion</p></div><div><span>03</span><b>Production</b><p>Print specs, templates, asset governance</p></div><div><span>04</span><b>Digital</b><p>Responsive UX, component logic, campaign</p></div><div><span>05</span><b>Presentation</b><p>Editable 16:9 client storytelling</p></div></div></section><section class="exploration-section" id="exploration"><div class="section-label"><span>09</span><p>CONCEPT EXPLORATION + CRITIQUE</p></div><div class="exploration-heading"><div><p class="kicker">DECISION HISTORY / WHAT DID NOT SHIP</p><h2>Three directions entered critique.<br/>One survived the system test.</h2></div><p>Because Loopline is a self-directed concept, this section does not invent client feedback. Instead, each route was reviewed against a consistent studio critique: clarity, distinctiveness, small-scale performance, motion potential, and low-cost reproduction.</p></div><div class="route-explorations"><article class="route-concept"><div class="route-concept__visual route-concept__visual--closed" aria-label="Rejected closed loop logo direction"><span class="route-concept__status">REJECTED / A</span><div class="closed-loop-mark"><i></i><i></i><i></i></div><b>CLOSED LOOP</b></div><div class="route-concept__copy"><span>FAMILIAR / TOO GENERIC</span><h3>A circular-arrow metaphor.</h3><p>Immediate sustainability recognition, but it read as recycling software and erased the human handoff.</p><ul><li>Strong at small sizes</li><li>Low category distinction</li><li>No clear source or destination</li></ul></div></article><article class="route-concept"><div class="route-concept__visual route-concept__visual--table" aria-label="Rejected shared table logo direction"><span class="route-concept__status">REJECTED / B</span><div class="shared-table-mark"><i></i><i></i><i></i><b></b></div><b>SHARED TABLE</b></div><div class="route-concept__copy"><span>HUMAN / TOO STATIC</span><h3>Three seats around one table.</h3><p>Warm and community-led, but the symbol felt stationary, lost legibility below 28 px, and resisted motion.</p><ul><li>Strong emotional cue</li><li>Weak logistics story</li><li>Fragile one-color detail</li></ul></div></article><article class="route-concept"><div class="route-concept__visual route-concept__visual--monogram" aria-label="Rejected route monogram logo direction"><span class="route-concept__status">REJECTED / C</span><div class="route-monogram-mark"><i></i><i></i><i></i></div><b>ROUTE MONOGRAM</b></div><div class="route-concept__copy"><span>DISTINCT / OVER-ENGINEERED</span><h3>An interlocking “LL” route.</h3><p>Ownable in isolation, but the reading required explanation and the tight turns filled in during low-cost output.</p><ul><li>High brand ownership</li><li>Slow first read</li><li>Poor office-print survival</li></ul></div></article></div><div class="selection-board"><div class="selection-final"><div class="selection-final__mark"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><div><p class="kicker">SELECTED / OPEN HANDOFF</p><h3>The final mark does more with less.</h3><p>One open turn establishes forward motion. Three nodes carry the operating story. A single-weight route survives 16 px, one ink, animation, signage, and a sponsor deck without changing meaning.</p><div class="selection-tags"><span>16 px ready</span><span>One-color safe</span><span>Motion-native</span><span>Story-led</span></div></div></div><div class="decision-matrix" role="table" aria-label="Logo concept decision matrix"><div class="decision-matrix__row decision-matrix__head" role="row"><span role="columnheader">Direction</span><span role="columnheader">Clarity</span><span role="columnheader">Ownability</span><span role="columnheader">16 px</span><span role="columnheader">System fit</span></div><div class="decision-matrix__row" role="row"><span role="cell">A / Closed loop</span><span role="cell">2/5</span><span role="cell">2/5</span><span role="cell">4/5</span><span role="cell">2/5</span></div><div class="decision-matrix__row" role="row"><span role="cell">B / Shared table</span><span role="cell">3/5</span><span role="cell">4/5</span><span role="cell">2/5</span><span role="cell">3/5</span></div><div class="decision-matrix__row" role="row"><span role="cell">C / Route monogram</span><span role="cell">2/5</span><span role="cell">4/5</span><span role="cell">2/5</span><span role="cell">3/5</span></div><div class="decision-matrix__row is-selected" role="row"><span role="cell">Final / Open handoff</span><span role="cell">5/5</span><span role="cell">4/5</span><span role="cell">5/5</span><span role="cell">5/5</span></div></div></div><div class="critique-revision"><div class="critique-revision__heading"><p class="kicker">ONE DESIGN CHANGED AFTER CRITIQUE</p><h3>Feedback became a visible hierarchy change.</h3><blockquote>“Can a kitchen manager understand the action before noticing the brand?”</blockquote></div><div class="revision-comparison"><article><div class="revision-label"><span>BEFORE / V01</span><b>Too many signals</b></div><div class="revision-poster revision-poster--before"><div class="revision-brand">LOOPLINE°</div><span class="revision-badge">JOIN THE LOOP</span><h4>GOOD FOOD<br/>HAS PLACES<br/>TO GO.</h4><p>Schedule surplus. Track impact. Feed neighbors. Build a more resourceful city.</p><div class="revision-routes"><i></i><i></i><i></i><i></i></div><b class="revision-stat">84 MEALS</b><div class="revision-cta">BECOME A PARTNER ↗</div></div><p class="revision-note">Five competing moves split attention between brand, proof, and action.</p></article><article><div class="revision-label"><span>AFTER / V03</span><b>Action first</b></div><div class="revision-poster revision-poster--after"><div class="revision-brand">LOOPLINE° <span>ROUTE 04</span></div><h4>PACK IT.<br/>POST IT.<br/><em>PASS IT ON.</em></h4><div class="revision-route"><i></i><i></i><i></i></div><p>One pickup can begin 84 meals.</p><div class="revision-cta">SCHEDULE A PICKUP <b>↗</b></div></div><p class="revision-note">One directive, one proof point, and one CTA create a two-second reading path.</p></article></div><div class="critique-actions"><div><span>01</span><b>Reduced</b><p>Five graphic moves to two repeatable brand behaviors.</p></div><div><span>02</span><b>Reordered</b><p>Action language before organizational explanation.</p></div><div><span>03</span><b>Strengthened</b><p>Contrast and hierarchy for office-print conditions.</p></div><div><span>04</span><b>Documented</b><p>The rationale so the choice remains reviewable.</p></div></div></div></section><section class="process-section section-coral" id="process"><div class="section-label section-label--light"><span>10</span><p>PROCESS + ACCOUNTABILITY</p></div><div class="process-heading"><p class="kicker">AN 8-WEEK PLAN WITH DECISIONS BUILT IN</p><h2>Move quickly.<br/>Make the work traceable.</h2><p>Each phase ends with a clear decision, a documented rationale, and an artifact that can be reviewed asynchronously.</p></div><div class="timeline"><article><div class="timeline-top"><span>01</span><b>Weeks 1–2</b></div><h3>Frame</h3><p>Stakeholder interviews, content audit, audience tensions, success criteria.</p></article><article><div class="timeline-top"><span>02</span><b>Weeks 3–4</b></div><h3>Focus</h3><p>Positioning, verbal system, identity routes, rapid application tests.</p></article><article><div class="timeline-top"><span>03</span><b>Weeks 5–6</b></div><h3>Form</h3><p>Selected identity, web prototype, campaign and presentation system.</p></article><article><div class="timeline-top"><span>04</span><b>Weeks 7–8</b></div><h3>Finish</h3><p>Production rollout, accessibility review, templates, training and handoff.</p></article></div><div class="accountability-strip"><div><span>WEEKLY</span><b>30-minute decision review</b></div><div><span>DAILY</span><b>Time + scope tracking</b></div><div><span>AT RISK</span><b>Flag within 24 hours</b></div><div><span>HANDOFF</span><b>Recorded walkthrough</b></div></div></section><section class="measurement-section"><div class="section-label"><span>11</span><p>MEASUREMENT PLAN</p></div><div class="measurement-grid"><div class="measurement-heading"><p class="kicker">CONCEPT PROJECT / TARGETS, NOT CLAIMS</p><h2>Define what success means before choosing what to polish.</h2><p>Because Loopline is a concept, these are proposed launch targets—not fabricated outcomes. A real engagement would baseline each metric during discovery.</p></div><div class="target-card"><span class="target-number">&lt;4</span><b>minutes</b><p>Target median time to schedule a first pickup.</p><i><span style="width:82%"></span></i></div><div class="target-card"><span class="target-number">80%</span><b>completion</b><p>Target partner onboarding completion rate.</p><i><span style="width:80%"></span></i></div><div class="target-card"><span class="target-number">AA</span><b>minimum</b><p>Accessibility target for core digital interactions.</p><i><span style="width:100%"></span></i></div><div class="target-card"><span class="target-number">2×</span><b>faster</b><p>Target reduction in routine asset-production time.</p><i><span style="width:72%"></span></i></div></div></section><section class="reflection-section section-dark"><div class="reflection-mark"><svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Loopline circular route mark"><path class="mark__line" d="M42.2 22A42 42 0 1 1 22 42.2"></path><path class="mark__turn" d="M22 42.2V22h20.2"></path><circle class="mark__node mark__node--one" cx="94.4" cy="35.9" r="7.5"></circle><circle class="mark__node mark__node--two" cx="84.6" cy="94.4" r="7.5"></circle><circle class="mark__node mark__node--three" cx="21.6" cy="74.4" r="7.5"></circle></svg></div><p class="kicker">THE DESIGN PRINCIPLE</p><blockquote>“The difference between a good-looking brand and a useful one is whether the <em>decisions still hold</em> when the conditions change.”</blockquote><p class="reflection-copy">Loopline was designed as infrastructure: expressive enough to earn attention, systematic enough to move across channels, and simple enough for a real team to maintain.</p></section><section class="next-project"><div><p class="kicker">JOCELYN MARTINEZ / BRAND · UX · DIGITAL</p><h2>Thoughtful systems.<br/>Beautifully finished.</h2></div><a class="next-link" href="index.html"><span>View portfolio</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a></section><footer><span>LOOPLINE / CONCEPT CASE STUDY © 2026</span><a href="#top">BACK TO TOP ↑</a><span>DESIGNED BY JOCELYN MARTINEZ</span></footer></main>
   <script>
@@ -8336,13 +9095,15 @@ a:focus-visible {
   const prototypeMotionNote = document.querySelector("[data-prototype-motion-note]");
   const prototypeTiming = document.querySelector("[data-prototype-timing]");
   const prototypeAutoplay = document.querySelector("[data-prototype-autoplay]");
-  const prototypeStateNames = ["STATE 01 / QUALIFY", "STATE 02 / SCHEDULE", "STATE 03 / CONFIRM"];
+  const prototypeStateNames = ["STATE 01 / QUALIFY", "STATE 02 / DESCRIBE", "STATE 03 / SCHEDULE", "STATE 04 / HANDOFF", "STATE 05 / TRACK"];
   const prototypeNotes = [
-    "Choice feedback fills the readiness rail, then the next scene enters along the route direction.",
-    "Date, time, route, and CTA update together so the decision remains coherent.",
-    "The stamp settles once; the status rail reveals ownership and the next expected event."
+    "Safety choices update the readiness rail so eligibility never depends on animation alone.",
+    "Category and quantity feedback show the exact load the route will need to carry.",
+    "The route draws before commitment; date, time, and CTA remain one synchronized decision.",
+    "Access selection identifies the physical entry point and the person who owns the handoff.",
+    "The stamp settles once; status reveals what is complete, current, and still pending."
   ];
-  const prototypeTimings = ["160–520 MS", "180–420 MS", "360–640 MS"];
+  const prototypeTimings = ["160–700 MS", "180–560 MS", "180–1,050 MS", "180–760 MS", "250–690 MS"];
   let prototypeFlowTimer = null;
   let prototypeFlowStep = 0;
 
@@ -8351,7 +9112,7 @@ a:focus-visible {
     screen.classList.remove("is-entering");
     void screen.offsetWidth;
     screen.classList.add("is-entering");
-    window.setTimeout(function () { screen.classList.remove("is-entering"); }, 560);
+    window.setTimeout(function () { screen.classList.remove("is-entering"); }, 740);
   }
 
   function selectPrototype(index, moveFocus = false) {
@@ -8408,56 +9169,72 @@ a:focus-visible {
 
   const eligibilityChecks = Array.from(document.querySelectorAll("[data-eligibility-check]"));
   function updateReadiness() {
-    const complete = eligibilityChecks.filter(function (button) {
-      return button.getAttribute("aria-pressed") === "true";
-    }).length;
+    const complete = eligibilityChecks.filter(function (button) { return button.getAttribute("aria-pressed") === "true"; }).length;
     const percent = Math.round((complete / Math.max(1, eligibilityChecks.length)) * 100);
-    document.querySelectorAll("[data-readiness-count]").forEach(function (node) {
-      node.textContent = complete + " / " + eligibilityChecks.length + (complete === eligibilityChecks.length ? " READY" : " CHECKED");
-    });
-    document.querySelectorAll("[data-readiness-percent]").forEach(function (node) {
-      node.textContent = percent + "%";
-    });
-    document.querySelectorAll("[data-readiness-bar]").forEach(function (node) {
-      node.style.setProperty("--readiness", percent + "%");
-      node.style.width = percent + "%";
-    });
+    document.querySelectorAll("[data-readiness-count]").forEach(function (node) { node.textContent = complete + " / " + eligibilityChecks.length + (complete === eligibilityChecks.length ? " READY" : " CHECKED"); });
+    document.querySelectorAll("[data-readiness-percent]").forEach(function (node) { node.textContent = percent + "%"; });
+    document.querySelectorAll("[data-readiness-bar]").forEach(function (node) { node.style.width = percent + "%"; });
   }
-
   eligibilityChecks.forEach(function (button) {
     button.addEventListener("click", function () {
       const pressed = button.getAttribute("aria-pressed") !== "true";
       button.setAttribute("aria-pressed", String(pressed));
-      const status = button.lastElementChild;
-      if (status) status.textContent = pressed ? "✓" : "○";
+      if (button.lastElementChild) button.lastElementChild.textContent = pressed ? "✓" : "○";
       updateReadiness();
     });
   });
 
+  const foodChoices = Array.from(document.querySelectorAll("[data-food-choice]"));
+  let quantity = 12;
+  function updateFoodSummary() {
+    const selected = foodChoices.filter(function (button) { return button.getAttribute("aria-pressed") === "true"; }).map(function (button) { return button.getAttribute("data-food-choice"); });
+    const label = selected.length ? selected.join(" + ") : "SELECT A CATEGORY";
+    document.querySelectorAll("[data-food-summary]").forEach(function (node) { node.textContent = label.toUpperCase(); });
+    document.querySelectorAll("[data-quantity-value], [data-mobile-quantity], [data-load-quantity]").forEach(function (node) { node.textContent = String(quantity); });
+    document.querySelectorAll("[data-describe-cta]").forEach(function (node) { node.textContent = "FIND A ROUTE FOR " + quantity + " TRAYS"; });
+  }
+  foodChoices.forEach(function (button) {
+    button.addEventListener("click", function () {
+      const pressed = button.getAttribute("aria-pressed") !== "true";
+      button.setAttribute("aria-pressed", String(pressed));
+      updateFoodSummary();
+    });
+  });
+  document.querySelectorAll("[data-quantity-minus]").forEach(function (button) {
+    button.addEventListener("click", function () { quantity = Math.max(1, quantity - 1); updateFoodSummary(); });
+  });
+  document.querySelectorAll("[data-quantity-plus]").forEach(function (button) {
+    button.addEventListener("click", function () { quantity = Math.min(30, quantity + 1); updateFoodSummary(); });
+  });
+
   let selectedDate = "TUE 19";
   let selectedTime = "11:30–12:15";
+  let selectedHandoff = "Dock B";
   function updateScheduleSummary() {
-    document.querySelectorAll("[data-schedule-summary]").forEach(function (node) {
-      node.textContent = "CONFIRM " + selectedDate + " · " + selectedTime;
-    });
+    document.querySelectorAll("[data-schedule-summary]").forEach(function (node) { node.textContent = "CHOOSE " + selectedDate + " · " + selectedTime; });
+    document.querySelectorAll("[data-mobile-window]").forEach(function (node) { node.textContent = selectedDate + " · " + selectedTime; });
+    document.querySelectorAll("[data-confirmation-window]").forEach(function (node) { node.innerHTML = selectedDate + " · " + selectedTime + "<br>WEST LOOP → PILSEN · " + selectedHandoff.toUpperCase(); });
+    document.querySelectorAll("[data-confirmation-time]").forEach(function (node) { node.textContent = selectedDate + " · " + selectedTime.split("–")[0]; });
   }
-
   document.querySelectorAll("[data-date-choice]").forEach(function (button) {
     button.addEventListener("click", function () {
-      document.querySelectorAll("[data-date-choice]").forEach(function (candidate) {
-        candidate.setAttribute("aria-pressed", String(candidate === button));
-      });
+      document.querySelectorAll("[data-date-choice]").forEach(function (candidate) { candidate.setAttribute("aria-pressed", String(candidate === button)); });
       selectedDate = button.getAttribute("data-date-label") || selectedDate;
       updateScheduleSummary();
     });
   });
-
   document.querySelectorAll("[data-time-choice]").forEach(function (button) {
     button.addEventListener("click", function () {
-      document.querySelectorAll("[data-time-choice]").forEach(function (candidate) {
-        candidate.setAttribute("aria-pressed", String(candidate === button));
-      });
+      document.querySelectorAll("[data-time-choice]").forEach(function (candidate) { candidate.setAttribute("aria-pressed", String(candidate === button)); });
       selectedTime = button.getAttribute("data-time-label") || selectedTime;
+      updateScheduleSummary();
+    });
+  });
+  document.querySelectorAll("[data-handoff-choice]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      document.querySelectorAll("[data-handoff-choice]").forEach(function (candidate) { candidate.setAttribute("aria-pressed", String(candidate === button)); });
+      selectedHandoff = button.getAttribute("data-handoff-choice") || selectedHandoff;
+      document.querySelectorAll("[data-handoff-summary], [data-handoff-route-entry], [data-mobile-handoff]").forEach(function (node) { node.textContent = selectedHandoff.toUpperCase(); });
       updateScheduleSummary();
     });
   });
@@ -8470,12 +9247,8 @@ a:focus-visible {
       prototypeAutoplay.textContent = "▶ Run guided flow";
     }
   }
-
   function runPrototypeFlow() {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      selectPrototype(2);
-      return;
-    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { selectPrototype(4); return; }
     stopPrototypeFlow();
     prototypeFlowStep = 0;
     selectPrototype(0);
@@ -8486,25 +9259,19 @@ a:focus-visible {
     const advance = function () {
       prototypeFlowTimer = window.setTimeout(function () {
         prototypeFlowStep += 1;
-        if (prototypeFlowStep > 2) {
-          stopPrototypeFlow();
-          return;
-        }
+        if (prototypeFlowStep > 4) { stopPrototypeFlow(); return; }
         selectPrototype(prototypeFlowStep);
         advance();
-      }, prototypeFlowStep === 0 ? 1900 : 2200);
+      }, prototypeFlowStep === 0 ? 2600 : 2900);
     };
     advance();
   }
-
   if (prototypeAutoplay) {
-    prototypeAutoplay.addEventListener("click", function () {
-      if (prototypeFlowTimer) stopPrototypeFlow();
-      else runPrototypeFlow();
-    });
+    prototypeAutoplay.addEventListener("click", function () { if (prototypeFlowTimer) stopPrototypeFlow(); else runPrototypeFlow(); });
   }
 
   updateReadiness();
+  updateFoodSummary();
   updateScheduleSummary();
   selectPrototype(0);
 
@@ -8517,11 +9284,12 @@ a:focus-visible {
   const motionProgress = document.querySelector("[data-motion-progress]");
   const motionResult = document.querySelector("[data-motion-result]");
   const motionTimecode = document.querySelector("[data-motion-timecode]");
+  const motionHold = document.querySelector("[data-motion-hold]");
   const motionNodes = Array.from(document.querySelectorAll("[data-motion-node]"));
   const motionCaptions = Array.from(document.querySelectorAll("[data-motion-caption]"));
   const motionChapters = Array.from(document.querySelectorAll("[data-motion-jump]"));
-  const motionDuration = 7200;
-  const motionThresholds = [0, 0.23, 0.49, 0.77];
+  const motionDuration = 12000;
+  const motionThresholds = [0, 0.25, 0.5, 0.75];
   const phaseWords = ["POST", "MATCH", "MOVE", "ARRIVE"];
   let motionFrame = null;
   let motionStartedAt = 0;
@@ -8531,75 +9299,67 @@ a:focus-visible {
   let motionHasAutoplayed = false;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  function clamp(value, min, max) {
-    return Math.min(max, Math.max(min, value));
-  }
-
-  function easeInOutCubic(value) {
-    return value < 0.5 ? 4 * value * value * value : 1 - Math.pow(-2 * value + 2, 3) / 2;
-  }
-
+  function clamp(value, min, max) { return Math.min(max, Math.max(min, value)); }
+  function easeInOutCubic(value) { return value < 0.5 ? 4 * value * value * value : 1 - Math.pow(-2 * value + 2, 3) / 2; }
   function formatMotionTime(milliseconds) {
     const total = Math.round(milliseconds / 10);
     const seconds = Math.floor(total / 100);
     const hundredths = String(total % 100).padStart(2, "0");
-    return "00:" + String(seconds).padStart(2, "0") + ":" + hundredths + " / 00:07:20";
+    return "00:" + String(seconds).padStart(2, "0") + ":" + hundredths + " / 00:12:00";
   }
-
   function phaseForProgress(progress) {
-    if (progress >= motionThresholds[3]) return 3;
-    if (progress >= motionThresholds[2]) return 2;
-    if (progress >= motionThresholds[1]) return 1;
+    if (progress >= 0.75) return 3;
+    if (progress >= 0.5) return 2;
+    if (progress >= 0.25) return 1;
     return 0;
   }
-
+  function segmentedRouteProgress(progress) {
+    const phase = phaseForProgress(progress);
+    if (phase >= 3) return 1;
+    const local = (progress - motionThresholds[phase]) / 0.25;
+    const movement = easeInOutCubic(clamp((local - 0.22) / 0.56, 0, 1));
+    return (phase + movement) / 3;
+  }
   function renderMotion(progress) {
     if (!motionStage || !motionPath || !motionActivePath || !motionRunner) return;
     const phase = phaseForProgress(progress);
-    const routeProgress = easeInOutCubic(clamp((progress - 0.035) / 0.82, 0, 1));
+    const local = (progress - motionThresholds[phase]) / 0.25;
+    const holding = phase === 3 || local < 0.22 || local > 0.78;
+    const routeProgress = segmentedRouteProgress(progress);
     const point = motionPath.getPointAtLength(motionLength * routeProgress);
     motionRunner.setAttribute("transform", "translate(" + point.x.toFixed(2) + " " + point.y.toFixed(2) + ")");
-    motionRunner.style.opacity = progress < 0.91 ? "1" : "0";
+    motionRunner.style.opacity = progress < 0.9 ? "1" : "0";
     motionActivePath.style.strokeDashoffset = String(motionLength * (1 - routeProgress));
     if (motionProgress) motionProgress.style.transform = "scaleX(" + progress.toFixed(4) + ")";
     if (motionTimecode) motionTimecode.textContent = formatMotionTime(progress * motionDuration);
+    if (motionHold) {
+      motionHold.textContent = holding ? "READ / HOLD" : "ROUTE / MOVE";
+      motionHold.classList.toggle("is-holding", holding);
+    }
     motionStage.setAttribute("data-phase-word", phaseWords[phase]);
-    motionNodes.forEach(function (node, index) {
-      node.classList.toggle("is-reached", index <= phase);
-    });
-    motionCaptions.forEach(function (caption, index) {
-      caption.classList.toggle("is-current", index === phase && progress < 0.91);
-    });
-    motionChapters.forEach(function (chapter, index) {
-      chapter.classList.toggle("is-current", index === phase);
-    });
-    if (motionResult) motionResult.classList.toggle("is-visible", progress >= 0.91);
+    motionNodes.forEach(function (node, index) { node.classList.toggle("is-reached", index <= phase); });
+    motionCaptions.forEach(function (caption, index) { caption.classList.toggle("is-current", index === phase && progress < 0.86); });
+    motionChapters.forEach(function (chapter, index) { chapter.classList.toggle("is-current", index === phase); });
+    if (motionResult) motionResult.classList.toggle("is-visible", progress >= 0.86);
   }
-
   function updateMotionButton() {
     if (!motionToggle) return;
     motionToggle.setAttribute("aria-pressed", String(motionPlaying));
     motionToggle.textContent = motionPlaying ? "Ⅱ Pause sequence" : (motionElapsed > 0 && motionElapsed < motionDuration ? "▶ Resume sequence" : "▶ Play sequence");
   }
-
   function pauseMotion() {
     if (motionFrame) cancelAnimationFrame(motionFrame);
     motionFrame = null;
     motionPlaying = false;
     updateMotionButton();
   }
-
   function motionTick(now) {
     if (!motionPlaying) return;
     motionElapsed = Math.min(motionDuration, now - motionStartedAt);
     renderMotion(motionElapsed / motionDuration);
-    if (motionElapsed >= motionDuration) {
-      pauseMotion();
-      return;
-    }
+    if (motionElapsed >= motionDuration) { pauseMotion(); return; }
     motionFrame = requestAnimationFrame(motionTick);
   }
-
   function playMotion(restart = false) {
     if (!motionStage || reduceMotion.matches) {
       motionElapsed = motionDuration;
@@ -8614,29 +9374,14 @@ a:focus-visible {
     if (motionFrame) cancelAnimationFrame(motionFrame);
     motionFrame = requestAnimationFrame(motionTick);
   }
-
   if (motionPath && motionActivePath) {
     motionLength = motionPath.getTotalLength();
     motionActivePath.style.strokeDasharray = String(motionLength);
     motionActivePath.style.strokeDashoffset = String(motionLength);
     renderMotion(reduceMotion.matches ? 1 : 0);
   }
-
-  if (motionToggle) {
-    motionToggle.addEventListener("click", function () {
-      if (motionPlaying) pauseMotion();
-      else playMotion(false);
-    });
-  }
-
-  if (motionReplay) {
-    motionReplay.addEventListener("click", function () {
-      motionElapsed = 0;
-      renderMotion(0);
-      playMotion(true);
-    });
-  }
-
+  if (motionToggle) motionToggle.addEventListener("click", function () { if (motionPlaying) pauseMotion(); else playMotion(false); });
+  if (motionReplay) motionReplay.addEventListener("click", function () { motionElapsed = 0; renderMotion(0); playMotion(true); });
   motionChapters.forEach(function (button) {
     button.addEventListener("click", function () {
       const index = Number(button.getAttribute("data-motion-jump"));
@@ -8646,7 +9391,6 @@ a:focus-visible {
       renderMotion(motionElapsed / motionDuration);
     });
   });
-
   if (motionStage && "IntersectionObserver" in window) {
     const observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -8658,11 +9402,7 @@ a:focus-visible {
     }, { threshold: [0.45] });
     observer.observe(motionStage);
   }
-
-  document.addEventListener("visibilitychange", function () {
-    if (document.hidden && motionPlaying) pauseMotion();
-  });
-
+  document.addEventListener("visibilitychange", function () { if (document.hidden && motionPlaying) pauseMotion(); });
   reduceMotion.addEventListener?.("change", function () {
     pauseMotion();
     motionElapsed = reduceMotion.matches ? motionDuration : 0;
@@ -8681,30 +9421,15 @@ a:focus-visible {
       ring?.getAnimations().forEach(function (animation) { animation.cancel(); });
       if (kind === "advance") {
         const distance = Math.max(0, (demo.querySelector(".motion-lab__demo")?.clientWidth || 240) * 0.58);
-        target.animate(
-          [{ transform: "translateX(0) scale(.88)", opacity: 0.55 }, { offset: 0.18, transform: "translateX(0) scale(1)", opacity: 1 }, { transform: "translateX(" + distance + "px) scale(1)", opacity: 1 }],
-          { duration: 760, easing: "cubic-bezier(.22,1,.36,1)", fill: "none" }
-        );
+        target.animate([{ transform: "translateX(0) scale(.88)", opacity: 0.55 }, { offset: 0.18, transform: "translateX(0) scale(1)", opacity: 1 }, { transform: "translateX(" + distance + "px) scale(1)", opacity: 1 }], { duration: 920, easing: "cubic-bezier(.22,1,.36,1)" });
       } else if (kind === "confirm") {
-        target.animate(
-          [{ transform: "scale(.82) rotate(-7deg)", opacity: 0 }, { offset: 0.72, transform: "scale(1.025) rotate(1deg)", opacity: 1 }, { transform: "scale(1)", opacity: 1 }],
-          { duration: 480, easing: "cubic-bezier(.22,1,.36,1)" }
-        );
+        target.animate([{ transform: "scale(.82) rotate(-7deg)", opacity: 0 }, { offset: 0.72, transform: "scale(1.025) rotate(1deg)", opacity: 1 }, { transform: "scale(1)", opacity: 1 }], { duration: 620, easing: "cubic-bezier(.22,1,.36,1)" });
       } else if (kind === "attention") {
-        target.animate(
-          [{ transform: "scale(.96)" }, { offset: 0.28, transform: "scale(1.025)" }, { transform: "scale(1)" }],
-          { duration: 720, easing: "ease-out" }
-        );
-        ring?.animate(
-          [{ transform: "scale(.72)", opacity: 0 }, { offset: 0.22, opacity: 0.65 }, { transform: "scale(1.35)", opacity: 0 }],
-          { duration: 720, easing: "ease-out" }
-        );
+        target.animate([{ transform: "scale(.96)" }, { offset: 0.28, transform: "scale(1.025)" }, { transform: "scale(1)" }], { duration: 900, easing: "ease-out" });
+        ring?.animate([{ transform: "scale(.72)", opacity: 0 }, { offset: 0.22, opacity: 0.65 }, { transform: "scale(1.35)", opacity: 0 }], { duration: 900, easing: "ease-out" });
       } else if (kind === "continuity") {
         Array.from(target.children).forEach(function (row, index) {
-          row.animate(
-            [{ transform: "translateY(7px)", opacity: 0.35 }, { transform: "translateY(0)", opacity: 1 }],
-            { duration: 360, delay: index * 120, easing: "cubic-bezier(.22,1,.36,1)", fill: "both" }
-          );
+          row.animate([{ transform: "translateY(7px)", opacity: 0.35 }, { transform: "translateY(0)", opacity: 1 }], { duration: 440, delay: index * 160, easing: "cubic-bezier(.22,1,.36,1)", fill: "both" });
         });
       }
     });
