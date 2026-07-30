@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aurea is a self-directed UX/UI and visual-design concept by Jocelyn Martinez, exploring a calmer way to discover, understand, and collect fragrance.">
+    <meta name="description" content="Aurea is a product strategy, UX, UI, and visual-design case study by Jocelyn Martinez—an explainable fragrance discovery, comparison, sampling, and collection system.">
     <meta name="theme-color" content="#f7f2ed">
-    <meta property="og:title" content="Aurea — UX/UI Case Study by Jocelyn Martinez">
-    <meta property="og:description" content="An editorial fragrance discovery and collection concept balancing sensory storytelling with useful product information.">
+    <meta property="og:title" content="Aurea — Product Strategy, UX &amp; UI Case Study by Jocelyn Martinez">
+    <meta property="og:description" content="An editorial fragrance system balancing sensory storytelling, decision support, sampling, and a private record of real-world wear.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="aurea/board-discovery.webp">
-    <title>Aurea — UX/UI Case Study | Jocelyn Martinez</title>
+    <title>Aurea — Product Strategy, UX &amp; UI Case Study | Jocelyn Martinez</title>
+    <script>document.documentElement.classList.add('js');</script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,9 +23,10 @@
             --surface: #fffdfb;
             --ink: #282321;
             --body: #5c5551;
-            --muted: #837975;
-            --rose: #ae747c;
-            --rose-dark: #7d4c54;
+            --muted: #6f6662;
+            --rose: #925d66;
+            --rose-brand: #ae747c;
+            --rose-dark: #70434b;
             --rose-soft: #ead8d8;
             --taupe: #b69c8b;
             --sage: #9a9b8c;
@@ -39,7 +41,7 @@
         }
 
         *, *::before, *::after { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 144px; }
         body {
             margin: 0;
             background: var(--paper);
@@ -66,6 +68,20 @@
         button, a { -webkit-tap-highlight-color: transparent; }
         button { font: inherit; }
         ::selection { background: var(--rose-soft); color: var(--ink); }
+
+        .reading-progress {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 2200;
+            height: 3px;
+            pointer-events: none;
+        }
+        .reading-progress span {
+            display: block;
+            width: 0;
+            height: 100%;
+            background: var(--rose-dark);
+        }
 
         :focus-visible {
             outline: 3px solid var(--rose);
@@ -141,6 +157,37 @@
             gap: .55rem;
         }
         .back-link span { font-size: 1.05rem; }
+
+        .case-nav {
+            position: sticky;
+            top: 82px;
+            z-index: 90;
+            border-block: 1px solid var(--line);
+            background: rgba(248, 244, 239, .92);
+            backdrop-filter: blur(16px);
+        }
+        .case-nav-inner {
+            display: flex;
+            gap: 1.8rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .case-nav-inner::-webkit-scrollbar { display: none; }
+        .case-nav a {
+            flex: 0 0 auto;
+            padding: .9rem 0;
+            color: var(--muted);
+            font-size: .66rem;
+            font-weight: 700;
+            letter-spacing: .11em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        .case-nav a:hover { color: var(--rose-dark); }
+        .case-nav a[aria-current="location"] {
+            color: var(--ink);
+            box-shadow: inset 0 -2px 0 var(--rose-dark);
+        }
 
         .eyebrow {
             display: inline-flex;
@@ -319,6 +366,7 @@
         .section {
             padding-block: clamp(6.5rem, 12vw, 11rem);
             border-top: 1px solid var(--line-soft);
+            scroll-margin-top: 144px;
         }
         .section-heading {
             display: grid;
@@ -328,7 +376,7 @@
         }
         .section-index {
             position: sticky;
-            top: 120px;
+            top: 154px;
             color: var(--muted);
             font-size: .68rem;
             font-weight: 700;
@@ -377,6 +425,168 @@
             font-size: .93rem;
         }
         .scope-note strong { color: var(--ink); }
+
+        .product-frame {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1px;
+            overflow: hidden;
+            margin: 3.5rem 0 0;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            background: var(--line);
+        }
+        .product-frame > div {
+            min-height: 220px;
+            padding: 1.8rem;
+            background: var(--surface);
+        }
+        .product-frame dt {
+            margin-bottom: 1.25rem;
+            color: var(--rose-dark);
+            font-size: .62rem;
+            font-weight: 700;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+        }
+        .product-frame dd {
+            margin: 0;
+            color: var(--body);
+            font-size: .88rem;
+            line-height: 1.7;
+        }
+        .product-frame dd strong {
+            display: block;
+            margin-bottom: .55rem;
+            color: var(--ink);
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.1;
+        }
+
+        .system-table-wrap {
+            margin-top: 3rem;
+            overflow-x: auto;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            background: var(--surface);
+        }
+        .system-table {
+            width: 100%;
+            min-width: 760px;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        .system-table th,
+        .system-table td {
+            padding: 1.2rem 1.3rem;
+            border-bottom: 1px solid var(--line-soft);
+            vertical-align: top;
+        }
+        .system-table tr:last-child td { border-bottom: 0; }
+        .system-table th {
+            background: var(--ink);
+            color: rgba(255,255,255,.75);
+            font-size: .61rem;
+            letter-spacing: .11em;
+            text-transform: uppercase;
+        }
+        .system-table td {
+            color: var(--body);
+            font-size: .83rem;
+            line-height: 1.62;
+        }
+        .system-table td:first-child { color: var(--ink); font-weight: 700; }
+
+        .decision-ledger {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: .8rem 1.25rem;
+            margin: 1.5rem 0 0;
+            padding-top: 1.35rem;
+            border-top: 1px solid var(--line);
+        }
+        .decision-ledger dt {
+            margin-bottom: .25rem;
+            color: var(--rose-dark);
+            font-size: .62rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+        .decision-ledger dd {
+            margin: 0;
+            color: var(--body);
+            font-size: .78rem;
+            line-height: 1.58;
+        }
+
+        .signal-grid,
+        .quality-grid,
+        .delivery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        .signal-card,
+        .phase-card {
+            padding: 1.7rem;
+            border: 1px solid var(--line-soft);
+            border-radius: var(--radius-md);
+            background: var(--surface);
+        }
+        .signal-card small,
+        .phase-card small {
+            display: block;
+            margin-bottom: 1.2rem;
+            color: var(--rose-dark);
+            font-size: .61rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+        .signal-card h3,
+        .phase-card h3 {
+            margin-bottom: .65rem;
+            font-family: var(--sans);
+            font-size: .96rem;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+        .signal-card p,
+        .phase-card p {
+            margin: 0;
+            font-size: .83rem;
+            line-height: 1.68;
+        }
+        .phase-card ul {
+            display: grid;
+            gap: .6rem;
+            margin: 1rem 0 0;
+            padding-left: 1.05rem;
+            color: var(--body);
+            font-size: .8rem;
+        }
+        .phase-card.gated { background: var(--paper); border-color: rgba(112,67,75,.28); }
+
+        .section-bridge {
+            margin-top: 3rem;
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            background: var(--ink);
+            color: white;
+        }
+        .section-bridge strong {
+            display: block;
+            margin-bottom: .5rem;
+            color: white;
+            font-size: .68rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+        .section-bridge p { max-width: 850px; margin: 0; color: rgba(255,255,255,.76); }
 
         .journey {
             margin-top: 4rem;
@@ -507,7 +717,7 @@
             overflow: clip;
         }
         .swatch-warm { background: #f8f4ef; }
-        .swatch-rose { background: #ae747c; }
+        .swatch-rose { background: var(--rose-brand); }
         .swatch-taupe { background: #b69c8b; }
         .swatch-ink { background: #282321; }
         .gallery-intro {
@@ -522,6 +732,7 @@
             display: grid;
             gap: clamp(6rem, 12vw, 10rem);
         }
+        .gallery-intro + .system-table-wrap { margin-bottom: 5rem; }
         .gallery-chapter {
             display: grid;
             gap: 2rem;
@@ -659,6 +870,7 @@
             font-weight: 500;
         }
         .validation-card p { margin-bottom: 0; font-size: .93rem; }
+        .validation-card b { color: var(--ink); }
 
         .reflection {
             background: var(--surface);
@@ -731,7 +943,7 @@
             background: rgba(35,30,28,.92);
             backdrop-filter: blur(16px);
         }
-        .lightbox.open { display: flex; }
+        .lightbox:not([hidden]) { display: flex; }
         .lightbox-dialog {
             width: min(100%, 1100px);
             max-height: 92vh;
@@ -761,18 +973,22 @@
             font-size: 1.5rem;
         }
 
-        .reveal {
+        .js .reveal {
             opacity: 0;
             transform: translateY(28px);
             transition: opacity .75s ease, transform .75s cubic-bezier(.16,1,.3,1);
         }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .js .reveal.visible { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 1020px) {
             .hero-grid,
             .section-heading,
             .reflection-layout,
             .system-grid { grid-template-columns: 1fr; }
+            .product-frame,
+            .signal-grid,
+            .quality-grid,
+            .delivery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .hero { padding-top: 8.5rem; }
             .hero-visual { min-height: 560px; }
             .hero-frame { width: min(78vw, 440px); }
@@ -788,6 +1004,7 @@
         @media (max-width: 760px) {
             .page-shell { width: min(calc(100% - 2rem), var(--content)); }
             .nav-inner { min-height: 68px; }
+            .case-nav { top: 68px; }
             .nav-links a:not(.back-link) { display: none; }
             h1 { font-size: clamp(4rem, 24vw, 6.6rem); }
             h1 em { margin-left: 1.4rem; }
@@ -801,7 +1018,12 @@
             .summary-grid,
             .journey,
             .decision-grid,
-            .validation-grid { grid-template-columns: 1fr; }
+            .validation-grid,
+            .product-frame,
+            .signal-grid,
+            .quality-grid,
+            .delivery-grid,
+            .decision-ledger { grid-template-columns: 1fr; }
             .journey-step,
             .journey-step:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); }
             .journey-step:last-child { border-bottom: 0; }
@@ -820,19 +1042,20 @@
                 transition-duration: .01ms !important;
                 scroll-behavior: auto !important;
             }
-            .reveal { opacity: 1; transform: none; }
+            .js .reveal { opacity: 1; transform: none; }
         }
     </style>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to case study</a>
+    <div class="reading-progress" aria-hidden="true"><span id="readingProgress"></span></div>
 
     <nav class="nav" aria-label="Case study navigation">
         <div class="nav-inner page-shell">
             <a class="brand" href="index.html">Jocelyn Martinez</a>
             <div class="nav-links">
-                <a href="#overview">Overview</a>
-                <a href="#screens">Screens</a>
+                <a href="#screens">Interface</a>
+                <a href="#validation">Evidence plan</a>
                 <a class="back-link" href="index.html#portfolio"><span aria-hidden="true">←</span> Back to work</a>
             </div>
         </div>
@@ -842,9 +1065,9 @@
         <header class="hero">
             <div class="hero-grid page-shell">
                 <div class="hero-copy reveal">
-                    <span class="eyebrow">Self-directed UX/UI concept</span>
+                    <span class="eyebrow">Independent product concept · Strategy, UX, UI &amp; art direction</span>
                     <h1>Aurea <em>Olfactory Archive</em></h1>
-                    <p class="hero-lede">A fragrance discovery and collection experience that pairs editorial storytelling with clear product information—helping enthusiasts browse by feeling, compare performance, and build a personal scent archive.</p>
+                    <p class="hero-lede">An explainable fragrance system that helps people translate taste into a credible sample shortlist, compare how scents behave, and build a private record of real-world wear—without pretending a recommendation can predict chemistry.</p>
                     <div class="hero-actions">
                         <a class="button primary" href="#screens">View the interface</a>
                         <a class="button secondary" href="#overview">Read the case study</a>
@@ -853,7 +1076,7 @@
 
                 <div class="hero-visual reveal">
                     <div class="hero-frame">
-                        <img src="aurea/discover-home.webp" alt="Redesigned Aurea fragrance discovery home screen">
+                        <img src="aurea/discover-home.webp" alt="Redesigned Aurea fragrance discovery home screen" fetchpriority="high" decoding="async">
                     </div>
                     <div class="hero-stamp" aria-hidden="true">Story,<br>structure<br>&amp; scent</div>
                 </div>
@@ -861,131 +1084,183 @@
 
             <dl class="project-facts page-shell reveal">
                 <div class="fact">
-                    <dt>Project type</dt>
-                    <dd>Self-directed product concept</dd>
+                    <dt>Role &amp; ownership</dt>
+                    <dd>Product strategy, UX architecture, interaction, UI, art direction</dd>
                 </div>
                 <div class="fact">
-                    <dt>My role</dt>
-                    <dd>UX/UI and visual designer</dd>
+                    <dt>Product scope</dt>
+                    <dd>Discovery, comparison, sampling, collection, wear logging</dd>
                 </div>
                 <div class="fact">
-                    <dt>Focus</dt>
-                    <dd>Discovery, comparison, collection</dd>
+                    <dt>Design outcome</dt>
+                    <dd>End-to-end product model, UI system, 10 high-fidelity moments</dd>
                 </div>
                 <div class="fact">
-                    <dt>Deliverables</dt>
-                    <dd>Experience structure, UI system, high-fidelity screens</dd>
+                    <dt>Evidence status</dt>
+                    <dd>Concept-stage hypotheses; no claims of launch or validated impact</dd>
                 </div>
             </dl>
         </header>
+
+        <nav class="case-nav" aria-label="Case study sections">
+            <div class="case-nav-inner page-shell">
+                <a href="#overview">Brief</a>
+                <a href="#model">Product model</a>
+                <a href="#decisions">Decisions</a>
+                <a href="#system">System</a>
+                <a href="#screens">Interface</a>
+                <a href="#validation">Evidence</a>
+                <a href="#delivery">Delivery</a>
+                <a href="#reflection">Reflection</a>
+            </div>
+        </nav>
 
         <section class="section" id="overview">
             <div class="section-heading page-shell">
                 <div class="section-index">01 / Overview</div>
                 <div class="section-copy reveal">
-                    <span class="eyebrow">The opportunity</span>
-                    <h2>Make fragrance data feel as considered as the product itself.</h2>
-                    <p class="lead">Fragrance enthusiasts need practical information—notes, longevity, projection, season, and occasion—but dense databases can make discovery feel like research rather than pleasure.</p>
-                    <p class="measure">Aurea explores a quieter alternative. The concept gives imagery and narrative enough room to create desire, while keeping performance details easy to find when the user is ready to compare. The goal was not to remove information, but to sequence it more thoughtfully.</p>
+                    <span class="eyebrow">Executive brief</span>
+                    <h2>Fragrance is invisible, subjective, and time-based. The interface has to make uncertainty useful.</h2>
+                    <p class="lead">Digital fragrance shopping often reduces a changing sensory experience to a note pyramid, crowd rating, and polished campaign image. Those signals can inspire interest, but they cannot tell one person exactly how a scent will develop on their skin, in their climate, or across a day.</p>
+                    <p class="measure">Aurea reframes the product around a more credible job: help someone form a sample shortlist, understand why a recommendation fits, compare meaningful differences, and learn from their own wear history. Editorial storytelling creates desire; provenance, ranges, and personal evidence support judgment.</p>
 
-                    <div class="summary-grid">
-                        <article class="summary-card">
-                            <span class="number">01</span>
-                            <h3>Browse by feeling</h3>
-                            <p>Lead with mood, season, and visual character so discovery can begin before a user knows a specific brand or note.</p>
-                        </article>
-                        <article class="summary-card">
-                            <span class="number">02</span>
-                            <h3>Reveal useful depth</h3>
-                            <p>Keep technical details available without asking users to process every metric at the beginning of the journey.</p>
-                        </article>
-                        <article class="summary-card">
-                            <span class="number">03</span>
-                            <h3>Build a personal archive</h3>
-                            <p>Turn saving into collection-building, helping each profile feel expressive rather than purely transactional.</p>
-                        </article>
-                    </div>
+                    <dl class="product-frame">
+                        <div><dt>Problem</dt><dd><strong>High consideration, low certainty</strong>Shoppers must compare subjective language, variable performance, price, availability, and identity before they can smell the product.</dd></div>
+                        <div><dt>Product bet</dt><dd><strong>Explain, then encourage sampling</strong>A transparent fit rationale plus practical comparison can create more confidence than an unexplained “perfect match.”</dd></div>
+                        <div><dt>Success definition</dt><dd><strong>Shortlist, sample, learn</strong>A user can narrow options, understand the tradeoff, record a wear, and recover that evidence before a future decision.</dd></div>
+                        <div><dt>Non-goal</dt><dd><strong>Maximize blind purchase</strong>The concept does not claim to predict chemistry or optimize cart conversion at the expense of trust and informed sampling.</dd></div>
+                    </dl>
 
-                    <div class="scope-note"><strong>Project scope:</strong> Aurea is a self-initiated interface exploration. The screens demonstrate product strategy and visual direction; they have not yet been validated through formal user research or released as a working product.</div>
+                    <div class="scope-note"><strong>Evidence boundary:</strong> Aurea is an independently developed product concept, not a released commerce service. The product model and high-fidelity screens establish a testable hypothesis; they do not prove demand, recommendation accuracy, accessibility conformance, inventory feasibility, or customer impact.</div>
                 </div>
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="model">
             <div class="section-heading page-shell">
-                <div class="section-index">02 / Experience</div>
+                <div class="section-index">02 / Product model</div>
                 <div class="section-copy reveal">
-                    <span class="eyebrow">The core journey</span>
-                    <h2>A four-part path from curiosity to collection.</h2>
-                    <p class="measure">The experience is structured around the questions fragrance shoppers naturally move through: What draws me in? How does it perform? What does it feel like? Do I want to remember or own it?</p>
+                    <span class="eyebrow">Lifecycle and state architecture</span>
+                    <h2>Discovery becomes useful when it creates evidence for the next decision.</h2>
+                    <p class="measure">The journey moves from inspiration to a credible sample decision, then turns real-world wear into durable personal context. Each stage has a different responsibility so marketing language, catalog facts, community reports, and private experience do not blur into one false certainty.</p>
 
                     <ol class="journey">
                         <li class="journey-step">
                             <small>Step 01</small>
-                            <h3>Discover</h3>
-                            <p>Explore recommendations through mood, season, and visual storytelling rather than an overwhelming product grid.</p>
+                            <h3>Declare intent</h3>
+                            <p>Begin with mood, occasion, known notes, brand, budget, format, or direct search—and skip guided discovery entirely.</p>
                         </li>
                         <li class="journey-step">
                             <small>Step 02</small>
-                            <h3>Evaluate</h3>
-                            <p>Review notes, longevity, projection, and wear context in a compact hierarchy designed for quick comparison.</p>
+                            <h3>Inspect the fit</h3>
+                            <p>See which explicit inputs and catalog attributes shaped the match, then correct any signal that feels wrong.</p>
                         </li>
                         <li class="journey-step">
                             <small>Step 03</small>
-                            <h3>Understand</h3>
-                            <p>Read a concise editorial brief that translates abstract notes into an atmosphere, memory, or point of view.</p>
+                            <h3>Compare and sample</h3>
+                            <p>Contrast scent profile, reported ranges, price, availability, ingredients, and format before choosing a sample path.</p>
                         </li>
                         <li class="journey-step">
                             <small>Step 04</small>
-                            <h3>Collect</h3>
-                            <p>Save fragrances into a personal archive that supports identity, memory, and future purchase decisions.</p>
+                            <h3>Wear and refine</h3>
+                            <p>Log context and personal performance, then use that evidence to update the archive and future shortlists.</p>
                         </li>
                     </ol>
+
+                    <div class="system-table-wrap">
+                        <table class="system-table">
+                            <thead><tr><th scope="col">Mode</th><th scope="col">User question</th><th scope="col">System responsibility</th><th scope="col">Durable state</th></tr></thead>
+                            <tbody>
+                                <tr><td>Discover</td><td>What might fit the moment?</td><td>Translate explicit intent into a diverse shortlist and show why each option entered it.</td><td>Session inputs, shortlist, corrections</td></tr>
+                                <tr><td>Evaluate</td><td>What is meaningfully different?</td><td>Separate brand facts, editorial interpretation, community ranges, price, and availability.</td><td>Comparison set, rationale, sample option</td></tr>
+                                <tr><td>Wear</td><td>How did it behave for me?</td><td>Capture date, climate, application, duration, projection, impression, and privacy state.</td><td>Wear log linked to fragrance and context</td></tr>
+                                <tr><td>Return</td><td>What have I learned about my taste?</td><td>Restore owned, sampled, wish-list, and retired states without turning the archive into a promotional feed.</td><td>Wardrobe, history, personal patterns</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="signal-grid" aria-label="Product boundary conditions" role="group">
+                        <article class="signal-card"><small>Escape route</small><h3>Guidance never blocks direct access</h3><p>Known-title search, house, note, price, ingredient, format, and availability remain first-class paths outside the scent portrait.</p></article>
+                        <article class="signal-card"><small>Uncertainty</small><h3>Performance is a range, not a promise</h3><p>Climate, skin, batch, application, and source accompany longevity and projection so a reported average is not presented as universal truth.</p></article>
+                        <article class="signal-card"><small>Privacy</small><h3>The archive belongs to the wearer</h3><p>Wear logs are private by default, exportable, deletable, and never silently repurposed for advertising or permanent identity labels.</p></article>
+                    </div>
+
+                    <div class="section-bridge"><strong>System principle</strong><p>Aurea may translate and explain signals; it must not claim to know how a fragrance will smell on a person before they experience it. The responsible outcome is a better sample decision—not algorithmic certainty.</p></div>
                 </div>
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="decisions">
             <div class="section-heading page-shell">
-                <div class="section-index">03 / Decisions</div>
+                <div class="section-index">03 / Decision ledger</div>
                 <div class="section-copy reveal">
-                    <span class="eyebrow">Design rationale</span>
-                    <h2>Editorial atmosphere, anchored by practical hierarchy.</h2>
-                    <p class="measure">Luxury presentation only works when it still helps people make decisions. I used pacing, typography, and progressive disclosure to create a refined visual experience without hiding the information that matters.</p>
+                    <span class="eyebrow">Tradeoffs, guardrails, and failure modes</span>
+                    <h2>The signature ideas only work if the product exposes their limits.</h2>
+                    <p class="measure">I documented the tension behind each major choice so a product team could preserve the intent through delivery, test the underlying premise, and reverse a design that looks beautiful but produces weak or misleading decisions.</p>
 
                     <div class="decision-grid">
                         <article class="decision">
-                            <span class="decision-kicker">Information hierarchy</span>
-                            <h3>Story first, specifications second.</h3>
-                            <p>Imagery, name, and mood establish an immediate impression. Notes and performance details sit one layer deeper, allowing the interface to support both casual browsing and informed comparison.</p>
+                            <span class="decision-kicker">Intent model</span>
+                            <h3>Use a portrait as a starting point—not a personality verdict.</h3>
+                            <p>Mood and visual choices create a session-specific hypothesis that remains editable alongside familiar fragrance filters.</p>
+                            <dl class="decision-ledger">
+                                <div><dt>Tradeoff</dt><dd>Emotional language is approachable but subjective and culturally variable.</dd></div>
+                                <div><dt>Guardrail</dt><dd>Explain each dimension, allow “not sure,” and keep direct search visible.</dd></div>
+                                <div><dt>Signal</dt><dd>Users can describe why a match fits and correct one input.</dd></div>
+                                <div><dt>Failure mode</dt><dd>The portrait feels flattering but does not change a sample decision.</dd></div>
+                            </dl>
                         </article>
                         <article class="decision">
-                            <span class="decision-kicker">Visual pacing</span>
-                            <h3>Whitespace creates focus—not emptiness.</h3>
-                            <p>Generous margins isolate each bottle and key message. The slower rhythm gives distinctive packaging and typography room to carry the brand experience.</p>
+                            <span class="decision-kicker">Information provenance</span>
+                            <h3>Separate story, specification, report, and personal evidence.</h3>
+                            <p>Editorial description creates an impression; labeled sources and ranges support the decision beneath it.</p>
+                            <dl class="decision-ledger">
+                                <div><dt>Tradeoff</dt><dd>Provenance adds labels and density to an intentionally calm interface.</dd></div>
+                                <div><dt>Guardrail</dt><dd>Never style inferred fit or crowd reports as verified product fact.</dd></div>
+                                <div><dt>Signal</dt><dd>Users can tell where a longevity claim came from and how certain it is.</dd></div>
+                                <div><dt>Failure mode</dt><dd>Atmospheric copy overpowers price, ingredients, access, or material differences.</dd></div>
+                            </dl>
                         </article>
                         <article class="decision">
-                            <span class="decision-kicker">Data presentation</span>
-                            <h3>Translate performance into scannable signals.</h3>
-                            <p>Longevity and projection are presented as restrained visual scales rather than dense charts, keeping comparison quick while preserving the editorial tone.</p>
+                            <span class="decision-kicker">Temporal comparison</span>
+                            <h3>Show evolution and variability—not a decorative score.</h3>
+                            <p>Opening, heart, and drydown provide a time model; longevity and projection use reported ranges with context.</p>
+                            <dl class="decision-ledger">
+                                <div><dt>Tradeoff</dt><dd>A compact range is less visually simple than a single “8-hour” value.</dd></div>
+                                <div><dt>Guardrail</dt><dd>Include sample size, context, and “your wear may differ” where relevant.</dd></div>
+                                <div><dt>Signal</dt><dd>Users identify the meaningful difference between two candidates.</dd></div>
+                                <div><dt>Failure mode</dt><dd>Scales imply precision the underlying source cannot support.</dd></div>
+                            </dl>
                         </article>
                         <article class="decision">
-                            <span class="decision-kicker">Retention</span>
-                            <h3>Make saving feel like curating.</h3>
-                            <p>The collection view treats saved fragrances as a personal archive. This gives users a reason to return beyond completing a single purchase task.</p>
+                            <span class="decision-kicker">Retention model</span>
+                            <h3>Make the archive a learning loop, not another sales surface.</h3>
+                            <p>Owned, sampled, wish-list, retired, and signature states combine with private wear evidence.</p>
+                            <dl class="decision-ledger">
+                                <div><dt>Tradeoff</dt><dd>Rich collection state and history increase model and sync complexity.</dd></div>
+                                <div><dt>Guardrail</dt><dd>Keep the user’s wardrobe stable, searchable, exportable, and promotion-free.</dd></div>
+                                <div><dt>Signal</dt><dd>A prior wear log changes a comparison or future sample decision.</dd></div>
+                                <div><dt>Failure mode</dt><dd>Logging creates effort without helping retrieval or reflection.</dd></div>
+                            </dl>
                         </article>
+                    </div>
+
+                    <div class="signal-grid" aria-label="Recommendation responsibility contract" role="group">
+                        <article class="signal-card"><small>System may</small><h3>Rank and explain</h3><p>Use explicit session inputs, catalog attributes, and disclosed sources to create a shortlist and articulate the match.</p></article>
+                        <article class="signal-card"><small>System must</small><h3>Support correction and sampling</h3><p>Expose alternatives, source, uncertainty, availability, format, and an immediate path to revise or sample.</p></article>
+                        <article class="signal-card"><small>System must not</small><h3>Convert inference into fact</h3><p>Never promise chemistry, suppress options through an opaque profile, or disguise paid placement as personal fit.</p></article>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="system">
             <div class="section-heading page-shell">
-                <div class="section-index">04 / Visual system</div>
+                <div class="section-index">04 / Interface system</div>
                 <div class="section-copy reveal">
-                    <span class="eyebrow">A quiet luxury language</span>
-                    <h2>Soft materials, strong contrast, and intentional restraint.</h2>
-                    <p class="measure">The interface uses warm neutrals and dusty rose accents to reference cosmetic packaging, paper archives, and vanity objects. A characterful serif carries fragrance names and editorial copy, while a clean sans serif handles controls and product facts.</p>
+                    <span class="eyebrow">A quality contract, not a mood board</span>
+                    <h2>Quiet luxury only works when the system stays legible and accountable.</h2>
+                    <p class="measure">Warm neutrals and dusty rose reference cosmetic packaging, paper archives, and vanity objects. A characterful serif carries fragrance identity and editorial moments; a neutral sans serif carries controls, source labels, prices, ingredients, availability, and system feedback. Atmosphere frames the decision—it never replaces it.</p>
 
                     <div class="system-panel">
                         <div class="system-grid">
@@ -1019,14 +1294,23 @@
                                 </div>
                                 <div class="type-row">
                                     <span class="type-label">Interface text / Plus Jakarta Sans</span>
-                                    <div class="type-interface">WOODY · FLORAL · 8 HOUR LONGEVITY</div>
+                                    <div class="type-interface">WOODY · FLORAL · REPORTED RANGE 6–8 HOURS</div>
                                 </div>
                                 <div class="type-row">
                                     <span class="type-label">System principle</span>
-                                    <p class="system-note">Serif typography signals identity and narrative. Sans serif typography supports scanning, controls, and technical information.</p>
+                                    <p class="system-note">Serif typography signals identity and narrative. Sans serif typography supports scanning, controls, provenance, uncertainty, and technical information.</p>
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="quality-grid" aria-label="Aurea interface quality contract" role="group">
+                        <article class="signal-card"><small>Hierarchy</small><h3>Decision-critical facts remain visible</h3><p>Price, size, format, ingredients, availability, source, and sampling access cannot be buried beneath storytelling.</p></article>
+                        <article class="signal-card"><small>Responsive</small><h3>Meaning survives reflow</h3><p>Comparison alignment may stack, but labels, units, source, and the active candidate remain understandable at every breakpoint.</p></article>
+                        <article class="signal-card"><small>State</small><h3>Every action answers back</h3><p>Selected, saved, sampled, owned, unavailable, syncing, offline, empty, loading, and error states use language beyond color.</p></article>
+                        <article class="signal-card"><small>Accessibility</small><h3>WCAG 2.2 AA is an acceptance target</h3><p>Keyboard order, visible focus, zoom, screen-reader names, reduced motion, text scaling, contrast, and 44px targets enter QA.</p></article>
+                        <article class="signal-card"><small>Content</small><h3>Sources are part of the component</h3><p>Brand-provided facts, editorial interpretation, community ranges, and the user’s own log receive distinct labels and ownership.</p></article>
+                        <article class="signal-card"><small>Performance</small><h3>Luxury should still feel fast</h3><p>Responsive WebP sources, lazy gallery loading, explicit media dimensions, caching, resilient fonts, and progressive enhancement protect the core path.</p></article>
                     </div>
                 </div>
             </div>
@@ -1036,10 +1320,22 @@
             <div class="page-shell">
                 <div class="gallery-intro reveal">
                     <div>
-                        <span class="eyebrow">High-fidelity interface</span>
-                        <h2>Ten product moments. Three quiet chapters.</h2>
+                        <span class="eyebrow">Interaction and system evidence</span>
+                        <h2>Ten product moments across one learning loop.</h2>
                     </div>
-                    <p>The redesigned flow moves from personal discovery to scent intelligence and finally to a living fragrance archive. Select any screen or presentation board to view it in full.</p>
+                    <p>The interface traces intent → rationale → comparison → sample → personal evidence. These screens demonstrate hierarchy, state, and visual-system intent; they do not establish recommendation accuracy, demand, or technical feasibility.</p>
+                </div>
+
+                <div class="system-table-wrap reveal">
+                    <table class="system-table">
+                        <thead><tr><th scope="col">Prototype slice</th><th scope="col">Decision represented</th><th scope="col">What the screens demonstrate</th><th scope="col">What still needs evidence</th></tr></thead>
+                        <tbody>
+                            <tr><td>Portrait → matches</td><td>Editable intent and explainable ranking</td><td>Question sequence, selected state, rationale hierarchy</td><td>Vocabulary comprehension, relevance, shortlist diversity</td></tr>
+                            <tr><td>Overview → compare</td><td>Story plus sourced decision support</td><td>Progressive disclosure, temporal model, aligned comparison</td><td>Source quality, comparison success, sampling impact</td></tr>
+                            <tr><td>Search → archive</td><td>Stable ownership state outside promotion</td><td>Filter density, collection status, return hierarchy</td><td>Required categories, retrieval value, longitudinal use</td></tr>
+                            <tr><td>Wear log</td><td>Personal evidence closes the loop</td><td>Capture structure, context fields, private default</td><td>Logging burden, privacy expectations, future-decision value</td></tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="gallery-chapters">
@@ -1054,7 +1350,7 @@
 
                         <figure class="board-card reveal">
                             <button class="board-button" type="button" data-lightbox-src="aurea/board-discovery.webp" data-lightbox-alt="Aurea personalized discovery presentation board" aria-label="Enlarge personalized discovery presentation board">
-                                <img src="aurea/board-discovery.webp" alt="Three Aurea screens showing discovery, the guided scent finder, and personalized results" loading="lazy">
+                                <img src="aurea/board-discovery.webp" alt="Three Aurea screens showing discovery, the guided scent finder, and personalized results" loading="lazy" decoding="async">
                             </button>
                         </figure>
 
@@ -1062,21 +1358,21 @@
                         <section class="screen-rail" aria-label="Personalized discovery screens" tabindex="0">
                             <figure class="screen-card reveal">
                                 <button class="screen-button" type="button" data-lightbox-src="aurea/discover-home.webp" data-lightbox-alt="Aurea fragrance discovery home screen" aria-label="Enlarge discovery home screen">
-                                    <img src="aurea/discover-home.webp" alt="Aurea home screen with a scent portrait finder, mood filters, and an editor selection" loading="lazy">
+                                    <img src="aurea/discover-home.webp" alt="Aurea home screen with a scent portrait finder, mood filters, and an editor selection" loading="lazy" decoding="async">
                                 </button>
                                 <figcaption class="screen-caption"><span class="screen-number">01</span><div><h3>Discover</h3><p>Search by fragrance, house, note, or mood—or begin with a two-minute scent portrait.</p></div></figcaption>
                             </figure>
 
                             <figure class="screen-card reveal">
                                 <button class="screen-button" type="button" data-lightbox-src="aurea/scent-finder.webp" data-lightbox-alt="Aurea guided scent finder" aria-label="Enlarge guided scent finder screen">
-                                    <img src="aurea/scent-finder.webp" alt="Aurea scent finder with tactile mood cards and clear selected states" loading="lazy">
+                                    <img src="aurea/scent-finder.webp" alt="Aurea scent finder with tactile mood cards and clear selected states" loading="lazy" decoding="async">
                                 </button>
                                 <figcaption class="screen-caption"><span class="screen-number">02</span><div><h3>Scent finder</h3><p>Large visual choices translate emotional language into scent families without requiring fragrance expertise.</p></div></figcaption>
                             </figure>
 
                             <figure class="screen-card reveal">
                                 <button class="screen-button" type="button" data-lightbox-src="aurea/personalized-results.webp" data-lightbox-alt="Aurea personalized scent portrait results" aria-label="Enlarge personalized results screen">
-                                    <img src="aurea/personalized-results.webp" alt="Aurea Modern Romantic scent portrait with profile percentages and fragrance matches" loading="lazy">
+                                    <img src="aurea/personalized-results.webp" alt="Aurea Modern Romantic scent portrait with profile percentages and fragrance matches" loading="lazy" decoding="async">
                                 </button>
                                 <figcaption class="screen-caption"><span class="screen-number">03</span><div><h3>Your scent portrait</h3><p>A legible profile and match rationale make recommendations feel personal, explainable, and comparable.</p></div></figcaption>
                             </figure>
@@ -1094,7 +1390,7 @@
 
                         <figure class="board-card reveal">
                             <button class="board-button" type="button" data-lightbox-src="aurea/board-intelligence.webp" data-lightbox-alt="Aurea scent intelligence presentation board" aria-label="Enlarge scent intelligence presentation board">
-                                <img src="aurea/board-intelligence.webp" alt="Four Aurea screens showing fragrance overview, scent evolution, wear performance, and comparison" loading="lazy">
+                                <img src="aurea/board-intelligence.webp" alt="Four Aurea screens showing fragrance overview, scent evolution, wear performance, and comparison" loading="lazy" decoding="async">
                             </button>
                         </figure>
 
@@ -1102,28 +1398,28 @@
                         <section class="screen-rail" aria-label="Scent intelligence screens" tabindex="0">
                             <figure class="screen-card reveal">
                                 <button class="screen-button" type="button" data-lightbox-src="aurea/rose-prick-overview.webp" data-lightbox-alt="Rose Prick fragrance overview" aria-label="Enlarge fragrance overview screen">
-                                    <img src="aurea/rose-prick-overview.webp" alt="Rose Prick overview with match, performance facts, story, and sample action" loading="lazy">
+                                    <img src="aurea/rose-prick-overview.webp" alt="Rose Prick overview with match, performance facts, story, and sample action" loading="lazy" decoding="async">
                                 </button>
                                 <figcaption class="screen-caption"><span class="screen-number">04</span><div><h3>Fragrance overview</h3><p>The emotional brief leads; match confidence and practical wear facts support the next decision.</p></div></figcaption>
                             </figure>
 
                             <figure class="screen-card reveal">
                                 <button class="screen-button" type="button" data-lightbox-src="aurea/scent-evolution.webp" data-lightbox-alt="Rose Prick scent evolution timeline" aria-label="Enlarge scent evolution screen">
-                                    <img src="aurea/scent-evolution.webp" alt="Rose Prick scent timeline from opening through heart and drydown" loading="lazy">
+                                    <img src="aurea/scent-evolution.webp" alt="Rose Prick scent timeline from opening through heart and drydown" loading="lazy" decoding="async">
                                 </button>
                                 <figcaption class="screen-caption"><span class="screen-number">05</span><div><h3>How it unfolds</h3><p>A temporal story replaces abstract note pyramids with opening, heart, and drydown moments.</p></div></figcaption>
                             </figure>
 
                             <figure class="screen-card reveal">
                                 <button class="screen-button" type="button" data-lightbox-src="aurea/wear-performance.webp" data-lightbox-alt="Rose Prick wear and performance guide" aria-label="Enlarge wear performance screen">
-                                    <img src="aurea/wear-performance.webp" alt="Rose Prick wear curve, best conditions, and expected performance" loading="lazy">
+                                    <img src="aurea/wear-performance.webp" alt="Rose Prick wear curve, best conditions, and expected performance" loading="lazy" decoding="async">
                                 </button>
                                 <figcaption class="screen-caption"><span class="screen-number">06</span><div><h3>How it wears</h3><p>A simple wear curve and clear conditions communicate performance without a dense technical dashboard.</p></div></figcaption>
                             </figure>
 
                             <figure class="screen-card reveal">
                                 <button class="screen-button" type="button" data-lightbox-src="aurea/compare-fragrances.webp" data-lightbox-alt="Aurea fragrance comparison" aria-label="Enlarge comparison screen">
-                                    <img src="aurea/compare-fragrances.webp" alt="Aurea comparison of Rose Prick and Delina with a plain-language verdict" loading="lazy">
+                                    <img src="aurea/compare-fragrances.webp" alt="Aurea comparison of Rose Prick and Delina with a plain-language verdict" loading="lazy" decoding="async">
                                 </button>
                                 <figcaption class="screen-caption"><span class="screen-number">07</span><div><h3>Compare</h3><p>A concise verdict explains the meaningful difference before aligned product details support deeper review.</p></div></figcaption>
                             </figure>
@@ -1141,7 +1437,7 @@
 
                         <figure class="board-card reveal">
                             <button class="board-button" type="button" data-lightbox-src="aurea/board-archive.webp" data-lightbox-alt="Aurea living archive presentation board" aria-label="Enlarge living archive presentation board">
-                                <img src="aurea/board-archive.webp" alt="Three Aurea screens showing fragrance search, personal archive, and wear logging" loading="lazy">
+                                <img src="aurea/board-archive.webp" alt="Three Aurea screens showing fragrance search, personal archive, and wear logging" loading="lazy" decoding="async">
                             </button>
                         </figure>
 
@@ -1149,21 +1445,21 @@
                         <section class="screen-rail" aria-label="Living archive screens" tabindex="0">
                             <figure class="screen-card reveal">
                                 <button class="screen-button" type="button" data-lightbox-src="aurea/search-explore.webp" data-lightbox-alt="Aurea search and explore results" aria-label="Enlarge search results screen">
-                                    <img src="aurea/search-explore.webp" alt="Aurea fragrance search results with filters, match scores, and compare controls" loading="lazy">
+                                    <img src="aurea/search-explore.webp" alt="Aurea fragrance search results with filters, match scores, and compare controls" loading="lazy" decoding="async">
                                 </button>
                                 <figcaption class="screen-caption"><span class="screen-number">08</span><div><h3>Search and explore</h3><p>Readable result cards surface match, accords, performance, save, and compare without tiny image overlays.</p></div></figcaption>
                             </figure>
 
                             <figure class="screen-card reveal">
                                 <button class="screen-button" type="button" data-lightbox-src="aurea/personal-archive.webp" data-lightbox-alt="Aurea personal fragrance archive" aria-label="Enlarge personal archive screen">
-                                    <img src="aurea/personal-archive.webp" alt="Aurea personal archive with owned, sampled, and wishlist states plus a signature scent" loading="lazy">
+                                    <img src="aurea/personal-archive.webp" alt="Aurea personal archive with owned, sampled, and wishlist states plus a signature scent" loading="lazy" decoding="async">
                                 </button>
                                 <figcaption class="screen-caption"><span class="screen-number">09</span><div><h3>Your archive</h3><p>Consistent cards, collection states, and wear history make the wardrobe expressive and easy to scan.</p></div></figcaption>
                             </figure>
 
                             <figure class="screen-card reveal">
                                 <button class="screen-button" type="button" data-lightbox-src="aurea/wear-log.webp" data-lightbox-alt="Aurea fragrance wear log" aria-label="Enlarge wear log screen">
-                                    <img src="aurea/wear-log.webp" alt="Aurea wear log capturing context, longevity, projection, and private notes" loading="lazy">
+                                    <img src="aurea/wear-log.webp" alt="Aurea wear log capturing context, longevity, projection, and private notes" loading="lazy" decoding="async">
                                 </button>
                                 <figcaption class="screen-caption"><span class="screen-number">10</span><div><h3>Log a wear</h3><p>A calm, private-by-default journal helps users notice personal patterns across context and performance.</p></div></figcaption>
                             </figure>
@@ -1173,20 +1469,63 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="validation">
             <div class="section-heading page-shell">
-                <div class="section-index">06 / Validation plan</div>
+                <div class="section-index">06 / Evidence plan</div>
                 <div class="section-copy reveal">
-                    <span class="eyebrow">What I would test next</span>
-                    <h2>Move from a compelling concept to an evidence-led product.</h2>
-                    <p class="measure">Because Aurea began as a visual and interaction exploration, the next phase would test whether the hierarchy supports real fragrance-shopping behavior—not only whether the screens look refined.</p>
+                    <span class="eyebrow">Decision gates, not research theater</span>
+                    <h2>Earn confidence in layers before connecting inventory or commerce.</h2>
+                    <p class="measure">Each study is tied to a product decision and a failure condition. The sequence separates vocabulary and value risk from interface usability, longitudinal archive value, data quality, accessibility, and commercial integration.</p>
 
                     <div class="validation-grid">
-                        <article class="validation-card"><strong>Discovery language</strong><p>Interview fragrance enthusiasts to learn whether they begin with notes, brands, occasions, moods, seasons, or community recommendations.</p></article>
-                        <article class="validation-card"><strong>Comparison tasks</strong><p>Test whether users can quickly compare longevity, projection, price, and dominant accords across multiple fragrances.</p></article>
-                        <article class="validation-card"><strong>Collection model</strong><p>Validate the categories users need—owned, sampled, wish list, decluttered, seasonal rotation, and signature scents.</p></article>
-                        <article class="validation-card"><strong>Accessibility and commerce</strong><p>Audit contrast, text scaling, keyboard flow, and product-state messaging before connecting the concept to purchasing or inventory data.</p></article>
+                        <article class="validation-card"><strong>1 · Vocabulary and mental models</strong><p>Moderated interviews and card sorting with fragrance newcomers and enthusiasts test whether people begin with notes, house, occasion, mood, season, budget, or community language. <b>Gate:</b> remove or rewrite any portrait dimension that requires facilitation or produces incompatible expectations.</p></article>
+                        <article class="validation-card"><strong>2 · Shortlist and comparison tasks</strong><p>Participants find a sample candidate, explain the match, correct a miss, and compare meaningful differences against a direct-search baseline. <b>Gate:</b> guided discovery cannot advance if it slows known-title access or weakens perceived control.</p></article>
+                        <article class="validation-card"><strong>3 · Longitudinal wear diary</strong><p>A 2–4 week pilot follows sampling, logging, retrieval, and whether personal evidence changes a later decision. <b>Gate:</b> simplify or defer the archive if logging effort does not produce useful recall, comparison, or taste learning.</p></article>
+                        <article class="validation-card"><strong>4 · Access, data, and commerce acceptance</strong><p>Audit keyboard, screen reader, zoom, text scaling, contrast, error states, source freshness, inventory, price, affiliate disclosure, and ingredient messaging. <b>Gate:</b> critical discovery and sampling tasks remain operable without pointer, color, or motion.</p></article>
                     </div>
+
+                    <div class="system-table-wrap">
+                        <table class="system-table">
+                            <thead><tr><th scope="col">Outcome</th><th scope="col">Leading signal</th><th scope="col">Guardrail</th><th scope="col">Decision informed</th></tr></thead>
+                            <tbody>
+                                <tr><td>Form a credible shortlist</td><td>Time to sample candidate, rationale comprehension, first-miss recovery</td><td>Known-title and full-catalog access do not degrade</td><td>Keep, revise, or remove the scent portrait</td></tr>
+                                <tr><td>Compare meaningfully</td><td>Correct identification of fit, performance, price, and format tradeoffs</td><td>Ranges and sources are not mistaken for guarantees</td><td>Set comparison density and provenance requirements</td></tr>
+                                <tr><td>Learn from wear</td><td>Log completion, later retrieval, evidence reused in a decision</td><td>Private by default with export and deletion</td><td>Invest in the archive or simplify to status + notes</td></tr>
+                                <tr><td>Build trust</td><td>Correction use, paid-placement recognition, uncertainty comprehension</td><td>No undisclosed ranking influence or chemistry promise</td><td>Set recommendation, editorial, and commerce governance</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="delivery">
+            <div class="section-heading page-shell">
+                <div class="section-index">07 / Delivery strategy</div>
+                <div class="section-copy reveal">
+                    <span class="eyebrow">Scope, dependencies, and ownership</span>
+                    <h2>Ship the smallest trustworthy loop before the full archive.</h2>
+                    <p class="measure">A credible first release should let someone search or declare intent, understand a shortlist, compare candidates, and reach a sample. The learning loop expands only after content provenance, accessibility, data coverage, and customer value support it.</p>
+
+                    <div class="delivery-grid">
+                        <article class="phase-card"><small>Foundation · 0</small><h3>Define the operating system</h3><p>Align the content, data, and state model before adding more polished screens.</p><ul><li>Fragrance, variant, note, accord, source, and inventory schema</li><li>Editorial, community, paid, and personal evidence labels</li><li>Accessibility acceptance, consent, retention, and analytics taxonomy</li></ul></article>
+                        <article class="phase-card"><small>Learn · 1</small><h3>Prove discover → compare → sample</h3><p>Release the smallest complete loop that can test trust and decision quality.</p><ul><li>Direct search, filters, optional portrait, shortlist rationale</li><li>Overview, temporal model, comparison, sample availability</li><li>Correction, disclosure, empty, stale, unavailable, loading, and error states</li></ul></article>
+                        <article class="phase-card gated"><small>Extend · 2</small><h3>Add the archive after evidence</h3><p>Advance collection depth only when returning behavior earns the complexity.</p><ul><li>Owned, sampled, wish-list, retired, and signature states</li><li>Private wear notes before inferred taste automation</li><li>Cross-wear patterns only with clear consent and explanation</li></ul></article>
+                    </div>
+
+                    <div class="system-table-wrap">
+                        <table class="system-table">
+                            <thead><tr><th scope="col">Workstream</th><th scope="col">Accountable focus</th><th scope="col">Critical dependency</th><th scope="col">Decision artifact</th></tr></thead>
+                            <tbody>
+                                <tr><td>Product + design</td><td>Customer value, scope, hierarchy, service states</td><td>Research evidence and business model</td><td>Product brief, decision ledger, acceptance criteria</td></tr>
+                                <tr><td>Editorial + fragrance content</td><td>Taxonomy, tone, source distinction, review cadence</td><td>Expert standards and brand/community data rights</td><td>Content model, provenance rules, exception policy</td></tr>
+                                <tr><td>Engineering + data</td><td>Search, ranking, inventory, performance, state integrity</td><td>Catalog coverage, APIs, freshness, observability</td><td>Data contract, technical spikes, release criteria</td></tr>
+                                <tr><td>Research + access + legal</td><td>Evidence quality, inclusive use, privacy, commerce disclosure</td><td>Representative recruitment and policy review</td><td>Study plan, access report, consent and disclosure rules</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="section-bridge"><strong>Operating cadence</strong><p>Review the decision ledger at every research and build checkpoint. High fidelity does not make a direction permanent; a feature advances only when customer evidence, source quality, accessibility, commercial integrity, and technical feasibility support the same outcome.</p></div>
                 </div>
             </div>
         </section>
@@ -1194,17 +1533,17 @@
         <section class="section reflection" id="reflection">
             <div class="reflection-layout page-shell">
                 <div class="reveal">
-                    <span class="eyebrow">Reflection</span>
-                    <h2>What Aurea demonstrates.</h2>
-                    <p class="lead">Aurea gave me space to explore how visual direction and product clarity can reinforce one another.</p>
-                    <p>The project strengthened my ability to create a distinctive interface language, sequence dense information, and design a cohesive experience across discovery, evaluation, storytelling, and retention. It also clarified an important limitation: visual polish should create a strong hypothesis, but user evidence must determine whether the final product works.</p>
+                    <span class="eyebrow">08 / Reflection</span>
+                    <h2>The senior move was replacing “perfect match” with a trustworthy learning loop.</h2>
+                    <p class="lead">Aurea still feels luxurious, but the product is no longer relying on atmosphere to carry its credibility.</p>
+                    <p>Reframing the concept exposed the harder design work: separate sources, represent variability, keep sampling central, preserve private wear evidence, and define when personalization becomes overreach. The visual system now supports a product position instead of standing in for one.</p>
                 </div>
 
                 <ul class="takeaway-list reveal">
-                    <li><span>01</span><div><strong>Visual direction</strong><br>Built a recognizable system that feels appropriate for fragrance without copying a conventional beauty-commerce layout.</div></li>
-                    <li><span>02</span><div><strong>Information hierarchy</strong><br>Balanced emotional storytelling with scannable product details and performance information.</div></li>
-                    <li><span>03</span><div><strong>Product thinking</strong><br>Connected discovery, comparison, narrative, and collection into one coherent experience.</div></li>
-                    <li><span>04</span><div><strong>Design maturity</strong><br>Separated what the concept demonstrates from what still needs research, testing, and technical validation.</div></li>
+                    <li><span>01</span><div><strong>What I would defend</strong><br>Explainable shortlists, direct-search escape routes, sampling as the responsible handoff, and a stable private archive.</div></li>
+                    <li><span>02</span><div><strong>What I would challenge first</strong><br>The emotional taxonomy, provenance quality, catalog coverage, and whether wear logging changes a future decision.</div></li>
+                    <li><span>03</span><div><strong>What I would deliberately defer</strong><br>Opaque AI taste profiles, public social mechanics, paid ranking, and automatic “taste insights” until the core loop earns trust.</div></li>
+                    <li><span>04</span><div><strong>What I would bring to a team</strong><br>A clear product thesis, decision ledger, content and data contract, evidence gates, and an interface system that can survive delivery.</div></li>
                 </ul>
             </div>
         </section>
@@ -1217,28 +1556,52 @@
         </section>
     </main>
 
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged interface screen" aria-hidden="true" inert>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged Aurea interface screen" hidden>
         <button class="lightbox-close" type="button" aria-label="Close enlarged image">×</button>
         <div class="lightbox-dialog">
-            <img id="lightbox-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Enlarged Aurea interface screen">
+            <img id="lightbox-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="">
         </div>
     </div>
 
     <script>
         const nav = document.querySelector('.nav');
+        const readingProgress = document.getElementById('readingProgress');
+        const caseNavLinks = Array.from(document.querySelectorAll('.case-nav a[href^="#"]'));
+        const caseSections = caseNavLinks
+            .map((link) => document.querySelector(link.getAttribute('href')))
+            .filter(Boolean);
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightbox-image');
         const closeButton = document.querySelector('.lightbox-close');
+        const pageRegions = Array.from(document.querySelectorAll('body > :not(.lightbox):not(script)'));
+        const imagePlaceholder = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         let lastTrigger = null;
 
-        function updateNav() {
+        function updatePageChrome() {
             nav.classList.toggle('scrolled', window.scrollY > 20);
+
+            const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = scrollable > 0 ? Math.min(window.scrollY / scrollable, 1) : 0;
+            readingProgress.style.width = (progress * 100) + '%';
+
+            const marker = window.scrollY + 170;
+            let activeSection = caseSections[0];
+            caseSections.forEach((section) => {
+                if (section.offsetTop <= marker) activeSection = section;
+            });
+            caseNavLinks.forEach((link) => {
+                const isCurrent = activeSection && link.getAttribute('href') === '#' + activeSection.id;
+                if (isCurrent) link.setAttribute('aria-current', 'location');
+                else link.removeAttribute('aria-current');
+            });
         }
-        updateNav();
-        window.addEventListener('scroll', updateNav, { passive: true });
+        updatePageChrome();
+        window.addEventListener('scroll', updatePageChrome, { passive: true });
+        window.addEventListener('resize', updatePageChrome);
 
         const revealItems = document.querySelectorAll('.reveal');
-        if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if ('IntersectionObserver' in window && !reducedMotion) {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
@@ -1252,25 +1615,37 @@
             revealItems.forEach((item) => item.classList.add('visible'));
         }
 
+        document.querySelectorAll('.screen-rail').forEach((rail) => {
+            rail.addEventListener('keydown', (event) => {
+                if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+                event.preventDefault();
+                const direction = event.key === 'ArrowRight' ? 1 : -1;
+                rail.scrollBy({ left: rail.clientWidth * .82 * direction, behavior: reducedMotion ? 'auto' : 'smooth' });
+            });
+        });
+
+        function setPageInert(isInert) {
+            pageRegions.forEach((region) => { region.inert = isInert; });
+        }
+
         function openLightbox(trigger) {
             lastTrigger = trigger;
             lightboxImage.src = trigger.dataset.lightboxSrc;
             lightboxImage.alt = trigger.dataset.lightboxAlt || 'Enlarged interface screen';
-            lightbox.inert = false;
-            lightbox.classList.add('open');
-            lightbox.setAttribute('aria-hidden', 'false');
+            lightbox.hidden = false;
+            setPageInert(true);
             document.body.style.overflow = 'hidden';
             closeButton.focus();
         }
 
         function closeLightbox() {
-            if (!lightbox.classList.contains('open')) return;
-            lightbox.classList.remove('open');
-            lightbox.setAttribute('aria-hidden', 'true');
-            lightbox.inert = true;
-            lightboxImage.removeAttribute('src');
+            if (lightbox.hidden) return;
+            lightbox.hidden = true;
+            lightboxImage.src = imagePlaceholder;
+            lightboxImage.alt = '';
+            setPageInert(false);
             document.body.style.overflow = '';
-            if (lastTrigger) lastTrigger.focus();
+            if (lastTrigger && lastTrigger.isConnected) lastTrigger.focus();
         }
 
         document.querySelectorAll('[data-lightbox-src]').forEach((button) => {
@@ -1281,7 +1656,11 @@
             if (event.target === lightbox) closeLightbox();
         });
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') closeLightbox();
+            if (event.key === 'Escape' && !lightbox.hidden) closeLightbox();
+            if (event.key === 'Tab' && !lightbox.hidden) {
+                event.preventDefault();
+                closeButton.focus();
+            }
         });
     </script>
 </body>

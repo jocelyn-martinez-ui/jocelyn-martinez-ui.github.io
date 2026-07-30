@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="990" viewBox="0 0 1800 990" role="img" aria-labelledby="title desc">
+  <title id="title">Loopline brand and digital system preview</title>
+  <desc id="desc">A forest green portfolio preview showing the Loopline route mark, campaign statement, pickup scheduling interface, and brand colors.</desc>
+  <defs>
+    <pattern id="grid" width="90" height="90" patternUnits="userSpaceOnUse">
+      <path d="M90 0H0V90" fill="none" stroke="#bbdccb" stroke-opacity=".12" stroke-width="1"/>
+    </pattern>
+    <filter id="shadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#07150f" flood-opacity=".32"/>
+    </filter>
+    <clipPath id="browserClip">
+      <rect x="1008" y="184" width="694" height="494" rx="24"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1800" height="990" fill="#173629"/>
+  <rect width="1800" height="990" fill="url(#grid)"/>
+  <circle cx="1375" cy="318" r="420" fill="none" stroke="#f4f0e8" stroke-opacity=".15" stroke-width="2"/>
+  <circle cx="1375" cy="318" r="288" fill="none" stroke="#bbdccb" stroke-opacity=".18" stroke-width="1" stroke-dasharray="4 8"/>
+
+  <g transform="translate(86 68)">
+    <svg width="120" height="120" viewBox="0 0 120 120" aria-hidden="true">
+      <path d="M42.2 22A42 42 0 1 1 22 42.2" fill="none" stroke="#f4c95d" stroke-width="10" stroke-linecap="round"/>
+      <path d="M22 42.2V22h20.2" fill="none" stroke="#f4c95d" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="94.4" cy="35.9" r="9.4" fill="#f15b40" stroke="#f4c95d" stroke-width="4"/>
+      <circle cx="84.6" cy="94.4" r="9.4" fill="#bbdccb" stroke="#f4c95d" stroke-width="4"/>
+      <circle cx="21.6" cy="74.4" r="8.5" fill="#f4c95d"/>
+    </svg>
+  </g>
+  <text x="233" y="147" fill="#f4f0e8" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="800" letter-spacing="-4">LOOPLINE</text>
+  <text x="593" y="106" fill="#f4c95d" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700">°</text>
+  <text x="88" y="230" fill="#bbdccb" font-family="Consolas, monospace" font-size="16" font-weight="700" letter-spacing="3">BRAND IDENTITY  /  CAMPAIGN  /  DIGITAL PRODUCT</text>
+
+  <g aria-hidden="true">
+    <circle cx="958" cy="109" r="27" fill="#f15b40"/>
+    <text x="958" y="115" text-anchor="middle" fill="#10211a" font-family="Consolas, monospace" font-size="12" font-weight="700">01</text>
+    <circle cx="1732" cy="176" r="27" fill="#bbdccb"/>
+    <text x="1732" y="182" text-anchor="middle" fill="#10211a" font-family="Consolas, monospace" font-size="12" font-weight="700">02</text>
+    <circle cx="887" cy="870" r="27" fill="#f4c95d"/>
+    <text x="887" y="876" text-anchor="middle" fill="#10211a" font-family="Consolas, monospace" font-size="12" font-weight="700">03</text>
+  </g>
+
+  <text x="88" y="415" fill="#f4f0e8" font-family="Arial, Helvetica, sans-serif" font-size="142" font-weight="800" letter-spacing="-8">KEEP GOOD</text>
+  <text x="88" y="555" fill="#f4f0e8" font-family="Arial, Helvetica, sans-serif" font-size="142" font-weight="800" letter-spacing="-8">FOOD</text>
+  <text x="88" y="688" fill="#f4c95d" font-family="Georgia, Times, serif" font-size="134" font-style="italic" letter-spacing="-6">moving.</text>
+  <text x="93" y="761" fill="#bbdccb" font-family="Arial, Helvetica, sans-serif" font-size="25">A strategic identity and service experience for a more resourceful city.</text>
+
+  <g transform="translate(90 831)">
+    <rect width="214" height="57" rx="28.5" fill="none" stroke="#f4f0e8" stroke-opacity=".55"/>
+    <text x="107" y="36" text-anchor="middle" fill="#f4f0e8" font-family="Consolas, monospace" font-size="14" font-weight="700" letter-spacing="2">BRAND SYSTEM</text>
+    <rect x="231" width="211" height="57" rx="28.5" fill="none" stroke="#f4f0e8" stroke-opacity=".55"/>
+    <text x="337" y="36" text-anchor="middle" fill="#f4f0e8" font-family="Consolas, monospace" font-size="14" font-weight="700" letter-spacing="2">RESPONSIVE UX</text>
+    <rect x="459" width="236" height="57" rx="28.5" fill="#f4c95d"/>
+    <text x="577" y="36" text-anchor="middle" fill="#10211a" font-family="Consolas, monospace" font-size="14" font-weight="700" letter-spacing="2">PRODUCTION READY</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1008" y="184" width="694" height="494" rx="24" fill="#f4f0e8"/>
+  </g>
+  <g clip-path="url(#browserClip)">
+    <rect x="1008" y="184" width="694" height="56" fill="#fffdf8"/>
+    <circle cx="1040" cy="212" r="7" fill="#f15b40"/>
+    <circle cx="1064" cy="212" r="7" fill="#f4c95d"/>
+    <circle cx="1088" cy="212" r="7" fill="#bbdccb"/>
+    <rect x="1130" y="199" width="282" height="27" rx="13.5" fill="#173629" fill-opacity=".08"/>
+    <text x="1150" y="217" fill="#173629" font-family="Consolas, monospace" font-size="11">partner.loopline.chi/new-pickup</text>
+
+    <rect x="1008" y="240" width="694" height="58" fill="#173629"/>
+    <text x="1040" y="276" fill="#f4f0e8" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800" letter-spacing="-1">LOOPLINE°</text>
+    <text x="1654" y="273" text-anchor="end" fill="#bbdccb" font-family="Consolas, monospace" font-size="12" font-weight="700">PICKUP 02 OF 05</text>
+
+    <text x="1042" y="351" fill="#b83d28" font-family="Consolas, monospace" font-size="12" font-weight="700" letter-spacing="2">NEW PICKUP</text>
+    <text x="1040" y="401" fill="#10211a" font-family="Arial, Helvetica, sans-serif" font-size="47" font-weight="700" letter-spacing="-2">What’s ready</text>
+    <text x="1040" y="448" fill="#10211a" font-family="Arial, Helvetica, sans-serif" font-size="47" font-weight="700" letter-spacing="-2">to move?</text>
+    <text x="1042" y="490" fill="#52655d" font-family="Arial, Helvetica, sans-serif" font-size="16">Choose every category that applies.</text>
+
+    <rect x="1370" y="340" width="290" height="82" rx="15" fill="#bbdccb" stroke="#173629" stroke-width="2"/>
+    <circle cx="1402" cy="381" r="16" fill="#173629"/>
+    <path d="m1394 381 6 6 11-14" fill="none" stroke="#f4f0e8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1431" y="375" fill="#10211a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Prepared meals</text>
+    <text x="1431" y="397" fill="#52655d" font-family="Arial, Helvetica, sans-serif" font-size="12">Chilled &amp; packaged</text>
+
+    <rect x="1370" y="438" width="290" height="82" rx="15" fill="#fffdf8" stroke="#173629" stroke-opacity=".18"/>
+    <circle cx="1402" cy="479" r="16" fill="none" stroke="#173629" stroke-opacity=".42" stroke-width="2"/>
+    <text x="1431" y="474" fill="#10211a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Fresh produce</text>
+    <text x="1431" y="496" fill="#52655d" font-family="Arial, Helvetica, sans-serif" font-size="12">Whole or prepared</text>
+
+    <rect x="1370" y="536" width="290" height="66" rx="33" fill="#f15b40"/>
+    <text x="1515" y="577" text-anchor="middle" fill="#10211a" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="800">CONTINUE  →</text>
+  </g>
+
+  <g transform="translate(1048 663) rotate(-2 170 134)" filter="url(#shadow)">
+    <rect width="348" height="242" rx="18" fill="#f15b40"/>
+    <text x="28" y="38" fill="#10211a" font-family="Consolas, monospace" font-size="11" font-weight="700" letter-spacing="2">LOOPLINE° / ROUTE 04</text>
+    <text x="28" y="95" fill="#10211a" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="800" letter-spacing="-2">GOOD FOOD</text>
+    <text x="28" y="134" fill="#10211a" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="800" letter-spacing="-2">HAS PLACES</text>
+    <text x="28" y="173" fill="#10211a" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="800" letter-spacing="-2">TO GO.</text>
+    <line x1="28" y1="205" x2="320" y2="205" stroke="#10211a" stroke-opacity=".48"/>
+    <circle cx="65" cy="205" r="7" fill="#f4c95d"/>
+    <circle cx="175" cy="205" r="7" fill="#bbdccb"/>
+    <circle cx="284" cy="205" r="7" fill="#10211a"/>
+  </g>
+
+  <g transform="translate(1435 486)" filter="url(#shadow)">
+    <rect width="243" height="412" rx="37" fill="#10211a"/>
+    <rect x="10" y="10" width="223" height="392" rx="29" fill="#fffdf8"/>
+    <rect x="82" y="21" width="80" height="8" rx="4" fill="#10211a"/>
+    <g transform="translate(24 48)">
+      <svg width="38" height="38" viewBox="0 0 120 120" aria-hidden="true">
+        <path d="M42.2 22A42 42 0 1 1 22 42.2" fill="none" stroke="#173629" stroke-width="11" stroke-linecap="round"/>
+        <path d="M22 42.2V22h20.2" fill="none" stroke="#173629" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="94.4" cy="35.9" r="9" fill="#f15b40"/>
+        <circle cx="84.6" cy="94.4" r="9" fill="#bbdccb"/>
+        <circle cx="21.6" cy="74.4" r="9" fill="#f4c95d"/>
+      </svg>
+    </g>
+    <text x="210" y="74" text-anchor="end" fill="#52655d" font-family="Consolas, monospace" font-size="10" font-weight="700">02 / 05</text>
+    <text x="24" y="118" fill="#b83d28" font-family="Consolas, monospace" font-size="9" font-weight="700" letter-spacing="1.5">NEW PICKUP</text>
+    <text x="24" y="157" fill="#10211a" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700">What’s ready</text>
+    <text x="24" y="187" fill="#10211a" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700">to move?</text>
+    <rect x="22" y="216" width="199" height="48" rx="12" fill="#bbdccb" stroke="#173629" stroke-width="1.5"/>
+    <text x="40" y="247" fill="#10211a" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">✓  Prepared meals</text>
+    <rect x="22" y="276" width="199" height="48" rx="12" fill="#f4f0e8"/>
+    <text x="40" y="307" fill="#52655d" font-family="Arial, Helvetica, sans-serif" font-size="13">○  Fresh produce</text>
+    <rect x="22" y="342" width="199" height="44" rx="22" fill="#f15b40"/>
+    <text x="122" y="370" text-anchor="middle" fill="#10211a" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800">CONTINUE →</text>
+  </g>
+
+  <text x="1714" y="950" text-anchor="end" fill="#bbdccb" font-family="Consolas, monospace" font-size="13" font-weight="700" letter-spacing="2">CHI / 41.88°N / 2026</text>
+</svg>
