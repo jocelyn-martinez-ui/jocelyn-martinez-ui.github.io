@@ -1,0 +1,162 @@
+{
+  "project": "AFTERFORM",
+  "created_date": "2026-09-22",
+  "purpose": "Original illustrative application mockups for a fictional garment-repair studio portfolio; not documentary evidence of real services or premises.",
+  "generation_mode": "built-in image_gen",
+  "generation_tool": "image_gen__imagegen",
+  "requests_per_asset": 1,
+  "retry_count": 0,
+  "variant_count": 0,
+  "reference_inspection": "All nine supplied local artwork references inspected with view_image before generation.",
+  "postprocessing": "Only original-output file copying; no image editing or retouching.",
+  "assets": [
+    {
+      "name": "return-kit",
+      "output_path": "/workspace/scratch/193e19bc4f3c/afterform-project/art/return-kit.png",
+      "generated_source_path": "/workspace/scratch/193e19bc4f3c/generated_images/exec-39ae4726-0106-48c2-94ff-2445443b5df2.png",
+      "exact_prompt": "Use case: product-mockup.\nAsset type: original illustrative application mockup for AFTERFORM, a fictional garment-repair studio portfolio; not documentary evidence of a real service.\nPrimary request: Create a refined realistic editorial photograph, landscape 3:2, of an AFTERFORM garment-return composition on a matte pale-lilac studio table in soft directional daylight.\nInput images are exact print-art references, not scene references. Image 1 (guide-01.webp) is the closed studio-guide front cover. Image 2 (guide-spread-04-05.png) is the exact two-page spread for a separate open copy. Image 3 (label-01.webp) is the front of the detached hangtag. Image 4 (packaging-01.webp) is flat production artwork for the belly band. Image 5 (packaging-02.webp) is flat production artwork for the small folded record sleeve.\nScene and objects: a folded ivory shirt within a reusable plain ivory fabric wrap, secured with the designed lilac paper belly band; a detached lilac AF-S01 hangtag on a fine cotton string; one closed 'On keeping.' studio guide; one open publication showing the supplied Quiet repair. / New character. denim spread; and one small lilac record sleeve nearby. Include each object exactly once, with two physical copies of the guide (one closed, one open). Show actual provided graphic designs, not blank substitutes. Arrange a meaningful asymmetric editorial composition with enough breathing space and no unrelated props. Elevated three-quarter tabletop view; all primary designed faces should be visible and sharp enough to recognize.\nArtwork invariants: preserve the supplied lowercase afterform wordmark, fine high-contrast serif type, monospace secondary text, typography scale, line breaks, compositions, lilac/plum/vermilion palette, and photography. Apply the supplied artwork as if faithfully printed onto each physical paper surface. Do not redesign, replace typefaces, paraphrase or invent text. The guide cover reads 'afterform', 'A STUDIO GUIDE / NO. 01', 'On keeping.', 'GOOD CLOTHES. ANOTHER CHAPTER.', 'A self-directed service concept'. The open spread keeps 'Quiet repair.' on the cream left page and the denim photograph above 'New character.' on the plum right page, preserving the supplied smaller content. The tag keeps 'afterform', 'AF-S01', red 'M01', 'The everyday shirt', 'Elbow / visible patch', 'SAMPLE / NOT A CARE LABEL'. The belly-band front keeps 'afterform', 'Keep the clothes.', red 'Change the ending.', and 'REPAIR / REWEAR / RECORD'. The lilac sleeve front keeps 'afterform', 'A little more life.', 'THE GARMENT RECORD', and red 'AF-S01 / SAMPLE'.\nPackaging construction: Images 4 and 5 include red production cut and fold guides, surrounding white annotation margins, production labels, glue tabs and notes. OMIT all those guide lines, margins, production annotations and glue-tab labels from the physical finished objects. Cut to the intended panel boundaries and fold panels logically. The belly band's lilac main front panel faces the viewer across the wrapped garment, while its side/back and plum record panel fold around the bundle. The record sleeve is a realistic small folded 110 by 155 mm paper pocket with its lilac designed front facing upward. Do not show flat dielines or production layouts.\nMaterials and lighting: clear real uncoated paper thickness, subtle paper grain, precise physical folds, plausible page curvature and visible central binding crease on the open guide, cotton texture, tasteful soft contact shadows. Calm premium art direction with imperfectly real materials, not hyper-smooth rendering.\nConstraints: landscape 3:2. No people or hands, no tools as decoration, no floating objects, no extra decoration, no invented tiny words, no added logos, addresses, labels or watermark. Preserve actual supplied artwork as faithfully as possible.",
+      "reference_paths": [
+        "/workspace/sites/jocelyn-portfolio/dist/afterform/assets/print/guide-01.webp",
+        "/workspace/scratch/193e19bc4f3c/afterform-project/art/guide-spread-04-05.png",
+        "/workspace/sites/jocelyn-portfolio/dist/afterform/assets/print/label-01.webp",
+        "/workspace/sites/jocelyn-portfolio/dist/afterform/assets/print/packaging-01.webp",
+        "/workspace/sites/jocelyn-portfolio/dist/afterform/assets/print/packaging-02.webp"
+      ],
+      "visual_review": {
+        "visual_status": "Usable illustrative application mockup, with minor artwork/rendering deviations.",
+        "observations": [
+          "Landscape 3:2 image includes the shirt/band, detached string hangtag, closed studio guide, open denim spread and folded lilac record sleeve.",
+          "Primary wording and supplied artwork compositions are recognizable; production guides and outside annotations are omitted.",
+          "The plain fabric wrap is visually ambiguous because its material merges with the folded ivory shirt.",
+          "The hangtag's thin rule is relocated and rendered with a small angled/broken segment above AF-S01 instead of the original straight rule below AF-S01.",
+          "Small text is an image-generation approximation and is not a print-accurate proof."
+        ]
+      },
+      "output_metadata": {
+        "path": "/workspace/scratch/193e19bc4f3c/afterform-project/art/return-kit.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGB",
+        "sha256": "839127283f9900b4a781539eb9e8ec8bc7aaeb41e04931028927c0b52a698cc8"
+      },
+      "reference_metadata": [
+        {
+          "path": "/workspace/sites/jocelyn-portfolio/dist/afterform/assets/print/guide-01.webp",
+          "dimensions": [
+            921,
+            1300
+          ],
+          "mode": "RGB",
+          "sha256": "dcd51662a430c4354925e5f12285b80d6f5f29feca0c57120f2e32009b7896d2"
+        },
+        {
+          "path": "/workspace/scratch/193e19bc4f3c/afterform-project/art/guide-spread-04-05.png",
+          "dimensions": [
+            1842,
+            1300
+          ],
+          "mode": "RGB",
+          "sha256": "f7987b816534d7f06bfa1ece13f1e0605243faaf659c57c01aac335b33a8edf1"
+        },
+        {
+          "path": "/workspace/sites/jocelyn-portfolio/dist/afterform/assets/print/label-01.webp",
+          "dimensions": [
+            780,
+            1300
+          ],
+          "mode": "RGB",
+          "sha256": "c6edd24ba0b3aecbfff645afa48834ef93f164fec69bf5f8c8c41f1031579d7f"
+        },
+        {
+          "path": "/workspace/sites/jocelyn-portfolio/dist/afterform/assets/print/packaging-01.webp",
+          "dimensions": [
+            1300,
+            405
+          ],
+          "mode": "RGB",
+          "sha256": "1b525aca67f76e38ce2168be9bbabf72d3cb650490d00e81eb4260747daf7e5a"
+        },
+        {
+          "path": "/workspace/sites/jocelyn-portfolio/dist/afterform/assets/print/packaging-02.webp",
+          "dimensions": [
+            1300,
+            1038
+          ],
+          "mode": "RGB",
+          "sha256": "6d1af1186fb5357956acfbc3c3b00ae7d43e5fe81aa3508f348baa1371d2ea8f"
+        }
+      ]
+    },
+    {
+      "name": "studio-application",
+      "output_path": "/workspace/scratch/193e19bc4f3c/afterform-project/art/studio-application.png",
+      "generated_source_path": "/workspace/scratch/193e19bc4f3c/generated_images/exec-f387d53a-0f20-4023-b493-7fd7a260bb46.png",
+      "exact_prompt": "Use case: product-mockup.\nAsset type: original illustrative architectural application photograph for AFTERFORM, a fictional garment-repair studio portfolio; not documentary evidence of a real premises or service.\nPrimary request: landscape 3:2 photographic view of a modest sophisticated garment-repair studio entrance, with a neutral plaster wall and plum-painted doorframe in restrained natural daylight. No people.\nInput images are the exact artwork to install physically. Image 1 (sign-01.webp): the large rectangular plum entrance sign. Image 2 (poster-01.webp): lilac 'KEEP THE GOOD PART.' campaign poster. Image 3 (poster-02.webp): shirt photograph above the plum 'Worn. Worth keeping.' panel. Image 4 (poster-05.webp): plum 'M01' denim campaign poster. These are artwork references; preserve them rather than inventing alternatives.\nScene/composition: Install the supplied large rectangular plum sign at a realistic entrance-sign scale beside or above the door, preserving its 2:1 horizontal shape. Along the adjoining plaster wall, install exactly three of the supplied portrait campaign posters in slim simple dark frames at eye level. Posters 1 and 2 should be clearly and fully visible; poster 5 may be partly cropped at the edge of the photographic composition. All art belongs physically to the wall, with plausible fixings and contact shadows, no floating graphics. Compose an elegant architectural photograph close enough that the sign wordmark and primary poster headlines remain readable, using believable spatial scale and restrained perspective.\nExact artwork invariants: faithfully reproduce the supplied artwork, fine high-contrast serif typography, lowercase afterform wordmark, graphic composition, line breaks, colors and photographs. Sign keeps 'afterform', 'REPAIR & REWEAR', the thin horizontal rule, and 'A studio for the clothes you keep.' Poster 1 keeps the lilac background, small afterform wordmark, and very large four-line headline 'KEEP / THE / GOOD / PART.' with GOOD in vermilion and the other headline words in plum; keep the supplied lower text and rules. Poster 2 keeps the ivory shirt with vermilion elbow-patch photograph on top and plum lower panel with 'Worn.' then 'Worth keeping.', the line 'A contrasting repair can become part of the piece.', and the supplied bottom wordmark. Poster 5 keeps the plum field, large lilac 'M01', square denim repair photograph, 'A hole. / A patch. / A start.', and 'Another chapter starts here.' with the supplied composition. Do not paraphrase text or redesign any poster.\nMaterials and lighting: subtly uneven mineral plaster, honest painted timber doorframe, matte printed sign, real paper behind minimally reflective glass or matte frame faces, naturally imperfect surfaces, gentle daylight and soft believable shadows. Quiet sophisticated original fashion-studio art direction.\nConstraints: landscape 3:2. No people, no invented address, no invented opening hours, no other brands, no unrelated signs, no extra logos or words, no shiny floating objects, no excessive effects, no watermark. Preserve the supplied primary typography and composition as faithfully as possible.",
+      "reference_paths": [
+        "/workspace/sites/jocelyn-portfolio/dist/afterform/assets/print/sign-01.webp",
+        "/workspace/sites/jocelyn-portfolio/dist/afterform/assets/print/poster-01.webp",
+        "/workspace/sites/jocelyn-portfolio/dist/afterform/assets/print/poster-02.webp",
+        "/workspace/sites/jocelyn-portfolio/dist/afterform/assets/print/poster-05.webp"
+      ],
+      "visual_review": {
+        "visual_status": "Usable illustrative application mockup; no obvious structural defects.",
+        "observations": [
+          "Landscape 3:2 image shows a plum entrance sign and doorframe, neutral plaster wall, and three slim-framed supplied campaign designs.",
+          "Posters 1 and 2 are fully visible and primary type reads correctly; poster 5 is partly cropped at the right edge.",
+          "Materials, contact shadows and realistic scale are coherent; there are no people or invented addresses/hours.",
+          "Subtle plants, bench and interior furnishings were generated as environmental context.",
+          "Small text is an image-generation approximation and is not a print-accurate proof."
+        ]
+      },
+      "output_metadata": {
+        "path": "/workspace/scratch/193e19bc4f3c/afterform-project/art/studio-application.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGB",
+        "sha256": "5b444726d512dd03bb1798124b4f8fafd1262a47cee98ae4bcec4cbc96eb45a5"
+      },
+      "reference_metadata": [
+        {
+          "path": "/workspace/sites/jocelyn-portfolio/dist/afterform/assets/print/sign-01.webp",
+          "dimensions": [
+            1300,
+            651
+          ],
+          "mode": "RGB",
+          "sha256": "798711466bd7c9daa0bd8bb00e21730cfdc7135a3c9d2f0d2b8aa3f8fce12e2d"
+        },
+        {
+          "path": "/workspace/sites/jocelyn-portfolio/dist/afterform/assets/print/poster-01.webp",
+          "dimensions": [
+            920,
+            1300
+          ],
+          "mode": "RGB",
+          "sha256": "999177e3aad8aed75ea5fb1d7cddd4ebe9e9f4b207477e3e403c570168260da9"
+        },
+        {
+          "path": "/workspace/sites/jocelyn-portfolio/dist/afterform/assets/print/poster-02.webp",
+          "dimensions": [
+            920,
+            1300
+          ],
+          "mode": "RGB",
+          "sha256": "b6be8a6a0eb0d30d8053d158cb1120b425e13a8bc18a9d9916e8642e5f77f5b3"
+        },
+        {
+          "path": "/workspace/sites/jocelyn-portfolio/dist/afterform/assets/print/poster-05.webp",
+          "dimensions": [
+            920,
+            1300
+          ],
+          "mode": "RGB",
+          "sha256": "64334bfd67eca3e098c1fd1689d94f18700b9b5ebb6517342e4db365701115a5"
+        }
+      ]
+    }
+  ]
+}

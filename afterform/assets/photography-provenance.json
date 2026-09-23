@@ -1,0 +1,27 @@
+{
+  "generation_mode": "built-in image_gen",
+  "requests_per_asset": 1,
+  "illustrative_not_documentary": true,
+  "assets": [
+    {
+      "name": "repair-editorial",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: original illustrative editorial photograph for AFTERFORM, a fictional garment-repair studio portfolio. This is a styled conceptual illustration, not documentation of a real repair.\nPrimary request: landscape 3:2 high-end still-life fashion editorial photograph of a softly folded ivory cotton work shirt with one carefully executed contrasting vermilion repair patch near a worn elbow.\nScene/backdrop: matte pale-lilac studio surface with a restrained plum fabric edge in the composition.\nMaterials/textures: natural tactile cotton weave, realistic small stitches, gentle wear, beautiful material relationships and visibly human craft.\nComposition/framing: elevated close three-quarter crop, controlled negative space; the red repair patch and folds read clearly.\nLighting/mood: soft directional daylight, quiet premium editorial art direction.\nConstraints: no tools as decoration, no people, no hands, no logos, no words, no watermark; no hyper-smooth AI gloss. Original imagery, no copied reference artwork. Landscape 3:2.",
+      "path": "/workspace/scratch/193e19bc4f3c/afterform-project/art/repair-editorial.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "visual_review": "No obvious generation defects. Vermilion reads as muted rust red; composition leaves modest negative space. Small stitches and cotton weave are visible."
+    },
+    {
+      "name": "denim-detail",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: original illustrative editorial photograph for AFTERFORM, a fictional garment-repair studio portfolio. This is a styled conceptual illustration, not documentation of a real repair.\nPrimary request: square extreme editorial close-up of indigo denim repaired with a controlled lilac darning rectangle; several precise parallel lilac threads visibly reinforce the original cloth.\nComposition/framing: cropped garment seam and authentic denim fabric texture, the controlled rectangular repair clearly visible, shallow but usable depth of field.\nLighting/mood: naturally lit, quiet premium fashion art direction.\nMaterials/textures: authentic indigo denim weave and physically plausible lilac darning thread, visible natural fibers and small human variations in the craft.\nConstraints: no text, logos, watermarks, hands, people or unrelated objects. Original imagery, no copied reference artwork. Square 1:1.",
+      "path": "/workspace/scratch/193e19bc4f3c/afterform-project/art/denim-detail.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "visual_review": "No text or unrelated objects. Darning reads as thick parallel lilac handwork with some irregular edge loops; these remain illustrative, not technical documentation."
+    }
+  ]
+}

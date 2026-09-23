@@ -1,0 +1,31 @@
+{
+  "date": "2026-09-23",
+  "method": "Source and DOM interaction checks, not rendered browser or assistive-technology QA",
+  "html_pages": 49,
+  "broken_local_file_references": 0,
+  "remote_font_loading": 0,
+  "untitled_iframes": 0,
+  "source_bearing_static_images_with_dimensions": 272,
+  "source_less_legacy_image_slots": 26,
+  "known_script_hash_routes": "AFTERFORM product and guide; INTERVAL product",
+  "passed": [
+    "Four state-derived paper layouts and empty recovery",
+    "Loopline neutral eligibility and field-linked validation",
+    "ImHere correction invalid state, focus, clearing and success",
+    "Nutriva Undo receives focus",
+    "Novella passage source and deduplication",
+    "Role focus order, count and all-work reset",
+    "\u00c1urea search, notes, sort, comparison and safe journal",
+    "Holland deliberate start, previous, pause/resume and large text",
+    "20 revised scenes render with local images",
+    "24-section review, 129 skills, filter/reset and anchors",
+    "JavaScript syntax"
+  ],
+  "not_performed": [
+    "Real browser/device/zoom review",
+    "Manual keyboard and screen-reader checks",
+    "New user research",
+    "Print pagination and physical proofing",
+    "Performance measurement"
+  ]
+}

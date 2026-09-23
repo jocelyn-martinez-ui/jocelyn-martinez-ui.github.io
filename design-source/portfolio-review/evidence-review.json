@@ -1,0 +1,1865 @@
+{
+  "projects": [
+    {
+      "id": "imhere",
+      "name": "ImHere",
+      "page": "ImHere-case-study/imhere-case-study.html",
+      "prototype": "experiences/imhere.html",
+      "keep": [
+        "Shared student/faculty state",
+        "Current-versus-proposed correction",
+        "Reason and record history",
+        "Navy record language"
+      ],
+      "refine": [
+        "Error association and focus recovery — implemented",
+        "14 px navigation — implemented",
+        "Project-specific story headings — implemented"
+      ],
+      "expand": [
+        "Validate one ambiguous attendance scenario with students and instructors",
+        "Document actual capstone contribution and policy constraints"
+      ],
+      "remove": [
+        "Any implication that a failed permission proves absence",
+        "Claims of authentication or a persistent audit service"
+      ],
+      "signatures": [
+        "A correction before commitment",
+        "A record with its reason attached",
+        "Different density for different responsibilities"
+      ],
+      "test": "Ask a student to explain a failed check-in, then ask an instructor to resolve it. Observe whether either confuses a closed session with an absence.",
+      "tradeoff": "The extra correction step slows faculty entry but makes a consequential decision inspectable.",
+      "audit": {
+        "Purpose": "Explain a consequential shared record across student and faculty responsibilities.",
+        "Role value": "Primary: UX, product and interaction design. Secondary: UI and design technology.",
+        "First impression": "The navy record composition shows a disputed state rather than a decorative dashboard. Keep this as the default opener.",
+        "Concept": "Strong because uncertainty has a human consequence: a missed check-in must not become an unexplained absence.",
+        "UX": "Current/proposed values, required rationale, cancel, review requests and record history demonstrate substantive decision logic.",
+        "UI": "Dense faculty rows contrast with a focused student workspace. This is a useful example of density changing by role.",
+        "Graphic design": "The context-first poster and check-in guide support the product. They are supporting applications, not a full institutional brand commission.",
+        "Visual identity": "Navy rules, orange exceptions and numbered records belong to an academic service. The compact ih mark is a functional typographic signature.",
+        "Typography": "Plus Jakarta Sans handles the interface; IBM Plex Mono identifies records. Navigation was raised to 14 px in this pass.",
+        "Colour": "Ink #142B49, blue #164B8D and orange #EC9A51. Exception colour always needs a written state.",
+        "Art direction": "The record itself is the hero. Avoid stock campus photos, biometric imagery or fake location maps.",
+        "Systems thinking": "Role views share sample state while session status, attendance and review requests remain different concepts.",
+        "Accessibility": "The correction field now exposes aria-invalid and its error description. Manual keyboard and screen-reader review are still required.",
+        "Responsiveness": "Student and faculty layouts adapt differently. Source breakpoints exist; no real-device conformance is claimed.",
+        "Interaction": "Submit a correction, inspect its prior state and return to the student view. Form errors focus the relevant field.",
+        "Case study": "The new scan strip makes origin, work shown and the best interaction visible. Replace generic section headings with the record’s actual stakes.",
+        "Differentiation": "The most institutional and consequential project in the collection. Keep it visually distant from AFTERFORM and the editorial products.",
+        "Believability": "Credible as a prototype. There is no authentication, campus integration, location collection or durable audit storage.",
+        "Hiring value": "Explaining a state transition, protecting a draft and distinguishing interface roles from backend permissions.",
+        "Main weakness": "Institutional policies, original role attribution and raw research evidence remain unverified. A persuasive flow does not establish fairness in practice."
+      }
+    },
+    {
+      "id": "afterform",
+      "name": "AFTERFORM",
+      "page": "afterform.html",
+      "prototype": "afterform/index.html",
+      "keep": [
+        "Recent identity and all original artwork",
+        "24-page publication and complete text edition",
+        "Proposal, revision and return flows",
+        "Flat artwork beside illustrative mockups"
+      ],
+      "refine": [
+        "Fast project facts and direct proposal link — implemented",
+        "Default homepage position after ImHere — implemented"
+      ],
+      "expand": [
+        "Print at actual size and make an envelope dummy",
+        "Review proposal wording with repairers and people bringing garments"
+      ],
+      "remove": [
+        "Further decorative collateral without a service role",
+        "Any implication that a dimensional prototype is a production-approved die"
+      ],
+      "signatures": [
+        "Object → attention → next action",
+        "A label that knows the next step",
+        "Approval belongs to a revision",
+        "The same request on screen and paper"
+      ],
+      "test": "Ask someone to distinguish their preference from the studio’s proposal, then change the scope and ask whether the earlier approval still applies.",
+      "tradeoff": "The identity is expressive at invitation scale and restrained where someone must understand scope, price or permission.",
+      "audit": {
+        "Purpose": "Show how a repair service’s identity can carry useful information across screen, paper and garment.",
+        "Role value": "Primary: graphic, visual and brand design. Strong supporting product/UI and editorial evidence.",
+        "First impression": "The existing brand-system board and large wordmark establish a complete identity immediately. Preserve the recent refinement.",
+        "Concept": "Repair is a considered change, not a purchase funnel. That premise gives the brand and approval model a shared purpose.",
+        "UX": "A request is distinct from a proposal; a question keeps approval pending; revised scope invalidates the old approval.",
+        "UI": "The plum repair desk has meaningful form states, scope review, revision context and a paper brief derived from saved data.",
+        "Graphic design": "The 24-page publication, 16-page standards, labels, service forms, campaign and environmental studies are the richest graphic evidence in the portfolio.",
+        "Visual identity": "Responsive service lockups, compact signature and joining mark form a usable family. Existing Bodoni letterforms are not claimed as a custom typeface.",
+        "Typography": "Bodoni Moda creates fashion character; Karla carries instructions; Inconsolata organises identifiers. Print and interface type have different jobs.",
+        "Colour": "Plum #38233F, vermilion #BD3B2F, lilac #D6C6EC and poplin #FAF7F8. The palette is retained, not recoloured for novelty.",
+        "Art direction": "Material close-ups and the physical kit support the garment concept. Generated application imagery remains labelled as illustration.",
+        "Systems thinking": "Object → attention → next action connects label zones, paper hierarchy and product decisions.",
+        "Accessibility": "Existing contrast calculations, persistent labels, reduced motion and publication text alternatives are inspectable. They are not a WCAG certificate.",
+        "Responsiveness": "The actual product and standards have narrow-screen rules; the case study needs device checks for the long brand word and dense specimens.",
+        "Interaction": "Question, approve, undo, revise, print and return from a sample record. Nine isolated studies make this depth easy to inspect.",
+        "Case study": "Keep the ecosystem pacing and flat artwork. Add only the concise project facts and direct decision link in this pass.",
+        "Differentiation": "A tactile repair-studio world, distinct from INTERVAL’s spatial programme and Áurea’s archive.",
+        "Believability": "Strong concept coherence. No operating repair studio, manufactured kit, real booking or customer outcome is claimed.",
+        "Hiring value": "A flexible identity with editorial depth and a functioning service model, not just a logo placed on objects.",
+        "Main weakness": "The next evidence is physical proofing and user/repairer validation. Another poster or rendered kit will not resolve that gap."
+      }
+    },
+    {
+      "id": "holland",
+      "name": "Holland Walking Tour",
+      "page": "Holland-Walking-Tour-site/holland-walking-tour-case-study.html",
+      "prototype": "experiences/holland.html",
+      "keep": [
+        "Local documentary imagery",
+        "Deliberate start and pause/resume",
+        "Large reading controls",
+        "Separate editorial workflow"
+      ],
+      "refine": [
+        "Specific section headings — implemented",
+        "Paper companion uses the chosen order — implemented",
+        "Intrinsically sized images — implemented"
+      ],
+      "expand": [
+        "Verify a real short route with local sources",
+        "Observe older visitors using pause and text size outdoors"
+      ],
+      "remove": [
+        "Unverified map-like illustrations",
+        "Any suggested walking time treated as measured fact"
+      ],
+      "signatures": [
+        "Your pace as an interaction rule",
+        "One current story outdoors",
+        "The same chosen sequence on paper"
+      ],
+      "test": "Ask an older visitor to choose two stories, explain what they selected, pause, return and enlarge the text outside.",
+      "tradeoff": "Manual progression gives predictable control but cannot substitute for location-aware navigation.",
+      "audit": {
+        "Purpose": "Make a self-guided visitor experience readable, predictable and comfortable for older adults.",
+        "Role value": "Primary: UX, web and accessible interaction design. Supporting information and civic graphic design.",
+        "First impression": "Real Holland photography and teal wayfinding distinguish the place before the interface is explained.",
+        "Concept": "The visitor’s pace is a useful organizing idea. It must not imply verified distances or access conditions that the prototype does not contain.",
+        "UX": "Chosen stories appear before a deliberate Start action. Pause, resume and previous preserve orientation.",
+        "UI": "Three main visitor destinations and a separate content studio reduce role confusion. Large text is a genuine control.",
+        "Graphic design": "The poster now connects to a printable chosen-story companion. This adds a useful physical application rather than a decorative map.",
+        "Visual identity": "Heritage-influenced display type, teal, yellow markers and numbered observations create a welcoming civic identity.",
+        "Typography": "DM Serif Display welcomes; Source Sans 3 carries reading and controls. Existing 18 px body and 22 px option are retained.",
+        "Colour": "Ink #233F42, teal #176369, pale background #F6F9F8 and yellow #EED785. Yellow marks a stage; text remains dark.",
+        "Art direction": "Keep credited documentary streetscapes. Do not substitute imaginary Dutch scenery or fabricated historical photographs.",
+        "Systems thinking": "Story records are reusable; editorial readiness requires explicit source, image and route checks.",
+        "Accessibility": "Large controls, reading preference, quiet mode and written progress are meaningful provisions. Outdoor glare and older-user testing remain open.",
+        "Responsiveness": "The active experience prioritizes the current story on mobile rather than shrinking the route summary.",
+        "Interaction": "A chosen sequence carries into the new paper view. Leaving the preview and returning does not change the selection.",
+        "Case study": "New headings foreground reassurance rather than generic UX process. The original collaboration context remains qualified.",
+        "Differentiation": "A civic place-led experience with larger text and calmer interaction. It should not become another luxury editorial archive.",
+        "Believability": "The current content is observation prompts, not a verified tour. Its usefulness as an actual walking service requires local route work.",
+        "Hiring value": "Prioritizing cognitive simplicity, readable information and a visitor’s control over pace.",
+        "Main weakness": "Verified route content, accessibility conditions and original research documentation are missing. A more polished mockup cannot supply them."
+      }
+    },
+    {
+      "id": "interval",
+      "name": "INTERVAL",
+      "page": "interval.html",
+      "prototype": "interval/index.html",
+      "keep": [
+        "Room-number grammar",
+        "Gap and conflict rules",
+        "Six-poster range and pocket guide",
+        "Explicit sample-pass boundary"
+      ],
+      "refine": [
+        "Immediate evidence link and project context — implemented",
+        "Place within role-specific homepage paths — implemented"
+      ],
+      "expand": [
+        "Run one plan-building task with conflicting preferences",
+        "Make a print dummy and test room recognition at distance"
+      ],
+      "remove": [
+        "Unverified floor plans or walking-time estimates",
+        "Any checkout added only to increase screen count"
+      ],
+      "signatures": [
+        "The interval as space and time",
+        "One room number across channels",
+        "A plan that protects a break"
+      ],
+      "test": "Give someone a short visit window and two overlapping interests. Ask them to build a plan and explain the effect of replacing a session.",
+      "tradeoff": "Excluding partial attendance makes filtering predictable but depends on a future real re-entry policy.",
+      "audit": {
+        "Purpose": "Connect an expressive listening-festival identity with a realistic personal programme and room system.",
+        "Role value": "Primary: product, visual, graphic and information design. Strong supporting editorial and interaction evidence.",
+        "First impression": "Wide Unbounded type, acid lime and a deliberate gap make a recognisable cultural identity.",
+        "Concept": "An interval works both as graphic space and time between sessions. This is the clearest identity-to-function connection after AFTERFORM.",
+        "UX": "Arrival/departure constraints, conflicts, preferred gaps and explicit replacement demonstrate prioritization and alternate paths.",
+        "UI": "Timetable rows support comparison; session conditions remain visible; personal planning does not pretend to be ticketing.",
+        "Graphic design": "Six distinct posters, a 12-page guide, signs, listening card, email and social formats show controlled variation.",
+        "Visual identity": "The split name, room numbers and repeated intervals create recognition without relying on a logo on every item.",
+        "Typography": "Unbounded for voice; Instrument Sans for conditions; monospace times for scanability. Do not use wide display type for dense instructions.",
+        "Colour": "Ink #191B18, paper #F3F2EC, lime #D9F44C and surface #FFFEF8. Lime is a recognition cue, not a colour-only availability signal.",
+        "Art direction": "Listening room, magnetic tape and strings are relevant material imagery. The application images are illustrative, not festival documentation.",
+        "Systems thinking": "Room 01/02/03 connects programme, guide, sign and room details. Editing a plan invalidates a stale sample pass.",
+        "Accessibility": "Visible conditions, reversible choices and text/print exports help comprehension. Venue accessibility and assistive-technology use are not proven.",
+        "Responsiveness": "Time, title and conditions reorganize from desktop rows into mobile reading blocks. Three screen-study widths expose intended behavior.",
+        "Interaction": "Conflict replacement, gap alternatives, Undo, interest saving and portable plan demonstrate more than an ideal booking path.",
+        "Case study": "Retain the varied editorial case study. The new scan strip sends product reviewers straight to a short-break plan.",
+        "Differentiation": "A cultural, spatial, typographic world; not a generic event ticket app or a second garment brand.",
+        "Believability": "Eight sessions and three rooms are authored samples. No venue booking, real capacity, waitlist submission or visitor count exists.",
+        "Hiring value": "Making identity, content architecture and product decisions reinforce one another.",
+        "Main weakness": "The real festival policies and physical wayfinding need testing. The selected visual references are not audience research."
+      }
+    },
+    {
+      "id": "aurea",
+      "name": "Áurea",
+      "page": "aurea.html",
+      "prototype": "experiences/aurea.html",
+      "keep": [
+        "Database-first positioning",
+        "Note index and two-record comparison",
+        "Oxblood/citron identity",
+        "Independent filter recovery"
+      ],
+      "refine": [
+        "Live-data sampling sheet — implemented",
+        "Journal error semantics and persistent result feedback — implemented",
+        "Project-specific headings — implemented"
+      ],
+      "expand": [
+        "Test plain-language versus expert note vocabulary",
+        "Use a larger, properly sourced dataset before claiming scale"
+      ],
+      "remove": [
+        "Claims that notes identify allergens or predict wear",
+        "Unverifiable commercial-brand content"
+      ],
+      "signatures": [
+        "A note as an entry point",
+        "Replace one comparison rather than reset both",
+        "A printable record that leaves room for uncertainty"
+      ],
+      "test": "Ask a beginner to find a note they recognise, compare two profiles and recover from an over-specific query. Ask them to explain what the sheet does not tell them.",
+      "tradeoff": "Two records limit breadth but preserve side-by-side readability and a manageable replacement decision.",
+      "audit": {
+        "Purpose": "Make perfume information discoverable through taxonomy, comparable profiles and personal observations.",
+        "Role value": "Primary: UI, information and web design. Secondary: visual identity and interaction design.",
+        "First impression": "The oxblood editorial archive and note hierarchy communicate perfume without a decorative luxury checkout.",
+        "Concept": "A perfume database is a better premise than an invented perfume shop. Preserve search and records as the main task.",
+        "UX": "Search, family and notes support different vocabulary. Independent filter removal and a two-record replacement choice preserve intent.",
+        "UI": "A list/grid index, note directory, dossier and aligned comparison create a coherent information product.",
+        "Graphic design": "The new sampling sheet turns selected records into printable note columns and personal observation space. It uses the archive’s actual hierarchy.",
+        "Visual identity": "Italiana, oxblood rules, warm paper and a citron code distinguish the archive from Novella’s reading journal.",
+        "Typography": "Italiana only at display scale; DM Sans for search, tags and structured records. No thin serif metadata.",
+        "Colour": "Ink #302529, oxblood #713C46, paper #FCFAF5 and citron #E7D875. Citron supports indexing; it is not a health classification.",
+        "Art direction": "Perfume still lifes are clearly illustrative. Keep exact taxonomy in HTML rather than inside generated bottle labels.",
+        "Systems thinking": "One record model supplies cards, detail, comparison and print. UI components use the same family/note distinctions.",
+        "Accessibility": "Filter status, comparison headers and form labels already exist. This pass associates journal errors and restores focus after removed actions.",
+        "Responsiveness": "Comparison stays a labelled two-record region; the print preview becomes one column on narrow screens and two columns on paper.",
+        "Interaction": "Selection replacement, removable filters, no-results recovery and a saved-impression form are inspectable. Search feedback now uses a persistent status region.",
+        "Case study": "Specific headings now describe the vocabulary and decision problem. The paper connection makes the graphic work useful.",
+        "Differentiation": "Premium reference typography plus database structure, not a bookstore or a general lifestyle brand.",
+        "Believability": "Three original sample records are honest but too small to prove catalogue-scale findability or expert taxonomy.",
+        "Hiring value": "Balancing atmosphere with structured information and explaining what a classification can and cannot mean.",
+        "Main weakness": "No real catalogue or fragrance-community vocabulary study. The next step is a taxonomy task with representative records, not more fictional bottle brands."
+      }
+    },
+    {
+      "id": "loopline",
+      "name": "Loopline",
+      "page": "loopline.html",
+      "prototype": "experiences/loopline.html",
+      "keep": [
+        "Forest/coral condensed identity",
+        "Partner brief and handoff docket",
+        "Draft versus confirmed-sample distinction",
+        "Revision and cancel behavior"
+      ],
+      "refine": [
+        "Unselected eligibility — implemented",
+        "Field-linked errors and 14 px navigation — implemented",
+        "Specific service story headings — implemented"
+      ],
+      "expand": [
+        "Interview kitchen and receiving-partner stakeholders with permission",
+        "Verify who owns eligibility, timing changes and failed handoffs"
+      ],
+      "remove": [
+        "Automatic affirmative eligibility",
+        "Any apparent food-safety certification or live driver tracking"
+      ],
+      "signatures": [
+        "A docket as a brand object",
+        "Eligibility before logistics",
+        "A preferred window without false confirmation"
+      ],
+      "test": "Ask a partner who is unsure about eligibility to start a handoff, then ask who is responsible for clearing it and whether a pickup has been arranged.",
+      "tradeoff": "Pausing an uncertain handoff adds friction but prevents the interface from implying authority it does not have.",
+      "audit": {
+        "Purpose": "Make a food-rescue handoff understandable across kitchen and receiving-partner responsibilities.",
+        "Role value": "Primary: brand, communication and service-oriented UX. Supporting product and web design.",
+        "First impression": "Condensed GOOD FOOD. FURTHER. typography and a handoff docket give the identity energy and a practical reason to exist.",
+        "Concept": "The useful problem is coordinated information, not an unverified impact dashboard.",
+        "UX": "Eligibility precedes quantity and timing. Draft editing preserves the prior record until save, and cancellation restores it.",
+        "UI": "Four focused stages are clearer than a general logistics dashboard. Preferred timing is visibly distinct from an arranged pickup.",
+        "Graphic design": "The partner brief and handoff sheet are credible practical communication. Further merchandise would dilute the service.",
+        "Visual identity": "Forest, coral, yellow, square edges and dispatch-style labels differ from Nutriva’s rounded household notebook.",
+        "Typography": "Barlow Condensed gives public messages impact; Space Grotesk supports forms; IBM Plex Mono carries docket metadata.",
+        "Colour": "Forest #173629, coral #F15B40, yellow #F4C95D and paper #F4F0E8. Avoid using bright coral for small body copy.",
+        "Art direction": "Typography and clear field information should lead. Do not imply real recipients or show fabricated charitable impact photography.",
+        "Systems thinking": "Eligibility, record revision and preferred timing have explicit meanings. It is a handoff model, not a dispatch platform.",
+        "Accessibility": "Labels and errors now connect programmatically. The eligibility choice starts unselected; a new request cannot inherit a yes by default.",
+        "Responsiveness": "Forms are readable in one column on mobile; review information remains grouped by responsibility.",
+        "Interaction": "Explicit attestation, validation, cancel and revise demonstrate care around operational ambiguity.",
+        "Case study": "The new headings explain responsibility, and the scan link opens a fresh handoff rather than a decorative hero.",
+        "Differentiation": "Public-service energy expressed through condensed type and practical document structure.",
+        "Believability": "No donation clearance, driver availability, food-safety verification or actual pickup is provided. The original archive is marked as superseded.",
+        "Hiring value": "Recognising where software must defer to a real-world owner of a decision.",
+        "Main weakness": "Partner criteria, receiving capacity and operational policies are assumptions. The neutral eligibility default is a fix, not validation of the service."
+      }
+    },
+    {
+      "id": "novella",
+      "name": "Novella",
+      "page": "Novella-interactive.html",
+      "prototype": "experiences/novella.html",
+      "keep": [
+        "Optional blind excerpt",
+        "Real prose and reading controls",
+        "Explicit shelf states",
+        "Passage source and undo"
+      ],
+      "refine": [
+        "Source-preserving print keepsake — implemented",
+        "Shelf focus recovery and larger navigation — implemented",
+        "Specific reading story — implemented"
+      ],
+      "expand": [
+        "Test whether blind discovery adds value for different reading habits",
+        "Review long prose at zoom and in night mode"
+      ],
+      "remove": [
+        "Mandatory blind reveal",
+        "Streaks, invented ratings and social mechanics without a reader need"
+      ],
+      "signatures": [
+        "A voice before a cover",
+        "The source stays with the passage",
+        "Typography as the product"
+      ],
+      "test": "Ask a reader to try blind discovery, place a title on a shelf, keep a passage and explain where it came from later.",
+      "tradeoff": "A quiet experience gives up social proof and gamification in exchange for control; its value still needs reader evidence.",
+      "audit": {
+        "Purpose": "Create an editorial reading experience where readers control discovery and retain the context of saved words.",
+        "Role value": "Primary: web, UI and interaction design. Supporting editorial and visual design.",
+        "First impression": "The typographic excerpt establishes a quiet literary journal rather than another cover-card marketplace.",
+        "Concept": "Optional blind discovery offers a specific alternative to ratings-led choice. It should remain an option, not a gate.",
+        "UX": "Reveal, shelf placement and source-linked passages connect discovery to a personal collection.",
+        "UI": "Adjustable reading size, themes and a prose-first view demonstrate interface craft beyond a home screen.",
+        "Graphic design": "The new reading keepsake turns actual saved passages into a flat editorial composition with titles and room for annotation.",
+        "Visual identity": "Newsreader display, Libre Baskerville prose, Inter controls and cobalt details distinguish it from Áurea’s archival indexing.",
+        "Typography": "Prose uses generous line spacing and restrained measure. The print view shows typographic hierarchy without a device frame.",
+        "Colour": "Ink #272525, burgundy #6F3338 and paper #FAF9F6, with restrained blue in the graphic system. Night-reader contrast remains a separate check.",
+        "Art direction": "Original text carries the identity. Avoid invented literary reviews, real-author endorsements or unrelated book-cover art.",
+        "Systems thinking": "Shelf states are explicit. A passage keeps its source and supports undo; the print view uses the same saved set.",
+        "Accessibility": "Real text, adjustable type and visible controls are strengths. Shelf changes and removed passages now retain a useful keyboard focus target.",
+        "Responsiveness": "Reading measure and controls respond to screen width. The paper composition preserves reading hierarchy rather than printing navigation.",
+        "Interaction": "Blind reveal, passage deduplication, direct shelf placement and recovery provide a coherent loop.",
+        "Case study": "The story now foregrounds reader control and the source relationship. Keep it shorter than the product flagships.",
+        "Differentiation": "Literary and content-led, not the fragrance archive’s classification-led elegance.",
+        "Believability": "Three authored fiction samples are sufficient to demonstrate the interaction, not evidence of an operational reading platform.",
+        "Hiring value": "Designing with text as the main material, and carrying content meaning across formats.",
+        "Main weakness": "There is no reader study or licensed catalogue. This is supporting editorial/web evidence, not proof of a recommendation engine."
+      }
+    },
+    {
+      "id": "nutriva",
+      "name": "Nutriva",
+      "page": "nutriva-portfolio-prototype/nutriva.html",
+      "prototype": "experiences/nutriva.html",
+      "keep": [
+        "Ingredient provenance",
+        "Connected pantry/plan/list",
+        "Undo",
+        "Friendly kitchen language"
+      ],
+      "refine": [
+        "Data-linked shopping sheet — implemented",
+        "Focus recovery and intrinsic image sizes — implemented",
+        "Supporting-project positioning — implemented"
+      ],
+      "expand": [
+        "Study duplicate names, units and stale inventory in a real household task",
+        "Add quantities only after defining the model and authoritative recipe content"
+      ],
+      "remove": [
+        "Broad nutrition or health positioning",
+        "Claims about reduced waste, grocery savings or verified meals"
+      ],
+      "signatures": [
+        "Why this ingredient is on the list",
+        "Correct the pantry, correct the plan",
+        "An off-screen list with its reasoning intact"
+      ],
+      "test": "Give a household planner an outdated pantry, ask them to correct it, plan a meal and explain each missing item. Observe where name matching breaks.",
+      "tradeoff": "Ingredient-name matching is explainable and small enough to inspect; it cannot answer quantity or freshness questions.",
+      "audit": {
+        "Purpose": "Show understandable dependencies between pantry information, dinner choices and a shopping list.",
+        "Role value": "Primary: supporting product, UI and information design. Not the strongest opening project for graphic or brand roles.",
+        "First impression": "The kitchen checklist is friendly and legible, but the meal-planning category is less distinctive than the other concepts.",
+        "Concept": "Keep the narrow value: correcting inputs changes useful outputs. Avoid expanding into an unsupported nutrition or AI-coaching product.",
+        "UX": "Ingredient provenance and reversible pantry changes give it a meaningful systems story.",
+        "UI": "Ranked pantry fit, visible missing ingredients and a flexible plan are more credible than a mysterious recommendation score.",
+        "Graphic design": "The new shopping worksheet preserves meal provenance and checked status. This is a practical graphic application worth keeping.",
+        "Visual identity": "Rounded controls, DM Sans/Nunito, leaf green and butter yellow create a household tone. It needs no extra packaging or logo family.",
+        "Typography": "Readable 16–18 px interface copy and ingredient labels are the priority. Friendly display type should not obscure list scanning.",
+        "Colour": "Ink #203E2B, green #294B31, paper #F7F9F3 and yellow #F5DB54. Green is identity, not a nutrition claim.",
+        "Art direction": "Use the existing sample-meal photography with honest labels. Do not let polished food photos imply complete verified recipes.",
+        "Systems thinking": "Pantry, meal selection and derived grocery provenance share one small data model.",
+        "Accessibility": "Native checkbox labels and written provenance work without colour. Undo now receives focus when the removed control disappears.",
+        "Responsiveness": "The kitchen workspace stacks into a task-focused mobile flow. Print removes the navigation and keeps actionable list content.",
+        "Interaction": "Remove an ingredient, inspect changed matches, Undo, plan meals and see why an item appears on the list.",
+        "Case study": "The new headings make dependency reasoning explicit. Position last by default and earlier only in the UX/product path.",
+        "Differentiation": "Everyday consumer utility, deliberately less editorial and less institutional than the flagships.",
+        "Believability": "Three meals and name matching do not establish quantities, freshness, allergy safety or household cost savings.",
+        "Hiring value": "Explaining derived state and designing recovery around an editable source of truth.",
+        "Main weakness": "Weakest general opener: familiar category, very small data model and no household validation. Repair it through bounded utility rather than more screens."
+      }
+    }
+  ],
+  "skills": [
+    {
+      "group": "UX",
+      "skill": "Problem framing",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "ImHere separates an unrecorded check-in from an attendance decision.",
+      "next": "Preserve the explicit problem statement."
+    },
+    {
+      "group": "UX",
+      "skill": "User needs",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Holland addresses pace and reading; needs are mostly assumptions or documented original context.",
+      "next": "Holland: observe older visitors before claiming validated needs."
+    },
+    {
+      "group": "UX",
+      "skill": "Research literacy",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Cases separate concept data from outcomes and name future validation.",
+      "next": "ImHere/Holland: attach genuine original evidence where available."
+    },
+    {
+      "group": "UX",
+      "skill": "Secondary research",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Reference and heuristic notes exist; this pass adds source-linked accessibility and design references.",
+      "next": "Áurea: add a sourced vocabulary study, distinct from visual inspiration."
+    },
+    {
+      "group": "UX",
+      "skill": "Competitive analysis",
+      "before": "WEAK EVIDENCE",
+      "after": "WEAK EVIDENCE",
+      "evidence": "Directional comparisons are mentioned without a systematic comparison artifact.",
+      "next": "Áurea: compare the same discovery task in three relevant databases, recording strengths and tradeoffs."
+    },
+    {
+      "group": "UX",
+      "skill": "Information architecture",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Áurea taxonomy, ImHere role views and INTERVAL room/session structure.",
+      "next": "Keep the architecture tied to tasks."
+    },
+    {
+      "group": "UX",
+      "skill": "Task flows",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Correction, programme conflict and repair proposal can be followed directly.",
+      "next": "Preserve working routes over decorative flow diagrams."
+    },
+    {
+      "group": "UX",
+      "skill": "User flows",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Alternate paths include cancel, undo, question, replace and pause.",
+      "next": "Test the newly connected paper paths with intended users."
+    },
+    {
+      "group": "UX",
+      "skill": "Journey mapping",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "AFTERFORM and INTERVAL connect awareness, product and physical materials.",
+      "next": "Validate handovers rather than drawing another speculative map."
+    },
+    {
+      "group": "UX",
+      "skill": "Interaction design",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Draft protection, explicit replacement and shared sample state.",
+      "next": "Keep consequence and feedback visible."
+    },
+    {
+      "group": "UX",
+      "skill": "Content hierarchy",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Different density for faculty, outdoor reading and fragrance comparison.",
+      "next": "Validate the hierarchy at mobile zoom."
+    },
+    {
+      "group": "UX",
+      "skill": "Usability thinking",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Cases state a decision, rejected alternative and tradeoff.",
+      "next": "Add real task observations before claiming usability success."
+    },
+    {
+      "group": "UX",
+      "skill": "Accessibility reasoning",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Large reading controls, labels, reduced motion and written status.",
+      "next": "Holland/ImHere: perform assistive-technology and outdoor checks."
+    },
+    {
+      "group": "UX",
+      "skill": "Edge cases",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Empty results, required reasons, storage fallback, stale approvals and plan conflicts.",
+      "next": "Preserve tested failure and recovery logic."
+    },
+    {
+      "group": "UX",
+      "skill": "Responsive behavior",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Project-specific breakpoints and screen-study widths exist.",
+      "next": "Check 320/390/768/1440 px and 200% zoom in actual browsers."
+    },
+    {
+      "group": "UX",
+      "skill": "Design rationale",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Every major case explains concrete decisions and tradeoffs.",
+      "next": "Use these decisions in interviews."
+    },
+    {
+      "group": "UX",
+      "skill": "Constraints",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Cases identify local state, sample data and unavailable real services.",
+      "next": "Keep operational boundaries close to the flow."
+    },
+    {
+      "group": "UX",
+      "skill": "Tradeoffs",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Two-record comparisons, manual walks, eligibility gates and protected breaks.",
+      "next": "Explain what was deliberately left out."
+    },
+    {
+      "group": "UX",
+      "skill": "Validation planning",
+      "before": "SOME EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "This review specifies one actionable task and uncertainty per project.",
+      "next": "Run the tasks; do not substitute this plan for findings."
+    },
+    {
+      "group": "UX",
+      "skill": "Primary research execution",
+      "before": "NO EVIDENCE",
+      "after": "NO EVIDENCE",
+      "evidence": "No new participant research was conducted; original raw records were not supplied.",
+      "next": "ImHere/Holland: recover original notes or conduct and document new ethical research."
+    },
+    {
+      "group": "UI",
+      "skill": "Visual hierarchy",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Role-specific views, dossiers and editorial reading surfaces.",
+      "next": "Keep primary task controls ahead of secondary decoration."
+    },
+    {
+      "group": "UI",
+      "skill": "Interface composition",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Six different product shells plus two complete flagship systems.",
+      "next": "Avoid replacing them with one shared dashboard."
+    },
+    {
+      "group": "UI",
+      "skill": "Typography",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Distinct display/functional pairings; all 17 additional font families now local.",
+      "next": "Check font rendering and zoom on real devices."
+    },
+    {
+      "group": "UI",
+      "skill": "Spacing",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Brand-specific spacing and responsive rules are present.",
+      "next": "Review actual computed layouts; source inspection cannot prove optical spacing."
+    },
+    {
+      "group": "UI",
+      "skill": "Navigation",
+      "before": "SOME EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Homepage focus paths and explicit Graphic design/Systems labels added.",
+      "next": "Test discoverability with a recruiter or peer."
+    },
+    {
+      "group": "UI",
+      "skill": "Forms",
+      "before": "SOME EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Field errors now expose aria-invalid, descriptions and focus.",
+      "next": "Manual screen-reader behavior remains to verify."
+    },
+    {
+      "group": "UI",
+      "skill": "Cards",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Record cards, book entries and pantry meals use different content priorities.",
+      "next": "Do not force card layouts into dense faculty data."
+    },
+    {
+      "group": "UI",
+      "skill": "Controls",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Explicit choices, native inputs and larger navigation targets.",
+      "next": "Measure computed target sizes and spacing in a browser."
+    },
+    {
+      "group": "UI",
+      "skill": "Responsive interfaces",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Independent mobile layout rules exist for the eight systems.",
+      "next": "Real-device verification remains."
+    },
+    {
+      "group": "UI",
+      "skill": "Components",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Shared product patterns and project-specific foundations are implemented.",
+      "next": "Refactor the shared six-product file only against behavioral tests."
+    },
+    {
+      "group": "UI",
+      "skill": "Variants",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Default, selected, pending, readonly and theme variations are inspectable.",
+      "next": "Preserve semantic differences rather than only colour variants."
+    },
+    {
+      "group": "UI",
+      "skill": "States",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Nine AFTERFORM and eight INTERVAL studies, plus six-project explorer.",
+      "next": "Avoid fake network states for instant local data."
+    },
+    {
+      "group": "UI",
+      "skill": "Microinteractions",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Focus, selection, written feedback and short transitions.",
+      "next": "Observe timing and interruption on actual devices."
+    },
+    {
+      "group": "UI",
+      "skill": "Design systems",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Living standards, tokens and practical component specimens.",
+      "next": "Keep print and UI roles distinct within each identity."
+    },
+    {
+      "group": "UI",
+      "skill": "Interaction feedback",
+      "before": "SOME EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Persistent search announcements and useful focus after removed controls added.",
+      "next": "Test announcement timing with assistive technology."
+    },
+    {
+      "group": "UI",
+      "skill": "Empty states",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "No-results recovery, no saved passages and unplanned grocery output.",
+      "next": "Keep a meaningful recovery action."
+    },
+    {
+      "group": "UI",
+      "skill": "Loading",
+      "before": "NO EVIDENCE",
+      "after": "NO EVIDENCE",
+      "evidence": "Current sample products do not fetch a remote catalogue or operational records.",
+      "next": "Future connected Áurea: design pending, retry and stale-data states when a real source exists."
+    },
+    {
+      "group": "UI",
+      "skill": "Errors",
+      "before": "SOME EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Invalid form data now links to the relevant field and keeps the record intact.",
+      "next": "Test native validation and custom error interaction in browsers."
+    },
+    {
+      "group": "UI",
+      "skill": "Accessibility implementation",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Semantic provisions and DOM checks exist, but no full manual audit.",
+      "next": "Do not market this as certified conformance."
+    },
+    {
+      "group": "Graphic design",
+      "skill": "Typography",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "AFTERFORM publication, INTERVAL posters and Novella keepsake.",
+      "next": "Inspect physical proofs at actual size."
+    },
+    {
+      "group": "Graphic design",
+      "skill": "Composition",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Material-led, typographic and information-heavy compositions vary purposefully.",
+      "next": "Retain the strongest flat work."
+    },
+    {
+      "group": "Graphic design",
+      "skill": "Layout",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Publication spreads, service documents and live-data paper views.",
+      "next": "Check long-content pagination in browser print."
+    },
+    {
+      "group": "Graphic design",
+      "skill": "Grids",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Documented editorial and label zones in AFTERFORM; INTERVAL programme structure.",
+      "next": "Show one useful construction detail, not grid overlays everywhere."
+    },
+    {
+      "group": "Graphic design",
+      "skill": "Visual hierarchy",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Object/action labels, room identifiers and grocery provenance.",
+      "next": "Test which information is found first."
+    },
+    {
+      "group": "Graphic design",
+      "skill": "Colour",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Distinct functional palettes with quiet, expressive and inverted applications.",
+      "next": "Print conversion and proofing remain."
+    },
+    {
+      "group": "Graphic design",
+      "skill": "Editorial design",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "24-page AFTERFORM publication and 12-page INTERVAL guide.",
+      "next": "Do not add another publication merely for volume."
+    },
+    {
+      "group": "Graphic design",
+      "skill": "Print",
+      "before": "SOME EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Existing dimensional PDFs plus four state-driven print views.",
+      "next": "Strong artwork evidence; manufacturing and physical proofing still absent."
+    },
+    {
+      "group": "Graphic design",
+      "skill": "Poster design",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Five AFTERFORM and six INTERVAL compositions, plus tailored supporting editions.",
+      "next": "Preserve variation in scale, imagery and density."
+    },
+    {
+      "group": "Graphic design",
+      "skill": "Campaign design",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "AFTERFORM and INTERVAL connect posters with social and email formats.",
+      "next": "Validate real messages only if the concepts become services."
+    },
+    {
+      "group": "Graphic design",
+      "skill": "Information design",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Schedules, labels, comparisons, route sequence and provenance.",
+      "next": "Avoid dressing illustrative data as measured performance."
+    },
+    {
+      "group": "Graphic design",
+      "skill": "Labels",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "AFTERFORM object/status/next-action workbench and dimensioned label set.",
+      "next": "Test longer names, monochrome and actual adhesive stock."
+    },
+    {
+      "group": "Graphic design",
+      "skill": "Packaging",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "AFTERFORM bands, sleeve and spare-fastening envelope prototype.",
+      "next": "Build a physical dummy before claiming production readiness."
+    },
+    {
+      "group": "Graphic design",
+      "skill": "Iconography",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Consistent functional families exist; much work uses shared primitives.",
+      "next": "ImHere/Holland: test comprehension before expanding custom pictograms."
+    },
+    {
+      "group": "Graphic design",
+      "skill": "Visual communication",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "The same meaning crosses print and product in both flagships and the new paper views.",
+      "next": "Keep every graphic tied to a task or message."
+    },
+    {
+      "group": "Graphic design",
+      "skill": "Art direction",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Different image/content roles across eight identities.",
+      "next": "Separate illustrative scenes from documentary evidence."
+    },
+    {
+      "group": "Brand / visual identity",
+      "skill": "Logo design",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "AFTERFORM has documented adaptations; most other marks are typographic identifiers.",
+      "next": "Loopline: explore one meaningful small-size mark before calling it a comprehensive identity programme."
+    },
+    {
+      "group": "Brand / visual identity",
+      "skill": "Wordmarks",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Distinct type treatments across fashion, civic, institutional and cultural concepts.",
+      "next": "Do not claim existing font glyphs as custom type design."
+    },
+    {
+      "group": "Brand / visual identity",
+      "skill": "Secondary marks",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "AFTERFORM compact and micro marks; INTERVAL room identifiers.",
+      "next": "Other projects need only variations with an actual use."
+    },
+    {
+      "group": "Brand / visual identity",
+      "skill": "Visual systems",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Identity rules carry into labels, pages, controls and print.",
+      "next": "Preserve project-level differentiation."
+    },
+    {
+      "group": "Brand / visual identity",
+      "skill": "Colour systems",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Defined foundation and semantic roles; accessible text pairs documented in standards.",
+      "next": "Audit every interactive state before a conformance claim."
+    },
+    {
+      "group": "Brand / visual identity",
+      "skill": "Typography systems",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Display, prose, functional and micro roles documented and implemented.",
+      "next": "Keep serif display out of dense controls."
+    },
+    {
+      "group": "Brand / visual identity",
+      "skill": "Photography direction",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Materials, documentary streetscapes and sample meals have clear roles.",
+      "next": "Original directed photography would strengthen authorship evidence; do not invent a shoot."
+    },
+    {
+      "group": "Brand / visual identity",
+      "skill": "Graphic devices",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Joining rule, deliberate gap, docket fields, index codes and numbered stories.",
+      "next": "Remove any device that communicates no content."
+    },
+    {
+      "group": "Brand / visual identity",
+      "skill": "Patterns",
+      "before": "WEAK EVIDENCE",
+      "after": "WEAK EVIDENCE",
+      "evidence": "No substantial standalone pattern system is needed by most concepts.",
+      "next": "AFTERFORM: add one only if an actual textile/packaging use justifies it; not an application blocker."
+    },
+    {
+      "group": "Brand / visual identity",
+      "skill": "Iconography",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Functional icons scale across selected interfaces and print.",
+      "next": "Test small-size recognition and physical reading distance."
+    },
+    {
+      "group": "Brand / visual identity",
+      "skill": "Identity application",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "AFTERFORM and INTERVAL cover a broad, coherent range of touchpoints.",
+      "next": "Maintain the connection between rule and application."
+    },
+    {
+      "group": "Brand / visual identity",
+      "skill": "Consistency",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Product-specific font/palette/component combinations are preserved.",
+      "next": "Fix execution drift without homogenizing identities."
+    },
+    {
+      "group": "Brand / visual identity",
+      "skill": "Controlled variation",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Poster families and publication pacing vary within stable rules.",
+      "next": "Show both quiet and expressive work."
+    },
+    {
+      "group": "Brand / visual identity",
+      "skill": "Responsive identity",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "AFTERFORM explicitly documents service, compact and micro marks.",
+      "next": "Loopline/ImHere: test existing compact marks at favicon and nav size."
+    },
+    {
+      "group": "Web design",
+      "skill": "Responsive websites",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "All current routes have responsive CSS and mobile priorities.",
+      "next": "Perform actual viewport and zoom checks."
+    },
+    {
+      "group": "Web design",
+      "skill": "Desktop",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Faculty density, paired comparison and editorial grids use space meaningfully.",
+      "next": "Do not leave dense work at mobile scale on wide screens."
+    },
+    {
+      "group": "Web design",
+      "skill": "Tablet",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "INTERVAL/AFTERFORM screen collections expose intermediate widths.",
+      "next": "Test real portrait/landscape transitions."
+    },
+    {
+      "group": "Web design",
+      "skill": "Mobile",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Single reading paths and explicit control sizing exist.",
+      "next": "Check sticky controls, wrapping and touch use on actual devices."
+    },
+    {
+      "group": "Web design",
+      "skill": "Navigation",
+      "before": "SOME EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Role paths, direct key-decision links and clearer destination labels.",
+      "next": "Check keyboard use and URL-based focus views."
+    },
+    {
+      "group": "Web design",
+      "skill": "Page architecture",
+      "before": "SOME EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Default project sequence and concise evidence strips make depth easier to reach.",
+      "next": "Keep the complete audit outside recruiter navigation."
+    },
+    {
+      "group": "Web design",
+      "skill": "Editorial web layouts",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Novella, Áurea and the flagship case studies use different content-led compositions.",
+      "next": "Preserve text as content, not rasterized mockups."
+    },
+    {
+      "group": "Web design",
+      "skill": "Marketing pages",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Portfolio and concept campaign/identity pages show narrative web design.",
+      "next": "A live client brief and actual conversion context remain absent."
+    },
+    {
+      "group": "Web design",
+      "skill": "Conversion-oriented pages",
+      "before": "WEAK EVIDENCE",
+      "after": "WEAK EVIDENCE",
+      "evidence": "Email contact is direct, but no measured lead-generation or checkout project exists.",
+      "next": "Loopline: validate one truthful partner enquiry flow if the service gains real operational context."
+    },
+    {
+      "group": "Web design",
+      "skill": "Content hierarchy",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Fast project facts plus deeper decisions and direct prototypes.",
+      "next": "Keep one primary next action per section."
+    },
+    {
+      "group": "Web design",
+      "skill": "Interaction",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Filters, reader controls, selection and recovery are coded.",
+      "next": "Do not use motion to hide navigation."
+    },
+    {
+      "group": "Web design",
+      "skill": "Accessibility",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Semantics, focus and reduced motion provisions plus new form fixes.",
+      "next": "Manual accessibility review remains a pre-application task."
+    },
+    {
+      "group": "Web design",
+      "skill": "Technical feasibility",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Editable static HTML/CSS/JS with local assets and working state.",
+      "next": "Do not confuse prototype feasibility with production security or scale."
+    },
+    {
+      "group": "Web design",
+      "skill": "Performance awareness",
+      "before": "WEAK EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Local fonts and explicit image dimensions reduce dependency and layout-shift risks.",
+      "next": "Measure LCP, CLS and transfer cost; no Lighthouse score is claimed."
+    },
+    {
+      "group": "Product design",
+      "skill": "Product thinking",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "The projects expose consequences, responsibilities and context, not only attractive screens.",
+      "next": "Validate assumptions with real task evidence."
+    },
+    {
+      "group": "Product design",
+      "skill": "Prioritization",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Two comparisons, manual walks, no fake checkout and focused household state.",
+      "next": "Keep deliberate scope exclusions."
+    },
+    {
+      "group": "Product design",
+      "skill": "Workflows",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Correction, request/proposal, programme and handoff paths are usable.",
+      "next": "Test interrupted and returning use with intended users."
+    },
+    {
+      "group": "Product design",
+      "skill": "Systems",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Shared state and cross-channel identifiers have clear boundaries.",
+      "next": "Document production sources of truth before backend work."
+    },
+    {
+      "group": "Product design",
+      "skill": "Scalability",
+      "before": "WEAK EVIDENCE",
+      "after": "WEAK EVIDENCE",
+      "evidence": "Datasets are deliberately small; shared code is a large layered file.",
+      "next": "ImHere/Áurea: test larger data and split modules with existing behavior coverage."
+    },
+    {
+      "group": "Product design",
+      "skill": "Reusable patterns",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Fields, navigation, statuses, tokens and print hierarchy are reused without one visual skin.",
+      "next": "Preserve product-specific semantics."
+    },
+    {
+      "group": "Product design",
+      "skill": "Complex states",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Draft/revision/approval, schedule conflicts and shared role records.",
+      "next": "Keep invalidation and Undo rules explicit."
+    },
+    {
+      "group": "Product design",
+      "skill": "Constraints",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Local data and unavailable live operations are disclosed.",
+      "next": "Never present operational uncertainty as confirmation."
+    },
+    {
+      "group": "Product design",
+      "skill": "Tradeoffs",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Every project now has a specific interview-ready tradeoff in this review.",
+      "next": "Explain what evidence would change the decision."
+    },
+    {
+      "group": "Product design",
+      "skill": "End-to-end experiences",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Concept journeys connect awareness, choice and paper/record return.",
+      "next": "No real fulfilment or live service outcome is demonstrated."
+    },
+    {
+      "group": "Interaction / motion",
+      "skill": "Hover",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Project-specific border, colour and affordance changes exist.",
+      "next": "Inspect contrast and touch alternatives."
+    },
+    {
+      "group": "Interaction / motion",
+      "skill": "Transitions",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Restrained UI timing and one opt-in AFTERFORM identity motion.",
+      "next": "Do not add cinematic page changes to practical workflows."
+    },
+    {
+      "group": "Interaction / motion",
+      "skill": "Feedback",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Written status, selected states and validation show effects.",
+      "next": "Review repeated live announcements with screen readers."
+    },
+    {
+      "group": "Interaction / motion",
+      "skill": "Loading",
+      "before": "NO EVIDENCE",
+      "after": "NO EVIDENCE",
+      "evidence": "No real asynchronous service is present in the sample products.",
+      "next": "Design real pending/error states only when connecting a genuine source."
+    },
+    {
+      "group": "Interaction / motion",
+      "skill": "Navigation behavior",
+      "before": "SOME EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Focus recovery and role-based portfolio paths are implemented.",
+      "next": "Browser Back behavior in the six legacy product shells still needs dedicated routing work."
+    },
+    {
+      "group": "Interaction / motion",
+      "skill": "State changes",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Explicit replacement, corrections, revisions and undo are visible.",
+      "next": "Keep state diagrams tied to real logic."
+    },
+    {
+      "group": "Interaction / motion",
+      "skill": "Motion principles",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Different timing and intensity match the identities.",
+      "next": "Demonstrate only the few transitions that support decisions."
+    },
+    {
+      "group": "Interaction / motion",
+      "skill": "Reduced motion",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Reduced-motion media queries and AFTERFORM’s settled frame exist.",
+      "next": "Verify OS preference handling in actual browsers."
+    },
+    {
+      "group": "Information design",
+      "skill": "Diagrams",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Useful flow and specimen relationships exist in the flagship presentations.",
+      "next": "Avoid adding process drawings that repeat the prose."
+    },
+    {
+      "group": "Information design",
+      "skill": "Maps",
+      "before": "WEAK EVIDENCE",
+      "after": "WEAK EVIDENCE",
+      "evidence": "Holland has a sequence and INTERVAL a conceptual directory, not verified geographic maps.",
+      "next": "Holland: verify a real route before creating a factual map."
+    },
+    {
+      "group": "Information design",
+      "skill": "Schedules",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "INTERVAL programme and plan communicate constraints and gaps.",
+      "next": "Validate real capacity and re-entry policies separately."
+    },
+    {
+      "group": "Information design",
+      "skill": "Charts",
+      "before": "WEAK EVIDENCE",
+      "after": "WEAK EVIDENCE",
+      "evidence": "Simple counts and summaries exist; no substantial analytical charting project.",
+      "next": "ImHere: only add a chart when a real instructor question requires it."
+    },
+    {
+      "group": "Information design",
+      "skill": "Data visualization",
+      "before": "WEAK EVIDENCE",
+      "after": "WEAK EVIDENCE",
+      "evidence": "The strongest evidence is classification and tables, not large-scale analytics.",
+      "next": "ImHere: use consented, non-identifying data and a genuine question if needed."
+    },
+    {
+      "group": "Information design",
+      "skill": "Wayfinding",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "INTERVAL rooms and AFTERFORM environmental hierarchy connect to product language.",
+      "next": "Test actual location, mounting, glare and viewing distance."
+    },
+    {
+      "group": "Information design",
+      "skill": "Classification",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Áurea family/note taxonomy and AFTERFORM repair/status categories.",
+      "next": "Validate vocabulary with intended users."
+    },
+    {
+      "group": "Information design",
+      "skill": "Legends",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Numbered rooms and text-supported category colours are explained.",
+      "next": "Ensure physical and digital legends use the same meaning."
+    },
+    {
+      "group": "Information design",
+      "skill": "Instructions",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Holland readiness, repair decisions and printed handoff sheets prioritize action.",
+      "next": "Test comprehension, not only reading order."
+    },
+    {
+      "group": "Information design",
+      "skill": "Provenance",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Nutriva meal provenance and Novella source-linked passages now survive printing.",
+      "next": "Keep origins visible across channels."
+    },
+    {
+      "group": "Physical / environmental",
+      "skill": "Print",
+      "before": "SOME EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Dimensional master PDFs plus new live-data print views.",
+      "next": "Artwork is designed; physical output remains to proof."
+    },
+    {
+      "group": "Physical / environmental",
+      "skill": "Signage",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "INTERVAL and AFTERFORM dimensioned environmental studies.",
+      "next": "Do not claim installed work or code compliance."
+    },
+    {
+      "group": "Physical / environmental",
+      "skill": "Wayfinding",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Room numbers and named service stages support recognition.",
+      "next": "Run a real location walkthrough."
+    },
+    {
+      "group": "Physical / environmental",
+      "skill": "Packaging",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "AFTERFORM’s opening sequence and envelope net are developed.",
+      "next": "Make and photograph an actual dummy before claiming manufacturability."
+    },
+    {
+      "group": "Physical / environmental",
+      "skill": "Brochures",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "The existing guides use meaningful formats and reading sequences.",
+      "next": "Keep the original covers and interior variety."
+    },
+    {
+      "group": "Physical / environmental",
+      "skill": "Publications",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "24-page On keeping and 12-page INTERVAL reader-order editions.",
+      "next": "Confirm imposition, stock and binding with a printer."
+    },
+    {
+      "group": "Physical / environmental",
+      "skill": "Environmental graphics",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Window invitation, directory and collection-point hierarchy.",
+      "next": "Test scale, glare and mounting in context."
+    },
+    {
+      "group": "Physical / environmental",
+      "skill": "Physical-to-digital experience",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Room numbers, sample record codes and four new state-driven paper views.",
+      "next": "Verify QR destinations after public hosting; local requests never get fake shared links."
+    },
+    {
+      "group": "Technical fluency",
+      "skill": "Implementation awareness",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Working prototypes expose state, data and scope decisions.",
+      "next": "Lead with design decisions rather than a programming-language list."
+    },
+    {
+      "group": "Technical fluency",
+      "skill": "Responsive systems",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Brand-specific CSS and print layouts respond by task.",
+      "next": "Confirm browser behavior and 200% zoom."
+    },
+    {
+      "group": "Technical fluency",
+      "skill": "Component logic",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Corrections, filtering, related state and revision invalidation are implemented.",
+      "next": "Reduce the layered shared script before substantial new features."
+    },
+    {
+      "group": "Technical fluency",
+      "skill": "Design tokens",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Living standards and six-product system workbench expose actual foundations.",
+      "next": "Update tokens and examples together."
+    },
+    {
+      "group": "Technical fluency",
+      "skill": "HTML/CSS awareness",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Semantic pages, editable artwork and local font delivery are concrete.",
+      "next": "Keep source portable and licensed."
+    },
+    {
+      "group": "Technical fluency",
+      "skill": "Accessibility implementation",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "New error linkage and focus recovery strengthen an existing semantic foundation.",
+      "next": "Manual testing remains essential."
+    },
+    {
+      "group": "Technical fluency",
+      "skill": "Interaction feasibility",
+      "before": "STRONG EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "Flows and print views work with real current prototype state.",
+      "next": "Do not imply server durability or production authorization."
+    },
+    {
+      "group": "Technical fluency",
+      "skill": "Developer handoff",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Standards, tokens, source and scope notes are available.",
+      "next": "No observed engineer collaboration or shipped integration is claimed."
+    },
+    {
+      "group": "Technical fluency",
+      "skill": "Asset delivery",
+      "before": "SOME EVIDENCE",
+      "after": "STRONG EVIDENCE",
+      "evidence": "All additional webfont families are packaged locally with licences; images have intrinsic size metadata.",
+      "next": "Verify the extracted ZIP on a clean public deployment."
+    },
+    {
+      "group": "Technical fluency",
+      "skill": "Security and production boundaries",
+      "before": "SOME EVIDENCE",
+      "after": "SOME EVIDENCE",
+      "evidence": "Text is escaped; data is explicitly local or illustrative.",
+      "next": "Authentication, authorization, retention and service policy require separate production work."
+    }
+  ],
+  "visual_range": [
+    [
+      "ImHere",
+      "Institutional; accountable",
+      "Jakarta + mono",
+      "Navy / blue / orange",
+      "Roster and narrow student ticket",
+      "Interface-led",
+      "High faculty / low student",
+      "Immediate, sober",
+      "Current → proposed record"
+    ],
+    [
+      "AFTERFORM",
+      "Tactile; considered",
+      "Bodoni + Karla + mono",
+      "Plum / vermilion / lilac",
+      "Editorial zones and label hierarchy",
+      "Material close-up; illustrated kit",
+      "Varied by scale",
+      "Join, then settle",
+      "Object → attention → next action"
+    ],
+    [
+      "Holland",
+      "Civic; welcoming",
+      "DM Serif + Source Sans 3",
+      "Teal / paper / yellow",
+      "One reading path; numbered stages",
+      "Credited local streetscapes",
+      "Low while walking",
+      "Quiet; optional reduced motion",
+      "A pace-preserving sequence"
+    ],
+    [
+      "INTERVAL",
+      "Cultural; spatial",
+      "Unbounded + Instrument Sans",
+      "Black / acid lime / paper",
+      "Timetable and deliberate gaps",
+      "Listening spaces and materials",
+      "Programme density, quiet detail",
+      "Fast feedback; clear replacement",
+      "A room number across channels"
+    ],
+    [
+      "Áurea",
+      "Archival; sensory",
+      "Italiana + DM Sans",
+      "Oxblood / citron / paper",
+      "Index, dossier, paired columns",
+      "Illustrative perfume still lifes",
+      "Medium / comparable",
+      "Restrained rules and status",
+      "A note opens the database"
+    ],
+    [
+      "Loopline",
+      "Energetic; operational",
+      "Barlow Condensed + Space Grotesk",
+      "Forest / coral / yellow",
+      "Docket fields and numbered stages",
+      "Typography-led",
+      "Structured / practical",
+      "Direct step feedback",
+      "A handoff that names responsibility"
+    ],
+    [
+      "Novella",
+      "Literary; personal",
+      "Newsreader + Libre Baskerville + Inter",
+      "Burgundy / cobalt / paper",
+      "Prose measure and editorial columns",
+      "Original text leads",
+      "Quiet",
+      "Restrained reveal",
+      "The source stays with a passage"
+    ],
+    [
+      "Nutriva",
+      "Everyday; approachable",
+      "DM Sans + Nunito Sans",
+      "Leaf green / butter yellow",
+      "Working lists and recipe cards",
+      "Sample-meal photography",
+      "Medium",
+      "Immediate dependency updates",
+      "A grocery item explains its origin"
+    ]
+  ],
+  "discipline_range": {
+    "ImHere": [
+      "STRONG",
+      "STRONG",
+      "MODERATE",
+      "LIGHT",
+      "MODERATE",
+      "NOT RELEVANT",
+      "LIGHT",
+      "STRONG",
+      "LIGHT",
+      "MODERATE",
+      "STRONG"
+    ],
+    "AFTERFORM": [
+      "STRONG",
+      "STRONG",
+      "STRONG",
+      "STRONG",
+      "STRONG",
+      "STRONG",
+      "STRONG",
+      "STRONG",
+      "MODERATE",
+      "MODERATE",
+      "STRONG"
+    ],
+    "Holland Walking Tour": [
+      "STRONG",
+      "MODERATE",
+      "STRONG",
+      "MODERATE",
+      "MODERATE",
+      "LIGHT",
+      "MODERATE",
+      "MODERATE",
+      "LIGHT",
+      "MODERATE",
+      "STRONG"
+    ],
+    "INTERVAL": [
+      "STRONG",
+      "STRONG",
+      "STRONG",
+      "STRONG",
+      "STRONG",
+      "STRONG",
+      "STRONG",
+      "STRONG",
+      "MODERATE",
+      "MODERATE",
+      "STRONG"
+    ],
+    "Áurea": [
+      "MODERATE",
+      "STRONG",
+      "STRONG",
+      "MODERATE",
+      "MODERATE",
+      "MODERATE",
+      "MODERATE",
+      "STRONG",
+      "LIGHT",
+      "MODERATE",
+      "STRONG"
+    ],
+    "Loopline": [
+      "MODERATE",
+      "MODERATE",
+      "MODERATE",
+      "STRONG",
+      "MODERATE",
+      "LIGHT",
+      "MODERATE",
+      "STRONG",
+      "LIGHT",
+      "MODERATE",
+      "MODERATE"
+    ],
+    "Novella": [
+      "MODERATE",
+      "STRONG",
+      "STRONG",
+      "MODERATE",
+      "MODERATE",
+      "MODERATE",
+      "MODERATE",
+      "MODERATE",
+      "LIGHT",
+      "MODERATE",
+      "MODERATE"
+    ],
+    "Nutriva": [
+      "MODERATE",
+      "MODERATE",
+      "MODERATE",
+      "MODERATE",
+      "LIGHT",
+      "LIGHT",
+      "MODERATE",
+      "STRONG",
+      "LIGHT",
+      "MODERATE",
+      "STRONG"
+    ]
+  },
+  "role_paths": [
+    [
+      "UX",
+      "ImHere → Holland → INTERVAL → Nutriva",
+      "Explain records, outdoor choices, planning conflicts and dependency recovery.",
+      "Do not imply primary research evidence that has not been supplied."
+    ],
+    [
+      "UI",
+      "Áurea → ImHere → AFTERFORM → Novella",
+      "Show taxonomy, density, state and reading controls at useful scale.",
+      "Make the actual interface easy to inspect, not only screen collages."
+    ],
+    [
+      "Graphic",
+      "AFTERFORM → INTERVAL → Loopline",
+      "Lead with flat publication spreads, poster variation, labels and practical documents.",
+      "Physical proofing and production experience remain unproven."
+    ],
+    [
+      "Visual",
+      "AFTERFORM → Áurea → INTERVAL → Holland",
+      "Show art direction range, with each project’s reason for its aesthetic.",
+      "Do not let generated imagery stand in for actual typography or layouts."
+    ],
+    [
+      "Web",
+      "Holland → Áurea → Novella → portfolio",
+      "Show mobile priorities, content architecture, navigation and responsive reading.",
+      "Review real devices and performance before claiming production polish."
+    ],
+    [
+      "Product",
+      "ImHere → INTERVAL → AFTERFORM → Loopline",
+      "Focus on consequences, roles, constraints, revision and service boundaries.",
+      "No launch metrics, commercial outcomes or production operations are shown."
+    ]
+  ],
+  "roadmap": [
+    [
+      "P0",
+      "Private application URL",
+      "A reviewer may not be able to open the current owner-private Site.",
+      "Upload the supplied ZIP contents to the intended public GitHub Pages repository, then check the exact application URL signed out.",
+      "Portfolio",
+      "Access and professionalism",
+      "Owner action remains",
+      "Quick win"
+    ],
+    [
+      "P0",
+      "Résumé absent",
+      "Employers cannot check experience, dates or role alignment.",
+      "Add the current verified résumé; compare titles, dates, project origins, degree and links. The new design profile is explicitly not an employment résumé.",
+      "About / profile",
+      "Credibility",
+      "Needs résumé source",
+      "Quick win"
+    ],
+    [
+      "P0",
+      "Original contribution not fully documented",
+      "Academic and collaborative work needs truthful attribution.",
+      "Confirm ImHere and Holland contributions against actual records. Keep current refinement and AI assistance separate from original team work.",
+      "ImHere / Holland",
+      "Trust and collaboration",
+      "Needs original evidence",
+      "Medium work"
+    ],
+    [
+      "P0",
+      "Default eligibility was affirmative",
+      "A fresh handoff could start with an implied attestation.",
+      "Start eligibility unselected; require a deliberate answer and link any error to the controls.",
+      "Loopline",
+      "Responsible interaction design",
+      "Implemented and checked",
+      "Quick win"
+    ],
+    [
+      "P0",
+      "Lost focus and disconnected errors",
+      "Keyboard and assistive-technology users can lose context.",
+      "Connect errors to controls, expose invalid state, focus errors and move removed-action focus to Undo or a heading.",
+      "Six product shells",
+      "Accessibility and state thinking",
+      "Implemented; manual QA remains",
+      "Medium work"
+    ],
+    [
+      "P0",
+      "No full real-device / assistive test",
+      "Source checks cannot establish usable layout or conformance.",
+      "Check keyboard order, screen-reader labels, 200% zoom, 320 px layout and main flows on real phones; record defects and resolutions.",
+      "All current routes",
+      "Reliable execution",
+      "Still required",
+      "Medium work"
+    ],
+    [
+      "P1",
+      "Eight equal project choices",
+      "A reviewer must discover the strongest evidence unaided.",
+      "Lead with ImHere, AFTERFORM, Holland and INTERVAL; supply role focus paths and direct key-decision links.",
+      "Homepage",
+      "Curation and range",
+      "Implemented",
+      "Quick win"
+    ],
+    [
+      "P1",
+      "Repeated case-study headings",
+      "Distinct projects feel like a presentation template.",
+      "Use problem-specific headings and a concise origin / work / evidence strip in all eight cases.",
+      "Case studies",
+      "Communication",
+      "Implemented",
+      "Quick win"
+    ],
+    [
+      "P1",
+      "Remote fonts and missing image dimensions",
+      "Visual identity depends on a third party and images can shift during loading.",
+      "Package the 17 additional families with licences; add intrinsic dimensions to static and rendered images.",
+      "Portfolio and products",
+      "Web craft",
+      "Implemented; performance score unmeasured",
+      "Medium work"
+    ],
+    [
+      "P1",
+      "No new primary validation",
+      "Good reasoning is still hypothetical.",
+      "Run the proposed project-specific tasks. Record observations, limits and resulting changes; never invent participants.",
+      "ImHere / Holland first",
+      "Research literacy and iteration",
+      "Plan prepared; research not conducted",
+      "Deep work"
+    ],
+    [
+      "P2",
+      "Some graphic work is disconnected from task data",
+      "Supporting projects need a useful cross-channel application.",
+      "Create sampling, chosen-story, grocery and source-linked reading print views from current state.",
+      "Áurea / Holland / Nutriva / Novella",
+      "Graphic + UX integration",
+      "Implemented and checked",
+      "Medium work"
+    ],
+    [
+      "P2",
+      "Physical designs are not production evidence",
+      "A render does not prove folding, legibility or manufacture.",
+      "Make one AFTERFORM envelope dummy and one INTERVAL guide; photograph actual proofs and document adjustments.",
+      "AFTERFORM / INTERVAL",
+      "Print production judgment",
+      "Artwork ready; physical proofing required",
+      "Deep work"
+    ],
+    [
+      "P2",
+      "Tiny datasets and layered shared code",
+      "Scale is not demonstrated by three records or a large monolithic script.",
+      "Before more features, define representative data and split the six-product renderer behind behavior tests.",
+      "Áurea / ImHere / shared code",
+      "Systems scalability",
+      "Future work",
+      "Deep work"
+    ],
+    [
+      "P2",
+      "Maps, analytics and competition evidence are light",
+      "These skills should not be inferred from decorative diagrams.",
+      "Verify a Holland route; document an Áurea task comparison; add analytics only to answer an actual instructor question.",
+      "Holland / Áurea / ImHere",
+      "Information and strategy depth",
+      "Targeted future work",
+      "Deep work"
+    ],
+    [
+      "P3",
+      "Legacy explorations can confuse the current story",
+      "Old screens may be mistaken for the final work.",
+      "Mark archived explorations as superseded and exclude them from search indexing; preserve source.",
+      "Archived pages",
+      "Editorial judgment",
+      "Implemented",
+      "Quick win"
+    ],
+    [
+      "P3",
+      "Metadata and contact continuity",
+      "Small omissions weaken a professional handoff.",
+      "Add descriptive preview metadata without invented imagery, a simple favicon, profile links and coherent next-project navigation.",
+      "Portfolio shell",
+      "Professional finish",
+      "Implemented",
+      "Quick win"
+    ]
+  ]
+}

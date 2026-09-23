@@ -1,0 +1,27 @@
+{
+  "asset": "publication-mockup.webp",
+  "source_generated_file": "documentation/original-art/interval-publication-mockup.png",
+  "mode": "built-in image_gen",
+  "use_case": "product-mockup",
+  "generation_requests": 1,
+  "requested_aspect_ratio": "3:2",
+  "referenced_image_paths": [
+    "guide-01.png",
+    "guide-04.png",
+    "guide-05.png",
+    "card-1.png"
+  ],
+  "prompt": "Use case: product-mockup\nAsset type: illustrative editorial presentation mockup of existing INTERVAL printed artwork; companion to exact flat PDF artwork.\nPrimary request: Create one realistic wide 3:2 tactile studio photograph of this exact print design.\nInput images: Image 1 (guide-01.png) is the exact closed booklet front cover artwork. Image 2 (guide-04.png) is the exact Saturday programme artwork, to appear on the left page of the open booklet. Image 3 (guide-05.png) is the exact tape image feature artwork, to appear on the right page of the open booklet. Image 4 (card-1.png) is the exact listening card front artwork. These are source graphics to print on the photographed objects, not general style inspiration.\nScene/backdrop: neutral pale grey worktable, uncluttered studio.\nSubjects: Exactly two copies of a slim A5 portrait saddle-stitched 12-page booklet and one smaller A6 portrait listening card. One booklet is closed in the foreground, slightly angled, front cover facing up. A second copy is open behind it, with the supplied Saturday programme on its left and supplied tape feature on its right. One small listening card rests near the edge of the composition. The booklet should have only the slight page thickness of a 12-page publication, physically plausible saddle stitching, a subtle central fold, natural slight page curl and crisp cut edges.\nComposition/framing: wide landscape 3:2 photograph, elevated oblique view with enough top view that all four supplied designs are recognisable. Closed cover in the foreground, open spread behind, A6 card near the edge. Restrained editorial art direction, considered spacing, understated overlaps without covering major headings. All three objects fully in frame.\nLighting/mood: subtle afternoon side light, soft restrained shadows, believable paper texture, quiet and refined.\nMaterials/textures: crisp uncoated paper with a fine natural tooth; no glossy lamination.\nColor palette: preserve the exact vivid chartreuse, charcoal and warm off-white of the supplied printed artwork as closely as possible; neutral pale grey table.\nArtwork invariants: Reproduce the layouts, typography, hierarchy, margins, line breaks, rules, exact colours and existing photographic tape-recorder image as closely as possible. The cover reads “INTER VAL”, “MAKE” over “SPACE.”, with “For the sound.”, “For the silence.”, “For something new.” in their existing positions. The open left page has “Saturday.” and the four programme rows. The right page preserves the existing tape-recorder photograph on the upper half, charcoal lower half and the exact title “Tape as” over “landscape.”. The small card reads “INTER VAL”, “ONE” over “MINUTE.” with its supplied body copy and lower rule. Match the reference typeface rather than introducing a new typeface. Preserve existing small text as faithfully as the photographic view permits; never invent extra tiny text.\nAvoid: additional documents, extra pages laid out separately, new typography, new logos, watermarks, ornamental motifs, devices, hands, people, plants, pencils, clips, decorative props, plastic appearance, thick hardcover books, excessive curl, floating sheets. Return one image only.",
+  "intended_use": "Illustrative presentation mockup to accompany exact flat PDF artwork.",
+  "inspection": {
+    "composition": "Exactly two booklet copies and one listening card on a pale grey table; requested front cover and open Saturday/tape spread are recognisable. Tactile uncoated paper, natural curl and understated side lighting.",
+    "typography": [
+      "No obvious spelling errors found in the large headings MAKE SPACE., Saturday., Tape as landscape., or ONE MINUTE.",
+      "Small typography and fine letterforms are re-rendered and slightly soft; this image is not an exact artwork proof.",
+      "The foreground cover partially occludes the lower-left edge of the Saturday page, including part of the fourth row and its footer.",
+      "Perspective and paper curvature introduce expected optical slant and line curvature."
+    ],
+    "colour": "Chartreuse and charcoal remain recognisable; scene lighting creates natural tonal variation.",
+    "use_exact_pdf_for": "Final wording, typesetting, colour values, pagination and print-production verification."
+  }
+}

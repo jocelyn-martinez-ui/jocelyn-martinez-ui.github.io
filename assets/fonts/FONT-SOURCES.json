@@ -1,0 +1,95 @@
+{
+  "families": {
+    "Barlow Condensed": {
+      "path": "barlowcondensed-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/barlowcondensed/OFL.txt"
+    },
+    "Bodoni Moda": {
+      "path": "bodonimoda-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/bodonimoda/OFL.txt"
+    },
+    "Cormorant Garamond": {
+      "path": "cormorantgaramond-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/cormorantgaramond/OFL.txt"
+    },
+    "DM Sans": {
+      "path": "dmsans-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/OFL.txt"
+    },
+    "DM Serif Display": {
+      "path": "dmserifdisplay-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/dmserifdisplay/OFL.txt"
+    },
+    "Fraunces": {
+      "path": "fraunces-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/fraunces/OFL.txt"
+    },
+    "IBM Plex Mono": {
+      "path": "ibmplexmono-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/ibmplexmono/OFL.txt"
+    },
+    "Inter": {
+      "path": "inter-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/OFL.txt"
+    },
+    "Italiana": {
+      "path": "italiana-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/italiana/OFL.txt"
+    },
+    "Libre Baskerville": {
+      "path": "librebaskerville-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/librebaskerville/OFL.txt"
+    },
+    "Manrope": {
+      "path": "manrope-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/OFL.txt"
+    },
+    "Newsreader": {
+      "path": "newsreader-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/newsreader/OFL.txt"
+    },
+    "Nunito Sans": {
+      "path": "nunitosans-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/nunitosans/OFL.txt"
+    },
+    "Plus Jakarta Sans": {
+      "path": "plusjakartasans-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/plusjakartasans/OFL.txt"
+    },
+    "Poppins": {
+      "path": "poppins-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/poppins/OFL.txt"
+    },
+    "Source Sans 3": {
+      "path": "sourcesans3-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/sourcesans3/OFL.txt"
+    },
+    "Space Grotesk": {
+      "path": "spacegrotesk-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/OFL.txt"
+    }
+  },
+  "font_files": 120,
+  "font_bytes": 2520380,
+  "stylesheets": [
+    "family-set-2755a4a05510.css",
+    "family-set-931be7dddbf9.css",
+    "family-set-c2f6ae4f61e3.css",
+    "family-set-43c273d982d7.css",
+    "family-set-94a820bb6e94.css",
+    "family-set-d2aab09f86dd.css",
+    "family-set-7372b760a45d.css",
+    "family-set-fd7d1941c641.css",
+    "family-set-2416bf5f846d.css",
+    "family-set-1b67bba05098.css",
+    "family-set-c80f86c7979b.css",
+    "family-set-d237002f12e7.css",
+    "family-set-526da5c517fa.css",
+    "family-set-e1fcb56e7193.css",
+    "family-set-1d68a1ea7902.css",
+    "family-set-161e9b86ad43.css",
+    "family-set-7ec4ec6f63be.css",
+    "family-set-8c238ea3291a.css",
+    "family-set-2a8aaaf22153.css"
+  ]
+}

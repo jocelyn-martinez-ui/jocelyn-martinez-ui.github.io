@@ -1,0 +1,44 @@
+[
+  {
+    "pair": "Primary text / paper",
+    "foreground": "#38233f",
+    "background": "#faf7f8",
+    "ratio": 13.32
+  },
+  {
+    "pair": "Primary text / lilac",
+    "foreground": "#38233f",
+    "background": "#d6c6ec",
+    "ratio": 8.88
+  },
+  {
+    "pair": "Accent text / paper",
+    "foreground": "#bd3b2f",
+    "background": "#faf7f8",
+    "ratio": 5.15
+  },
+  {
+    "pair": "Large display only / lilac",
+    "foreground": "#bd3b2f",
+    "background": "#d6c6ec",
+    "ratio": 3.43
+  },
+  {
+    "pair": "Reversed text / vermilion",
+    "foreground": "#faf7f8",
+    "background": "#bd3b2f",
+    "ratio": 5.15
+  },
+  {
+    "pair": "Secondary text / paper",
+    "foreground": "#6b586f",
+    "background": "#faf7f8",
+    "ratio": 6.07
+  },
+  {
+    "pair": "Success / paper",
+    "foreground": "#2b614c",
+    "background": "#faf7f8",
+    "ratio": 6.76
+  }
+]

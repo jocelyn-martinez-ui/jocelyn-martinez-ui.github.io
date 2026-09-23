@@ -1,0 +1,266 @@
+{
+  "name": "AFTERFORM",
+  "premise": "A garment-repair studio that turns uncertainty about a repair into a clear request, an explicit decision and a useful garment record.",
+  "status": "Self-directed concept; no actual customers, research participants, repairs or bookings.",
+  "concepts": [
+    {
+      "name": "AFTERFORM",
+      "idea": "A garment-repair studio connecting a considered repair request to labels, return packaging and a garment record.",
+      "context": "Fashion aftercare / local service",
+      "why": "A person should not need tailoring vocabulary to describe a problem or understand a changed proposal.",
+      "users": "People keeping favourite clothes; studio assessors managing uncertain material and finish requirements.",
+      "problem": "The desired outcome, realistic finish and approval of a change can become disconnected.",
+      "ux": "Assisted intake, uncertainty handling, explicit proposal revisions and a traceable record.",
+      "ui": "An editorial workshop desk with readable choices, a comparison of changes and clear completion.",
+      "graphics": "Wordmark, repair-code labels, hangtags, care record, receipt, campaign and studio guide.",
+      "identity": "Fashion typography meets a repair seam; vermilion, lilac and plum create a new territory.",
+      "physical": "A printed guide, garment labels, return sleeve/band, pocket record and studio signs.",
+      "value": "Adds label craft, actual packaging panels and customer/studio decision depth.",
+      "different": "A service around a physical garment, not an online shop or a generic tracking dashboard."
+    },
+    {
+      "name": "OFFCUT",
+      "idea": "A reclaimed-material library for designers comparing and borrowing architectural samples.",
+      "context": "Architecture / circular materials",
+      "why": "A recovered material needs an understandable specification and sample provenance.",
+      "users": "Independent interior designers, makers and material-library staff.",
+      "problem": "Appearance alone cannot answer condition, dimensions, availability or return requirements.",
+      "ux": "Constraint-based comparison, sample requests, substitution approval and returns.",
+      "ui": "Dense but readable specification tables, object records and material categories.",
+      "graphics": "Sample labels, specification cards, library catalogue and shelf identifiers.",
+      "identity": "Architectural proportions with bold stock markings and tactile photography.",
+      "physical": "Sample sleeves, reusable dispatch inserts, shelf labels and fold-out specification sheets.",
+      "value": "Strong complex-data and business-to-business evidence.",
+      "different": "Focuses on uncertain reclaimed stock rather than standardised retail inventory."
+    },
+    {
+      "name": "POSTMARK",
+      "idea": "A neighbourhood story archive where contributors choose how personal memories are recorded, displayed and accessed.",
+      "context": "Community history / archives",
+      "why": "Preserving a story also means preserving the contributor’s boundaries.",
+      "users": "Community contributors, readers, librarians and archive coordinators.",
+      "problem": "Contribution, publication permission and future withdrawal are often separate experiences.",
+      "ux": "Layered consent, draft review, access levels and withdrawal requests.",
+      "ui": "A thoughtful reading and contribution environment with clear privacy choices.",
+      "graphics": "Archival tags, oral-history cards, exhibition labels and an annual publication.",
+      "identity": "Correspondence and annotated margins, with a distinct stamp-sized visual grammar.",
+      "physical": "Collection envelopes, listening cards, exhibition labels and correspondence packs.",
+      "value": "Adds sensitive-content architecture and consent reasoning.",
+      "different": "Treats access and authorship as a core experience rather than another media feed."
+    }
+  ],
+  "directions": [
+    {
+      "name": "Second impression",
+      "selected": true,
+      "idea": "The garment retains its character; the repair gives it a deliberate new detail.",
+      "personality": [
+        "Considered",
+        "Expressive",
+        "Tactile",
+        "Warm",
+        "Candid",
+        "Fashion-aware"
+      ],
+      "type": "Bodoni Moda display; Karla for reading and UI; Inconsolata for job codes.",
+      "colors": [
+        "#bd3b2f",
+        "#d6c6ec",
+        "#38233f",
+        "#faf7f8"
+      ],
+      "photo": "Material-led close crops, soft side light, original illustrative repairs.",
+      "motifs": "A paired stitch, an interrupted rule rejoined by a bridge, and meaningful repair codes.",
+      "layout": "Large editorial statement beside practical information; asymmetry with restrained margins.",
+      "texture": "Actual cloth and paper material, never generic overlaid grain.",
+      "ui": "Quiet reading ground; linear fields; visible labels; decisive plum actions.",
+      "motion": "Short stitch-like line reveals and clear, reversible state feedback.",
+      "print": "Vermilion covers, lilac inserts, plum information; one dominant pair per piece."
+    },
+    {
+      "name": "Workshop blue",
+      "selected": false,
+      "idea": "A practical repair bench becomes a system of instructions and tools.",
+      "personality": [
+        "Practical",
+        "Precise",
+        "Direct",
+        "Industrial",
+        "Open",
+        "Dependable"
+      ],
+      "type": "Condensed grotesk display with humanist UI type.",
+      "colors": [
+        "#2548aa",
+        "#ffc59b",
+        "#a33e2f",
+        "#f3f5fb"
+      ],
+      "photo": "Daylit benches and hands at work, with utilitarian framing.",
+      "motifs": "Cut lines, measured grids and clear work-stage markers.",
+      "layout": "Dense modular forms and narrow type bands.",
+      "texture": "Coated labels, work paper, indigo textiles.",
+      "ui": "High-information service desk.",
+      "motion": "Snapped alignment and short mechanical changes.",
+      "print": "One- and two-colour technical sheets.",
+      "reason_not_selected": "Blue/coral and operational strips overlap the existing ImHere and Loopline territories."
+    },
+    {
+      "name": "Quiet heirloom",
+      "selected": false,
+      "idea": "A personal object carries memory across generations.",
+      "personality": [
+        "Intimate",
+        "Literary",
+        "Gentle",
+        "Reflective",
+        "Material",
+        "Patient"
+      ],
+      "type": "Soft old-style serif with an unobtrusive sans.",
+      "colors": [
+        "#07595b",
+        "#ebafc9",
+        "#f3edd7",
+        "#243f45"
+      ],
+      "photo": "Portrait-like photographs of individual garments.",
+      "motifs": "Personal notes, archival tabs and collection folios.",
+      "layout": "Long reading measures broken by close details.",
+      "texture": "Soft stock and retained folds.",
+      "ui": "An archive with calm, readable labels.",
+      "motion": "Slow fades and page transitions.",
+      "print": "Small numbered booklets and keepsake cards.",
+      "reason_not_selected": "Green and warm paper overlap Holland and Loopline; a literary tone overlaps Novella."
+    }
+  ],
+  "research": [
+    {
+      "source": "Pinterest label-design board",
+      "url": "https://www.pinterest.com/alesya/label-design/",
+      "status": "Indexed board discovered; full board inaccessible in the browsing tool. No claim of inspecting its individual artworks."
+    },
+    {
+      "source": "Pinterest project-specific queries",
+      "queries": [
+        "garment repair branding label design",
+        "red lilac fashion editorial identity",
+        "tailoring studio packaging belly band",
+        "contemporary garment hangtag typography",
+        "fashion repair editorial publication",
+        "repair atelier signage identity"
+      ],
+      "status": "Research routes supplied; direct Pinterest boards/search pages could not be fully opened."
+    },
+    {
+      "source": "SOJO customer journey",
+      "url": "https://sojo.uk/fix-my-clothes",
+      "principle": "The service explains item/damage information, sending the garment and repair/return; pricing depends on material, location and finish. AFTERFORM uses that context to make uncertainty and approval explicit, without adopting SOJO pricing or promises."
+    },
+    {
+      "source": "Patagonia repair and care",
+      "url": "https://www.patagonia.com/repairs/",
+      "principle": "Repair and care are presented as connected aspects of continued garment use."
+    },
+    {
+      "source": "New York Custom Labels design guide",
+      "url": "https://newyorkcustomlabels.com/clothing-label-design-guide",
+      "principle": "Label folds and attachment zones affect the available artwork area. AFTERFORM keeps detachable service labels separate from original care labels."
+    },
+    {
+      "source": "W3C contrast minimum",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+      "principle": "Check actual foreground/background pairs; thin display typography needs additional practical attention."
+    }
+  ],
+  "deliverables": [
+    [
+      "Logo and mark family",
+      "Recognition from favicon to studio sign",
+      "Everyone",
+      "Wordmark, compact monogram, secondary lockup and monochrome variants",
+      "Same identity at each step",
+      "ESSENTIAL"
+    ],
+    [
+      "Label and tag system",
+      "Keep a garment matched to its record",
+      "Customer and studio",
+      "Service code, record number, hierarchy, hole and trim zones",
+      "Label number opens matching sample passport",
+      "ESSENTIAL"
+    ],
+    [
+      "12-page studio field guide",
+      "Explain choices and the repair journey in a tangible format",
+      "First-time customers",
+      "Editorial pacing, diagrams and actual information-heavy pages",
+      "Same questions and finish language as the form",
+      "ESSENTIAL"
+    ],
+    [
+      "5-poster campaign",
+      "Invite people to keep a garment and start a useful task",
+      "Local prospective customers",
+      "Type, material, information and restrained variation",
+      "Campaign leads to repair selection",
+      "STRONG ADDITION"
+    ],
+    [
+      "Return band and record sleeve",
+      "Return a folded garment with the right information",
+      "Customer and studio",
+      "Actual panel layout, overlap and fold logic",
+      "Carries repair code and record",
+      "ESSENTIAL"
+    ],
+    [
+      "Pocket garment record",
+      "Keep assessment and care context with the garment",
+      "Customer",
+      "Small-scale hierarchy and writing space",
+      "Matching digital passport",
+      "ESSENTIAL"
+    ],
+    [
+      "Studio directions and counter card",
+      "Explain assessment, repair and collection locations",
+      "Visitors",
+      "Distance hierarchy and clear text cues",
+      "Shares stage vocabulary with the product",
+      "STRONG ADDITION"
+    ],
+    [
+      "Social carousel and service email",
+      "Explain finish choice and proposal review",
+      "Prospective and returning customers",
+      "Sequential content and channel adaptation",
+      "Links to the relevant decision",
+      "STRONG ADDITION"
+    ],
+    [
+      "Online shop / merchandise",
+      "No new garment or merchandise is being sold",
+      "None",
+      "Adds clutter without a task",
+      "Not part of repair service",
+      "NOT NEEDED"
+    ],
+    [
+      "Shipping box",
+      "A reusable garment bag with a paper band is sufficient for the local concept",
+      "None",
+      "Avoid inventing logistics and material claims",
+      "No shipment is actually booked",
+      "NOT NEEDED"
+    ],
+    [
+      "Separate printed admission ticket",
+      "Not an event",
+      "None",
+      "Inappropriate for this service",
+      "No admission journey",
+      "NOT NEEDED"
+    ]
+  ]
+}

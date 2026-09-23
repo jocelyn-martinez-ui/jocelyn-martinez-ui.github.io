@@ -1,0 +1,3090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Novella, an interactive mobile and responsive web UX/UI concept by Jocelyn Martinez for discovering books by atmosphere, reading without distraction, and connecting ideas across a personal library.">
+    <meta name="theme-color" content="#f1ede8">
+    <meta property="og:title" content="Novella — Interactive UX/UI Case Study by Jocelyn Martinez">
+    <meta property="og:description" content="An interactive editorial reading concept built around atmosphere-first discovery, blind voice trials, focused reading, and a personal archive of ideas.">
+    <meta property="og:type" content="website">
+    <title>Novella — Interactive UX/UI Case Study | Jocelyn Martinez</title>
+
+    
+    
+    <link href="assets/fonts/family-set-43c273d982d7.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #f1ede8;
+            --paper-deep: #e5ded7;
+            --surface: #fffdfb;
+            --surface-warm: #f8f4f0;
+            --ink: #231f1d;
+            --body: #5a514d;
+            --muted: #817672;
+            --burgundy: #6f3338;
+            --burgundy-dark: #4c272b;
+            --burgundy-soft: #ead8d9;
+            --rose: #b98588;
+            --sage: #7f8877;
+            --line: rgba(35, 31, 29, 0.13);
+            --line-soft: rgba(35, 31, 29, 0.07);
+            --serif: "Cormorant Garamond", Georgia, serif;
+            --sans: "Plus Jakarta Sans", Arial, sans-serif;
+            --content: 1240px;
+            --radius-lg: 32px;
+            --radius-md: 18px;
+            --shadow: 0 26px 80px rgba(61, 42, 41, 0.10);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 140px;
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            pointer-events: none;
+            opacity: .024;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+        }
+
+        img { display: block; max-width: 100%; }
+        a { color: inherit; }
+        button { font: inherit; }
+        button, a { -webkit-tap-highlight-color: transparent; }
+        ::selection { background: var(--burgundy-soft); color: var(--ink); }
+
+        :focus-visible {
+            outline: 3px solid var(--burgundy);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 3000;
+            padding: .8rem 1rem;
+            border-radius: 999px;
+            background: var(--burgundy-dark);
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(-170%);
+            transition: transform .2s ease;
+        }
+
+        .skip-link:focus { transform: translateY(0); }
+
+        .page-shell {
+            width: min(calc(100% - 3rem), var(--content));
+            margin-inline: auto;
+        }
+
+        /* Navigation */
+        .site-nav {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 1000;
+            background: rgba(241, 237, 232, .88);
+            border-bottom: 1px solid transparent;
+            backdrop-filter: blur(18px);
+            transition: border-color .25s ease, box-shadow .25s ease;
+        }
+
+        .site-nav.scrolled {
+            border-color: var(--line-soft);
+            box-shadow: 0 10px 34px rgba(56, 38, 37, .05);
+        }
+
+        .nav-inner {
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .brand {
+            font-family: var(--serif);
+            font-size: 1.55rem;
+            font-style: italic;
+            font-weight: 600;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.7rem;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .15em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color .2s ease;
+        }
+
+        .nav-links a:hover { color: var(--burgundy); }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+            color: var(--burgundy-dark) !important;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 93vh;
+            padding: 12.5rem 0 7rem;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 82% 20%, rgba(111, 51, 56, .15), transparent 28rem),
+                radial-gradient(circle at 8% 84%, rgba(185, 133, 136, .14), transparent 22rem),
+                linear-gradient(180deg, #f7f3ef 0%, var(--paper) 100%);
+        }
+
+        .hero::after {
+            content: "N";
+            position: absolute;
+            right: -2vw;
+            bottom: -15rem;
+            color: rgba(111, 51, 56, .045);
+            font-family: var(--serif);
+            font-size: min(52vw, 48rem);
+            font-style: italic;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: .85rem;
+            margin: 0 0 1.5rem;
+            color: var(--burgundy);
+            font-size: .67rem;
+            font-weight: 700;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 36px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        h1, h2, h3, h4, p { margin-top: 0; }
+        h1, h2, h3, h4 { text-wrap: balance; }
+
+        h1 {
+            max-width: 980px;
+            margin: 0 0 1.8rem;
+            font-family: var(--serif);
+            font-size: clamp(5rem, 12vw, 10rem);
+            font-weight: 500;
+            letter-spacing: -.065em;
+            line-height: .79;
+        }
+
+        h1 em {
+            display: block;
+            margin-left: clamp(1rem, 10vw, 8rem);
+            color: var(--burgundy);
+            font-weight: 400;
+        }
+
+        .hero-lede {
+            max-width: 730px;
+            margin-bottom: 3.5rem;
+            color: var(--body);
+            font-size: clamp(1.15rem, 2vw, 1.42rem);
+            line-height: 1.65;
+        }
+
+        .hero-meta {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            max-width: 1040px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--line);
+            gap: 1px;
+        }
+
+        .meta-item {
+            min-height: 132px;
+            padding: 1.55rem;
+            background: rgba(255, 253, 251, .9);
+        }
+
+        .meta-label {
+            display: block;
+            margin-bottom: .7rem;
+            color: var(--muted);
+            font-size: .63rem;
+            font-weight: 700;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+
+        .meta-value {
+            color: var(--ink);
+            font-size: .93rem;
+            font-weight: 600;
+            line-height: 1.55;
+        }
+
+        /* Sticky page navigation */
+        .case-nav {
+            position: sticky;
+            top: 80px;
+            z-index: 900;
+            border-block: 1px solid var(--line);
+            background: rgba(241, 237, 232, .92);
+            backdrop-filter: blur(16px);
+        }
+
+        .case-nav-inner {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .case-nav-inner::-webkit-scrollbar { display: none; }
+
+        .case-nav a {
+            flex: 0 0 auto;
+            padding: 1rem 0;
+            color: var(--muted);
+            font-size: .69rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .case-nav a:hover { color: var(--burgundy); }
+
+        /* Shared section system */
+        section {
+            scroll-margin-top: 145px;
+            padding: 8.8rem 0;
+            border-bottom: 1px solid var(--line-soft);
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: minmax(150px, .7fr) minmax(0, 2.5fr);
+            gap: clamp(3rem, 8vw, 8rem);
+        }
+
+        .section-kicker {
+            position: sticky;
+            top: 165px;
+            align-self: start;
+            color: var(--muted);
+            font-size: .66rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+        .section-kicker span {
+            display: block;
+            width: 42px;
+            height: 1px;
+            margin-top: 1rem;
+            background: var(--burgundy);
+        }
+
+        .section-content { min-width: 0; }
+
+        h2 {
+            max-width: 940px;
+            margin-bottom: 1.9rem;
+            font-family: var(--serif);
+            font-size: clamp(3rem, 6.4vw, 5.3rem);
+            font-weight: 500;
+            letter-spacing: -.045em;
+            line-height: .96;
+        }
+
+        h3 {
+            font-family: var(--serif);
+            font-size: clamp(1.8rem, 3vw, 2.65rem);
+            font-weight: 500;
+            letter-spacing: -.025em;
+            line-height: 1.1;
+        }
+
+        .intro {
+            max-width: 830px;
+            margin-bottom: 2rem;
+            color: var(--body);
+            font-size: 1.1rem;
+            line-height: 1.85;
+        }
+
+        .project-note {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.1rem;
+            max-width: 900px;
+            margin-top: 3rem;
+            padding: 1.45rem 1.55rem;
+            border: 1px solid rgba(111, 51, 56, .22);
+            border-radius: 18px;
+            background: rgba(234, 216, 217, .52);
+        }
+
+        .note-icon {
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--burgundy);
+            font-weight: 700;
+        }
+
+        .project-note p {
+            margin: 0;
+            color: #60474a;
+            font-size: .9rem;
+            line-height: 1.7;
+        }
+
+        .project-note strong { color: var(--burgundy-dark); }
+
+        /* Summary cards */
+        .summary-grid,
+        .audit-grid,
+        .audience-grid,
+        .decision-grid,
+        .validation-grid,
+        .reflection-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .summary-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .summary-card,
+        .audit-card,
+        .audience-card,
+        .decision-card,
+        .validation-card,
+        .reflection-card {
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--surface);
+        }
+
+        .summary-card {
+            padding: 2rem;
+        }
+
+        .card-number {
+            display: block;
+            margin-bottom: 2rem;
+            color: var(--burgundy);
+            font-size: .67rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+        }
+
+        .summary-card h3,
+        .validation-card h3,
+        .reflection-card h3 {
+            margin-bottom: .8rem;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -.01em;
+        }
+
+        .summary-card p,
+        .audit-card p,
+        .audience-card p,
+        .decision-card p,
+        .validation-card p,
+        .reflection-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: .9rem;
+            line-height: 1.72;
+        }
+
+        /* Comparative review */
+        .audit-section { background: var(--surface-warm); }
+
+        .audit-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .audit-card {
+            padding: 2rem;
+        }
+
+        .audit-card h3 {
+            margin-bottom: .35rem;
+            font-size: 2rem;
+        }
+
+        .audit-type {
+            display: block;
+            margin-bottom: 1.6rem;
+            color: var(--burgundy);
+            font-size: .62rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .audit-line {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: .25rem;
+            padding: 1rem 0;
+            border-top: 1px solid var(--line-soft);
+        }
+
+        .audit-line strong {
+            color: var(--ink);
+            font-size: .77rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        .audit-line span {
+            color: var(--body);
+            font-size: .87rem;
+            line-height: 1.6;
+        }
+
+        .hypothesis-strip {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1px;
+            overflow: hidden;
+            margin-top: 4rem;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: var(--line);
+        }
+
+        .hypothesis {
+            padding: 2rem;
+            background: var(--burgundy-dark);
+            color: #fff;
+        }
+
+        .hypothesis:nth-child(2) { background: #62343a; }
+        .hypothesis:nth-child(3) { background: #765158; }
+
+        .hypothesis span {
+            display: block;
+            margin-bottom: 1.4rem;
+            color: rgba(255,255,255,.62);
+            font-size: .63rem;
+            font-weight: 700;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+        }
+
+        .hypothesis p {
+            margin: 0;
+            color: rgba(255,255,255,.86);
+            font-size: .9rem;
+            line-height: 1.7;
+        }
+
+        /* Behavioral profiles */
+        .audience-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .audience-card {
+            position: relative;
+            overflow: hidden;
+            padding: 2.5rem;
+        }
+
+        .audience-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 5px;
+            background: var(--burgundy);
+        }
+
+        .audience-card:nth-child(2)::before { background: var(--sage); }
+
+        .audience-label {
+            display: inline-flex;
+            margin-bottom: 1.5rem;
+            padding: .45rem .8rem;
+            border-radius: 999px;
+            background: var(--burgundy-soft);
+            color: var(--burgundy-dark);
+            font-size: .63rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .audience-card:nth-child(2) .audience-label {
+            background: #e5e8df;
+            color: #56614e;
+        }
+
+        .audience-card h3 { margin-bottom: 1rem; }
+
+        .plain-list {
+            display: grid;
+            gap: .95rem;
+            margin: 1.8rem 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .plain-list li {
+            display: grid;
+            grid-template-columns: 20px 1fr;
+            gap: .7rem;
+            color: var(--body);
+            font-size: .9rem;
+            line-height: 1.65;
+        }
+
+        .plain-list li::before {
+            content: "↳";
+            color: var(--burgundy);
+            font-weight: 700;
+        }
+
+        /* Journey */
+        .journey {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            margin-top: 4rem;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 26px;
+            background: var(--surface);
+        }
+
+        .journey-step {
+            position: relative;
+            min-height: 300px;
+            padding: 2.2rem;
+            border-right: 1px solid var(--line);
+        }
+
+        .journey-step:last-child { border-right: 0; }
+
+        .journey-step::after {
+            content: "→";
+            position: absolute;
+            top: 2rem;
+            right: -12px;
+            z-index: 2;
+            width: 24px;
+            height: 24px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: var(--paper);
+            color: var(--burgundy);
+            font-size: .75rem;
+        }
+
+        .journey-step:last-child::after { display: none; }
+
+        .journey-index {
+            display: block;
+            margin-bottom: 4rem;
+            color: var(--burgundy);
+            font-family: var(--serif);
+            font-size: 1.5rem;
+        }
+
+        .journey-step h3 {
+            margin-bottom: .8rem;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .journey-step p {
+            margin: 0;
+            color: var(--body);
+            font-size: .88rem;
+        }
+
+        /* Decisions */
+        .decision-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .decision-card {
+            padding: 2.25rem;
+        }
+
+        .decision-tag {
+            display: inline-flex;
+            margin-bottom: 1.5rem;
+            color: var(--burgundy);
+            font-size: .64rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .decision-card h3 { margin-bottom: .8rem; }
+
+        .decision-detail {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .decision-detail strong {
+            display: block;
+            margin-bottom: .4rem;
+            color: var(--burgundy-dark);
+            font-size: .76rem;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+        }
+
+        /* Interactive prototype */
+        .prototype-section {
+            position: relative;
+            overflow: hidden;
+            background: var(--burgundy-dark);
+            color: #fff;
+        }
+
+        .prototype-section::before {
+            content: "";
+            position: absolute;
+            width: 42rem;
+            height: 42rem;
+            top: -24rem;
+            right: -13rem;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 50%;
+            box-shadow: 0 0 0 7rem rgba(255,255,255,.018), 0 0 0 14rem rgba(255,255,255,.012);
+            pointer-events: none;
+        }
+
+        .prototype-section .section-kicker,
+        .prototype-section .eyebrow {
+            color: #d8bda7;
+        }
+
+        .prototype-section .section-kicker span { background: rgba(255,255,255,.2); }
+
+        .prototype-section h2 {
+            max-width: 900px;
+            color: #fff;
+        }
+
+        .prototype-section .intro {
+            max-width: 830px;
+            color: rgba(255,255,255,.72);
+        }
+
+        .prototype-intro-row {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .prototype-status {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            gap: .65rem;
+            padding: .7rem 1rem;
+            border: 1px solid rgba(255,255,255,.18);
+            border-radius: 999px;
+            color: rgba(255,255,255,.78);
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .prototype-status::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d7b66f;
+            box-shadow: 0 0 0 5px rgba(215,182,111,.13);
+        }
+
+        .prototype-shell {
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.14);
+            border-radius: 30px;
+            background: #e9e2da;
+            color: var(--ink);
+            box-shadow: 0 34px 90px rgba(20,8,10,.28);
+        }
+
+        .prototype-tabs {
+            display: flex;
+            align-items: center;
+            gap: .35rem;
+            padding: .65rem;
+            border-bottom: 1px solid rgba(35,31,29,.1);
+            background: rgba(255,253,251,.92);
+        }
+
+        .prototype-tab {
+            min-height: 46px;
+            padding: .75rem 1rem;
+            border: 0;
+            border-radius: 999px;
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            transition: background .2s ease, color .2s ease, transform .2s ease;
+        }
+
+        .prototype-tab:hover { color: var(--burgundy-dark); }
+
+        .prototype-tab[aria-selected="true"] {
+            background: var(--burgundy-dark);
+            color: #fff;
+        }
+
+        .prototype-tab:active { transform: scale(.98); }
+        .prototype-panel[hidden] { display: none; }
+
+        .prototype-workspace {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(310px, .85fr);
+            min-height: 760px;
+        }
+
+        .prototype-stage {
+            position: relative;
+            min-width: 0;
+            min-height: 760px;
+            display: grid;
+            place-items: center;
+            padding: 2.5rem;
+            overflow: hidden;
+            border-right: 1px solid rgba(35,31,29,.1);
+            background:
+                linear-gradient(rgba(76,39,43,.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(76,39,43,.035) 1px, transparent 1px),
+                #e8e1d9;
+            background-size: 36px 36px;
+        }
+
+        .prototype-stage::after {
+            content: "LIVE PROTOTYPE";
+            position: absolute;
+            top: 1.4rem;
+            left: 1.5rem;
+            color: rgba(35,31,29,.5);
+            font-size: .58rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+        }
+
+        .prototype-phone {
+            position: relative;
+            width: min(100%, 355px);
+            isolation: isolate;
+            filter: drop-shadow(0 24px 40px rgba(47,27,27,.18));
+        }
+
+        .prototype-phone img {
+            width: 100%;
+            height: auto;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .prototype-hotspot {
+            position: absolute;
+            z-index: 2;
+            min-width: 44px;
+            min-height: 44px;
+            padding: 0;
+            border: 2px solid #fff;
+            border-radius: 12px;
+            background: rgba(111,51,56,.14);
+            box-shadow: 0 0 0 2px var(--burgundy), 0 10px 28px rgba(76,39,43,.26);
+            cursor: pointer;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .prototype-hotspot::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 0 0 5px var(--burgundy), 0 0 0 11px rgba(111,51,56,.2);
+            transform: translate(-50%, -50%);
+        }
+
+        .prototype-hotspot::after {
+            content: attr(data-label);
+            position: absolute;
+            left: 50%;
+            bottom: calc(100% + 12px);
+            width: max-content;
+            max-width: 210px;
+            padding: .55rem .7rem;
+            border-radius: 9px;
+            background: var(--burgundy-dark);
+            color: #fff;
+            font-size: .62rem;
+            font-weight: 700;
+            line-height: 1.35;
+            text-align: center;
+            transform: translateX(-50%);
+        }
+
+        .prototype-hotspot:hover {
+            background: rgba(111,51,56,.3);
+            transform: translateY(-2px);
+        }
+
+        .prototype-sidebar {
+            display: flex;
+            flex-direction: column;
+            padding: clamp(2rem, 4vw, 3.5rem);
+            background: var(--surface);
+        }
+
+        .prototype-index {
+            margin-bottom: 1rem;
+            color: var(--burgundy);
+            font-size: .64rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .prototype-sidebar h3 {
+            margin-bottom: 1rem;
+            font-size: clamp(2.3rem, 4vw, 3.5rem);
+        }
+
+        .prototype-description {
+            margin-bottom: 2rem;
+            color: var(--body);
+            font-size: .9rem;
+            line-height: 1.75;
+        }
+
+        .prototype-hint {
+            display: grid;
+            grid-template-columns: 36px 1fr;
+            gap: .8rem;
+            align-items: center;
+            margin: 0 0 2rem;
+            padding: 1rem;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: var(--surface-warm);
+            color: var(--body);
+            font-size: .76rem;
+            line-height: 1.55;
+        }
+
+        .prototype-hint-icon {
+            width: 36px;
+            height: 36px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--burgundy-soft);
+            color: var(--burgundy-dark);
+            font-weight: 700;
+        }
+
+        .flow-label {
+            display: block;
+            margin-bottom: .65rem;
+            color: var(--muted);
+            font-size: .6rem;
+            font-weight: 700;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+        }
+
+        .flow-switcher {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .55rem;
+            margin-bottom: 2rem;
+        }
+
+        .flow-button,
+        .prototype-action,
+        .viewport-button,
+        .website-page-button {
+            min-height: 44px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: transparent;
+            color: var(--body);
+            cursor: pointer;
+            font-size: .7rem;
+            font-weight: 700;
+            transition: background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+        }
+
+        .flow-button:hover,
+        .prototype-action:hover,
+        .viewport-button:hover,
+        .website-page-button:hover {
+            border-color: var(--burgundy);
+            color: var(--burgundy-dark);
+            transform: translateY(-1px);
+        }
+
+        .flow-button.is-active,
+        .viewport-button.is-active,
+        .website-page-button.is-active {
+            border-color: var(--burgundy-dark);
+            background: var(--burgundy-dark);
+            color: #fff;
+        }
+
+        .prototype-progress {
+            height: 4px;
+            margin-top: auto;
+            overflow: hidden;
+            border-radius: 999px;
+            background: var(--paper-deep);
+        }
+
+        .prototype-progress span {
+            display: block;
+            width: 10%;
+            height: 100%;
+            border-radius: inherit;
+            background: var(--burgundy);
+            transition: width .3s ease;
+        }
+
+        .prototype-actions {
+            display: grid;
+            grid-template-columns: 48px 1fr 48px;
+            gap: .65rem;
+            margin-top: 1rem;
+        }
+
+        .prototype-action.primary {
+            background: var(--burgundy-dark);
+            color: #fff;
+        }
+
+        .prototype-rail {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 96px;
+            gap: .85rem;
+            padding: 1.2rem;
+            overflow-x: auto;
+            border-top: 1px solid var(--line);
+            background: #f7f3ef;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+        }
+
+        .prototype-thumb {
+            padding: .35rem;
+            overflow: hidden;
+            border: 1px solid transparent;
+            border-radius: 14px;
+            background: transparent;
+            cursor: pointer;
+            scroll-snap-align: center;
+            transition: border-color .2s ease, background .2s ease, transform .2s ease;
+        }
+
+        .prototype-thumb img {
+            width: 100%;
+            aspect-ratio: .475;
+            border-radius: 9px;
+            object-fit: cover;
+        }
+
+        .prototype-thumb span {
+            display: block;
+            margin-top: .45rem;
+            color: var(--muted);
+            font-size: .56rem;
+            font-weight: 700;
+            line-height: 1.35;
+            text-align: center;
+        }
+
+        .prototype-thumb:hover { transform: translateY(-2px); }
+
+        .prototype-thumb.is-active {
+            border-color: var(--burgundy);
+            background: var(--burgundy-soft);
+        }
+
+        .website-workspace {
+            display: grid;
+            grid-template-columns: minmax(0, 1.45fr) minmax(280px, .55fr);
+            min-height: 720px;
+        }
+
+        .website-stage {
+            position: relative;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(1.2rem, 3vw, 2.5rem);
+            overflow: hidden;
+            border-right: 1px solid var(--line);
+            background: #ded6ce;
+        }
+
+        .browser-shell {
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid rgba(35,31,29,.18);
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: 0 26px 70px rgba(54,35,34,.18);
+            transition: width .35s ease, max-width .35s ease;
+        }
+
+        .browser-toolbar {
+            min-height: 44px;
+            display: grid;
+            grid-template-columns: 70px 1fr 70px;
+            align-items: center;
+            gap: 1rem;
+            padding: .55rem .8rem;
+            border-bottom: 1px solid var(--line-soft);
+            background: #f7f5f2;
+        }
+
+        .browser-dots { display: flex; gap: 6px; }
+
+        .browser-dots i {
+            width: 9px;
+            height: 9px;
+            display: block;
+            border-radius: 50%;
+            background: #bbaead;
+        }
+
+        .browser-dots i:first-child { background: #9e5e62; }
+        .browser-dots i:nth-child(2) { background: #c1a06b; }
+        .browser-dots i:nth-child(3) { background: #85907b; }
+
+        .browser-address {
+            height: 24px;
+            display: grid;
+            place-items: center;
+            border-radius: 999px;
+            background: #ebe7e2;
+            color: var(--muted);
+            font-size: .56rem;
+            letter-spacing: .04em;
+        }
+
+        .browser-status {
+            color: var(--muted);
+            font-size: .55rem;
+            font-weight: 700;
+            text-align: right;
+            text-transform: uppercase;
+        }
+
+        .browser-viewport {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            background: #f4f0eb;
+        }
+
+        .browser-viewport img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            user-select: none;
+        }
+
+        .browser-shell.viewport-tablet { max-width: 820px; }
+        .browser-shell.viewport-tablet .browser-viewport { aspect-ratio: 4 / 3; }
+
+        .browser-shell.viewport-mobile { max-width: 390px; }
+        .browser-shell.viewport-mobile .browser-viewport { aspect-ratio: .475; }
+
+        .website-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: clamp(2rem, 4vw, 3rem);
+            background: var(--surface);
+        }
+
+        .website-sidebar h3 {
+            margin-bottom: .7rem;
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+        }
+
+        .website-sidebar p {
+            color: var(--body);
+            font-size: .86rem;
+        }
+
+        .website-page-list,
+        .viewport-switcher {
+            display: grid;
+            gap: .55rem;
+        }
+
+        .viewport-switcher { grid-template-columns: repeat(3, 1fr); }
+        .website-page-button { padding: .75rem; text-align: left; }
+
+        .website-page-button strong,
+        .website-page-button span { display: block; }
+
+        .website-page-button span {
+            margin-top: .25rem;
+            opacity: .72;
+            font-size: .61rem;
+            font-weight: 500;
+        }
+
+        .website-fullscreen { margin-top: auto; }
+
+        .boards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            padding: 1.25rem;
+            background: #eee7df;
+        }
+
+        .board-button {
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: var(--surface);
+            cursor: zoom-in;
+            text-align: left;
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .board-button:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .board-button img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        .board-button span {
+            display: block;
+            padding: 1rem;
+            color: var(--burgundy-dark);
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        .prototype-principles {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1px;
+            margin-top: 2rem;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.13);
+            border-radius: 20px;
+            background: rgba(255,255,255,.13);
+        }
+
+        .prototype-principle {
+            padding: 1.35rem;
+            background: rgba(255,255,255,.055);
+        }
+
+        .prototype-principle strong {
+            display: block;
+            margin-bottom: .45rem;
+            color: #fff;
+            font-family: var(--serif);
+            font-size: 1.35rem;
+            font-weight: 500;
+        }
+
+        .prototype-principle span {
+            color: rgba(255,255,255,.62);
+            font-size: .72rem;
+            line-height: 1.6;
+        }
+
+        .prototype-live-region {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        @media (max-width: 1000px) {
+            .prototype-workspace,
+            .website-workspace {
+                grid-template-columns: 1fr;
+            }
+
+            .prototype-stage,
+            .website-stage {
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .prototype-sidebar { min-height: 520px; }
+            .website-sidebar { min-height: 430px; }
+            .prototype-principles { grid-template-columns: repeat(2, 1fr); }
+            .boards-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 640px) {
+            .prototype-intro-row {
+                align-items: start;
+                flex-direction: column;
+            }
+
+            .prototype-tabs {
+                overflow-x: auto;
+                scrollbar-width: none;
+            }
+
+            .prototype-tab { flex: 0 0 auto; }
+
+            .prototype-stage {
+                min-height: 640px;
+                padding: 2rem .8rem 1rem;
+            }
+
+            .prototype-phone { width: min(100%, 300px); }
+            .prototype-hotspot::after { display: none; }
+            .prototype-sidebar { padding: 2rem 1.2rem; }
+            .prototype-rail { grid-auto-columns: 82px; }
+            .website-stage { padding: 1rem .6rem; }
+            .browser-toolbar { grid-template-columns: 55px 1fr 50px; gap: .5rem; }
+            .website-sidebar { padding: 2rem 1.2rem; }
+            .prototype-principles { grid-template-columns: 1fr; }
+        }
+
+        /* Product gallery */
+        .screens-section { background: #ede6df; }
+
+        .gallery-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 2rem;
+            margin: 3.5rem 0 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .gallery-heading h3 { margin: 0; }
+
+        .gallery-heading p {
+            max-width: 450px;
+            margin: 0;
+            color: var(--body);
+            font-size: .87rem;
+        }
+
+        .carousel {
+            position: relative;
+        }
+
+        .screen-track {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(235px, 285px);
+            gap: 1.5rem;
+            padding: .8rem .25rem 2.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(111,51,56,.3) transparent;
+        }
+
+        .screen-track::-webkit-scrollbar { height: 8px; }
+        .screen-track::-webkit-scrollbar-thumb {
+            border-radius: 999px;
+            background: rgba(111,51,56,.28);
+        }
+
+        .screen-card {
+            min-width: 0;
+            scroll-snap-align: start;
+        }
+
+        .screen-button,
+        .desktop-button {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: zoom-in;
+            text-align: left;
+        }
+
+        .phone-frame {
+            padding: .72rem;
+            border: 1px solid rgba(111, 51, 56, .11);
+            border-radius: 34px;
+            background: var(--surface);
+            box-shadow: 0 16px 45px rgba(73, 48, 47, .06);
+            transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease;
+        }
+
+        .phone-frame img {
+            width: 100%;
+            max-height: 575px;
+            border-radius: 26px;
+            object-fit: cover;
+            object-position: top;
+            background: #fff;
+        }
+
+        .screen-button:hover .phone-frame,
+        .screen-button:focus-visible .phone-frame {
+            transform: translateY(-8px);
+            border-color: rgba(111, 51, 56, .34);
+            box-shadow: var(--shadow);
+        }
+
+        .screen-meta { padding: 1.25rem .35rem 0; }
+
+        .screen-number {
+            display: block;
+            margin-bottom: .45rem;
+            color: var(--burgundy);
+            font-size: .63rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+        }
+
+        .screen-meta h4 {
+            margin-bottom: .45rem;
+            font-family: var(--sans);
+            font-size: .93rem;
+            font-weight: 700;
+        }
+
+        .screen-meta p {
+            margin: 0;
+            color: var(--body);
+            font-size: .8rem;
+            line-height: 1.6;
+        }
+
+        .carousel-controls {
+            display: flex;
+            gap: .75rem;
+            margin-top: 1.4rem;
+        }
+
+        .carousel-button {
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--burgundy-dark);
+            cursor: pointer;
+            transition: background .2s ease, color .2s ease, transform .2s ease;
+        }
+
+        .carousel-button:hover {
+            background: var(--burgundy-dark);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Desktop direction comparison */
+        .desktop-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .desktop-card {
+            padding: 1.3rem;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: var(--surface);
+        }
+
+        .desktop-frame {
+            overflow: hidden;
+            border: 1px solid var(--line-soft);
+            border-radius: 15px;
+            background: #fff;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .desktop-button:hover .desktop-frame,
+        .desktop-button:focus-visible .desktop-frame {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .desktop-frame img {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .desktop-copy { padding: 1.5rem .6rem .6rem; }
+
+        .variant-label {
+            display: inline-flex;
+            margin-bottom: 1rem;
+            padding: .4rem .72rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--muted);
+            font-size: .62rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .desktop-card.recommended .variant-label {
+            border-color: transparent;
+            background: var(--burgundy);
+            color: #fff;
+        }
+
+        .desktop-copy h3 {
+            margin-bottom: .8rem;
+            font-size: 2rem;
+        }
+
+        .desktop-copy p {
+            margin: 0;
+            color: var(--body);
+            font-size: .88rem;
+        }
+
+        .direction-note {
+            margin-top: 2rem;
+            padding: 2rem;
+            border-radius: 22px;
+            background: var(--burgundy-dark);
+            color: #fff;
+        }
+
+        .direction-note h3 {
+            max-width: 780px;
+            margin-bottom: .9rem;
+            color: #fff;
+        }
+
+        .direction-note p {
+            max-width: 800px;
+            margin: 0;
+            color: rgba(255,255,255,.77);
+        }
+
+        /* Visual system */
+        .visual-section { background: var(--surface); }
+
+        .visual-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            margin-top: 4rem;
+        }
+
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .swatch {
+            min-height: 165px;
+            padding: 1.3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        .type-stack {
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .type-card {
+            padding: 2rem;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            background: var(--surface-warm);
+        }
+
+        .type-label {
+            display: block;
+            margin-bottom: 1.2rem;
+            color: var(--muted);
+            font-size: .62rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .type-serif {
+            margin-bottom: 1rem;
+            font-family: var(--serif);
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-style: italic;
+            line-height: .9;
+        }
+
+        .type-sans {
+            margin-bottom: 1rem;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -.04em;
+            line-height: 1;
+        }
+
+        .type-card p {
+            margin: 0;
+            color: var(--body);
+            font-size: .86rem;
+        }
+
+        /* Validation */
+        .validation-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .validation-card {
+            padding: 2.2rem;
+        }
+
+        .validation-icon {
+            width: 42px;
+            height: 42px;
+            margin-bottom: 2rem;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: var(--burgundy-soft);
+            color: var(--burgundy-dark);
+            font-weight: 700;
+        }
+
+        /* Reflection */
+        .reflection-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 4rem;
+        }
+
+        .reflection-card { padding: 2rem; }
+
+        /* Footer */
+        .next-case {
+            padding: 7rem 0;
+            background: var(--burgundy-dark);
+            color: #fff;
+        }
+
+        .next-inner {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .next-case p {
+            margin-bottom: .75rem;
+            color: rgba(255,255,255,.62);
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .next-case h2 {
+            max-width: 760px;
+            margin-bottom: 0;
+            color: #fff;
+        }
+
+        .next-link {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            gap: .8rem;
+            padding: 1rem 1.35rem;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 999px;
+            color: #fff;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background .2s ease, color .2s ease;
+        }
+
+        .next-link:hover {
+            background: #fff;
+            color: var(--burgundy-dark);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 2rem 2rem;
+            background: rgba(38, 20, 23, .94);
+            backdrop-filter: blur(14px);
+        }
+
+        .lightbox[aria-hidden="false"] { display: flex; }
+
+        .lightbox img {
+            max-width: min(1180px, 92vw);
+            max-height: 84vh;
+            border-radius: 16px;
+            box-shadow: 0 50px 110px rgba(0,0,0,.48);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 28px;
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 50%;
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Motion */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .72s ease, transform .72s ease;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (max-width: 1050px) {
+            :root { --content: 820px; }
+
+            .hero-meta,
+            .summary-grid,
+            .audit-grid,
+            .hypothesis-strip,
+            .journey,
+            .reflection-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-kicker { position: static; }
+
+            .journey-step:nth-child(2) { border-right: 0; }
+            .journey-step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+            .journey-step:nth-child(2)::after { display: none; }
+
+            .visual-layout { gap: 3rem; }
+        }
+
+        @media (max-width: 760px) {
+            .page-shell {
+                width: min(calc(100% - 1.75rem), 620px);
+            }
+
+            .nav-links > a:not(.back-link) { display: none; }
+
+            .hero {
+                min-height: auto;
+                padding: 10.5rem 0 5.5rem;
+            }
+
+            h1 { font-size: clamp(4.5rem, 22vw, 7rem); }
+            h1 em { margin-left: .75rem; }
+
+            section { padding: 6.2rem 0; }
+
+            .hero-meta,
+            .summary-grid,
+            .audit-grid,
+            .hypothesis-strip,
+            .audience-grid,
+            .decision-grid,
+            .desktop-grid,
+            .visual-layout,
+            .validation-grid,
+            .reflection-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .meta-item { min-height: 0; }
+
+            .journey {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-step {
+                min-height: 0;
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .journey-step:last-child { border-bottom: 0; }
+            .journey-step::after { display: none; }
+            .journey-index { margin-bottom: 2.5rem; }
+
+            .gallery-heading {
+                align-items: start;
+                flex-direction: column;
+            }
+
+            .screen-track {
+                grid-auto-columns: minmax(230px, 78vw);
+            }
+
+            .next-inner {
+                align-items: start;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-note { grid-template-columns: 1fr; }
+            .palette-grid { grid-template-columns: 1fr; }
+            .case-nav-inner { gap: 1.4rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+<meta content="noindex, follow" name="robots"></head>
+
+<body><aside id="archive-context-v9" style="position:relative;z-index:100;background:#fff5d8;color:#302c20;padding:20px 5%;font:16px/1.6 Arial,sans-serif"><strong>Archived project notes.</strong> This earlier presentation is preserved for context. Historical research counts, quotations and proposed outcomes have not been independently verified in this refinement. <a style="color:inherit;text-decoration:underline" href="Novella-interactive.html">Read the current case study and its evidence boundaries →</a></aside>
+    <a class="skip-link" href="#main">Skip to case study</a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Portfolio navigation">
+        <div class="page-shell nav-inner">
+            <a class="brand" href="index.html">Jocelyn Martinez</a>
+            <div class="nav-links">
+                <a href="#prototype">Interactive mockup</a>
+                <a href="#validation">Validation plan</a>
+                <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> Back to work</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="page-shell hero-content reveal">
+            <p class="eyebrow">Self-directed concept · UX/UI &amp; visual design</p>
+            <h1>Novella <em>Reader</em></h1>
+            <p class="hero-lede">
+                A quieter reading experience designed to help people move from “I want to read” to a confident book choice—without making discovery feel like shopping.
+            </p>
+
+            <div class="hero-meta" aria-label="Project summary">
+                <div class="meta-item">
+                    <span class="meta-label">My focus</span>
+                    <span class="meta-value">Product strategy, information architecture, interaction design, UI design</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Context</span>
+                    <span class="meta-value">Self-directed mobile and responsive web concept</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Audience</span>
+                    <span class="meta-value">Readers balancing discovery, evaluation, and personal organization</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Deliverables</span>
+                    <span class="meta-value">Mobile flows, interface system, desktop directions, validation plan</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="case-nav" aria-label="Case study sections">
+        <div class="page-shell case-nav-inner">
+            <a href="#overview">Overview</a>
+            <a href="#audit">Comparative review</a>
+            <a href="#audience">Audience</a>
+            <a href="#journey">Journey</a>
+            <a href="#decisions">Decisions</a>
+            <a href="#prototype">Prototype</a>
+            <a href="#screens">Screens</a>
+            <a href="#desktop">Desktop</a>
+            <a href="#visual">Visual system</a>
+            <a href="#validation">Validation</a>
+            <a href="#reflection">Reflection</a>
+        </div>
+    </nav>
+
+    <main id="main">
+        <section id="overview">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">01 / Overview<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">The opportunity</p>
+                    <h2>Discovery should feel like choosing a story—not clearing a storefront.</h2>
+                    <p class="intro">
+                        Reading platforms often ask one interface to do several jobs at once: sell books, surface reviews, manage a library, recommend titles, and host the reading experience. When every goal receives equal visual weight, readers must sort through competing carousels, ratings, promotions, and metadata before deciding what genuinely interests them.
+                    </p>
+                    <p class="intro">
+                        Novella explores a more focused system. It uses mood and reading intent as an additional discovery layer, gives editorial content space to breathe, and reveals practical details when they become useful. The goal is not to remove information—it is to establish a clearer sequence for encountering it.
+                    </p>
+
+                    <div class="summary-grid">
+                        <article class="summary-card">
+                            <span class="card-number">01</span>
+                            <h3>Discover by intent</h3>
+                            <p>Readers can begin with the kind of experience they want—comforting, tense, reflective, or unfamiliar—then refine by genre and format.</p>
+                        </article>
+                        <article class="summary-card">
+                            <span class="card-number">02</span>
+                            <h3>Evaluate without overload</h3>
+                            <p>Synopsis, tone, author context, and an optional excerpt arrive before deeper metadata and community signals.</p>
+                        </article>
+                        <article class="summary-card">
+                            <span class="card-number">03</span>
+                            <h3>Build a personal archive</h3>
+                            <p>Saved books, reading history, and collections are presented as a coherent library rather than another recommendation feed.</p>
+                        </article>
+                    </div>
+
+                    <div class="project-note">
+                        <div class="note-icon" aria-hidden="true">i</div>
+                        <p>
+                            <strong>Project scope:</strong> Novella is a self-directed design concept, not a launched product. The comparative review and behavioral profiles informed design hypotheses; they are not substitutes for interviews or usability testing. The validation section outlines what I would test before committing to the product direction.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="audit" class="audit-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">02 / Comparative review<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Informal product audit</p>
+                    <h2>Three useful products reveal three different priorities.</h2>
+                    <p class="intro">
+                        I reviewed common flows in Kindle, Goodreads, and Libby to understand how each product handles discovery, decision-making, and library management. This was a directional interface review—not formal research or a universal assessment of the products.
+                    </p>
+
+                    <div class="audit-grid">
+                        <article class="audit-card">
+                            <h3>Kindle</h3>
+                            <span class="audit-type">Commerce + reading</span>
+                            <div class="audit-line">
+                                <strong>Useful strength</strong>
+                                <span>A connected purchasing and reading ecosystem with familiar library access.</span>
+                            </div>
+                            <div class="audit-line">
+                                <strong>Design tension</strong>
+                                <span>Shopping, subscriptions, recommendations, and the personal library compete for attention on the same surface.</span>
+                            </div>
+                            <div class="audit-line">
+                                <strong>Opportunity explored</strong>
+                                <span>Separate focused discovery from the user’s owned and saved collection.</span>
+                            </div>
+                        </article>
+
+                        <article class="audit-card">
+                            <h3>Goodreads</h3>
+                            <span class="audit-type">Catalog + community</span>
+                            <div class="audit-line">
+                                <strong>Useful strength</strong>
+                                <span>Extensive catalog information, reader reviews, shelves, and social proof.</span>
+                            </div>
+                            <div class="audit-line">
+                                <strong>Design tension</strong>
+                                <span>Dense information can make it difficult to understand the book itself before encountering other people’s opinions.</span>
+                            </div>
+                            <div class="audit-line">
+                                <strong>Opportunity explored</strong>
+                                <span>Introduce the work first, then let the reader choose when to view ratings and reviews.</span>
+                            </div>
+                        </article>
+
+                        <article class="audit-card">
+                            <h3>Libby</h3>
+                            <span class="audit-type">Borrowing + reading</span>
+                            <div class="audit-line">
+                                <strong>Useful strength</strong>
+                                <span>A friendly borrowing experience with clear availability and library-card integration.</span>
+                            </div>
+                            <div class="audit-line">
+                                <strong>Design tension</strong>
+                                <span>Availability and hold status can interrupt discovery after a reader has already formed interest.</span>
+                            </div>
+                            <div class="audit-line">
+                                <strong>Opportunity explored</strong>
+                                <span>Keep availability visible while supporting wishlists, alternatives, and continued exploration.</span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="hypothesis-strip" aria-label="Design hypotheses">
+                        <div class="hypothesis">
+                            <span>Hypothesis 01</span>
+                            <p>A smaller, more intentional recommendation set may help readers compare rather than continuously browse.</p>
+                        </div>
+                        <div class="hypothesis">
+                            <span>Hypothesis 02</span>
+                            <p>Mood can complement genre when its language is concrete, understandable, and easy to override.</p>
+                        </div>
+                        <div class="hypothesis">
+                            <span>Hypothesis 03</span>
+                            <p>Progressively revealing reviews and detailed metadata may protect exploration without withholding useful information.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="audience">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">03 / Audience<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Behavior before personality labels</p>
+                    <h2>Two reading behaviors shaped the experience.</h2>
+                    <p class="intro">
+                        Instead of assigning MBTI or Enneagram types, I framed the audience around observable goals, habits, and friction. One person may move between both behaviors depending on the moment.
+                    </p>
+
+                    <div class="audience-grid">
+                        <article class="audience-card">
+                            <span class="audience-label">Atmospheric browser</span>
+                            <h3>“I know how I want a book to feel.”</h3>
+                            <p>This reader is open to discovery but does not want an endless list. They need enough context to imagine the experience before committing.</p>
+                            <ul class="plain-list">
+                                <li>Starts with mood, setting, pacing, or emotional intensity.</li>
+                                <li>Wants unfamiliar titles—not only repeated bestsellers.</li>
+                                <li>Uses synopsis, samples, and author context to build confidence.</li>
+                                <li>May abandon a search when recommendations feel repetitive or too broad.</li>
+                            </ul>
+                        </article>
+
+                        <article class="audience-card">
+                            <span class="audience-label">Deliberate curator</span>
+                            <h3>“I want my library to remain useful.”</h3>
+                            <p>This reader values control, organization, and reliable reading settings. Discovery matters, but so does returning to previously saved work.</p>
+                            <ul class="plain-list">
+                                <li>Organizes books by status, theme, project, or custom collection.</li>
+                                <li>Needs predictable search, filters, and metadata.</li>
+                                <li>Values typography controls and a focused reading environment.</li>
+                                <li>Wants highlights and saved titles to remain portable and easy to find.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="journey">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">04 / Journey<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Experience structure</p>
+                    <h2>From vague intention to an informed choice.</h2>
+                    <p class="intro">
+                        The proposed journey treats discovery as a sequence. Each stage answers a different question instead of placing the entire catalog, community, and purchase decision on one screen.
+                    </p>
+
+                    <div class="journey">
+                        <article class="journey-step">
+                            <span class="journey-index">01</span>
+                            <h3>Set an intention</h3>
+                            <p>The reader selects a mood, pacing preference, genre, or format—or skips personalization entirely.</p>
+                        </article>
+                        <article class="journey-step">
+                            <span class="journey-index">02</span>
+                            <h3>Browse a shortlist</h3>
+                            <p>A focused set of recommendations provides meaningful contrast rather than an endless feed.</p>
+                        </article>
+                        <article class="journey-step">
+                            <span class="journey-index">03</span>
+                            <h3>Evaluate the work</h3>
+                            <p>Synopsis, tone, author context, details, and an optional blind excerpt support the decision.</p>
+                        </article>
+                        <article class="journey-step">
+                            <span class="journey-index">04</span>
+                            <h3>Save or begin</h3>
+                            <p>The chosen book moves into the personal archive, where reading and organization become the priority.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="decisions">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">05 / Decisions<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Product and interaction design</p>
+                    <h2>Design choices tied to specific tasks.</h2>
+                    <p class="intro">
+                        Novella’s visual atmosphere supports the concept, but the structure is doing the heavier work. These decisions are meant to make the experience more understandable—not merely more decorative.
+                    </p>
+
+                    <div class="decision-grid">
+                        <article class="decision-card">
+                            <span class="decision-tag">Discovery model</span>
+                            <h3>Mood supplements genre; it does not replace it.</h3>
+                            <p>Labels such as “reflective,” “fast-paced,” or “uneasy” offer another entry point while conventional filters remain visible and editable.</p>
+                            <div class="decision-detail">
+                                <strong>Reason</strong>
+                                <p>Emotional language can be useful but subjective. Pairing it with familiar metadata gives readers control.</p>
+                            </div>
+                        </article>
+
+                        <article class="decision-card">
+                            <span class="decision-tag">Information hierarchy</span>
+                            <h3>Reveal detail when it becomes relevant.</h3>
+                            <p>The first view emphasizes the book’s identity, premise, and tone. Reviews, publication data, and deeper metadata remain one step away.</p>
+                            <div class="decision-detail">
+                                <strong>Reason</strong>
+                                <p>This protects the initial encounter without hiding information needed for a considered decision.</p>
+                            </div>
+                        </article>
+
+                        <article class="decision-card">
+                            <span class="decision-tag">Optional experiment</span>
+                            <h3>Let prose speak before the cover does.</h3>
+                            <p>The “blind excerpt” concept lets a reader sample a short passage before seeing the title, cover, ratings, or author identity.</p>
+                            <div class="decision-detail">
+                                <strong>Reason</strong>
+                                <p>It could surface unexpected matches—but should remain optional and be tested for confusion, trust, and accessibility.</p>
+                            </div>
+                        </article>
+
+                        <article class="decision-card">
+                            <span class="decision-tag">Personal archive</span>
+                            <h3>Separate ownership from recommendation.</h3>
+                            <p>The library prioritizes saved, active, and completed books rather than using the user’s collection as another promotional feed.</p>
+                            <div class="decision-detail">
+                                <strong>Reason</strong>
+                                <p>Returning users need reliable access to their own content more than another round of discovery.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="prototype" class="prototype-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">06 / Interactive mockup<span></span></aside>
+                <div class="section-content reveal">
+                    <div class="prototype-intro-row">
+                        <div>
+                            <p class="eyebrow">Try the redesigned experience</p>
+                            <h2>From “what do I feel?” to a story worth staying with.</h2>
+                            <p class="intro">
+                                Explore the mobile journey, move between the responsive web views, or open the portfolio boards. Highlighted controls are tappable; arrow keys also move through the active prototype.
+                            </p>
+                        </div>
+                        <span class="prototype-status">Interactive prototype</span>
+                    </div>
+
+                    <div class="prototype-shell" id="novellaPrototype">
+                        <div class="prototype-tabs" role="tablist" aria-label="Novella prototype views">
+                            <button class="prototype-tab" id="appPrototypeTab" type="button" role="tab" aria-selected="true" aria-controls="appPrototypePanel">App prototype</button>
+                            <button class="prototype-tab" id="websitePrototypeTab" type="button" role="tab" aria-selected="false" aria-controls="websitePrototypePanel" tabindex="-1">Website prototype</button>
+                            <button class="prototype-tab" id="boardsPrototypeTab" type="button" role="tab" aria-selected="false" aria-controls="boardsPrototypePanel" tabindex="-1">Showcase boards</button>
+                        </div>
+
+                        <div class="prototype-panel" id="appPrototypePanel" role="tabpanel" aria-labelledby="appPrototypeTab">
+                            <div class="prototype-workspace">
+                                <div class="prototype-stage" id="appPrototypeStage">
+                                    <div class="prototype-phone">
+                                        <img id="appPrototypeImage" data-asset="screen-01" alt="Novella home screen asking what kind of world the reader needs tonight">
+                                        <button class="prototype-hotspot" id="appPrototypeHotspot" type="button" data-label="Start with a feeling" aria-label="Start the atmosphere finder"></button>
+                                    </div>
+                                </div>
+
+                                <aside class="prototype-sidebar" aria-label="App prototype controls">
+                                    <span class="prototype-index" id="appPrototypeIndex">01 / 10 · The Desk</span>
+                                    <h3 id="appPrototypeTitle">Set the feeling</h3>
+                                    <p class="prototype-description" id="appPrototypeDescription">Begin with the reading experience you want rather than a crowded catalog. Tonight’s mood shapes this session only.</p>
+
+                                    <p class="prototype-hint">
+                                        <span class="prototype-hint-icon" aria-hidden="true">↗</span>
+                                        <span><strong>Try it:</strong> choose the highlighted action inside the phone, or use the controls below.</span>
+                                    </p>
+
+                                    <span class="flow-label">Jump to a journey</span>
+                                    <div class="flow-switcher" role="group" aria-label="App journey shortcuts">
+                                        <button class="flow-button is-active" type="button" data-flow-start="0">Discover a book</button>
+                                        <button class="flow-button" type="button" data-flow-start="7">Use your library</button>
+                                    </div>
+
+                                    <div class="prototype-progress" aria-hidden="true"><span id="appPrototypeProgress"></span></div>
+                                    <div class="prototype-actions">
+                                        <button class="prototype-action" id="appPrototypePrevious" type="button" aria-label="Previous app screen">←</button>
+                                        <button class="prototype-action primary" id="appPrototypeFullscreen" type="button">View full screen</button>
+                                        <button class="prototype-action" id="appPrototypeNext" type="button" aria-label="Next app screen">→</button>
+                                    </div>
+                                </aside>
+                            </div>
+
+                            <div class="prototype-rail" id="appPrototypeRail" aria-label="Choose an app screen">
+                                <button class="prototype-thumb is-active" type="button" data-screen-index="0" aria-label="View screen 1, The Desk"><img data-asset="screen-01" alt=""><span>01 · Desk</span></button>
+                                <button class="prototype-thumb" type="button" data-screen-index="1" aria-label="View screen 2, Atmosphere finder"><img data-asset="screen-02" alt=""><span>02 · Atmosphere</span></button>
+                                <button class="prototype-thumb" type="button" data-screen-index="2" aria-label="View screen 3, Atmosphere results"><img data-asset="screen-03" alt=""><span>03 · Results</span></button>
+                                <button class="prototype-thumb" type="button" data-screen-index="3" aria-label="View screen 4, Blind trial"><img data-asset="screen-04" alt=""><span>04 · Blind trial</span></button>
+                                <button class="prototype-thumb" type="button" data-screen-index="4" aria-label="View screen 5, Match reveal"><img data-asset="screen-05" alt=""><span>05 · Reveal</span></button>
+                                <button class="prototype-thumb" type="button" data-screen-index="5" aria-label="View screen 6, Focus reader"><img data-asset="screen-06" alt=""><span>06 · Reader</span></button>
+                                <button class="prototype-thumb" type="button" data-screen-index="6" aria-label="View screen 7, Save passage"><img data-asset="screen-07" alt=""><span>07 · Save passage</span></button>
+                                <button class="prototype-thumb" type="button" data-screen-index="7" aria-label="View screen 8, Personal library"><img data-asset="screen-08" alt=""><span>08 · Library</span></button>
+                                <button class="prototype-thumb" type="button" data-screen-index="8" aria-label="View screen 9, Notes and threads"><img data-asset="screen-09" alt=""><span>09 · Threads</span></button>
+                                <button class="prototype-thumb" type="button" data-screen-index="9" aria-label="View screen 10, Reading display"><img data-asset="screen-10" alt=""><span>10 · Display</span></button>
+                            </div>
+                        </div>
+
+                        <div class="prototype-panel" id="websitePrototypePanel" role="tabpanel" aria-labelledby="websitePrototypeTab" hidden>
+                            <div class="website-workspace">
+                                <div class="website-stage">
+                                    <div class="browser-shell" id="browserShell">
+                                        <div class="browser-toolbar" aria-hidden="true">
+                                            <span class="browser-dots"><i></i><i></i><i></i></span>
+                                            <span class="browser-address">novella.app</span>
+                                            <span class="browser-status" id="browserStatus">Desktop</span>
+                                        </div>
+                                        <div class="browser-viewport">
+                                            <img id="websitePrototypeImage" data-asset="desktop-01" alt="Responsive Novella website home called The Desk">
+                                            <button class="prototype-hotspot" id="websitePrototypeHotspot" type="button" data-label="Open the reading room" aria-label="Open the Novella reading room"></button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <aside class="website-sidebar" aria-label="Website prototype controls">
+                                    <div>
+                                        <span class="prototype-index">Responsive web experience</span>
+                                        <h3 id="websitePrototypeTitle">The Desk</h3>
+                                        <p id="websitePrototypeDescription">A calm workspace for choosing tonight’s voice, continuing a book, and resurfacing one meaningful note.</p>
+                                    </div>
+
+                                    <div>
+                                        <span class="flow-label">Page</span>
+                                        <div class="website-page-list">
+                                            <button class="website-page-button is-active" type="button" data-website-index="0"><strong>The Desk</strong><span>Discovery and current reading</span></button>
+                                            <button class="website-page-button" type="button" data-website-index="1"><strong>The Reading Room</strong><span>Focused reading and private notes</span></button>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <span class="flow-label">Preview size</span>
+                                        <div class="viewport-switcher" role="group" aria-label="Website preview size">
+                                            <button class="viewport-button is-active" type="button" data-viewport="desktop">Desktop</button>
+                                            <button class="viewport-button" type="button" data-viewport="tablet">Tablet</button>
+                                            <button class="viewport-button" type="button" data-viewport="mobile">Mobile</button>
+                                        </div>
+                                    </div>
+
+                                    <button class="prototype-action primary website-fullscreen" id="websitePrototypeFullscreen" type="button">View full screen</button>
+                                </aside>
+                            </div>
+                        </div>
+
+                        <div class="prototype-panel" id="boardsPrototypePanel" role="tabpanel" aria-labelledby="boardsPrototypeTab" hidden>
+                            <div class="boards-grid">
+                                <button class="board-button" type="button" data-lightbox-asset="board-01" data-lightbox-alt="Novella personalized discovery presentation board"><img data-asset="board-01" alt="Novella personalized discovery presentation board"><span>01 · Personalized discovery</span></button>
+                                <button class="board-button" type="button" data-lightbox-asset="board-02" data-lightbox-alt="Novella reading and remembering presentation board"><img data-asset="board-02" alt="Novella reading and remembering presentation board"><span>02 · Reading and remembering</span></button>
+                                <button class="board-button" type="button" data-lightbox-asset="board-03" data-lightbox-alt="Novella responsive sanctuary presentation board"><img data-asset="board-03" alt="Novella responsive sanctuary presentation board"><span>03 · Responsive sanctuary</span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="prototype-principles" aria-label="Novella redesign principles">
+                        <div class="prototype-principle"><strong>Voice before cover</strong><span>A five-minute blind trial reduces cover and rating bias.</span></div>
+                        <div class="prototype-principle"><strong>Session, not profile</strong><span>Mood choices shape tonight without becoming a permanent label.</span></div>
+                        <div class="prototype-principle"><strong>Read without noise</strong><span>Focused typography keeps the book—not the interface—dominant.</span></div>
+                        <div class="prototype-principle"><strong>Remember across books</strong><span>Private threads connect passages into a personal archive of ideas.</span></div>
+                    </div>
+
+                    <p class="prototype-live-region" id="prototypeLiveRegion" aria-live="polite"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="screens" class="screens-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">07 / Earlier mobile exploration<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Original visual exploration</p>
+                    <h2>The first mockups established Novella’s atmosphere.</h2>
+                    <p class="intro">
+                        These original screens introduced the burgundy archive palette, warm paper surfaces, and editorial restraint carried into the interactive redesign above. Select any screen to compare the evolution.
+                    </p>
+
+                    <div class="gallery-heading">
+                        <h3>Earlier mobile directions</h3>
+                        <p>Onboarding, discovery, evaluation, author context, and the first personal-library concept.</p>
+                    </div>
+
+                    <div class="carousel">
+                        <div class="screen-track" id="screenTrack">
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-asset="legacy-onboarding" data-lightbox-alt="Novella onboarding screen for reading preferences" aria-label="Enlarge onboarding screen">
+                                    <span class="phone-frame"><img data-asset="legacy-onboarding" alt="Novella onboarding screen for reading preferences"></span>
+                                </button>
+                                <div class="screen-meta">
+                                    <span class="screen-number">01 / ONBOARDING</span>
+                                    <h4>Preference setup</h4>
+                                    <p>Introduces personalization as optional and adjustable rather than a permanent profile.</p>
+                                </div>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-asset="legacy-home" data-lightbox-alt="Novella home screen with featured reading content" aria-label="Enlarge home screen">
+                                    <span class="phone-frame"><img data-asset="legacy-home" alt="Novella home screen with featured reading content"></span>
+                                </button>
+                                <div class="screen-meta">
+                                    <span class="screen-number">02 / HOME</span>
+                                    <h4>Focused home</h4>
+                                    <p>Balances the current reading state with a deliberately limited discovery set.</p>
+                                </div>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-asset="legacy-search" data-lightbox-alt="Novella search and filtering screen" aria-label="Enlarge search screen">
+                                    <span class="phone-frame"><img data-asset="legacy-search" alt="Novella search and filtering screen"></span>
+                                </button>
+                                <div class="screen-meta">
+                                    <span class="screen-number">03 / SEARCH</span>
+                                    <h4>Structured search</h4>
+                                    <p>Combines direct search with familiar filters and optional mood-based refinement.</p>
+                                </div>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-asset="legacy-match" data-lightbox-alt="Novella book match recommendation screen" aria-label="Enlarge book match screen">
+                                    <span class="phone-frame"><img data-asset="legacy-match" alt="Novella book match recommendation screen"></span>
+                                </button>
+                                <div class="screen-meta">
+                                    <span class="screen-number">04 / MATCH</span>
+                                    <h4>Curated match</h4>
+                                    <p>Presents a recommendation with enough rationale for the reader to understand the fit.</p>
+                                </div>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-asset="legacy-summary" data-lightbox-alt="Novella editorial book summary screen" aria-label="Enlarge book overview screen">
+                                    <span class="phone-frame"><img data-asset="legacy-summary" alt="Novella editorial book summary screen"></span>
+                                </button>
+                                <div class="screen-meta">
+                                    <span class="screen-number">05 / OVERVIEW</span>
+                                    <h4>Book introduction</h4>
+                                    <p>Leads with identity, premise, and atmosphere before community opinion.</p>
+                                </div>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-asset="legacy-details" data-lightbox-alt="Novella detailed book information screen" aria-label="Enlarge book detail screen">
+                                    <span class="phone-frame"><img data-asset="legacy-details" alt="Novella detailed book information screen"></span>
+                                </button>
+                                <div class="screen-meta">
+                                    <span class="screen-number">06 / DETAILS</span>
+                                    <h4>Decision support</h4>
+                                    <p>Surfaces practical information after the reader has formed initial interest.</p>
+                                </div>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-asset="legacy-author" data-lightbox-alt="Novella author profile and related works screen" aria-label="Enlarge author screen">
+                                    <span class="phone-frame"><img data-asset="legacy-author" alt="Novella author profile and related works screen"></span>
+                                </button>
+                                <div class="screen-meta">
+                                    <span class="screen-number">07 / AUTHOR</span>
+                                    <h4>Author context</h4>
+                                    <p>Connects the selected work to voice, background, and related titles without leaving the flow.</p>
+                                </div>
+                            </article>
+
+                            <article class="screen-card">
+                                <button class="screen-button" type="button" data-lightbox-asset="legacy-library" data-lightbox-alt="Novella personal digital library screen" aria-label="Enlarge personal library screen">
+                                    <span class="phone-frame"><img data-asset="legacy-library" alt="Novella personal digital library screen"></span>
+                                </button>
+                                <div class="screen-meta">
+                                    <span class="screen-number">08 / LIBRARY</span>
+                                    <h4>Personal archive</h4>
+                                    <p>Gives saved and active books a stable home separate from the discovery experience.</p>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="carousel-controls" aria-label="Mobile screen gallery controls">
+                            <button class="carousel-button" id="screensPrevious" type="button" aria-label="View previous screens">←</button>
+                            <button class="carousel-button" id="screensNext" type="button" aria-label="View next screens">→</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="desktop">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">08 / Earlier desktop direction<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Original responsive exploration</p>
+                    <h2>Two early directions tested the balance between browsing and focus.</h2>
+                    <p class="intro">
+                        I explored two responsive-homepage directions. The comparison helped clarify the product’s visual priority, but it does not prove which design would perform better without usability testing.
+                    </p>
+
+                    <div class="desktop-grid">
+                        <article class="desktop-card">
+                            <button class="desktop-button" type="button" data-lightbox-asset="legacy-desktop-01" data-lightbox-alt="Novella desktop concept with an information-dense book grid" aria-label="Enlarge information-dense desktop concept">
+                                <span class="desktop-frame"><img data-asset="legacy-desktop-01" alt="Information-dense Novella desktop concept"></span>
+                            </button>
+                            <div class="desktop-copy">
+                                <span class="variant-label">Direction A</span>
+                                <h3>Library grid</h3>
+                                <p>Supports high-volume scanning and quick access to many titles, but risks giving every item equal emphasis.</p>
+                            </div>
+                        </article>
+
+                        <article class="desktop-card recommended">
+                            <button class="desktop-button" type="button" data-lightbox-asset="legacy-desktop-02" data-lightbox-alt="Novella desktop concept with a focused editorial spotlight" aria-label="Enlarge editorial desktop concept">
+                                <span class="desktop-frame"><img data-asset="legacy-desktop-02" alt="Editorial spotlight Novella desktop concept"></span>
+                            </button>
+                            <div class="desktop-copy">
+                                <span class="variant-label">Direction B · Selected hypothesis</span>
+                                <h3>Editorial spotlight</h3>
+                                <p>Creates a clearer entry point and stronger visual identity, while requiring deliberate access to the broader catalog.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="direction-note">
+                        <h3>Why I carried Direction B forward</h3>
+                        <p>
+                            It more directly supports Novella’s differentiation: a focused introduction to a small number of books. In a real product process, I would test both directions on discovery speed, comprehension, perceived control, and the ability to reach the full library—not select the editorial version on aesthetics alone.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="visual" class="visual-section">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">09 / Visual system<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">Editorial but functional</p>
+                    <h2>A literary identity that preserves interface clarity.</h2>
+                    <p class="intro">
+                        Warm neutrals, burgundy accents, generous spacing, and an editorial serif give the product a distinct voice. A neutral sans-serif carries controls and metadata so the atmosphere does not compromise usability.
+                    </p>
+
+                    <div class="visual-layout">
+                        <div>
+                            <div class="gallery-heading">
+                                <h3>Core palette</h3>
+                                <p>Warm surfaces provide continuity while burgundy is reserved for emphasis and action.</p>
+                            </div>
+                            <div class="palette-grid" aria-label="Novella color palette">
+                                <div class="swatch" style="background:#6f3338;color:#fff;">
+                                    <span>Archive burgundy</span><span>#6F3338</span>
+                                </div>
+                                <div class="swatch" style="background:#f1ede8;color:#231f1d;">
+                                    <span>Warm paper</span><span>#F1EDE8</span>
+                                </div>
+                                <div class="swatch" style="background:#231f1d;color:#fff;">
+                                    <span>Core ink</span><span>#231F1D</span>
+                                </div>
+                                <div class="swatch" style="background:#817672;color:#fff;">
+                                    <span>Muted metadata</span><span>#817672</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="gallery-heading">
+                                <h3>Type roles</h3>
+                                <p>Typography distinguishes editorial content from interface instructions and data.</p>
+                            </div>
+                            <div class="type-stack">
+                                <article class="type-card">
+                                    <span class="type-label">Editorial voice</span>
+                                    <div class="type-serif">A room of stories</div>
+                                    <p>Used for titles, featured passages, and moments where the book’s identity should lead.</p>
+                                </article>
+                                <article class="type-card">
+                                    <span class="type-label">Interface voice</span>
+                                    <div class="type-sans">Search · Save · Read</div>
+                                    <p>Used for navigation, metadata, controls, and compact information that must remain immediately legible.</p>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="validation">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">10 / Validation plan<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">What I would test next</p>
+                    <h2>Turn the visual concept into an evidence-based product direction.</h2>
+                    <p class="intro">
+                        The largest open question is whether the proposed atmosphere improves decision-making or simply looks appealing. I would test the core assumptions before expanding the feature set.
+                    </p>
+
+                    <div class="validation-grid">
+                        <article class="validation-card">
+                            <div class="validation-icon" aria-hidden="true">1</div>
+                            <h3>Mood-language comprehension</h3>
+                            <p>Ask readers to interpret and use mood labels, then identify ambiguous terms and where genre or content filters remain necessary.</p>
+                        </article>
+                        <article class="validation-card">
+                            <div class="validation-icon" aria-hidden="true">2</div>
+                            <h3>Discovery task success</h3>
+                            <p>Measure whether participants can find a plausible next book, explain why it fits, and recover when the first recommendation misses.</p>
+                        </article>
+                        <article class="validation-card">
+                            <div class="validation-icon" aria-hidden="true">3</div>
+                            <h3>Desktop direction comparison</h3>
+                            <p>Compare the grid and spotlight designs on discoverability, perceived choice, time to useful information, and access to the full catalog.</p>
+                        </article>
+                        <article class="validation-card">
+                            <div class="validation-icon" aria-hidden="true">4</div>
+                            <h3>Reading and accessibility checks</h3>
+                            <p>Test contrast, dynamic type, keyboard and screen-reader use, reduced motion, reading controls, and long-form comfort on real devices.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reflection">
+            <div class="page-shell section-grid">
+                <aside class="section-kicker">11 / Reflection<span></span></aside>
+                <div class="section-content reveal">
+                    <p class="eyebrow">What the project demonstrates</p>
+                    <h2>Atmosphere is strongest when the structure earns it.</h2>
+                    <p class="intro">
+                        Novella began as a visual exploration, but the more useful design problem became sequencing: what should a reader encounter first, what can wait, and how should discovery differ from managing an owned library? The project strengthened my ability to connect art direction with information architecture while remaining honest about what still needs validation.
+                    </p>
+
+                    <div class="reflection-grid">
+                        <article class="reflection-card">
+                            <span class="card-number">01</span>
+                            <h3>Strongest contribution</h3>
+                            <p>A cohesive visual and interaction direction that connects discovery, evaluation, author context, and collection management.</p>
+                        </article>
+                        <article class="reflection-card">
+                            <span class="card-number">02</span>
+                            <h3>Largest product risk</h3>
+                            <p>Mood-based personalization can become vague, reductive, or repetitive unless readers can understand, edit, and escape it.</p>
+                        </article>
+                        <article class="reflection-card">
+                            <span class="card-number">03</span>
+                            <h3>Next design step</h3>
+                            <p>Prototype the core discovery flow, test it with readers, and revise the labels and hierarchy before adding social or recommendation complexity.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="next-case">
+        <div class="page-shell next-inner">
+            <div>
+                <p>Continue exploring</p>
+                <h2>Return to selected work.</h2>
+            </div>
+            <a class="next-link" href="index.html#work">View portfolio <span aria-hidden="true">↗</span></a>
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged Novella interface screen" aria-hidden="true">
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close enlarged image">×</button>
+        <img id="lightboxImage" src="" alt="">
+    </div>
+
+    <script>
+        const novellaAssets = {
+            "screen-01": "assets/embedded-0194a6938b3b7923.webp",
+            "screen-02": "assets/embedded-5c0c8877ff3bb1f4.webp",
+            "screen-03": "assets/embedded-f3f623b99ebc0baa.webp",
+            "screen-04": "assets/embedded-c8023007de76b610.webp",
+            "screen-05": "assets/embedded-ac5f90c35eea1cd0.webp",
+            "screen-06": "assets/embedded-6766b2c41b893cd8.webp",
+            "screen-07": "assets/embedded-cecc3d37315b4e85.webp",
+            "screen-08": "assets/embedded-5b7e616179cc466f.webp",
+            "screen-09": "assets/embedded-64e22d422aefcff1.webp",
+            "screen-10": "assets/embedded-526bad85f2ec8fe0.webp",
+            "desktop-01": "assets/embedded-ee8d1dabbc3704ad.webp",
+            "desktop-02": "assets/embedded-78264f8d6fe49f6a.webp",
+            "board-01": "assets/embedded-b7004c0986aa6f15.webp",
+            "board-02": "assets/embedded-06b4383d63b5f9f4.webp",
+            "board-03": "assets/embedded-06543fc32881b335.webp",
+            "legacy-onboarding": "assets/embedded-5632a319a560ac78.webp",
+            "legacy-home": "assets/embedded-b102f9c78ec18fe1.webp",
+            "legacy-search": "assets/embedded-f894c3a32b3d43b4.webp",
+            "legacy-match": "assets/embedded-cada5152bb1bf3d4.webp",
+            "legacy-summary": "assets/embedded-614c2ca06941c11f.webp",
+            "legacy-details": "assets/embedded-c3383f4745a48943.webp",
+            "legacy-author": "assets/embedded-c4d84eeb062963d3.webp",
+            "legacy-library": "assets/embedded-5ee8dd055146f35e.webp",
+            "legacy-desktop-01": "assets/embedded-cfae2619e936cc88.webp",
+            "legacy-desktop-02": "assets/embedded-68b2f837bb210e5a.webp"
+        };
+
+        document.querySelectorAll("img[data-asset]").forEach(image => {
+            const source = novellaAssets[image.dataset.asset];
+            if (source) image.src = source;
+        });
+
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const revealItems = document.querySelectorAll(".reveal");
+        const siteNav = document.getElementById("siteNav");
+
+        function updateNavigation() {
+            siteNav.classList.toggle("scrolled", window.scrollY > 12);
+        }
+
+        updateNavigation();
+        window.addEventListener("scroll", updateNavigation, { passive: true });
+
+        if (reducedMotion || !("IntersectionObserver" in window)) {
+            revealItems.forEach(item => item.classList.add("is-visible"));
+        } else {
+            const observer = new IntersectionObserver((entries, currentObserver) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        currentObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            revealItems.forEach(item => observer.observe(item));
+        }
+
+        const prototypeTabs = Array.from(document.querySelectorAll(".prototype-tab"));
+        const prototypePanels = Array.from(document.querySelectorAll(".prototype-panel"));
+        const prototypeLiveRegion = document.getElementById("prototypeLiveRegion");
+
+        function activatePrototypeTab(nextTab) {
+            prototypeTabs.forEach(tab => {
+                const isSelected = tab === nextTab;
+                tab.setAttribute("aria-selected", String(isSelected));
+                tab.tabIndex = isSelected ? 0 : -1;
+            });
+
+            prototypePanels.forEach(panel => {
+                panel.hidden = panel.id !== nextTab.getAttribute("aria-controls");
+            });
+
+            prototypeLiveRegion.textContent = nextTab.textContent.trim() + " selected.";
+        }
+
+        prototypeTabs.forEach((tab, index) => {
+            tab.addEventListener("click", () => activatePrototypeTab(tab));
+            tab.addEventListener("keydown", event => {
+                if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+                event.preventDefault();
+                const direction = event.key === "ArrowRight" ? 1 : -1;
+                const nextIndex = (index + direction + prototypeTabs.length) % prototypeTabs.length;
+                activatePrototypeTab(prototypeTabs[nextIndex]);
+                prototypeTabs[nextIndex].focus();
+            });
+        });
+
+        const appScreens = [
+            {
+                asset: "screen-01",
+                label: "The Desk",
+                title: "Set the feeling",
+                description: "Begin with the reading experience you want rather than a crowded catalog. Tonight’s mood shapes this session only.",
+                alt: "Novella home screen asking what kind of world the reader needs tonight",
+                hotspotLabel: "Start with a feeling",
+                hotspotAria: "Open the atmosphere finder",
+                hotspot: { top: 37, left: 17, width: 29, height: 6 },
+                target: 1
+            },
+            {
+                asset: "screen-02",
+                label: "Atmosphere finder",
+                title: "Choose a world",
+                description: "Visual atmosphere cards make an abstract mood easier to recognize, while reading-energy controls tune pace and complexity.",
+                alt: "Novella atmosphere finder with rainy city, coast, manor, and forest choices",
+                hotspotLabel: "Continue with this atmosphere",
+                hotspotAria: "Continue to atmosphere results",
+                hotspot: { top: 85, left: 18, width: 64, height: 6 },
+                target: 2
+            },
+            {
+                asset: "screen-03",
+                label: "Atmosphere results",
+                title: "Understand the match",
+                description: "Readers can see the pace, voice, and emotional-weight signals behind each recommendation before committing.",
+                alt: "Novella rainy city at dusk results with three matched literary voices",
+                hotspotLabel: "Try the first voice",
+                hotspotAria: "Begin a blind trial of the first recommendation",
+                hotspot: { top: 57, left: 36, width: 27, height: 5 },
+                target: 3
+            },
+            {
+                asset: "screen-04",
+                label: "Blind trial",
+                title: "Meet the voice first",
+                description: "Title, cover, ratings, and author stay hidden for five minutes so the prose can make the first impression.",
+                alt: "Novella blind reading trial showing only an excerpt and listening option",
+                hotspotLabel: "This voice fits",
+                hotspotAria: "Choose this voice and reveal the book",
+                hotspot: { top: 75, left: 49, width: 33, height: 7 },
+                target: 4
+            },
+            {
+                asset: "screen-05",
+                label: "Match reveal",
+                title: "Explain why it fits",
+                description: "The reveal connects the reader’s atmosphere and energy choices to specific qualities in the book, with content context before reading.",
+                alt: "Novella book match reveal for The Stars We Left Behind",
+                hotspotLabel: "Begin reading",
+                hotspotAria: "Begin reading the matched book",
+                hotspot: { top: 90, left: 49, width: 34, height: 6 },
+                target: 5
+            },
+            {
+                asset: "screen-06",
+                label: "Focus reader",
+                title: "Read without noise",
+                description: "Comfortable type, generous rhythm, and a restrained toolbar keep the book visually dominant while essential tools remain close.",
+                alt: "Novella focus reader showing Chapter Four, The Station",
+                hotspotLabel: "Highlight this passage",
+                hotspotAria: "Highlight the selected passage",
+                hotspot: { top: 82, left: 15, width: 20, height: 8 },
+                target: 6
+            },
+            {
+                asset: "screen-07",
+                label: "Save passage",
+                title: "Capture the thought",
+                description: "Save a quotation with context, add a private note, and connect it to a reusable theme, character, question, or language thread.",
+                alt: "Novella save passage sheet with private note and thread options",
+                hotspotLabel: "Save to Notes",
+                hotspotAria: "Save the passage and open Notes",
+                hotspot: { top: 91, left: 17, width: 66, height: 6 },
+                target: 8
+            },
+            {
+                asset: "screen-08",
+                label: "Personal library",
+                title: "Return to what is yours",
+                description: "Active, saved, and finished books live in a stable personal archive, organized by the reader rather than by promotional feeds.",
+                alt: "Novella personal library with current reading and curated shelves",
+                hotspotLabel: "Open Notes",
+                hotspotAria: "Open Notes and Threads",
+                hotspot: { top: 91, left: 58, width: 16, height: 7 },
+                target: 8
+            },
+            {
+                asset: "screen-09",
+                label: "Notes & threads",
+                title: "Connect ideas across books",
+                description: "Private threads gather related passages into themes that can grow across an entire reading life, without likes or social pressure.",
+                alt: "Novella Notes and Threads screen with cross-book themes",
+                hotspotLabel: "Create a new thread",
+                hotspotAria: "Create a new private thread",
+                hotspot: { top: 84, left: 18, width: 64, height: 6 },
+                target: 9
+            },
+            {
+                asset: "screen-10",
+                label: "Reading display",
+                title: "Make the page yours",
+                description: "Page tone, typeface, size, spacing, margins, motion, and evening warmth are adjustable in one accessible live-preview editor.",
+                alt: "Novella reading display controls with page tones and typography settings",
+                hotspotLabel: "Save reading display",
+                hotspotAria: "Save the reading display and return to the reader",
+                hotspot: { top: 90, left: 16, width: 68, height: 6 },
+                target: 5
+            }
+        ];
+
+        const appPrototypeImage = document.getElementById("appPrototypeImage");
+        const appPrototypeHotspot = document.getElementById("appPrototypeHotspot");
+        const appPrototypeIndex = document.getElementById("appPrototypeIndex");
+        const appPrototypeTitle = document.getElementById("appPrototypeTitle");
+        const appPrototypeDescription = document.getElementById("appPrototypeDescription");
+        const appPrototypeProgress = document.getElementById("appPrototypeProgress");
+        const appPrototypeRail = document.getElementById("appPrototypeRail");
+        const appPrototypePrevious = document.getElementById("appPrototypePrevious");
+        const appPrototypeNext = document.getElementById("appPrototypeNext");
+        const appPrototypeFullscreen = document.getElementById("appPrototypeFullscreen");
+        const appThumbs = Array.from(document.querySelectorAll(".prototype-thumb"));
+        const flowButtons = Array.from(document.querySelectorAll(".flow-button"));
+        let activeAppScreen = 0;
+
+        function renderAppScreen(index, announce = true) {
+            activeAppScreen = (index + appScreens.length) % appScreens.length;
+            const screen = appScreens[activeAppScreen];
+
+            appPrototypeImage.src = novellaAssets[screen.asset];
+            appPrototypeImage.alt = screen.alt;
+            appPrototypeIndex.textContent = String(activeAppScreen + 1).padStart(2, "0") + " / " + appScreens.length + " · " + screen.label;
+            appPrototypeTitle.textContent = screen.title;
+            appPrototypeDescription.textContent = screen.description;
+            appPrototypeProgress.style.width = ((activeAppScreen + 1) / appScreens.length * 100) + "%";
+
+            appPrototypeHotspot.style.top = screen.hotspot.top + "%";
+            appPrototypeHotspot.style.left = screen.hotspot.left + "%";
+            appPrototypeHotspot.style.width = screen.hotspot.width + "%";
+            appPrototypeHotspot.style.height = screen.hotspot.height + "%";
+            appPrototypeHotspot.dataset.label = screen.hotspotLabel;
+            appPrototypeHotspot.setAttribute("aria-label", screen.hotspotAria);
+            appPrototypeHotspot.dataset.target = String(screen.target);
+
+            appThumbs.forEach((thumb, thumbIndex) => {
+                const isActive = thumbIndex === activeAppScreen;
+                thumb.classList.toggle("is-active", isActive);
+                thumb.setAttribute("aria-current", isActive ? "step" : "false");
+            });
+
+            flowButtons.forEach(button => {
+                const start = Number(button.dataset.flowStart);
+                button.classList.toggle("is-active", start === 0 ? activeAppScreen < 7 : activeAppScreen >= 7);
+            });
+
+            const activeThumb = appThumbs[activeAppScreen];
+            if (activeThumb && !reducedMotion) {
+                activeThumb.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+            }
+
+            if (announce) prototypeLiveRegion.textContent = screen.label + ": " + screen.title;
+        }
+
+        appPrototypeHotspot.addEventListener("click", () => renderAppScreen(Number(appPrototypeHotspot.dataset.target)));
+        appPrototypePrevious.addEventListener("click", () => renderAppScreen(activeAppScreen - 1));
+        appPrototypeNext.addEventListener("click", () => renderAppScreen(activeAppScreen + 1));
+        appPrototypeFullscreen.addEventListener("click", () => {
+            const screen = appScreens[activeAppScreen];
+            openAssetLightbox(screen.asset, screen.alt, appPrototypeFullscreen);
+        });
+
+        appThumbs.forEach(thumb => {
+            thumb.addEventListener("click", () => renderAppScreen(Number(thumb.dataset.screenIndex)));
+        });
+
+        flowButtons.forEach(button => {
+            button.addEventListener("click", () => renderAppScreen(Number(button.dataset.flowStart)));
+        });
+
+        const websiteScreens = [
+            {
+                desktopAsset: "desktop-01",
+                mobileAsset: "screen-01",
+                title: "The Desk",
+                description: "A calm workspace for choosing tonight’s voice, continuing a book, and resurfacing one meaningful note.",
+                desktopAlt: "Responsive Novella website home called The Desk",
+                mobileAlt: "Mobile Novella home called The Desk",
+                hotspotLabel: "Open the reading room",
+                hotspotAria: "Open the Novella reading room",
+                desktopHotspot: { top: 52, left: 54, width: 18, height: 8 },
+                mobileHotspot: { top: 63, left: 20, width: 48, height: 8 },
+                target: 1
+            },
+            {
+                desktopAsset: "desktop-02",
+                mobileAsset: "screen-06",
+                title: "The Reading Room",
+                description: "A private literary studio with collapsible contents, readable measure, selection tools, and chapter-specific notes.",
+                desktopAlt: "Responsive Novella reading room with contents and private notes",
+                mobileAlt: "Mobile Novella focus reader",
+                hotspotLabel: "Return to The Desk",
+                hotspotAria: "Return to The Desk",
+                desktopHotspot: { top: 2, left: 92, width: 6, height: 9 },
+                mobileHotspot: { top: 10, left: 12, width: 14, height: 8 },
+                target: 0
+            }
+        ];
+
+        const browserShell = document.getElementById("browserShell");
+        const browserStatus = document.getElementById("browserStatus");
+        const websitePrototypeImage = document.getElementById("websitePrototypeImage");
+        const websitePrototypeHotspot = document.getElementById("websitePrototypeHotspot");
+        const websitePrototypeTitle = document.getElementById("websitePrototypeTitle");
+        const websitePrototypeDescription = document.getElementById("websitePrototypeDescription");
+        const websitePrototypeFullscreen = document.getElementById("websitePrototypeFullscreen");
+        const websitePageButtons = Array.from(document.querySelectorAll(".website-page-button"));
+        const viewportButtons = Array.from(document.querySelectorAll(".viewport-button"));
+        let activeWebsiteScreen = 0;
+        let activeViewport = "desktop";
+
+        function renderWebsiteScreen(index, announce = true) {
+            activeWebsiteScreen = (index + websiteScreens.length) % websiteScreens.length;
+            const screen = websiteScreens[activeWebsiteScreen];
+            const isMobile = activeViewport === "mobile";
+            const hotspot = isMobile ? screen.mobileHotspot : screen.desktopHotspot;
+
+            websitePrototypeImage.src = novellaAssets[isMobile ? screen.mobileAsset : screen.desktopAsset];
+            websitePrototypeImage.alt = isMobile ? screen.mobileAlt : screen.desktopAlt;
+            websitePrototypeTitle.textContent = screen.title;
+            websitePrototypeDescription.textContent = screen.description;
+            websitePrototypeHotspot.style.top = hotspot.top + "%";
+            websitePrototypeHotspot.style.left = hotspot.left + "%";
+            websitePrototypeHotspot.style.width = hotspot.width + "%";
+            websitePrototypeHotspot.style.height = hotspot.height + "%";
+            websitePrototypeHotspot.dataset.label = screen.hotspotLabel;
+            websitePrototypeHotspot.dataset.target = String(screen.target);
+            websitePrototypeHotspot.setAttribute("aria-label", screen.hotspotAria);
+
+            websitePageButtons.forEach((button, buttonIndex) => {
+                button.classList.toggle("is-active", buttonIndex === activeWebsiteScreen);
+            });
+
+            if (announce) prototypeLiveRegion.textContent = "Website: " + screen.title + ", " + activeViewport + " preview.";
+        }
+
+        function setWebsiteViewport(viewport) {
+            activeViewport = viewport;
+            browserShell.classList.remove("viewport-tablet", "viewport-mobile");
+            if (viewport !== "desktop") browserShell.classList.add("viewport-" + viewport);
+            browserStatus.textContent = viewport.charAt(0).toUpperCase() + viewport.slice(1);
+            viewportButtons.forEach(button => {
+                button.classList.toggle("is-active", button.dataset.viewport === viewport);
+            });
+            renderWebsiteScreen(activeWebsiteScreen);
+        }
+
+        websitePrototypeHotspot.addEventListener("click", () => renderWebsiteScreen(Number(websitePrototypeHotspot.dataset.target)));
+        websitePageButtons.forEach(button => {
+            button.addEventListener("click", () => renderWebsiteScreen(Number(button.dataset.websiteIndex)));
+        });
+        viewportButtons.forEach(button => {
+            button.addEventListener("click", () => setWebsiteViewport(button.dataset.viewport));
+        });
+        websitePrototypeFullscreen.addEventListener("click", () => {
+            const screen = websiteScreens[activeWebsiteScreen];
+            const isMobile = activeViewport === "mobile";
+            openAssetLightbox(isMobile ? screen.mobileAsset : screen.desktopAsset, isMobile ? screen.mobileAlt : screen.desktopAlt, websitePrototypeFullscreen);
+        });
+
+        document.getElementById("novellaPrototype").addEventListener("keydown", event => {
+            if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+            if (event.target.closest('[role="tablist"]') || event.target.closest(".prototype-rail")) return;
+
+            const appPanelVisible = !document.getElementById("appPrototypePanel").hidden;
+            const websitePanelVisible = !document.getElementById("websitePrototypePanel").hidden;
+            if (!appPanelVisible && !websitePanelVisible) return;
+
+            event.preventDefault();
+            const direction = event.key === "ArrowRight" ? 1 : -1;
+            if (appPanelVisible) renderAppScreen(activeAppScreen + direction);
+            if (websitePanelVisible) renderWebsiteScreen(activeWebsiteScreen + direction);
+        });
+
+        renderAppScreen(0, false);
+        renderWebsiteScreen(0, false);
+
+        const screenTrack = document.getElementById("screenTrack");
+        const screensPrevious = document.getElementById("screensPrevious");
+        const screensNext = document.getElementById("screensNext");
+
+        function scrollScreens(direction) {
+            const firstCard = screenTrack.querySelector(".screen-card");
+            const amount = firstCard ? firstCard.getBoundingClientRect().width + 24 : screenTrack.clientWidth * 0.8;
+            screenTrack.scrollBy({ left: amount * direction, behavior: reducedMotion ? "auto" : "smooth" });
+        }
+
+        screensPrevious.addEventListener("click", () => scrollScreens(-1));
+        screensNext.addEventListener("click", () => scrollScreens(1));
+
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxClose = document.getElementById("lightboxClose");
+        const lightboxTriggers = document.querySelectorAll("[data-lightbox-src], [data-lightbox-asset]");
+        let previouslyFocused = null;
+
+        function openAssetLightbox(assetKey, alt, focusOrigin) {
+            const source = novellaAssets[assetKey];
+            if (!source) return;
+            previouslyFocused = focusOrigin || document.activeElement;
+            lightboxImage.src = source;
+            lightboxImage.alt = alt || "Enlarged Novella interface screen";
+            lightbox.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+            lightboxClose.focus();
+        }
+
+        function openLightbox(trigger) {
+            if (trigger.dataset.lightboxAsset) {
+                openAssetLightbox(trigger.dataset.lightboxAsset, trigger.dataset.lightboxAlt, trigger);
+                return;
+            }
+
+            previouslyFocused = trigger;
+            lightboxImage.src = trigger.dataset.lightboxSrc;
+            lightboxImage.alt = trigger.dataset.lightboxAlt || "Enlarged Novella interface screen";
+            lightbox.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+            lightboxClose.focus();
+        }
+
+        function closeLightbox() {
+            lightbox.setAttribute("aria-hidden", "true");
+            lightboxImage.src = "";
+            lightboxImage.alt = "";
+            document.body.style.overflow = "";
+            if (previouslyFocused) previouslyFocused.focus();
+        }
+
+        lightboxTriggers.forEach(trigger => {
+            trigger.addEventListener("click", () => openLightbox(trigger));
+        });
+
+        lightboxClose.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", event => {
+            if (event.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && lightbox.getAttribute("aria-hidden") === "false") {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

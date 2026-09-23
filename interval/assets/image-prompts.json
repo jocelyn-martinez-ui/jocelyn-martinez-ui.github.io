@@ -1,0 +1,32 @@
+{
+  "project": "INTERVAL",
+  "assets": [
+    {
+      "name": "listening-room",
+      "prompt": "Use case: photorealistic-natural\nAsset type: editorial website photograph for the fictional listening and sound-art festival INTERVAL; an illustrative scene, not documentation of an actual event.\nPrimary request: Wide 3:2 editorial architectural photograph of a quiet, intimate experimental listening room.\nScene/backdrop: A believable simple room with dark charcoal acoustic panels, one sculptural but physically plausible wood speaker on each side, and a few empty black chairs. No people.\nStyle/medium: Restrained documentary photography with tactile subtle film grain, natural imperfect materials, photographic depth and realistic perspective.\nComposition/framing: Landscape 3:2 ratio. Off-center asymmetry, strong negative space and architectural stillness. The speakers and seating feel intentionally placed in a small intimate listening space.\nLighting/mood: Raking daylight, quiet atmosphere, charcoal shadows with soft amber wood.\nConstraints: No text, signs, typography, logos, watermark, flashy neon, science-fiction equipment, or poster design. This is a photographic image only; the website will add typography separately.",
+      "path": "/workspace/scratch/193e19bc4f3c/interval-art/listening-room.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "built-in image_gen",
+      "illustrative": true
+    },
+    {
+      "name": "tape-landscape",
+      "prompt": "Use case: photorealistic-natural\nAsset type: editorial website photograph for the fictional listening and sound-art festival INTERVAL; an illustrative still life, not documentation of an actual event.\nPrimary request: 3:2 macro editorial still life of an analog reel-to-reel tape deck and loose magnetic tape on a worn charcoal worktop.\nSubject: A physically believable analog reel-to-reel tape deck, brushed metal and carefully cropped reels, with one loose length of magnetic tape resting on the surface. Realistic transport and reel mechanics.\nStyle/medium: Restrained tactile editorial photography, subtle documentary grain, not a glossy 3D render.\nComposition/framing: Landscape 3:2 ratio, deliberate close cropped composition, strong negative space, tightly controlled shallow depth of field.\nLighting/mood: Warm highlights on brushed metal and tape, deep charcoal shadows, nearly monochrome with soft amber material tones.\nConstraints: No legible branding, logos, labels or text; no watermark, people, hands, imaginary mechanisms, flashy neon, science-fiction equipment, poster design or typography.",
+      "path": "/workspace/scratch/193e19bc4f3c/interval-art/tape-landscape.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "built-in image_gen",
+      "illustrative": true
+    },
+    {
+      "name": "strings-detail",
+      "prompt": "Use case: photorealistic-natural\nAsset type: editorial website photograph for the fictional listening and sound-art festival INTERVAL; an illustrative scene, not documentation of an actual event.\nPrimary request: 3:2 close cropped photograph of acoustic cello strings, bridge and amber brown wooden body, with a bow held by someone entirely outside the frame.\nSubject: Physically plausible cello construction, four strings passing across a realistic wooden bridge and continuing in their correct direction. The bow enters the crop with its holder fully outside the frame. No hands or people visible.\nStyle/medium: Restrained tactile editorial photography with realistic wood grain, subtle documentary grain and natural optical depth.\nComposition/framing: Landscape 3:2 ratio, tight evocative crop, strong nearblack negative space around the instrument detail.\nLighting/mood: Raking sidelight on warm amber brown wood against a deep nearblack background, gentle highlights, charcoal shadows.\nConstraints: No people, hands, text, logos, watermark, poster design or typography. Photographic image only, no glossy 3D aesthetic, no exaggerated or impossible strings, bridge or bow.",
+      "path": "/workspace/scratch/193e19bc4f3c/interval-art/strings-detail.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "built-in image_gen",
+      "illustrative": true
+    }
+  ]
+}

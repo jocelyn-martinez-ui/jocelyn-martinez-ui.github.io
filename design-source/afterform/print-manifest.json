@@ -1,0 +1,61 @@
+{
+  "book": [
+    {
+      "page": 1,
+      "background": "lilac"
+    },
+    {
+      "page": 2,
+      "background": "paper"
+    },
+    {
+      "page": 3,
+      "background": "red"
+    },
+    {
+      "page": 4,
+      "background": "paper"
+    },
+    {
+      "page": 5,
+      "background": "plum"
+    },
+    {
+      "page": 6,
+      "background": "paper"
+    },
+    {
+      "page": 7,
+      "background": "lilac"
+    },
+    {
+      "page": 8,
+      "background": "paper"
+    },
+    {
+      "page": 9,
+      "background": "plum"
+    },
+    {
+      "page": 10,
+      "background": "paper"
+    },
+    {
+      "page": 11,
+      "background": "paper"
+    },
+    {
+      "page": 12,
+      "background": "lilac"
+    }
+  ],
+  "pdfs": [
+    "AFTERFORM-Labels-Tags-and-Records.pdf",
+    "AFTERFORM-Five-Poster-Campaign.pdf",
+    "AFTERFORM-Packaging-Panels.pdf",
+    "AFTERFORM-On-Keeping-Studio-Guide.pdf",
+    "AFTERFORM-Studio-Signage.pdf"
+  ],
+  "font_licences": "SIL Open Font License; local files included",
+  "production": "RGB design proofs. Packaging nets require physical fit test and supplier preflight. Printed QR codes point to owner-controlled portfolio previews; update for public launch."
+}
