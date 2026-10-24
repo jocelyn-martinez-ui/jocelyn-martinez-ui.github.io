@@ -1,7 +1,7 @@
 from pathlib import Path
 from xml.sax.saxutils import escape
 import json, base64
-root=Path('/mnt/data/brume_rework')
+root=Path(__file__).resolve().parent
 P={'ink':'#2B201B','paper':'#EEE8DE','wine':'#582C3A','honey':'#D8A765','rust':'#A56841','fog':'#C8B9A6','light':'#FAF4E8'}
 # vector collateral in physical dimensions, with 3mm provisional bleed
 forms=[('ad-a5',154,216,'wine-room','A5 MAGAZINE / 148 x 210 mm','Light, after hours.'),('postcard-a6',154,111,'sun-room','A6 CARD / 148 x 105 mm','An hour worth staying for.'),('insert-a6',111,154,'hand-detail','A6 INSERT / 105 x 148 mm','A study in light and material.'),('sell-sheet-a4',216,303,'collection','A4 SELL SHEET / 210 x 297 mm','One silhouette. Three atmospheres.')]
