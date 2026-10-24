@@ -1,11 +1,19 @@
-# Jocelyn Martinez — Complete Portfolio / Eight-project refinement
+# Jocelyn Martinez — Complete Portfolio / Nine-project edition
 
-Updated 23 September 2026. All eight existing projects are preserved: ImHere, AFTERFORM, Holland Walking Tour, INTERVAL, Áurea, Loopline, Novella and Nutriva. Each retains its own visual identity and core purpose.
+Original eight-project refinement updated 23 September 2026. On 24 October 2026, the PROOF case study and curation update were added on a separate review branch. All eight original projects are preserved: ImHere, AFTERFORM, Holland Walking Tour, INTERVAL, Áurea, Loopline, Novella and Nutriva. Each retains its own visual identity and core purpose. PROOF is a ninth, separate self-directed creative-operations concept.
+
+## October 2026 portfolio extension
+
+- Default homepage now curates six flagship studies. Select **All work** to browse all nine; role-focused views remain accessible.
+- [PROOF](proof/index.html) adds a new visual campaign and a stateful approval/preflight prototype with three editable [SVG posters](proof/assets/).
+- [Hiring audit](PORTFOLIO_HIRING_REVIEW_2026.md) documents why these changes were chosen, limitations, future verification and needed real-world evidence.
+- [PROOF state tests](proof/qa.test.mjs): run `node --test proof/qa.test.mjs` with a contemporary Node version. Static site hosting itself needs no Node.
+- No client user-testing outcomes, production release, print delivery or actual collaboration is implied by PROOF. Its artwork is a concept, not a printer-certified asset.
 
 ## Open the work
 
 - Portfolio: index.html
-- Role focus: index.html?focus=ux, index.html?focus=graphic, index.html?focus=web
+- Role focus: index.html?focus=ux, index.html?focus=graphic, index.html?focus=web; full set: index.html?focus=all
 - About: about.html
 - Printable selected-work profile: design-profile.html (not an employment résumé)
 - Graphic design: graphic-editions.html
@@ -16,6 +24,7 @@ Updated 23 September 2026. All eight existing projects are preserved: ImHere, AF
 
 | Project | Case study | Working product |
 | --- | --- | --- |
+| PROOF | proof/index.html | proof/index.html#workspace |
 | ImHere | ImHere-case-study/imhere-case-study.html | experiences/imhere.html |
 | AFTERFORM | afterform.html | afterform/index.html |
 | Holland Walking Tour | Holland-Walking-Tour-site/holland-walking-tour-case-study.html | experiences/holland.html |
