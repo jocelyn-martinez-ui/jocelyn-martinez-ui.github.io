@@ -20,3 +20,7 @@ NODO = flat vectors / loud display sans / color blocks / product-icons. BRUME = 
 Source assets, relative paths, responsive rules and PDF geometry are programmatically inspectable. Full professional accessibility, actual email-client QA, real printer preflight, physical production and user testing have not been completed.
 
 To preview: run `python -m http.server` from this directory and open `index.html`. GitHub Pages can serve the files as a static `/brume/` subdirectory.
+
+## Browser SVG image-loading fix
+
+As of 24 October 2026, all 15 social SVG masters and four photo-based print SVGs embed their photographic JPEG layers as `data:image/jpeg;base64,...`. An externally linked `<image href="../images/...">` can be blocked by browsers when the SVG is displayed through an HTML `<img>` element. The original JPEG files remain in `images/`, and the typography/vector components of the SVGs remain editable. The Python generators preserve embedding on rebuild. Email artwork loads from an absolute HTTPS URL for real email-client interoperability (still requires client testing and the user's consent before any actual sending).
