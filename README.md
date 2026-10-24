@@ -1,10 +1,20 @@
-# Jocelyn Martinez — Complete Portfolio / Nine-project edition
+# Jocelyn Martinez — Complete Portfolio / Ten-project edition
 
-Original eight-project refinement updated 23 September 2026. On 24 October 2026, the PROOF case study and curation update were added on a separate review branch. All eight original projects are preserved: ImHere, AFTERFORM, Holland Walking Tour, INTERVAL, Áurea, Loopline, Novella and Nutriva. Each retains its own visual identity and core purpose. PROOF is a ninth, separate self-directed creative-operations concept.
+Original eight-project refinement updated 23 September 2026. On 24 October 2026, PROOF and NODO were added through separate design extensions. All eight original projects are preserved: ImHere, AFTERFORM, Holland Walking Tour, INTERVAL, Áurea, Loopline, Novella and Nutriva. Each retains its own visual identity and core purpose. PROOF is a ninth, separate self-directed creative-operations concept. NODO is the tenth project: two companion commercial-design case studies (social/email and print/labels).
+
+## October 2026 social, email & print production expansion
+
+- **NODO commercial campaign:** [marketing case study](nodo/index.html) and [print production case study](nodo/production.html).
+- **14 editable social SVG compositions:** four feed, six carousel, three vertical stories and one landscape adaptation, under `nodo/social/`.
+- **Three standalone responsive HTML emails** with text alternatives and production notes in `nodo/email/`. All CTA links are illustrative, non-operational placeholders.
+- **Product label family and collateral:** three current SVG labels, A5/A6/A4 print collateral, and two simulated archived label revisions under `nodo/print/`.
+- **Asset inventory & strategy:** [deliverables and design audit](nodo/DELIVERABLES_AND_AUDIT.md), [machine-readable manifest](nodo/manifest.json), and [print specifications](nodo/print/README.md).
+- A separate ChatGPT download package contains nine vector CMYK PDF specimens, proof pages, source generator and technical checks; the GitHub repository stores the editable SVG masters. The PDFs are not independently vendor approved or PDF/X-certified.
+- NODO is fictional, self-directed and AI-assisted; no real customers, sending platform, metrics or packaging compliance are implied.
 
 ## October 2026 portfolio extension
 
-- Default homepage now curates six flagship studies. Select **All work** to browse all nine; role-focused views remain accessible.
+- Default homepage now curates six flagship studies. Select **All work** to browse all ten; role-focused views remain accessible.
 - [PROOF](proof/index.html) adds a new visual campaign and a stateful approval/preflight prototype with three editable [SVG posters](proof/assets/).
 - [Hiring audit](PORTFOLIO_HIRING_REVIEW_2026.md) documents why these changes were chosen, limitations, future verification and needed real-world evidence.
 - [PROOF state tests](proof/qa.test.mjs): run `node --test proof/qa.test.mjs` with a contemporary Node version. Static site hosting itself needs no Node.
@@ -24,6 +34,7 @@ Original eight-project refinement updated 23 September 2026. On 24 October 2026,
 
 | Project | Case study | Working product |
 | --- | --- | --- |
+| NODO | nodo/index.html (marketing) / nodo/production.html (print) | nodo/email/01-launch.html |
 | PROOF | proof/index.html | proof/index.html#workspace |
 | ImHere | ImHere-case-study/imhere-case-study.html | experiences/imhere.html |
 | AFTERFORM | afterform.html | afterform/index.html |

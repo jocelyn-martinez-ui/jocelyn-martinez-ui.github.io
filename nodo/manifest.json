@@ -1,0 +1,72 @@
+{
+  "project": "NODO / Make room for the work",
+  "status": "Speculative AI-assisted commercial design portfolio concept — not a real company or product",
+  "generated_on": "2026-10-24",
+  "case_studies": [
+    {
+      "type": "marketing",
+      "path": "nodo/index.html"
+    },
+    {
+      "type": "print",
+      "path": "nodo/production.html"
+    }
+  ],
+  "asset_groups": [
+    {
+      "category": "social",
+      "master_format": "SVG with editable text & vector illustrations",
+      "count": 14,
+      "breakdown": {
+        "feed_1080x1350": 4,
+        "carousel_1080x1350": 6,
+        "story_1080x1920": 3,
+        "professional_landscape_1200x627": 1
+      },
+      "folder": "nodo/social",
+      "approval": "concept masters / placement safe-area testing pending"
+    },
+    {
+      "category": "email",
+      "master_format": "standalone table-based HTML and plain text",
+      "count": 3,
+      "folder": "nodo/email",
+      "approval": "prototype / cross-client and legal footer tests pending"
+    },
+    {
+      "category": "labels",
+      "master_format": "SVG with dimensions + 3mm provisional bleed",
+      "count": 3,
+      "folder": "nodo/print/source",
+      "approval": "concept current R03 / dieline and product details unverified"
+    },
+    {
+      "category": "print_collateral",
+      "master_format": "editable vector SVG with provisional bleed",
+      "count": 4,
+      "folder": "nodo/print/source",
+      "approval": "concept / vendor preflight pending"
+    },
+    {
+      "category": "archive",
+      "master_format": "editable SVG",
+      "count": 2,
+      "folder": "nodo/print/archive",
+      "approval": "obsolete prototype revisions / keep for change audit"
+    }
+  ],
+  "campaign": {
+    "audience_assumption": "Independent creatives and small studios with desktop cable clutter",
+    "message": "MAKE ROOM FOR THE WORK",
+    "objective": "Explain product-family roles while keeping one coherent visual system",
+    "goals_validated": false
+  },
+  "contacts": {
+    "commercial_email_sending": false,
+    "real_sponsor": false,
+    "real_products": false,
+    "real_printer": false
+  },
+  "archive_rules": "Do not overwrite R01/R02; filenames indicate artwork version rather than official approval",
+  "notes": "PDF specimens were generated for the ChatGPT download package, separate from GitHub SVG source. Color/vendor preflight requires an external printer."
+}
