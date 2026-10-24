@@ -24,7 +24,7 @@ for(const b of document.querySelectorAll("[data-issue]")){
   if(title)title.textContent=f.title;
   if(text)text.textContent=f.text;
   if(action)action.textContent=f.action;
-  if(img){img.src=f.image;img.alt=f.alt}
+  if(img){img.src=f.image+"?v=20261024-coherent-v2";img.alt=f.alt}
  });
 }
 const colorPairs={ink:["#253E3E","#F4E4D4"],high:["#F4E4D4","#184649"],low:["#E7BC4F","#D9A6B7"],red:["#BC4B42","#F4E4D4"]};
