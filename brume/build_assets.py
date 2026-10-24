@@ -23,7 +23,7 @@ source.save(root/'images'/'studio-contact-sheet.jpg',quality=88,optimize=True)
 palette={'ink':'#2B201B','paper':'#EEE8DE','wine':'#582C3A','honey':'#D8A765','rust':'#A56841','fog':'#C8B9A6','light':'#FAF4E8'}
 serif='Georgia,serif';sans='Arial,Helvetica,sans-serif'
 
-# Art assets all directly editable SVG with linked photographic image files
+# The SVGs embed photographic JPEG layers so embedded <img> rendering is reliable; text and shapes remain editable.
 layouts=[
 ('01-launch',1080,1350,'wine-room','photo-left','Light, after hours.','AN OBJECT FOR THE HOURS THAT MATTER.'),
 ('02-maroon',1080,1350,'wine-room','photofull','For the last chapter of the day.','01 / PLUM'),
@@ -49,8 +49,8 @@ def text_svg(t,x,y,sz,color='ink',style='serif',weight='normal',anchor='start',s
 
 def svga(layout):
  key,w,h,pic,kind,headline,caption=layout
- rel=f'../images/{pic}.jpg'
- im=f'<image href="{rel}" x="{{x}}" y="{{y}}" width="{{w}}" height="{{h}}" preserveAspectRatio="xMidYMid slice"/>'
+ embedded='data:image/jpeg;base64,'+base64.b64encode((root/'images'/f'{pic}.jpg').read_bytes()).decode('ascii')
+ im=f'<image href="{embedded}" x="{{x}}" y="{{y}}" width="{{w}}" height="{{h}}" preserveAspectRatio="xMidYMid slice"/>'
  image=lambda x,y,ww,hh:im.format(x=x,y=y,w=ww,h=hh)
  parts=[f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="BRUME concept campaign artwork: {escape(headline)}">',f'<rect width="{w}" height="{h}" fill="{palette["paper"]}"/>']
  if kind=='photo-left':
@@ -76,8 +76,7 @@ for l in layouts:
  name=l[0]; src=svga(l)
  (root/'social'/f'{name}.svg').write_text(src)
  try:
-  data=base64.b64encode((root/'images'/f'{l[3]}.jpg').read_bytes()).decode('ascii')
-  preview=src.replace(f'href="../images/{l[3]}.jpg"',f'href="data:image/jpeg;base64,{data}"')
+  preview=src
   cairosvg.svg2png(bytestring=preview.encode(),write_to=str(root/'social'/f'{name}.png'),output_width=l[1],output_height=l[2])
  except Exception as e:print('SVG render problem',name,str(e)[:100])
 
