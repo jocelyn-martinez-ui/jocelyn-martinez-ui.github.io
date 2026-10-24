@@ -1,0 +1,1 @@
+.bm-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:26px 0}.bm-gallery figure{margin:0;min-width:0}.bm-gallery img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}.bm-gallery + .small-copy{margin-top:17px}@media(max-width:760px){.bm-gallery{grid-template-columns:1fr 1fr}}
