@@ -80,8 +80,8 @@ $("approve-proof").addEventListener("click",()=>{
 $("submit-revision").addEventListener("click",()=>{
  const state=current();if(state.status==="awaiting")return;
  state.revision++;state.status="awaiting";state.checks=[false,false,false];state.note="";
- record("New revision submitted","Previous approval and preflight flags cleared");
- render();announce("Revision "+revLabel(state.revision)+" is awaiting a fresh decision. Prior approval is no longer valid.");
+ record("Simulated new revision","Previous approval and preflight flags cleared");
+ render();announce("Sample revision "+revLabel(state.revision)+" is awaiting a fresh decision. Prior approval is no longer valid.");
 });
 checkIds.forEach((id)=>$(id).addEventListener("change",()=>{
  syncChecks();const ready=meetsRelease();$("print-brief").disabled=!ready;
