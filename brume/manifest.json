@@ -1,0 +1,36 @@
+{
+  "name": "BRUME \u2014 Light after hours",
+  "date": "2026-10-24",
+  "status": "self-directed AI-assisted fictional lighting brand",
+  "photography": "AI-generated concept images; no manufactured lamps or commissioned photoshoot",
+  "images": [
+    "wine-room",
+    "sun-room",
+    "collection",
+    "hand-detail"
+  ],
+  "social": 15,
+  "email": 3,
+  "print_current": 7,
+  "print_archived": 2,
+  "variants": [
+    {
+      "color": "PLUM",
+      "sku": "BR-01"
+    },
+    {
+      "color": "IVORY",
+      "sku": "BR-02"
+    },
+    {
+      "color": "AMBER",
+      "sku": "BR-03"
+    }
+  ],
+  "external_validation": {
+    "email_clients": false,
+    "printer": false,
+    "product_safety": false,
+    "commercial_results": false
+  }
+}

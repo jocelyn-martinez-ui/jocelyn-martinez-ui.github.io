@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" height="1350" viewBox="0 0 1080 1350" role="img" aria-label="BRUME concept campaign artwork: A room can change at dusk.">
+<rect width="1080" height="1350" fill="#EEE8DE"/>
+<image href="../images/wine-room.jpg" x="0" y="0" width="1080" height="1350" preserveAspectRatio="xMidYMid slice"/>
+<rect x="36" y="35" width="1008" height="120" fill="#2B201B" opacity=".87"/>
+<text x="75" y="115" font-family="Georgia,serif" font-size="44" font-weight="normal" letter-spacing="3" fill="#FAF4E8" text-anchor="start">B R U M E</text>
+<rect x="36" y="1090" width="1008" height="215" fill="#2B201B" opacity=".87"/>
+<text x="68" y="1191" font-family="Georgia,serif" font-size="47" font-weight="normal" letter-spacing="0" fill="#FAF4E8" text-anchor="start">A room can change at dusk.</text>
+<text x="70" y="1249" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="normal" letter-spacing="4" fill="#D8A765" text-anchor="start">THE LIGHT / 02</text>
+</svg>
