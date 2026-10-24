@@ -27,6 +27,11 @@ for(const b of document.querySelectorAll("[data-issue]")){
   if(img){img.src=f.image;img.alt=f.alt}
  });
 }
+const colorPairs={ink:["#253E3E","#F4E4D4"],high:["#F4E4D4","#184649"],low:["#E7BC4F","#D9A6B7"],red:["#BC4B42","#F4E4D4"]};
+function luminance(hex){const a=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255).map(x=>x<=.04045?x/12.92:Math.pow((x+.055)/1.055,2.4));return .2126*a[0]+.7152*a[1]+.0722*a[2]}
+function contrast(fg,bg){const a=luminance(fg),b=luminance(bg);return (Math.max(a,b)+.05)/(Math.min(a,b)+.05)}
+const pair=$("contrastPair");function updateContrast(){if(!pair)return;const [fg,bg]=colorPairs[pair.value]||colorPairs.ink,ratio=contrast(fg,bg);const sample=$("contrastExample"),out=$("contrastRatio"),verdict=$("contrastVerdict");if(sample){sample.style.color=fg;sample.style.backgroundColor=bg;}if(out)out.textContent=ratio.toFixed(2)+":1";if(verdict)verdict.textContent="WCAG AA: "+(ratio>=4.5?"normal text passes":ratio>=3?"large text only":"fails normal and large text")+". Browser colors only; print proof required.";}
+pair?.addEventListener("change",updateContrast);updateContrast();
 const art=$("preflightArt"),trim=$("showTrim"),safe=$("showSafe"),status=$("releaseState"),checks=[...document.querySelectorAll("[data-preflight]")];
 function updatePreflight(){
  if(art)art.classList.toggle("show-trim",!!trim?.checked);
