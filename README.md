@@ -143,3 +143,15 @@ Set AFTERFORM_SITE_URL to your public /afterform/ URL before regenerating QR art
 Core and new product flows were checked with DOM tests: search, draft validation, saved-state integrity, escaping, proposal/question/approval/undo, revision reset, deletion recovery, record lookup, print brief, linked return flow, study isolation, label variants, motion and publication navigation. All 56 new PDF pages were rendered and visually inspected; modified pages were rechecked. SVG type compositions and the final photographic campaign exports were inspected. Local links and archive contents were checked.
 
 The buildless static project has no compatible managed browser preview in this environment. Full browser/device, keyboard, screen-reader, physical-print and primary-user validation remain. No WCAG certification is claimed.
+
+
+## October 24, 2026 — PROOF graphic studio reinvention (review branch)
+
+- [PROOF / The Art of Getting It Right](proof/index.html) is now a **graphic-design-first** self-directed case study, with three distinct fictional commissions rather than only an approval-workflow UI.
+- **PULP:** seven experimental campaign/social SVG masters, a twelve-page original brand-standards guide and three responsive HTML email concepts with plain-text companions.
+- **FIELD:** twelve A5 individual editorial SVG pages, with original conceptual copy and sequential graphic experiments (not imposed or printer-proofed).
+- **TERRA:** three current sample labels, an A5 advertising master, an A4 product sell sheet and two archived simulated label revisions. All print specifications are provisional and need a real vendor.
+- PROOF's original locally functional approval and preflight demo is preserved at [proof/workspace.html](proof/workspace.html).
+- New [creative research](proof/ART_DIRECTION_AND_RESEARCH.md), [production handoff notes](proof/PRODUCTION_HANDOFF.md), [asset inventory](proof/STUDIO_MANIFEST.json) and [source QA tests](proof/studio.qa.test.mjs).
+- The homepage and graphic design collection feature the three artwork directions together; all other projects are preserved.
+- **Limitations:** fictional/AI-assisted design work, no actual clients, real audience metrics, commercial approval, PDF/X-certified delivery, observed usability research or physical print runs.

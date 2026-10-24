@@ -1,0 +1,40 @@
+{
+  "version": "2026-10-24",
+  "scope": "self-directed, fictional, AI-assisted",
+  "brand": "PROOF",
+  "newIdentity": "Graphic design studio & production laboratory",
+  "commissions": [
+    {
+      "name": "PULP",
+      "category": "Campaign / graphic art direction",
+      "masterCount": 7,
+      "brandGuidePages": 12,
+      "emailHTML": 3,
+      "emailPlainText": 3
+    },
+    {
+      "name": "FIELD",
+      "category": "Editorial design",
+      "pages": 12,
+      "format": "A5 exact page source, no bleed"
+    },
+    {
+      "name": "TERRA",
+      "category": "Production artwork",
+      "currentLabelMasters": 3,
+      "archivedRevisions": 2,
+      "printCollateralMasters": 2,
+      "printCertification": false
+    }
+  ],
+  "previewInteraction": {
+    "compareSlider": true,
+    "manualBrandIssues": 3,
+    "printGuides": true,
+    "simulatedChecklist": true
+  },
+  "preservedWorkflow": "proof/workspace.html",
+  "productionApproved": false,
+  "realClient": false,
+  "researchValidated": false
+}
