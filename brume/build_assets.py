@@ -4,21 +4,13 @@ import random, math, json, textwrap, os, base64
 from xml.sax.saxutils import escape
 import cairosvg
 
-root=Path('/mnt/data/brume_rework')
+root=Path(__file__).resolve().parent
 for p in ['images','social','email','print/svg','print/pdf','print/archive','source','research']:(root/p).mkdir(parents=True,exist_ok=True)
-source=Image.open('/mnt/data/a_stylish_editorial_collage_quad_panel_product_pho.png').convert('RGB')
-W,H=source.size
-photos={
- 'wine-room':(0,0,W//2,H//2),
- 'sun-room':(W//2,0,W,H//2),
- 'collection':(0,H//2,W//2,H),
- 'hand-detail':(W//2,H//2,W,H)
-}
-for name,box in photos.items():
- im=source.crop(box)
- im.save(root/'images'/f'{name}.jpg',quality=89,optimize=True)
-# hero wides: take crop and allow responsive photo placement
-source.save(root/'images'/'studio-contact-sheet.jpg',quality=88,optimize=True)
+# Existing AI-generated photographic masters are committed with this project.
+# They must be present before any SVG export is regenerated.
+for name in ('wine-room','sun-room','collection','hand-detail'):
+ if not (root/'images'/f'{name}.jpg').is_file():
+  raise FileNotFoundError(f'Missing original campaign photo: {name}.jpg')
 
 palette={'ink':'#2B201B','paper':'#EEE8DE','wine':'#582C3A','honey':'#D8A765','rust':'#A56841','fog':'#C8B9A6','light':'#FAF4E8'}
 serif='Georgia,serif';sans='Arial,Helvetica,sans-serif'
