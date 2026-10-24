@@ -6,7 +6,7 @@ from reportlab.pdfbase import pdfmetrics
 from pypdf import PdfReader,PdfWriter
 from PIL import Image
 import json, textwrap
-root=Path('/mnt/data/brume_rework')
+root=Path(__file__).resolve().parent
 for sub in ['email','print/pdf','print/archive']:(root/sub).mkdir(exist_ok=True,parents=True)
 P={'ink':'#2B201B','paper':'#EEE8DE','wine':'#582C3A','honey':'#D8A765','rust':'#A56841','fog':'#C8B9A6','light':'#FAF4E8'}
 mailplans=[('01-introduction','The evening looks different from here','Meet BRUME: a table light made for the hours after work.','A small change in light. An entirely different room.','wine-room','THE EVENING, RECONSIDERED.','Discover the studio edition.'),('02-material','Light is a material','Plum, ivory or amber: three interpretations of a familiar silhouette.','A study in color, glass and the spaces around it.','collection','ONE SHAPE, THREE ATMOSPHERES.','Explore the color studies.'),('03-detail','The detail you stay for','A closer look at the pieces and the moments they create.','The warm reflection, the curve of the glass, the passing light.','hand-detail','AN OBJECT TO LIVE BESIDE.','See the concept collection.')]
