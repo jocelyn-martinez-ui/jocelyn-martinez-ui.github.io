@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" height="1920" viewBox="0 0 1080 1920" role="img" aria-label="BRUME concept campaign artwork: The room changes here.">
+<rect width="1080" height="1920" fill="#EEE8DE"/>
+<image href="../images/wine-room.jpg" x="0" y="0" width="1080" height="1920" preserveAspectRatio="xMidYMid slice"/>
+<rect x="60" y="80" width="960" height="152" fill="#EEE8DE" opacity=".95"/>
+<text x="100" y="178" font-family="Georgia,serif" font-size="60" font-weight="normal" letter-spacing="9" fill="#2B201B" text-anchor="start">B R U M E</text>
+<rect x="60" y="1420" width="960" height="280" fill="#2B201B" opacity=".88"/>
+<text x="100" y="1532" font-family="Georgia,serif" font-size="53" font-weight="normal" letter-spacing="0" fill="#FAF4E8" text-anchor="start">The room changes here.</text>
+<text x="100" y="1618" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="normal" letter-spacing="3" fill="#D8A765" text-anchor="start">STUDIO NOTES / AFTER HOURS</text>
+</svg>
