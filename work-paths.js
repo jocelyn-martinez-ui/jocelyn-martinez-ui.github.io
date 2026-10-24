@@ -3,11 +3,11 @@
  const grid=document.querySelector(".work-grid");if(!grid)return;
  const cards=new Map([...grid.querySelectorAll("[data-project]")].map(item=>[item.dataset.project,item]));
  const paths={
-  featured:{ids:["afterform","proof","imhere","holland","interval","aurea"],text:"Six selected studies spanning graphic identity, operational UI, accessible experiences and editorial design. View all work for the complete collection."},
-  all:{ids:["afterform","proof","imhere","holland","interval","aurea","loopline","novella","nutriva"],text:"All nine projects, including deeper experiments in food services, reading and household planning."},
+  featured:{ids:["afterform","nodo","proof","imhere","holland","interval"],text:"Six selected studies spanning marketing graphics, brand identity, operational UI, accessible experiences and editorial design. View all work for the complete collection."},
+  all:{ids:["afterform","nodo","proof","imhere","holland","interval","aurea","loopline","novella","nutriva"],text:"All ten projects, including more consumer and editorial UI work."},
   ux:{ids:["imhere","proof","holland","interval","nutriva","afterform","loopline"],text:"Start with ImHere and PROOF to examine real interaction states, then look at accessible choices, scheduling conflicts and connected data."},
-  graphic:{ids:["afterform","interval","proof","loopline","aurea"],text:"Start with AFTERFORM’s production system, then compare INTERVAL’s cultural identity and PROOF’s typographic campaign."},
-  web:{ids:["proof","aurea","holland","novella","imhere","afterform"],text:"Start with PROOF’s working approval flow. Continue through a database, civic guide, reading experience and implemented prototypes."}
+  graphic:{ids:["nodo","afterform","interval","proof","loopline","aurea"],text:"Start with NODO’s real campaign artwork and HTML emails; compare AFTERFORM’s print and identity work with INTERVAL’s cultural campaign."},
+  web:{ids:["proof","nodo","aurea","holland","novella","imhere","afterform"],text:"Explore PROOF’s stateful prototype, NODO’s HTML email construction, and responsive, accessible UI and editorial experiences."}
  };
  const buttons=[...document.querySelectorAll("[data-focus]")];
  const route=document.querySelector("#work-route");
