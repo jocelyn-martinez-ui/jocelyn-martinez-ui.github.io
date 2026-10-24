@@ -3,11 +3,11 @@
  const grid=document.querySelector(".work-grid");if(!grid)return;
  const cards=new Map([...grid.querySelectorAll("[data-project]")].map(item=>[item.dataset.project,item]));
  const paths={
-  featured:{ids:["afterform","nodo","proof","imhere","holland","interval"],text:"Six selected studies spanning marketing graphics, brand identity, operational UI, accessible experiences and editorial design. View all work for the complete collection."},
-  all:{ids:["afterform","nodo","proof","imhere","holland","interval","aurea","loopline","novella","nutriva"],text:"All ten projects, including more consumer and editorial UI work."},
+  featured:{ids:["afterform","brume","proof","imhere","holland","interval"],text:"Six selected studies spanning marketing graphics, brand identity, operational UI, accessible experiences and editorial design. View all work for the complete collection."},
+  all:{ids:["afterform","brume","proof","imhere","holland","interval","aurea","loopline","novella","nutriva"],text:"All ten projects, including more consumer and editorial UI work."},
   ux:{ids:["imhere","proof","holland","interval","nutriva","afterform","loopline"],text:"Start with ImHere and PROOF to examine real interaction states, then look at accessible choices, scheduling conflicts and connected data."},
-  graphic:{ids:["nodo","afterform","interval","proof","loopline","aurea"],text:"Start with NODO’s real campaign artwork and HTML emails; compare AFTERFORM’s print and identity work with INTERVAL’s cultural campaign."},
-  web:{ids:["proof","nodo","aurea","holland","novella","imhere","afterform"],text:"Explore PROOF’s stateful prototype, NODO’s HTML email construction, and responsive, accessible UI and editorial experiences."}
+  graphic:{ids:["brume","afterform","interval","proof","loopline","aurea"],text:"Start with BRUME’s photographic social and email art direction; compare AFTERFORM’s print and identity work with INTERVAL’s cultural campaign."},
+  web:{ids:["proof","brume","aurea","holland","novella","imhere","afterform"],text:"Explore PROOF’s stateful prototype, BRUME’s responsive photographic HTML email series, and responsive, accessible UI and editorial experiences."}
  };
  const buttons=[...document.querySelectorAll("[data-focus]")];
  const route=document.querySelector("#work-route");
