@@ -1,16 +1,18 @@
 # Jocelyn Martinez — Complete Portfolio / Ten-project edition
 
-Original eight-project refinement updated 23 September 2026. On 24 October 2026, PROOF and NODO were added through separate design extensions. All eight original projects are preserved: ImHere, AFTERFORM, Holland Walking Tour, INTERVAL, Áurea, Loopline, Novella and Nutriva. Each retains its own visual identity and core purpose. PROOF is a ninth, separate self-directed creative-operations concept. NODO is the tenth project: two companion commercial-design case studies (social/email and print/labels).
+Original eight-project refinement updated 23 September 2026. On 24 October 2026, PROOF and the photographic BRUME campaign were added through separate design extensions. All eight original projects are preserved: ImHere, AFTERFORM, Holland Walking Tour, INTERVAL, Áurea, Loopline, Novella and Nutriva. Each retains its own visual identity and core purpose. PROOF is a ninth, separate self-directed creative-operations concept. BRUME is the tenth currently featured project: photographic marketing, three HTML email studies and a print/labels case. NODO was rejected and is preserved only as historic unlinked source.
 
-## October 2026 social, email & print production expansion
+## October 2026 photographic art-direction replacement
 
-- **NODO commercial campaign:** [marketing case study](nodo/index.html) and [print production case study](nodo/production.html).
-- **14 editable social SVG compositions:** four feed, six carousel, three vertical stories and one landscape adaptation, under `nodo/social/`.
-- **Three standalone responsive HTML emails** with text alternatives and production notes in `nodo/email/`. All CTA links are illustrative, non-operational placeholders.
-- **Product label family and collateral:** three current SVG labels, A5/A6/A4 print collateral, and two simulated archived label revisions under `nodo/print/`.
-- **Asset inventory & strategy:** [deliverables and design audit](nodo/DELIVERABLES_AND_AUDIT.md), [machine-readable manifest](nodo/manifest.json), and [print specifications](nodo/print/README.md).
-- A separate ChatGPT download package contains nine vector CMYK PDF specimens, proof pages, source generator and technical checks; the GitHub repository stores the editable SVG masters. The PDFs are not independently vendor approved or PDF/X-certified.
-- NODO is fictional, self-directed and AI-assisted; no real customers, sending platform, metrics or packaging compliance are implied.
+The earlier NODO commercial-design project was rejected for visual repetition with existing portfolio projects. Its source remains under `nodo/` as an unlinked historical archive, **not** an active portfolio showcase.
+
+- **BRUME marketing campaign:** [photographic case study](brume/index.html); 15 edited, editable SVG social masters using four coherent AI-generated lamp photo studies, three HTML email templates and plain-text alternatives.
+- **BRUME print and packaging:** [production case study](brume/production.html), three color-edition label SVGs, four print collateral SVGs, and two archived simulated label revisions.
+- **Rationale and citations:** [visual research](brume/research.html), including researched Pinterest reference links and credited professional studio studies. These are inspiration links, not reproduced third-party artwork.
+- **Technical handoff:** [print specifications](brume/print/PRINT_SPECS.md), [project README](brume/README.md) and [QA summary](brume/QA_REPORT.md).
+- **Supporting source:** Local Python authoring scripts are preserved in the BRUME folder. Generated lamp imagery is **fictional**, not a real photography session or manufactured product.
+- An optional downloadable companion ZIP in the originating ChatGPT conversation includes full-resolution PNG social exports and nine PDF proofs. GitHub Pages serves the editable SVG sources and linked photographic files.
+- Adobe source files, vendor validation, actual email-client checks, physical printing and business results are not claimed.
 
 ## October 2026 portfolio extension
 
@@ -34,7 +36,7 @@ Original eight-project refinement updated 23 September 2026. On 24 October 2026,
 
 | Project | Case study | Working product |
 | --- | --- | --- |
-| NODO | nodo/index.html (marketing) / nodo/production.html (print) | nodo/email/01-launch.html |
+| BRUME | brume/index.html (marketing) / brume/production.html (print) | brume/email/01-introduction.html |
 | PROOF | proof/index.html | proof/index.html#workspace |
 | ImHere | ImHere-case-study/imhere-case-study.html | experiences/imhere.html |
 | AFTERFORM | afterform.html | afterform/index.html |
