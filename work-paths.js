@@ -1,14 +1,31 @@
 (() => {
- 'use strict';
- const grid=document.querySelector('.work-grid');if(!grid)return;
- const cards=new Map([...grid.querySelectorAll('[data-project]')].map(x=>[x.dataset.project,x]));
+ "use strict";
+ const grid=document.querySelector(".work-grid");if(!grid)return;
+ const cards=new Map([...grid.querySelectorAll("[data-project]")].map(item=>[item.dataset.project,item]));
  const paths={
-  all:{ids:['imhere','afterform','holland','interval','aurea','loopline','novella','nutriva'],text:'Start with a consequential workflow, then explore identity, civic interaction and cultural design.'},
-  ux:{ids:['imhere','interval','holland','nutriva','afterform','loopline'],text:'Start with ImHere’s explained corrections. Continue through programme conflicts, visitor choices and connected household data.'},
-  graphic:{ids:['afterform','interval','loopline','aurea'],text:'Start with AFTERFORM’s identity and publication. Compare cultural communication, practical service graphics and an editorial archive.'},
-  web:{ids:['aurea','holland','novella','imhere','afterform'],text:'Start with Áurea’s database. Explore a civic guide, a reading experience and interfaces that reveal their underlying decisions.'}
+  featured:{ids:["afterform","proof","imhere","holland","interval","aurea"],text:"Six selected studies spanning graphic identity, operational UI, accessible experiences and editorial design. View all work for the complete collection."},
+  all:{ids:["afterform","proof","imhere","holland","interval","aurea","loopline","novella","nutriva"],text:"All nine projects, including deeper experiments in food services, reading and household planning."},
+  ux:{ids:["imhere","proof","holland","interval","nutriva","afterform","loopline"],text:"Start with ImHere and PROOF to examine real interaction states, then look at accessible choices, scheduling conflicts and connected data."},
+  graphic:{ids:["afterform","interval","proof","loopline","aurea"],text:"Start with AFTERFORM’s production system, then compare INTERVAL’s cultural identity and PROOF’s typographic campaign."},
+  web:{ids:["proof","aurea","holland","novella","imhere","afterform"],text:"Start with PROOF’s working approval flow. Continue through a database, civic guide, reading experience and implemented prototypes."}
  };
- function show(key,update){const chosen=paths[key]?key:'all';const path=paths[chosen];for(const [id,card]of cards)card.hidden=!path.ids.includes(id);path.ids.forEach(id=>grid.appendChild(cards.get(id)));document.querySelectorAll('[data-focus]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.focus===chosen)));document.querySelector('#work-route').textContent=path.text;document.querySelector('#work-count').textContent=path.ids.length+' projects shown.';if(update&&window.history?.replaceState){const url=new URL(window.location.href);chosen==='all'?url.searchParams.delete('focus'):url.searchParams.set('focus',chosen);window.history.replaceState(null,'',url);} }
- document.querySelectorAll('[data-focus]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.focus,true)));
- const key=new URLSearchParams(window.location.search).get('focus');show(key||'all',false);
+ const buttons=[...document.querySelectorAll("[data-focus]")];
+ const route=document.querySelector("#work-route");
+ const count=document.querySelector("#work-count");
+ function show(key,update){
+  const chosen=Object.hasOwn(paths,key)?key:"featured",path=paths[chosen];
+  for(const [id,card]of cards)card.hidden=!path.ids.includes(id);
+  path.ids.forEach(id=>{const card=cards.get(id);if(card)grid.appendChild(card)});
+  buttons.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.focus===chosen)));
+  if(route)route.textContent=path.text;
+  if(count)count.textContent=path.ids.length+" projects shown.";
+  if(update&&window.history?.replaceState){
+   const url=new URL(window.location.href);
+   chosen==="featured"?url.searchParams.delete("focus"):url.searchParams.set("focus",chosen);
+   window.history.replaceState(null,"",url);
+  }
+ }
+ buttons.forEach(b=>b.addEventListener("click",()=>show(b.dataset.focus,true)));
+ const urlKey=new URLSearchParams(window.location.search).get("focus");
+ show(urlKey||"featured",false);
 })();
