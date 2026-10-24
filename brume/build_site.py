@@ -1,12 +1,13 @@
 from pathlib import Path
 from xml.sax.saxutils import escape
-import json
+import json, base64
 root=Path('/mnt/data/brume_rework')
 P={'ink':'#2B201B','paper':'#EEE8DE','wine':'#582C3A','honey':'#D8A765','rust':'#A56841','fog':'#C8B9A6','light':'#FAF4E8'}
 # vector collateral in physical dimensions, with 3mm provisional bleed
 forms=[('ad-a5',154,216,'wine-room','A5 MAGAZINE / 148 x 210 mm','Light, after hours.'),('postcard-a6',154,111,'sun-room','A6 CARD / 148 x 105 mm','An hour worth staying for.'),('insert-a6',111,154,'hand-detail','A6 INSERT / 105 x 148 mm','A study in light and material.'),('sell-sheet-a4',216,303,'collection','A4 SELL SHEET / 210 x 297 mm','One silhouette. Three atmospheres.')]
 for name,w,h,im,small,big in forms:
- txt=f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}mm" height="{h}mm" viewBox="0 0 {w} {h}" role="img" aria-label="BRUME conceptual print artwork: {big}"><rect width="{w}" height="{h}" fill="{P['paper']}"/><image href="../../images/{im}.jpg" x="0" y="0" width="{w}" height="{h*.72}" preserveAspectRatio="xMidYMid slice"/><rect x="0" y="{h*.72}" width="{w}" height="{h*.28}" fill="{P['paper']}"/><text x="9" y="{h*.795}" font-family="Georgia,serif" font-size="{6.5 if w<200 else 9}" fill="{P['ink']}" letter-spacing="1.3">BRUME</text><text x="9" y="{h*.87}" font-family="Georgia,serif" font-size="{6.7 if w<200 else 9}" fill="{P['ink']}">{escape(big)}</text><text x="9" y="{h*.953}" font-family="Arial, sans-serif" font-size="3.4" fill="{P['wine']}">{escape(small)}</text></svg>'''
+ data_uri='data:image/jpeg;base64,'+base64.b64encode((root/'images'/f'{im}.jpg').read_bytes()).decode('ascii')
+ txt=f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}mm" height="{h}mm" viewBox="0 0 {w} {h}" role="img" aria-label="BRUME conceptual print artwork: {big}"><rect width="{w}" height="{h}" fill="{P['paper']}"/><image href="{data_uri}" x="0" y="0" width="{w}" height="{h*.72}" preserveAspectRatio="xMidYMid slice"/><rect x="0" y="{h*.72}" width="{w}" height="{h*.28}" fill="{P['paper']}"/><text x="9" y="{h*.795}" font-family="Georgia,serif" font-size="{6.5 if w<200 else 9}" fill="{P['ink']}" letter-spacing="1.3">BRUME</text><text x="9" y="{h*.87}" font-family="Georgia,serif" font-size="{6.7 if w<200 else 9}" fill="{P['ink']}">{escape(big)}</text><text x="9" y="{h*.953}" font-family="Arial, sans-serif" font-size="3.4" fill="{P['wine']}">{escape(small)}</text></svg>'''
  (root/'print/svg'/f'{name}.svg').write_text(txt)
 
 styles='''@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
