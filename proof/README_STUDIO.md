@@ -11,3 +11,7 @@ Entry: [Flagship case study](index.html). Original working approval flow: [works
 **Reproducible source QA:** Run `node --test proof/studio.qa.test.mjs` from repo root once the QA script is added.
 
 **Provenance:** fictional briefs, no client approval, no customer outcomes, no commercial press-run history. The site and assets were created with AI assistance.
+
+## October 24 — Artwork coherence revision
+
+All 38 source SVGs have been revised to make each commission visually consistent: PULP's ink/packaging motifs now follow one controlled campaign system; FIELD's twelve pages follow an intentional botanical/material editorial narrative; TERRA's label samples and print advertisements share consistent material-finish illustrations and specification hierarchy. The relative trim-guide geometry was also corrected. See [the full before/after rationale and technical status](ARTWORK_REVISION_NOTES.md). All original asset paths remain stable; gallery image URLs have been versioned to avoid cached outdated artwork.
