@@ -1,2 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1150" viewBox="0 0 840 1150"><title>PLAIN SIGHT poster 06: PLAIN SIGHT</title><rect width="840" height="1150" fill="#252321"/>
- <g><text x="59" y="480" font-size="170" font-family="Georgia" fill="#f5f2ec" letter-spacing="-2">LOOK</text><text x="59" y="648" font-size="170" font-family="Georgia" fill="#f5f2ec" letter-spacing="-2">CLOSER.</text></g><text x="53" y="70" font-size="17" font-family="Arial" letter-spacing="3.5" fill="#f5f2ec">PLAIN SIGHT / STUDIES 01—03</text><path d="M53 85H785" stroke="#f5f2ec" stroke-width="1"/><path d="M53 1080H785" stroke="#f5f2ec" stroke-width="1"/><text x="53" y="1111" font-size="15" font-family="Arial" letter-spacing="3" fill="#f5f2ec">PLAIN SIGHT / EDITORIAL STUDY</text><text x="785" y="1111" text-anchor="end" font-size="15" font-family="Arial" fill="#f5f2ec">PS — 06</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1260" viewBox="0 0 900 1260" role="img" aria-labelledby="title desc"><title id="title">PLAIN SIGHT — THE FRAME IS A CHOICE</title><desc id="desc">Editorial typography poster with enormous contrasting serif, a narrow maroon stripe, precise folios and a photographic image inset.</desc>
+<rect width="900" height="1260" fill="#f2eee6"/>
+<path d="M66 65H834M66 1175H834" stroke="#39332e" stroke-width="1.5"/>
+<rect x="66" y="93" width="12" height="19" fill="#793b43"/>
+<g font-family="Arial,sans-serif" font-size="13" letter-spacing="2.2" fill="#252321"><text x="88" y="108">PLAIN SIGHT — ART DIRECTION SERIES</text><text x="834" y="108" text-anchor="end">Nº 006</text></g>
+<g font-family="Georgia,serif" fill="#252321" font-size="117" font-weight="400"><text x="64" y="325">THE FRAME</text><text x="64" y="443" font-style="italic" fill="#793b43">IS A</text><text x="64" y="561">CHOICE.</text></g>
+<path d="M65 622H834" stroke="#aaa59e"/>
+<g font-family="Arial,sans-serif" font-size="13" fill="#252321"><text x="66" y="670" letter-spacing="1.5">01 / OBSERVE</text><text x="371" y="670" letter-spacing="1.5">02 / COLLECT</text><text x="672" y="670" letter-spacing="1.5">03 / EDIT</text></g>
+<rect x="66" y="732" width="768" height="309" fill="#5d4c49"/>
+<path d="M66 732H834M66 1041H834" stroke="#e4d7ce"/>
+<g font-family="Georgia,serif" fill="#f2eee6"><text x="95" y="820" font-size="58">The ordinary,</text><text x="95" y="902" font-size="58" font-style="italic">observed differently.</text></g>
+<path d="M95 953H806" stroke="#c7b1ab"/>
+<text x="95" y="992" font-family="Arial,sans-serif" fill="#e8dacf" font-size="14" letter-spacing="2">STUDIES 01—03 / A PHOTOGRAPHIC PUBLICATION</text>
+<g font-family="Arial,sans-serif" font-size="13" letter-spacing="1.5" fill="#252321"><text x="66" y="1209">INDEPENDENT IMAGE-MAKING / CONCEPT</text><text x="834" y="1209" text-anchor="end">2026 — 06/06</text></g>
+</svg>
