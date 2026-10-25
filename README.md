@@ -155,3 +155,15 @@ The buildless static project has no compatible managed browser preview in this e
 - New [creative research](proof/ART_DIRECTION_AND_RESEARCH.md), [production handoff notes](proof/PRODUCTION_HANDOFF.md), [asset inventory](proof/STUDIO_MANIFEST.json) and [source QA tests](proof/studio.qa.test.mjs).
 - The homepage and graphic design collection feature the three artwork directions together; all other projects are preserved.
 - **Limitations:** fictional/AI-assisted design work, no actual clients, real audience metrics, commercial approval, PDF/X-certified delivery, observed usability research or physical print runs.
+
+
+## October 2026 — PROOF / Error to Edition redesign (review branch)
+
+PROOF has been reimagined as one distinctive graphic-design production concept instead of three unrelated PULP/FIELD/TERRA commissions. New entry: [PROOF / Error to Edition](proof/index.html).
+
+- Original generated fictional print-studio photography stored locally in the repository as lightweight WebP images; no off-site SVG linked photo dependencies.
+- Six image-led social compositions, separate 9:16 story, a 12-page A5 reading publication PDF, an A5 print-advertising PDF specimen, two mobile HTML emails with plain-text alternatives, and an accessible comparison/print-guide interaction.
+- Role-specific evidence: campaign hierarchy, image art direction, publication layout, email design, print dimensions, creative QA, source naming, and production constraints. All fictional work is labeled, with no real clients, press proof, client feedback or campaign metrics claimed.
+- Full regeneration scripts and print handoff notes under `proof/src/` and `proof/PRODUCTION_NOTES.md`. Original high-resolution generated inputs are part of the separate download ZIP, while optimized versions live in the repo. Native proprietary design project files are not fabricated.
+- Existing legacy interactive approval workflow remains at `proof/workspace.html` as an optional archive. Previous PULP/FIELD/TERRA source files remain preserved for reference but are no longer promoted.
+- Before release, review mobile and desktop visual layouts, PDF proofs, email clients and printer-specific output needs. This branch remains unpublished until merged.
