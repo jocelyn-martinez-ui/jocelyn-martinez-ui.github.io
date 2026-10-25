@@ -6,8 +6,8 @@
   featured:{ids:["afterform","brume","proof","imhere","holland","interval"],text:"Six selected studies spanning marketing graphics, brand identity, operational UI, accessible experiences and editorial design. View all work for the complete collection."},
   all:{ids:["afterform","brume","proof","imhere","holland","interval","aurea","loopline","novella","nutriva"],text:"All ten projects, including more consumer and editorial UI work."},
   ux:{ids:["imhere","proof","holland","interval","nutriva","afterform","loopline"],text:"Start with ImHere, then visit PROOF’s preserved stateful approval demo for version-bound decisions and release gating."},
-  graphic:{ids:["brume","afterform","interval","proof","loopline","aurea"],text:"Start with BRUME’s photography, then PROOF’s campaign, 12-page editorial journal and print/label work; compare AFTERFORM’s identity and INTERVAL’s festival art direction."},
-  web:{ids:["proof","brume","aurea","holland","novella","imhere","afterform"],text:"Explore PROOF’s studio proofing tools and preserved approval prototype, BRUME’s responsive HTML emails, and other working UI experiences."}
+  graphic:{ids:["brume","afterform","interval","proof","loopline","aurea"],text:"Start with PROOF’s editorial photography, twelve-page publication, coherent commercial campaign, email marketing and print-production specimen; compare BRUME and AFTERFORM for complementary aesthetics."},
+  web:{ids:["proof","brume","aurea","holland","novella","imhere","afterform"],text:"Explore PROOF’s image-comparison and print-guide interactions, alongside BRUME’s HTML email construction and other responsive UI work."}
  };
  const buttons=[...document.querySelectorAll("[data-focus]")];
  const route=document.querySelector("#work-route");
