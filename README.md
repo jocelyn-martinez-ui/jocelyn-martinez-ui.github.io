@@ -167,3 +167,18 @@ PROOF has been reimagined as one distinctive graphic-design production concept i
 - Full regeneration scripts and print handoff notes under `proof/src/` and `proof/PRODUCTION_NOTES.md`. Original high-resolution generated inputs are part of the separate download ZIP, while optimized versions live in the repo. Native proprietary design project files are not fabricated.
 - Existing legacy interactive approval workflow remains at `proof/workspace.html` as an optional archive. Previous PULP/FIELD/TERRA source files remain preserved for reference but are no longer promoted.
 - Before release, review mobile and desktop visual layouts, PDF proofs, email clients and printer-specific output needs. This branch remains unpublished until merged.
+
+
+## October 25, 2026 — PROOF integrated marketing campaign (review branch)
+
+A new **[PROOF Marketing & Format Studio](proof/marketing/index.html)** expands the graphic-design-first case study without removing or altering its original publication, portfolio identity or review lab.
+
+- **Social:** Two complete six-slide carousel narratives (12 editable, photographed SVG masters) and two original 9:16 vertical stories.
+- **Digital marketing:** Four independently recomposed editable SVG ads for square, portrait, landscape and wide placements.
+- **Email:** Four actual responsive table-based HTML emails with real hosted image URLs, live text, preheaders, Outlook width scaffolds, and plain-text alternatives. The existing PROOF two-email examples remain intact.
+- **Creative production:** An interactive format selector demonstrating feed/story/ad/email layouts; a mobile/desktop email anatomy demo with a simulated images-disabled state; three dimensioned print marketing masters with provisional 3mm bleed and source/vendor limitations; two actual HTML/CSS browser motion experiments (not MP4 video exports).
+- **Professional evidence:** [creative research, campaign strategy, limitations and handoff](proof/marketing/CAMPAIGN_BRIEF_AND_HANDOFF.md), [email modules](proof/marketing/email/EMAIL_COMPONENTS.md), [print specifications](proof/marketing/print/PRINT_SPECS.md), [source integrity tests](proof/marketing/qa.test.mjs) and [machine-readable manifest](proof/marketing/manifest.json).
+- **Original generated imagery:** First-party PROOF project photography; SVG campaign masters embed the WebP assets directly to avoid blocked cross-file references. Text and vector composition remain editable.
+- **Status:** Fictional/self-directed/AI-assisted project. No real mail sends, subscribers, tracked campaign metrics, validated email clients, printer approval, vendor PDF/X output or rendered video deliveries claimed.
+
+Run source tests: `node --test proof/marketing/qa.test.mjs`. HTML/CSS/mobile/inbox/real print QA must be conducted separately prior to any commercial use.
