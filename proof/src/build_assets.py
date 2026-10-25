@@ -2,8 +2,8 @@ from PIL import Image,ImageDraw,ImageFont,ImageOps,ImageEnhance,ImageFilter
 from pathlib import Path
 import math,random
 ROOT=Path(__file__).resolve().parents[1]; A=ROOT/'assets';A.mkdir(exist_ok=True)
-photo=Image.open('/mnt/data/a_high_contrast_studio_still_life_editorial_work.png').convert('RGB')
-panel=Image.open('/mnt/data/a_clean_editorial_high_end_portfolio_brand_prese.png').convert('RGB')
+photo=Image.open((ROOT/'src/original-studio-image.png') if (ROOT/'src/original-studio-image.png').exists() else (ROOT/'assets/hero-studio.webp')).convert('RGB')
+panel=Image.open((ROOT/'src/original-art-direction-board.png') if (ROOT/'src/original-art-direction-board.png').exists() else (ROOT/'assets/issue-study.webp')).convert('RGB')
 INK='#181917';PAPER='#F2EFE8';ORANGE='#FF542D';ACID='#DBFA36';MOSS='#253932';GRAY='#95978B'
 regular='/usr/share/fonts/opentype/inter/InterDisplay-Regular.otf';bold='/usr/share/fonts/opentype/inter/InterDisplay-Bold.otf';heavy='/usr/share/fonts/opentype/inter/InterDisplay-Black.otf';mono='/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf'
 for f in (regular,bold,heavy,mono): assert Path(f).exists(),f
