@@ -3,11 +3,11 @@
  const grid=document.querySelector(".work-grid");if(!grid)return;
  const cards=new Map([...grid.querySelectorAll("[data-project]")].map(item=>[item.dataset.project,item]));
  const paths={
-  featured:{ids:["psychictally","imhere","brume","proof","afterform","holland"],text:"Six selected projects: a code-backed independent product, an academic capstone, photographic and editorial campaigns, identity work and accessibility-focused UI. View All work for the full collection."},
-  all:{ids:["psychictally","imhere","brume","proof","afterform","holland","interval","aurea","loopline","novella","nutriva"],text:"All eleven showcased projects, from operational UI and accessible journeys to photography-led brand campaigns."},
+  featured:{ids:["psychictally","plain-sight","imhere","brume","proof","afterform","holland"],text:"Seven selected projects: a code-backed platform, an academic capstone, original photographic editorial design, distinctive campaigns and accessible UI. View All work for the full collection."},
+  all:{ids:["psychictally","plain-sight","imhere","brume","proof","afterform","holland","interval","aurea","loopline","novella","nutriva"],text:"All twelve showcased projects, from functional product workflows to complete editorial, print and graphic design systems."},
   ux:{ids:["psychictally","imhere","holland","interval","aurea","loopline","nutriva","proof"],text:"Start with PsychicTally's implementation and interaction states, then ImHere's shared correction workflow and Holland's accessibility-oriented navigation."},
-  graphic:{ids:["brume","proof","afterform","interval","psychictally","loopline","aurea"],text:"BRUME, PROOF and AFTERFORM lead with photographic direction, publication, emails, print and identity. PsychicTally adds a cross-channel product brand study."},
-  web:{ids:["psychictally","imhere","aurea","holland","proof","brume","afterform"],text:"Start with a code-backed platform, then inspect functional UI states, responsive HTML email studies and distinct web interfaces."}
+  graphic:{ids:["plain-sight","brume","proof","afterform","interval","psychictally","loopline","aurea"],text:"PLAIN SIGHT leads with a complete editorial photography and print system; BRUME, PROOF and AFTERFORM add campaigns, email, identity and packaging."},
+  web:{ids:["psychictally","imhere","aurea","holland","plain-sight","proof","brume","afterform"],text:"A code-backed community application, complex workflows, responsive HTML email and a complete editorial studio website."}
  };
  const buttons=[...document.querySelectorAll("[data-focus]")];
  const route=document.querySelector("#work-route");

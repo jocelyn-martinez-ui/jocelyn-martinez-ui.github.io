@@ -1,3 +1,14 @@
+## October 25, 2026 — PLAIN SIGHT complete editorial image-making project
+
+- [PLAIN SIGHT studio](plain-sight/index.html) with three fully navigable studies: GESTURES, ARRANGEMENTS and IN BETWEEN.
+- [Complete graphic design case study](plain-sight/case-study.html), [24-page publication PDF](plain-sight/downloads/PLAIN_SIGHT_Studies_01-03.pdf), and [8-page identity guide](plain-sight/downloads/PLAIN_SIGHT_Identity_and_Production_Guide.pdf).
+- Poster series, social studies, two six-panel carousels, stories, banners, editable stationery/artwork and original illustrative photographic crops.
+- Promoted on the homepage, All Work, Graphic & Brand, UI & Web views, curated Graphic Design shortlist, graphic editions, and concise profile.
+- Photography is AI-generated for a self-directed conceptual studio; neither production photography nor physical printed work, paid commissions or measured campaign outcomes are claimed.
+- Original seventy-file static site transferred into `plain-sight/` with all original image, SVG and PDF bytes intact; file counts and internal image paths verified. Live browser QA is a separate step.
+
+---
+
 ## October 25, 2026 — Role-specific portfolio and implementation case study
 
 A new portfolio-strengthening branch adds:

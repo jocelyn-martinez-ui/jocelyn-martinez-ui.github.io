@@ -20,3 +20,14 @@
 @media(max-width:550px){.career-routes{gap:9px}.career-route{padding:23px;min-height:170px}.hiring-page{padding-top:40px}.hiring-grid{grid-template-columns:1fr}.hiring-card .image-frame{aspect-ratio:1.65}.hiring-section-heading{align-items:start;flex-direction:column}.hiring-section-heading>p{text-align:left}}
 @media(prefers-reduced-motion:reduce){.career-route{transition:none}.career-route:hover{transform:none}}
 @media print{.site-nav,.site-footer,.hiring-switch{display:none!important}.hiring-page{padding:0}.hiring-hero h1{font-size:40pt}.hiring-grid{grid-template-columns:1fr 1fr}.hiring-card{break-inside:avoid}.hiring-skill-band{break-inside:avoid}.hiring-card .image-frame{max-height:170px}}
+
+/* PLAIN SIGHT — art-directed editorial cover, not a generic image tile. */
+.cover-plain-sight{padding:0!important;display:grid!important;grid-template-columns:47% 53%;gap:0!important;background:#f5f2ec;color:#252321;aspect-ratio:1.48}
+.cover-plain-sight .ps-cover-type{padding:9%;display:flex;flex-direction:column;justify-content:space-between;gap:12px;min-width:0}
+.cover-plain-sight .ps-cover-type>p{font-size:clamp(8px,1.2cqw,12px);letter-spacing:.07em;line-height:1.6}
+.cover-plain-sight .ps-cover-type h3{font:400 clamp(30px,8.5cqw,100px)/.87 Georgia,serif;letter-spacing:-.075em}
+.cover-plain-sight .ps-cover-type h3 em{font-weight:400;font-style:italic}
+.cover-plain-sight .ps-cover-type>span{font:400 clamp(10px,2.1cqw,19px)/1.25 Georgia,serif}
+.cover-plain-sight .ps-cover-type>small{font-size:clamp(8px,1.15cqw,11px);letter-spacing:.07em;border-top:1px solid #aaa39a;padding-top:12px}
+.cover-plain-sight>img{width:100%;height:100%;object-fit:cover;object-position:42% 38%}
+@media(max-width:650px){.cover-plain-sight{aspect-ratio:1.15}.cover-plain-sight .ps-cover-type{padding:7%}.cover-plain-sight .ps-cover-type h3{font-size:10cqw}}
