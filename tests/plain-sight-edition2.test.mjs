@@ -12,7 +12,7 @@ test('Edition 02 keeps all studio pages and a consistent visual system',()=>{
     const file=read(name+'.html');
     assert.match(file,/editorial-v2\.css/,'Missing Edition 02 style in '+name);
     assert.match(file,/class="topbar wrap"/,'Missing navigation '+name);
-    assert.match(file,/alt="/,'Missing described images '+name);
+    if(file.includes('<img')) assert.match(file,/alt="/,'Missing image descriptions '+name);
   }
   assert.match(read('index.html'),/v2-hero-stage/);
   assert.match(read('index.html'),/v2-sequence-grid/);
