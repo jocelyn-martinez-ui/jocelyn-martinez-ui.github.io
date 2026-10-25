@@ -43,14 +43,14 @@ c.setTitle('PROOF Issue 01 — The Anatomy of a Printed Idea | Portfolio Specime
 for i,(label,t1,t2,copy,j) in enumerate(issues):
  dark=i in (0,3,7,11);base(c,i+1,W,H,dark)
  if i in (0,3,7,11):
-  image_fit(c,ROOT/'assets/hero-studio.webp',18,130,W-36,H-175)
+  image_fit(c,ROOT/'assets'/({0:'hero-studio.webp',3:'contact-sheet.webp',7:'issue-study.webp',11:'detail-spread.webp'}[i]),18,130,W-36,H-175)
   c.setFillColor(INK);c.rect(0,33,W,120,fill=1,stroke=0)
   mono(c,19,136,f'{label} / 2026',7,ACID)
   txt(c,18,99,t1,21,True,PAPER)
   txt(c,18,71,t2,20,True,ORANGE if i==0 else PAPER)
   if copy:mono(c,19,45,copy[:63],6.2,PAPER)
  elif i in (1,4,8):
-  image_fit(c,ROOT/'assets/contact-sheet.webp',W*.45,145,W*.52,H-195)
+  image_fit(c,ROOT/'assets'/({1:'contact-sheet.webp',4:'detail-spread.webp',8:'issue-study.webp'}[i]),W*.45,145,W*.52,H-195)
   mono(c,18,H-63,f'{label} / {i+1:02}',7,ORANGE)
   txt(c,18,H-111,t1,18,True)
   txt(c,18,H-140,t2,17,True)
@@ -59,10 +59,10 @@ for i,(label,t1,t2,copy,j) in enumerate(issues):
   mono(c,18,H-61,f'{label} / {i+1:02}',7,ORANGE)
   txt(c,18,H-101,t1,22,True);txt(c,18,H-132,t2,20,True)
   c.setFillColor(ACID if i==2 else ORANGE);c.rect(18,H-166,W-36,13,fill=1,stroke=0)
-  image_fit(c,ROOT/'assets/detail-spread.webp',18,110,W-36,H-298)
+  image_fit(c,ROOT/'assets'/({2:'detail-spread.webp',6:'hero-studio.webp',9:'contact-sheet.webp'}[i]),18,110,W-36,H-298)
   mono(c,18,89,copy[:67],6.2)
  else:
-  image_fit(c,ROOT/'assets/issue-study.webp',18,H*.32,W-36,H*.52)
+  image_fit(c,ROOT/'assets'/({5:'issue-study.webp',10:'contact-sheet.webp'}[i]),18,H*.32,W-36,H*.52)
   c.setFillColor(PAPER);c.rect(18,82,W-36,126,fill=1,stroke=0)
   mono(c,24,191,f'{label} / CHAPTER {i+1:02}',6.8,ORANGE)
   txt(c,24,158,t1,21,True);txt(c,24,131,t2,20,True)
