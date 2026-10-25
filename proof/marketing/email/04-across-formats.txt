@@ -1,0 +1,14 @@
+Subject: PROOF / One idea, five ways of seeing it
+Preheader: How a single campaign adapts from social feed to story, email and print.
+
+CONSISTENT. NOT IDENTICAL.
+A good visual identity doesn't mean repeating one layout. It means making new decisions from the same set of principles.
+
+SOCIAL — Lead with an image and a fast message.
+EMAIL — Use live text, readable rhythm and a clear CTA.
+PRINT — Change scale and account for physical output.
+
+TRY THE FORMAT STUDIO:
+https://jocelyn-martinez-ui.github.io/proof/index.html#marketing
+
+PORTFOLIO CONCEPT ONLY. PROOF is fictional. No message sent, no metrics. Before real emailing, configure an authorized sender, legitimate mailing address, verified consent, and functioning unsubscribe/preference links.
