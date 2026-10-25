@@ -1,3 +1,15 @@
+## October 25, 2026 — Role-specific portfolio and implementation case study
+
+A new portfolio-strengthening branch adds:
+- [PsychicTally case study](psychictally.html): code-grounded product/visual-design narrative, architecture overview, token specimen, a deliberately **illustrative** local moderation interaction, editable [social master](psychictally/campaign-social.svg), [responsive email concept](psychictally/welcome-email.html), and a [research plan](psychictally/evaluation-plan.md) that does not invent user testing.
+- [UI & Product portfolio route](ui-design.html) and [Graphic & Visual portfolio route](graphic-design.html): shareable, application-specific project shortlists with provenance labels.
+- Revised homepage filters and cards, direct discipline navigation, refreshed About and printable design profile, and graphic collection cross-linking.
+- Existing published projects remain intact; concepts, AI-assisted art direction, privacy, testing and production limits remain disclosed.
+
+**Claim boundaries:** PsychicTally's implementation is in a separate, private GitHub repository. The original codebase documents a local automated test suite, but live hosted integrations, access and traffic outcomes were not independently verified for this portfolio update. The custom moderation specimen on the portfolio is sample code, not an authenticated production client. Graphic email/social studies are concept work, not campaign performance evidence. No new research participants were recruited and no usability findings are claimed.
+
+---
+
 # Jocelyn Martinez — Complete Portfolio / Ten-project edition
 
 Original eight-project refinement updated 23 September 2026. On 24 October 2026, PROOF and the photographic BRUME campaign were added through separate design extensions. All eight original projects are preserved: ImHere, AFTERFORM, Holland Walking Tour, INTERVAL, Áurea, Loopline, Novella and Nutriva. Each retains its own visual identity and core purpose. PROOF is a ninth, separate self-directed creative-operations concept. BRUME is the tenth currently featured project: photographic marketing, three HTML email studies and a print/labels case. NODO was rejected and is preserved only as historic unlinked source.
