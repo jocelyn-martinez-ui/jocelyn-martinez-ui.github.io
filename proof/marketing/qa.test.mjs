@@ -17,7 +17,7 @@ test("Four responsive marketing emails contain live text, Outlook fallback, acce
  }
 });
 test("Physical trim-and-bleed sources are present",()=>{
- for(const [path,w,h] of [["print/advert-a5.svg",154,216],["print/postcard-a6.svg",154,111],["print/sell-sheet-a4.svg",216,303]])assert.match(read(path),new RegExp("width=\\""+w+"mm\\" height=\\""+h+"mm\\""));
+ for(const [path,w,h] of [["print/advert-a5.svg",154,216],["print/postcard-a6.svg",154,111],["print/sell-sheet-a4.svg",216,303]])assert.ok(read(path).includes(`width="${w}mm" height="${h}mm"`));
 });
 test("Interactive campaign script and two browser motion previews are available",()=>{
  new Script(read("campaign.js"));for(const n of ["01-contact-to-title","02-revision-pulse"]){const x=read("motion/"+n+".html");assert.match(x,/prefers-reduced-motion/);assert.match(x,/PAUSE MOTION/);}
