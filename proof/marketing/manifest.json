@@ -1,0 +1,69 @@
+{
+  "title": "PROOF / The Integrated Campaign",
+  "created": "2026-10-25",
+  "ownerContext": "Jocelyn Martinez's graphic design portfolio",
+  "concept": "Good ideas deserve good proofs",
+  "status": "self-directed, fictional, AI-assisted, not a client commission",
+  "work": [
+    {
+      "kind": "carousel",
+      "count": 12,
+      "format": "1080x1350",
+      "folder": "social",
+      "files": "carousel-a-01..06.svg;carousel-b-01..06.svg"
+    },
+    {
+      "kind": "story",
+      "count": 2,
+      "format": "1080x1920",
+      "folder": "social",
+      "files": "story-01.svg;story-02.svg"
+    },
+    {
+      "kind": "digital-ad",
+      "count": 4,
+      "format": "1080x1080;1080x1350;1200x628;1600x600",
+      "folder": "ads"
+    },
+    {
+      "kind": "email",
+      "count": 4,
+      "format": "600px fluid HTML plus text alternative",
+      "folder": "email"
+    },
+    {
+      "kind": "print",
+      "count": 3,
+      "format": "A5;A6;A4 with provisional 3mm bleed",
+      "folder": "print"
+    },
+    {
+      "kind": "motion",
+      "count": 2,
+      "format": "8 second HTML CSS browser prototypes, not MP4",
+      "folder": "motion"
+    }
+  ],
+  "design": {
+    "ink": "#181917",
+    "paper": "#f2efe8",
+    "orange": "#ff542d",
+    "acid": "#dbfa36",
+    "fonts": [
+      "Arial",
+      "Georgia",
+      "Courier New"
+    ]
+  },
+  "images": "Previously generated first-party PROOF photo assets, embedded in SVG or referenced from published site for HTML/email",
+  "limitations": [
+    "No real marketing campaign",
+    "No campaign-performance data",
+    "No inbox client testing",
+    "No commercial mailing compliance",
+    "No print vendor approval",
+    "No native video encoding",
+    "No production CMYK/PDF-X certification"
+  ],
+  "case": "proof/marketing/index.html"
+}
