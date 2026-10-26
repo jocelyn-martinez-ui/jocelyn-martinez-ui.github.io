@@ -13,5 +13,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: Check portfolio routes and evidence boundaries
-        run: node --test tests/portfolio-paths.test.mjs tests/plain-sight-edition2.test.mjs
+      - name: Check changed interaction scripts
+        run: |
+          node --check work-paths.js
+          node --check experiences/experience.js
+          node --check psychictally-case.js
+          node --check plain-sight/assets/app.js
+      - name: Check routes, workflow states and artifact integrity
+        run: node --test tests/*.test.mjs proof/*.test.mjs proof/marketing/qa.test.mjs nodo/qa.test.mjs

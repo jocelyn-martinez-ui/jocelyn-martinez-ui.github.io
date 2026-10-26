@@ -87,9 +87,9 @@
     <a class="skip-link" href="#main">Skip to case study</a>
     <nav class="site-nav" id="siteNav" aria-label="Portfolio navigation">
         <div class="page-shell nav-inner">
-            <a class="brand" href="index.html"><span class="brand-name">Jocelyn Martinez</span><span class="brand-role">UX/UI & Visual Designer</span></a>
+            <a class="brand" href="../index.html"><span class="brand-name">Jocelyn Martinez</span><span class="brand-role">UX/UI & Visual Designer</span></a>
             <div class="nav-links">
-                <a href="#publication">Publication</a><a href="#system">System</a><a href="#production">Production</a><a href="#reflection">Reflection</a><a class="back-link" href="index.html#work">← Back to work</a>
+                <a href="#publication">Publication</a><a href="#system">System</a><a href="#production">Production</a><a href="#reflection">Reflection</a><a class="back-link" href="../index.html#work">← Back to work</a>
             </div>
         </div>
     </nav>
@@ -144,7 +144,7 @@
         <section id="reflection"><div class="page-shell section-grid"><aside class="section-kicker">07 / Reflection<span></span></aside><div class="reveal"><p class="eyebrow">What this project now proves</p><h2>Editorial range comes from changing density—not abandoning the system.</h2><p class="intro">The earlier version relied too heavily on sparse pages and a summary-board aesthetic. This rebuild is more useful as hiring evidence because the publication itself has to sustain a real reading experience across twenty-eight pages.</p><p class="intro">The strongest design decision is the separation between continuity and pacing. Running headers, folios, type roles, margins, caption rules, and data behavior remain stable. Image scale, column count, contrast, and information density change according to the content.</p><div class="proof-grid"><article class="proof-card"><span>01</span><h3>Strongest contribution</h3><p>A coherent report that moves between essays, data, voices, photography, tables, and recommendations without losing navigation.</p></article><article class="proof-card"><span>02</span><h3>Production gap</h3><p>The final visual system should still be rebuilt in native InDesign before claiming an INDD-based workflow in an application.</p></article><article class="proof-card"><span>03</span><h3>Next iteration</h3><p>Package the InDesign file, run native preflight, order a bound proof, document color adjustments, and photograph the physical publication.</p></article></div></div></div></section>
     </main>
 
-    <footer class="next-case"><div class="page-shell next-inner"><div><p>Continue exploring</p><h2>Return to selected work.</h2></div><a class="next-link" href="index.html#work">View portfolio ↗</a></div></footer>
+    <footer class="next-case"><div class="page-shell next-inner"><div><p>Continue exploring</p><h2>Return to selected work.</h2></div><a class="next-link" href="../index.html#work">View portfolio ↗</a></div></footer>
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged Common Ground spread" aria-hidden="true"><button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close enlarged image">×</button><img id="lightboxImage" src="" alt=""></div>
     <script>
         const nav=document.getElementById('siteNav');const reveals=document.querySelectorAll('.reveal');const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>12),{passive:true});if(reduced||!('IntersectionObserver'in window)){reveals.forEach(x=>x.classList.add('is-visible'))}else{const o=new IntersectionObserver((entries,obs)=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');obs.unobserve(e.target)}}),{threshold:.1});reveals.forEach(x=>o.observe(x))}

@@ -7,3 +7,25 @@
 /* Keep the editorial covers legible rather than compressing their text into a fixed device frame. */
 .ih-cover-record{padding:5%}.ih-cover-record h3{font-size:clamp(18px,3cqw,36px);margin:1.5cqw 0}.mini-status{padding:1cqw 0;font-size:clamp(10px,1.3cqw,13px)}.ih-cover-record p{margin:1cqw 0;font-size:clamp(10px,1.4cqw,15px);line-height:1.5}.record-proposal{font-size:clamp(10px,1.3cqw,15px);line-height:1.5}.cover-rule{margin:1.4cqw 0}.cover-loopline{aspect-ratio:1.4}.ll-cover-docket{padding:6%}.ll-cover-docket h4{margin:1.5cqw 0;font-size:clamp(23px,4.5cqw,52px)}.ll-cover-docket dl{margin:1cqw 0}.ll-cover-docket dl div{padding:.7cqw 0}.ll-cover-docket dd{margin-top:3px}.cover-aurea{aspect-ratio:1.05}.au-cover-type{padding:6%;gap:12px}.au-cover-ledger{padding-top:10px;gap:1px}.au-cover-ledger span{margin-top:3px;line-height:1.4}.au-cover-ledger b{line-height:1.45}.nv-cover-type{padding:5%;gap:16px}.nv-cover-type h3{font-size:clamp(22px,4.8cqw,62px)}.nv-cover-list{padding:5% 7%}.cover-novella{aspect-ratio:1.25}.nvl-cover-layout h3{margin:1.5cqw 0;font-size:clamp(28px,7cqw,88px)}.nvl-cover-layout p{font-size:clamp(12px,1.85cqw,20px);line-height:1.5;margin-bottom:10px}.case-art .project-cover{max-height:none}.case-art .cover-imhere,.case-art .cover-loopline,.case-art .cover-novella{padding:4%;aspect-ratio:1.95}.case-art .ll-cover-layout h3{font-size:clamp(65px,10cqw,130px)}.case-art .ll-cover-docket h4{margin:12px 0}.case-art .nvl-cover-layout h3{font-size:clamp(43px,5.6cqw,74px)}.case-art .nvl-cover-layout p{font-size:20px;line-height:1.5}@media(max-width:760px){.cover-loopline{aspect-ratio:1.2}.cover-aurea,.cover-nutriva{aspect-ratio:1.05}.cover-novella{aspect-ratio:1.1}.case-art .cover-imhere{aspect-ratio:1.4}.case-art .cover-loopline{aspect-ratio:1.2}.case-art .cover-novella{aspect-ratio:1.1}.case-art .nvl-cover-layout p{font-size:13px}.case-art .ll-cover-layout h3{font-size:13cqw}.case-art .nv-cover-type{padding:5%;gap:16px}.case-art .nv-cover-type h3{font-size:clamp(22px,4.8cqw,42px)}.case-art .cover-nutriva{aspect-ratio:1.05}.case-art .cover-aurea{aspect-ratio:1.05}.case-art .ll-cover-docket h4{font-size:clamp(23px,4.5cqw,40px)}.case-art .nvl-cover-layout h3{font-size:clamp(28px,7cqw,60px)}}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--project,#293d2b);outline-offset:3px;box-shadow:0 0 0 3px #fff}
+/* Contain project artwork in its assigned column at narrow widths.
+   Inline-size containers otherwise allow intrinsic child widths to escape. */
+.project-cover{width:100%;max-width:100%;min-width:0}
+.project-cover>*{min-width:0}
+.case-art{min-width:0}
+
+/* Small artwork has a simpler hierarchy; the adjacent case copy carries its full meaning. */
+@media(max-width:550px){
+ .case-art .project-cover *{min-width:0}
+ .case-art .ih-cover-layout{grid-template-columns:minmax(0,.8fr) minmax(0,1fr);gap:4%}
+ .case-art .ih-cover-statement{font-size:6.7cqw}
+ .case-art .ih-cover-record h3{font-size:4.2cqw}
+ .case-art .ih-cover-record .micro{font-size:2.4cqw}
+ .case-art .mini-status,.case-art .record-proposal{font-size:2.8cqw;gap:4px}
+ .case-art .hw-cover-type h3,.case-art .au-cover-type h3{font-size:8cqw}
+ .case-art .ll-cover-layout{grid-template-columns:minmax(0,.85fr) minmax(0,1fr)}
+ .case-art .nvl-cover-layout{grid-template-columns:minmax(0,.75fr) minmax(0,1fr)}
+ .case-art .nv-cover-type{min-width:0;flex-shrink:0}
+ .case-art .cover-nutriva figure{min-width:0;flex-shrink:0}
+}
+
+.site-nav nav a{min-height:44px;display:inline-flex;align-items:center}

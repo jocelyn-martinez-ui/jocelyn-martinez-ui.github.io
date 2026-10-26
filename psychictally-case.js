@@ -18,7 +18,7 @@
     history.textContent=current.note;feedback.textContent=current.announcement;
     request.disabled=state!=="open";resolve.disabled=state==="resolved";
   }
-  request.addEventListener("click",()=>transition("context"));
-  resolve.addEventListener("click",()=>transition("resolved"));
+  request.addEventListener("click",()=>{transition("context");resolve.focus()});
+  resolve.addEventListener("click",()=>{transition("resolved");reset.focus()});
   reset.addEventListener("click",()=>transition("open"));
 })();

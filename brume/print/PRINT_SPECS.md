@@ -17,3 +17,8 @@ PDFs were exported with actual TrimBox and BleedBox rectangles and embedded Gara
 **Provisional revision exercise**: PLUM R01 has generic color copy; R02 clarifies glass wording; R03 identifies the studio edition. The revisions are simulated, not requested or approved by a real customer or vendor. Archived masters remain visibly distinct.
 
 **Printer handoff needs**: vendor CAD/die, materials, proofs, certified legal copy, image license/provenance, approved spot/color ICC conversion, scan-ready barcode, final-resolution photographs, PDF/X profiles and physical sign-off. No manufacturing or release is authorized.
+
+
+## Inspectable files in this repository
+
+The current public source contains seven SVG label/collateral masters plus two archived SVG revisions. The nine PDF proofs mentioned in the earlier delivery notes were provided separately and are not available through this repository. Recruiters should inspect the linked SVG masters; no unavailable PDF delivery or vendor approval is implied.
