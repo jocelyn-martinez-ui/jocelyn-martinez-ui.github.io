@@ -33,7 +33,7 @@ test('all active portfolio page assets and internal destinations resolve', () =>
   }
 });
 
-test('homepage filter routes include only existing cards and curate seven featured projects', () => {
+test('homepage filter routes include only existing cards and curate four featured projects', () => {
   const index = read('index.html');
   const routes = read('work-paths.js');
   const cards = new Set(Array.from(index.matchAll(/\bdata-project="([^"]+)"/g), (m) => m[1]));
@@ -44,7 +44,7 @@ test('homepage filter routes include only existing cards and curate seven featur
   const groups = Array.from(routes.matchAll(/ids:\[([^\]]+)\]/g), (m) =>
     Array.from(m[1].matchAll(/"([^"]+)"/g), (v) => v[1]));
   assert.equal(groups.length, 5);
-  assert.equal(groups[0].length, 7);
+  assert.equal(groups[0].length, 4);
   assert.equal(groups[1].length, cards.size);
   for (const group of groups) for (const id of group) assert.ok(cards.has(id), 'Missing card ' + id);
 });

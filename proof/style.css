@@ -5,3 +5,11 @@
 
 /* Integrated marketing campaign feature / graphic-design-first */
 .campaign-addition{background:#e0ddd4}.marketing-feature-images{display:grid;grid-template-columns:1.2fr 1.2fr .75fr;gap:16px}.marketing-feature-images a{display:block;min-width:0;text-decoration:none}.marketing-feature-images img{width:100%;height:400px;object-fit:cover;object-position:top center;background:#181917}.marketing-feature-images a:nth-child(3) img{height:400px;object-fit:contain;background:#181917}.marketing-feature-images span{display:block;font:700 11px/1.5 var(--mono);margin-top:10px}.marketing-feature-footer{display:flex;justify-content:space-between;align-items:end;gap:30px;border-top:1px solid #81867b;margin-top:24px;padding-top:15px}.marketing-feature-footer p{max-width:60ch;font-size:14px}.marketing-feature-footer a{font:700 12px/1.6 var(--mono);white-space:nowrap}@media(max-width:760px){.marketing-feature-images{grid-template-columns:1fr 1fr;gap:11px}.marketing-feature-images a:nth-child(3){grid-column:1/-1}.marketing-feature-images img{height:280px}.marketing-feature-images a:nth-child(3) img{height:290px}.marketing-feature-footer{display:block}.marketing-feature-footer a{display:block;margin-top:13px}}
+/* Reading proofs are labeled independently from editable artwork and press output. */
+.proof-file-note{font-size:14px;line-height:1.7;max-width:80ch;margin:28px 0;padding:20px 0;border-top:1px solid currentColor}
+.proof-file-note a{text-decoration:underline;text-underline-offset:4px;display:inline-block;min-height:44px;padding-block:10px}
+@media(max-width:440px){.range-label{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.range-label input{width:100%;min-width:0}.range-label output{overflow-wrap:anywhere}}
+
+@media(max-width:440px){#lab .range-label{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}#lab .range-label input{width:100%;min-width:0}#lab .range-label output{overflow-wrap:anywhere}}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}

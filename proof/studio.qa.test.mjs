@@ -20,11 +20,12 @@ test("all creative masters exist with self-contained vector content",()=>{
  for(const s of terra)assert.match(read("commissions/terra/"+s+".svg"),/width="\d+mm" height="\d+mm"/);
  for(const s of ["label-mist-r01","label-mist-r02"])assert.ok(exists("commissions/terra/archive/"+s+".svg"));
 });
-test("flagship and preserved workflow both retain required local dependencies",()=>{
+test("current flagship assets and separate approval workflow resolve",()=>{
  const index=read("index.html");
- for(const name of ["studio.css","studio.js","workspace.html","PRODUCTION_HANDOFF.md","ART_DIRECTION_AND_RESEARCH.md"])assert.ok(index.includes(name));
- assert.ok(exists("workspace.html"));assert.ok(exists("proof.js"));assert.ok(exists("proof.css"));
- new Script(read("studio.js"));new Script(read("proof.js"));
+ for(const name of ["style.css","app.js","workspace.html","PRODUCTION_NOTES.md"])assert.ok(index.includes(name),name);
+ const workflow=read("workspace.html");
+ assert.ok(workflow.includes("proof.js"));assert.ok(workflow.includes("proof.css"));
+ new Script(read("app.js"));new Script(read("proof.js"));
 });
 test("three marketing emails include corresponding text alternatives",()=>{
  for(const name of ["01-announcement","02-method","03-studio"]){
@@ -36,12 +37,11 @@ test("three marketing emails include corresponding text alternatives",()=>{
   assert.ok(exists("commissions/pulp/email/"+name+".txt"));
  }
 });
-test("studio HTML references all expected pages, social masters and relevant lab controls",()=>{
+test("current campaign and instructional controls remain inspectable",()=>{
  const html=read("index.html");
- for(const s of pulp)assert.ok(html.includes("commissions/pulp/"+s+".svg"));
- for(const s of field)assert.ok(html.includes("commissions/field/"+s+".svg"));
- for(const s of guide)assert.ok(html.includes("commissions/pulp/"+s+".svg"));
- for(const id of ["compareSlider","afterClip","issueImage","showTrim","showSafe","releaseState"])assert.ok(html.includes('id="'+id+'"'));
+ for(let i=1;i<=6;i++)assert.ok(html.includes("assets/campaign-"+String(i).padStart(2,"0")+".webp"));
+ for(const name of ["PROOF_Issue_01.pdf","PROOF_Print_Specimens.pdf","marketing/index.html"])assert.ok(html.includes(name));
+ for(const id of ["reviewRange","afterReveal","rangeValue","trimSwitch","safeSwitch","proofSheet"])assert.ok(html.includes('id="'+id+'"'));
 });
 test("all direct page-relative links and images resolve to files",()=>{
  const src=read("index.html");

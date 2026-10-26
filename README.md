@@ -1,3 +1,13 @@
+## Evidence-led review branch — October 2026
+
+- Four selected projects; twelve remain under All work. Primary positioning: Visual & UI Designer.
+- Responsive covers/email previews, cross-role correction/history, keyboard focus and archive integrity repaired.
+- [Full file-by-file change and verification record](design-source/portfolio-review/2026-10-evidence-review.md).
+- [PsychicTally local verification and boundaries](psychictally/verification-2026-10.md).
+- This branch is for review; no automatic deployment was performed. Older entries below are historical change notes, not the current selection count.
+
+---
+
 ## October 25, 2026 — PLAIN SIGHT complete editorial image-making project
 
 - [PLAIN SIGHT studio](plain-sight/index.html) with three fully navigable studies: GESTURES, ARRANGEMENTS and IN BETWEEN.

@@ -31,3 +31,103 @@
 .cover-plain-sight .ps-cover-type>small{font-size:clamp(8px,1.15cqw,11px);letter-spacing:.07em;border-top:1px solid #aaa39a;padding-top:12px}
 .cover-plain-sight>img{width:100%;height:100%;object-fit:cover;object-position:42% 38%}
 @media(max-width:650px){.cover-plain-sight{aspect-ratio:1.15}.cover-plain-sight .ps-cover-type{padding:7%}.cover-plain-sight .ps-cover-type h3{font-size:10cqw}}
+
+/* Portfolio presentation: a neutral frame around distinct project identities.
+   Keep these rules out of the projects' own websites and interface systems. */
+.portfolio-home .home-hero {
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 8%;
+  padding-block: 58px 46px;
+}
+.portfolio-home .home-hero h1 {
+  font-size: clamp(48px, 6.1vw, 88px);
+  line-height: 1.04;
+  letter-spacing: -.045em;
+  margin-top: 22px;
+}
+.portfolio-home .hero-intro > p:first-child {font-size: 22px; line-height: 1.5; max-width: 34ch}
+.portfolio-home .hero-intro .small-copy {font-size: 16px; max-width: 42ch; margin-top: 14px}
+.hero-actions {display: flex; align-items: center; flex-wrap: wrap; gap: 14px 24px; margin-top: 22px}
+.portfolio-home .availability {border: 0; padding: 0; margin-top: 16px; font-size: 13px}
+.portfolio-home .work-picker {padding: 16px 0 24px}
+.portfolio-home #work-route {max-width: 76ch; min-height: 0; font-size: 14px; margin-top: 14px}
+.portfolio-home .section-line {padding-bottom: 16px}
+.portfolio-home .work-grid {gap: 48px 28px}
+.portfolio-home .work-item {grid-column: span 6}
+.portfolio-home .work-art {width: 100%; min-width: 0}
+.portfolio-home .project-cover {width: 100%; max-width: 100%; min-width: 0; aspect-ratio: 1.48}
+.portfolio-home .project-cover > * {min-width: 0}
+.portfolio-home .work-caption {display: block; padding-top: 20px}
+.portfolio-home .work-caption h3 {font-size: 30px; margin-block: 7px 10px}
+.portfolio-home .work-context {display: block; max-width: none; text-align: left; font-size: 12px; line-height: 1.6; margin-top: 12px; padding-top: 0}
+.portfolio-home .work-evidence {grid-template-columns: minmax(0, 1fr); gap: 8px; margin-top: 16px; padding-top: 12px; font-size: 14px}
+.portfolio-home .work-evidence > a {justify-self: start; white-space: normal; padding-block: 8px}
+.portfolio-home .work-evidence p > span {font-size: 11px; margin-bottom: 3px}
+.portfolio-home .pt-home-top, .portfolio-home .pt-home-bottom {flex-wrap: wrap; font-size: clamp(9px, 1.5cqw, 12px)}
+.portfolio-home .pt-home-top strong {font-size: clamp(20px, 4cqw, 30px)}
+.pt-cover-workflow {display: grid; grid-template-columns: .8fr 1.1fr; gap: 5%; align-items: center}
+.pt-cover-label {grid-column: 1 / -1; font: 400 clamp(9px, 1.4cqw, 12px)/1.5 var(--sans); letter-spacing: .08em}
+.portfolio-home .pt-cover-workflow h3 {font: 400 clamp(27px, 5.4cqw, 55px)/1.1 Georgia, serif; letter-spacing: -.04em}
+.pt-cover-record {background: #fcf9fb; color: #382e3e; padding: 8%; border-left: 3px solid #e1c7d9}
+.pt-cover-record > div:first-child {display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font: 500 clamp(10px, 1.8cqw, 14px)/1.5 var(--sans)}
+.pt-cover-record > div:first-child > span {color: #6a4758}
+.pt-cover-record p, .pt-cover-record small {font: 400 clamp(9px, 1.65cqw, 13px)/1.5 var(--sans); margin-top: 12px}
+.pt-cover-status {display: flex; flex-wrap: wrap; gap: 8px; align-items: center; border-block: 1px solid #d8cbd8; padding-block: 10px; margin-block: 12px; font: 500 clamp(10px, 1.7cqw, 13px)/1.5 var(--sans)}
+.pt-cover-record small {display: block; margin-top: 0}
+.no-script-note {padding-block: 16px; font-size: 14px}
+
+/* Role selections: show the artifact before repeating the selection rationale. */
+.hiring-page {padding-top: 46px}
+.hiring-page .hiring-hero {gap: 7%; padding-bottom: 30px}
+.hiring-page .hiring-hero h1 {font-size: clamp(45px, 5.6vw, 76px); line-height: 1.05}
+.hiring-page .hiring-section-heading {margin-top: 28px}
+.hiring-page .hiring-grid {gap: 38px 28px}
+.hiring-page .hiring-card {padding: 0 0 22px; background: transparent; border: 0; border-bottom: 1px solid var(--rule); min-width: 0; gap: 12px}
+.hiring-page .hiring-card .image-frame {width: 100%; aspect-ratio: 1.46; flex: none; min-width: 0; overflow: hidden}
+.hiring-page .hiring-card .image-frame img {width: 100%; height: 100%; object-fit: cover; object-position: center}
+.hiring-page .hiring-card .mini {line-height: 1.65; font-size: 11px; max-width: 65ch}
+.hiring-page .hiring-card > a {align-self: flex-start; min-height: 44px; margin-top: 0; display: inline-flex; align-items: center}
+.hiring-page .hiring-card > a.prototype-link {font-weight: 500; margin-top: -6px}
+.hiring-more {font-size: 14px; margin-top: 32px}
+.site-nav nav a {min-height: 44px; display: inline-flex; align-items: center}
+.site-nav nav a:focus-visible {outline-offset: 3px}
+.site-footer a[href^="mailto:"] {overflow-wrap: anywhere}
+
+@media (max-width: 800px) {
+  .portfolio-home .home-hero {grid-template-columns: 1fr; gap: 24px; padding-block: 34px 34px}
+  .portfolio-home .home-hero h1 {font-size: clamp(46px, 8.8vw, 68px)}
+  .portfolio-home .hero-intro > p:first-child {font-size: 20px; max-width: 46ch}
+  .portfolio-home .work-grid {gap: 38px 20px}
+  .portfolio-home .work-item {grid-column: 1 / -1}
+  .portfolio-home .work-context {display: block}
+  .hiring-page .hiring-hero {grid-template-columns: 1fr; gap: 22px}
+}
+@media (max-width: 550px) {
+  .site-nav {gap: 14px; padding-block: 20px; align-items: flex-start}
+  .site-nav nav {gap: 0 16px; font-size: 13px; width: 100%; flex-wrap: wrap}
+  .site-nav .nav-contact {margin-left: 0}
+  .portfolio-home .home-hero h1 {font-size: clamp(44px, 11.5vw, 58px); letter-spacing: -.04em; margin-top: 16px}
+  .portfolio-home .hero-intro > p:first-child {font-size: 19px; line-height: 1.5}
+  .portfolio-home .hero-intro .small-copy {font-size: 15px; margin-top: 12px}
+  .portfolio-home .hero-intro .small-copy {display: none}
+  .portfolio-home #work-route {position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap}
+  .portfolio-home .hero-actions {gap: 8px 20px; margin-top: 18px}
+  .portfolio-home .work-focus {gap: 6px}
+  .portfolio-home .work-focus button {padding: 10px 12px; font-size: 13px; flex: 1 1 auto}
+  .portfolio-home .work-caption .eyebrow {font-size: 10px; letter-spacing: .07em}
+  .portfolio-home .work-caption h3 {font-size: 28px}
+  .portfolio-home .project-cover {aspect-ratio: 1.13}
+  .portfolio-home .pt-cover-workflow {gap: 8%; grid-template-columns: .8fr 1.1fr}
+  .portfolio-home .pt-cover-workflow h3 {font-size: 6.6cqw}
+  .portfolio-home .ih-cover-layout {grid-template-columns: minmax(0,.75fr) minmax(0,1fr); gap: 5%}
+  .portfolio-home .ih-cover-record {min-width: 0}
+  .portfolio-home .ih-cover-statement {font-size: 6.7cqw}
+  .portfolio-home .ih-cover-record h3 {font-size: 4.6cqw}
+  .portfolio-home .pt-cover-record {padding: 8%}
+  .hiring-page .hiring-grid {gap: 30px}
+  .hiring-page .hiring-card .image-frame {aspect-ratio: 1.35}
+  .hiring-page .hiring-hero > div:last-child > p {font-size: 16px}
+  .hiring-page .hiring-hero h1 {font-size: clamp(44px, 10vw, 58px)}
+}
+
+.hiring-page .artwork-pair{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:16px;background:#e3ded6}.hiring-page .artwork-pair img{object-fit:contain!important;min-height:0;max-height:100%}

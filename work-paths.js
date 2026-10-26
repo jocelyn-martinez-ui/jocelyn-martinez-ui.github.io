@@ -3,11 +3,11 @@
  const grid=document.querySelector(".work-grid");if(!grid)return;
  const cards=new Map([...grid.querySelectorAll("[data-project]")].map(item=>[item.dataset.project,item]));
  const paths={
-  featured:{ids:["psychictally","plain-sight","imhere","brume","proof","afterform","holland"],text:"Seven selected projects: a code-backed platform, an academic capstone, original photographic editorial design, distinctive campaigns and accessible UI. View All work for the full collection."},
-  all:{ids:["psychictally","plain-sight","imhere","brume","proof","afterform","holland","interval","aurea","loopline","novella","nutriva"],text:"All twelve showcased projects, from functional product workflows to complete editorial, print and graphic design systems."},
-  ux:{ids:["psychictally","imhere","holland","interval","aurea","loopline","nutriva","proof"],text:"Start with PsychicTally's implementation and interaction states, then ImHere's shared correction workflow and Holland's accessibility-oriented navigation."},
-  graphic:{ids:["plain-sight","brume","proof","afterform","interval","psychictally","loopline","aurea"],text:"PLAIN SIGHT leads with a complete editorial photography and print system; BRUME, PROOF and AFTERFORM add campaigns, email, identity and packaging."},
-  web:{ids:["psychictally","imhere","aurea","holland","plain-sight","proof","brume","afterform"],text:"A code-backed community application, complex workflows, responsive HTML email and a complete editorial studio website."}
+  featured:{ids:["plain-sight","psychictally","afterform","imhere"],text:"Four projects across editorial identity, community software and interaction design. Choose a focus to see the relevant selection."},
+  all:{ids:["plain-sight","psychictally","afterform","imhere","proof","brume","holland","interval","aurea","loopline","novella","nutriva"],text:"All twelve showcased projects. Independent concepts, collaborative foundations and application work are labeled on each project."},
+  ux:{ids:["psychictally","imhere","holland"],text:"Three workflow studies: community permissions, an explained attendance correction and a reading-focused visitor flow. Implementation is shown; primary-user validation remains limited."},
+  graphic:{ids:["plain-sight","afterform","proof","brume"],text:"Four visual systems: editorial identity, garment repair, a graphic campaign and photography-led marketing. More cultural and identity work is available under All work."},
+  web:{ids:["psychictally","imhere","aurea","holland"],text:"Four implemented interface studies. Inspect the working behavior, responsive adaptation and the limits of each prototype."}
  };
  const buttons=[...document.querySelectorAll("[data-focus]")];
  const route=document.querySelector("#work-route");
@@ -28,4 +28,5 @@
  buttons.forEach(b=>b.addEventListener("click",()=>show(b.dataset.focus,true)));
  const urlKey=new URLSearchParams(window.location.search).get("focus");
  show(urlKey||"featured",false);
+ window.addEventListener("popstate",()=>show(new URLSearchParams(window.location.search).get("focus")||"featured",false));
 })();
