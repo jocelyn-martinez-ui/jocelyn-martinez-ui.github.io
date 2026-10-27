@@ -1,0 +1,7 @@
+.interface-evidence{border:1px solid var(--rule);background:#eceee9;padding:22px;margin-block:36px 70px}
+.interface-evidence .evidence-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:17px;color:var(--project-ink)}
+.evidence-heading>span{font-size:10px;letter-spacing:.1em}.evidence-heading>a{font-size:13px;text-decoration:underline;text-underline-offset:4px;min-height:44px;display:flex;align-items:center}
+.interface-evidence>img{width:100%;height:auto;border:1px solid #d0d5d2;background:white}.theme-aurea .interface-evidence{background:#eee7de}
+.interface-evidence figcaption{font-size:13px;line-height:1.7;margin-top:17px;max-width:80ch;color:var(--muted)}
+.hiring-page .hiring-card .image-frame:has(img[src*="interface-review"]){background:#e8ecec}.hiring-page .hiring-card .image-frame img[src*="interface-review"]{object-fit:contain;object-position:top}
+@media(max-width:700px){.interface-evidence{padding:11px;margin-block:25px 44px}.interface-evidence .evidence-heading{display:block;padding-bottom:12px}.evidence-heading>span{font-size:9px}.interface-evidence figcaption{font-size:12px}.evidence-heading>a{font-size:12px}}
