@@ -18,20 +18,22 @@ Art directors, design hiring managers, editorial studios, cultural organizations
 ## Visual decisions
 
 - **Grid:** Editorial columns, 12-column web work archive, highly controlled gutters and intentional image staggering.
-- **Color:** Paper `#F5F2EC`, white `#FBFAF7`, ink `#252321`, stone `#AAA59E`, espresso `#514943`, sparing oxblood `#793B43`.
-- **Type:** Characterful editorial serif and neutral functional sans. Web: Instrument Serif + DM Sans; resilient Georgia/Arial fallbacks. Publication PDF: embedded Liberation Serif and Lato.
+- **Color:** Paper `#f2efe8`, panel `#e7e3da`, white `#fcfaf5`, ink `#282824`, secondary `#62615a`, accent `#723e43`, focus `#115b8b`.
+- **Type:** Characterful editorial serif and neutral functional sans. Observation edition web and PDF: Bodoni Moda + DM Sans, locally served/embedded under SIL OFL. Historical SVG masters retain portable Georgia/Arial text.
 - **Image sequencing:** Wide portrait / close crop / empty space; alternates imagery and text-led pauses.
 - **Brand voice:** Precise, restrained, observational. Sentences express a point of view rather than product promises.
 
 ## Finished portfolio specimens
 
-Ten website pages, three detailed series, full 24-page editorial PDF, eight-page identity guide, six poster SVGs, six square social posts, twelve carousel slides, four vertical stories, three web banners, three photographic selection sheets, three stationery applications, and a responsive campaign email. All editable SVG masters contain embedded raster sources so they display standalone; the typography and layout elements remain SVG text/shapes.
+Eleven website pages, including a working source/crop light table, three detailed series, full 24-page editorial PDF, eight-page identity guide, six poster SVGs, six square social posts, twelve carousel slides, four vertical stories, three web banners, three photographic selection sheets, three stationery applications, and a responsive campaign email. All editable SVG masters contain embedded raster sources so they display standalone; the typography and layout elements remain SVG text/shapes.
 
 ## Production honesty
 
-All five original photographic compositions were AI-generated under creative direction. Different crop treatments are explicitly called crops. The images do not depict a true photographed commission, production crew, identified fashion talent or paid customers. The publication is digitally laid out but has **not** been physically printed or commercially preflight-certified. Form submission is local simulation, not a live contact backend. Research and user metrics are not fabricated.
+All five original photographic compositions were AI-generated under creative direction. Different crop treatments are explicitly called crops. The images do not depict a true photographed commission, production crew, identified fashion talent or paid customers. The publication is digitally laid out but has **not** been physically printed or commercially preflight-certified. Contact uses the real designer email; the old simulated form has been removed. Research and user metrics are not fabricated.
 
-## Design-reference study
+## Previous-edition reference links (retained)
+
+The reconstruction uses the evaluated 28-source ledger at [reconstruction/references.md](reconstruction/references.md). The links below are historical references, not claims of fresh access.
 
 Research focused on layouts and sequencing, not copying finished artwork:
 
@@ -42,3 +44,5 @@ Research focused on layouts and sequencing, not copying finished artwork:
 - [Editorial publications — Atipus reference](https://kr.pinterest.com/pin/298645019061946407/)
 
 These links are inspiration references; PLAIN SIGHT does not reproduce their designs or incorporate their photography.
+
+Current implementation, alternative concepts, test evidence and limitations: [reconstruction/README.md](reconstruction/README.md).

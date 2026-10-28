@@ -1,0 +1,573 @@
+{
+  "baseline_commit": "e89df37d6ff1b03bc93bba9efe5be7c08615f1ab",
+  "pages": [
+    {
+      "file": "plain-sight/arrangements.html",
+      "images": 5,
+      "images_without_dimensions": 5,
+      "images_without_alt": 0,
+      "images_with_srcset": 0,
+      "heading_counts": {
+        "h1": 1,
+        "h2": 3
+      },
+      "current_navigation": 0,
+      "broken_paths": []
+    },
+    {
+      "file": "plain-sight/case-study.html",
+      "images": 10,
+      "images_without_dimensions": 10,
+      "images_without_alt": 0,
+      "images_with_srcset": 0,
+      "heading_counts": {
+        "h1": 1,
+        "h2": 10
+      },
+      "current_navigation": 0,
+      "broken_paths": []
+    },
+    {
+      "file": "plain-sight/contact.html",
+      "images": 0,
+      "images_without_dimensions": 0,
+      "images_without_alt": 0,
+      "images_with_srcset": 0,
+      "heading_counts": {
+        "h1": 1,
+        "h2": 1
+      },
+      "current_navigation": 0,
+      "broken_paths": []
+    },
+    {
+      "file": "plain-sight/email.html",
+      "images": 1,
+      "images_without_dimensions": 1,
+      "images_without_alt": 0,
+      "images_with_srcset": 0,
+      "heading_counts": {
+        "h1": 1,
+        "h2": 1
+      },
+      "current_navigation": 0,
+      "broken_paths": []
+    },
+    {
+      "file": "plain-sight/gestures.html",
+      "images": 5,
+      "images_without_dimensions": 5,
+      "images_without_alt": 0,
+      "images_with_srcset": 0,
+      "heading_counts": {
+        "h1": 1,
+        "h2": 3
+      },
+      "current_navigation": 0,
+      "broken_paths": []
+    },
+    {
+      "file": "plain-sight/in-between.html",
+      "images": 5,
+      "images_without_dimensions": 5,
+      "images_without_alt": 0,
+      "images_with_srcset": 0,
+      "heading_counts": {
+        "h1": 1,
+        "h2": 3
+      },
+      "current_navigation": 0,
+      "broken_paths": []
+    },
+    {
+      "file": "plain-sight/index.html",
+      "images": 17,
+      "images_without_dimensions": 13,
+      "images_without_alt": 0,
+      "images_with_srcset": 0,
+      "heading_counts": {
+        "h1": 1,
+        "h2": 8,
+        "h3": 3
+      },
+      "current_navigation": 0,
+      "broken_paths": []
+    },
+    {
+      "file": "plain-sight/motion.html",
+      "images": 0,
+      "images_without_dimensions": 0,
+      "images_without_alt": 0,
+      "images_with_srcset": 0,
+      "heading_counts": {
+        "h1": 1,
+        "h2": 1
+      },
+      "current_navigation": 0,
+      "broken_paths": []
+    },
+    {
+      "file": "plain-sight/publication.html",
+      "images": 16,
+      "images_without_dimensions": 16,
+      "images_without_alt": 0,
+      "images_with_srcset": 0,
+      "heading_counts": {
+        "h2": 6,
+        "h3": 1
+      },
+      "current_navigation": 0,
+      "broken_paths": []
+    },
+    {
+      "file": "plain-sight/studio.html",
+      "images": 1,
+      "images_without_dimensions": 1,
+      "images_without_alt": 0,
+      "images_with_srcset": 0,
+      "heading_counts": {
+        "h1": 1,
+        "h2": 3
+      },
+      "current_navigation": 0,
+      "broken_paths": []
+    }
+  ],
+  "assets": [
+    {
+      "path": "plain-sight/assets/app.js",
+      "bytes": 1619
+    },
+    {
+      "path": "plain-sight/assets/banners/banner-01.svg",
+      "bytes": 107363,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/banners/banner-02.svg",
+      "bytes": 171879,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/banners/banner-03.svg",
+      "bytes": 269643,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/carousels/carousel-01-slide-01.svg",
+      "bytes": 107455,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/carousels/carousel-01-slide-02.svg",
+      "bytes": 172282,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/carousels/carousel-01-slide-03.svg",
+      "bytes": 269836,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/carousels/carousel-01-slide-04.svg",
+      "bytes": 107455,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/carousels/carousel-01-slide-05.svg",
+      "bytes": 172282,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/carousels/carousel-01-slide-06.svg",
+      "bytes": 269836,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/carousels/carousel-02-slide-01.svg",
+      "bytes": 107455,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/carousels/carousel-02-slide-02.svg",
+      "bytes": 172282,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/carousels/carousel-02-slide-03.svg",
+      "bytes": 269836,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/carousels/carousel-02-slide-04.svg",
+      "bytes": 107455,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/carousels/carousel-02-slide-05.svg",
+      "bytes": 172282,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/carousels/carousel-02-slide-06.svg",
+      "bytes": 269836,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/contact-sheets/arrangements.jpg",
+      "bytes": 327746
+    },
+    {
+      "path": "plain-sight/assets/contact-sheets/gestures.jpg",
+      "bytes": 271144
+    },
+    {
+      "path": "plain-sight/assets/contact-sheets/in-between.jpg",
+      "bytes": 326892
+    },
+    {
+      "path": "plain-sight/assets/editorial-v2.css",
+      "bytes": 17589
+    },
+    {
+      "path": "plain-sight/assets/images/arrangement-bloom-base.webp",
+      "bytes": 50010
+    },
+    {
+      "path": "plain-sight/assets/images/arrangement-bloom-detail.webp",
+      "bytes": 33798
+    },
+    {
+      "path": "plain-sight/assets/images/arrangement-bloom.webp",
+      "bytes": 110362
+    },
+    {
+      "path": "plain-sight/assets/images/arrangement-table-light.webp",
+      "bytes": 44754
+    },
+    {
+      "path": "plain-sight/assets/images/arrangement-table-objects.webp",
+      "bytes": 63254
+    },
+    {
+      "path": "plain-sight/assets/images/arrangement-table.webp",
+      "bytes": 128450
+    },
+    {
+      "path": "plain-sight/assets/images/between-room-chair.webp",
+      "bytes": 62952
+    },
+    {
+      "path": "plain-sight/assets/images/between-room-shadow.webp",
+      "bytes": 66830
+    },
+    {
+      "path": "plain-sight/assets/images/between-room-window.webp",
+      "bytes": 63574
+    },
+    {
+      "path": "plain-sight/assets/images/between-room.webp",
+      "bytes": 201776
+    },
+    {
+      "path": "plain-sight/assets/images/gesture-fabric-detail.webp",
+      "bytes": 30078
+    },
+    {
+      "path": "plain-sight/assets/images/gesture-fabric-fabric.webp",
+      "bytes": 25936
+    },
+    {
+      "path": "plain-sight/assets/images/gesture-fabric.webp",
+      "bytes": 80062
+    },
+    {
+      "path": "plain-sight/assets/images/gesture-seated-detail.webp",
+      "bytes": 30112
+    },
+    {
+      "path": "plain-sight/assets/images/gesture-seated-space.webp",
+      "bytes": 20062
+    },
+    {
+      "path": "plain-sight/assets/images/gesture-seated.webp",
+      "bytes": 61014
+    },
+    {
+      "path": "plain-sight/assets/mark.svg",
+      "bytes": 305,
+      "embedded_images": 0,
+      "external_image_refs": [],
+      "fonts": []
+    },
+    {
+      "path": "plain-sight/assets/posters/poster-01.svg",
+      "bytes": 107852,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/posters/poster-02.svg",
+      "bytes": 82370,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/posters/poster-03.svg",
+      "bytes": 148240,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/posters/poster-04.svg",
+      "bytes": 172284,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/posters/poster-05.svg",
+      "bytes": 270115,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/posters/poster-06.svg",
+      "bytes": 1973,
+      "embedded_images": 0,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial,sans-serif",
+        "Georgia,serif"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/social/social-01.svg",
+      "bytes": 107417,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/social/social-02.svg",
+      "bytes": 81995,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/social/social-03.svg",
+      "bytes": 147894,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/social/social-04.svg",
+      "bytes": 171937,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/social/social-05.svg",
+      "bytes": 269673,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/social/social-06.svg",
+      "bytes": 40845,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/stationery/business-cards.svg",
+      "bytes": 1023,
+      "embedded_images": 0,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/stationery/letterhead.svg",
+      "bytes": 1054,
+      "embedded_images": 0,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/stationery/publication-sleeve.svg",
+      "bytes": 107381,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/stories/story-01.svg",
+      "bytes": 107558,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/stories/story-02.svg",
+      "bytes": 172011,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/stories/story-03.svg",
+      "bytes": 269867,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/stories/story-04.svg",
+      "bytes": 82096,
+      "embedded_images": 1,
+      "external_image_refs": [],
+      "fonts": [
+        "Arial",
+        "Georgia"
+      ]
+    },
+    {
+      "path": "plain-sight/assets/styles.css",
+      "bytes": 12561
+    }
+  ]
+}
