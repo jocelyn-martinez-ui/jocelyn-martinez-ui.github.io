@@ -1,0 +1,32 @@
+[
+  {
+    "page": "index",
+    "enhanced": false,
+    "links": 0,
+    "overflow": false,
+    "nav": true
+  },
+  {
+    "page": "light-table",
+    "enhanced": false,
+    "fallback": "The interactive comparison needs JavaScript. All originals, crops and their notes remain available below.01 / A posture, a pauseTh",
+    "links": 0,
+    "overflow": false,
+    "nav": true
+  },
+  {
+    "page": "publication",
+    "enhanced": false,
+    "fallback": "Without JavaScript, use the complete page index below or download the PDF. Each thumbnail links to a readable full page through th",
+    "links": 24,
+    "overflow": false,
+    "nav": true
+  },
+  {
+    "page": "contact",
+    "enhanced": false,
+    "links": 0,
+    "overflow": false,
+    "nav": true
+  }
+]

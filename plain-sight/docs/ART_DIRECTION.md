@@ -26,7 +26,7 @@ Rather than positioning a fictional physical product as the hero, PLAIN SIGHT ma
 
 - Tone: contemplative, warm, inhabited only by evidence of previous presence.
 - Geometry: deep opening, single chair, triangular band of sunlight, a niche and stone floor.
-- Sequence: whole room, window detail, chair and moving shadow.
+- Sequence: whole room, window detail, chair and floor-shadow crop.
 - Original generated image: `between-room.webp`.
 - All the additional frames in this chapter are crops of one room illustration, not images of several spaces.
 
