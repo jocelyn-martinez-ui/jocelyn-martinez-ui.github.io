@@ -57,7 +57,8 @@ def source_page(n,s,subtitle):
 def crop_page(n,s,title,desc):
  base(n,title,s['seriesName'],desc,s['id'])
  txt('FRAMING DECISIONS / SOURCE '+s['number'],M,H-78,10,'Medium',RED)
- para(title,M,H-124,W-2*M,35,font='Display')
+ if n == 7:lines('Presence, or the\nspace beside it.',M,H-124,35,leading=42)
+ else:para(title,M,H-124,W-2*M,35,font='Display')
  # Distinct source/crop hierarchy; two variants never become two exposures.
  cs=s['crops'][:2];gap=24;cw=(W-2*M-gap)/2
  for i,cr in enumerate(cs):
