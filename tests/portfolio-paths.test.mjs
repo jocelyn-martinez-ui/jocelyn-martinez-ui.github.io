@@ -6,10 +6,12 @@ import path from 'node:path';
 const root = path.resolve(import.meta.dirname, '..');
 const pages = [
   'index.html', 'ui-design.html', 'graphic-design.html',
+  'Holland-Walking-Tour-site/holland-walking-tour-case-study.html',
   'ImHere-case-study/imhere-case-study.html', 'aurea.html',
   'experiences/imhere.html', 'experiences/aurea.html',
   'psychictally.html', 'psychictally/welcome-email.html',
   'graphic-editions.html', 'about.html', 'design-profile.html',
+  'proof/index.html', 'brume/index.html',
   'plain-sight/index.html', 'plain-sight/case-study.html', 'plain-sight/studio.html',
   'plain-sight/gestures.html', 'plain-sight/arrangements.html', 'plain-sight/in-between.html',
   'plain-sight/publication.html', 'plain-sight/email.html', 'plain-sight/motion.html', 'plain-sight/contact.html'
@@ -59,4 +61,30 @@ test('new portfolio images have alt text and prototype is disclosed as illustrat
   const caseStudy = read('psychictally.html');
   assert.match(caseStudy, /not wired to PsychicTally's production database/);
   assert.match(caseStudy, /research plan is written/i);
+});
+
+test('the first four visible home projects match the enhanced featured selection', () => {
+  const home = read('index.html');
+  const visible = Array.from(home.matchAll(/<article\b[^>]*data-project="([^"]+)"[^>]*>/g))
+    .filter(([tag]) => !/\shidden\b/.test(tag))
+    .map(([, id]) => id);
+  assert.deepEqual(visible, ['brume', 'plain-sight', 'holland', 'imhere']);
+  const featured = read('work-paths.js').match(/featured:\{ids:(\[[^\]]+\])/);
+  assert.deepEqual(JSON.parse(featured[1]), visible);
+});
+
+test('shareable sections keep the relevant original artifact in the section', () => {
+  const routes = [
+    ['graphic-design.html', 'production', ['proof/assets/campaign-01.webp', 'proof/assets/print-advert.webp', 'proof/PRODUCTION_NOTES.md', 'proof/emails/01-launch.html']],
+    ['graphic-design.html', 'email', ['brume/email/01-introduction.html', 'brume/email/01-introduction.txt']],
+    ['graphic-design.html', 'editorial', ['plain-sight/publication.html?page=6#reader', 'plain-sight/publication.html?page=8#reader']],
+    ['ui-design.html', 'content', ['experiences/holland.html?view=cms']],
+    ['ui-design.html', 'interaction', ['experiences/imhere.html?scene=1&amp;view=correction']]
+  ];
+  for (const [page, id, destinations] of routes) {
+    const section = read(page).split('id="' + id + '"')[1]?.split('</section>')[0];
+    assert.ok(section, page + '#' + id);
+    for (const href of destinations)
+      assert.ok(section.includes('href="' + href + '"'), page + '#' + id + ' must link to ' + href);
+  }
 });
