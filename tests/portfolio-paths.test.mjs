@@ -88,3 +88,17 @@ test('shareable sections keep the relevant original artifact in the section', ()
       assert.ok(section.includes('href="' + href + '"'), page + '#' + id + ' must link to ' + href);
   }
 });
+
+
+test('ImHere records expose the saved correction to students and require written context for requests', () => {
+  const page = read('ImHere-case-study/imhere-case-study.html');
+  const app = read('experiences/experience.js');
+  assert.match(page, /What the student can see/);
+  assert.match(page, /Needs review → Present/);
+  assert.match(page, /Present → Needs review/);
+  assert.match(app, /studentExplanations\.slice\(-2\)\.reverse\(\)/);
+  assert.match(app, /if\(a==='request-review'\)\{go\('excuse'\);return;\}/);
+  assert.match(app, /if\(!context\)\{fieldError/);
+  assert.match(app, /studentCorrectionNotes\(\)/);
+  assert.doesNotMatch(app, /if\(a==='request-review'\)\{roster\[0\]='Needs review'/);
+});
