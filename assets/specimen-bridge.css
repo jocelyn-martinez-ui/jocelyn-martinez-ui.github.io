@@ -1,0 +1,10 @@
+/* Independently inspectable additions to existing portfolio cases. */
+.studio-bridge{box-sizing:border-box;max-width:1350px;width:min(92%,1240px);margin:1.1rem auto 2rem;padding:1rem 1.3rem;border:1px solid #b9b2a5;background:#f7f2e9;color:#26332c;display:grid;grid-template-columns:minmax(0,.6fr) minmax(0,1.4fr);align-items:center;gap:1.2rem 2rem;font:400 .94rem/1.45 Arial,Helvetica,sans-serif;position:relative;z-index:1}
+.studio-bridge *{box-sizing:border-box}.studio-bridge .studio-bridge-kicker{display:block;text-transform:uppercase;letter-spacing:.13em;font-weight:700;font-size:.66rem;color:#70554c;margin:0 0 .3rem}
+.studio-bridge h2{font:400 clamp(1.3rem,2.5vw,2rem)/1.13 Georgia,serif;letter-spacing:-.045em;margin:0;color:#26332c}
+.studio-bridge p{font-size:.8rem;line-height:1.55;margin:.35rem 0 .6rem;color:#454e46;max-width:65ch}
+.studio-bridge .studio-bridge-links{display:flex;gap:.4rem 1.2rem;flex-wrap:wrap}
+.studio-bridge a{font:700 .82rem/1.4 Arial,Helvetica,sans-serif;color:#385d53;text-decoration:underline;text-underline-offset:.26em;padding:.22rem 0}
+.studio-bridge a:focus-visible{outline:3px solid #a54836;outline-offset:3px}
+@media(max-width:710px){.studio-bridge{grid-template-columns:1fr;gap:.5rem;padding:.95rem}}
+@media print{.studio-bridge{display:none}}
