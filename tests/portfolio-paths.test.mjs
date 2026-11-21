@@ -6,6 +6,8 @@ import path from 'node:path';
 const root = path.resolve(import.meta.dirname, '..');
 const pages = [
   'index.html', 'ui-design.html', 'graphic-design.html',
+  'playground.html', 'studio-reframes.html', 'production-specimens.html', 'service-specimens.html',
+  'poster.html', 'website.html', 'websiteex.html', 'roseedit.html',
   'Holland-Walking-Tour-site/holland-walking-tour-case-study.html',
   'ImHere-case-study/imhere-case-study.html', 'aurea.html',
   'experiences/imhere.html', 'experiences/aurea.html',
@@ -101,4 +103,98 @@ test('ImHere records expose the saved correction to students and require written
   assert.match(app, /if\(!context\)\{fieldError/);
   assert.match(app, /studentCorrectionNotes\(\)/);
   assert.doesNotMatch(app, /if\(a==='request-review'\)\{roster\[0\]='Needs review'/);
+});
+
+
+test('all 32 distinct pieces have a reachable studio or active case specimen', () => {
+  const archive = read('playground.html');
+  const reframe = read('studio-reframes.html');
+  const production = read('production-specimens.html');
+  const service = read('service-specimens.html');
+
+  for (const [name, png, anchor] of [
+    ['Bauhaus Design','bauhaus.png','bauhaus'],
+    ['Aether Essence','aetheressence.png','aether'],
+    ['Digital Poetics','digitalpoetics.png','poetics'],
+    ['Solstice Studio','Solsticestudio.png','solstice'],
+    ['Village Auto','villageauto.png','village'],
+    ['Nebula Systems','nebulasystems.png','nebula']
+  ]) {
+    assert.ok(archive.includes(name) && archive.includes('studio-reframes.html#' + anchor));
+    assert.ok(reframe.includes('id="' + anchor + '"'), name);
+    assert.ok(reframe.includes('href="' + png + '"'), name + ' historical image kept');
+  }
+  for (const p of ['poster.html','website.html','websiteex.html','roseedit.html'])
+    assert.ok(archive.includes('href="' + p + '"'), p);
+
+  const graphicIds = ['nodo','night-shift','solace','common-ground','civic-bloom','thresholds','pulp','field','terra'];
+  for (const id of graphicIds) assert.ok(production.includes('id="' + id + '"'), id);
+  const serviceIds = ['psychictally','afterform','interval','aurea','loopline','novella','nutriva','proof-workspace'];
+  for (const id of serviceIds) assert.ok(service.includes('id="' + id + '"'), id);
+
+  for (const lead of [
+    'ImHere-case-study/imhere-case-study.html',
+    'Holland-Walking-Tour-site/holland-walking-tour-case-study.html',
+    'proof/index.html', 'brume/index.html', 'plain-sight/case-study.html'
+  ]) assert.ok(fs.existsSync(path.join(root,lead)), 'lead project exists: ' + lead);
+  assert.equal(6 + 4 + graphicIds.length + serviceIds.length + 5, 32);
+});
+
+test('archive replacements remove unsourced consumer metrics and dead gallery destinations', () => {
+  const rose = read('roseedit.html');
+  const red = read('website.html');
+  const aura = read('websiteex.html');
+  assert.doesNotMatch(rose,/4,200 votes|Guillaume Flavigny|images\.unsplash\.com/);
+  assert.match(rose,/fictional scent profile/i);
+  assert.doesNotMatch(red,/hello@youremail\.com|Your Name|href="#"/);
+  assert.match(red,/proof\/index\.html#campaign/);
+  assert.match(red,/plain-sight\/publication\.html/);
+  assert.doesNotMatch(aura,/href="#"|структур|images\.unsplash\.com/);
+  assert.match(aura,/field notes/i);
+});
+
+test('every new specimen is linked from its original case or a collection page', () => {
+  const routePairs = [
+    ['psychictally.html','service-specimens.html#psychictally'],
+    ['afterform.html','service-specimens.html#afterform'],
+    ['interval.html','service-specimens.html#interval'],
+    ['aurea.html','service-specimens.html#aurea'],
+    ['loopline.html','service-specimens.html#loopline'],
+    ['novella.html','service-specimens.html#novella'],
+    ['nutriva.html','service-specimens.html#nutriva'],
+    ['proof/workspace.html','../service-specimens.html#proof-workspace'],
+    ['nodo/index.html','../production-specimens.html#nodo'],
+    ['night-shift.html','production-specimens.html#night-shift'],
+    ['solace-press.html','production-specimens.html#solace'],
+    ['common-ground-editorial-rebuild/common-ground.html','../production-specimens.html#common-ground'],
+    ['civic-bloom-portfolio-package/civic-bloom.html','../production-specimens.html#civic-bloom'],
+    ['thresholds-portfolio-package/thresholds.html','../production-specimens.html#thresholds'],
+    ['proof/index.html','../production-specimens.html#pulp'],
+    ['proof/index.html','../production-specimens.html#field'],
+    ['proof/index.html','../production-specimens.html#terra']
+  ];
+  for (const [file,href] of routePairs) {
+    const html=read(file);
+    assert.ok(html.includes('href="' + href + '"'), file + ' missing revision link: ' + href);
+    assert.ok(html.includes('specimen-bridge.css'), file + ' missing bridge style');
+  }
+});
+
+test('interactive examples expose the requested states without invented backends', () => {
+  const html=read('service-specimens.html');
+  assert.match(html,/30-minute break does not fit/);
+  assert.match(html,/40-minute gap/);
+  assert.match(html,/Awaiting partner review/);
+  assert.match(html,/1 ingredient/);
+  assert.match(html,/0 ingredients/);
+  assert.match(html,/Context requested/);
+  assert.match(html,/No campaign published/);
+  assert.match(html,/role="status"/);
+  const production=read('production-specimens.html');
+  assert.match(production,/T–07/);
+  assert.match(production,/10 mm/);
+  assert.match(production,/T–01/);
+  assert.match(production,/12 mm/);
+  assert.match(production,/units not specified|Measurement unit is not specified/);
+  assert.match(production,/Common_Ground_Illustrative_Data\.csv/);
 });
