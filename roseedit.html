@@ -1,312 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rose Prick | Fragrance Encyclopedia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #FDFBFA;
-            --text-main: #2A2A2A;
-            --text-muted: #7A7A7A;
-            --accent-pink: #F8EDF1;
-            --pink-shadow: rgba(235, 205, 215, 0.6);
-            --taupe: #B5A8A3;
-            --taupe-light: #EBE5E2;
-            /* Accord Colors */
-            --rose: #D96A6A;
-            --warm: #CC7B6A;
-            --patchouli: #B4C98B;
-            --fresh: #D9AF6A;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            background-color: var(--bg); 
-            font-family: 'Jost', sans-serif; 
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
-
-        .container { max-width: 1300px; margin: 0 auto; padding: 40px; }
-
-        /* --- Sidebar / Header Style --- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 60px;
-        }
-
-        .brand-path { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; }
-        .main-title { font-family: 'Playfair Display'; font-size: 80px; line-height: 0.8; }
-        .main-title span { font-style: italic; font-weight: 400; }
-
-        /* --- DATABASE GRID (Bento Style) --- */
-        .db-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1.2fr;
-            grid-template-rows: auto auto;
-            gap: 25px;
-        }
-
-        /* Common Card Style */
-        .card {
-            background: white;
-            border-radius: 25px;
-            padding: 35px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.02);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* 1. Hero / Identity Card */
-        .card-hero {
-            grid-column: 1 / 3;
-            display: flex;
-            gap: 40px;
-            align-items: center;
-        }
-        .hero-img {
-            width: 280px;
-            height: 350px;
-            object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 20px 20px 60px var(--pink-shadow);
-        }
-        .hero-info .tag-cloud {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        .tag {
-            background: var(--accent-pink);
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 11px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 10px var(--pink-shadow);
-        }
-
-        /* 2. Main Accords Card */
-        .card-accords { grid-column: 3 / 4; }
-        .label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 25px; }
-        
-        .accord-row { display: flex; align-items: center; margin-bottom: 18px; }
-        .accord-name { width: 100px; font-size: 10px; letter-spacing: 1px; font-weight: 600; }
-        .accord-bar-bg { flex-grow: 1; height: 3px; background: #F2F2F2; border-radius: 2px; position: relative; }
-        .accord-bar-fill { height: 100%; border-radius: 2px; transition: width 1s ease-in-out; }
-
-        /* 3. Scent Pyramid Card (The Heart of the Database) */
-        .card-pyramid {
-            grid-column: 1 / 4;
-            background: var(--taupe-light);
-        }
-        .pyramid-tabs {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 40px;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            padding-bottom: 20px;
-        }
-        .tab-btn {
-            background: white;
-            border: 1px solid var(--taupe);
-            padding: 12px 25px;
-            border-radius: 10px;
-            font-family: 'Jost';
-            letter-spacing: 2px;
-            font-size: 12px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .tab-btn.active { background: var(--taupe); color: white; }
-
-        .pyramid-display {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 30px;
-        }
-        .ingredient-card {
-            background: white;
-            padding: 20px;
-            border-radius: 20px;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .ingredient-card:hover { transform: translateY(-5px); }
-        .ing-img { width: 100%; height: 150px; object-fit: cover; border-radius: 15px; margin-bottom: 15px; }
-        .ing-name { font-size: 14px; font-weight: 600; margin-bottom: 5px; }
-        .ing-desc { font-size: 12px; font-style: italic; color: var(--text-muted); }
-
-        /* 4. Performance & Rating */
-        .perf-grid {
-            grid-column: 1 / 4;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 25px;
-        }
-        .stat-circle {
-            width: 80px;
-            height: 80px;
-            border: 4px solid var(--accent-pink);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        /* --- Bottom Nav --- */
-        .bottom-bar {
-            margin-top: 60px;
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            padding-top: 30px;
-        }
-        .nav-link { color: var(--text-muted); text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
-        .nav-link.active { color: var(--text-main); font-weight: 600; border-bottom: 2px solid var(--text-main); }
-
-    </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#361d25">
+<meta name="description" content="ROSE PRICK: an original, fictional fragrance editorial study. Explore a scent's opening, heart, and base through a working three-stage interface.">
+<title>ROSE PRICK / The anatomy of a scent — Jocelyn Martinez</title>
+<style>
+:root{color-scheme:light;--ink:#361d25;--rose:#9d344c;--cream:#fbf5ec;--line:#dfc4bd;--soft:#f3e6de;--serif:Georgia,'Times New Roman',serif;--sans:Arial,Helvetica,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans)}
+a{color:inherit}button{font:inherit;cursor:pointer}a:focus-visible,button:focus-visible{outline:3px solid #92374b;outline-offset:4px}
+.shell{width:min(92%,1220px);margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--ink);padding:1.15rem 0}.wordmark{font-weight:900;letter-spacing:-.07em;font-size:1.27rem;text-decoration:none}.top nav{display:flex;flex-wrap:wrap;gap:1.2rem;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase}
+.hero{display:grid;grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr);border-bottom:1px solid var(--ink);min-height:690px}
+.hero-copy{padding:clamp(2rem,6vw,5rem) clamp(1.3rem,4vw,4rem) 3rem 0;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{font-size:.7rem;text-transform:uppercase;letter-spacing:.17em;font-weight:700}.hero h1{font:400 clamp(5rem,10vw,10rem)/.81 var(--serif);letter-spacing:-.095em;margin:2rem 0}.hero h1 em{display:block;color:var(--rose);font-weight:400}.hero-lead{max-width:35ch;font:400 clamp(1.13rem,1.6vw,1.43rem)/1.48 var(--serif)}
+.meta{font-size:.78rem;line-height:1.7;color:#704c53;max-width:52ch}.hero-copy .meta{margin-top:2.3rem}.hero-art{min-width:0;position:relative;overflow:hidden;background:radial-gradient(ellipse at 58% 37%,#f6d9d7 0,#eac4bc 48%,#b35f6b 100%);display:grid;place-items:center}
+.hero-art svg{width:min(100%,710px);max-height:660px;overflow:visible;filter:drop-shadow(13px 32px 27px #58223055)}.corner-mark{position:absolute;bottom:1.6rem;right:2rem;font-size:.66rem;letter-spacing:.14em;color:#48272d}
+.band{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--line)}.band article{padding:2rem 2.4rem;border-right:1px solid var(--line)}.band article:first-child{padding-left:0}.band article:last-child{border:0}.band b{display:block;font:400 clamp(1.3rem,2.8vw,2.45rem)/1.12 var(--serif);letter-spacing:-.05em;margin:.6rem 0}
+.explore{padding:clamp(3.5rem,8vw,7rem) 0}.section-top{display:flex;justify-content:space-between;gap:2rem;align-items:end;border-bottom:1px solid var(--ink);padding-bottom:1.5rem}.section-top h2{font:400 clamp(2.7rem,6vw,5.8rem)/.96 var(--serif);letter-spacing:-.06em;margin:.5rem 0}.section-top p{max-width:35ch;line-height:1.6;font-size:.92rem}
+.stage{display:grid;grid-template-columns:1fr minmax(0,1.1fr);margin-top:2rem;gap:clamp(1.8rem,5vw,5rem);align-items:center}
+.note-selector{display:grid;gap:0}.note-selector button{width:100%;text-align:left;padding:1.25rem 0;border:0;border-top:1px solid var(--line);background:transparent;display:grid;grid-template-columns:3rem 1fr 1.5rem;align-items:center;gap:1rem;color:#8f7074}
+.note-selector button:last-child{border-bottom:1px solid var(--line)}.note-selector button[aria-pressed=true]{color:var(--ink)}.note-selector button[aria-pressed=true] .note-name{color:var(--rose);transform:translateX(5px)}
+.note-selector .index{font-size:.7rem;letter-spacing:.1em}.note-name{font:400 clamp(1.55rem,3vw,2.8rem)/1.05 var(--serif);transition:transform .15s}.note-panel{border:1px solid #e5bbc0;background:#f7e9e5;min-height:375px;padding:clamp(2rem,4vw,3.5rem);display:flex;flex-direction:column;justify-content:space-between}
+.note-panel .stage-label{font-size:.75rem;letter-spacing:.16em;font-weight:700;color:#a34b5e;text-transform:uppercase}.note-panel h3{font:400 clamp(2.6rem,5vw,5rem)/1.06 var(--serif);letter-spacing:-.065em;margin:1.4rem 0}.note-panel p{font:400 1.12rem/1.6 var(--serif);max-width:31ch}.ingredients{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:1.5rem}.ingredients span{border:1px solid #b89197;border-radius:100px;padding:.55rem .85rem;font-size:.8rem}
+.fold{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,5rem);padding:2.8rem 0;border-top:1px solid var(--ink)}.fold h2{font:400 clamp(2rem,4vw,4rem)/1.1 var(--serif);letter-spacing:-.05em;margin:0}.fold p{max-width:58ch;font-size:.91rem;line-height:1.75}.fold a{font-weight:bold}
+.footer{padding:1.5rem 0 2rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;font-size:.78rem}
+@media(max-width:780px){.hero{grid-template-columns:1fr}.hero-copy{padding:2rem 0}.hero h1{margin:1.5rem 0}.hero-art{min-height:430px}.hero-art svg{max-height:420px}.band{grid-template-columns:1fr}.band article,.band article:first-child{border-right:0;border-bottom:1px solid var(--line);padding:1.4rem 0}.stage,.fold{grid-template-columns:1fr}.section-top{align-items:start;flex-direction:column}.note-panel{min-height:320px}.top nav{gap:.7rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.note-name{transition:none}}
+</style>
 </head>
 <body>
-
-<div class="container">
-    <header>
-        <div>
-            <p class="brand-path">Tom Ford / Private Blend</p>
-            <h1 class="main-title"><span>R</span>ose Prick</h1>
-        </div>
-        <div style="font-size: 14px; color: var(--text-muted);">Released: 2020 • Perfumer: Guillaume Flavigny</div>
-    </header>
-
-    <div class="db-grid">
-        <section class="card card-hero">
-            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=1000&auto=format&fit=crop" class="hero-img" alt="Rose Prick">
-            <div class="hero-info">
-                <span class="label">Identity Profile</span>
-                <p style="font-size: 18px; line-height: 1.6; margin-bottom: 20px;">
-                    A wild bouquet of Turkish and Bulgarian roses, pierced with the sharp sting of Sichuan pepper and the depth of Indonesian patchouli.
-                </p>
-                <div class="tag-cloud">
-                    <div class="tag">Chypre Floral</div>
-                    <div class="tag">Unisex</div>
-                    <div class="tag">Spring/Fall</div>
-                    <div class="tag">Nightwear</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="card card-accords">
-            <span class="label">Main Accords</span>
-            <div class="accord-row">
-                <span class="accord-name">ROSE</span>
-                <div class="accord-bar-bg"><div class="accord-bar-fill" style="width: 100%; background: var(--rose);"></div></div>
-            </div>
-            <div class="accord-row">
-                <span class="accord-name">WARM SPICY</span>
-                <div class="accord-bar-bg"><div class="accord-bar-fill" style="width: 85%; background: var(--warm);"></div></div>
-            </div>
-            <div class="accord-row">
-                <span class="accord-name">PATCHOULI</span>
-                <div class="accord-bar-bg"><div class="accord-bar-fill" style="width: 65%; background: var(--patchouli);"></div></div>
-            </div>
-            <div class="accord-row">
-                <span class="accord-name">FRESH SPICY</span>
-                <div class="accord-bar-bg"><div class="accord-bar-fill" style="width: 40%; background: var(--fresh);"></div></div>
-            </div>
-        </section>
-
-        <section class="card card-pyramid">
-            <span class="label">Fragrance Architecture</span>
-            <div class="pyramid-tabs">
-                <button class="tab-btn" onclick="showNote('top')">01. THE TOP</button>
-                <button class="tab-btn active" onclick="showNote('heart')">02. THE HEART</button>
-                <button class="tab-btn" onclick="showNote('base')">03. THE BASE</button>
-            </div>
-            <div class="pyramid-display" id="pyramid-container">
-                </div>
-        </section>
-
-        <div class="perf-grid">
-            <div class="card">
-                <span class="label">Longevity</span>
-                <div class="stat-circle">8.2</div>
-                <p style="font-size: 13px; font-weight: 600;">LONG LASTING</p>
-                <p style="font-size: 11px; color: var(--text-muted);">8 - 10 Hours of wear</p>
-            </div>
-            <div class="card">
-                <span class="label">Sillage</span>
-                <div class="stat-circle" style="border-color: var(--taupe);">4/5</div>
-                <p style="font-size: 13px; font-weight: 600;">STRONG AURA</p>
-                <p style="font-size: 11px; color: var(--text-muted);">Leaves a noticeable trail</p>
-            </div>
-            <div class="card">
-                <span class="label">User Rating</span>
-                <div class="stat-circle" style="border-color: var(--rose); color: var(--rose);">4.1</div>
-                <p style="font-size: 13px; font-weight: 600;">VERY POSITIVE</p>
-                <p style="font-size: 11px; color: var(--text-muted);">Based on 4,200 votes</p>
-            </div>
-        </div>
-    </div>
-
-    <footer class="bottom-bar">
-        <a href="#" class="nav-link active">Scent Profile</a>
-        <a href="#" class="nav-link">Performance & Wear</a>
-        <a href="#" class="nav-link">Reviews</a>
-        <a href="#" class="nav-link">Similar Scents</a>
-    </footer>
-</div>
-
+<header class="top shell"><a class="wordmark" href="index.html">JM / STUDIO</a><nav aria-label="Section navigation"><a href="#notes">Explore the notes</a><a href="#credits">The design decision</a><a href="playground.html">Archive</a></nav></header>
+<main>
+<section class="hero shell" aria-labelledby="page-title"><div class="hero-copy"><p class="eyebrow">Editorial perfume concept / Study 04</p><h1 id="page-title">Rose<br><em>Prick.</em></h1><p class="hero-lead">One imagined fragrance. Three moments in time. A composition that begins with a spark and settles into something quieter.</p><p class="meta">Self-directed visual and interaction study. Fictional scent profile, fictional packaging and original vector artwork — not a Tom Ford product listing or a consumer review.</p></div>
+<div class="hero-art" role="img" aria-label="Original vector still life: dark-rose fragrance bottle, soft floral forms and an intersecting sharp ribbon">
+<svg viewBox="0 0 640 660" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs><linearGradient id="glass" x1="0" x2="1"><stop stop-color="#faf0e4" stop-opacity=".9"/><stop offset=".48" stop-color="#ecbfc6" stop-opacity=".48"/><stop offset="1" stop-color="#782f47" stop-opacity=".77"/></linearGradient><linearGradient id="cap" x1="0" x2="1"><stop stop-color="#2b1824"/><stop offset=".5" stop-color="#694554"/><stop offset="1" stop-color="#2b1824"/></linearGradient><radialGradient id="petal"><stop stop-color="#f5b9b6"/><stop offset="1" stop-color="#9a3d58"/></radialGradient></defs>
+<ellipse cx="316" cy="573" rx="220" ry="29" fill="#532531" opacity=".2"/>
+<g transform="translate(88 40) rotate(-17 225 255)" opacity=".83"><path d="M93 320C-22 210 85 63 215 116c57-105 225-45 199 76 96 71 41 236-81 230-76 87-221 34-240-102Z" fill="url(#petal)"/><path d="M197 320Q114 251 191 166Q259 216 197 320Z" fill="#ed8d9f"/><path d="M273 345Q187 265 281 186Q342 257 273 345Z" fill="#f5b5bb"/><path d="M301 347Q333 255 402 260Q405 357 301 347Z" fill="#c75c72"/></g>
+<path d="M86 167L565 457" stroke="#681b33" stroke-width="9" stroke-linecap="square"/>
+<g transform="translate(160 166)"><rect x="76" y="16" width="161" height="88" rx="5" fill="url(#cap)"/><rect x="63" y="91" width="187" height="18" rx="3" fill="#241722"/><rect x="0" y="104" width="313" height="351" rx="28" fill="url(#glass)" stroke="#f7e3dc" stroke-width="6"/><rect x="20" y="125" width="272" height="308" rx="19" fill="none" stroke="#ffefe7" stroke-opacity=".55"/><rect x="31" y="270" width="251" height="121" fill="#f9ece4" opacity=".92"/><text x="156" y="310" text-anchor="middle" fill="#491e2d" font-family="Georgia" font-size="17" letter-spacing="5">ROSE</text><text x="156" y="358" text-anchor="middle" fill="#491e2d" font-family="Georgia" font-size="42" font-style="italic">PRICK</text><path d="M58 153V251" stroke="#fff" opacity=".6" stroke-width="8" stroke-linecap="round"/></g>
+</svg><span class="corner-mark">ILLUSTRATION / JM — 2026</span></div></section>
+<section class="band shell" aria-label="Fragrance story"><article><span class="eyebrow">01 / Opening</span><b>The spark</b><p class="meta">A sharp first impression, expressed through the graphic slash.</p></article><article><span class="eyebrow">02 / Heart</span><b>The bloom</b><p class="meta">Overlapping petals soften the image and carry the central character.</p></article><article><span class="eyebrow">03 / Base</span><b>The trace</b><p class="meta">The dark bottle base suggests a lingering, quieter final note.</p></article></section>
+<section class="explore shell" id="notes"><div class="section-top"><div><p class="eyebrow">A sequential scent study</p><h2>Not a rating.<br><em>A progression.</em></h2></div><p>Choose a moment to reveal how an imagined composition changes. No invented wear statistics or crowd votes.</p></div><div class="stage"><div class="note-selector" aria-label="Explore note stages">
+<button type="button" data-stage="top" aria-pressed="true"><span class="index">01</span><span class="note-name">Opening</span><span aria-hidden="true">↗</span></button>
+<button type="button" data-stage="heart" aria-pressed="false"><span class="index">02</span><span class="note-name">Heart</span><span aria-hidden="true">↗</span></button>
+<button type="button" data-stage="base" aria-pressed="false"><span class="index">03</span><span class="note-name">Base</span><span aria-hidden="true">↗</span></button></div>
+<article class="note-panel" id="note-panel" aria-live="polite"><span class="stage-label" id="note-phase">01 / The opening</span><div><h3 id="note-title">A bright interruption.</h3><p id="note-description">Sichuan pepper gives the imagined opening its crisp edge, before the floral character appears.</p><div class="ingredients" id="note-ingredients"><span>Sichuan pepper</span><span>Pink pepper</span></div></div></article></div></section>
+<section class="fold shell" id="credits"><h2>One note at a time,<br>not all at once.</h2><div><p><strong>Design decision:</strong> The prior archive piece presented simulated performance scores and a photographed bottle that did not establish the product identity. This revision replaces both with a coherent original still life and an explicit three-stage reading sequence.</p><p>Product, performance, consumer votes and note profile are fictional concept material. Artwork is inline SVG; headings and note descriptions remain real selectable text. The stage buttons update one panel without relying on color alone.</p><p><a href="aurea.html">Compare with Áurea, a separate two-fragrance comparison concept</a>.</p></div></section>
+</main><footer class="footer shell"><span>ROSE PRICK / FICTIONAL EDITORIAL STUDY</span><a href="playground.html">Return to archive</a></footer>
 <script>
-    const data = {
-        top: [
-            { name: "Sichuan Pepper", img: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?q=80&w=300", desc: "Sharp, tingling spice" },
-            { name: "Turmeric", img: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=300", desc: "Earthly, golden warmth" }
-        ],
-        heart: [
-            { name: "May Rose", img: "https://images.unsplash.com/photo-1559564484-e48b3e040ff4?q=80&w=300", desc: "Clear, honeyed floral" },
-            { name: "Turkish Rose", img: "https://images.unsplash.com/photo-1496062031456-07b8f162a322?q=80&w=300", desc: "Deep, velvety richness" },
-            { name: "Bulgarian Rose", img: "https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?q=80&w=300", desc: "Soft, powdery petals" }
-        ],
-        base: [
-            { name: "Patchouli", img: "https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=300", desc: "Dark, woody earth" },
-            { name: "Tonka Bean", img: "https://images.unsplash.com/photo-1543362906-acfc16c67564?q=80&w=300", desc: "Creamy, almond sweetness" }
-        ]
-    };
-
-    function showNote(tier) {
-        const btns = document.querySelectorAll('.tab-btn');
-        btns.forEach(btn => {
-            if(btn.innerText.toLowerCase().includes(tier)) btn.classList.add('active');
-            else btn.classList.remove('active');
-        });
-
-        const container = document.getElementById('pyramid-container');
-        container.style.opacity = 0;
-
-        setTimeout(() => {
-            container.innerHTML = data[tier].map(item => `
-                <div class="ingredient-card">
-                    <img src="${item.img}" class="ing-img">
-                    <p class="ing-name">${item.name}</p>
-                    <p class="ing-desc">${item.desc}</p>
-                </div>
-            `).join('');
-            container.style.opacity = 1;
-        }, 200);
-    }
-
-    // Initialize with Heart notes
-    window.onload = () => showNote('heart');
+const stages={top:{phase:'01 / The opening',title:'A bright interruption.',description:'Sichuan pepper gives the imagined opening its crisp edge, before the floral character appears.',notes:['Sichuan pepper','Pink pepper']},heart:{phase:'02 / The heart',title:'A rose, in motion.',description:'Two differently textured rose impressions take over. The contrast lives in their scale and softness.',notes:['Turkish rose','Bulgarian rose']},base:{phase:'03 / The base',title:'What stays behind.',description:'Patchouli and dry woods leave a darker trace when the brighter opening has passed.',notes:['Patchouli','Dry woods']}};
+const buttons=[...document.querySelectorAll('[data-stage]')];
+function showStage(id){const data=stages[id];if(!data)return;buttons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.stage===id)));document.getElementById('note-phase').textContent=data.phase;document.getElementById('note-title').textContent=data.title;document.getElementById('note-description').textContent=data.description;document.getElementById('note-ingredients').replaceChildren(...data.notes.map(note=>{const el=document.createElement('span');el.textContent=note;return el}));}
+buttons.forEach(button=>button.addEventListener('click',()=>showStage(button.dataset.stage)));
 </script>
-
-</body>
-</html>
+</body></html>
