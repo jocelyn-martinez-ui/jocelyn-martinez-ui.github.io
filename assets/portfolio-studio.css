@@ -280,3 +280,14 @@
   html { scroll-behavior: auto; }
   .studio *, .decision-example *, .walking-sequence * { scroll-behavior: auto; animation: none; transition: none; }
 }
+
+/* Cross-role correction evidence directly below the first prototype link. */
+.ih-visibility-trace{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid #b8cbd5;max-width:38rem}
+.ih-visibility-trace h2{font:650 clamp(1.35rem,2vw,1.75rem)/1.17 var(--sans);letter-spacing:-.035em;margin:.28rem 0 .85rem;color:#18334c}
+.ih-visibility-trace ol{display:grid;gap:.55rem;list-style:none;margin:0;padding:0;counter-reset:none}
+.ih-visibility-trace li{padding:.85rem 1rem;border:1px solid #c9d8df;background:#fff;color:#1a3952}
+.ih-visibility-trace li span{display:block;font:650 .7rem/1.4 var(--sans);letter-spacing:.085em;text-transform:uppercase;color:#527080}
+.ih-visibility-trace li strong{display:block;margin:.35rem 0;font:650 clamp(1.05rem,1.6vw,1.25rem)/1.25 var(--sans)}
+.ih-visibility-trace li p,.ih-visibility-note{font-size:.83rem;line-height:1.55;margin:0}
+.ih-visibility-note{margin-top:.65rem;color:#425e6d;max-width:56ch}
+@media(max-width:500px){.ih-visibility-trace li{padding:.8rem}.ih-visibility-trace h2{font-size:1.35rem}}
