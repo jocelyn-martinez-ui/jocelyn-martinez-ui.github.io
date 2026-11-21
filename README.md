@@ -7,7 +7,7 @@
 - [Eight interactive product and service specimens](service-specimens.html), including repair scope, 30-minute schedule conflict, reviewed/accepted handoff status and preflight gates.
 - Four standalone experiments rebuilt in place: [ÉLAN VERDE](poster.html), [RED ARCHIVE](website.html), [Aura & Form](websiteex.html), [Rose Prick](roseedit.html).
 - Original case studies and prior work on PR #14 are preserved. The new refinements are labeled independent concept studies; no research findings, commercial results, products or printing outcomes were invented.
-- Source assertions were committed, but full Node tests, rendered browser QA, device checks, and print/email production validation remain to be run.
+- GitHub Actions `Portfolio quality` completed successfully on commit `cee2208` (script, route and workflow tests). Rendered browser QA, device checks, and print/email production validation remain outstanding.
 
 **Do not merge or deploy without a visual review.** Work is on `design/portfolio-recruiter-edition`, not public `main`.
 
