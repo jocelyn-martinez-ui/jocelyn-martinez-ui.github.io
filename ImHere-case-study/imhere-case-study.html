@@ -4,7 +4,16 @@
   <p class="eyebrow">ImHere · Interaction design</p>
   <div class="case-opening"><div><p class="project-name">ImHere</p><h1>A student missed<br>check-in. <em>Now what?</em></h1></div>
   <div><p class="case-summary">A student asks an instructor to review a missed check-in. Building on our university capstone, I independently refined the instructor’s correction flow. It puts the current record, the proposed status, and the reason in one place before anything is saved.</p>
-    <a class="solid-link" href="../experiences/imhere.html?scene=1&amp;view=correction">Try an attendance correction ↗</a></div></div>
+    <a class="solid-link" href="../experiences/imhere.html?scene=1&amp;view=correction">Try an attendance correction ↗</a>
+    <section class="ih-visibility-trace" aria-labelledby="ih-visible-title">
+      <p class="studio-label">Illustrative record sequence</p>
+      <h2 id="ih-visible-title">What the student can see</h2>
+      <ol>
+        <li><span>01 / Faculty saves</span><strong>Needs review → Present</strong><p>Reason: “Sample review confirmed attendance.”</p></li>
+        <li><span>02 / Faculty undoes</span><strong>Present → Needs review</strong><p>The reversal appears alongside the original explanation in history.</p></li>
+      </ol>
+      <p class="ih-visibility-note">This is an example, not a stored record. Try the demo, save a reason, undo, and switch to Student view to inspect the history.</p>
+    </section></div></div>
   <dl class="project-facts"><div><dt>Origin</dt><dd>University capstone</dd></div><div><dt>My contribution here</dt><dd>Interaction design, interface, coded prototype</dd></div><div><dt>Scope</dt><dd>Illustrative student records · Browser-local changes</dd></div></dl>
 </header><figure class="shell decision-example" id="correction">
   <a class="record-image" href="../experiences/imhere.html?scene=1&amp;view=correction"><img src="../assets/interface-review/imhere-correction.jpg" width="675" height="536" alt="Correction form. The record is Needs review, the proposal is Present, and the instructor is asked for a reason."></a>
