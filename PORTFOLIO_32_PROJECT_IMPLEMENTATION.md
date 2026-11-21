@@ -65,7 +65,7 @@
 - GitHub source was fetched from this PR branch; all new and edited paths were committed through the connected GitHub account.
 - Source-level checks found all six image-only sections, nine production sections, eight interaction sections and five lead cases, totaling 32 distinct briefs.
 - The new inline scripts and existing prototype JavaScript passed JavaScript parsing checks.
-- Added regression assertions in `tests/portfolio-paths.test.mjs` for all 32 entries, source/provenance labels, case-to-specimen routes, interactive-state strings and removal of placeholders. **These assertions were added but the Node test runner was not executed here.**
+- Added regression assertions in `tests/portfolio-paths.test.mjs` for all 32 entries, source/provenance labels, case-to-specimen routes, interactive-state strings and removal of placeholders. **GitHub Actions `Portfolio quality` completed successfully** for source commit [`cee2208`](https://github.com/jocelyn-martinez-ui/jocelyn-martinez-ui.github.io/commit/cee2208c252a9115d2c8fd5f1e227733b1c6a7c1), including changed script checks and route/workflow/artifact-integrity checks. [View CI run](https://github.com/jocelyn-martinez-ui/jocelyn-martinez-ui.github.io/actions/runs/44911630649).
 - The source CSV confirms the exact Common Ground model values. The CSV contains no units; the redesigned chart explicitly avoids treating them as documented percentages.
 - The TERRA SVG source shows R02 = T–07 / 10 mm and R03 = T–01 / 12 mm; the new pair uses those values.
 
