@@ -1,3 +1,18 @@
+## November 21, 2026 — All 32 pieces accounted for on review branch
+
+[Full 32-project change inventory, links, provenance and testing boundaries](PORTFOLIO_32_PROJECT_IMPLEMENTATION.md).
+
+- [Six redesigned archive images / working studies](studio-reframes.html) with their original PNGs preserved on the [Playground archive](playground.html).
+- [Nine production and visual identity specimens](production-specimens.html) including NODO paths, TERRA label revisions, a small book-cover family and source-checked report values.
+- [Eight interactive product and service specimens](service-specimens.html), including repair scope, 30-minute schedule conflict, reviewed/accepted handoff status and preflight gates.
+- Four standalone experiments rebuilt in place: [ÉLAN VERDE](poster.html), [RED ARCHIVE](website.html), [Aura & Form](websiteex.html), [Rose Prick](roseedit.html).
+- Original case studies and prior work on PR #14 are preserved. The new refinements are labeled independent concept studies; no research findings, commercial results, products or printing outcomes were invented.
+- Source assertions were committed, but full Node tests, rendered browser QA, device checks, and print/email production validation remain to be run.
+
+**Do not merge or deploy without a visual review.** Work is on `design/portfolio-recruiter-edition`, not public `main`.
+
+---
+
 ## Evidence-led review branch — October 2026
 
 - Four selected projects; twelve remain under All work. Primary positioning: Visual & UI Designer.
