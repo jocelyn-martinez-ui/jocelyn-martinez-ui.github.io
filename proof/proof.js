@@ -21,6 +21,29 @@ function record(summary,detail){const state=current();state.log.unshift({revisio
 function syncChecks(){const state=current();checkIds.forEach((id,i)=>{state.checks[i]=$(id).checked})}
 function meetsRelease(){const state=current();return state.status==="approved"&&state.checks.every(Boolean)}
 function announce(message,type){const node=$("decision-notice");node.textContent=message;node.dataset.type=type||"info"}
+const checkLabels=["Copy and dates","Image rights and credits","Output size and color"];
+function nextTask(){
+ const state=current();
+ if(state.status==="changes")return {target:"submit-revision",button:"Go to new revision",message:"Changes were requested. Submit a new sample revision to continue."};
+ if(state.status!=="approved")return {target:"approve-proof",button:"Go to review decision",message:"Review the artwork and record a decision on this revision."};
+ const missing=state.checks.indexOf(false);
+ if(missing!==-1){
+  const count=state.checks.filter(Boolean).length;
+  return {target:checkIds[missing],button:"Go to next check",message:count+" of 3 checks complete. Next check: "+checkLabels[missing]+"."};
+ }
+ return {target:"print-brief",button:"Go to release brief",message:"All three production checks and the current revision approval are recorded."};
+}
+function renderRelease(){
+ const state=current(),task=nextTask(),ready=meetsRelease();
+ $("print-brief").disabled=!ready;
+ $("gate-state").textContent=ready?"Ready to release":state.status==="approved"?"Approved / release on hold":"Release on hold";
+ $("gate-progress").textContent=task.message;
+ $("gate-next").textContent=task.button;
+ $("handoff-explain").textContent=ready
+  ?"All checks are complete for revision "+revLabel(state.revision)+". Print a sample release brief."
+  :task.message;
+}
+$("gate-next").addEventListener("click",()=>$(nextTask().target).focus());
 function render(){
  const brief=briefs[selected],state=current();
  $("current-id").textContent=brief.id;$("current-title").textContent=brief.title;
@@ -37,12 +60,7 @@ function render(){
  $("request-change").disabled=state.status!=="awaiting";
  $("approve-proof").disabled=state.status!=="awaiting";
  $("submit-revision").disabled=state.status==="awaiting";
- $("print-brief").disabled=!meetsRelease();
- $("handoff-explain").textContent=meetsRelease()
-  ?"All checks are complete for revision "+revLabel(state.revision)+". Print a sample release brief."
-  :state.status!=="approved"
-  ?"Blocked: the current revision needs explicit approval and all three preflight checks."
-  :"Blocked: complete the remaining preflight checks to produce a sample release brief.";
+ renderRelease();
  document.querySelectorAll("[data-job]").forEach(btn=>{
   const key=btn.dataset.job;
   btn.setAttribute("aria-pressed",String(key===selected));
@@ -84,12 +102,8 @@ $("submit-revision").addEventListener("click",()=>{
  render();announce("Sample revision "+revLabel(state.revision)+" is awaiting a fresh decision. Prior approval is no longer valid.");
 });
 checkIds.forEach((id)=>$(id).addEventListener("change",()=>{
- syncChecks();const ready=meetsRelease();$("print-brief").disabled=!ready;
- $("handoff-explain").textContent=ready
-  ?"All checks are complete for revision "+revLabel(current().revision)+". Print a sample release brief."
-  :current().status!=="approved"
-  ?"Blocked: the current revision needs explicit approval and all three preflight checks."
-  :"Blocked: complete the remaining preflight checks to produce a sample release brief.";
+ syncChecks();renderRelease();
+ const ready=meetsRelease();
  if(ready)announce("Preflight checklist complete. The sample release brief is available.","success");
 }));
 $("reset-all").addEventListener("click",()=>{
@@ -126,5 +140,16 @@ $("print-brief").addEventListener("click",()=>{
  legal.className="print-legal";
  window.print();
 });
+if(window.location && new URLSearchParams(window.location.search).get("sample")==="preflight"){
+ const s=current();
+ s.revision=4;s.status="approved";s.checks=[true,true,false];
+ s.note="Corrected the poster date.";
+ s.log=[
+  {revision:4,summary:"Two preflight checks recorded",detail:"Copy and dates, image rights and credits"},
+  {revision:4,summary:"Explicit approval recorded",detail:s.note},
+  {revision:4,summary:"Proof submitted for review",detail:"Illustrative starting state"}
+ ];
+ announce("Sample revision 04 is approved. Output size and color still need review.");
+}
 render();
 })();

@@ -3,8 +3,8 @@
  const grid=document.querySelector(".work-grid");if(!grid)return;
  const cards=new Map([...grid.querySelectorAll("[data-project]")].map(item=>[item.dataset.project,item]));
  const paths={
-  featured:{ids:["brume","plain-sight","holland","imhere"],text:"BRUME and PLAIN SIGHT show campaign and editorial design. Holland Walking Tour and ImHere open onto decisions you can try."},
-  all:{ids:["proof","brume","plain-sight","holland","imhere","psychictally","afterform","interval","aurea","loopline","novella","nutriva"],text:"All twelve showcased projects. Independent concepts, collaborative foundations and application work are labeled on each project."},
+  featured:{ids:["imhere","brume","holland","plain-sight"],text:"Try an attendance correction, explore a lighting campaign, resume a walking tour, or read a four-page sequence."},
+  all:{ids:["proof","brume","plain-sight","holland","imhere","psychictally","afterform","interval","aurea","loopline","novella","nutriva"],text:"Twelve selected case studies. Independent concepts, collaborative foundations and application work are labeled on each project."},
   ux:{ids:["imhere","holland","psychictally"],text:"Try an attendance correction, pause a walking tour, or inspect a community moderation decision."},
   graphic:{ids:["proof","brume","plain-sight","afterform"],text:"Campaign artwork, lighting studies, a photographic publication, and a repair-service identity."},
   visual:{ids:["proof","brume","plain-sight","interval"],text:"Compare a studio campaign, a lighting campaign, an editorial publication, and a cultural programme."},

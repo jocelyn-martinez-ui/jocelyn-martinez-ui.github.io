@@ -7,6 +7,9 @@
   const resolve=document.getElementById("pt-resolve");
   const reset=document.getElementById("pt-reset");
   if(!status||!history||!feedback||!request||!resolve||!reset)return;
+  const queue=document.getElementById("pt-queue-state");
+  const mirror=document.querySelector("[data-queue-mirror]");
+  const trail=[];
   function transition(state) {
     const updates={
       open:{label:"Open",note:"No action taken",announcement:"Example reset to open. No action is stored."},
@@ -15,7 +18,12 @@
     };
     const current=updates[state];if(!current)return;
     status.dataset.state=state;status.textContent=current.label;
-    history.textContent=current.note;feedback.textContent=current.announcement;
+    if(state==="open")trail.length=0;
+    else trail.push(current.note);
+    history.textContent=trail.length?trail.join(" · "):current.note;
+    if(queue)queue.textContent=current.label;
+    if(mirror)mirror.textContent=current.label;
+    feedback.textContent=current.announcement+" The example discussion remains public.";
     request.disabled=state!=="open";resolve.disabled=state==="resolved";
   }
   request.addEventListener("click",()=>{transition("context");resolve.focus()});

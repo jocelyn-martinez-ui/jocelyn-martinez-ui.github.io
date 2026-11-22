@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 380">
+  <title>An interrupted window grid on an imagined concrete facade</title>
+  <desc>Blue window lines meet beneath the projecting upper slab. A vermilion ring identifies the corner junction.</desc>
+  <view id="joint" viewBox="244 64 170 146"/>
+  <defs>
+    <pattern id="floor" width="1" height="10" patternUnits="userSpaceOnUse">
+      <path d="M0 9h1" fill="none" stroke="#a3a8a6" stroke-width=".6"/>
+    </pattern>
+    <clipPath id="left"><path d="M62 144 322 91v186L62 337z"/></clipPath>
+    <clipPath id="right"><path d="m322 91 126 46v185l-126-45z"/></clipPath>
+  </defs>
+  <path fill="#f2ebd9" d="M0 0h520v380H0z"/>
+  <g stroke="#bdb8aa" stroke-width=".8" fill="none">
+    <path d="M0 326 337 249l183 59M0 353l337-77 183 59M0 298l337-77 183 59M118 380V53m204 294V35m128 323V27"/>
+  </g>
+  <path fill="#fdf9eb" d="m42 132 282-63 144 52-145 63z"/>
+  <path d="m62 144 260-53v186L62 337z" fill="#c6d2d2"/>
+  <path d="m322 91 126 46v185l-126-45z" fill="#14324a"/>
+  <path d="m58 311 270-65 126 48v26l-126-43-270 66z" fill="#1d374b"/>
+  <g clip-path="url(#left)" stroke="#17334a" fill="none">
+    <path d="M87 120v224m36-240v232m37-239v233m43-246v235m52-253v237m53-249v235" stroke-width="3.4"/>
+    <path d="m45 200 287-64m-287 109 287-64m-287 110 287-65" stroke-width="6"/>
+    <path d="m45 173 287-64m-287 108 287-64m-287 111 287-64m-287 109 287-65" stroke-width="1.6"/>
+  </g>
+  <g clip-path="url(#right)" stroke="#e5e6db" fill="none">
+    <path d="M342 86v212m23-199v214m25-206v219m27-213v219m23-210v220" stroke-width="2.4"/>
+    <path d="m312 132 152 54m-152-8 152 53m-152-7 152 54" stroke-width="3.5"/>
+    <path d="m312 110 152 54m-152-9 152 54m-152-8 152 54m-152-8 152 54" stroke-width="1.2"/>
+  </g>
+  <path d="m41 133 281-64 146 52-15 6-131-45-281 64z" fill="#1c3548"/>
+  <path d="m41 133 281-64 146 52-2-11-143-53-282 64z" fill="#fcf8e9" stroke="#18344a" stroke-width="3"/>
+  <path d="m44 147 278-64v10L44 156z" fill="#d6b645"/>
+  <path d="m322 83 139 48v10L322 93z" fill="#b99b39"/>
+  <path fill="none" stroke="#c53728" stroke-width="5.3" d="M369 102a42 42 0 1 1-84 0 42 42 0 1 1 84 0z"/>
+  <path d="M364 82 405 50h64" fill="none" stroke="#c53728" stroke-width="2"/>
+</svg>

@@ -70,7 +70,7 @@ test('the first four visible home projects match the enhanced featured selection
   const visible = Array.from(home.matchAll(/<article\b[^>]*data-project="([^"]+)"[^>]*>/g))
     .filter(([tag]) => !/\shidden\b/.test(tag))
     .map(([, id]) => id);
-  assert.deepEqual(visible, ['brume', 'plain-sight', 'holland', 'imhere']);
+  assert.deepEqual(visible, ['imhere', 'brume', 'holland', 'plain-sight']);
   const featured = read('work-paths.js').match(/featured:\{ids:(\[[^\]]+\])/);
   assert.deepEqual(JSON.parse(featured[1]), visible);
 });

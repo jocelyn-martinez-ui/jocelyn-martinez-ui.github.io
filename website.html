@@ -1,32 +1,22 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RED ARCHIVE / Four design decisions — Jocelyn Martinez</title><meta name="description" content="Editorial index concept featuring four actual portfolio specimens, linked to their real cases.">
-<style>
-:root{--ink:#3e0b0d;--red:#ca302e;--paper:#f9f4eb;--line:#c9b8a9;--serif:Georgia,serif;--sans:Arial,Helvetica,sans-serif}*{box-sizing:border-box}
-html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans)}
-a{color:inherit}a:focus-visible{outline:3px solid var(--red);outline-offset:4px}button{font:inherit}
-.shell{width:min(92%,1250px);margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;border-bottom:2px solid var(--ink);padding:1.1rem 0}.logo{text-decoration:none;font:italic 700 2rem/.8 var(--serif);letter-spacing:-.06em;color:var(--red)}.top nav{display:flex;gap:1.5rem;font-size:.76rem;text-transform:uppercase;font-weight:700;letter-spacing:.08em}
-.hero{display:grid;grid-template-columns:1fr .35fr;align-items:end;gap:2rem;padding:clamp(3.5rem,8vw,8rem) 0 4.5rem;border-bottom:1px solid var(--ink)}
-.small{font-size:.71rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700}.hero h1{margin:1.5rem 0 0;font:400 clamp(4.5rem,10vw,10.6rem)/.83 var(--serif);letter-spacing:-.09em}.hero em{font-weight:400;color:var(--red)}.hero aside{font:400 1.1rem/1.6 var(--serif);max-width:24ch;padding-bottom:1rem}
-.index-wrap{display:grid;grid-template-columns: minmax(130px,.28fr) 1fr;gap:2rem;padding:3.5rem 0 6rem}.rail{align-self:start;position:sticky;top:1rem}.rail p{font-size:.75rem;max-width:17ch;line-height:1.6;color:#76534b}.list{border-top:1px solid var(--ink)}
-.specimen{display:grid;grid-template-columns: minmax(0,1fr) minmax(0,.9fr);gap:clamp(1rem,3vw,2.5rem);border-bottom:1px solid var(--ink);padding:2rem 0;align-items:center;text-decoration:none}
-.specimen figure{margin:0;overflow:hidden;aspect-ratio:1.52;background:#e5d9ce}.specimen img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}.specimen:hover img{transform:scale(1.035)}
-.specimen .row{display:flex;gap:1rem;justify-content:space-between;align-items:start}.specimen .issue{color:var(--red);font:italic 400 4.2rem/.8 var(--serif);letter-spacing:-.07em}
-.specimen h2{font:400 clamp(2rem,3.8vw,4rem)/1 var(--serif);letter-spacing:-.055em;margin:2rem 0 .7rem}
-.specimen p{font-size:.94rem;line-height:1.65;max-width:44ch}.specimen .action{font-size:.72rem;font-weight:bold;letter-spacing:.09em;text-transform:uppercase;border-bottom:1px solid var(--red);padding-bottom:.4rem;display:inline-block;margin-top:1rem}
-.note{padding:2.5rem 0;border-top:1px solid var(--ink);display:grid;grid-template-columns:1fr 1.8fr;gap:2rem}.note h2{font:italic 400 clamp(2rem,4vw,3.7rem)/1 var(--serif);color:var(--red);margin:0}.note p{font-size:.9rem;line-height:1.8;max-width:67ch;margin:0}
-footer{border-top:2px solid var(--ink);padding:1.5rem 0 2rem;display:flex;justify-content:space-between;gap:1rem;font-size:.78rem}
-@media(max-width:860px){.hero{grid-template-columns:1fr}.hero aside{max-width:55ch}.index-wrap{grid-template-columns:1fr}.rail{position:static}.specimen{grid-template-columns:1fr}.specimen figure{order:-1}.specimen h2{margin:1.2rem 0 .6rem}.note{grid-template-columns:1fr}}
-@media(max-width:510px){.top{align-items:start}.top nav{gap:.8rem;flex-wrap:wrap;justify-content:flex-end}.hero h1{font-size:18vw}.index-wrap{padding-top:2rem}.specimen .issue{font-size:3rem}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.specimen img{transition:none}}
-</style></head><body>
-<header class="top shell"><a class="logo" href="index.html">RED.</a><nav><a href="#index">The index</a><a href="#principle">Approach</a><a href="#contact">Contact</a></nav></header>
-<main><section class="hero shell"><div><p class="small">An experimental editorial index · 2026</p><h1>Look<br><em>closer.</em></h1></div><aside>Four actual portfolio specimens. Four different questions. A red editorial mark leads the eye to the decision worth inspecting.</aside></section>
-<section class="index-wrap shell" id="index"><div class="rail"><p class="small">01—04 / Archive</p><p>Each entry leads to a real, inspectable sample rather than a placeholder image or dead gallery link.</p></div>
-<div class="list">
-<a class="specimen" href="proof/index.html#campaign"><div><div class="row"><span class="small">Production design / Campaign</span><span class="issue" aria-hidden="true">01</span></div><h2>PROOF</h2><p>One campaign headline, two shapes. Inspect how the typography is recomposed between portrait social and wide advertising formats.</p><span class="action">Compare the two layouts ↗</span></div><figure><img src="proof/assets/campaign-01.webp" alt="PROOF campaign portrait social artwork" loading="lazy"></figure></a>
-<a class="specimen" href="plain-sight/publication.html?page=6#reader"><div><div class="row"><span class="small">Editorial / Publication</span><span class="issue" aria-hidden="true">02</span></div><h2>PLAIN SIGHT</h2><p>Sequencing turns a collection of images into a reading experience. Open consecutive pages and notice how the crop changes the interpretation.</p><span class="action">Read the publication ↗</span></div><figure><img src="plain-sight/PLAIN_SIGHT_Preview.jpg" alt="PLAIN SIGHT editorial publication preview" loading="lazy"></figure></a>
-<a class="specimen" href="brume/email/01-introduction.html"><div><div class="row"><span class="small">Marketing / HTML Email</span><span class="issue" aria-hidden="true">03</span></div><h2>BRUME</h2><p>Light does the art direction. The email brings an imagined lamp campaign into a narrow, selectable-text format.</p><span class="action">Open the HTML email ↗</span></div><figure><img src="brume/images/wine-room.jpg" alt="BRUME ribbed lamp concept in plum-toned room lighting" loading="lazy"></figure></a>
-<a class="specimen" href="experiences/imhere.html?scene=1&amp;view=correction"><div><div class="row"><span class="small">Product / Interaction</span><span class="issue" aria-hidden="true">04</span></div><h2>ImHere</h2><p>A missed check-in becomes an explained decision. Try the attendance correction form and inspect the student-facing history.</p><span class="action">Try a correction ↗</span></div><figure><img src="assets/interface-review/imhere-correction.jpg" alt="ImHere attendance correction showing current and proposed status" loading="lazy"></figure></a>
-</div></section>
-<section class="note shell" id="principle"><h2>An index, not a disguise.</h2><p>RED ARCHIVE is an experimental web editorial composition by Jocelyn Martinez, not a separate consultancy or a representation of client research. The four image previews link to existing design work with their original case-study credits. The oversized italic mark, narrow annotation rail, and numbered entries create a repeatable browsing system without hiding the actual artifacts.</p></section>
-</main><footer class="shell" id="contact"><span>RED ARCHIVE · ORIGINAL PORTFOLIO INDEX CONCEPT</span><a href="mailto:jocelyn.wisteria@gmail.com">Email Jocelyn Martinez ↗</a></footer></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A typographic index of three inspectable design decisions in PULP, FIELD and TERRA.">
+<meta property="og:title" content="RED ARCHIVE — An index of marks">
+<title>RED ARCHIVE — An index of marks | Jocelyn Martinez</title>
+<link rel="icon" href="assets/jm-mark.svg">
+<link rel="stylesheet" href="study-editions/studies.css">
+</head>
+<body class="red"><a class="skip" href="#main">Skip to the study</a>
+<div class="study-shell"><header class="study-nav"><a href="index.html#work">Jocelyn Martinez</a><span>RED ARCHIVE · Editorial index</span></header>
+<main id="main">
+<header class="red-head"><h1>An index<br>of <em>marks.</em></h1><p>Three marks from the fictional PROOF studio briefs. Each one opens the artwork that gives the mark its meaning.</p></header>
+<ol class="red-pieces" aria-label="Archive entries"><li class="red-card"><figure><img src="proof/commissions/pulp/02-overprint.svg" alt="PULP’s two-color overprint poster." width="310" height="400"></figure><div><p class="eyebrow">Plate / PULP</p><h2>Two inks, one darker crossing.</h2><p>The clear strip in PULP’s first plate turns into the darkest part of the second poster when the inks meet.</p><a class="study-link" href="proof/commissions/pulp/index.html">Open the PULP specimen</a></div></li>
+<li class="red-card"><figure><img src="proof/commissions/field/page-07.svg" alt="FIELD’s second chapter divider and its leaf contour." width="310" height="400"></figure><div><p class="eyebrow">Contour / FIELD</p><h2>One line, two scales.</h2><p>A leaf sits beside the masthead on FIELD’s cover and cuts through a chapter numeral six pages later.</p><a class="study-link" href="proof/commissions/field/index.html">Open the FIELD specimen</a></div></li>
+<li class="red-card"><figure><img src="proof/commissions/terra/label-mist-r03.svg" alt="TERRA’s current sample label for the Mist finish." width="310" height="400"></figure><div><p class="eyebrow">Revision / TERRA</p><h2>The number changes the object.</h2><p>TERRA’s Mist labels carry the same finish name. A close look at the specification band distinguishes the samples.</p><a class="study-link" href="proof/commissions/terra/index.html">Open the TERRA specimen</a></div></li>
+</ol><nav class="related-editions" aria-label="Related portfolio editions"><a class="study-link" href="proof/index.html#campaign">See the later PROOF campaign</a><a class="study-link" href="plain-sight/publication.html?page=6#reader">Read the PLAIN SIGHT publication</a></nav></main>
+<footer class="study-footer"><span>RED ARCHIVE · AI-assisted editorial portfolio study</span><a href="playground.html">Portfolio playground</a></footer></div>
+<footer class="edition-source"><a href="archive/november-studies/red-archive.html">Earlier portfolio edition</a> · <a href="projects.html#archive">All visual studies</a></footer>
+</body></html>

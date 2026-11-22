@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Village Auto — Repair status | Jocelyn Martinez</title>
+<meta name="description" content="A local-service design concept for checking a repair and authorizing the next step.">
+<link rel="stylesheet" href="base.css"><link rel="stylesheet" href="sheets.css"><script defer src="interactions.js"></script>
+</head><body class="village"><a class="skip" href="#main">Skip to the study</a>
+<nav class="strip" aria-label="Portfolio navigation"><a href="../playground.html">Playground</a><span>Village Auto / Service concept</span></nav>
+<main id="main" class="wrap shop-sheet">
+  <header class="shop-head"><p class="shop-brand">Village <em>Auto</em></p><h1>Repair status</h1><p>Return to your work order to see what the shop needs from you.</p><a class="shop-link" href="#work-order">Find the sample work order</a></header>
+  <section class="ticket" id="work-order" aria-labelledby="order-title">
+    <div class="ticket-edge"><span>Sample work order</span><span>VA–014</span></div>
+    <div class="ticket-body">
+      <p class="small-label">Workshop / Brake service</p><h2 id="order-title">Rear brake pads</h2>
+      <dl class="repair-fields"><div><dt>Inspection</dt><dd>Completed</dd></div><div><dt>Suggested work</dt><dd>Replace rear pads</dd></div></dl>
+      <div class="ticket-status" role="status" aria-live="polite" aria-atomic="true"><p class="small-label">Current status</p><h3 id="repair-status">Awaiting authorization</h3><p id="repair-next">The shop is waiting for the driver to authorize the proposed repair.</p></div>
+      <div class="ticket-buttons" data-enhance hidden><button type="button" id="authorize">Authorize sample repair</button><button type="button" id="undo-repair" hidden>Undo authorization</button></div>
+      <noscript><p>In the interactive sample, authorization sends the work order back to the shop.</p></noscript>
+    </div>
+  </section>
+</main>
+<footer class="colophon"><p>AI-assisted portfolio edition. This fictional work order resets when the page reloads.</p><a href="../villageauto.png">Original flat study (PNG)</a></footer>
+</body></html>

@@ -291,3 +291,5 @@
 .ih-visibility-trace li p,.ih-visibility-note{font-size:.83rem;line-height:1.55;margin:0}
 .ih-visibility-note{margin-top:.65rem;color:#425e6d;max-width:56ch}
 @media(max-width:500px){.ih-visibility-trace li{padding:.8rem}.ih-visibility-trace h2{font-size:1.35rem}}
+
+.mail-edition-frame{display:block;width:min(100%,23rem);height:32rem;margin:auto;border:1px solid #a89b8d;background:#fff}@media(max-width:600px){.mail-edition-frame{height:27rem}}

@@ -1,0 +1,13 @@
+.decision-panel .workshop-tag {position:relative;background:#ffe4b3;color:#3a1e32;border:1px solid #503140;border-radius:.8rem .1rem .1rem .8rem;padding:1rem 1rem 1rem 2rem;margin:0 0 1.7rem;border-left:.45rem solid #9f3845}
+.decision-panel .workshop-tag::before {content:"";position:absolute;top:1.04rem;left:.45rem;width:.55rem;height:.55rem;border:2px solid #503140;border-radius:50%}
+.workshop-tag-key {display:grid;gap:.2rem;border-bottom:1px dashed #835564;padding-bottom:.5rem;font:600 .83rem/1.4 ui-monospace,monospace}
+.decision-panel .workshop-tag h2 {font:italic 500 1.55rem/1.15 Georgia,serif;margin:.75rem 0;letter-spacing:-.025em;color:inherit}
+.decision-panel .workshop-tag p {font-size:.95rem;line-height:1.45;color:inherit}
+.decision-panel .workshop-tag strong {display:block;border-top:1px solid #835564;padding:.55rem 0;margin-top:.6rem;font-size:.95rem}
+.workshop-tag button {font-size:.95rem;color:inherit}
+@media print {
+  body.printing-work-tag * {visibility:hidden}
+  body.printing-work-tag :is(.workshop-tag,.workshop-tag *) {visibility:visible}
+  body.printing-work-tag .workshop-tag {position:absolute;inset:0 auto auto 0;width:85mm;max-width:100%;margin:0}
+  body.printing-work-tag .workshop-tag button {display:none}
+}

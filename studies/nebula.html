@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nebula Systems — Signal bench | Jocelyn Martinez</title>
+<meta name="description" content="An interface study showing motion, a two-pulse haptic pattern, and changes in core state.">
+<link rel="stylesheet" href="base.css"><link rel="stylesheet" href="sheets.css"><script defer src="interactions.js"></script>
+</head><body class="nebula"><a class="skip" href="#main">Skip to the study</a>
+<nav class="strip" aria-label="Portfolio navigation"><a href="../playground.html">Playground</a><span>Nebula Systems / Interaction specimen</span></nav>
+<main id="main" class="wrap signal-sheet">
+  <header class="signal-header"><p class="signal-brand">Nebula Systems</p><h1>Signal bench</h1><p>Open a channel to inspect the visual trace of an interface action.</p></header>
+  <section class="instruments" aria-label="Signal channels">
+    <details class="instrument" name="bench"><summary><span class="channel">01</span> Motion<span class="indicator" aria-hidden="true"></span></summary>
+      <div class="instrument-body"><div class="trace" aria-hidden="true"><svg viewBox="0 0 420 118"><path class="axis" d="M0 98H420"/><path class="wave" d="M0 96h65c95 0 104-76 184-76h171"/></svg></div><div><h2>Approach, then settle</h2><p>The curve leaves its resting level gradually. Its flat ending marks a settled position.</p></div></div>
+    </details>
+    <details class="instrument" name="bench" open><summary><span class="channel">02</span> Haptics<span class="indicator" aria-hidden="true"></span></summary>
+      <div class="instrument-body"><div class="trace" id="pulse-trace" aria-hidden="true"><svg viewBox="0 0 420 118"><path class="axis" d="M0 97H420"/><path class="wave" d="M0 96h78V24h35v72h62V47h57v49h188"/></svg></div><div><h2>Double pulse</h2><p>A short, strong pulse is followed by a softer, longer one. This trace simulates the pattern visually.</p><button class="pulse-button" id="play-pulse" data-enhance hidden type="button">Play visual trace</button><p role="status" class="pulse-caption" id="pulse-caption"></p></div></div>
+    </details>
+    <details class="instrument" name="bench"><summary><span class="channel">03</span> Core<span class="indicator" aria-hidden="true"></span></summary>
+      <div class="instrument-body"><div class="trace" aria-hidden="true"><svg viewBox="0 0 420 118"><path class="axis" d="M0 97H420"/><path class="wave" d="M0 96h196V27h224"/></svg></div><div><h2>State change</h2><p>One transition holds the new level. The line stays high until another event changes the state.</p></div></div>
+    </details>
+  </section>
+</main>
+<footer class="colophon"><p>AI-assisted portfolio edition. The three signal diagrams illustrate interaction patterns.</p><a href="../nebulasystems.png">Original flat study (PNG)</a></footer>
+</body></html>
