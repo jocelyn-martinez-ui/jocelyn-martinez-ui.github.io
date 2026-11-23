@@ -1,7 +1,7 @@
 /* Portfolio frame. Individual projects retain their own type and colour. */
 .folio-opening {
-  display: grid;
-  grid-template-columns: minmax(0, .78fr) minmax(0, 1.3fr);
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: clamp(2rem, 5vw, 6rem);
   padding-block: clamp(2.1rem, 4.8vw, 5rem);
@@ -12,10 +12,12 @@
   letter-spacing: -.067em;
   text-wrap: balance;
 }
+.folio-profile { flex: .78 1 16rem; min-width: 0; }
+.folio-profile h1, .index-intro h1 { overflow-wrap: anywhere; }
 .folio-profile h1 em { display: block; color: #65493c; }
 .folio-profile > p:not(.studio-label) { max-width: 35ch; font-size: 1.075rem; line-height: 1.55; }
 .folio-profile .sample-links { margin-top: 1.25rem; }
-.folio-cabinet { min-width: 0; }
+.folio-cabinet { flex: 1.3 1 26rem; min-width: 0; }
 .folio-switches {
   display: flex; flex-wrap: wrap; align-items: end; gap: .3rem 1.2rem;
   border-bottom: 1px solid var(--rule); margin-bottom: .65rem;
@@ -52,17 +54,17 @@
 .folio-record li::marker { color: #396254; font-weight: 650; }
 .folio-record b, .folio-record small { display: block; }
 .folio-record small { font-size: .85rem; line-height: 1.35; color: #40544b; }
-.folio-caption { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; padding-top: .7rem; }
+.folio-caption { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; padding-top: .7rem; }
 .folio-caption p { font-size: .93rem; line-height: 1.45; }
 .folio-caption a, .project-action, .all-projects-link, .index-jumps a { font-weight: 600; text-decoration: underline; text-underline-offset: .23em; }
-.folio-caption a { font-size: .92rem; flex: none; }
+.folio-caption a { font-size: .92rem; max-width: 100%; }
 .role-samples {
-  display: grid; grid-template-columns: 1.18fr repeat(5,minmax(0,1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.6rem), 1fr));
   border-block: 1px solid var(--ink); padding-block: 1.05rem; gap: .8rem 1.3rem;
 }
 .role-samples h2 { align-self: center; font: 500 1.25rem/1.1 var(--serif); }
 .role-samples a { display: block; border-left: 1px solid var(--rule); padding: .2rem 0 .2rem .9rem; }
-.role-samples span, .role-samples strong { display: block; }
+.role-samples span, .role-samples strong { display: block; overflow-wrap: anywhere; }
 .role-samples span { font-size: .82rem; color: var(--muted); }
 .role-samples strong { font: 600 .96rem/1.36 var(--sans); }
 .role-samples a:hover strong, .project-name:hover { text-decoration: underline; text-underline-offset: .2em; }
@@ -74,6 +76,7 @@
 .index-tools { display:flex; align-items:end; justify-content:space-between; flex-wrap:wrap; gap:1rem 2rem; border-block:1px solid var(--ink); padding-block:1rem; }
 .index-jumps { display:flex; flex-wrap:wrap; gap:.5rem 1.25rem; }
 .index-jumps a { font-size: .9rem; }
+.index-search { min-width: 0; max-width: 100%; }
 .index-search label { display:block; font-size:.86rem; font-weight:600; }
 .index-search input { font:inherit; font-size:1rem; color:var(--ink); background:#fff; border:1px solid #867b6f; border-radius:0; padding:.35rem .65rem; max-width:100%; }
 .index-results { color:var(--muted); font-size:.9rem; margin-block:.65rem; }
@@ -86,24 +89,23 @@
 .project-action { justify-self:end; font-size:.89rem; text-align:right; }
 .index-empty { padding:2rem 0; }
 @media(max-width:1000px) {
-  .role-samples { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .role-samples { grid-template-columns:repeat(auto-fit,minmax(min(100%,10.5rem),1fr)); }
   .folio-opening { gap:2.2rem; }
 }
 @media(max-width:760px) {
-  .folio-opening { grid-template-columns:1fr; padding-block:1.7rem; gap:1.35rem; }
+  .folio-opening { display:grid; grid-template-columns:minmax(0,1fr); padding-block:1.7rem; gap:1.35rem; }
   .folio-profile h1 { font-size:clamp(3rem,9.4vw,4.25rem); max-width:12ch; margin-block:.4rem .7rem; }
   .folio-profile h1 em { display:inline; }
   .folio-profile .sample-links { margin-top:.5rem; }
   .folio-plate { aspect-ratio:auto; min-height:0; padding-block:5%; }
   .folio-plate--record { min-height:12rem; }
-  .role-samples { grid-template-columns:repeat(2,minmax(0,1fr)); gap:.8rem; }
+  .role-samples { grid-template-columns:repeat(auto-fit,minmax(min(100%,8.6rem),1fr)); gap:.8rem; }
   .role-samples h2 { grid-column:1/-1; }
   .role-samples a { border:0; padding-left:0; }
   .project-row { grid-template-columns:minmax(0,1fr) auto; row-gap:.3rem; }
   .project-name { grid-column:1; }
   .project-action { grid-column:2; grid-row:1; max-width:12ch; }
   .project-detail { grid-column:1/-1; }
-  .folio-caption { flex-wrap:wrap; }
 }
 @media(max-width:390px) {
   .folio-record { width:100%; padding:.75rem .9rem; }

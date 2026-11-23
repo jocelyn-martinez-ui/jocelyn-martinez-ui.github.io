@@ -1392,6 +1392,14 @@
             }
         }
 
+        .nav-inner, .nav-links, .brand { flex-wrap: wrap; }
+        .nav-inner { row-gap: 0.4rem; }
+        .brand { white-space: normal; }
+        .section-content, .ed-inner, .next-inner { min-width: 0; overflow-wrap: anywhere; }
+        .ed-spine { flex-wrap: wrap; row-gap: 0.25rem; }
+        .file-tree, .naming-panel { min-width: 0; }
+        .file-tree pre { max-width: 100%; overflow-x: auto; }
+
         @media (prefers-reduced-motion: reduce) {
             html {
                 scroll-behavior: auto;

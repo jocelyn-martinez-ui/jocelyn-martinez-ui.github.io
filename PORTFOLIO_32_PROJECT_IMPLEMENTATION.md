@@ -1,5 +1,7 @@
 # Portfolio implementation audit — 21 November 2026
 
+The [current draft review and rendered work samples](https://github.com/jocelyn-martinez-ui/jocelyn-martinez-ui.github.io/pull/14) cover the subsequent 32-project redesign. The inventory below records the preceding implementation.
+
 **Repository:** [Jocelyn Martinez portfolio](https://github.com/jocelyn-martinez-ui/jocelyn-martinez-ui.github.io)  
 **Review branch:** `design/portfolio-recruiter-edition` / [PR #14](https://github.com/jocelyn-martinez-ui/jocelyn-martinez-ui.github.io/pull/14)  
 **Scope:** 32 distinct portfolio pieces. Existing work remains on `main`; this branch is not merged or published.

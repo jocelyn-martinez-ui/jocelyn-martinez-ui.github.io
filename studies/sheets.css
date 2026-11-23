@@ -64,7 +64,8 @@
 .sol-note figcaption{font:400 .8rem/1.4 var(--mono);margin-top:.5rem}.sol-note figcaption span{color:#716931}
 /* Service ticket */
 .village{--ink:#faeee3;--paper:#242324;--line:#555054;--focus:#ffba6c}
-.shop-sheet{display:grid;grid-template-columns:.94fr 1.06fr;gap:clamp(1.3rem,5vw,5rem);align-items:center;padding-block:clamp(2.3rem,7vw,7.5rem)}
+.shop-head, .ticket { min-width: 0; overflow-wrap: anywhere; }
+.shop-sheet{display:grid;grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);gap:clamp(1.3rem,5vw,5rem);align-items:center;padding-block:clamp(2.3rem,7vw,7.5rem)}
 .shop-brand{font:800 clamp(3.8rem,8.6vw,8rem)/.83 var(--cond);text-transform:uppercase;letter-spacing:-.06em}
 .shop-brand em{display:block;font-style:normal;color:#ff6854}.shop-head h1{font:700 clamp(1.65rem,3vw,2.5rem)/1.1 var(--sans);margin:1.8rem 0 .6rem;letter-spacing:-.04em}
 .shop-head>p:not(.shop-brand){max-width:32ch}.shop-link{display:inline-block;font-weight:700;margin-top:.9rem}
@@ -99,7 +100,7 @@
  .aether-title h1,.sol-title h1{font-size:clamp(3.5rem,12vw,6rem)}
  .aether-cover figure{max-width:28rem;width:91%;justify-self:center}
  .aether-detail{grid-template-columns:1fr}.aether-cut img{max-height:17rem}.sol-note{gap:1.3rem}
- .shop-brand em{display:inline}.shop-sheet{gap:2rem}
+ .shop-brand em{display:inline}.shop-sheet{gap:2rem;grid-template-columns:minmax(0,1fr)}
  .instrument-body{gap:.8rem}
 }
 @media(max-width:24rem){.bau-head h1{font-size:clamp(3rem,16vw,3.9rem)}.aether-title h1,.sol-title h1{font-size:clamp(2.75rem,13vw,3.5rem)}.shop-brand{font-size:clamp(3rem,17vw,3.8rem)}.poem-head h1{font-size:clamp(2.8rem,16vw,4rem)}}
