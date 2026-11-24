@@ -1,0 +1,12 @@
+body[data-app="loopline"] .partner-acceptance {padding:1rem 1.2rem;margin:1rem 0;background:#f2e3c8;border-left:.35rem solid #95521f;color:#302719;text-align:left}
+.partner-acceptance strong {display:block;font-size:1.3rem}
+.partner-acceptance p {margin:.35rem 0 0;font-size:1rem}
+body[data-app="nutriva"] .pantry-trace {padding:1rem 1.1rem;margin:1rem 0;border:1px solid #83946e;background:#f2f5e8}
+.pantry-trace h3 {font:500 1.55rem/1.2 Georgia,serif;margin:.4rem 0}
+.pantry-trace .button {margin:.6rem 0 0}
+body[data-app="novella"] .blind-reading {margin:1.2rem auto;max-width:47rem;border-block:1px solid #cbb9ad;padding:1.25rem 0}
+.blind-reading.revealed {display:grid;grid-template-columns:minmax(4rem,8rem) minmax(0,1fr);gap:1.25rem;align-items:start}
+.blind-reading img {width:100%;height:auto;box-shadow:3px 4px 0 #e6dbcc}
+body[data-app="novella"] .blind-reading .nvl-blind-prose {margin:0;text-align:left}
+body[data-app="aurea"] .au-bench-summary p {font-size:1rem;line-height:1.4}
+@media(max-width:480px){.blind-reading.revealed{grid-template-columns:minmax(0,1fr)}.blind-reading img{max-width:5rem}}

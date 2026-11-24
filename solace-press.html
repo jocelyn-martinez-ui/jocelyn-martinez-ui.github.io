@@ -1392,6 +1392,14 @@
             }
         }
 
+        .nav-inner, .nav-links, .brand { flex-wrap: wrap; }
+        .nav-inner { row-gap: 0.4rem; }
+        .brand { white-space: normal; }
+        .section-content, .ed-inner, .next-inner { min-width: 0; overflow-wrap: anywhere; }
+        .ed-spine { flex-wrap: wrap; row-gap: 0.25rem; }
+        .file-tree, .naming-panel { min-width: 0; }
+        .file-tree pre { max-width: 100%; overflow-x: auto; }
+
         @media (prefers-reduced-motion: reduce) {
             html {
                 scroll-behavior: auto;
@@ -1411,6 +1419,7 @@
             }
         }
     </style>
+<link rel="stylesheet" href="design-source/edition-specimens.css"><link rel="stylesheet" href="assets/specimen-bridge.css">
 </head>
 
 <body>
@@ -1433,51 +1442,7 @@
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="page-shell">
-            <div class="hero-grid">
-                <div class="reveal">
-                    <p class="eyebrow">Self-directed concept · Brand identity & visual communication</p>
-                    <h1>Solace <em>Press</em></h1>
-                    <p class="hero-subtitle">
-                        A complete identity and communication system for an independent publisher—designed to remain recognizable across books, campaigns, events, packaging, presentations, and digital experiences.
-                    </p>
-                    <p class="hero-note">
-                        Solace Press is a fictional portfolio project. The brand strategy, applications, and production direction are proposed rather than commissioned or commercially launched.
-                    </p>
-
-                    <div class="hero-actions">
-                        <a class="button button-primary" href="solace-press/Solace_Press_Brand_Guidelines.pdf" target="_blank" rel="noopener">View brand guidelines ↗</a>
-                        <a class="button button-secondary" href="#overview">Explore the case study ↓</a>
-                    </div>
-                </div>
-
-                <div class="hero-visual reveal">
-                    <img src="solace-press/hero-collage.jpg" alt="Solace Press identity, campaign, and website direction shown as an editorial brand-system collage">
-                    <div class="hero-seal" aria-hidden="true">SP</div>
-                </div>
-            </div>
-
-            <div class="project-meta reveal" aria-label="Project information">
-                <div class="meta-item">
-                    <span class="meta-label">Role</span>
-                    <span class="meta-value">Brand, visual, and digital-direction designer</span>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">Context</span>
-                    <span class="meta-value">Self-directed independent publishing identity</span>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">Focus</span>
-                    <span class="meta-value">Identity architecture, typography, campaigns, print, packaging, and digital systems</span>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">Deliverables</span>
-                    <span class="meta-value">Guidelines, book system, catalog, social campaign, events, mailer, deck, and website direction</span>
-                </div>
-            </div>
-        </div>
-    </header>
+    <header class="ed-case ed-solace" id="edition-specimen"><div class="ed-inner"><div class="ed-intro"><p class="ed-label">Solace Press / Publishing identity</p><h1>A publisher on the shelf.</h1><p class="ed-dek">Three titles share a low-set imprint. Open a spine to see how rhythm, color and type give each book its own place in the catalogue.</p></div><div class="ed-solace-shelf" data-solace-shelf><div class="ed-spines" aria-label="Choose a catalogue title"><a class="ed-spine quiet" href="#cover-quiet" data-cover="quiet"><span>The Quiet Precision of Attention</span><small>Solace Press</small></a><a class="ed-spine letters" href="#cover-letters" data-cover="letters"><span>Letters from Elsewhere</span><small>Solace Press</small></a><a class="ed-spine margins" href="#cover-margins" data-cover="margins"><span>Margins of the Real</span><small>Solace Press</small></a></div><div class="ed-solace-items"><article class="ed-solace-item" id="cover-quiet" data-solace-item="quiet"><figure><img src="solace-press/covers/quiet.svg" alt="Editable cover design for The Quiet Precision of Attention."></figure><div><p class="ed-label">Catalogue entry</p><h2>The Quiet Precision of Attention</h2><p class="ed-author">Maria Alden</p><p>Essays on reading well.</p><p class="ed-caption">Fine underlines give the long title a quiet counterweight.</p><a class="ed-inline" href="solace-press/covers/quiet.svg">Open the cover artwork</a></div></article><article class="ed-solace-item" id="cover-letters" data-solace-item="letters"><figure><img src="solace-press/covers/letters.svg" alt="Editable cover design for Letters from Elsewhere."></figure><div><p class="ed-label">Catalogue entry</p><h2>Letters from Elsewhere</h2><p class="ed-author">Yusuf Haq</p><p>On belonging and distance.</p><p class="ed-caption">Three overlapping envelopes make distance visible before the title arrives.</p><a class="ed-inline" href="solace-press/covers/letters.svg">Open the cover artwork</a></div></article><article class="ed-solace-item" id="cover-margins" data-solace-item="margins"><figure><img src="solace-press/covers/margins.svg" alt="Editable cover design for Margins of the Real."></figure><div><p class="ed-label">Catalogue entry</p><h2>Margins of the Real</h2><p class="ed-author">Lena Rodrigues</p><p>Essays on art, politics and culture.</p><p class="ed-caption">The short middle line hangs between two tall margin rules.</p><a class="ed-inline" href="solace-press/covers/margins.svg">Open the cover artwork</a></div></article></div></div><div class="ed-links"><a href="solace-press/Solace_Press_Brand_Guidelines.pdf#page=2">Read the original guidelines</a><a href="#publishing">Explore the publishing system</a></div><p class="ed-credit">Fictional publisher and titles. Title and author names follow the existing visual-system board. All three cover compositions are new AI-assisted portfolio studies.</p></div></header>
 
     <nav class="case-nav" aria-label="Case study sections">
         <div class="page-shell case-nav-inner">
@@ -2026,7 +1991,8 @@
                 </div>
             </div>
         </section>
-    </main>
+    <aside class="studio-bridge" aria-label="New independent specimens for Solace Press"><div><span class="studio-bridge-kicker">New / independent portfolio refinements</span><h2>Solace Press: inspect the decision.</h2></div><div><p>Three distinct fictional book identities retain a shared imprint. These are newly constructed concept samples; their original source and credits remain unchanged.</p><div class="studio-bridge-links"><a href="production-specimens.html#solace">Compare the spine family ↗</a></div></div></aside>
+</main>
 
     <footer class="next-case">
         <div class="page-shell next-inner">
@@ -2109,5 +2075,5 @@
             }
         });
     </script>
-</body>
+<script src="solace-press/covers/shelf.js" defer></script></body>
 </html>

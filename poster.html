@@ -1,191 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>ÉLAN VERDE Poster</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
-<style>
-
-body {
-    background: #e9e7e2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-/* ✦ Poster Canvas */
-.poster {
-    width: 700px;
-    height: 1000px;
-    background: #f7f5f1;
-    position: relative;
-    padding: 60px;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.15);
-    overflow: hidden;
-}
-
-/* ✦ Background texture */
-.poster::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 80% 20%, rgba(0,0,0,0.04), transparent 40%);
-}
-
-/* ✦ Brand Title */
-.title {
-    font-family: 'Playfair Display', serif;
-    font-size: 70px;
-    letter-spacing: 8px;
-    color: #6f7f73;
-}
-
-.subtitle {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    letter-spacing: 4px;
-    margin-top: 10px;
-    color: #8c8c8c;
-}
-
-/* ✦ Main Image */
-.main-img {
-    position: absolute;
-    top: 200px;
-    left: 60px;
-    width: 380px;
-    height: 520px;
-    overflow: hidden;
-}
-
-.main-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* ✦ Secondary Image */
-.secondary-img {
-    position: absolute;
-    top: 280px;
-    right: 60px;
-    width: 220px;
-    height: 260px;
-}
-
-.secondary-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* ✦ Third Image */
-.third-img {
-    position: absolute;
-    bottom: 140px;
-    right: 80px;
-    width: 180px;
-    height: 220px;
-}
-
-.third-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* ✦ Floating Typography */
-.floating {
-    position: absolute;
-    top: 420px;
-    left: 20px;
-    font-family: 'Playfair Display', serif;
-    font-size: 120px;
-    color: rgba(0,0,0,0.04);
-    transform: rotate(-90deg);
-}
-
-/* ✦ Text Block */
-.text-block {
-    position: absolute;
-    bottom: 100px;
-    left: 60px;
-    max-width: 300px;
-}
-
-.text-block h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    color: #6f7f73;
-}
-
-.line {
-    width: 60px;
-    height: 1px;
-    background: #6f7f73;
-    margin: 15px 0;
-}
-
-.text-block p {
-    font-size: 13px;
-    line-height: 1.8;
-    color: #7a7a7a;
-}
-
-/* ✦ Footer */
-.footer {
-    position: absolute;
-    bottom: 40px;
-    right: 60px;
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: #999;
-}
-
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="An editorial poster built around a hand, falling seeds and a glass jar.">
+<meta property="og:title" content="Élan Verde — The fall of a seed">
+<title>Élan Verde — The fall of a seed | Jocelyn Martinez</title>
+<link rel="icon" href="assets/jm-mark.svg">
+<link rel="stylesheet" href="study-editions/studies.css">
 </head>
-
-<body>
-
-<div class="poster">
-
-    <!-- Title -->
-    <div class="title">ÉLAN VERDE</div>
-    <div class="subtitle">RITUALS OF SOFT LIVING</div>
-
-    <!-- Images -->
-    <div class="main-img">
-        <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71">
-    </div>
-
-    <div class="secondary-img">
-        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2">
-    </div>
-
-    <div class="third-img">
-        <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7">
-    </div>
-
-    <!-- Floating text -->
-    <div class="floating">ÉLAN</div>
-
-    <!-- Text -->
-    <div class="text-block">
-        <h2>The Beauty of Restraint</h2>
-        <div class="line"></div>
-        <p>
-            A quiet exploration of softness, organic textures, and minimal form.
-            Where stillness becomes luxury and simplicity becomes identity.
-        </p>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">ORGANIC · EDITORIAL · TIMELESS</div>
-
-</div>
-
-</body>
-</html>
+<body class="elan"><a class="skip" href="#main">Skip to the study</a>
+<div class="study-shell"><header class="study-nav"><a href="index.html#work">Jocelyn Martinez</a><span>Élan Verde · Editorial poster</span></header>
+<main id="main">
+<h1 class="elan-title">Élan <i>Verde</i></h1>
+<div class="elan-poster"><div class="elan-poem"><p class="eyebrow">Seed gathering</p><h2>The space<br> before<br> the jar.</h2><p>Open fingers. A small fall. The rim of a glass catches the last light.</p></div>
+<figure><img src="study-editions/elan-seed.webp" width="1122" height="1402" alt="Fingers release seeds toward the open mouth of a glass jar over green linen."></figure></div>
+<div class="elan-foot"><p class="caption">The margins follow the fall from fingertips to glass. AI-generated concept photograph, composed for this portfolio edition.</p><button type="button" class="print-action" onclick="window.print()">Print the poster</button></div>
+</main>
+<footer class="study-footer"><span>Élan Verde · AI-assisted portfolio edition</span><a href="playground.html">Portfolio playground</a></footer></div>
+<footer class="edition-source"><a href="archive/november-studies/elan-verde.html">Earlier portfolio edition</a> · <a href="projects.html#archive">All visual studies</a></footer>
+</body></html>
