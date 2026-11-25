@@ -1,0 +1,45 @@
+@font-face {
+  font-family: "BRUME Sans";
+  src: url("../../assets/fonts/713ca32c3c8b2ada.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "BRUME Display";
+  src: url("../../assets/fonts/808d8d26b49135ab.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "BRUME Display";
+  src: url("../../assets/fonts/488e956feb1421c4.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "BRUME Mono";
+  src: url("../../assets/fonts/7e3d7e3c7de8e8f7.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+:root {
+  --br-ink: #202521;
+  --br-paper: #f4f2e9;
+  --br-signal: #dce58e;
+  --br-wine: #501f36;
+  --br-amber: #ad602e;
+  --br-secondary: #50564f;
+  --br-rule: #b1b3a5;
+  --br-dark-rule: #60655b;
+  --br-sans: "BRUME Sans", Arial, sans-serif;
+  --br-display: "BRUME Display", "Arial Narrow", Arial, sans-serif;
+  --br-mono: "BRUME Mono", ui-monospace, monospace;
+  --br-gutter: clamp(1rem, 3.5vw, 4rem);
+  --br-gap: clamp(1rem, 2.05vw, 2.1rem);
+  --br-section: clamp(3.3rem, 7vw, 7rem);
+  --br-focus: #245d96;
+}

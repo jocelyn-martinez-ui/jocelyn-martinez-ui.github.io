@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio letters · BRUME email campaign</title>
+<meta name="description" content="Three working email designs for the fictional BRUME lighting studio. Read the launch letter, material letter and finish guide in mobile and desktop layouts.">
+<link rel="stylesheet" href="proof.css"><script src="proof.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the letters</a>
+<header class="project-nav">
+  <div class="nav-inner">
+    <a class="brand" href="../index.html" aria-label="BRUME case study"><img src="pictures/register.png" alt="" width="36" height="26">BRUME</a>
+    <nav aria-label="Project"><a href="../index.html#email">Case study</a><a href="../collection.html">Collection</a></nav>
+  </div>
+</header>
+<main id="main">
+  <header class="introduction">
+    <div><p class="section-label">Email campaign</p><h1>Studio letters</h1></div>
+    <p class="lede">The launch opens with Plum. A second letter gets close enough to see how the glass is shaped. The third helps a reader choose a finish.</p>
+  </header>
+  <div class="workbench">
+    <div class="directory">
+      <h2 class="side-title">Read a letter</h2>
+      <nav class="letters" aria-label="Email proofs">
+        <a class="letter-choice" id="launch" aria-current="true" href="01-introduction.html" target="letter-proof" data-letter="launch" data-subject="Where the light lands." data-preheader="Meet Plum, a ribbed glass table lamp in the last light of the room."><span class="index-no">01</span><span><strong>Collection launch</strong><span>Where the light lands.</span></span></a>
+        <a class="letter-choice" id="material" href="02-material.html" target="letter-proof" data-letter="material" data-subject="What a single rib does to light" data-preheader="Follow a reflection from the smooth shade down to the fluted glass foot."><span class="index-no">02</span><span><strong>Material letter</strong><span>What a single rib does to light</span></span></a>
+        <a class="letter-choice" id="editions" href="03-detail.html" target="letter-proof" data-letter="editions" data-subject="Which finish belongs in your room?" data-preheader="Ivory in morning light, Amber in late sun, Plum after dusk."><span class="index-no">03</span><span><strong>Collection guide</strong><span>Which finish belongs in your room?</span></span></a>
+      </nav>
+      <div class="proof-controls" hidden>
+        <fieldset class="view-controls"><legend>Layout preview</legend>
+          <div class="switches">
+            <label><input type="radio" name="width" value="360"><span>Mobile</span></label>
+            <label><input type="radio" name="width" value="640" checked><span>Desktop</span></label>
+          </div>
+        </fieldset>
+        <label class="image-toggle"><input type="checkbox" id="hide-images">Preview with images off</label>
+      </div>
+      <noscript><p class="fallback-note">Each title opens its letter in the preview. <a href="01-introduction.txt">Launch text</a>, <a href="02-material.txt">material text</a> and <a href="03-detail.txt">collection text</a> are also available.</p></noscript>
+    </div>
+    <section class="proof" aria-label="Email message preview">
+      <div class="envelope enhanced-only" hidden><dl>
+        <div><dt>Subject</dt><dd id="subject">Where the light lands.</dd></div>
+        <div><dt>Preheader</dt><dd id="preheader">Meet Plum, a ribbed glass table lamp in the last light of the room.</dd></div>
+      </dl></div>
+      <div class="bench-paper"><div class="frame-mat" id="frame-mat"><iframe name="letter-proof" id="letter-proof" src="01-introduction.html" title="Email preview: Where the light lands."></iframe></div></div>
+      <div class="sources enhanced-only" hidden>
+        <a id="web-file" href="01-introduction.html">Open HTML letter</a>
+        <a id="text-file" href="01-introduction.txt">Read plain text</a>
+        <a id="source-file" href="sources/01-introduction.eml" download>Download email source (.eml)</a>
+      </div>
+    </section>
+  </div>
+  <p role="status" id="proof-status" class="sr-only"></p>
+  <section class="delivery-note" aria-labelledby="delivery-title">
+    <h2 id="delivery-title">About these proofs</h2>
+    <p>Headlines, descriptions and links are live text. Each download pairs the HTML with its plain-text alternative and uses absolute URLs for hosted images and links. These are browser proofs for a fictional studio. Inbox rendering and delivery remain untested.</p>
+  </section>
+</main>
+<footer class="page-foot"><a href="../index.html#email">Return to the BRUME case study</a><span>Jocelyn Martinez</span></footer>
+</body>
+</html>

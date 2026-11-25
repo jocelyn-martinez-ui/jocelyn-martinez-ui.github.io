@@ -20,6 +20,11 @@ const pages = [
 ];
 const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
 
+function homeFilters() {
+  const filters = read('work-paths.js').matchAll(/(\w+)\s*:\s*\{\s*ids\s*:\s*(\[[^\]]+\])/g);
+  return Object.fromEntries(Array.from(filters, ([, name, ids]) => [name, JSON.parse(ids)]));
+}
+
 test('all active portfolio page assets and internal destinations resolve', () => {
   for (const page of pages) {
     const html = read(page);
@@ -39,20 +44,26 @@ test('all active portfolio page assets and internal destinations resolve', () =>
   }
 });
 
-test('homepage filter routes include only existing cards and curate four featured projects', () => {
+test('homepage filters cover the published cards and report the correct total', () => {
   const index = read('index.html');
-  const routes = read('work-paths.js');
-  const cards = new Set(Array.from(index.matchAll(/\bdata-project="([^"]+)"/g), (m) => m[1]));
-  assert.equal(cards.size, 12);
+  const ids = Array.from(index.matchAll(/\bdata-project="([^"]+)"/g), (m) => m[1]);
+  const cards = new Set(ids);
+  assert.equal(cards.size, ids.length, 'Each homepage card needs a unique project ID');
   assert.ok(cards.has('psychictally'));
   assert.ok(cards.has('plain-sight'));
   assert.ok(fs.existsSync(path.join(root,'plain-sight/downloads/PLAIN_SIGHT_Studies_01-03.pdf')));
-  const groups = Array.from(routes.matchAll(/ids:\[([^\]]+)\]/g), (m) =>
-    Array.from(m[1].matchAll(/"([^"]+)"/g), (v) => v[1]));
-  assert.equal(groups.length, 6);
-  assert.equal(groups[0].length, 4);
-  assert.equal(groups[1].length, cards.size);
-  for (const group of groups) for (const id of group) assert.ok(cards.has(id), 'Missing card ' + id);
+  const filters = homeFilters();
+  const buttons = Array.from(index.matchAll(/\bdata-focus="([^"]+)"/g), (m) => m[1]);
+  assert.deepEqual(Object.keys(filters).sort(), ['all', 'featured', 'graphic', 'ux', 'visual', 'web']);
+  assert.deepEqual(new Set(Object.keys(filters)), new Set(buttons));
+  assert.deepEqual(new Set(filters.all), cards, 'All case studies must include every homepage card');
+  const allLabel = index.match(/<button\b[^>]*\bdata-focus="all"[^>]*>(\d+) case studies<\/button>/);
+  assert.ok(allLabel, 'The all-projects button must display its count');
+  assert.equal(Number(allLabel[1]), cards.size);
+  for (const [name, group] of Object.entries(filters)) {
+    assert.equal(new Set(group).size, group.length, 'Duplicate project in ' + name);
+    for (const id of group) assert.ok(cards.has(id), 'Missing card ' + id);
+  }
 });
 
 test('new portfolio images have alt text and prototype is disclosed as illustrative', () => {
@@ -65,14 +76,16 @@ test('new portfolio images have alt text and prototype is disclosed as illustrat
   assert.match(caseStudy, /research plan is written/i);
 });
 
-test('the first four visible home projects match the enhanced featured selection', () => {
+test('the initial featured order and count match the interactive homepage', () => {
   const home = read('index.html');
   const visible = Array.from(home.matchAll(/<article\b[^>]*data-project="([^"]+)"[^>]*>/g))
     .filter(([tag]) => !/\shidden\b/.test(tag))
     .map(([, id]) => id);
-  assert.deepEqual(visible, ['imhere', 'brume', 'holland', 'plain-sight']);
-  const featured = read('work-paths.js').match(/featured:\{ids:(\[[^\]]+\])/);
-  assert.deepEqual(JSON.parse(featured[1]), visible);
+  assert.deepEqual(visible, ['hope-college', 'imhere', 'brume', 'holland', 'plain-sight']);
+  assert.deepEqual(homeFilters().featured, visible);
+  const count = home.match(/<p\b[^>]*\bid="work-count"[^>]*>(\d+) projects shown\.<\/p>/);
+  assert.ok(count, 'The initial featured count must be available to assistive technology');
+  assert.equal(Number(count[1]), visible.length);
 });
 
 test('shareable sections keep the relevant original artifact in the section', () => {

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f4f2e9">
+  <meta name="description" content="Explore the BRUME lighting collection at phone and desktop widths. The live product keeps your finish and lighting selections as the layout changes.">
+  <title>Collection on screen — BRUME</title>
+  <link rel="icon" href="identity/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="identity/tokens.css">
+  <link rel="stylesheet" href="screens.css">
+  <script src="screens.js" defer></script>
+</head>
+<body>
+  <a href="#screen-main" class="skip">Skip to the screen study</a>
+  <header class="mast wrap">
+    <a class="brand" href="index.html" aria-label="BRUME design case study">
+      <img src="identity/register.svg" alt="" width="55" height="26">
+      <span>BRUME</span>
+    </a>
+    <a href="index.html" class="return"><span class="direction reverse" aria-hidden="true"></span> Back to case study</a>
+  </header>
+  <main id="screen-main" tabindex="-1">
+    <div class="opening wrap">
+      <h1>The collection on screen</h1>
+      <p>Choose a glass finish and a room light, then switch screen sizes to see how the same selection travels between layouts.</p>
+    </div>
+    <section class="screen-study wrap" aria-label="Live collection preview">
+      <div class="tools" id="screen-controls" hidden>
+        <fieldset>
+          <legend>Viewport</legend>
+          <div class="switch">
+            <label><input type="radio" name="viewport" value="phone"><span>Phone</span></label>
+            <label><input type="radio" name="viewport" value="desktop" checked><span>Desktop</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Scale</legend>
+          <div class="switch">
+            <label><input type="radio" name="scale" value="fit" checked><span>Fit width</span></label>
+            <label><input type="radio" name="scale" value="actual"><span>100%</span></label>
+          </div>
+        </fieldset>
+        <a id="open-collection" class="open-link" href="collection.html">Open collection at full size <span class="direction" aria-hidden="true"></span></a>
+      </div>
+      <noscript><p class="fallback">This live view follows the width of your browser. <a href="collection.html">Open the full collection</a>.</p></noscript>
+      <div class="panning" id="panning" hidden>
+        <span>Move across the full-size preview</span>
+        <div class="pan-controls">
+          <button type="button" id="pan-left" aria-label="Move the preview left"><span class="direction reverse" aria-hidden="true"></span></button>
+          <button type="button" id="pan-right" aria-label="Move the preview right"><span class="direction" aria-hidden="true"></span></button>
+        </div>
+      </div>
+      <figure class="proof">
+        <figcaption class="proof-caption" id="frame-caption">
+          <span>Collection / live view</span>
+          <output id="dimensions" aria-live="off"></output>
+        </figcaption>
+        <div class="mat">
+          <div class="stage" id="stage">
+            <div class="sheet" id="sheet">
+              <iframe id="live-collection" src="collection.html" title="BRUME collection. Explore glass finishes and room light." width="1280" height="800"></iframe>
+            </div>
+          </div>
+        </div>
+      </figure>
+    </section>
+  </main>
+</body>
+</html>

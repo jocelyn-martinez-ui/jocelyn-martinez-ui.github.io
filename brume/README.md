@@ -1,26 +1,32 @@
-# BRUME — Photography-led portfolio replacement
+# BRUME · Where the light lands.
 
-This is a complete self-directed, AI-assisted design concept for a fictional sculptural lighting studio, replacing the rejected NODO art direction.
+A self-initiated, AI-assisted design study for Jocelyn Martinez’s portfolio. The fictional studio has one ribbed glass table lamp in Ivory, Amber and Plum. The campaign gives each finish a distinctive environment. The collection lets visitors hold the environment constant as they compare finishes.
 
-- `index.html` — photographic campaign case study, 15 live-image SVG artwork masters and three HTML emails.
-- `production.html` — 3 edition labels, 4 print collateral pieces, simulated archived revisions and technical print caveats.
-- `research.html` — portfolio differentiation, three moodboard approaches and cited original creative references.
-- `social/*.svg` — editable compositions with linked AI-generated photographic assets; `social/*.png` are flattened counterparts.
-- `images/*.jpg` — four conceptual image-generated product scenes. Images do **not** document manufactured lighting products or a real photo shoot.
-- `email/*.html` & `email/*.txt` — three standalone table-based mock emails, with sample links. Clients and legal footer not validated for a real send.
-- `print/svg/` & `print/pdf/` — dimensioned source graphics and specimen vector PDFs; print-specific CMYK spot decisions, output profiles, packaging dies, and electrical safety not validated.
-- `build_assets.py`, `build_email_print.py`, `build_site.py` — reproducible authoring scripts. These use system-installed fonts; font files are not included.
+## Open the work
 
-## Visual change
+| Page | What to inspect |
+| --- | --- |
+| [Case study](index.html#ivory) | Brief, intended audience, contribution, photography, identity, UX, channels and reflection |
+| [Customer collection](collection.html?light=evening#plum) | Nine independently selectable finish and time combinations, same-light comparison, material details and a script-free photographic register |
+| [Photographic contact sheet](photography.html) | Sixteen full-size editorial images, including material and hand details and a matched off/on pair |
+| [Design notes](research.html#before) | The earlier Ivory beside the reconstruction, three mark studies, local type, color and layout rules |
+| [Campaign gallery](campaign.html) | Sixteen editable SVGs, including the complete six-frame carousel |
+| [Print and packaging](production.html) | Eleven editable SVGs, the carton net, a two-sided brochure, original label revisions and three photographic placements |
+| [Email proofs](email/index.html) | Three HTML letters and plain-text counterparts, images-off proofing and downloadable multipart email sources |
+| [Website on screen](screens.html) | The real collection at phone and desktop viewport sizes, retaining the selected finish and hour |
 
-NODO = flat vectors / loud display sans / color blocks / product-icons. BRUME = photographed glass / warm cinematic atmosphere / small editorial serif / material and context. The campaign emphasizes different photographic crops and rhythms rather than repeating one layout.
+## Maintaining the project
 
-## Scope and verification
+The HTML, CSS, JavaScript, fonts and images are served directly by GitHub Pages. Run a static server from the portfolio root to include the existing site font paths. Edition entry points on the case include `#ivory`, `#amber` and `#plum`. Customer links add a light condition, such as `collection.html?light=afternoon#amber`.
 
-Source assets, relative paths, responsive rules and PDF geometry are programmatically inspectable. Full professional accessibility, actual email-client QA, real printer preflight, physical production and user testing have not been completed.
+The editable campaign, print and email masters are present in the repository. To change a campaign layout or crop, edit its corresponding source and rebuild the artwork. The print generator, mockup compositor and email exporter have separate inputs. Their dependencies are needed only for authoring.
 
-To preview: run `python -m http.server` from this directory and open `index.html`. GitHub Pages can serve the files as a static `/brume/` subdirectory.
+- [Campaign source and dimensions](social/README.md)
+- [Print, carton and mockup specifications](print/PRINT_SPECS.md)
+- [Email sources and browser proofing](email/README.md)
+- [Design tokens](identity/tokens.css) and [vector register](identity/register.svg)
+- [Review, verification and production limits](QA_REPORT.md)
 
-## Browser SVG image-loading fix
+Run the targeted state checks from the repository root with `node --test brume/tests/collection.test.mjs`. The original four JPEG, social, email and print filenames continue to serve their current versions for other portfolio pages.
 
-As of 24 October 2026, all 15 social SVG masters and four photo-based print SVGs embed their photographic JPEG layers as `data:image/jpeg;base64,...`. An externally linked `<image href="../images/...">` can be blocked by browsers when the SVG is displayed through an HTML `<img>` element. The original JPEG files remain in `images/`, and the typography/vector components of the SVGs remain editable. The Python generators preserve embedding on rebuild. Email artwork loads from an absolute HTTPS URL for real email-client interoperability (still requires client testing and the user's consent before any actual sending).
+The product and mockup environments are AI-generated visual studies. The downloadable artwork keeps names, headlines and codes as editable typography. The intended audience and use case are design assumptions. Physical samples, live marketing results and commissioned client work are outside this project.

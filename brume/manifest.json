@@ -1,17 +1,17 @@
 {
-  "name": "BRUME \u2014 Light after hours",
-  "date": "2026-10-24",
+  "name": "BRUME — Where the light lands.",
+  "date": "2026-11-24",
   "status": "self-directed AI-assisted fictional lighting brand",
-  "photography": "AI-generated concept images; no manufactured lamps or commissioned photoshoot",
+  "photography": "AI-generated studies of a fictional lamp. Plate names describe intended lighting, without measured performance.",
   "images": [
     "wine-room",
     "sun-room",
     "collection",
     "hand-detail"
   ],
-  "social": 15,
+  "social": 16,
   "email": 3,
-  "print_current": 7,
+  "print_current": 11,
   "print_archived": 2,
   "variants": [
     {
@@ -32,5 +32,46 @@
     "printer": false,
     "product_safety": false,
     "commercial_results": false
-  }
+  },
+  "editorial_plates": [
+    "afternoon",
+    "architecture",
+    "collection",
+    "detail",
+    "evening",
+    "hand",
+    "hero",
+    "lit",
+    "macro",
+    "material",
+    "morning",
+    "profile",
+    "shadow",
+    "space",
+    "still-life",
+    "unlit"
+  ],
+  "lighting_register": {
+    "finishes": [
+      "ivory",
+      "amber",
+      "plum"
+    ],
+    "conditions": [
+      "morning",
+      "afternoon",
+      "evening"
+    ],
+    "images": 9
+  },
+  "pages": [
+    "index.html",
+    "collection.html",
+    "campaign.html",
+    "production.html",
+    "email/index.html",
+    "photography.html",
+    "screens.html",
+    "research.html"
+  ]
 }
