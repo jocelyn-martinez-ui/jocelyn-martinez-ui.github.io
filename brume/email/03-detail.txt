@@ -1,10 +1,28 @@
-Subject: The detail you stay for
-Preheader: A closer look at the pieces and the moments they create.
+Subject: Which finish belongs in your room?
+Preheader: Ivory in morning light, Amber in late sun, Plum after dusk.
 
-The warm reflection, the curve of the glass, the passing light.
+BRUME / Studio letters 03
+Collection guide
 
-AN OBJECT TO LIVE BESIDE.
+Choose the hour.
 
-See the concept collection.: https://jocelyn-martinez-ui.github.io/brume/index.html#campaign
+Start with the light in your room. Three glass finishes share one silhouette.
 
-BRUME is a fictional, AI-assisted portfolio concept. No actual email has been sent.
+Ivory / BR-02 · Morning
+A pale dome picks up the blue at the edge of daylight.
+https://jocelyn-martinez-ui.github.io/brume/collection.html?light=morning#ivory
+
+Amber / BR-03 · Afternoon
+Tea-colored glass throws a honey-colored reflection.
+https://jocelyn-martinez-ui.github.io/brume/collection.html?light=afternoon#amber
+
+Plum / BR-01 · Evening
+A warm rim outlines the deep wine-colored shade.
+https://jocelyn-martinez-ui.github.io/brume/collection.html?light=evening#plum
+
+Compare the three finishes
+https://jocelyn-martinez-ui.github.io/brume/collection.html#compare
+
+BRUME is a fictional lighting studio. This unsent letter and its AI-generated imagery are part of Jocelyn Martinez’s design portfolio.
+Design case study
+https://jocelyn-martinez-ui.github.io/brume/index.html#email

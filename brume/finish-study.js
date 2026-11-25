@@ -1,32 +1,33 @@
+// A fragment remains a usable edition link when scripts are unavailable.
 (() => {
-  const nav = document.querySelector(".finish-controls");
-  if (!nav) return;
-  const links = Array.from(nav.querySelectorAll("a[href^='#']"));
-  const frames = links.map(link => document.getElementById(link.hash.slice(1)));
-  if (frames.some(frame => !frame)) return;
+  const cover = document.getElementById("campaign");
+  if (!cover) return;
+  const links = Array.from(cover.querySelectorAll("[data-finish]"));
+  const editions = new Set(links.map(link => link.dataset.finish));
+  const fromUrl = () => location.hash.slice(1).toLowerCase();
 
-  function show(hash) {
-    const index = links.findIndex(link => link.hash === hash);
-    links.forEach((link, i) => {
-      const active = i === index;
-      if (active) link.setAttribute("aria-current", "true");
+  function select(finish) {
+    cover.dataset.selected = finish;
+    for (const link of links) {
+      if (link.dataset.finish === finish) link.setAttribute("aria-current", "true");
       else link.removeAttribute("aria-current");
-      frames[i].hidden = !active;
+    }
+  }
+
+  select(editions.has(fromUrl()) ? fromUrl() : "plum");
+  for (const link of links) {
+    link.addEventListener("click", event => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+      event.preventDefault();
+      if (location.hash !== link.hash) history.pushState(null, "", link.hash);
+      select(link.dataset.finish);
     });
   }
-
-  function fromLocation() {
-    const active = links.find(link => link.hash === location.hash);
-    show((active || links[0]).hash);
+  function restore() {
+    const finish = fromUrl();
+    if (editions.has(finish)) select(finish);
+    else if (!finish || finish === "campaign") select("plum");
   }
-
-  links.forEach(link => link.addEventListener("click", event => {
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    event.preventDefault();
-    if (link.hash !== location.hash) history.pushState(null, "", link.hash);
-    show(link.hash);
-  }));
-  window.addEventListener("popstate", fromLocation);
-  window.addEventListener("hashchange", fromLocation);
-  fromLocation();
+  addEventListener("hashchange", restore);
+  addEventListener("popstate", restore);
 })();

@@ -1,21 +1,17 @@
-Subject: Room. Object. Touch.
-Preheader: Follow one glass silhouette from a room at dusk to a fingertip at its collar.
+Subject: Where the light lands.
+Preheader: Meet Plum, a ribbed glass table lamp in the last light of the room.
 
-BRUME / Studio edition
+BRUME / Studio letters 01
+Collection launch
 
-Room. Object. Touch.
-Across a room, the dome catches your eye. Up close, a single rib in the glass holds the light.
+Where the light lands.
 
-Plum / the room
-The shade hangs above its own reflection. The dark table keeps both shapes in view.
+Plum / BR-01 · Evening
+The dark dome holds the outline of the lamp. Below it, a narrow rim of light picks out each rib in the glass. Blue dusk still catches one side of the shade while the lamp warms the wood directly below.
 
-Ivory / the object
-Daylight traces the dome and the ridges at its base.
+See Plum in evening light
+https://jocelyn-martinez-ui.github.io/brume/collection.html?light=evening#plum
 
-Amber / the touch
-A fingertip carries the scale of the ribbed glass.
-
-Explore the three light studies in the portfolio
-https://jocelyn-martinez-ui.github.io/brume/index.html#campaign
-
-An unsent concept email for a fictional lighting studio. AI-generated product imagery. Re-edited for Jocelyn Martinez’s portfolio with AI assistance.
+BRUME is a fictional lighting studio. This unsent letter and its AI-generated imagery are part of Jocelyn Martinez’s design portfolio.
+Design case study
+https://jocelyn-martinez-ui.github.io/brume/index.html#email
