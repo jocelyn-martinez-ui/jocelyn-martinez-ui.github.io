@@ -20,4 +20,4 @@ jobs:
           node --check psychictally-case.js
           node --check plain-sight/assets/app.js
       - name: Check routes, workflow states and artifact integrity
-        run: node --test tests/*.test.mjs proof/*.test.mjs proof/marketing/qa.test.mjs nodo/qa.test.mjs
+        run: node --test tests/*.test.mjs proof/*.test.mjs proof/marketing/qa.test.mjs nodo/qa.test.mjs brume/tests/*.test.mjs
