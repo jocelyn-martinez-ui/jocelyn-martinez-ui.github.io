@@ -9,7 +9,7 @@ Audience: shoppers interested in uncomplicated hydration routines. Goal: communi
 Initial simulated direction: one headline across every format. Proposed feedback: at leaderboard scale reduce to one line and a single CTA; reserve ingredient education for secondary marketplace modules. Implemented: narrow display artwork uses abbreviated messaging; retail card separates associate instructions from shelf headline. This is a self-directed design decision, not actual external feedback.
 
 ## Source and handoff
-assets/*.svg are editable vector masters with live SVG text, gradient fills and viewBox dimensions. email/*.html are unsent table-based HTML specimens; corresponding .txt files supply subject, preview and copy. shop.html, style.css and app.js are responsive browser prototype sources. No Adobe native files, actual product photography, retouching, video exports or real campaign performance are included. AI-assisted code and text were used; SVG artwork was programmatically drawn. No external image assets or custom fonts are required.
+assets/*.svg are editable vector masters with live SVG text, gradient fills and viewBox dimensions. email/*.html are unsent table-based HTML specimens; corresponding .txt files supply subject, preview and copy. shop.html, style.css and app.js are responsive browser prototype sources. No Adobe native files, actual product photography, retouching or real campaign performance are included. The export studio can generate RGB raster proofs and browser-recorded vertical video in supported browsers; output is not pre-rendered or verified in all browsers. AI-assisted code and text were used; SVG artwork was programmatically drawn. No external image assets or custom fonts are required.
 
 ## Release checklist
 - Meta: verify placement specs and safe zones, export PNG/JPG and check previews. https://eventsmanager.facebook.com/business/ads-guide/update/image
@@ -18,3 +18,6 @@ assets/*.svg are editable vector masters with live SVG text, gradient fills and 
 - Email: replace SVG with hosted raster imagery and absolute URLs, add actual legal footer and unsubscribe functionality, test Outlook/Gmail/Apple Mail and dark mode. No sending.
 - Print: confirm final dielines, bleed, CMYK conversion, fonts and regulatory copy with vendor. No press-ready claim.
 - Testing: no actual advertising or commerce; define CTR, conversion rate, email click rate and retail comprehension as proposed measures. Compare headlines in matched placements before interpreting results.
+
+## Second iteration
+Eight lifecycle emails include four different layout structures in the expanded set: routine, cart, post-purchase and illustrative offer. Marketplace preview and retail shelf visualization embed editable vector artwork. Export studio provides original-dimension PNG/JPEG proof generation and a six-second canvas video recording, subject to browser support. No fictitious ratings or performance numbers.
