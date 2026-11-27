@@ -4,10 +4,10 @@
  const cards=new Map([...grid.querySelectorAll("[data-project]")].map(item=>[item.dataset.project,item]));
  const paths={
   featured:{ids:["hope-college","imhere","brume","holland","plain-sight"],text:"Explore campus communications, a lighting campaign, an attendance correction, a walking tour, or an editorial sequence."},
-  all:{ids:["hope-college","proof","brume","plain-sight","holland","imhere","psychictally","afterform","interval","aurea","loopline","novella","nutriva"],text:"Thirteen selected case studies. Independent concepts, collaborative foundations and application work are labeled on each project."},
+  all:{ids:["dermea","hope-college","proof","brume","plain-sight","holland","imhere","psychictally","afterform","interval","aurea","loopline","novella","nutriva"],text:"Fourteen selected case studies. Independent concepts, collaborative foundations and application work are labeled on each project."},
   ux:{ids:["imhere","holland","psychictally"],text:"Try an attendance correction, pause a walking tour, or inspect a community moderation decision."},
-  graphic:{ids:["hope-college","proof","brume","plain-sight","afterform"],text:"Campus communications, campaign artwork, lighting studies, editorial design and a repair-service identity."},
-  visual:{ids:["hope-college","proof","brume","plain-sight","interval"],text:"Compare campus communications, studio and lighting campaigns, editorial design and a cultural programme."},
+  graphic:{ids:["dermea","hope-college","proof","brume","plain-sight","afterform"],text:"Skincare launch, campus communications, campaign artwork, lighting studies, editorial design and a repair-service identity."},
+  visual:{ids:["dermea","hope-college","proof","brume","plain-sight","interval"],text:"Compare skincare launch, campus communications, studio and lighting campaigns, editorial design and a cultural programme."},
   web:{ids:["psychictally","imhere","aurea","holland"],text:"Open a sample interaction to inspect its controls, feedback, and recovery states."}
  };
  const buttons=[...document.querySelectorAll("[data-focus]")];
